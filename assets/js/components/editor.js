@@ -25,6 +25,18 @@ const RULES = {
     { re: /<\/?[a-zA-Z][\w-]*/g, cls: 'tok-tag' },
     { re: /"[^"]*"|'[^']*'/g, cls: 'tok-str' },
     { re: /\b[a-zA-Z-]+(?==)/g, cls: 'tok-attr' }
+  ],
+  python: [
+    { re: /#[^\n]*/g, cls: 'tok-com' },
+    { re: /"""[\s\S]*?"""|'''[\s\S]*?'''|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, cls: 'tok-str' },
+    { re: /\b(?:def|return|if|elif|else|for|while|in|not|and|or|import|from|as|class|try|except|finally|with|lambda|None|True|False|pass|break|continue|raise|yield|assert|del|global|nonlocal|is)\b/g, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  sql: [
+    { re: /--[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /'(?:''|[^'])*'/g, cls: 'tok-str' },
+    { re: /\b(?:SELECT|FROM|WHERE|JOIN|INNER|LEFT|RIGHT|ON|GROUP|BY|ORDER|HAVING|LIMIT|OFFSET|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|PRIMARY|KEY|FOREIGN|NOT|NULL|AND|OR|AS|DISTINCT|COUNT|SUM|AVG|MIN|MAX|INTEGER|TEXT|REAL|DROP|ALTER|INDEX)\b/gi, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
   ]
 };
 

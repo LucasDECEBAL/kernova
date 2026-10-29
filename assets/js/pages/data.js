@@ -23,6 +23,7 @@ export function renderDataPage({ outlet }) {
     'Chapitres terminés': Object.values(state.progress).reduce((s, p) => s + Object.keys(p.completed).length, 0),
     'Résultats de quiz': state.quizResults.length,
     'Favoris': state.favorites.length,
+    'Fiches en favori': state.sheetFavorites.length,
     'Notes': Object.keys(state.notes).length,
     'Entrées d\'activité': state.activity.length
   };
@@ -97,6 +98,8 @@ export function renderDataPage({ outlet }) {
       });
       if (!ok) return;
       store.reset();
+      try { localStorage.removeItem('kernova:terminal:v1'); } catch { /* ignoré */ }
+      try { localStorage.removeItem('kernova:network:v1'); } catch { /* ignoré */ }
       applyTheme('system');
       toast('Données effacées.', 'info');
       rerender();

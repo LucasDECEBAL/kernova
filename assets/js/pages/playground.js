@@ -296,7 +296,7 @@ export function renderPlaygroundPage({ outlet, params }) {
 
   outlet.replaceChildren(h('div', { class: 'page' },
     h('nav', { class: 'breadcrumb', 'aria-label': 'Fil d\'Ariane' },
-      h('ol', {}, h('li', {}, h('a', { href: '#/catalogue' }, 'Catalogue')), h('li', { 'aria-current': 'page' }, 'Playground'))),
+      h('ol', {}, h('li', {}, h('a', { href: '#/labo' }, 'Labo')), h('li', { 'aria-current': 'page' }, 'Playground'))),
     h('header', { class: 'page-head' },
       h('h1', { tabindex: '-1', text: 'Playground' }),
       h('p', { text: 'Écrivez du HTML, du CSS et du JavaScript, puis exécutez : l\'aperçu s\'affiche dans une iframe isolée et votre console remonte ici.' })),

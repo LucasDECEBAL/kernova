@@ -143,7 +143,7 @@ export function runQuiz(container, cfg) {
     const failed = failedIds(session);
     recordQuizResult({
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-      quizId: `${cfg.chapterId}-quiz`,
+      quizId: cfg.quizId || `${cfg.chapterId}-quiz`,
       courseId: cfg.courseId,
       chapterId: cfg.chapterId,
       title: cfg.title,
@@ -153,6 +153,7 @@ export function runQuiz(container, cfg) {
       date: new Date().toISOString().slice(0, 10),
       failed
     });
+    cfg.onFinish?.({ score, total, percent, failed });
     render();
   }
 

@@ -119,6 +119,47 @@ export async function loadData() {
     cache.playground = [];
   }
 
+  // Scénarios du terminal simulé : optionnels
+  try {
+    const term = await fetchJson('data/terminal.json');
+    cache.terminal = Array.isArray(term.scenarios)
+      ? term.scenarios.filter((s) => isStr(s.id) && Array.isArray(s.objectives) && s.objectives.length)
+      : [];
+  } catch (err) {
+    cache.issues.push(`terminal : ${err.message}`);
+    cache.terminal = [];
+  }
+
+  // Simulateur réseau : topologie et scénarios
+  try {
+    const net = await fetchJson('data/network.json');
+    const ok = net && net.seed && Array.isArray(net.seed.devices) && Array.isArray(net.scenarios);
+    cache.network = ok ? net : null;
+  } catch (err) {
+    cache.issues.push(`réseau : ${err.message}`);
+    cache.network = null;
+  }
+
+  // Fiches mémo
+  try {
+    const sheets = await fetchJson('data/cheatsheets.json');
+    cache.cheatsheets = Array.isArray(sheets.sheets)
+      ? sheets.sheets.filter((s) => isStr(s.id) && isStr(s.title) && Array.isArray(s.entries))
+      : [];
+  } catch (err) {
+    cache.issues.push(`fiches mémo : ${err.message}`);
+    cache.cheatsheets = [];
+  }
+
+  // Exemples d'exécution Python et SQL
+  try {
+    const exec = await fetchJson('data/execution.json');
+    cache.execution = exec && exec.python && exec.sql ? exec : null;
+  } catch (err) {
+    cache.issues.push(`exécution : ${err.message}`);
+    cache.execution = null;
+  }
+
   cache.catalog = catalog;
   return catalog;
 }
@@ -131,6 +172,26 @@ export function getFlashPacks() {
 /** Exemples de code du playground. */
 export function getPlaygroundExamples() {
   return cache.playground || [];
+}
+
+/** Scénarios guidés du terminal simulé. */
+export function getTerminalScenarios() {
+  return cache.terminal || [];
+}
+
+/** Topologie et scénarios du simulateur réseau. */
+export function getNetworkData() {
+  return cache.network || null;
+}
+
+/** Fiches mémo de référence. */
+export function getCheatsheets() {
+  return cache.cheatsheets || [];
+}
+
+/** Exemples et schéma pour l'exécution Python et SQL. */
+export function getExecutionData() {
+  return cache.execution || null;
 }
 
 export function getDataIssues() {

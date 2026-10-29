@@ -1,0 +1,98 @@
+{
+  "seed": {
+    "devices": [
+      { "id": "pc1", "type": "host", "name": "Poste 1", "x": 13, "y": 26, "ip": "192.168.10.10", "mask": 24, "gateway": "192.168.10.1", "dns": "10.0.20.53", "fw": [] },
+      { "id": "pc2", "type": "host", "name": "Poste 2", "x": 13, "y": 74, "ip": "192.168.10.11", "mask": 24, "gateway": "192.168.10.1", "dns": "10.0.20.53", "fw": [] },
+      { "id": "sw1", "type": "switch", "name": "Commutateur", "x": 33, "y": 50, "fw": [] },
+      { "id": "r1", "type": "router", "name": "Routeur", "x": 65, "y": 50, "ifaces": [{ "name": "lan", "ip": "192.168.10.1", "mask": 24 }, { "name": "wan", "ip": "10.0.20.1", "mask": 24 }], "fw": [] },
+      { "id": "srv", "type": "server", "name": "Serveur web", "x": 88, "y": 26, "ip": "10.0.20.50", "mask": 24, "gateway": "10.0.20.1", "fw": [] },
+      { "id": "dns", "type": "server", "name": "Serveur DNS", "x": 88, "y": 74, "ip": "10.0.20.53", "mask": 24, "gateway": "10.0.20.1", "dns": { "intranet.lab": "10.0.20.50", "site.lab": "10.0.20.60" }, "fw": [] }
+    ],
+    "links": [["pc1", "sw1"], ["pc2", "sw1"], ["sw1", "r1"], ["r1", "srv"], ["r1", "dns"]]
+  },
+  "scenarios": [
+    {
+      "id": "adressage",
+      "title": "Adresser un poste",
+      "description": "Le poste 1 n'a aucune configuration. Donnez-lui une adresse du réseau local, le masque correct et la passerelle.",
+      "setup": [{ "device": "pc1", "set": { "ip": "", "mask": 16, "gateway": "" } }],
+      "objectives": [
+        { "id": "ip", "text": "Adresse IP : 192.168.10.10", "check": { "type": "ip", "device": "pc1", "expect": "192.168.10.10" } },
+        { "id": "mask", "text": "Masque : /24", "check": { "type": "mask", "device": "pc1", "expect": 24 } },
+        { "id": "gw", "text": "Passerelle : 192.168.10.1", "check": { "type": "gateway", "device": "pc1", "expect": "192.168.10.1" } },
+        { "id": "ping", "text": "Le poste 1 joint le poste 2", "check": { "type": "reach", "from": "pc1", "to": "pc2" } }
+      ],
+      "hints": [
+        "Le poste 2 est en 192.168.10.11/24 : le poste 1 doit être dans le même réseau.",
+        "La passerelle est l'adresse du routeur sur le réseau local.",
+        "Le masque /24 correspond à 255.255.255.0."
+      ],
+      "solution": "Poste 1 : IP 192.168.10.10, masque 24, passerelle 192.168.10.1."
+    },
+    {
+      "id": "routage",
+      "title": "Atteindre le serveur",
+      "description": "Le poste 1 est adressé mais ne peut pas joindre le serveur situé sur un autre réseau. Il manque un élément de configuration.",
+      "setup": [{ "device": "pc1", "set": { "ip": "192.168.10.10", "mask": 24, "gateway": "" } }],
+      "objectives": [
+        { "id": "gw", "text": "Configurer la passerelle du poste 1", "check": { "type": "gateway", "device": "pc1", "expect": "192.168.10.1" } },
+        { "id": "reach", "text": "Le poste 1 joint le serveur web (10.0.20.50)", "check": { "type": "reach", "from": "pc1", "to": "srv" } }
+      ],
+      "hints": [
+        "Un poste ne peut pas deviner la route vers un autre réseau.",
+        "Le routeur possède une interface sur le réseau local : 192.168.10.1.",
+        "Après avoir saisi la passerelle, testez avec Ping."
+      ],
+      "solution": "Passerelle du poste 1 : 192.168.10.1."
+    },
+    {
+      "id": "conflit",
+      "title": "Résoudre un conflit d'adresses",
+      "description": "Deux postes portent la même adresse IP et la communication échoue. Corrigez l'adressage.",
+      "setup": [{ "device": "pc1", "set": { "ip": "192.168.10.10" } }, { "device": "pc2", "set": { "ip": "192.168.10.10" } }],
+      "objectives": [
+        { "id": "unique", "text": "Chaque appareil a une adresse unique", "check": { "type": "unique-ip" } },
+        { "id": "lan", "text": "Le poste 1 joint le poste 2", "check": { "type": "reach", "from": "pc1", "to": "pc2" } },
+        { "id": "srv", "text": "Le poste 2 joint le serveur web", "check": { "type": "reach", "from": "pc2", "to": "srv" } }
+      ],
+      "hints": [
+        "Lisez les adresses affichées sous chaque poste.",
+        "Gardez 192.168.10.10 pour le poste 1 et changez celle du poste 2.",
+        "Une adresse libre du réseau /24 convient, par exemple 192.168.10.11."
+      ],
+      "solution": "Poste 2 : IP 192.168.10.11, masque 24, passerelle 192.168.10.1."
+    },
+    {
+      "id": "pare-feu",
+      "title": "Ouvrir un port dans le pare-feu",
+      "description": "Le serveur refuse les connexions au port 22 depuis tout le réseau local. Autorisez le poste 1 sans ouvrir l'accès au poste 2.",
+      "setup": [{ "device": "srv", "set": { "fw": [{ "action": "deny", "from": "192.168.10.0/24", "port": 22 }] } }],
+      "objectives": [
+        { "id": "pc1", "text": "Le poste 1 atteint le port 22 du serveur", "check": { "type": "reach", "from": "pc1", "to": "srv", "port": 22 } },
+        { "id": "pc2", "text": "Le poste 2 reste bloqué sur le port 22", "check": { "type": "reach", "from": "pc2", "to": "srv", "port": 22, "expect": false } }
+      ],
+      "hints": [
+        "Les règles sont évaluées dans l'ordre : la première qui correspond s'applique.",
+        "Ajoutez une autorisation plus précise au-dessus du refus général.",
+        "Une source 192.168.10.10/32 désigne uniquement le poste 1."
+      ],
+      "solution": "Sur le serveur, ajouter la règle autoriser 192.168.10.10/32 port 22 avant la règle de refus 192.168.10.0/24."
+    },
+    {
+      "id": "dns",
+      "title": "Configurer la résolution de noms",
+      "description": "Le poste 1 doit résoudre intranet.lab, mais aucun serveur DNS ne lui est indiqué.",
+      "setup": [{ "device": "pc1", "set": { "dns": "" } }],
+      "objectives": [
+        { "id": "dns", "text": "Serveur DNS du poste 1 : 10.0.20.53", "check": { "type": "dns", "device": "pc1", "expect": "10.0.20.53" } },
+        { "id": "resolve", "text": "intranet.lab se résout en 10.0.20.50", "check": { "type": "resolve", "from": "pc1", "name": "intranet.lab", "expect": "10.0.20.50" } }
+      ],
+      "hints": [
+        "Le serveur DNS est représenté à droite du routeur.",
+        "Son adresse est 10.0.20.53 ; le poste doit pouvoir l'atteindre via la passerelle.",
+        "Utilisez l'outil DNS de la page pour tester la résolution."
+      ],
+      "solution": "Poste 1 : serveur DNS 10.0.20.53. La résolution nécessite aussi une passerelle correcte."
+    }
+  ]
+}

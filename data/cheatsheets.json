@@ -1,0 +1,165 @@
+{
+  "sheets": [
+    {
+      "id": "linux",
+      "title": "Commandes Linux",
+      "category": "Linux",
+      "description": "Navigation, fichiers, droits et recherche.",
+      "entries": [
+        { "id": "linux-1", "command": "pwd", "description": "Affiche le chemin absolu du dossier courant." },
+        { "id": "linux-2", "command": "ls -lah", "description": "Liste tout, y compris les fichiers cachés, avec des tailles lisibles.", "example": "ls -lah /var/log" },
+        { "id": "linux-3", "command": "cd ~/projets", "description": "Change de dossier ; sans argument, revient au dossier personnel." },
+        { "id": "linux-4", "command": "cp -r source/ destination/", "description": "Copie un dossier et son contenu.", "warning": "Sans -r, la copie d'un dossier échoue." },
+        { "id": "linux-5", "command": "rm -i fichier.txt", "description": "Supprime avec confirmation.", "warning": "rm est définitif : il n'y a pas de corbeille en ligne de commande." },
+        { "id": "linux-6", "command": "chmod 640 secret.txt", "description": "Propriétaire lecture/écriture, groupe lecture, autres aucun droit." }
+      ]
+    },
+    {
+      "id": "bash",
+      "title": "Scripts Bash",
+      "category": "Bash",
+      "description": "Structure, conditions, boucles et robustesse.",
+      "entries": [
+        { "id": "bash-1", "command": "#!/usr/bin/env bash", "description": "Shebang : indique l'interpréteur à utiliser." },
+        { "id": "bash-2", "command": "set -euo pipefail", "description": "Arrêt sur erreur, variables non définies, et échec dans un pipeline." },
+        { "id": "bash-3", "command": "if [ -f \"$fichier\" ]; then … fi", "description": "Teste l'existence d'un fichier régulier.", "warning": "Placez toujours les variables entre guillemets." },
+        { "id": "bash-4", "command": "while IFS= read -r ligne; do … done < fichier", "description": "Lit un fichier ligne par ligne sans perdre espaces ni caractères spéciaux." },
+        { "id": "bash-5", "command": "for f in *.log; do … done", "description": "Parcourt les fichiers correspondant au motif." }
+      ]
+    },
+    {
+      "id": "git",
+      "title": "Git",
+      "category": "Git",
+      "description": "Dépôt, commits, branches et dépôt distant.",
+      "entries": [
+        { "id": "git-1", "command": "git init", "description": "Crée un dépôt dans le dossier courant." },
+        { "id": "git-2", "command": "git status", "description": "Affiche l'état des fichiers : modifiés, préparés, non suivis." },
+        { "id": "git-3", "command": "git add fichier && git commit -m \"message\"", "description": "Prépare puis enregistre un instantané." },
+        { "id": "git-4", "command": "git switch -c ma-branche", "description": "Crée une branche et s'y place immédiatement." },
+        { "id": "git-5", "command": "git log --oneline --graph --all", "description": "Historique compact avec le graphe de toutes les branches." },
+        { "id": "git-6", "command": "git push -u origin main", "description": "Envoie la branche et enregistre le lien de suivi." }
+      ]
+    },
+    {
+      "id": "docker",
+      "title": "Docker",
+      "category": "Docker",
+      "description": "Images, conteneurs et Compose.",
+      "entries": [
+        { "id": "docker-1", "command": "docker build -t mon-app:1.0 .", "description": "Construit une image à partir du Dockerfile du dossier courant." },
+        { "id": "docker-2", "command": "docker run -d --name web -p 8080:80 nginx:1.27", "description": "Lance un conteneur détaché avec un mappage de port." },
+        { "id": "docker-3", "command": "docker ps -a", "description": "Liste tous les conteneurs, arrêtés compris." },
+        { "id": "docker-4", "command": "docker logs -f web", "description": "Suit la sortie d'un conteneur en continu." },
+        { "id": "docker-5", "command": "docker compose up -d", "description": "Démarre les services décrits dans compose.yaml." }
+      ]
+    },
+    {
+      "id": "kubernetes",
+      "title": "Kubernetes",
+      "category": "Kubernetes",
+      "description": "Objets, déploiements et diagnostic.",
+      "entries": [
+        { "id": "k8s-1", "command": "kubectl get pods -o wide", "description": "Liste les pods avec leur nœud et leur adresse." },
+        { "id": "k8s-2", "command": "kubectl describe pod <nom>", "description": "Détaille un pod, y compris les événements et les erreurs." },
+        { "id": "k8s-3", "command": "kubectl logs -f <pod>", "description": "Suit les journaux d'un pod." },
+        { "id": "k8s-4", "command": "kubectl apply -f deployment.yaml", "description": "Applique un manifeste : création ou mise à jour." },
+        { "id": "k8s-5", "command": "kubectl rollout undo deployment/web", "description": "Revient à la version précédente du déploiement." }
+      ]
+    },
+    {
+      "id": "python",
+      "title": "Python",
+      "category": "Python",
+      "description": "Environnement, syntaxe et tests.",
+      "entries": [
+        { "id": "py-1", "command": "python -m venv .venv", "description": "Crée un environnement virtuel isolé." },
+        { "id": "py-2", "command": "source .venv/bin/activate", "description": "Active l'environnement (Windows : .venv\\Scripts\\activate)." },
+        { "id": "py-3", "command": "f\"Bonjour {nom}\"", "description": "F-string : insère une valeur dans un texte." },
+        { "id": "py-4", "command": "[n * 2 for n in notes if n >= 10]", "description": "Compréhension de liste avec filtre." },
+        { "id": "py-5", "command": "with open(\"f.txt\", encoding=\"utf-8\") as f:", "description": "Ouvre un fichier et le ferme automatiquement." },
+        { "id": "py-6", "command": "pytest -q", "description": "Exécute les tests découverts dans le projet." }
+      ]
+    },
+    {
+      "id": "javascript",
+      "title": "JavaScript",
+      "category": "JavaScript",
+      "description": "Syntaxe moderne, DOM, asynchrone et stockage.",
+      "entries": [
+        { "id": "js-1", "command": "const total = prix.filter((p) => p > 20).map((p) => p * 1.2);", "description": "Chaîne filter et map sur un tableau." },
+        { "id": "js-2", "command": "document.querySelector(\"#app\").textContent = texte;", "description": "Insère du texte sans interpréter le HTML." },
+        { "id": "js-3", "command": "el.addEventListener(\"click\", () => { … });", "description": "Écoute un événement sur un élément." },
+        { "id": "js-4", "command": "const r = await fetch(url); if (!r.ok) throw new Error(r.status);", "description": "Requête HTTP avec vérification du statut.", "warning": "fetch ne rejette pas sur un statut 4xx ou 5xx." },
+        { "id": "js-5", "command": "localStorage.setItem(\"cle\", JSON.stringify(obj));", "description": "Enregistre un objet en texte dans le navigateur." }
+      ]
+    },
+    {
+      "id": "sql",
+      "title": "SQL",
+      "category": "Bases de données",
+      "description": "Requêtes, agrégations et modifications.",
+      "entries": [
+        { "id": "sql-1", "command": "SELECT nom, ville FROM clients WHERE ville = 'Lyon';", "description": "Sélection avec filtre." },
+        { "id": "sql-2", "command": "SELECT ville, COUNT(*) FROM clients GROUP BY ville HAVING COUNT(*) >= 3;", "description": "Regroupement puis filtre sur les groupes." },
+        { "id": "sql-3", "command": "SELECT c.nom, o.montant FROM commandes o JOIN clients c ON c.id = o.client_id;", "description": "Jointure interne entre deux tables." },
+        { "id": "sql-4", "command": "UPDATE clients SET ville = 'Paris' WHERE id = 42;", "description": "Modifie une ligne précise." },
+        { "id": "sql-5", "command": "EXPLAIN ANALYZE SELECT …;", "description": "Affiche le plan et les durées réelles d'exécution." }
+      ]
+    },
+    {
+      "id": "reseau",
+      "title": "Réseau",
+      "category": "Réseaux",
+      "description": "Diagnostic local et services.",
+      "entries": [
+        { "id": "net-1", "command": "ip addr show", "description": "Affiche les interfaces et leurs adresses." },
+        { "id": "net-2", "command": "ip route", "description": "Affiche la table de routage et la passerelle par défaut." },
+        { "id": "net-3", "command": "ss -tulpn", "description": "Liste les ports en écoute et les processus associés." },
+        { "id": "net-4", "command": "dig example.com +short", "description": "Résout un nom en adresse IP." },
+        { "id": "net-5", "command": "traceroute example.com", "description": "Affiche les routeurs traversés." },
+        { "id": "net-6", "command": "nmap -sV <cible autorisée>", "description": "Inventorie les services d'une cible.", "warning": "À n'utiliser que sur des systèmes dont vous êtes responsable ou explicitement autorisé." }
+      ]
+    },
+    {
+      "id": "securite",
+      "title": "Cybersécurité",
+      "category": "Sécurité",
+      "description": "Durcissement et vérifications de base.",
+      "entries": [
+        { "id": "sec-1", "command": "ssh-keygen -t ed25519 -C \"poste-alice\"", "description": "Génère une paire de clés SSH." },
+        { "id": "sec-2", "command": "chmod 600 ~/.ssh/id_ed25519", "description": "Rend la clé privée lisible par son seul propriétaire." },
+        { "id": "sec-3", "command": "ufw default deny incoming && ufw allow 22/tcp", "description": "Pare-feu en refus par défaut, SSH autorisé.", "warning": "Vérifiez l'accès SSH avant d'activer le pare-feu." },
+        { "id": "sec-4", "command": "journalctl -u ssh --since \"1 hour ago\"", "description": "Consulte les journaux récents du service SSH." },
+        { "id": "sec-5", "command": "openssl dgst -sha256 fichier", "description": "Calcule une empreinte SHA-256 pour vérifier l'intégrité." }
+      ]
+    },
+    {
+      "id": "html-css",
+      "title": "HTML et CSS",
+      "category": "Web",
+      "description": "Structure, mise en page et responsive.",
+      "entries": [
+        { "id": "web-1", "command": "<!doctype html><html lang=\"fr\">…</html>", "description": "Structure minimale d'un document." },
+        { "id": "web-2", "command": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">", "description": "Indispensable pour un affichage correct sur mobile." },
+        { "id": "web-3", "command": "* { box-sizing: border-box; }", "description": "Inclut padding et bordure dans les dimensions." },
+        { "id": "web-4", "command": "display: flex; gap: 16px; align-items: center;", "description": "Aligne des éléments sur une ligne." },
+        { "id": "web-5", "command": "grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));", "description": "Grille responsive sans media query." },
+        { "id": "web-6", "command": "@media (min-width: 768px) { … }", "description": "Règles appliquées au-delà de 768 px (approche mobile-first)." }
+      ]
+    },
+    {
+      "id": "admin",
+      "title": "Administration système",
+      "category": "Administration",
+      "description": "Services, journaux, disques et tâches planifiées.",
+      "entries": [
+        { "id": "adm-1", "command": "systemctl status nginx", "description": "État d'un service géré par systemd." },
+        { "id": "adm-2", "command": "systemctl enable --now nginx", "description": "Active au démarrage et démarre immédiatement." },
+        { "id": "adm-3", "command": "journalctl -p err -b", "description": "Erreurs depuis le dernier démarrage." },
+        { "id": "adm-4", "command": "df -h && du -sh /var/log/*", "description": "Espace des systèmes de fichiers, puis taille des dossiers." },
+        { "id": "adm-5", "command": "30 2 * * * /usr/local/bin/sauvegarde.sh", "description": "Ligne crontab : tous les jours à 2 h 30.", "warning": "Utilisez des chemins absolus : l'environnement de cron est minimal." }
+      ]
+    }
+  ]
+}

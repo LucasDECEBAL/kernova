@@ -1,0 +1,94 @@
+{
+  "scenarios": [
+    {
+      "id": "navigation",
+      "title": "Naviguer dans l'arborescence",
+      "description": "Utilisez cd et pwd pour atteindre un dossier, puis créez un fichier vide dedans.",
+      "objectives": [
+        { "id": "cwd", "text": "Être dans ~/projets", "check": { "type": "cwd", "path": "/home/alice/projets" } },
+        { "id": "file", "text": "Créer le fichier vide notes.txt dans ~/projets", "check": { "type": "exists", "path": "/home/alice/projets/notes.txt" } }
+      ],
+      "hints": [
+        "Le dossier personnel se note ~ et contient le dossier projets.",
+        "cd ~/projets change de dossier ; pwd vérifie où vous êtes.",
+        "touch notes.txt crée un fichier vide dans le dossier courant."
+      ],
+      "solution": "cd ~/projets\ntouch notes.txt"
+    },
+    {
+      "id": "creation",
+      "title": "Créer des dossiers imbriqués",
+      "description": "Créez une structure de projet sans créer chaque niveau séparément.",
+      "objectives": [
+        { "id": "dir", "text": "Créer le dossier ~/atelier/src", "check": { "type": "dir", "path": "/home/alice/atelier/src" } },
+        { "id": "readme", "text": "Créer le fichier ~/atelier/README.md", "check": { "type": "exists", "path": "/home/alice/atelier/README.md" } }
+      ],
+      "hints": [
+        "L'option -p de mkdir crée les dossiers intermédiaires.",
+        "Vous pouvez créer plusieurs chemins en une seule commande.",
+        "touch ne suffit pas pour créer un dossier."
+      ],
+      "solution": "mkdir -p atelier/src\ntouch atelier/README.md"
+    },
+    {
+      "id": "copier",
+      "title": "Copier et renommer",
+      "description": "Copiez un rapport dans les sauvegardes, puis renommez un brouillon.",
+      "objectives": [
+        { "id": "copie", "text": "Copier documents/rapport.txt dans sauvegardes/", "check": { "type": "exists", "path": "/home/alice/sauvegardes/rapport.txt" } },
+        { "id": "renomme", "text": "Renommer atelier/brouillon.txt en final.txt", "check": { "type": "exists", "path": "/home/alice/final.txt" } },
+        { "id": "absent", "text": "L'ancien nom atelier/brouillon.txt ne doit plus exister", "check": { "type": "absent", "path": "/home/alice/atelier/brouillon.txt" } }
+      ],
+      "hints": [
+        "cp copie un fichier ; mv le déplace ou le renomme.",
+        "Vers un dossier existant, cp garde le nom d'origine.",
+        "Un renommage est un déplacement vers un nouveau nom."
+      ],
+      "solution": "cp documents/rapport.txt sauvegardes/\nmv atelier/brouillon.txt final.txt"
+    },
+    {
+      "id": "recherche",
+      "title": "Chercher du texte et des fichiers",
+      "description": "Extrayez les erreurs d'un journal et retrouvez un fichier de configuration dans /etc.",
+      "objectives": [
+        { "id": "erreurs", "text": "Créer ~/erreurs.txt contenant le mot « erreur »", "check": { "type": "content", "path": "/home/alice/erreurs.txt", "includes": "erreur" } },
+        { "id": "conf", "text": "Créer ~/config.txt contenant le chemin /etc/app.conf", "check": { "type": "content", "path": "/home/alice/config.txt", "includes": "/etc/app.conf" } }
+      ],
+      "hints": [
+        "grep cherche un motif dans un fichier ; l'option -i ignore la casse.",
+        "La redirection > écrit la sortie dans un fichier.",
+        "find /etc -name \"*.conf\" liste les fichiers correspondants."
+      ],
+      "solution": "grep -i erreur /var/log/app.log > erreurs.txt\nfind /etc -name \"*.conf\" > config.txt"
+    },
+    {
+      "id": "permissions",
+      "title": "Ajuster les permissions",
+      "description": "Rendez un fichier privé et un dossier accessible au groupe seulement.",
+      "objectives": [
+        { "id": "secret", "text": "Mettre secret.txt en 640 (rw- r-- ---)", "check": { "type": "mode", "path": "/home/alice/secret.txt", "mode": "640" } },
+        { "id": "atelier", "text": "Mettre le dossier atelier en 750", "check": { "type": "mode", "path": "/home/alice/atelier", "mode": "750" } }
+      ],
+      "hints": [
+        "chmod accepte la notation octale : 640, 750.",
+        "4 = r, 2 = w, 1 = x, additionnés par catégorie.",
+        "chmod 640 secret.txt agit sur le fichier indiqué."
+      ],
+      "solution": "chmod 640 secret.txt\nchmod 750 atelier"
+    },
+    {
+      "id": "depannage",
+      "title": "Résoudre un problème de permissions",
+      "description": "Le script de sauvegarde refuse de s'exécuter : rendez-le exécutable par son propriétaire.",
+      "objectives": [
+        { "id": "exec", "text": "Rendre ~/atelier/script.sh exécutable", "check": { "type": "executable", "path": "/home/alice/atelier/script.sh" } }
+      ],
+      "hints": [
+        "ls -l affiche les droits du fichier.",
+        "chmod u+x ajoute le droit d'exécution au propriétaire.",
+        "chmod 755 donnerait aussi les droits aux autres : ici, u+x suffit."
+      ],
+      "solution": "chmod u+x atelier/script.sh"
+    }
+  ]
+}

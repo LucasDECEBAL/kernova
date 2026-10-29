@@ -17,6 +17,13 @@ import { renderDashboardPage } from './pages/dashboard.js';
 import { renderDataPage } from './pages/data.js';
 import { renderFlashIndex, renderFlashSession } from './pages/flashcards.js';
 import { renderPlaygroundPage } from './pages/playground.js';
+import { renderTerminalPage } from './pages/terminal.js';
+import { renderNetworkPage } from './pages/network.js';
+import { renderCheatsheetsPage } from './pages/cheatsheets.js';
+import { renderLaboPage } from './pages/labo.js';
+import { renderExecutionPage } from './pages/execution.js';
+import { renderFinalPage } from './pages/final.js';
+import { renderProjectsIndex, renderProjectPage } from './pages/projects.js';
 
 const main = document.getElementById('main');
 const nav = document.getElementById('site-nav');
@@ -99,6 +106,14 @@ function registerRoutes() {
   route('/cartes/:pack', renderFlashSession);
   route('/playground', renderPlaygroundPage);
   route('/playground/:exampleId', renderPlaygroundPage);
+  route('/terminal', renderTerminalPage);
+  route('/reseau', renderNetworkPage);
+  route('/fiches', renderCheatsheetsPage);
+  route('/labo', renderLaboPage);
+  route('/execution', renderExecutionPage);
+  route('/evaluation/:courseId', renderFinalPage);
+  route('/projets', renderProjectsIndex);
+  route('/projets/:courseId', renderProjectPage);
   setNotFound(({ outlet }) => {
     setChildren(outlet, h('div', { class: 'page' },
       emptyState({

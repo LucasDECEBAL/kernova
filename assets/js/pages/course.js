@@ -32,6 +32,8 @@ export function renderCoursePage({ outlet, params }) {
   const p = courseProgress(course, state);
   const domain = getDomain(course.domain);
   const resume = resumeChapter(course, state);
+  const finalResults = state.quizResults.filter((r) => r.quizId === `${course.id}-final`);
+  const bestFinal = finalResults.length ? Math.max(...finalResults.map((r) => r.percent)) : null;
 
   const detail = h('aside', { class: 'card skill-detail', 'aria-live': 'polite', 'aria-label': 'Détail de la compétence' });
   const tree = renderSkillTree(course, detail);
@@ -60,6 +62,9 @@ export function renderCoursePage({ outlet, params }) {
             ? h('a', { class: 'btn btn-primary', href: `#/cours/${course.id}/${resume.id}` },
               icon('play', { size: 16 }), p.started && !p.finished ? 'Reprendre où vous en étiez' : 'Commencer le cours')
             : null,
+          h('a', { class: 'btn', href: `#/evaluation/${course.id}` },
+            icon('check', { size: 16 }),
+            bestFinal === null ? 'Évaluation finale' : `Évaluation finale (${bestFinal} %)`),
           favoriteButton(course.id)
         ),
         h('div', { style: 'max-width:520px;margin-top:var(--space-4)' }, progressBar(p.percent, 'Progression du cours'))

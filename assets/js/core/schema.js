@@ -20,6 +20,8 @@ export function createDefaultState() {
     progress: {},     // { [courseId]: { completed: { [chapterId]: 'YYYY-MM-DD' }, lastChapter: string|null } }
     quizResults: [],  // { id, quizId, courseId, chapterId, title, score, total, percent, date, failed: [questionId] }
     favorites: [],    // [courseId]
+    sheetFavorites: [], // [sheetId] fiches mémo
+    projectChecks: {},  // { [courseId]: { [index]: true } } critères de projet validés
     notes: {},        // { 'courseId/chapterId': text }
     recent: [],       // { courseId, chapterId, title, at }
     activity: [],     // { day, type, courseId, chapterId, title, at }
@@ -110,6 +112,31 @@ export function sanitizeState(raw) {
         seen.add(id);
         base.favorites.push(id);
       } else drop('favori');
+    }
+  }
+
+  // Fiches mémo favorites
+  if (Array.isArray(raw.sheetFavorites)) {
+    const seenSheet = new Set();
+    for (const id of raw.sheetFavorites) {
+      if (str(id, 100) && !seenSheet.has(id) && base.sheetFavorites.length < 200) {
+        seenSheet.add(id);
+        base.sheetFavorites.push(id);
+      } else drop('fiche favorite');
+    }
+  }
+
+  // Suivi des projets
+  if (isObj(raw.projectChecks)) {
+    for (const [courseId, checks] of Object.entries(raw.projectChecks)) {
+      if (!str(courseId, 100) || !isObj(checks)) { drop('suivi de projet'); continue; }
+      const clean = {};
+      for (const [key, value] of Object.entries(checks)) {
+        const index = Number(key);
+        if (Number.isInteger(index) && index >= 0 && index < 100 && value === true) clean[String(index)] = true;
+        else drop('critère de projet');
+      }
+      base.projectChecks[courseId] = clean;
     }
   }
 

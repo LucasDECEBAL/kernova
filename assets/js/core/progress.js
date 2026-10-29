@@ -106,8 +106,44 @@ export function toggleFavorite(courseId) {
   });
 }
 
+/* ---------- Grille d'évaluation des projets ---------- */
+
+export function projectChecks(courseId, state = get()) {
+  return state.projectChecks[courseId] || {};
+}
+
+export function toggleProjectCheck(courseId, index) {
+  return update((state) => {
+    const checks = state.projectChecks[courseId] || {};
+    if (checks[index]) delete checks[index];
+    else checks[index] = true;
+    state.projectChecks[courseId] = checks;
+    return Boolean(checks[index]);
+  });
+}
+
+export function resetProjectChecks(courseId) {
+  update((state) => { delete state.projectChecks[courseId]; });
+}
+
 export function noteKey(courseId, chapterId) {
   return `${courseId}/${chapterId}`;
+}
+
+export function isSheetFavorite(sheetId, state = get()) {
+  return state.sheetFavorites.includes(sheetId);
+}
+
+export function toggleSheetFavorite(sheetId) {
+  return update((state) => {
+    const index = state.sheetFavorites.indexOf(sheetId);
+    if (index >= 0) {
+      state.sheetFavorites.splice(index, 1);
+      return false;
+    }
+    state.sheetFavorites.push(sheetId);
+    return true;
+  });
 }
 
 export function getNote(courseId, chapterId, state = get()) {
@@ -122,8 +158,7 @@ export function saveNote(courseId, chapterId, text) {
   });
 }
 
-export function setDailyGoal(value) {
-  update((state) => { state.prefs.dailyGoal = value; });
+export function setDailyGoal(value) {  update((state) => { state.prefs.dailyGoal = value; });
 }
 
 export function setQuizPrefs(patch) {

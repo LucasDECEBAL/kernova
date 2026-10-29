@@ -84,6 +84,12 @@ export function computeStats(state, courses, findChapter, today = localDay()) {
     { id: 'perfect', title: 'Sans faute', text: 'Obtenir 100 % à un quiz.', earned: perfect.length >= 1 },
     { id: 'streak3', title: 'Régulier', text: 'Apprendre 3 jours de suite.', earned: streak >= 3 },
     { id: 'goal', title: 'Objectif atteint', text: 'Atteindre l\'objectif quotidien.', earned: todayCount >= goal },
+    {
+      id: 'final-pass',
+      title: 'Évaluation validée',
+      text: `Réussir une évaluation finale avec au moins ${PASS_PERCENT} %.`,
+      earned: quizResults.some((r) => r.quizId.endsWith('-final') && r.percent >= PASS_PERCENT)
+    },
     { id: 'course-done', title: 'Parcours terminé', text: 'Terminer tous les chapitres d\'un cours.', earned: finished.length >= 1 }
   ];
 

@@ -1,0 +1,59 @@
+{
+  "python": {
+    "examples": [
+      {
+        "id": "py-bonjour",
+        "title": "Bonjour",
+        "description": "Afficher du texte et insérer une variable dans une f-string.",
+        "code": "nom = \"Ada\"\nage = 36\n\nprint(f\"Bonjour {nom}, vous avez {age} ans.\")\nprint(\"Somme :\", 2 + 2)"
+      },
+      {
+        "id": "py-boucle",
+        "title": "Boucle et liste",
+        "description": "Parcourir une liste et calculer une moyenne.",
+        "code": "notes = [12, 15, 9, 18]\n\nfor note in notes:\n    print(\"Note :\", note)\n\nmoyenne = sum(notes) / len(notes)\nprint(\"Moyenne :\", round(moyenne, 2))"
+      },
+      {
+        "id": "py-fonction",
+        "title": "Fonction",
+        "description": "Définir une fonction avec valeur de retour et la tester.",
+        "code": "def appliquer_remise(prix, taux=0.1):\n    if prix <= 0:\n        raise ValueError(\"prix invalide\")\n    return prix * (1 - taux)\n\nprint(appliquer_remise(100))\nprint(appliquer_remise(100, 0.2))\n\ntry:\n    appliquer_remise(-5)\nexcept ValueError as err:\n    print(\"Erreur :\", err)"
+      },
+      {
+        "id": "py-dico",
+        "title": "Dictionnaire",
+        "description": "Compter des occurrences et parcourir un dictionnaire.",
+        "code": "phrase = \"le chat et le chien et le chat\"\ncompteur = {}\n\nfor mot in phrase.split():\n    compteur[mot] = compteur.get(mot, 0) + 1\n\nfor mot, nombre in sorted(compteur.items()):\n    print(f\"{mot} : {nombre}\")"
+      }
+    ]
+  },
+  "sql": {
+    "schema": "CREATE TABLE clients (\n  id INTEGER PRIMARY KEY,\n  nom TEXT NOT NULL,\n  ville TEXT,\n  email TEXT\n);\n\nCREATE TABLE commandes (\n  id INTEGER PRIMARY KEY,\n  client_id INTEGER,\n  montant REAL,\n  date TEXT\n);\n\nINSERT INTO clients (id, nom, ville, email) VALUES\n  (1, 'Ada', 'Lyon', 'ada@example.fr'),\n  (2, 'Linus', 'Paris', NULL),\n  (3, 'Grace', 'Lyon', 'grace@example.fr'),\n  (4, 'Alan', 'Nantes', 'alan@example.fr');\n\nINSERT INTO commandes (id, client_id, montant, date) VALUES\n  (1, 1, 89.90, '2026-01-10'),\n  (2, 1, 149.00, '2026-01-12'),\n  (3, 3, 45.50, '2026-01-15'),\n  (4, 2, 220.00, '2026-02-01');",
+    "examples": [
+      {
+        "id": "sql-tous",
+        "title": "Tous les clients",
+        "description": "Lire toutes les colonnes de la table clients.",
+        "query": "SELECT id, nom, ville FROM clients;"
+      },
+      {
+        "id": "sql-filtre",
+        "title": "Filtrer par ville",
+        "description": "Garder uniquement les clients de Lyon.",
+        "query": "SELECT nom, email FROM clients WHERE ville = 'Lyon';"
+      },
+      {
+        "id": "sql-groupe",
+        "title": "Compter par client",
+        "description": "Jointure puis regroupement pour compter les commandes.",
+        "query": "SELECT c.nom, COUNT(o.id) AS commandes\nFROM clients AS c\nJOIN commandes AS o ON o.client_id = c.id\nGROUP BY c.nom\nORDER BY commandes DESC;"
+      },
+      {
+        "id": "sql-total",
+        "title": "Montant total",
+        "description": "Additionner les montants des commandes.",
+        "query": "SELECT SUM(montant) AS total, AVG(montant) AS moyenne\nFROM commandes;"
+      }
+    ]
+  }
+}
