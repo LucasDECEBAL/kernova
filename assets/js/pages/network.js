@@ -53,6 +53,9 @@ export function renderNetworkPage({ outlet }) {
   let done = new Set(saved?.done || []);
   let selectedId = topo.devices.find((d) => d.ip)?.id || topo.devices[0].id;
   let hintsShown = 0;
+  let packet = null;
+  let markerEl = null;
+  const packetPanel = h('div', { class: 'net-packet-panel', hidden: true, 'aria-live': 'polite' });
 
   const canvas = h('div', { class: 'net-canvas' });
   const panel = h('div', { class: 'net-panel' });
@@ -114,6 +117,115 @@ export function renderNetworkPage({ outlet }) {
       );
       canvas.append(button);
     }
+
+    markerEl = null;
+    if (packet) {
+      const step = packet.steps[packet.index];
+      const device = topo.devices.find((d) => d.id === step?.id);
+      if (device) {
+        markerEl = svgEl('circle', { r: 2.2, class: 'net-packet', cx: device.x, cy: device.y, 'aria-hidden': 'true' });
+        svg.append(markerEl);
+      }
+    }
+  }
+
+  function animateMarker(target) {
+    if (!markerEl || !target) return;
+    const startX = Number(markerEl.getAttribute('cx'));
+    const startY = Number(markerEl.getAttribute('cy'));
+    const début = performance.now();
+    const durée = 450;
+    const tick = (now) => {
+      const ratio = Math.min(1, (now - début) / durée);
+      const eased = ratio < 0.5 ? 2 * ratio * ratio : 1 - ((-2 * ratio + 2) ** 2) / 2;
+      markerEl.setAttribute('cx', String(startX + (target.x - startX) * eased));
+      markerEl.setAttribute('cy', String(startY + (target.y - startY) * eased));
+      if (ratio < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function showPacket(result, from, to, port) {
+    const protocol = port ? `TCP, port ${port}` : 'ICMP';
+    const pathIds = result.path.length ? result.path : [from.id];
+    const steps = [];
+    const direct = pathIds.length === 2;
+    let emission = `${from.name} (${from.ip || 'sans adresse'}) émet un paquet ${protocol} vers ${to.ip || 'la cible'}.`;
+    if (!from.ip) emission += ' Aucune adresse IP n\'est configurée.';
+    else if (direct) emission += ' Même sous-réseau : envoi direct.';
+    else if (from.gateway) emission += ` Destination hors du réseau local : envoi à la passerelle ${from.gateway}.`;
+    else emission += ' Aucune passerelle configurée.';
+    if (pathIds.length === 1 && !result.ok) emission += ` Arrêt : ${result.reason}.`;
+    steps.push({ id: from.id, text: emission });
+
+    for (const id of pathIds.slice(1, -1)) {
+      const router = topo.devices.find((d) => d.id === id);
+      if (router) steps.push({ id, text: `${router.name} : route trouvée vers ${to.ip}, transmission vers le réseau de destination.` });
+    }
+    if (pathIds.length > 1) {
+      const last = topo.devices.find((d) => d.id === pathIds[pathIds.length - 1]);
+      if (last) {
+        steps.push({
+          id: last.id,
+          text: result.ok
+            ? `${last.name} : paquet accepté${port ? ` sur le port ${port}` : ''}.`
+            : `${last.name} : paquet refusé. ${result.reason}.`
+        });
+      }
+    }
+
+    packet = { steps, index: 0, protocol, from: from.name, to: to.name, port, ok: result.ok };
+    renderCanvas();
+    renderPacket();
+  }
+
+  function goStep(index) {
+    if (!packet) return;
+    packet.index = Math.max(0, Math.min(packet.steps.length - 1, index));
+    const device = topo.devices.find((d) => d.id === packet.steps[packet.index].id);
+    animateMarker(device);
+    renderPacket();
+  }
+
+  function closePacket() {
+    packet = null;
+    markerEl = null;
+    packetPanel.hidden = true;
+    packetPanel.replaceChildren();
+    renderCanvas();
+  }
+
+  function renderPacket() {
+    if (!packet) {
+      packetPanel.hidden = true;
+      return;
+    }
+    packetPanel.hidden = false;
+    const total = packet.steps.length;
+    const step = packet.steps[packet.index];
+    packetPanel.replaceChildren(
+      h('div', { class: 'net-packet-head' },
+        h('h3', {}, 'Paquet ', h('span', { class: 'badge', 'data-tone': 'info', text: packet.protocol })),
+        h('button', { class: 'btn btn-small btn-ghost', type: 'button', onClick: closePacket }, 'Fermer')),
+      h('p', { class: 'net-packet-fields', style: 'margin:0' },
+        h('span', {}, `Source : ${packet.from}`),
+        h('span', {}, `Destination : ${packet.to}`),
+        h('span', {}, `Résultat : ${packet.ok ? 'transmis' : 'refusé'}`)),
+      h('p', { class: 'net-packet-step' }, h('strong', {}, `Étape ${packet.index + 1} / ${total}. `), step.text),
+      h('div', { class: 'net-packet-controls' },
+        h('button', {
+          class: 'btn btn-small',
+          type: 'button',
+          disabled: packet.index === 0,
+          onClick: () => goStep(packet.index - 1)
+        }, 'Précédent'),
+        h('button', {
+          class: 'btn btn-small btn-primary',
+          type: 'button',
+          disabled: packet.index >= total - 1,
+          onClick: () => goStep(packet.index + 1)
+        }, 'Étape suivante'))
+    );
   }
 
   /* ---------- Panneau ---------- */
@@ -210,10 +322,12 @@ export function renderNetworkPage({ outlet }) {
             type: 'button',
             onClick: () => {
               const port = Number(portField.value || 0);
+              const target = topo.devices.find((d) => d.id === toolsTarget.value);
               const result = canReach(topo, device.id, toolsTarget.value, port);
-              log(`${device.name} → ${topo.devices.find((d) => d.id === toolsTarget.value)?.name}${port ? ` (port ${port})` : ' (ICMP)'} : ${result.ok ? 'réussi' : 'échec'}`, result.ok ? 'ok' : 'ko');
+              log(`${device.name} → ${target?.name}${port ? ` (port ${port})` : ' (ICMP)'} : ${result.ok ? 'réussi' : 'échec'}`, result.ok ? 'ok' : 'ko');
               if (!result.ok) log(`  ${result.reason}`, 'ko');
               else if (result.path.length > 2) log(`  chemin : ${result.path.map((id) => topo.devices.find((d) => d.id === id)?.name).join(' → ')}`);
+              if (target) showPacket(result, device, target, port);
             }
           }, 'Tester'))
         ,
@@ -298,6 +412,10 @@ export function renderNetworkPage({ outlet }) {
     done = new Set();
     selectedId = topo.devices.find((d) => d.ip)?.id || topo.devices[0].id;
     hintsShown = 0;
+    packet = null;
+    markerEl = null;
+    packetPanel.hidden = true;
+    packetPanel.replaceChildren();
     consoleList.replaceChildren();
     scenarioSelect.value = next.id;
     scTitle.textContent = next.title;
@@ -368,7 +486,7 @@ export function renderNetworkPage({ outlet }) {
         h('button', { class: 'btn', type: 'button', onClick: reinitialiser }, icon('refresh', { size: 16 }), 'Réinitialiser'),
         h('button', { class: 'btn btn-ghost btn-small', type: 'button', onClick: voirSolution }, 'Voir la solution'))),
     h('div', { class: 'net-layout' },
-      h('section', { class: 'net-main', 'aria-label': 'Topologie du réseau' }, canvas),
+      h('section', { class: 'net-main', 'aria-label': 'Topologie du réseau' }, canvas, packetPanel),
       h('div', { class: 'net-side' },
         h('section', { class: 'card', 'aria-labelledby': 'net-panel-title' },
           h('h2', { id: 'net-panel-title', class: 'sr-only' }, 'Configuration de l\'appareil'),

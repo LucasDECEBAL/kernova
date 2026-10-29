@@ -1,0 +1,162 @@
+{
+  "linux-intermediaire": {
+    "hints": [
+      "Une unité systemd se place dans /etc/systemd/system/, puis se recharge avec systemctl daemon-reload.",
+      "Vérifiez le redémarrage automatique avec Restart=on-failure, puis arrêtez le processus pour observer la reprise."
+    ],
+    "starters": [
+      {
+        "name": "mon-app.service",
+        "language": "ini",
+        "content": "[Unit]\nDescription=Mon application\nAfter=network.target\n\n[Service]\nUser=app\nWorkingDirectory=/srv/app\nExecStart=/srv/app/start.sh\nRestart=on-failure\n\n[Install]\nWantedBy=multi-user.target\n"
+      },
+      {
+        "name": "sauvegarde.sh",
+        "language": "bash",
+        "content": "#!/usr/bin/env bash\nset -euo pipefail\n\n# TODO : vérifier les outils, créer le dossier de destination,\n# produire une archive horodatée et journaliser le résultat.\n"
+      }
+    ]
+  },
+  "linux-administration": {
+    "hints": [
+      "Testez toujours /etc/fstab avec mount -a avant de redémarrer : une erreur peut empêcher le démarrage.",
+      "rsync --dry-run --delete affiche ce qui serait supprimé, sans rien modifier."
+    ],
+    "starters": [
+      {
+        "name": "fstab.example",
+        "language": "ini",
+        "content": "UUID=REMPLACER-PAR-BLKID  /mnt/donnees  ext4  defaults,nofail  0  2\n"
+      },
+      {
+        "name": "sauvegarde.sh",
+        "language": "bash",
+        "content": "#!/usr/bin/env bash\nset -euo pipefail\n\nSOURCE=/srv/app/\nDEST=/srv/backup/app/\n\n# 1. simuler : rsync -avh --dry-run --delete \"$SOURCE\" \"$DEST\"\n# 2. exécuter sans --dry-run\n# 3. vérifier le code de retour et journaliser\n"
+      }
+    ]
+  },
+  "html-debutant": {
+    "hints": [
+      "Une page ne contient qu'un seul h1 : le sujet principal.",
+      "Chaque champ de formulaire possède un label associé par for et id, ainsi qu'un attribut name."
+    ],
+    "starters": [
+      {
+        "name": "index.html",
+        "language": "html",
+        "content": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>À compléter</title>\n</head>\n<body>\n  <header><!-- titre et navigation --></header>\n  <main>\n    <!-- deux sections avec sous-titres -->\n  </main>\n  <footer><!-- informations --></footer>\n</body>\n</html>\n"
+      }
+    ]
+  },
+  "css-debutant": {
+    "hints": [
+      "Écrivez la mise en page mobile d'abord (une colonne), puis ajoutez une media query min-width.",
+      "Vérifiez le contraste texte/fond avec un outil : 4,5:1 minimum pour le texte courant."
+    ],
+    "starters": [
+      {
+        "name": "styles.css",
+        "language": "css",
+        "content": ":root {\n  --papier: #edf0ee;\n  --encre: #17202b;\n  --filet: #c3cbd3;\n}\n\n* { box-sizing: border-box; }\n\nbody {\n  margin: 0;\n  background: var(--papier);\n  color: var(--encre);\n  font-size: 1.125rem;\n  line-height: 1.6;\n}\n\n/* TODO : en-tête en Flexbox, grille responsive, paragraphes à 65ch maximum */\n"
+      }
+    ]
+  },
+  "javascript-debutant": {
+    "hints": [
+      "Insérez les textes saisis avec textContent, jamais avec innerHTML.",
+      "Enregistrez l'état avec JSON.stringify après chaque modification, et relisez-le dans un try/catch."
+    ],
+    "starters": [
+      {
+        "name": "app.js",
+        "language": "javascript",
+        "content": "const etat = { taches: [] };\nconst liste = document.querySelector(\"#liste\");\nconst form = document.querySelector(\"#form\");\n\nfunction afficher() {\n  // TODO : reconstruire la liste à partir de etat.taches\n}\n\nform.addEventListener(\"submit\", (event) => {\n  event.preventDefault();\n  // TODO : lire le champ, valider, ajouter, sauvegarder, afficher\n});\n\nafficher();\n"
+      }
+    ]
+  },
+  "python-debutant": {
+    "hints": [
+      "Convertissez les montants avec float et interceptez ValueError plutôt que de laisser planter le programme.",
+      "Ouvrez le fichier en mode \"a\" avec encoding=\"utf-8\" pour ajouter sans effacer."
+    ],
+    "starters": [
+      {
+        "name": "depenses.py",
+        "language": "python",
+        "content": "FICHIER = \"depenses.txt\"\n\n\ndef ajouter_depense(depenses, libelle, montant):\n    \"\"\"Ajoute un dictionnaire à la liste et renvoie la liste.\"\"\"\n    raise NotImplementedError\n\n\ndef total(depenses):\n    \"\"\"Renvoie la somme des montants.\"\"\"\n    raise NotImplementedError\n\n\ndef sauvegarder(depenses, chemin=FICHIER):\n    \"\"\"Ajoute chaque dépense au fichier, une ligne par dépense.\"\"\"\n    raise NotImplementedError\n\n\nif __name__ == \"__main__\":\n    # TODO : boucle de saisie jusqu'à « fin », gestion des erreurs, total affiché\n    pass\n"
+      }
+    ]
+  },
+  "python-intermediaire": {
+    "hints": [
+      "Rendez les fonctions de calcul pures : elles reçoivent les données et renvoient un résultat, sans lire de fichier.",
+      "Validez chaque ligne avant de construire l'objet Article, et comptez les lignes rejetées."
+    ],
+    "starters": [
+      {
+        "name": "inventaire.py",
+        "language": "python",
+        "content": "from dataclasses import dataclass\nfrom pathlib import Path\n\n\n@dataclass(frozen=True)\nclass Article:\n    nom: str\n    prix: float\n    quantite: int\n\n\ndef lire_csv(chemin):\n    \"\"\"Renvoie une liste d'Article et le nombre de lignes rejetées.\"\"\"\n    raise NotImplementedError\n\n\ndef valeur_totale(articles):\n    raise NotImplementedError\n\n\ndef rapport(articles):\n    \"\"\"Construit un dict sérialisable en JSON.\"\"\"\n    raise NotImplementedError\n"
+      },
+      {
+        "name": "tests/test_inventaire.py",
+        "language": "python",
+        "content": "from inventaire import Article, valeur_totale\n\n\ndef test_valeur_totale_simple():\n    articles = [Article(\"clavier\", 49.9, 2), Article(\"souris\", 19.9, 1)]\n    assert valeur_totale(articles) == 119.7\n"
+      }
+    ]
+  },
+  "sql-debutant": {
+    "hints": [
+      "Créez les tables dans l'ordre des dépendances : membres et livres avant emprunts.",
+      "Avant chaque UPDATE ou DELETE, exécutez un SELECT avec la même clause WHERE pour vérifier les lignes visées."
+    ],
+    "starters": [
+      {
+        "name": "schema.sql",
+        "language": "sql",
+        "content": "CREATE TABLE livres (\n  id INTEGER PRIMARY KEY,\n  titre TEXT NOT NULL,\n  auteur TEXT NOT NULL\n);\n\nCREATE TABLE membres (\n  id INTEGER PRIMARY KEY,\n  nom TEXT NOT NULL\n);\n\nCREATE TABLE emprunts (\n  id INTEGER PRIMARY KEY,\n  livre_id INTEGER NOT NULL REFERENCES livres(id),\n  membre_id INTEGER NOT NULL REFERENCES membres(id),\n  date_sortie TEXT NOT NULL,\n  date_retour TEXT\n);\n"
+      },
+      {
+        "name": "requetes.sql",
+        "language": "sql",
+        "content": "-- 1. Emprunts en cours avec nom du membre et titre du livre\nSELECT ...;\n\n-- 2. Nombre de livres par auteur (au moins deux)\nSELECT ...;\n\n-- 3. Marquer un emprunt comme rendu (vérifier le nombre de lignes)\nUPDATE ...;\n"
+      }
+    ]
+  },
+  "docker-debutant": {
+    "hints": [
+      "Copiez les fichiers de dépendances avant le code pour profiter du cache de construction.",
+      "La base de données ne doit pas publier de port : l'application la joint par le nom du service."
+    ],
+    "starters": [
+      {
+        "name": "Dockerfile",
+        "language": "docker",
+        "content": "FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --omit=dev\nCOPY . .\nEXPOSE 3000\nUSER node\nCMD [\"node\", \"server.js\"]\n"
+      },
+      {
+        "name": "compose.yaml",
+        "language": "yaml",
+        "content": "services:\n  app:\n    build: .\n    ports:\n      - \"3000:3000\"\n    environment:\n      DATABASE_URL: postgres://app:secret@db:5432/app\n    depends_on:\n      - db\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_USER: app\n      POSTGRES_PASSWORD: secret\n    volumes:\n      - dbdata:/var/lib/postgresql/data\nvolumes:\n  dbdata:\n"
+      }
+    ]
+  },
+  "git-debutant": {
+    "hints": [
+      "Un commit correspond à une seule idée : séparez les changements sans rapport.",
+      "Lancez git status avant chaque commit pour vérifier ce qui sera enregistré."
+    ],
+    "starters": [
+      {
+        "name": ".gitignore",
+        "language": "text",
+        "content": "build/\n*.log\nnode_modules/\n.env\n"
+      },
+      {
+        "name": "README.md",
+        "language": "markdown",
+        "content": "# Journal de bord\n\n## Objectif\nDécrire en une phrase ce que contient ce dépôt.\n\n## Installation\nIndiquer les prérequis et les commandes.\n\n## Utilisation\nDécrire le lancement et les vérifications.\n"
+      }
+    ]
+  }
+}

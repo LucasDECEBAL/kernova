@@ -130,6 +130,11 @@ export function renderLessonPage({ outlet, params }) {
             h('ul', {}, chapter.objectives.map((o) => h('li', {}, inline(o)))))
           : null,
         renderBlocks(chapter.content),
+        chapter.summary?.length
+          ? h('section', { class: 'card', 'aria-labelledby': 'summary-title' },
+            h('h2', { id: 'summary-title', style: 'margin-top:0;font-size:1.2rem' }, 'Résumé'),
+            h('ul', { style: 'margin:0' }, chapter.summary.map((line) => h('li', { text: line }))))
+          : null,
         chapter.exercise ? renderExercise(chapter.exercise) : null,
         h('section', { class: 'card', 'aria-labelledby': 'quiz-block-title' },
           h('h2', { id: 'quiz-block-title', style: 'margin-top:0;font-size:1.2rem' }, 'Quiz du chapitre'),
@@ -151,6 +156,9 @@ export function renderLessonPage({ outlet, params }) {
           toggleBtn,
           h('a', { class: 'btn btn-ghost', href: `#/cours/${course.id}` }, 'Retour au parcours')
         ),
+        chapter.nextStep
+          ? h('div', { class: 'callout callout-tip', role: 'note' }, h('strong', {}, 'Suite logique'), chapter.nextStep)
+          : null,
         h('nav', { class: 'chapter-nav', 'aria-label': 'Navigation entre chapitres' },
           prev ? h('a', { href: `#/cours/${course.id}/${prev.id}` }, h('small', {}, 'Chapitre précédent'), h('span', { class: 'nav-title' }, prev.title)) : h('span'),
           next ? h('a', { class: 'next', href: `#/cours/${course.id}/${next.id}` }, h('small', {}, 'Chapitre suivant'), h('span', { class: 'nav-title' }, next.title)) : h('span')

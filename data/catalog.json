@@ -280,7 +280,8 @@
         "informatique-debutant"
       ],
       "nextCourses": [
-        "reseaux-avance"
+        "reseaux-avance",
+        "reseaux-services"
       ],
       "skills": [
         "Adresser un petit réseau",
@@ -420,7 +421,8 @@
         "git-debutant",
         "sql-debutant",
         "ia-debutant",
-        "python-intermediaire"
+        "python-intermediaire",
+        "python-donnees-api"
       ],
       "skills": [
         "Écrire des programmes simples",
@@ -1812,6 +1814,74 @@
         "Préserver la réactivité"
       ],
       "file": "javascript-avance.json"
+    },
+    {
+      "id": "reseaux-services",
+      "title": "Réseaux : services",
+      "domain": "reseaux",
+      "subdomain": "Services",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "DNS",
+        "DHCP",
+        "HTTP"
+      ],
+      "description": "Exploiter les services réseau : DNS en pratique et types d'enregistrements, DHCP et étendues, HTTP/HTTPS et en-têtes de sécurité, messagerie SMTP/IMAP, supervision et réduction de l'exposition.",
+      "objectives": [
+        "Choisir un enregistrement DNS",
+        "Configurer une étendue DHCP cohérente",
+        "Lire une réponse HTTP et ses en-têtes",
+        "Distinguer SMTP, IMAP et POP",
+        "Superviser un service utilement"
+      ],
+      "prerequisites": [
+        "Maîtriser l'adressage IP et les protocoles de base."
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Administrer des services réseau",
+        "Diagnostiquer une résolution",
+        "Superviser un service"
+      ],
+      "file": "reseaux-services.json"
+    },
+    {
+      "id": "python-donnees-api",
+      "title": "Python : données et API",
+      "domain": "python",
+      "subdomain": "Données et API",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Python",
+        "pandas",
+        "JSON"
+      ],
+      "description": "Traiter des données avec Python : appels HTTP et JSON, lecture de CSV, introduction à pandas, outil en ligne de commande avec argparse, journalisation et tests.",
+      "objectives": [
+        "Consommer une API HTTP",
+        "Lire et écrire CSV et JSON proprement",
+        "Filtrer et agréger avec pandas",
+        "Construire un outil en ligne de commande",
+        "Fiabiliser par les tests et les journaux"
+      ],
+      "prerequisites": [
+        "Maîtriser les bases de Python : fonctions, listes, dictionnaires, fichiers."
+      ],
+      "prerequisiteCourses": [
+        "python-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Automatiser un traitement de données",
+        "Manipuler des API",
+        "Écrire un outil fiable"
+      ],
+      "file": "python-donnees-api.json"
     }
   ]
 }

@@ -2,6 +2,7 @@
 // Types gérés : p, h, list, code, table, tip, warning. Tout inconnu est ignoré avec un avertissement.
 
 import { h } from '../core/dom.js';
+import { normalize } from '../core/utils.js';
 import { codeBlock, inline } from './widgets.js';
 
 export function renderBlocks(blocks) {
@@ -37,23 +38,40 @@ function renderBlock(block) {
   }
 }
 
-/** Exercice guidé : indices progressifs et solution masquée jusqu'à demande. */
+/** Normalise une réponse : casse, accents, espaces et ponctuation finale. */
+function normalizeAnswer(text) {
+  return normalize(String(text ?? ''))
+    .replace(/[.;!?]+$/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Exercice guidé : indices progressifs, solution masquée et, si `check` est fourni,
+ * vérification automatique locale de la réponse.
+ * check : { type: 'answers', accepted: string[] }, { type: 'keywords', keywords: string[] }
+ * ou { type: 'any', any: string[] }
+ */
 export function renderExercise(exercise) {
   let revealed = 0;
+  let attempts = 0;
+  let validated = false;
+
   const hintsList = h('ol', { class: 'hint-list', 'aria-live': 'polite' });
   const hintBtn = h('button', { class: 'btn btn-small', type: 'button' });
+
   const solution = h('div', { class: 'callout callout-tip', hidden: true });
   solution.append(h('strong', {}, 'Solution'), h('p', { text: exercise.solution }));
 
   const updateHintBtn = () => {
-    const left = exercise.hints.length - revealed;
+    const left = (exercise.hints?.length || 0) - revealed;
     hintBtn.textContent = left > 0 ? `Indice suivant (${revealed}/${exercise.hints.length})` : 'Tous les indices affichés';
     hintBtn.disabled = left <= 0;
   };
   hintBtn.addEventListener('click', () => {
-    if (revealed < exercise.hints.length) {
+    if (revealed < (exercise.hints?.length || 0)) {
       hintsList.append(h('li', {}, exercise.hints[revealed]));
-      revealed++;
+      revealed += 1;
       updateHintBtn();
     }
   });
@@ -70,11 +88,81 @@ export function renderExercise(exercise) {
     }
   }, 'Voir la solution');
 
+  const check = exercise.check;
+  const feedback = h('p', { class: 'exercise-feedback', role: 'status', hidden: true });
+  let answerInput = null;
+  let verifyBtn = null;
+
+  function showFeedback(kind, text) {
+    feedback.hidden = false;
+    feedback.className = `exercise-feedback ${kind}`;
+    feedback.textContent = text;
+  }
+
+  function verify() {
+    if (!check || validated) return;
+    const value = answerInput.value;
+    if (!value.trim()) {
+      showFeedback('info', 'Saisissez une réponse avant de vérifier.');
+      return;
+    }
+    attempts += 1;
+    const given = normalizeAnswer(value);
+    const contains = (keyword) => {
+      const kw = normalize(keyword);
+      if (!kw) return false;
+      if (!/^[a-z0-9_]+$/.test(kw)) return given.includes(kw);
+      const pattern = new RegExp('(^|[^a-z0-9_])' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
+      return pattern.test(given);
+    };
+    let ok = false;
+    if (check.type === 'keywords') {
+      ok = (check.keywords || []).every(contains);
+    } else if (check.type === 'any') {
+      ok = (check.any || []).some(contains);
+    } else {
+      ok = (check.accepted || []).some((accepted) => normalizeAnswer(accepted) === given);
+    }
+
+    if (ok) {
+      validated = true;
+      answerInput.disabled = true;
+      verifyBtn.disabled = true;
+      showFeedback('ok', check.success || 'Réponse correcte.');
+      return;
+    }
+    const restant = check.maxAttempts ? Math.max(0, check.maxAttempts - attempts) : null;
+    showFeedback('ko', restant === null
+      ? 'Réponse incorrecte. Relisez la consigne, demandez un indice ou vérifiez votre orthographe.'
+      : restant > 0
+        ? `Réponse incorrecte. Tentatives restantes : ${restant}.`
+        : 'Réponse incorrecte. Affichez la solution pour comparer.');
+  }
+
+  if (check) {
+    answerInput = h('input', {
+      type: 'text',
+      id: 'exercise-answer',
+      autocomplete: 'off',
+      spellcheck: 'false',
+      placeholder: 'Votre réponse',
+      'aria-label': 'Votre réponse à l\'exercice',
+      onKeydown: (e) => { if (e.key === 'Enter') { e.preventDefault(); verify(); } }
+    });
+    verifyBtn = h('button', { class: 'btn btn-primary btn-small', type: 'button', onClick: verify }, 'Vérifier');
+  }
+
   return h('section', { class: 'card exercise', 'aria-labelledby': 'exercise-title' },
     h('h2', { id: 'exercise-title', style: 'margin-top:0;font-size:1.2rem' }, `Exercice : ${exercise.title}`),
     h('p', { text: exercise.instructions }),
+    check ? h('div', { class: 'exercise-answer' },
+      h('div', { class: 'field' }, h('label', { for: 'exercise-answer' }, 'Votre réponse'), answerInput),
+      h('div', { class: 'row' }, verifyBtn)) : null,
+    feedback,
     hintsList,
     h('div', { class: 'row' }, hintBtn, solutionBtn),
-    solution
+    solution,
+    check ? h('p', { class: 'small muted', style: 'margin:var(--s2) 0 0' },
+      'La vérification est locale et pédagogique : elle compare votre réponse à des réponses acceptées, sans prétendre à une correction sécurisée.') : null
   );
 }

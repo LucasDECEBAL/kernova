@@ -9,78 +9,274 @@
           "id": "seo-01",
           "title": "Domaine, DNS et hébergement",
           "duration": 18,
-          "objectives": ["Distinguer les trois briques", "Comprendre un enregistrement DNS"],
+          "objectives": [
+            "Distinguer les trois briques",
+            "Comprendre un enregistrement DNS"
+          ],
           "content": [
-            { "type": "p", "text": "Publier un site demande trois éléments : un **nom de domaine** réservé chez un registraire, une **zone DNS** qui indique où pointer, et un **hébergement** qui sert les fichiers. Confondre les trois conduit à chercher une panne au mauvais endroit." },
-            { "type": "table", "headers": ["Enregistrement", "Rôle"], "rows": [
-              ["A", "Nom vers adresse IPv4"],
-              ["AAAA", "Nom vers adresse IPv6"],
-              ["CNAME", "Alias vers un autre nom"],
-              ["MX", "Serveur de messagerie"]
-            ] },
-            { "type": "warning", "text": "Un changement de DNS n'est pas instantané : les résolveurs conservent l'ancienne valeur jusqu'à expiration du TTL. Prévoyez un délai avant une mise en production." }
+            {
+              "type": "p",
+              "text": "Publier un site demande trois éléments : un **nom de domaine** réservé chez un registraire, une **zone DNS** qui indique où pointer, et un **hébergement** qui sert les fichiers. Confondre les trois conduit à chercher une panne au mauvais endroit."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Enregistrement",
+                "Rôle"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "Nom vers adresse IPv4"
+                ],
+                [
+                  "AAAA",
+                  "Nom vers adresse IPv6"
+                ],
+                [
+                  "CNAME",
+                  "Alias vers un autre nom"
+                ],
+                [
+                  "MX",
+                  "Serveur de messagerie"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un changement de DNS n'est pas instantané : les résolveurs conservent l'ancienne valeur jusqu'à expiration du TTL. Prévoyez un délai avant une mise en production."
+            }
           ],
           "exercise": {
             "title": "Pointer un domaine",
             "instructions": "Vous hébergez un site statique chez un fournisseur qui donne une adresse IPv4 et un nom de service. Quel enregistrement utilisez-vous pour la racine du domaine et pour www ?",
-            "hints": ["La racine a besoin d'une adresse.", "Un sous-domaine peut pointer vers un nom."],
-            "solution": "Un enregistrement A pour la racine vers l'IPv4 fournie, et un CNAME pour www vers le nom de service fourni."
+            "hints": [
+              "La racine a besoin d'une adresse.",
+              "Un sous-domaine peut pointer vers un nom."
+            ],
+            "solution": "Un enregistrement A pour la racine vers l'IPv4 fournie, et un CNAME pour www vers le nom de service fourni.",
+            "check": {
+              "type": "any",
+              "any": [
+                "enregistrement a",
+                "cname"
+              ]
+            }
           },
           "quiz": [
-            { "id": "seo-01-q1", "type": "single", "difficulty": 1, "question": "Quel enregistrement associe un nom à une IPv4 ?", "options": ["A", "MX", "CNAME", "TXT"], "answer": 0, "explanation": "A pointe vers une IPv4 ; AAAA vers une IPv6.", "hints": [] },
-            { "id": "seo-01-q2", "type": "truefalse", "difficulty": 2, "question": "Une modification DNS est visible partout immédiatement.", "answer": false, "explanation": "Le cache DNS conserve l'ancienne réponse jusqu'à expiration du TTL.", "hints": [] }
+            {
+              "id": "seo-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel enregistrement associe un nom à une IPv4 ?",
+              "options": [
+                "A",
+                "MX",
+                "CNAME",
+                "TXT"
+              ],
+              "answer": 0,
+              "explanation": "A pointe vers une IPv4 ; AAAA vers une IPv6.",
+              "hints": []
+            },
+            {
+              "id": "seo-01-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Une modification DNS est visible partout immédiatement.",
+              "answer": false,
+              "explanation": "Le cache DNS conserve l'ancienne réponse jusqu'à expiration du TTL.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Hébergement statique et déploiement ».",
+          "summary": [
+            "Un enregistrement A pointe vers une IPv4.",
+            "AAAA pointe vers une IPv6, CNAME crée un alias.",
+            "Le TTL contrôle la durée de cache."
           ]
         },
         {
           "id": "seo-02",
           "title": "Hébergement statique et déploiement",
           "duration": 20,
-          "objectives": ["Choisir un hébergement", "Déployer sans casser les routes"],
+          "objectives": [
+            "Choisir un hébergement",
+            "Déployer sans casser les routes"
+          ],
           "content": [
-            { "type": "p", "text": "Un site **statique** (HTML, CSS, JavaScript et fichiers) se déploie sur GitHub Pages, Netlify ou Cloudflare Pages. On pousse le code, le service publie les fichiers et fournit une URL HTTPS." },
-            { "type": "list", "items": [
-              "Vérifier que les chemins d'accès fonctionnent depuis la racine du site publié.",
-              "Prévoir les routes côté client (routeur à ancre ou redirections).",
-              "Configurer les en-têtes de cache pour les fichiers versionnés.",
-              "Tester le site depuis l'URL publique, pas seulement en local."
-            ] },
-            { "type": "warning", "text": "Un site qui fonctionne en local peut échouer en ligne : un chemin absolu mal écrit, une casse de fichier différente ou une route non gérée produisent des 404." }
+            {
+              "type": "p",
+              "text": "Un site **statique** (HTML, CSS, JavaScript et fichiers) se déploie sur GitHub Pages, Netlify ou Cloudflare Pages. On pousse le code, le service publie les fichiers et fournit une URL HTTPS."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier que les chemins d'accès fonctionnent depuis la racine du site publié.",
+                "Prévoir les routes côté client (routeur à ancre ou redirections).",
+                "Configurer les en-têtes de cache pour les fichiers versionnés.",
+                "Tester le site depuis l'URL publique, pas seulement en local."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un site qui fonctionne en local peut échouer en ligne : un chemin absolu mal écrit, une casse de fichier différente ou une route non gérée produisent des 404."
+            }
           ],
           "exercise": {
             "title": "Routes et 404",
             "instructions": "Une application à routes côté client renvoie 404 quand on recharge une page profonde. Comment corriger sur un hébergement statique ?",
-            "hints": ["Le serveur cherche un fichier qui n'existe pas.", "Deux solutions courantes existent."],
-            "solution": "Soit utiliser un routeur par ancre (#/chemin), soit configurer une redirection de toutes les routes vers index.html."
+            "hints": [
+              "Le serveur cherche un fichier qui n'existe pas.",
+              "Deux solutions courantes existent."
+            ],
+            "solution": "Soit utiliser un routeur par ancre (#/chemin), soit configurer une redirection de toutes les routes vers index.html.",
+            "check": {
+              "type": "any",
+              "any": [
+                "index.html",
+                "ancre",
+                "#/",
+                "redirection"
+              ]
+            }
           },
           "quiz": [
-            { "id": "seo-02-q1", "type": "single", "difficulty": 1, "question": "Que sert un hébergement statique ?", "options": ["Des fichiers tels quels", "Une base de données", "Du code serveur PHP", "Un serveur DNS"], "answer": 0, "explanation": "Le serveur renvoie les fichiers demandés, sans exécution applicative.", "hints": [] },
-            { "id": "seo-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi tester depuis l'URL publique ?", "options": ["Certains chemins et routes ne fonctionnent qu'en local", "Pour mesurer la batterie", "Pour éviter le HTTPS", "Pour supprimer le cache"], "answer": 0, "explanation": "Les chemins, la casse et les redirections diffèrent de l'environnement local.", "hints": [] }
+            {
+              "id": "seo-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que sert un hébergement statique ?",
+              "options": [
+                "Des fichiers tels quels",
+                "Une base de données",
+                "Du code serveur PHP",
+                "Un serveur DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur renvoie les fichiers demandés, sans exécution applicative.",
+              "hints": []
+            },
+            {
+              "id": "seo-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi tester depuis l'URL publique ?",
+              "options": [
+                "Certains chemins et routes ne fonctionnent qu'en local",
+                "Pour mesurer la batterie",
+                "Pour éviter le HTTPS",
+                "Pour supprimer le cache"
+              ],
+              "answer": 0,
+              "explanation": "Les chemins, la casse et les redirections diffèrent de l'environnement local.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « HTTPS, TLS et en-têtes de sécurité ».",
+          "summary": [
+            "Le serveur statique ne connaît pas les routes côté client.",
+            "Rediriger toutes les routes vers index.html.",
+            "Un routeur par ancre évite le problème."
           ]
         },
         {
           "id": "seo-03",
           "title": "HTTPS, TLS et en-têtes de sécurité",
           "duration": 18,
-          "objectives": ["Vérifier le certificat", "Configurer les en-têtes utiles"],
+          "objectives": [
+            "Vérifier le certificat",
+            "Configurer les en-têtes utiles"
+          ],
           "content": [
-            { "type": "p", "text": "**HTTPS** chiffre le transport grâce à **TLS**. Le certificat prouve l'identité du domaine ; il est souvent fourni et renouvelé automatiquement par l'hébergeur. Un mélange de contenus HTTP et HTTPS provoque des avertissements." },
-            { "type": "table", "headers": ["En-tête", "Effet"], "rows": [
-              ["`Strict-Transport-Security`", "Impose HTTPS pour les visites suivantes"],
-              ["`Content-Security-Policy`", "Limite les sources de scripts"],
-              ["`X-Content-Type-Options`", "Empêche la devinette de type"],
-              ["`Referrer-Policy`", "Contrôle les informations de provenance"]
-            ] },
-            { "type": "warning", "text": "Une CSP trop stricte casse le site ; une CSP trop permissive ne protège pas. Déployez-la en report-only, observez les violations, puis durcissez." }
+            {
+              "type": "p",
+              "text": "**HTTPS** chiffre le transport grâce à **TLS**. Le certificat prouve l'identité du domaine ; il est souvent fourni et renouvelé automatiquement par l'hébergeur. Un mélange de contenus HTTP et HTTPS provoque des avertissements."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "En-tête",
+                "Effet"
+              ],
+              "rows": [
+                [
+                  "`Strict-Transport-Security`",
+                  "Impose HTTPS pour les visites suivantes"
+                ],
+                [
+                  "`Content-Security-Policy`",
+                  "Limite les sources de scripts"
+                ],
+                [
+                  "`X-Content-Type-Options`",
+                  "Empêche la devinette de type"
+                ],
+                [
+                  "`Referrer-Policy`",
+                  "Contrôle les informations de provenance"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une CSP trop stricte casse le site ; une CSP trop permissive ne protège pas. Déployez-la en report-only, observez les violations, puis durcissez."
+            }
           ],
           "exercise": {
             "title": "Contenu mixte",
             "instructions": "Une page HTTPS charge une image en HTTP. Que se passe-t-il et comment corriger ?",
-            "hints": ["Le navigateur signale un contenu mixte.", "La ressource doit utiliser le même schéma."],
-            "solution": "Le navigateur bloque ou avertit. Corriger l'URL en HTTPS et ajouter éventuellement une redirection côté serveur."
+            "hints": [
+              "Le navigateur signale un contenu mixte.",
+              "La ressource doit utiliser le même schéma."
+            ],
+            "solution": "Le navigateur bloque ou avertit. Corriger l'URL en HTTPS et ajouter éventuellement une redirection côté serveur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "https",
+                "mixte"
+              ]
+            }
           },
           "quiz": [
-            { "id": "seo-03-q1", "type": "single", "difficulty": 1, "question": "Que protège HTTPS ?", "options": ["Le transport des données", "Le contenu du serveur", "Le code source", "Les sauvegardes"], "answer": 0, "explanation": "HTTPS chiffre l'échange entre client et serveur.", "hints": [] },
-            { "id": "seo-03-q2", "type": "single", "difficulty": 2, "question": "Que fait HSTS ?", "options": ["Il impose HTTPS aux visites suivantes", "Il compresse les images", "Il crée un domaine", "Il bloque le DNS"], "answer": 0, "explanation": "Le navigateur mémorise l'obligation de HTTPS pour le domaine.", "hints": [] }
+            {
+              "id": "seo-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que protège HTTPS ?",
+              "options": [
+                "Le transport des données",
+                "Le contenu du serveur",
+                "Le code source",
+                "Les sauvegardes"
+              ],
+              "answer": 0,
+              "explanation": "HTTPS chiffre l'échange entre client et serveur.",
+              "hints": []
+            },
+            {
+              "id": "seo-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que fait HSTS ?",
+              "options": [
+                "Il impose HTTPS aux visites suivantes",
+                "Il compresse les images",
+                "Il crée un domaine",
+                "Il bloque le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur mémorise l'obligation de HTTPS pour le domaine.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Performance et Core Web Vitals ».",
+          "summary": [
+            "Le contenu mixte est bloqué ou signalé.",
+            "Servir toutes les ressources en HTTPS.",
+            "Une redirection règle les anciens liens HTTP."
           ]
         }
       ]
@@ -93,53 +289,181 @@
           "id": "seo-04",
           "title": "Performance et Core Web Vitals",
           "duration": 20,
-          "objectives": ["Identifier les causes de lenteur", "Améliorer le rendu perçu"],
+          "objectives": [
+            "Identifier les causes de lenteur",
+            "Améliorer le rendu perçu"
+          ],
           "content": [
-            { "type": "p", "text": "Les **Core Web Vitals** mesurent l'expérience réelle : délai de rendu du contenu principal, stabilité visuelle et réactivité aux interactions. Une page lente fait fuir et pénalise le référencement." },
-            { "type": "table", "headers": ["Problème", "Levier"], "rows": [
-              ["Images trop lourdes", "Format moderne, dimensions adaptées, chargement différé"],
-              ["Police qui bloque le texte", "Préchargement ou police système"],
-              ["Scripts bloquants", "Attribut defer, découpage du code"],
-              ["Sauts de mise en page", "Dimensions réservées pour les médias"]
-            ] },
-            { "type": "warning", "text": "Mesurez sur un appareil et un réseau réalistes. Un site rapide sur un ordinateur récent peut être très lent sur un téléphone d'entrée de gamme." }
+            {
+              "type": "p",
+              "text": "Les **Core Web Vitals** mesurent l'expérience réelle : délai de rendu du contenu principal, stabilité visuelle et réactivité aux interactions. Une page lente fait fuir et pénalise le référencement."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Problème",
+                "Levier"
+              ],
+              "rows": [
+                [
+                  "Images trop lourdes",
+                  "Format moderne, dimensions adaptées, chargement différé"
+                ],
+                [
+                  "Police qui bloque le texte",
+                  "Préchargement ou police système"
+                ],
+                [
+                  "Scripts bloquants",
+                  "Attribut defer, découpage du code"
+                ],
+                [
+                  "Sauts de mise en page",
+                  "Dimensions réservées pour les médias"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Mesurez sur un appareil et un réseau réalistes. Un site rapide sur un ordinateur récent peut être très lent sur un téléphone d'entrée de gamme."
+            }
           ],
           "exercise": {
             "title": "Stabilité visuelle",
             "instructions": "Les images sans dimensions provoquent des sauts de mise en page. Quelle correction appliquez-vous ?",
-            "hints": ["Le navigateur doit connaître les proportions avant le chargement.", "Deux attributs suffisent souvent."],
-            "solution": "Indiquer width et height sur chaque image, ou réserver un ratio via CSS, pour que la place soit occupée avant le chargement."
+            "hints": [
+              "Le navigateur doit connaître les proportions avant le chargement.",
+              "Deux attributs suffisent souvent."
+            ],
+            "solution": "Indiquer width et height sur chaque image, ou réserver un ratio via CSS, pour que la place soit occupée avant le chargement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "width",
+                "height",
+                "ratio"
+              ]
+            }
           },
           "quiz": [
-            { "id": "seo-04-q1", "type": "single", "difficulty": 1, "question": "Pourquoi indiquer width et height sur une image ?", "options": ["Pour éviter les sauts de mise en page", "Pour la compresser", "Pour la protéger", "Pour changer son format"], "answer": 0, "explanation": "Les dimensions réservent l'espace avant le chargement.", "hints": [] },
-            { "id": "seo-04-q2", "type": "single", "difficulty": 2, "question": "Que fait l'attribut defer sur un script ?", "options": ["Il exécute le script après l'analyse du document", "Il le supprime", "Il le chiffre", "Il le met en cache"], "answer": 0, "explanation": "defer évite de bloquer l'analyse du HTML.", "hints": [] }
+            {
+              "id": "seo-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Pourquoi indiquer width et height sur une image ?",
+              "options": [
+                "Pour éviter les sauts de mise en page",
+                "Pour la compresser",
+                "Pour la protéger",
+                "Pour changer son format"
+              ],
+              "answer": 0,
+              "explanation": "Les dimensions réservent l'espace avant le chargement.",
+              "hints": []
+            },
+            {
+              "id": "seo-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que fait l'attribut defer sur un script ?",
+              "options": [
+                "Il exécute le script après l'analyse du document",
+                "Il le supprime",
+                "Il le chiffre",
+                "Il le met en cache"
+              ],
+              "answer": 0,
+              "explanation": "defer évite de bloquer l'analyse du HTML.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « SEO technique ».",
+          "summary": [
+            "width et height réservent la place de l'image.",
+            "Un ratio CSS évite le décalage.",
+            "Le CLS mesure ces sauts de mise en page."
           ]
         },
         {
           "id": "seo-05",
           "title": "SEO technique",
           "duration": 20,
-          "objectives": ["Soigner les métadonnées", "Rendre le site explorable"],
+          "objectives": [
+            "Soigner les métadonnées",
+            "Rendre le site explorable"
+          ],
           "content": [
-            { "type": "p", "text": "Le référencement technique repose sur des bases : un titre unique par page, une description utile, une structure de titres cohérente, des URL lisibles et un contenu accessible aux robots." },
-            { "type": "code", "lang": "html", "code": "<title>Guide du déploiement statique</title>\n<meta name=\"description\" content=\"Déployer un site statique avec un domaine, HTTPS et un bon référencement.\">\n<link rel=\"canonical\" href=\"https://exemple.fr/guide\">" },
-            { "type": "list", "items": [
-              "`sitemap.xml` : liste des pages à explorer.",
-              "`robots.txt` : règles d'exploration, pas de protection.",
-              "Données structurées : décrire le type de contenu.",
-              "Contenu rendu côté serveur ou pré-rendu pour les pages importantes."
-            ] },
-            { "type": "warning", "text": "`robots.txt` n'empêche pas l'accès à une page : il demande seulement aux robots de ne pas l'explorer. Une page privée doit être protégée côté serveur." }
+            {
+              "type": "p",
+              "text": "Le référencement technique repose sur des bases : un titre unique par page, une description utile, une structure de titres cohérente, des URL lisibles et un contenu accessible aux robots."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<title>Guide du déploiement statique</title>\n<meta name=\"description\" content=\"Déployer un site statique avec un domaine, HTTPS et un bon référencement.\">\n<link rel=\"canonical\" href=\"https://exemple.fr/guide\">"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`sitemap.xml` : liste des pages à explorer.",
+                "`robots.txt` : règles d'exploration, pas de protection.",
+                "Données structurées : décrire le type de contenu.",
+                "Contenu rendu côté serveur ou pré-rendu pour les pages importantes."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "`robots.txt` n'empêche pas l'accès à une page : il demande seulement aux robots de ne pas l'explorer. Une page privée doit être protégée côté serveur."
+            }
           ],
           "exercise": {
             "title": "Titre et description",
             "instructions": "Deux pages ont le même title. Quel est l'effet et la correction ?",
-            "hints": ["Le titre aide à distinguer les pages.", "Chaque page a un sujet propre."],
-            "solution": "Les moteurs et les onglets ne peuvent pas distinguer les pages. Donner à chacune un titre et une description uniques et descriptifs."
+            "hints": [
+              "Le titre aide à distinguer les pages.",
+              "Chaque page a un sujet propre."
+            ],
+            "solution": "Les moteurs et les onglets ne peuvent pas distinguer les pages. Donner à chacune un titre et une description uniques et descriptifs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "unique",
+                "distinct",
+                "propre"
+              ]
+            }
           },
           "quiz": [
-            { "id": "seo-05-q1", "type": "single", "difficulty": 1, "question": "À quoi sert un sitemap ?", "options": ["À lister les pages à explorer", "À chiffrer le site", "À bloquer les robots", "À créer un domaine"], "answer": 0, "explanation": "Le sitemap aide les robots à découvrir les pages.", "hints": [] },
-            { "id": "seo-05-q2", "type": "truefalse", "difficulty": 2, "question": "robots.txt protège une page privée d'un accès direct.", "answer": false, "explanation": "Il ne fait que demander aux robots de ne pas l'explorer ; il ne restreint pas l'accès.", "hints": [] }
+            {
+              "id": "seo-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "À quoi sert un sitemap ?",
+              "options": [
+                "À lister les pages à explorer",
+                "À chiffrer le site",
+                "À bloquer les robots",
+                "À créer un domaine"
+              ],
+              "answer": 0,
+              "explanation": "Le sitemap aide les robots à découvrir les pages.",
+              "hints": []
+            },
+            {
+              "id": "seo-05-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "robots.txt protège une page privée d'un accès direct.",
+              "answer": false,
+              "explanation": "Il ne fait que demander aux robots de ne pas l'explorer ; il ne restreint pas l'accès.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Des titres uniques distinguent les pages.",
+            "La description influence le clic depuis les résultats.",
+            "Chaque page mérite son propre title."
           ]
         }
       ]

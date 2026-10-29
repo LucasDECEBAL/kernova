@@ -84,7 +84,9 @@ export function renderHomePage({ outlet }) {
     h('div', { class: 'section-head' },
       h('h2', { id: 'tracks-title', text: 'Parcours' }),
       h('p', { text: 'Un parcours est une suite de chapitres. Chacun prépare le suivant.' }),
-      h('a', { class: 'btn btn-small', href: '#/catalogue' }, 'Tout le catalogue')
+      h('div', { class: 'row', style: 'gap:var(--s3);margin-top:var(--s3)' },
+        h('a', { class: 'btn btn-small', href: '#/parcours' }, 'Voir les parcours'),
+        h('a', { class: 'btn btn-ghost btn-small', href: '#/catalogue' }, 'Tout le catalogue'))
     ),
     courses.length
       ? h('div', { class: 'grid-cards' }, courses.slice(0, 3).map(courseCard))

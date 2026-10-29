@@ -22,8 +22,11 @@ import { renderNetworkPage } from './pages/network.js';
 import { renderCheatsheetsPage } from './pages/cheatsheets.js';
 import { renderLaboPage } from './pages/labo.js';
 import { renderExecutionPage } from './pages/execution.js';
+import { renderEditorsPage } from './pages/editors.js';
 import { renderFinalPage } from './pages/final.js';
 import { renderProjectsIndex, renderProjectPage } from './pages/projects.js';
+import { renderRecentPage } from './pages/recent.js';
+import { renderParcoursPage } from './pages/parcours.js';
 
 const main = document.getElementById('main');
 const nav = document.getElementById('site-nav');
@@ -109,11 +112,15 @@ function registerRoutes() {
   route('/terminal', renderTerminalPage);
   route('/reseau', renderNetworkPage);
   route('/fiches', renderCheatsheetsPage);
-  route('/labo', renderLaboPage);
-  route('/execution', renderExecutionPage);
+route('/labo', renderLaboPage);
+route('/execution', renderExecutionPage);
+route('/editeurs', renderEditorsPage);
+route('/editeurs/:langId', renderEditorsPage);
   route('/evaluation/:courseId', renderFinalPage);
   route('/projets', renderProjectsIndex);
   route('/projets/:courseId', renderProjectPage);
+  route('/recent', renderRecentPage);
+  route('/parcours', renderParcoursPage);
   setNotFound(({ outlet }) => {
     setChildren(outlet, h('div', { class: 'page' },
       emptyState({

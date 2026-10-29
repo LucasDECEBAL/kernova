@@ -9,71 +9,252 @@
           "id": "c-01",
           "title": "Compiler et exécuter un programme",
           "duration": 18,
-          "objectives": ["Compiler un fichier C", "Lire une erreur de compilation"],
+          "objectives": [
+            "Compiler un fichier C",
+            "Lire une erreur de compilation"
+          ],
           "content": [
-            { "type": "p", "text": "Le C est un langage **compilé** : le code source est traduit en langage machine avant exécution. On utilise un compilateur (gcc, clang). Le programme commence par la fonction `main`, qui renvoie un code de sortie." },
-            { "type": "code", "lang": "c", "title": "bonjour.c", "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Bonjour\\n\");\n    return 0;\n}" },
-            { "type": "code", "lang": "bash", "code": "gcc -Wall -Wextra -o bonjour bonjour.c\n./bonjour" },
-            { "type": "p", "text": "`-Wall -Wextra` activent les avertissements : en C, un avertissement ignoré devient souvent un plantage ou une faille. Lisez-les avant de tester." },
-            { "type": "warning", "text": "Un tableau ou un pointeur mal utilisé provoque un comportement indéfini : le programme peut fonctionner un jour et planter le lendemain, sans garantie du compilateur." }
+            {
+              "type": "p",
+              "text": "Le C est un langage **compilé** : le code source est traduit en langage machine avant exécution. On utilise un compilateur (gcc, clang). Le programme commence par la fonction `main`, qui renvoie un code de sortie."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "title": "bonjour.c",
+              "code": "#include <stdio.h>\n\nint main(void) {\n    printf(\"Bonjour\\n\");\n    return 0;\n}"
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "gcc -Wall -Wextra -o bonjour bonjour.c\n./bonjour"
+            },
+            {
+              "type": "p",
+              "text": "`-Wall -Wextra` activent les avertissements : en C, un avertissement ignoré devient souvent un plantage ou une faille. Lisez-les avant de tester."
+            },
+            {
+              "type": "warning",
+              "text": "Un tableau ou un pointeur mal utilisé provoque un comportement indéfini : le programme peut fonctionner un jour et planter le lendemain, sans garantie du compilateur."
+            }
           ],
           "exercise": {
             "title": "Compiler avec avertissements",
             "instructions": "Quelle commande compile bonjour.c en exécutable bonjour avec les avertissements standards ?",
-            "hints": ["Le compilateur est gcc.", "L'option -o fixe le nom du binaire."],
-            "solution": "gcc -Wall -Wextra -o bonjour bonjour.c"
+            "hints": [
+              "Le compilateur est gcc.",
+              "L'option -o fixe le nom du binaire."
+            ],
+            "solution": "gcc -Wall -Wextra -o bonjour bonjour.c",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "gcc",
+                "-wall"
+              ]
+            }
           },
           "quiz": [
-            { "id": "c-01-q1", "type": "single", "difficulty": 1, "question": "Quelle fonction est le point d'entrée d'un programme C ?", "options": ["main", "printf", "start", "init"], "answer": 0, "explanation": "L'exécution commence par main.", "hints": [] },
-            { "id": "c-01-q2", "type": "truefalse", "difficulty": 2, "question": "En C, un avertissement du compilateur peut être ignoré sans conséquence.", "answer": false, "explanation": "Il révèle souvent un comportement indéfini ou une erreur logique.", "hints": [] }
+            {
+              "id": "c-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle fonction est le point d'entrée d'un programme C ?",
+              "options": [
+                "main",
+                "printf",
+                "start",
+                "init"
+              ],
+              "answer": 0,
+              "explanation": "L'exécution commence par main.",
+              "hints": []
+            },
+            {
+              "id": "c-01-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "En C, un avertissement du compilateur peut être ignoré sans conséquence.",
+              "answer": false,
+              "explanation": "Il révèle souvent un comportement indéfini ou une erreur logique.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Types, variables et opérateurs ».",
+          "summary": [
+            "gcc compile, -o nomme l'exécutable.",
+            "-Wall et -Wextra activent les avertissements.",
+            "Un avertissement ignoré devient souvent un bug."
           ]
         },
         {
           "id": "c-02",
           "title": "Types, variables et opérateurs",
           "duration": 18,
-          "objectives": ["Choisir un type adapté", "Éviter les conversions surprenantes"],
+          "objectives": [
+            "Choisir un type adapté",
+            "Éviter les conversions surprenantes"
+          ],
           "content": [
-            { "type": "p", "text": "Chaque variable a un **type** fixé à la compilation : `int`, `unsigned int`, `float`, `double`, `char`. La taille exacte dépend de la plateforme ; `sizeof` la donne." },
-            { "type": "code", "lang": "c", "code": "int age = 36;\ndouble prix = 19.90;\nchar initiale = 'A';\n\nprintf(\"%d %.2f %c\\n\", age, prix, initiale);\nprintf(\"int : %zu octets\\n\", sizeof(int));" },
-            { "type": "p", "text": "La division de deux entiers tronque le résultat : `7 / 2` vaut `3`. Pour un résultat réel, convertissez au moins un opérande en `double`." },
-            { "type": "warning", "text": "Un débordement d'entier ou un `printf` avec un format incohérent (`%d` pour un `double`) produit un comportement indéfini. Le format doit correspondre au type." }
+            {
+              "type": "p",
+              "text": "Chaque variable a un **type** fixé à la compilation : `int`, `unsigned int`, `float`, `double`, `char`. La taille exacte dépend de la plateforme ; `sizeof` la donne."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "int age = 36;\ndouble prix = 19.90;\nchar initiale = 'A';\n\nprintf(\"%d %.2f %c\\n\", age, prix, initiale);\nprintf(\"int : %zu octets\\n\", sizeof(int));"
+            },
+            {
+              "type": "p",
+              "text": "La division de deux entiers tronque le résultat : `7 / 2` vaut `3`. Pour un résultat réel, convertissez au moins un opérande en `double`."
+            },
+            {
+              "type": "warning",
+              "text": "Un débordement d'entier ou un `printf` avec un format incohérent (`%d` pour un `double`) produit un comportement indéfini. Le format doit correspondre au type."
+            }
           ],
           "exercise": {
             "title": "Division réelle",
             "instructions": "Comment obtenir 3.5 à partir des entiers 7 et 2 en C ?",
-            "hints": ["La division entière tronque.", "Un opérande doit être converti en double."],
-            "solution": "double r = (double)7 / 2; ou 7 / 2.0"
+            "hints": [
+              "La division entière tronque.",
+              "Un opérande doit être converti en double."
+            ],
+            "solution": "double r = (double)7 / 2; ou 7 / 2.0",
+            "check": {
+              "type": "any",
+              "any": [
+                "(double)",
+                "2.0",
+                "cast"
+              ]
+            }
           },
           "quiz": [
-            { "id": "c-02-q1", "type": "single", "difficulty": 1, "question": "Que vaut 7 / 2 avec deux int en C ?", "options": ["3.5", "3", "4", "Une erreur"], "answer": 1, "explanation": "La division entière tronque la partie décimale.", "hints": [] },
-            { "id": "c-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi le format de printf doit-il correspondre au type ?", "options": ["Sinon le comportement est indéfini", "Pour accélérer l'affichage", "Pour éviter les warnings uniquement", "Pour changer le type"], "answer": 0, "explanation": "Un mauvais format lit la mémoire de façon incorrecte.", "hints": [] }
+            {
+              "id": "c-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que vaut 7 / 2 avec deux int en C ?",
+              "options": [
+                "3.5",
+                "3",
+                "4",
+                "Une erreur"
+              ],
+              "answer": 1,
+              "explanation": "La division entière tronque la partie décimale.",
+              "hints": []
+            },
+            {
+              "id": "c-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi le format de printf doit-il correspondre au type ?",
+              "options": [
+                "Sinon le comportement est indéfini",
+                "Pour accélérer l'affichage",
+                "Pour éviter les warnings uniquement",
+                "Pour changer le type"
+              ],
+              "answer": 0,
+              "explanation": "Un mauvais format lit la mémoire de façon incorrecte.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Conditions, boucles et fonctions ».",
+          "summary": [
+            "La division entre entiers tronque le résultat.",
+            "Un cast ou un littéral flottant force le calcul réel.",
+            "7 / 2 vaut 3 ; 7 / 2.0 vaut 3.5."
           ]
         },
         {
           "id": "c-03",
           "title": "Conditions, boucles et fonctions",
           "duration": 20,
-          "objectives": ["Écrire des fonctions avec prototype", "Utiliser les boucles correctement"],
+          "objectives": [
+            "Écrire des fonctions avec prototype",
+            "Utiliser les boucles correctement"
+          ],
           "content": [
-            { "type": "p", "text": "Le C exige de **déclarer** une fonction avant de l'appeler : le prototype indique les types des paramètres et du retour. Sans prototype, le compilateur suppose des types par défaut et le programme peut échouer à l'exécution." },
-            { "type": "code", "lang": "c", "code": "int somme(int *t, int n);\n\nint somme(int *t, int n) {\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        total += t[i];\n    }\n    return total;\n}" },
-            { "type": "list", "items": [
-              "`if`, `else if`, `else` et `switch` pour les choix.",
-              "`for` quand le nombre d'itérations est connu, `while` sinon.",
-              "`break` sort d'une boucle ; `continue` passe à l'itération suivante."
-            ] },
-            { "type": "tip", "text": "Placez les prototypes en haut du fichier ou dans un en-tête `.h` : la compilation vérifie alors les appels." }
+            {
+              "type": "p",
+              "text": "Le C exige de **déclarer** une fonction avant de l'appeler : le prototype indique les types des paramètres et du retour. Sans prototype, le compilateur suppose des types par défaut et le programme peut échouer à l'exécution."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "int somme(int *t, int n);\n\nint somme(int *t, int n) {\n    int total = 0;\n    for (int i = 0; i < n; i++) {\n        total += t[i];\n    }\n    return total;\n}"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`if`, `else if`, `else` et `switch` pour les choix.",
+                "`for` quand le nombre d'itérations est connu, `while` sinon.",
+                "`break` sort d'une boucle ; `continue` passe à l'itération suivante."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Placez les prototypes en haut du fichier ou dans un en-tête `.h` : la compilation vérifie alors les appels."
+            }
           ],
           "exercise": {
             "title": "Prototype de fonction",
             "instructions": "Écrivez le prototype d'une fonction max qui prend deux int et renvoie un int.",
-            "hints": ["Le prototype se termine par un point-virgule.", "Les types précèdent les noms."],
-            "solution": "int max(int a, int b);"
+            "hints": [
+              "Le prototype se termine par un point-virgule.",
+              "Les types précèdent les noms."
+            ],
+            "solution": "int max(int a, int b);",
+            "check": {
+              "type": "any",
+              "any": [
+                "int max(int a, int b)",
+                "int max(int",
+                "max(int a"
+              ]
+            }
           },
           "quiz": [
-            { "id": "c-03-q1", "type": "single", "difficulty": 2, "question": "Pourquoi déclarer un prototype avant l'appel ?", "options": ["Pour que le compilateur vérifie les types", "Pour accélérer l'exécution", "Pour allouer la mémoire", "Pour inclure stdio"], "answer": 0, "explanation": "Le prototype permet la vérification des arguments et du retour.", "hints": [] },
-            { "id": "c-03-q2", "type": "single", "difficulty": 1, "question": "Quelle boucle privilégier quand le nombre d'itérations est connu ?", "options": ["for", "while", "do while", "goto"], "answer": 0, "explanation": "for regroupe initialisation, condition et incrément.", "hints": [] }
+            {
+              "id": "c-03-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi déclarer un prototype avant l'appel ?",
+              "options": [
+                "Pour que le compilateur vérifie les types",
+                "Pour accélérer l'exécution",
+                "Pour allouer la mémoire",
+                "Pour inclure stdio"
+              ],
+              "answer": 0,
+              "explanation": "Le prototype permet la vérification des arguments et du retour.",
+              "hints": []
+            },
+            {
+              "id": "c-03-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle boucle privilégier quand le nombre d'itérations est connu ?",
+              "options": [
+                "for",
+                "while",
+                "do while",
+                "goto"
+              ],
+              "answer": 0,
+              "explanation": "for regroupe initialisation, condition et incrément.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux, chaînes et pointeurs ».",
+          "summary": [
+            "Un prototype déclare nom, paramètres et type de retour.",
+            "if/else, while et for structurent le flux.",
+            "Les fonctions évitent la duplication."
           ]
         }
       ]
@@ -86,44 +267,166 @@
           "id": "c-04",
           "title": "Tableaux, chaînes et pointeurs",
           "duration": 22,
-          "objectives": ["Manipuler un pointeur", "Éviter les débordements"],
+          "objectives": [
+            "Manipuler un pointeur",
+            "Éviter les débordements"
+          ],
           "content": [
-            { "type": "p", "text": "Un tableau est une suite d'éléments contigus. En C, son nom se comporte comme un pointeur vers le premier élément. Une chaîne est un tableau de `char` terminé par le caractère nul `'\\0'`." },
-            { "type": "code", "lang": "c", "code": "char mot[] = \"linux\";\nint t[3] = {1, 2, 3};\nint *p = t;\n\nprintf(\"%c %d\\n\", mot[0], *(p + 1));   // l 2\nprintf(\"len=%zu\\n\", strlen(mot));" },
-            { "type": "p", "text": "L'arithmétique des pointeurs avance d'un **élément** à la fois, pas d'un octet : `p + 1` désigne l'élément suivant du type pointé." },
-            { "type": "warning", "text": "Aucun contrôle de borne n'est effectué : `t[3]` sur un tableau de trois éléments lit ou écrit hors de la zone allouée. C'est la source de nombreuses failles mémoire." }
+            {
+              "type": "p",
+              "text": "Un tableau est une suite d'éléments contigus. En C, son nom se comporte comme un pointeur vers le premier élément. Une chaîne est un tableau de `char` terminé par le caractère nul `'\\0'`."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "char mot[] = \"linux\";\nint t[3] = {1, 2, 3};\nint *p = t;\n\nprintf(\"%c %d\\n\", mot[0], *(p + 1));   // l 2\nprintf(\"len=%zu\\n\", strlen(mot));"
+            },
+            {
+              "type": "p",
+              "text": "L'arithmétique des pointeurs avance d'un **élément** à la fois, pas d'un octet : `p + 1` désigne l'élément suivant du type pointé."
+            },
+            {
+              "type": "warning",
+              "text": "Aucun contrôle de borne n'est effectué : `t[3]` sur un tableau de trois éléments lit ou écrit hors de la zone allouée. C'est la source de nombreuses failles mémoire."
+            }
           ],
           "exercise": {
             "title": "Parcourir avec un pointeur",
             "instructions": "Comment accéder au troisième élément du tableau t avec un pointeur p qui pointe sur t ?",
-            "hints": ["L'indice commence à 0.", "L'arithmétique avance par éléments."],
-            "solution": "*(p + 2), équivalent à t[2]."
+            "hints": [
+              "L'indice commence à 0.",
+              "L'arithmétique avance par éléments."
+            ],
+            "solution": "*(p + 2), équivalent à t[2].",
+            "check": {
+              "type": "any",
+              "any": [
+                "*(p + 2)",
+                "*(p+2)",
+                "p[2]"
+              ]
+            }
           },
           "quiz": [
-            { "id": "c-04-q1", "type": "single", "difficulty": 2, "question": "Par quel caractère se termine une chaîne C ?", "options": ["'\\n'", "'\\0'", "'.'", "' '"], "answer": 1, "explanation": "Le caractère nul marque la fin de la chaîne.", "hints": [] },
-            { "id": "c-04-q2", "type": "single", "difficulty": 3, "question": "Que fait t[3] sur un tableau de trois éléments ?", "options": ["Accède au dernier élément", "Écrit ou lit hors de la zone allouée", "Lève une exception", "Rien"], "answer": 1, "explanation": "Les indices valides vont de 0 à 2 ; aucun contrôle n'est fait.", "hints": [] }
+            {
+              "id": "c-04-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Par quel caractère se termine une chaîne C ?",
+              "options": [
+                "'\\n'",
+                "'\\0'",
+                "'.'",
+                "' '"
+              ],
+              "answer": 1,
+              "explanation": "Le caractère nul marque la fin de la chaîne.",
+              "hints": []
+            },
+            {
+              "id": "c-04-q2",
+              "type": "single",
+              "difficulty": 3,
+              "question": "Que fait t[3] sur un tableau de trois éléments ?",
+              "options": [
+                "Accède au dernier élément",
+                "Écrit ou lit hors de la zone allouée",
+                "Lève une exception",
+                "Rien"
+              ],
+              "answer": 1,
+              "explanation": "Les indices valides vont de 0 à 2 ; aucun contrôle n'est fait.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Structures, mémoire dynamique et fichiers ».",
+          "summary": [
+            "Un tableau se dégrade en pointeur.",
+            "t[i] équivaut à *(t + i).",
+            "L'indice du premier élément vaut 0."
           ]
         },
         {
           "id": "c-05",
           "title": "Structures, mémoire dynamique et fichiers",
           "duration": 22,
-          "objectives": ["Définir une structure", "Allouer et libérer la mémoire"],
+          "objectives": [
+            "Définir une structure",
+            "Allouer et libérer la mémoire"
+          ],
           "content": [
-            { "type": "p", "text": "Une **structure** regroupe des champs de types différents. L'**allocation dynamique** (`malloc`) réserve de la mémoire sur le tas, que l'on doit rendre avec `free`. Chaque `malloc` doit avoir son `free`." },
-            { "type": "code", "lang": "c", "code": "typedef struct {\n    char nom[32];\n    int age;\n} Personne;\n\nPersonne *p = malloc(sizeof *p);\nif (p == NULL) return 1;\np->age = 36;\nfree(p);" },
-            { "type": "code", "lang": "c", "code": "FILE *f = fopen(\"notes.txt\", \"r\");\nif (!f) { perror(\"fopen\"); return 1; }\nchar ligne[128];\nwhile (fgets(ligne, sizeof ligne, f)) fputs(ligne, stdout);\nfclose(f);" },
-            { "type": "warning", "text": "Utiliser une mémoire libérée, oublier `free` ou dépasser la taille allouée provoque des comportements indéfinis, parfois exploitables. Les outils de vérification mémoire existent pour cela." }
+            {
+              "type": "p",
+              "text": "Une **structure** regroupe des champs de types différents. L'**allocation dynamique** (`malloc`) réserve de la mémoire sur le tas, que l'on doit rendre avec `free`. Chaque `malloc` doit avoir son `free`."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "typedef struct {\n    char nom[32];\n    int age;\n} Personne;\n\nPersonne *p = malloc(sizeof *p);\nif (p == NULL) return 1;\np->age = 36;\nfree(p);"
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "FILE *f = fopen(\"notes.txt\", \"r\");\nif (!f) { perror(\"fopen\"); return 1; }\nchar ligne[128];\nwhile (fgets(ligne, sizeof ligne, f)) fputs(ligne, stdout);\nfclose(f);"
+            },
+            {
+              "type": "warning",
+              "text": "Utiliser une mémoire libérée, oublier `free` ou dépasser la taille allouée provoque des comportements indéfinis, parfois exploitables. Les outils de vérification mémoire existent pour cela."
+            }
           ],
           "exercise": {
             "title": "Allouer proprement",
             "instructions": "Quel est le cycle correct pour un tableau dynamique de dix entiers ?",
-            "hints": ["Réserver, tester le pointeur, utiliser, libérer.", "sizeof *p évite de répéter le type."],
-            "solution": "int *t = malloc(10 * sizeof *t); if (!t) { /* erreur */ } /* usage */ free(t); t = NULL;"
+            "hints": [
+              "Réserver, tester le pointeur, utiliser, libérer.",
+              "sizeof *p évite de répéter le type."
+            ],
+            "solution": "int *t = malloc(10 * sizeof *t); if (!t) { /* erreur */ } /* usage */ free(t); t = NULL;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "malloc",
+                "free"
+              ]
+            }
           },
           "quiz": [
-            { "id": "c-05-q1", "type": "single", "difficulty": 1, "question": "Quelle fonction libère une allocation dynamique ?", "options": ["free", "delete", "remove", "clear"], "answer": 0, "explanation": "free rend la mémoire réservée par malloc.", "hints": [] },
-            { "id": "c-05-q2", "type": "single", "difficulty": 2, "question": "Que faire si malloc renvoie NULL ?", "options": ["Arrêter le traitement de façon contrôlée", "Utiliser le pointeur quand même", "Appeler free", "Ignorer l'erreur"], "answer": 0, "explanation": "NULL signifie que l'allocation a échoué : il faut traiter le cas.", "hints": [] }
+            {
+              "id": "c-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle fonction libère une allocation dynamique ?",
+              "options": [
+                "free",
+                "delete",
+                "remove",
+                "clear"
+              ],
+              "answer": 0,
+              "explanation": "free rend la mémoire réservée par malloc.",
+              "hints": []
+            },
+            {
+              "id": "c-05-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que faire si malloc renvoie NULL ?",
+              "options": [
+                "Arrêter le traitement de façon contrôlée",
+                "Utiliser le pointeur quand même",
+                "Appeler free",
+                "Ignorer l'erreur"
+              ],
+              "answer": 0,
+              "explanation": "NULL signifie que l'allocation a échoué : il faut traiter le cas.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "malloc alloue, free libère.",
+            "Toujours vérifier le retour de malloc.",
+            "Remettre le pointeur à NULL après libération."
           ]
         }
       ]

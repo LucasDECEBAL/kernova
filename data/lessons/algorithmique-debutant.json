@@ -14,26 +14,83 @@
             "Écrire un pseudocode lisible"
           ],
           "content": [
-            { "type": "p", "text": "Un **algorithme** est une suite finie d'instructions non ambiguës qui transforme des données d'entrée en un résultat. Une recette de cuisine en est un exemple : des ingrédients (entrées), des étapes ordonnées, un plat (sortie)." },
-            { "type": "p", "text": "Trois structures suffisent à exprimer presque tout : la **séquence** (instructions les unes après les autres), la **condition** (choisir) et la **boucle** (répéter). L'**organigramme** ou le **pseudocode** permettent de décrire l'algorithme avant de l'écrire dans un langage." },
-            { "type": "code", "lang": "text", "title": "Pseudocode : calculer une moyenne", "code": "DÉBUT\n  LIRE les notes\n  total ← 0\n  POUR CHAQUE note DANS notes FAIRE\n    total ← total + note\n  FIN POUR\n  moyenne ← total / nombre de notes\n  AFFICHER moyenne\nFIN" },
-            { "type": "list", "items": [
-              "Une entrée : ce que l'algorithme reçoit.",
-              "Un traitement : les étapes, déterministes et finies.",
-              "Une sortie : le résultat produit.",
-              "Des cas limites : liste vide, valeur négative, division par zéro."
-            ] },
-            { "type": "warning", "text": "Un algorithme qui ne se termine pas — une boucle dont la condition ne devient jamais fausse — n'est pas un algorithme valide. Vérifiez toujours la condition d'arrêt." }
+            {
+              "type": "p",
+              "text": "Un **algorithme** est une suite finie d'instructions non ambiguës qui transforme des données d'entrée en un résultat. Une recette de cuisine en est un exemple : des ingrédients (entrées), des étapes ordonnées, un plat (sortie)."
+            },
+            {
+              "type": "p",
+              "text": "Trois structures suffisent à exprimer presque tout : la **séquence** (instructions les unes après les autres), la **condition** (choisir) et la **boucle** (répéter). L'**organigramme** ou le **pseudocode** permettent de décrire l'algorithme avant de l'écrire dans un langage."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Pseudocode : calculer une moyenne",
+              "code": "DÉBUT\n  LIRE les notes\n  total ← 0\n  POUR CHAQUE note DANS notes FAIRE\n    total ← total + note\n  FIN POUR\n  moyenne ← total / nombre de notes\n  AFFICHER moyenne\nFIN"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Une entrée : ce que l'algorithme reçoit.",
+                "Un traitement : les étapes, déterministes et finies.",
+                "Une sortie : le résultat produit.",
+                "Des cas limites : liste vide, valeur négative, division par zéro."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un algorithme qui ne se termine pas — une boucle dont la condition ne devient jamais fausse — n'est pas un algorithme valide. Vérifiez toujours la condition d'arrêt."
+            }
           ],
           "exercise": {
             "title": "Écrire un pseudocode",
             "instructions": "Écrivez le pseudocode d'un algorithme qui lit deux nombres et affiche le plus grand.",
-            "hints": ["Lisez deux valeurs, puis comparez-les.", "Utilisez une condition SI / SINON."],
-            "solution": "DÉBUT\n  LIRE a\n  LIRE b\n  SI a ≥ b ALORS\n    AFFICHER a\n  SINON\n    AFFICHER b\n  FIN SI\nFIN"
+            "hints": [
+              "Lisez deux valeurs, puis comparez-les.",
+              "Utilisez une condition SI / SINON."
+            ],
+            "solution": "DÉBUT\n  LIRE a\n  LIRE b\n  SI a ≥ b ALORS\n    AFFICHER a\n  SINON\n    AFFICHER b\n  FIN SI\nFIN",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "lire",
+                "si",
+                "afficher"
+              ],
+              "success": "Correct : lecture, comparaison puis affichage."
+            }
           },
           "quiz": [
-            { "id": "algo-01-q1", "type": "single", "difficulty": 1, "question": "Quelles sont les trois structures de base d'un algorithme ?", "options": ["Séquence, condition, boucle", "Variable, fonction, objet", "HTML, CSS, JavaScript", "Entrée, sortie, fichier"], "answer": 0, "explanation": "Tout algorithme se construit à partir de séquences, de conditions et de boucles.", "hints": [] },
-            { "id": "algo-01-q2", "type": "truefalse", "difficulty": 2, "question": "Un algorithme peut contenir une boucle qui ne s'arrête jamais.", "answer": false, "explanation": "Un algorithme doit se terminer ; une boucle infinie est une erreur de conception.", "hints": [] }
+            {
+              "id": "algo-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelles sont les trois structures de base d'un algorithme ?",
+              "options": [
+                "Séquence, condition, boucle",
+                "Variable, fonction, objet",
+                "HTML, CSS, JavaScript",
+                "Entrée, sortie, fichier"
+              ],
+              "answer": 0,
+              "explanation": "Tout algorithme se construit à partir de séquences, de conditions et de boucles.",
+              "hints": []
+            },
+            {
+              "id": "algo-01-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Un algorithme peut contenir une boucle qui ne s'arrête jamais.",
+              "answer": false,
+              "explanation": "Un algorithme doit se terminer ; une boucle infinie est une erreur de conception.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Variables, types et opérateurs ».",
+          "summary": [
+            "Un algorithme est une suite finie d'instructions non ambiguës.",
+            "Séquence, condition et boucle suffisent à exprimer la plupart des traitements.",
+            "Le pseudocode décrit la logique avant l'écriture dans un langage."
           ]
         },
         {
@@ -45,20 +102,76 @@
             "Utiliser la division entière et le modulo"
           ],
           "content": [
-            { "type": "p", "text": "Une **variable** est une case mémoire nommée. On y affecte une valeur, puis on la relit. Une **constante** ne change pas. Le type indique la nature de la valeur : entier, réel, texte, booléen." },
-            { "type": "code", "lang": "text", "code": "compteur ← 0\ncompteur ← compteur + 1     // 1\nprix ← 19.9\nnom ← \"Ada\"\nmajeur ← vrai\n\n// Division entière et modulo\n17 DIV 5  → 3\n17 MOD 5  → 2" },
-            { "type": "p", "text": "La division entière donne le quotient, le modulo donne le reste. Ils servent sans cesse : tester la parité (`n MOD 2 = 0`), convertir des secondes en minutes, paginer des résultats." },
-            { "type": "warning", "text": "`=` en algorithmique signifie « affecte », pas « égale ». La comparaison s'écrit `=` ou `==` selon la notation ; en pseudocode on utilise souvent `←` pour l'affectation afin d'éviter la confusion." }
+            {
+              "type": "p",
+              "text": "Une **variable** est une case mémoire nommée. On y affecte une valeur, puis on la relit. Une **constante** ne change pas. Le type indique la nature de la valeur : entier, réel, texte, booléen."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "compteur ← 0\ncompteur ← compteur + 1     // 1\nprix ← 19.9\nnom ← \"Ada\"\nmajeur ← vrai\n\n// Division entière et modulo\n17 DIV 5  → 3\n17 MOD 5  → 2"
+            },
+            {
+              "type": "p",
+              "text": "La division entière donne le quotient, le modulo donne le reste. Ils servent sans cesse : tester la parité (`n MOD 2 = 0`), convertir des secondes en minutes, paginer des résultats."
+            },
+            {
+              "type": "warning",
+              "text": "`=` en algorithmique signifie « affecte », pas « égale ». La comparaison s'écrit `=` ou `==` selon la notation ; en pseudocode on utilise souvent `←` pour l'affectation afin d'éviter la confusion."
+            }
           ],
           "exercise": {
             "title": "Secondes en minutes",
             "instructions": "Avec 135 secondes, calculez le nombre de minutes entières et le nombre de secondes restantes.",
-            "hints": ["Les minutes entières s'obtiennent par division entière.", "Le reste s'obtient avec le modulo."],
-            "solution": "minutes ← 135 DIV 60 = 2\nsecondes ← 135 MOD 60 = 15"
+            "hints": [
+              "Les minutes entières s'obtiennent par division entière.",
+              "Le reste s'obtient avec le modulo."
+            ],
+            "solution": "minutes ← 135 DIV 60 = 2\nsecondes ← 135 MOD 60 = 15",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "2",
+                "15"
+              ],
+              "success": "Exact : 2 minutes et 15 secondes."
+            }
           },
           "quiz": [
-            { "id": "algo-02-q1", "type": "text", "difficulty": 1, "question": "Que vaut 23 MOD 4 ?", "answer": ["3"], "explanation": "4 × 5 = 20, il reste 3.", "hints": ["Le modulo donne le reste de la division."] },
-            { "id": "algo-02-q2", "type": "single", "difficulty": 1, "question": "Quelle expression teste si n est pair ?", "options": ["n DIV 2 = 0", "n MOD 2 = 0", "n / 2 = 0", "n * 2 = 0"], "answer": 1, "explanation": "Un nombre pair divisé par 2 donne un reste nul.", "hints": [] }
+            {
+              "id": "algo-02-q1",
+              "type": "text",
+              "difficulty": 1,
+              "question": "Que vaut 23 MOD 4 ?",
+              "answer": [
+                "3"
+              ],
+              "explanation": "4 × 5 = 20, il reste 3.",
+              "hints": [
+                "Le modulo donne le reste de la division."
+              ]
+            },
+            {
+              "id": "algo-02-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle expression teste si n est pair ?",
+              "options": [
+                "n DIV 2 = 0",
+                "n MOD 2 = 0",
+                "n / 2 = 0",
+                "n * 2 = 0"
+              ],
+              "answer": 1,
+              "explanation": "Un nombre pair divisé par 2 donne un reste nul.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Conditions et boucles ».",
+          "summary": [
+            "Une variable stocke une valeur nommée ; une constante ne change pas.",
+            "La division entière donne le quotient, le modulo le reste.",
+            "17 DIV 5 = 3 et 17 MOD 5 = 2."
           ]
         }
       ]
@@ -76,25 +189,85 @@
             "Éviter les boucles infinies"
           ],
           "content": [
-            { "type": "p", "text": "On utilise une boucle **POUR** quand le nombre d'itérations est connu à l'avance, et une boucle **TANT QUE** quand on répète jusqu'à ce qu'une condition change. Le choix n'est pas décoratif : il rend l'intention lisible." },
-            { "type": "code", "lang": "text", "title": "Deux boucles, deux usages", "code": "// Nombre d'itérations connu\nPOUR i DE 1 À 5 FAIRE\n  AFFICHER i\nFIN POUR\n\n// Répéter jusqu'à obtenir une saisie valide\nRÉPÉTER\n  LIRE nombre\nJUSQU'À nombre > 0" },
-            { "type": "p", "text": "Une condition imbriquée devient vite illisible. Une **garde** — un test en début de boucle qui élimine un cas — simplifie le corps : `SI valeur = 0 ALORS CONTINUER`." },
-            { "type": "list", "items": [
-              "Vérifiez qu'une variable de la condition évolue dans la boucle.",
-              "Prévoyez le cas où la boucle ne s'exécute pas du tout.",
-              "Testez une fois avec zéro élément et une fois avec beaucoup."
-            ] },
-            { "type": "warning", "text": "Une boucle `while` qui oublie d'incrémenter son compteur bloque le programme. Ce n'est pas une panne de la machine : c'est une condition d'arrêt absente." }
+            {
+              "type": "p",
+              "text": "On utilise une boucle **POUR** quand le nombre d'itérations est connu à l'avance, et une boucle **TANT QUE** quand on répète jusqu'à ce qu'une condition change. Le choix n'est pas décoratif : il rend l'intention lisible."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Deux boucles, deux usages",
+              "code": "// Nombre d'itérations connu\nPOUR i DE 1 À 5 FAIRE\n  AFFICHER i\nFIN POUR\n\n// Répéter jusqu'à obtenir une saisie valide\nRÉPÉTER\n  LIRE nombre\nJUSQU'À nombre > 0"
+            },
+            {
+              "type": "p",
+              "text": "Une condition imbriquée devient vite illisible. Une **garde** — un test en début de boucle qui élimine un cas — simplifie le corps : `SI valeur = 0 ALORS CONTINUER`."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifiez qu'une variable de la condition évolue dans la boucle.",
+                "Prévoyez le cas où la boucle ne s'exécute pas du tout.",
+                "Testez une fois avec zéro élément et une fois avec beaucoup."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une boucle `while` qui oublie d'incrémenter son compteur bloque le programme. Ce n'est pas une panne de la machine : c'est une condition d'arrêt absente."
+            }
           ],
           "exercise": {
             "title": "Somme des nombres pairs",
             "instructions": "Écrivez l'algorithme qui calcule la somme des nombres pairs de 1 à 20.",
-            "hints": ["Parcourez les nombres de 1 à 20.", "Ajoutez uniquement si le reste de la division par 2 vaut 0."],
-            "solution": "somme ← 0\nPOUR n DE 1 À 20 FAIRE\n  SI n MOD 2 = 0 ALORS\n    somme ← somme + n\n  FIN SI\nFIN POUR\nAFFICHER somme   // 110"
+            "hints": [
+              "Parcourez les nombres de 1 à 20.",
+              "Ajoutez uniquement si le reste de la division par 2 vaut 0."
+            ],
+            "solution": "somme ← 0\nPOUR n DE 1 À 20 FAIRE\n  SI n MOD 2 = 0 ALORS\n    somme ← somme + n\n  FIN SI\nFIN POUR\nAFFICHER somme   // 110",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "somme",
+                "mod"
+              ],
+              "success": "Correct : on ajoute seulement si le reste par 2 vaut 0."
+            }
           },
           "quiz": [
-            { "id": "algo-03-q1", "type": "single", "difficulty": 1, "question": "Quand préférer une boucle TANT QUE à une boucle POUR ?", "options": ["Quand le nombre d'itérations est inconnu", "Quand il faut trier un tableau", "Quand on déclare une constante", "Jamais"], "answer": 0, "explanation": "TANT QUE convient quand on répète jusqu'à ce qu'une condition change.", "hints": [] },
-            { "id": "algo-03-q2", "type": "text", "difficulty": 2, "question": "Combien vaut la somme des entiers de 1 à 10 ?", "answer": ["55"], "explanation": "10 × 11 / 2 = 55.", "hints": ["La formule n(n+1)/2 donne le résultat."] }
+            {
+              "id": "algo-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quand préférer une boucle TANT QUE à une boucle POUR ?",
+              "options": [
+                "Quand le nombre d'itérations est inconnu",
+                "Quand il faut trier un tableau",
+                "Quand on déclare une constante",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "TANT QUE convient quand on répète jusqu'à ce qu'une condition change.",
+              "hints": []
+            },
+            {
+              "id": "algo-03-q2",
+              "type": "text",
+              "difficulty": 2,
+              "question": "Combien vaut la somme des entiers de 1 à 10 ?",
+              "answer": [
+                "55"
+              ],
+              "explanation": "10 × 11 / 2 = 55.",
+              "hints": [
+                "La formule n(n+1)/2 donne le résultat."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions et décomposition ».",
+          "summary": [
+            "Une boucle POUR convient quand le nombre d'itérations est connu.",
+            "Une boucle TANT QUE répète jusqu'à ce qu'une condition change.",
+            "La condition d'arrêt doit toujours pouvoir devenir fausse."
           ]
         },
         {
@@ -106,20 +279,72 @@
             "Écrire une fonction avec entrées et sortie"
           ],
           "content": [
-            { "type": "p", "text": "Décomposer, c'est remplacer un problème difficile par plusieurs problèmes simples. Chaque sous-problème devient une **fonction** : elle reçoit des paramètres, effectue un traitement et renvoie un résultat. Une fonction doit faire une seule chose, et son nom doit le dire." },
-            { "type": "code", "lang": "text", "code": "FONCTION estPair(n)\n  RETOURNER n MOD 2 = 0\nFIN FONCTION\n\nFONCTION moyenne(notes)\n  SI notes est vide ALORS\n    RETOURNER 0\n  FIN SI\n  total ← 0\n  POUR CHAQUE note DANS notes FAIRE\n    total ← total + note\n  FIN POUR\n  RETOURNER total / longueur(notes)\nFIN FONCTION" },
-            { "type": "p", "text": "Découper permet aussi de **tester** : si `estPair` fonctionne, on n'a plus à douter d'elle en écrivant `moyenne`. Les erreurs se localisent plus vite." },
-            { "type": "warning", "text": "Une fonction qui modifie des variables extérieures et affiche des résultats fait trop de choses à la fois : elle est difficile à tester et à réutiliser. Préférez renvoyer une valeur." }
+            {
+              "type": "p",
+              "text": "Décomposer, c'est remplacer un problème difficile par plusieurs problèmes simples. Chaque sous-problème devient une **fonction** : elle reçoit des paramètres, effectue un traitement et renvoie un résultat. Une fonction doit faire une seule chose, et son nom doit le dire."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION estPair(n)\n  RETOURNER n MOD 2 = 0\nFIN FONCTION\n\nFONCTION moyenne(notes)\n  SI notes est vide ALORS\n    RETOURNER 0\n  FIN SI\n  total ← 0\n  POUR CHAQUE note DANS notes FAIRE\n    total ← total + note\n  FIN POUR\n  RETOURNER total / longueur(notes)\nFIN FONCTION"
+            },
+            {
+              "type": "p",
+              "text": "Découper permet aussi de **tester** : si `estPair` fonctionne, on n'a plus à douter d'elle en écrivant `moyenne`. Les erreurs se localisent plus vite."
+            },
+            {
+              "type": "warning",
+              "text": "Une fonction qui modifie des variables extérieures et affiche des résultats fait trop de choses à la fois : elle est difficile à tester et à réutiliser. Préférez renvoyer une valeur."
+            }
           ],
           "exercise": {
             "title": "Décomposer un calcul",
             "instructions": "Un programme doit calculer le prix TTC d'une liste d'articles. Décrivez les fonctions à écrire.",
-            "hints": ["Un calcul de total, puis une application de taxe.", "Chaque fonction doit être testable séparément."],
-            "solution": "Une fonction total(articles) qui additionne les prix, une fonction ajouterTaxe(montant, taux) qui renvoie le montant majoré, puis un enchaînement des deux dans le programme principal."
+            "hints": [
+              "Un calcul de total, puis une application de taxe.",
+              "Chaque fonction doit être testable séparément."
+            ],
+            "solution": "Une fonction total(articles) qui additionne les prix, une fonction ajouterTaxe(montant, taux) qui renvoie le montant majoré, puis un enchaînement des deux dans le programme principal.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "total",
+                "taxe"
+              ],
+              "success": "Oui : un calcul de total, puis l'application de la taxe."
+            }
           },
           "quiz": [
-            { "id": "algo-04-q1", "type": "single", "difficulty": 1, "question": "Que doit faire une bonne fonction ?", "options": ["Une seule chose clairement identifiée", "Le plus de choses possible", "Afficher tous ses résultats", "Modifier les variables globales"], "answer": 0, "explanation": "Une responsabilité unique rend la fonction lisible, testable et réutilisable.", "hints": [] },
-            { "id": "algo-04-q2", "type": "truefalse", "difficulty": 2, "question": "Découper un programme en fonctions facilite la recherche d'erreurs.", "answer": true, "explanation": "Chaque fonction peut être testée isolément, ce qui localise les défauts.", "hints": [] }
+            {
+              "id": "algo-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que doit faire une bonne fonction ?",
+              "options": [
+                "Une seule chose clairement identifiée",
+                "Le plus de choses possible",
+                "Afficher tous ses résultats",
+                "Modifier les variables globales"
+              ],
+              "answer": 0,
+              "explanation": "Une responsabilité unique rend la fonction lisible, testable et réutilisable.",
+              "hints": []
+            },
+            {
+              "id": "algo-04-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Découper un programme en fonctions facilite la recherche d'erreurs.",
+              "answer": true,
+              "explanation": "Chaque fonction peut être testée isolément, ce qui localise les défauts.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux et recherche linéaire ».",
+          "summary": [
+            "Décomposer un problème revient à écrire des fonctions à responsabilité unique.",
+            "Une fonction reçoit des paramètres et renvoie un résultat.",
+            "Des fonctions testables isolément rendent les erreurs faciles à localiser."
           ]
         },
         {
@@ -131,25 +356,104 @@
             "Estimer le coût d'une recherche linéaire"
           ],
           "content": [
-            { "type": "p", "text": "Un **tableau** contient plusieurs valeurs accessibles par leur **indice**, qui commence à 0. Parcourir un tableau consiste à examiner ses éléments un par un, ce qui est la base de nombreux algorithmes." },
-            { "type": "code", "lang": "text", "title": "Recherche linéaire", "code": "FONCTION chercher(tableau, cible)\n  POUR i DE 0 À longueur(tableau) - 1 FAIRE\n    SI tableau[i] = cible ALORS\n      RETOURNER i        // position trouvée\n    FIN SI\n  FIN POUR\n  RETOURNER -1           // absent\nFIN FONCTION" },
-            { "type": "p", "text": "La recherche linéaire examine jusqu'à n éléments : on dit qu'elle est en **O(n)**. Si le tableau est trié, la recherche dichotomique descend à **O(log n)**, mais elle exige un tri préalable." },
-            { "type": "table", "headers": ["Taille du tableau", "Étapes (linéaire)", "Étapes (dichotomique)"], "rows": [
-              ["100", "100", "7"],
-              ["1 000", "1 000", "10"],
-              ["1 000 000", "1 000 000", "20"]
-            ] },
-            { "type": "warning", "text": "Un parcours qui dépasse les bornes du tableau — indice négatif ou supérieur à la taille — est une erreur fréquente. La boucle doit s'arrêter à `longueur - 1`." }
+            {
+              "type": "p",
+              "text": "Un **tableau** contient plusieurs valeurs accessibles par leur **indice**, qui commence à 0. Parcourir un tableau consiste à examiner ses éléments un par un, ce qui est la base de nombreux algorithmes."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Recherche linéaire",
+              "code": "FONCTION chercher(tableau, cible)\n  POUR i DE 0 À longueur(tableau) - 1 FAIRE\n    SI tableau[i] = cible ALORS\n      RETOURNER i        // position trouvée\n    FIN SI\n  FIN POUR\n  RETOURNER -1           // absent\nFIN FONCTION"
+            },
+            {
+              "type": "p",
+              "text": "La recherche linéaire examine jusqu'à n éléments : on dit qu'elle est en **O(n)**. Si le tableau est trié, la recherche dichotomique descend à **O(log n)**, mais elle exige un tri préalable."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Taille du tableau",
+                "Étapes (linéaire)",
+                "Étapes (dichotomique)"
+              ],
+              "rows": [
+                [
+                  "100",
+                  "100",
+                  "7"
+                ],
+                [
+                  "1 000",
+                  "1 000",
+                  "10"
+                ],
+                [
+                  "1 000 000",
+                  "1 000 000",
+                  "20"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un parcours qui dépasse les bornes du tableau — indice négatif ou supérieur à la taille — est une erreur fréquente. La boucle doit s'arrêter à `longueur - 1`."
+            }
           ],
           "exercise": {
             "title": "Trouver une valeur",
             "instructions": "Dans le tableau [4, 8, 15, 16, 23, 42], à quelle position se trouve 23 si l'indice commence à 0 ?",
-            "hints": ["Comptez les éléments un par un.", "4 est à l'indice 0."],
-            "solution": "23 se trouve à l'indice 4."
+            "hints": [
+              "Comptez les éléments un par un.",
+              "4 est à l'indice 0."
+            ],
+            "solution": "23 se trouve à l'indice 4.",
+            "check": {
+              "type": "any",
+              "any": [
+                "4",
+                "indice 4"
+              ],
+              "success": "Exact : 23 est le cinquième élément, donc à l'indice 4."
+            }
           },
           "quiz": [
-            { "id": "algo-05-q1", "type": "single", "difficulty": 1, "question": "Quel est l'indice du premier élément d'un tableau ?", "options": ["1", "0", "-1", "La longueur"], "answer": 1, "explanation": "Les indices commencent à 0 dans la plupart des langages.", "hints": [] },
-            { "id": "algo-05-q2", "type": "single", "difficulty": 2, "question": "Quelle est la complexité d'une recherche linéaire dans le pire cas ?", "options": ["O(1)", "O(log n)", "O(n)", "O(n²)"], "answer": 2, "explanation": "Dans le pire cas, il faut examiner tous les éléments.", "hints": [] }
+            {
+              "id": "algo-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel est l'indice du premier élément d'un tableau ?",
+              "options": [
+                "1",
+                "0",
+                "-1",
+                "La longueur"
+              ],
+              "answer": 1,
+              "explanation": "Les indices commencent à 0 dans la plupart des langages.",
+              "hints": []
+            },
+            {
+              "id": "algo-05-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quelle est la complexité d'une recherche linéaire dans le pire cas ?",
+              "options": [
+                "O(1)",
+                "O(log n)",
+                "O(n)",
+                "O(n²)"
+              ],
+              "answer": 2,
+              "explanation": "Dans le pire cas, il faut examiner tous les éléments.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Les indices d'un tableau commencent à 0.",
+            "La recherche linéaire examine les éléments un par un, en O(n).",
+            "Un tableau trié permet une recherche dichotomique en O(log n)."
           ]
         }
       ]

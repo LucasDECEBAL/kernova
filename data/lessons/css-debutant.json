@@ -14,29 +14,117 @@
             "Choisir le bon sélecteur et comprendre la cascade"
           ],
           "content": [
-            { "type": "p", "text": "CSS décrit la **présentation** : couleurs, tailles, espacements, disposition. Une règle associe un **sélecteur** à un bloc de **déclarations** `propriété: valeur;`. La feuille se place dans le `head` de la page." },
-            { "type": "code", "lang": "html", "code": "<link rel=\"stylesheet\" href=\"styles.css\">" },
-            { "type": "code", "lang": "css", "title": "styles.css", "code": "h1 {\n  color: #17202b;\n  font-size: 2rem;\n}\n\n.carte {\n  padding: 16px;\n  border: 1px solid #ccd3da;\n}\n\n#entete {\n  border-bottom: 1px solid #17202b;\n}" },
-            { "type": "table", "headers": ["Sélecteur", "Exemple", "Portée"], "rows": [
-              ["Élément", "`p`", "Tous les paragraphes"],
-              ["Classe", "`.carte`", "Tous les éléments de cette classe"],
-              ["Identifiant", "`#entete`", "Un seul élément"],
-              ["Descendant", "`nav a`", "Les liens contenus dans nav"],
-              ["État", "`a:hover`", "Un lien survolé"]
-            ] },
-            { "type": "p", "text": "Quand plusieurs règles visent le même élément, la **cascade** tranche : à spécificité égale, la dernière déclarée gagne. `#id` est plus fort que `.classe`, elle-même plus forte qu'un nom d'élément." },
-            { "type": "warning", "text": "`!important` casse la cascade et rend la maintenance difficile. Si vous en avez besoin partout, c'est que les sélecteurs sont mal organisés." },
-            { "type": "tip", "text": "Privilégiez les classes. Elles sont réutilisables et gardent une spécificité faible, donc facile à surcharger." }
+            {
+              "type": "p",
+              "text": "CSS décrit la **présentation** : couleurs, tailles, espacements, disposition. Une règle associe un **sélecteur** à un bloc de **déclarations** `propriété: valeur;`. La feuille se place dans le `head` de la page."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<link rel=\"stylesheet\" href=\"styles.css\">"
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "title": "styles.css",
+              "code": "h1 {\n  color: #17202b;\n  font-size: 2rem;\n}\n\n.carte {\n  padding: 16px;\n  border: 1px solid #ccd3da;\n}\n\n#entete {\n  border-bottom: 1px solid #17202b;\n}"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sélecteur",
+                "Exemple",
+                "Portée"
+              ],
+              "rows": [
+                [
+                  "Élément",
+                  "`p`",
+                  "Tous les paragraphes"
+                ],
+                [
+                  "Classe",
+                  "`.carte`",
+                  "Tous les éléments de cette classe"
+                ],
+                [
+                  "Identifiant",
+                  "`#entete`",
+                  "Un seul élément"
+                ],
+                [
+                  "Descendant",
+                  "`nav a`",
+                  "Les liens contenus dans nav"
+                ],
+                [
+                  "État",
+                  "`a:hover`",
+                  "Un lien survolé"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Quand plusieurs règles visent le même élément, la **cascade** tranche : à spécificité égale, la dernière déclarée gagne. `#id` est plus fort que `.classe`, elle-même plus forte qu'un nom d'élément."
+            },
+            {
+              "type": "warning",
+              "text": "`!important` casse la cascade et rend la maintenance difficile. Si vous en avez besoin partout, c'est que les sélecteurs sont mal organisés."
+            },
+            {
+              "type": "tip",
+              "text": "Privilégiez les classes. Elles sont réutilisables et gardent une spécificité faible, donc facile à surcharger."
+            }
           ],
           "exercise": {
             "title": "Cibler les liens du menu",
             "instructions": "Écrivez une règle qui met en rouge les liens contenus dans l'élément nav.",
-            "hints": ["Combinez le sélecteur d'élément nav et celui de lien.", "Un espace indique une descendance."],
-            "solution": "nav a {\n  color: #a33b2f;\n}"
+            "hints": [
+              "Combinez le sélecteur d'élément nav et celui de lien.",
+              "Un espace indique une descendance."
+            ],
+            "solution": "nav a {\n  color: #a33b2f;\n}",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "nav a",
+                "color"
+              ],
+              "success": "Correct : le sélecteur descendant cible les liens du nav."
+            }
           },
           "quiz": [
-            { "id": "css-01-q1", "type": "single", "difficulty": 1, "question": "Quel sélecteur vise tous les éléments portant la classe carte ?", "options": ["#carte", "carte", ".carte", "*carte"], "answer": 2, "explanation": "Le point préfixe une classe ; le dièse désigne un identifiant.", "hints": [] },
-            { "id": "css-01-q2", "type": "truefalse", "difficulty": 2, "question": "À spécificité égale, la règle déclarée en premier l'emporte.", "answer": false, "explanation": "À spécificité égale, c'est la dernière déclarée qui gagne.", "hints": [] }
+            {
+              "id": "css-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel sélecteur vise tous les éléments portant la classe carte ?",
+              "options": [
+                "#carte",
+                "carte",
+                ".carte",
+                "*carte"
+              ],
+              "answer": 2,
+              "explanation": "Le point préfixe une classe ; le dièse désigne un identifiant.",
+              "hints": []
+            },
+            {
+              "id": "css-01-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "À spécificité égale, la règle déclarée en premier l'emporte.",
+              "answer": false,
+              "explanation": "À spécificité égale, c'est la dernière déclarée qui gagne.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Couleurs, typographie et unités ».",
+          "summary": [
+            "Un sélecteur cible éléments, classes ou identifiants.",
+            "À spécificité égale, la dernière règle déclarée gagne.",
+            "Les classes gardent une spécificité faible et se réutilisent ; évitez !important."
           ]
         },
         {
@@ -48,27 +136,114 @@
             "Régler une typographie lisible"
           ],
           "content": [
-            { "type": "p", "text": "Les couleurs s'écrivent en nom, en hexadécimal (`#17202b`) ou en fonction (`rgb(23 32 43)`). Le **contraste** entre texte et fond conditionne la lisibilité : un rapport d'au moins 4,5:1 est attendu pour du texte courant." },
-            { "type": "table", "headers": ["Unité", "Comportement", "Usage"], "rows": [
-              ["`px`", "Absolue", "Bordures, petites valeurs"],
-              ["`rem`", "Relative à la taille racine", "Tailles de texte, espacements"],
-              ["`em`", "Relative à l'élément parent", "Composants imbriqués"],
-              ["`%`", "Relative au conteneur", "Largeurs"],
-              ["`vh` / `vw`", "Relative à la fenêtre", "Sections pleine hauteur"]
-            ] },
-            { "type": "code", "lang": "css", "code": "body {\n  font-family: \"Literata\", Georgia, serif;\n  font-size: 1.125rem;\n  line-height: 1.6;\n  color: #17202b;\n  background: #edf0ee;\n}\n\nh1 {\n  font-size: clamp(2.2rem, 1.5rem + 3vw, 3.4rem);\n  letter-spacing: -0.02em;\n}" },
-            { "type": "p", "text": "`line-height` autour de 1,5 à 1,65 améliore la lecture des paragraphes. Limitez aussi la longueur des lignes : au-delà d'environ 75 caractères, l'œil perd le début de la ligne suivante." },
-            { "type": "warning", "text": "Une couleur claire sur fond clair est illisible, même si elle « fait joli » sur votre écran. Vérifiez le contraste avec un outil, pas à l'œil." }
+            {
+              "type": "p",
+              "text": "Les couleurs s'écrivent en nom, en hexadécimal (`#17202b`) ou en fonction (`rgb(23 32 43)`). Le **contraste** entre texte et fond conditionne la lisibilité : un rapport d'au moins 4,5:1 est attendu pour du texte courant."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Comportement",
+                "Usage"
+              ],
+              "rows": [
+                [
+                  "`px`",
+                  "Absolue",
+                  "Bordures, petites valeurs"
+                ],
+                [
+                  "`rem`",
+                  "Relative à la taille racine",
+                  "Tailles de texte, espacements"
+                ],
+                [
+                  "`em`",
+                  "Relative à l'élément parent",
+                  "Composants imbriqués"
+                ],
+                [
+                  "`%`",
+                  "Relative au conteneur",
+                  "Largeurs"
+                ],
+                [
+                  "`vh` / `vw`",
+                  "Relative à la fenêtre",
+                  "Sections pleine hauteur"
+                ]
+              ]
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": "body {\n  font-family: \"Literata\", Georgia, serif;\n  font-size: 1.125rem;\n  line-height: 1.6;\n  color: #17202b;\n  background: #edf0ee;\n}\n\nh1 {\n  font-size: clamp(2.2rem, 1.5rem + 3vw, 3.4rem);\n  letter-spacing: -0.02em;\n}"
+            },
+            {
+              "type": "p",
+              "text": "`line-height` autour de 1,5 à 1,65 améliore la lecture des paragraphes. Limitez aussi la longueur des lignes : au-delà d'environ 75 caractères, l'œil perd le début de la ligne suivante."
+            },
+            {
+              "type": "warning",
+              "text": "Une couleur claire sur fond clair est illisible, même si elle « fait joli » sur votre écran. Vérifiez le contraste avec un outil, pas à l'œil."
+            }
           ],
           "exercise": {
             "title": "Une typographie lisible",
             "instructions": "Réglez le corps du document sur une taille de 1.125rem, une hauteur de ligne de 1.6 et une couleur de texte sombre.",
-            "hints": ["Le sélecteur est body.", "Trois déclarations suffisent : font-size, line-height et color."],
-            "solution": "body {\n  font-size: 1.125rem;\n  line-height: 1.6;\n  color: #17202b;\n}"
+            "hints": [
+              "Le sélecteur est body.",
+              "Trois déclarations suffisent : font-size, line-height et color."
+            ],
+            "solution": "body {\n  font-size: 1.125rem;\n  line-height: 1.6;\n  color: #17202b;\n}",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "font-size",
+                "line-height",
+                "color"
+              ],
+              "success": "Correct : taille, interligne et couleur sont réglés."
+            }
           },
           "quiz": [
-            { "id": "css-02-q1", "type": "single", "difficulty": 1, "question": "Quelle unité est relative à la taille de police racine ?", "options": ["px", "em", "rem", "vh"], "answer": 2, "explanation": "rem se base sur la taille définie à la racine du document.", "hints": [] },
-            { "id": "css-02-q2", "type": "single", "difficulty": 2, "question": "Quel contraste minimal vise-t-on pour du texte courant ?", "options": ["1,5:1", "3:1", "4,5:1", "10:1"], "answer": 2, "explanation": "Le niveau AA des recommandations d'accessibilité demande environ 4,5:1.", "hints": [] }
+            {
+              "id": "css-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle unité est relative à la taille de police racine ?",
+              "options": [
+                "px",
+                "em",
+                "rem",
+                "vh"
+              ],
+              "answer": 2,
+              "explanation": "rem se base sur la taille définie à la racine du document.",
+              "hints": []
+            },
+            {
+              "id": "css-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel contraste minimal vise-t-on pour du texte courant ?",
+              "options": [
+                "1,5:1",
+                "3:1",
+                "4,5:1",
+                "10:1"
+              ],
+              "answer": 2,
+              "explanation": "Le niveau AA des recommandations d'accessibilité demande environ 4,5:1.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Le modèle de boîte ».",
+          "summary": [
+            "rem dépend de la taille racine ; px est absolu ; % dépend du conteneur.",
+            "Une hauteur de ligne entre 1,5 et 1,65 améliore la lecture.",
+            "Un contraste de 4,5:1 minimum est attendu pour le texte courant."
           ]
         },
         {
@@ -80,20 +255,79 @@
             "Utiliser box-sizing: border-box"
           ],
           "content": [
-            { "type": "p", "text": "Chaque élément est une **boîte** composée de quatre couches : le contenu, le `padding` (espace intérieur), la `border` (bordure) et la `margin` (espace extérieur). Par défaut, `width` ne désigne que la largeur du contenu." },
-            { "type": "code", "lang": "css", "code": "* , *::before, *::after {\n  box-sizing: border-box;\n}\n\n.carte {\n  width: 320px;\n  padding: 16px;\n  border: 1px solid #ccd3da;\n  margin-bottom: 24px;\n}" },
-            { "type": "p", "text": "Avec `border-box`, la largeur déclarée inclut le padding et la bordure. C'est presque toujours plus intuitif : une carte de 320 px reste à 320 px, même avec du padding." },
-            { "type": "warning", "text": "Les marges verticales de deux éléments voisins peuvent fusionner : on parle de **fusion des marges**. L'espace observé est alors le plus grand des deux, pas la somme." }
+            {
+              "type": "p",
+              "text": "Chaque élément est une **boîte** composée de quatre couches : le contenu, le `padding` (espace intérieur), la `border` (bordure) et la `margin` (espace extérieur). Par défaut, `width` ne désigne que la largeur du contenu."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": "* , *::before, *::after {\n  box-sizing: border-box;\n}\n\n.carte {\n  width: 320px;\n  padding: 16px;\n  border: 1px solid #ccd3da;\n  margin-bottom: 24px;\n}"
+            },
+            {
+              "type": "p",
+              "text": "Avec `border-box`, la largeur déclarée inclut le padding et la bordure. C'est presque toujours plus intuitif : une carte de 320 px reste à 320 px, même avec du padding."
+            },
+            {
+              "type": "warning",
+              "text": "Les marges verticales de deux éléments voisins peuvent fusionner : on parle de **fusion des marges**. L'espace observé est alors le plus grand des deux, pas la somme."
+            }
           ],
           "exercise": {
             "title": "Calculer une largeur",
             "instructions": "Avec box-sizing: content-box, un élément a width: 300px, un padding de 20px de chaque côté et une bordure de 2px. Quelle est sa largeur totale affichée ?",
-            "hints": ["Le padding s'ajoute des deux côtés.", "La bordure aussi."],
-            "solution": "300 + (20 × 2) + (2 × 2) = 344 px."
+            "hints": [
+              "Le padding s'ajoute des deux côtés.",
+              "La bordure aussi."
+            ],
+            "solution": "300 + (20 × 2) + (2 × 2) = 344 px.",
+            "check": {
+              "type": "any",
+              "any": [
+                "344",
+                "344 px",
+                "344px"
+              ],
+              "success": "Exact : 300 + 40 + 4 = 344 px."
+            }
           },
           "quiz": [
-            { "id": "css-03-q1", "type": "single", "difficulty": 1, "question": "Quelle propriété inclut padding et bordure dans la largeur déclarée ?", "options": ["box-shadow", "box-sizing: border-box", "display: block", "overflow: hidden"], "answer": 1, "explanation": "border-box fait entrer le padding et la bordure dans la largeur.", "hints": [] },
-            { "id": "css-03-q2", "type": "blank", "difficulty": 1, "question": "L'espace intérieur d'un élément se règle avec la propriété ___.", "answers": [["padding"]], "explanation": "padding est l'espace intérieur ; margin est l'espace extérieur.", "hints": ["Sept lettres."] }
+            {
+              "id": "css-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle propriété inclut padding et bordure dans la largeur déclarée ?",
+              "options": [
+                "box-shadow",
+                "box-sizing: border-box",
+                "display: block",
+                "overflow: hidden"
+              ],
+              "answer": 1,
+              "explanation": "border-box fait entrer le padding et la bordure dans la largeur.",
+              "hints": []
+            },
+            {
+              "id": "css-03-q2",
+              "type": "blank",
+              "difficulty": 1,
+              "question": "L'espace intérieur d'un élément se règle avec la propriété ___.",
+              "answers": [
+                [
+                  "padding"
+                ]
+              ],
+              "explanation": "padding est l'espace intérieur ; margin est l'espace extérieur.",
+              "hints": [
+                "Sept lettres."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Flexbox ».",
+          "summary": [
+            "La boîte se compose du contenu, du padding, de la bordure et de la marge.",
+            "Avec content-box, width ne compte que le contenu.",
+            "border-box inclut padding et bordure dans la largeur déclarée."
           ]
         }
       ]
@@ -111,26 +345,112 @@
             "Utiliser gap plutôt que des marges manuelles"
           ],
           "content": [
-            { "type": "p", "text": "`display: flex` transforme un conteneur en ligne d'éléments. On aligne le long de l'axe principal avec `justify-content`, et sur l'axe secondaire avec `align-items`. `gap` espace les enfants sans marges bricolées." },
-            { "type": "code", "lang": "css", "code": ".barre {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.barre .logo {\n  margin-right: auto;\n}" },
-            { "type": "table", "headers": ["Propriété", "Valeurs utiles"], "rows": [
-              ["`justify-content`", "`flex-start`, `center`, `space-between`, `space-around`"],
-              ["`align-items`", "`stretch`, `center`, `flex-start`"],
-              ["`flex-wrap`", "`nowrap`, `wrap`"],
-              ["`flex` (enfant)", "`1`, `0 1 auto`, `1 1 200px`"]
-            ] },
-            { "type": "p", "text": "`flex: 1` sur un enfant lui fait occuper l'espace disponible. Combiné à `flex-wrap: wrap`, cela produit des grilles souples qui passent à la ligne quand la place manque." },
-            { "type": "warning", "text": "`justify-content` agit sur l'axe principal : si vous avez mis `flex-direction: column`, il aligne verticalement, pas horizontalement." }
+            {
+              "type": "p",
+              "text": "`display: flex` transforme un conteneur en ligne d'éléments. On aligne le long de l'axe principal avec `justify-content`, et sur l'axe secondaire avec `align-items`. `gap` espace les enfants sans marges bricolées."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".barre {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n  flex-wrap: wrap;\n}\n\n.barre .logo {\n  margin-right: auto;\n}"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Propriété",
+                "Valeurs utiles"
+              ],
+              "rows": [
+                [
+                  "`justify-content`",
+                  "`flex-start`, `center`, `space-between`, `space-around`"
+                ],
+                [
+                  "`align-items`",
+                  "`stretch`, `center`, `flex-start`"
+                ],
+                [
+                  "`flex-wrap`",
+                  "`nowrap`, `wrap`"
+                ],
+                [
+                  "`flex` (enfant)",
+                  "`1`, `0 1 auto`, `1 1 200px`"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "`flex: 1` sur un enfant lui fait occuper l'espace disponible. Combiné à `flex-wrap: wrap`, cela produit des grilles souples qui passent à la ligne quand la place manque."
+            },
+            {
+              "type": "warning",
+              "text": "`justify-content` agit sur l'axe principal : si vous avez mis `flex-direction: column`, il aligne verticalement, pas horizontalement."
+            }
           ],
           "exercise": {
             "title": "Barre de navigation",
             "instructions": "Écrivez la règle d'une barre dont les éléments sont centrés verticalement et répartis aux extrémités, avec un espacement de 16 px.",
-            "hints": ["Le conteneur est display: flex.", "La répartition aux extrémités est space-between."],
-            "solution": ".barre {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n}"
+            "hints": [
+              "Le conteneur est display: flex.",
+              "La répartition aux extrémités est space-between."
+            ],
+            "solution": ".barre {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n}",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "flex",
+                "space-between",
+                "gap"
+              ],
+              "success": "Correct : Flexbox avec répartition aux extrémités et espacement."
+            }
           },
           "quiz": [
-            { "id": "css-04-q1", "type": "single", "difficulty": 1, "question": "Quelle valeur de justify-content place un espace entre chaque élément, sans espace aux extrémités ?", "options": ["center", "space-between", "space-around", "flex-start"], "answer": 1, "explanation": "space-between colle le premier et le dernier aux bords et répartit l'espace au milieu.", "hints": [] },
-            { "id": "css-04-q2", "type": "match", "difficulty": 2, "question": "Associez chaque propriété à son effet.", "left": ["align-items", "gap", "flex-wrap"], "right": ["Autorise le passage à la ligne", "Aligne sur l'axe secondaire", "Espace les enfants"], "answer": [1, 2, 0], "explanation": "align-items agit sur l'axe secondaire, gap crée l'espacement, flex-wrap autorise le retour à la ligne.", "hints": [] }
+            {
+              "id": "css-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle valeur de justify-content place un espace entre chaque élément, sans espace aux extrémités ?",
+              "options": [
+                "center",
+                "space-between",
+                "space-around",
+                "flex-start"
+              ],
+              "answer": 1,
+              "explanation": "space-between colle le premier et le dernier aux bords et répartit l'espace au milieu.",
+              "hints": []
+            },
+            {
+              "id": "css-04-q2",
+              "type": "match",
+              "difficulty": 2,
+              "question": "Associez chaque propriété à son effet.",
+              "left": [
+                "align-items",
+                "gap",
+                "flex-wrap"
+              ],
+              "right": [
+                "Autorise le passage à la ligne",
+                "Aligne sur l'axe secondaire",
+                "Espace les enfants"
+              ],
+              "answer": [
+                1,
+                2,
+                0
+              ],
+              "explanation": "align-items agit sur l'axe secondaire, gap crée l'espacement, flex-wrap autorise le retour à la ligne.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Responsive et media queries ».",
+          "summary": [
+            "display: flex aligne les enfants sur un axe principal.",
+            "justify-content répartit, align-items aligne sur l'axe secondaire.",
+            "gap espace les enfants sans marges manuelles."
           ]
         },
         {
@@ -142,22 +462,88 @@
             "Adopter une approche mobile-first"
           ],
           "content": [
-            { "type": "p", "text": "Une page **responsive** s'adapte à la largeur de l'écran. La balise `meta viewport` est indispensable sur mobile, sinon le navigateur simule un écran large et réduit la page." },
-            { "type": "code", "lang": "html", "code": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" },
-            { "type": "p", "text": "Les **media queries** appliquent des règles selon la largeur. En approche **mobile-first**, on écrit d'abord la mise en page pour petit écran, puis on l'enrichit avec `min-width`." },
-            { "type": "code", "lang": "css", "code": ".grille {\n  display: grid;\n  gap: 16px;\n  grid-template-columns: 1fr;\n}\n\n@media (min-width: 768px) {\n  .grille {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n\n@media (min-width: 1100px) {\n  .grille {\n    grid-template-columns: repeat(3, 1fr);\n  }\n}" },
-            { "type": "tip", "text": "Choisissez les points de rupture selon le contenu, pas selon la marque d'un téléphone : réduisez la fenêtre jusqu'à ce que la mise en page casse, et placez-y la media query." },
-            { "type": "warning", "text": "Une largeur fixe en pixels sur un conteneur principal provoque un débordement horizontal sur mobile. Utilisez des largeurs relatives et `max-width`." }
+            {
+              "type": "p",
+              "text": "Une page **responsive** s'adapte à la largeur de l'écran. La balise `meta viewport` est indispensable sur mobile, sinon le navigateur simule un écran large et réduit la page."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
+            },
+            {
+              "type": "p",
+              "text": "Les **media queries** appliquent des règles selon la largeur. En approche **mobile-first**, on écrit d'abord la mise en page pour petit écran, puis on l'enrichit avec `min-width`."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".grille {\n  display: grid;\n  gap: 16px;\n  grid-template-columns: 1fr;\n}\n\n@media (min-width: 768px) {\n  .grille {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}\n\n@media (min-width: 1100px) {\n  .grille {\n    grid-template-columns: repeat(3, 1fr);\n  }\n}"
+            },
+            {
+              "type": "tip",
+              "text": "Choisissez les points de rupture selon le contenu, pas selon la marque d'un téléphone : réduisez la fenêtre jusqu'à ce que la mise en page casse, et placez-y la media query."
+            },
+            {
+              "type": "warning",
+              "text": "Une largeur fixe en pixels sur un conteneur principal provoque un débordement horizontal sur mobile. Utilisez des largeurs relatives et `max-width`."
+            }
           ],
           "exercise": {
             "title": "Deux colonnes à partir de 768 px",
             "instructions": "Écrivez une media query qui passe une grille d'une colonne à deux colonnes à partir de 768 px de large.",
-            "hints": ["La condition s'écrit @media (min-width: 768px).", "La grille utilise grid-template-columns."],
-            "solution": "@media (min-width: 768px) {\n  .grille {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}"
+            "hints": [
+              "La condition s'écrit @media (min-width: 768px).",
+              "La grille utilise grid-template-columns."
+            ],
+            "solution": "@media (min-width: 768px) {\n  .grille {\n    grid-template-columns: repeat(2, 1fr);\n  }\n}",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "@media",
+                "min-width",
+                "768"
+              ],
+              "success": "Correct : media query à partir de 768 px."
+            }
           },
           "quiz": [
-            { "id": "css-05-q1", "type": "single", "difficulty": 1, "question": "Quelle balise évite le zoom automatique sur mobile ?", "options": ["meta charset", "meta viewport", "meta description", "link canonical"], "answer": 1, "explanation": "meta viewport indique au mobile d'utiliser la largeur réelle de l'écran.", "hints": [] },
-            { "id": "css-05-q2", "type": "single", "difficulty": 2, "question": "En mobile-first, quelles media queries utilise-t-on ?", "options": ["max-width uniquement", "min-width pour enrichir la mise en page", "print uniquement", "Aucune"], "answer": 1, "explanation": "On part du petit écran et on ajoute des règles au-delà de certaines largeurs.", "hints": [] }
+            {
+              "id": "css-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle balise évite le zoom automatique sur mobile ?",
+              "options": [
+                "meta charset",
+                "meta viewport",
+                "meta description",
+                "link canonical"
+              ],
+              "answer": 1,
+              "explanation": "meta viewport indique au mobile d'utiliser la largeur réelle de l'écran.",
+              "hints": []
+            },
+            {
+              "id": "css-05-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "En mobile-first, quelles media queries utilise-t-on ?",
+              "options": [
+                "max-width uniquement",
+                "min-width pour enrichir la mise en page",
+                "print uniquement",
+                "Aucune"
+              ],
+              "answer": 1,
+              "explanation": "On part du petit écran et on ajoute des règles au-delà de certaines largeurs.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Une media query applique des règles selon la largeur.",
+            "En mobile-first, on part d'une colonne et on ajoute avec min-width.",
+            "Choisissez les points de rupture selon le contenu, pas selon un appareil."
           ]
         }
       ]

@@ -32,6 +32,12 @@ const TOOLS = [
     icon: 'play',
     title: 'Python et SQL',
     text: 'Exécuter réellement du Python (Pyodide) et du SQL (SQLite WebAssembly), avec une base de démonstration.'
+  },
+  {
+    href: '#/editeurs',
+    icon: 'code',
+    title: 'Éditeurs de code',
+    text: 'C, C++, Go, Rust, Java et PHP : écrire du code et vérifier sa structure, sans compilation ni exécution.'
   }
 ];
 

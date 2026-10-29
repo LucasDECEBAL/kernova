@@ -1,11 +1,11 @@
 // Catalogue de projets : regroupe les projets pratiques des cours, avec filtres et grille d'évaluation locale.
 
 import { h, icon, progressBar, emptyState } from '../core/dom.js';
-import { getCourses, getCourse, getDomain } from '../core/data.js';
+import { getCourses, getCourse, getDomain, getProjectExtras } from '../core/data.js';
 import { get } from '../core/store.js';
 import { projectChecks, toggleProjectCheck, resetProjectChecks } from '../core/progress.js';
 import { LEVELS, normalize, formatDuration, percent } from '../core/utils.js';
-import { levelBadge, tags } from '../components/widgets.js';
+import { levelBadge, tags, codeBlock } from '../components/widgets.js';
 import { confirmDialog, toast } from '../core/ui.js';
 
 function projectOf(course) {
@@ -20,6 +20,16 @@ function projectOf(course) {
 
 function allProjects() {
   return getCourses().map(projectOf).filter(Boolean);
+}
+
+function downloadText(name, content) {
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = h('a', { href: url, download: name });
+  document.body.append(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 export function renderProjectsIndex({ outlet }) {
@@ -150,6 +160,51 @@ export function renderProjectPage({ outlet, params }) {
   const gridBox = h('div', { class: 'proj-grid-box' });
   const progressBox = h('div', {});
 
+  const extras = getProjectExtras()[course.id] || null;
+  let hintsShown = 0;
+  const hintBox = h('div', { class: 'term-hints' });
+
+  function refreshHints() {
+    if (!extras?.hints?.length) return;
+    hintBox.replaceChildren();
+    if (hintsShown) {
+      hintBox.append(h('ol', { class: 'term-hint-list' }, extras.hints.slice(0, hintsShown).map((text) => h('li', { text }))));
+    }
+    if (hintsShown < extras.hints.length) {
+      hintBox.append(h('button', {
+        class: 'btn btn-small',
+        type: 'button',
+        onClick: () => { hintsShown += 1; refreshHints(); }
+      }, `Indice (${hintsShown}/${extras.hints.length})`));
+    }
+  }
+
+  const extrasSections = extras
+    ? h('div', { class: 'split' },
+      h('section', { class: 'card stack', 'aria-labelledby': 'proj-hints-title' },
+        h('h2', { id: 'proj-hints-title', style: 'margin-top:0;font-size:1.15rem' }, 'Indices'),
+        h('p', { class: 'small muted', style: 'margin:0' }, 'Révélez-les un par un, après avoir cherché par vous-même.'),
+        hintBox),
+      h('section', { class: 'card stack', 'aria-labelledby': 'proj-files-title' },
+        h('h2', { id: 'proj-files-title', style: 'margin-top:0;font-size:1.15rem' }, 'Fichiers de départ'),
+        h('p', { class: 'small muted', style: 'margin:0' }, 'Squelettes à compléter. Téléchargez-les ou copiez leur contenu.'),
+        h('div', { class: 'proj-starters' },
+          (extras.starters || []).map((file) => h('div', { class: 'proj-starter' },
+            h('div', { class: 'row', style: 'justify-content:space-between;align-items:center' },
+              h('h3', { style: 'margin:0;font-size:var(--text-sm);font-family:var(--mono)' }, file.name),
+              h('button', {
+                class: 'btn btn-small',
+                type: 'button',
+                onClick: () => downloadText(file.name, file.content)
+              }, 'Télécharger')),
+            codeBlock({ code: file.content, lang: file.language || 'text', title: file.name })
+          ))))
+    )
+    : h('section', { class: 'card' },
+      h('p', { class: 'small muted', style: 'margin:0' }, 'Aucun fichier de départ n\'est fourni pour ce projet : partez du cahier des charges et des étapes.'));
+
+  refreshHints();
+
   function refreshGrid() {
     const checks = projectChecks(course.id, get());
     const done = Object.keys(checks).length;
@@ -226,6 +281,7 @@ export function renderProjectPage({ outlet, params }) {
         h('ol', {}, project.steps.map((step) => h('li', { text: step })))
       )
     ),
+    extrasSections,
     h('section', { class: 'card stack', 'aria-labelledby': 'proj-grid-title' },
       h('div', { class: 'row', style: 'justify-content:space-between' },
         h('h2', { id: 'proj-grid-title', style: 'margin:0;font-size:1.15rem' }, 'Grille d\'évaluation'),

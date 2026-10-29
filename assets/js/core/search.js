@@ -1,4 +1,4 @@
-// Recherche client : catalogue, cours et chapitres (titres, objectifs, contenu).
+// Recherche client : cours, chapitres, fiches mémo, flashcards, projets et domaines.
 // Insensible à la casse et aux accents. Tous les mots saisis doivent être présents.
 
 import { normalize } from './utils.js';
@@ -28,14 +28,18 @@ function indexedChapter(chapter) {
 
 /**
  * @param {string} query
- * @param {{ courses: object[], domains: object[] }} data
- * @returns {{ courses: object[], chapters: object[], total: number }}
+ * @param {{ courses?: object[], domains?: object[], sheets?: object[], packs?: object[], projects?: object[] }} data
  */
-export function search(query, { courses, domains }) {
+export function search(query, data = {}) {
+  const { courses = [], domains = [], sheets = [], packs = [], projects = [] } = data;
   const tokens = normalize(query).split(' ').filter(Boolean);
-  if (!tokens.length) return { courses: [], chapters: [], total: 0 };
+  const empty = { courses: [], chapters: [], sheets: [], packs: [], projects: [], domains: [], total: 0 };
+  if (!tokens.length) return empty;
 
   const matchAll = (text) => tokens.every((t) => text.includes(t));
+  const scoreOf = (text, weightTitle = 10, weightBody = 3) => tokens.reduce(
+    (sum, t) => sum + (text.includes(t) ? weightBody : 0), 0
+  ) + (matchAll(text) ? weightTitle : 0);
   const domainName = (id) => normalize(domains.find((d) => d.id === id)?.name || '');
 
   const courseHits = [];
@@ -44,10 +48,9 @@ export function search(query, { courses, domains }) {
   for (const course of courses) {
     const titleText = normalize(course.title);
     const meta = normalize([course.description, (course.technologies || []).join(' '), domainName(course.domain)].join(' '));
-    const score =
-      tokens.reduce((s, t) => s + (titleText.includes(t) ? 10 : 0) + (meta.includes(t) ? 3 : 0), 0);
-    if (matchAll(`${titleText} ${meta}`)) courseHits.push({ course, score });
-
+    if (matchAll(`${titleText} ${meta}`)) {
+      courseHits.push({ course, score: scoreOf(`${titleText} ${meta}`) });
+    }
     for (const chapter of course.chapters) {
       const text = indexedChapter(chapter);
       if (matchAll(text)) {
@@ -58,13 +61,58 @@ export function search(query, { courses, domains }) {
     }
   }
 
+  const sheetHits = [];
+  for (const sheet of sheets) {
+    const meta = normalize([sheet.title, sheet.description, sheet.category].join(' '));
+    const metaMatch = matchAll(meta);
+    const entries = (sheet.entries || []).filter((entry) =>
+      matchAll(normalize([entry.command, entry.description, entry.warning, entry.example].join(' '))));
+    if (metaMatch || entries.length) {
+      sheetHits.push({ sheet, entries: metaMatch ? sheet.entries : entries, score: scoreOf(meta, 10, 4) + entries.length });
+    }
+  }
+
+  const packHits = [];
+  for (const pack of packs) {
+    const meta = normalize([pack.title, pack.description].join(' '));
+    const metaMatch = matchAll(meta);
+    const cards = (pack.cards || []).filter((card) => matchAll(normalize(`${card.q} ${card.a}`)));
+    if (metaMatch || cards.length) {
+      packHits.push({ pack, cards: metaMatch ? pack.cards : cards, score: scoreOf(meta, 8, 3) + cards.length });
+    }
+  }
+
+  const projectHits = [];
+  for (const course of courses) {
+    if (!course.project) continue;
+    const text = normalize([
+      course.project.title, course.project.brief, course.title,
+      ...(course.project.steps || []), ...(course.project.criteria || []),
+      ...(course.skills || [])
+    ].join(' '));
+    if (matchAll(text)) {
+      projectHits.push({ course, project: course.project, score: scoreOf(text, 10, 2) });
+    }
+  }
+
+  const domainHits = domains
+    .map((domain) => {
+      const text = normalize(`${domain.name} ${domain.description}`);
+      return { domain, score: scoreOf(text, 6, 2), match: matchAll(text) };
+    })
+    .filter((item) => item.match)
+    .sort((a, b) => b.score - a.score);
+
   courseHits.sort((a, b) => b.score - a.score);
   chapterHits.sort((a, b) => b.score - a.score);
-  return {
-    courses: courseHits,
-    chapters: chapterHits,
-    total: courseHits.length + chapterHits.length
-  };
+  sheetHits.sort((a, b) => b.score - a.score);
+  packHits.sort((a, b) => b.score - a.score);
+  projectHits.sort((a, b) => b.score - a.score);
+
+  const total = courseHits.length + chapterHits.length + sheetHits.length
+    + packHits.length + projectHits.length + domainHits.length;
+
+  return { courses: courseHits, chapters: chapterHits, sheets: sheetHits, packs: packHits, projects: projectHits, domains: domainHits, total };
 }
 
 /** Met en évidence les mots recherchés : renvoie des segments { text, hit }. */
@@ -72,23 +120,21 @@ export function highlightSegments(text, query) {
   const tokens = normalize(query).split(' ').filter(Boolean);
   if (!tokens.length) return [{ text, hit: false }];
   const source = String(text);
-  const folded = normalize(source);
-  // Recherche simple dans la version originale (même longueur si pas de caractère combinant).
-  const segments = [];
-  let pos = 0;
   const lower = source.toLowerCase();
   const ranges = [];
-  for (const t of tokens) {
-    let i = lower.indexOf(t);
-    if (i < 0 && folded.includes(t)) i = -1;
-    if (i >= 0) ranges.push([i, i + t.length]);
+  for (const token of tokens) {
+    let index = lower.indexOf(token);
+    if (index < 0) index = normalize(source).indexOf(token);
+    if (index >= 0) ranges.push([index, index + token.length]);
   }
   ranges.sort((a, b) => a[0] - b[0]);
-  for (const [s, e] of ranges) {
-    if (s < pos) continue;
-    if (s > pos) segments.push({ text: source.slice(pos, s), hit: false });
-    segments.push({ text: source.slice(s, e), hit: true });
-    pos = e;
+  const segments = [];
+  let pos = 0;
+  for (const [start, end] of ranges) {
+    if (start < pos) continue;
+    if (start > pos) segments.push({ text: source.slice(pos, start), hit: false });
+    segments.push({ text: source.slice(start, end), hit: true });
+    pos = end;
   }
   if (pos < source.length) segments.push({ text: source.slice(pos), hit: false });
   return segments;

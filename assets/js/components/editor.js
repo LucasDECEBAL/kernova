@@ -37,6 +37,46 @@ const RULES = {
     { re: /'(?:''|[^'])*'/g, cls: 'tok-str' },
     { re: /\b(?:SELECT|FROM|WHERE|JOIN|INNER|LEFT|RIGHT|ON|GROUP|BY|ORDER|HAVING|LIMIT|OFFSET|INSERT|INTO|VALUES|UPDATE|SET|DELETE|CREATE|TABLE|PRIMARY|KEY|FOREIGN|NOT|NULL|AND|OR|AS|DISTINCT|COUNT|SUM|AVG|MIN|MAX|INTEGER|TEXT|REAL|DROP|ALTER|INDEX)\b/gi, cls: 'tok-key' },
     { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  c: [
+    { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /^[ \t]*#[a-z]+/gm, cls: 'tok-prop' },
+    { re: /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, cls: 'tok-str' },
+    { re: /\b(?:auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|restrict|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while|NULL|size_t|int32_t|uint32_t)\b/g, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  cpp: [
+    { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /^[ \t]*#[a-z]+/gm, cls: 'tok-prop' },
+    { re: /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, cls: 'tok-str' },
+    { re: /\b(?:alignas|auto|bool|break|case|catch|char|class|const|constexpr|continue|default|delete|do|double|else|enum|explicit|false|float|for|friend|if|inline|int|long|namespace|new|nullptr|operator|override|private|protected|public|return|short|sizeof|static|struct|switch|template|this|throw|true|try|typename|union|unsigned|using|virtual|void|volatile|while|std|string|vector|unique_ptr|shared_ptr|make_unique|make_shared|cout|cin|endl)\b/g, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  go: [
+    { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /"(?:\\.|[^"\\])*"|`[^`]*`/g, cls: 'tok-str' },
+    { re: /\b(?:package|import|func|var|const|type|struct|interface|map|chan|go|defer|select|range|return|if|else|for|switch|case|default|break|continue|fallthrough|nil|true|false|string|int|float64|error|bool|byte|rune|any)\b/g, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  rust: [
+    { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /"(?:\\.|[^"\\])*"/g, cls: 'tok-str' },
+    { re: /\b(?:fn|let|mut|const|static|struct|enum|impl|trait|pub|use|mod|match|if|else|for|while|loop|return|move|ref|self|Self|Some|None|Ok|Err|true|false|i8|i32|i64|u8|u32|usize|f64|String|Vec|Option|Result)\b/g, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  java: [
+    { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, cls: 'tok-str' },
+    { re: /\b(?:abstract|boolean|break|byte|case|catch|char|class|continue|default|do|double|else|enum|extends|final|finally|float|for|if|implements|import|int|interface|long|new|null|package|private|protected|public|return|short|static|super|switch|this|throw|throws|try|void|volatile|while|true|false|String|System|Override)\b/g, cls: 'tok-key' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
+  ],
+  php: [
+    { re: /\/\/[^\n]*|#[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
+    { re: /<\?php|<\?=|\?>/g, cls: 'tok-prop' },
+    { re: /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, cls: 'tok-str' },
+    { re: /\b(?:function|class|public|private|protected|static|return|if|else|elseif|foreach|as|for|while|do|switch|case|break|continue|echo|print|new|try|catch|finally|throw|use|namespace|require|include|isset|empty|array|null|true|false|int|float|string|bool|void|fn)\b/gi, cls: 'tok-key' },
+    { re: /\$[a-zA-Z_]\w*/g, cls: 'tok-attr' },
+    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
   ]
 };
 

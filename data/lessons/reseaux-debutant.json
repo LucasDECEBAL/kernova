@@ -14,27 +14,116 @@
             "Nommer le rôle d'un commutateur et d'un routeur"
           ],
           "content": [
-            { "type": "p", "text": "Un **réseau** relie des machines pour qu'elles échangent des données. Sa taille détermine son nom : un **LAN** couvre un bâtiment, un **WAN** relie des sites distants, un **WLAN** est un réseau local sans fil, un **MAN** couvre une ville." },
-            { "type": "h", "text": "Les équipements" },
-            { "type": "table", "headers": ["Équipement", "Rôle"], "rows": [
-              ["Commutateur (switch)", "Relie les machines d'un même réseau local et transmet les trames"],
-              ["Routeur", "Relie des réseaux différents et choisit un chemin vers la destination"],
-              ["Modem", "Adapte le signal à la technologie de l'opérateur (fibre, ADSL, câble)"],
-              ["Point d'accès", "Relie les appareils sans fil au réseau local"]
-            ] },
-            { "type": "h", "text": "Des paquets, pas un flux continu" },
-            { "type": "p", "text": "Les données sont découpées en **paquets**. Chaque paquet porte l'adresse de l'émetteur et celle du destinataire. Les routeurs les orientent indépendamment : deux paquets d'un même fichier peuvent emprunter des chemins différents et arriver dans le désordre." },
-            { "type": "tip", "text": "Un réseau bien conçu est segmenté : une panne ou une attaque sur un segment ne doit pas paralyser tout le réseau." }
+            {
+              "type": "p",
+              "text": "Un **réseau** relie des machines pour qu'elles échangent des données. Sa taille détermine son nom : un **LAN** couvre un bâtiment, un **WAN** relie des sites distants, un **WLAN** est un réseau local sans fil, un **MAN** couvre une ville."
+            },
+            {
+              "type": "h",
+              "text": "Les équipements"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Équipement",
+                "Rôle"
+              ],
+              "rows": [
+                [
+                  "Commutateur (switch)",
+                  "Relie les machines d'un même réseau local et transmet les trames"
+                ],
+                [
+                  "Routeur",
+                  "Relie des réseaux différents et choisit un chemin vers la destination"
+                ],
+                [
+                  "Modem",
+                  "Adapte le signal à la technologie de l'opérateur (fibre, ADSL, câble)"
+                ],
+                [
+                  "Point d'accès",
+                  "Relie les appareils sans fil au réseau local"
+                ]
+              ]
+            },
+            {
+              "type": "h",
+              "text": "Des paquets, pas un flux continu"
+            },
+            {
+              "type": "p",
+              "text": "Les données sont découpées en **paquets**. Chaque paquet porte l'adresse de l'émetteur et celle du destinataire. Les routeurs les orientent indépendamment : deux paquets d'un même fichier peuvent emprunter des chemins différents et arriver dans le désordre."
+            },
+            {
+              "type": "tip",
+              "text": "Un réseau bien conçu est segmenté : une panne ou une attaque sur un segment ne doit pas paralyser tout le réseau."
+            }
           ],
           "exercise": {
             "title": "Choisir l'équipement",
             "instructions": "Vous devez relier les ordinateurs d'une même salle, puis raccorder cette salle au réseau du bâtiment voisin. Quels équipements utilisez-vous, et dans quel ordre ?",
-            "hints": ["Relier des machines du même réseau local ne demande pas de choisir un chemin entre réseaux.", "Le passage d'un réseau à un autre est le rôle d'un routeur."],
-            "solution": "Un commutateur pour relier les ordinateurs de la salle, puis un routeur pour joindre le réseau du bâtiment voisin."
+            "hints": [
+              "Relier des machines du même réseau local ne demande pas de choisir un chemin entre réseaux.",
+              "Le passage d'un réseau à un autre est le rôle d'un routeur."
+            ],
+            "solution": "Un commutateur pour relier les ordinateurs de la salle, puis un routeur pour joindre le réseau du bâtiment voisin.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "commutateur",
+                "routeur"
+              ],
+              "success": "Correct : commutateur pour la salle, routeur entre les réseaux."
+            }
           },
           "quiz": [
-            { "id": "res-01-q1", "type": "single", "difficulty": 1, "question": "Quel équipement relie deux réseaux différents ?", "options": ["Un commutateur", "Un routeur", "Un répéteur", "Un point d'accès"], "answer": 1, "explanation": "Le routeur choisit un chemin entre réseaux ; le commutateur reste dans un même réseau local.", "hints": [] },
-            { "id": "res-01-q2", "type": "match", "difficulty": 2, "question": "Associez chaque sigle à sa signification.", "left": ["LAN", "WAN", "WLAN"], "right": ["Réseau local sans fil", "Réseau local", "Réseau étendu"], "answer": [1, 2, 0], "explanation": "LAN = local, WAN = étendu, WLAN = local sans fil.", "hints": ["Le W de WLAN signifie wireless."] }
+            {
+              "id": "res-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel équipement relie deux réseaux différents ?",
+              "options": [
+                "Un commutateur",
+                "Un routeur",
+                "Un répéteur",
+                "Un point d'accès"
+              ],
+              "answer": 1,
+              "explanation": "Le routeur choisit un chemin entre réseaux ; le commutateur reste dans un même réseau local.",
+              "hints": []
+            },
+            {
+              "id": "res-01-q2",
+              "type": "match",
+              "difficulty": 2,
+              "question": "Associez chaque sigle à sa signification.",
+              "left": [
+                "LAN",
+                "WAN",
+                "WLAN"
+              ],
+              "right": [
+                "Réseau local sans fil",
+                "Réseau local",
+                "Réseau étendu"
+              ],
+              "answer": [
+                1,
+                2,
+                0
+              ],
+              "explanation": "LAN = local, WAN = étendu, WLAN = local sans fil.",
+              "hints": [
+                "Le W de WLAN signifie wireless."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « L'adresse IPv4 ».",
+          "summary": [
+            "Un LAN couvre un site, un WAN relie des sites distants, un WLAN est sans fil.",
+            "Le commutateur relie les machines d'un même réseau local.",
+            "Le routeur relie des réseaux différents ; le modem adapte le signal de l'opérateur."
           ]
         },
         {
@@ -46,28 +135,108 @@
             "Reconnaître une adresse privée"
           ],
           "content": [
-            { "type": "p", "text": "Une adresse **IPv4** comporte 32 bits, écrits en quatre octets séparés par des points : `192.168.1.10`. Chaque octet va de 0 à 255. Cela permet environ 4,3 milliards d'adresses, insuffisant aujourd'hui, d'où le déploiement d'**IPv6**." },
-            { "type": "h", "text": "Adresses privées et publiques" },
-            { "type": "table", "headers": ["Plage privée", "Usage courant"], "rows": [
-              ["10.0.0.0/8", "Grands réseaux d'entreprise"],
-              ["172.16.0.0/12", "Réseaux de taille moyenne"],
-              ["192.168.0.0/16", "Box et réseaux domestiques"]
-            ] },
-            { "type": "p", "text": "Une adresse **privée** n'est pas routable sur Internet : elle est traduite en adresse publique par le **NAT** du routeur. Une adresse **publique** est unique sur Internet." },
-            { "type": "h", "text": "La configuration de base" },
-            { "type": "p", "text": "Pour communiquer, une machine a besoin de trois éléments : une adresse IP, un masque de sous-réseau et une passerelle par défaut. Un serveur DNS complète la configuration pour résoudre les noms." },
-            { "type": "code", "lang": "text", "title": "Consulter sa configuration", "code": "# Windows\nipconfig /all\n\n# Linux\nip addr\nip route" },
-            { "type": "warning", "text": "Deux machines d'un même réseau ne peuvent pas avoir la même adresse IP : c'est un conflit d'adresses, qui coupe la connectivité des deux machines." }
+            {
+              "type": "p",
+              "text": "Une adresse **IPv4** comporte 32 bits, écrits en quatre octets séparés par des points : `192.168.1.10`. Chaque octet va de 0 à 255. Cela permet environ 4,3 milliards d'adresses, insuffisant aujourd'hui, d'où le déploiement d'**IPv6**."
+            },
+            {
+              "type": "h",
+              "text": "Adresses privées et publiques"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Plage privée",
+                "Usage courant"
+              ],
+              "rows": [
+                [
+                  "10.0.0.0/8",
+                  "Grands réseaux d'entreprise"
+                ],
+                [
+                  "172.16.0.0/12",
+                  "Réseaux de taille moyenne"
+                ],
+                [
+                  "192.168.0.0/16",
+                  "Box et réseaux domestiques"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Une adresse **privée** n'est pas routable sur Internet : elle est traduite en adresse publique par le **NAT** du routeur. Une adresse **publique** est unique sur Internet."
+            },
+            {
+              "type": "h",
+              "text": "La configuration de base"
+            },
+            {
+              "type": "p",
+              "text": "Pour communiquer, une machine a besoin de trois éléments : une adresse IP, un masque de sous-réseau et une passerelle par défaut. Un serveur DNS complète la configuration pour résoudre les noms."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Consulter sa configuration",
+              "code": "# Windows\nipconfig /all\n\n# Linux\nip addr\nip route"
+            },
+            {
+              "type": "warning",
+              "text": "Deux machines d'un même réseau ne peuvent pas avoir la même adresse IP : c'est un conflit d'adresses, qui coupe la connectivité des deux machines."
+            }
           ],
           "exercise": {
             "title": "Publique ou privée ?",
             "instructions": "Classez ces adresses : 192.168.1.10, 8.8.8.8, 10.20.30.40, 172.32.1.1.",
-            "hints": ["Vérifiez chaque plage privée du tableau.", "172.32 dépasse la plage privée 172.16.0.0/12."],
-            "solution": "Privées : 192.168.1.10 et 10.20.30.40. Publiques : 8.8.8.8 et 172.32.1.1."
+            "hints": [
+              "Vérifiez chaque plage privée du tableau.",
+              "172.32 dépasse la plage privée 172.16.0.0/12."
+            ],
+            "solution": "Privées : 192.168.1.10 et 10.20.30.40. Publiques : 8.8.8.8 et 172.32.1.1.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "192.168.1.10",
+                "8.8.8.8",
+                "10.20.30.40",
+                "172.32.1.1"
+              ],
+              "success": "Correct : privées 192.168.1.10 et 10.20.30.40, publiques les deux autres."
+            }
           },
           "quiz": [
-            { "id": "res-02-q1", "type": "single", "difficulty": 1, "question": "Laquelle de ces adresses est privée ?", "options": ["8.8.8.8", "192.168.1.25", "93.184.216.34", "172.32.0.1"], "answer": 1, "explanation": "192.168.x.x appartient à la plage privée 192.168.0.0/16.", "hints": [] },
-            { "id": "res-02-q2", "type": "truefalse", "difficulty": 2, "question": "Une même adresse IPv4 publique peut être attribuée à plusieurs machines sur Internet en même temps.", "answer": false, "explanation": "Une adresse publique est unique. Le partage se fait en amont, par NAT, avec des adresses privées.", "hints": [] }
+            {
+              "id": "res-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Laquelle de ces adresses est privée ?",
+              "options": [
+                "8.8.8.8",
+                "192.168.1.25",
+                "93.184.216.34",
+                "172.32.0.1"
+              ],
+              "answer": 1,
+              "explanation": "192.168.x.x appartient à la plage privée 192.168.0.0/16.",
+              "hints": []
+            },
+            {
+              "id": "res-02-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Une même adresse IPv4 publique peut être attribuée à plusieurs machines sur Internet en même temps.",
+              "answer": false,
+              "explanation": "Une adresse publique est unique. Le partage se fait en amont, par NAT, avec des adresses privées.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Masque de sous-réseau et CIDR ».",
+          "summary": [
+            "Une IPv4 compte 32 bits, écrits en quatre octets de 0 à 255.",
+            "Les plages 10/8, 172.16/12 et 192.168/16 sont privées.",
+            "Une machine a besoin d'une IP, d'un masque et d'une passerelle."
           ]
         }
       ]
@@ -85,26 +254,112 @@
             "Calculer le nombre d'hôtes d'un sous-réseau"
           ],
           "content": [
-            { "type": "p", "text": "Le **masque** indique quelle partie de l'adresse désigne le réseau et quelle partie désigne la machine. `255.255.255.0` s'écrit aussi `/24` : les 24 premiers bits sont ceux du réseau, les 8 derniers ceux des hôtes." },
-            { "type": "table", "headers": ["CIDR", "Masque", "Adresses", "Hôtes utilisables"], "rows": [
-              ["/24", "255.255.255.0", "256", "254"],
-              ["/25", "255.255.255.128", "128", "126"],
-              ["/26", "255.255.255.192", "64", "62"],
-              ["/30", "255.255.255.252", "4", "2"]
-            ] },
-            { "type": "p", "text": "Dans chaque sous-réseau, deux adresses sont réservées : la première identifie le réseau, la dernière est l'adresse de **diffusion** (broadcast). D'où la formule : hôtes utilisables = 2^(32 − préfixe) − 2." },
-            { "type": "code", "lang": "text", "title": "Exemple : 192.168.1.0/24", "code": "Adresse réseau    : 192.168.1.0\nPremier hôte      : 192.168.1.1\nDernier hôte      : 192.168.1.254\nDiffusion         : 192.168.1.255" },
-            { "type": "warning", "text": "Attribuer l'adresse réseau ou l'adresse de diffusion à une machine provoque des erreurs de communication difficiles à diagnostiquer." }
+            {
+              "type": "p",
+              "text": "Le **masque** indique quelle partie de l'adresse désigne le réseau et quelle partie désigne la machine. `255.255.255.0` s'écrit aussi `/24` : les 24 premiers bits sont ceux du réseau, les 8 derniers ceux des hôtes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "CIDR",
+                "Masque",
+                "Adresses",
+                "Hôtes utilisables"
+              ],
+              "rows": [
+                [
+                  "/24",
+                  "255.255.255.0",
+                  "256",
+                  "254"
+                ],
+                [
+                  "/25",
+                  "255.255.255.128",
+                  "128",
+                  "126"
+                ],
+                [
+                  "/26",
+                  "255.255.255.192",
+                  "64",
+                  "62"
+                ],
+                [
+                  "/30",
+                  "255.255.255.252",
+                  "4",
+                  "2"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Dans chaque sous-réseau, deux adresses sont réservées : la première identifie le réseau, la dernière est l'adresse de **diffusion** (broadcast). D'où la formule : hôtes utilisables = 2^(32 − préfixe) − 2."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Exemple : 192.168.1.0/24",
+              "code": "Adresse réseau    : 192.168.1.0\nPremier hôte      : 192.168.1.1\nDernier hôte      : 192.168.1.254\nDiffusion         : 192.168.1.255"
+            },
+            {
+              "type": "warning",
+              "text": "Attribuer l'adresse réseau ou l'adresse de diffusion à une machine provoque des erreurs de communication difficiles à diagnostiquer."
+            }
           ],
           "exercise": {
             "title": "Calculer un /26",
             "instructions": "Combien d'adresses contient un sous-réseau /26, et combien d'hôtes peuvent y être configurés ?",
-            "hints": ["2^(32-26) donne le nombre total d'adresses.", "Retirez l'adresse réseau et celle de diffusion."],
-            "solution": "2^(32−26) = 2^6 = 64 adresses, dont 62 utilisables pour des hôtes."
+            "hints": [
+              "2^(32-26) donne le nombre total d'adresses.",
+              "Retirez l'adresse réseau et celle de diffusion."
+            ],
+            "solution": "2^(32−26) = 2^6 = 64 adresses, dont 62 utilisables pour des hôtes.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "64",
+                "62"
+              ],
+              "success": "Exact : 64 adresses dont 62 hôtes."
+            }
           },
           "quiz": [
-            { "id": "res-03-q1", "type": "text", "difficulty": 2, "question": "Combien d'hôtes utilisables contient un réseau /24 ?", "answer": ["254"], "explanation": "256 adresses moins l'adresse réseau et la diffusion donnent 254 hôtes.", "hints": ["Retirez deux adresses au total de 256."] },
-            { "id": "res-03-q2", "type": "single", "difficulty": 2, "question": "Dans le réseau 10.0.0.0/24, quelle est l'adresse de diffusion ?", "options": ["10.0.0.0", "10.0.0.1", "10.0.0.255", "10.0.1.0"], "answer": 2, "explanation": "La diffusion est la dernière adresse du sous-réseau : tous les bits d'hôte valent 1.", "hints": [] }
+            {
+              "id": "res-03-q1",
+              "type": "text",
+              "difficulty": 2,
+              "question": "Combien d'hôtes utilisables contient un réseau /24 ?",
+              "answer": [
+                "254"
+              ],
+              "explanation": "256 adresses moins l'adresse réseau et la diffusion donnent 254 hôtes.",
+              "hints": [
+                "Retirez deux adresses au total de 256."
+              ]
+            },
+            {
+              "id": "res-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Dans le réseau 10.0.0.0/24, quelle est l'adresse de diffusion ?",
+              "options": [
+                "10.0.0.0",
+                "10.0.0.1",
+                "10.0.0.255",
+                "10.0.1.0"
+              ],
+              "answer": 2,
+              "explanation": "La diffusion est la dernière adresse du sous-réseau : tous les bits d'hôte valent 1.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Le DNS ».",
+          "summary": [
+            "Le masque sépare la partie réseau de la partie hôte.",
+            "/24 laisse 254 hôtes ; /26 laisse 62 hôtes.",
+            "Hôtes utilisables = 2^(32 − préfixe) − 2."
           ]
         },
         {
@@ -116,27 +371,108 @@
             "Reconnaître les principaux types d'enregistrements"
           ],
           "content": [
-            { "type": "p", "text": "Les humains retiennent des noms, les machines utilisent des adresses IP. Le **DNS** (Domain Name System) fait la correspondance. Quand vous tapez un nom de domaine, votre machine interroge un résolveur, qui consulte des serveurs successifs jusqu'à trouver la réponse." },
-            { "type": "table", "headers": ["Type", "Signification"], "rows": [
-              ["A", "Adresse IPv4 du nom"],
-              ["AAAA", "Adresse IPv6 du nom"],
-              ["CNAME", "Alias vers un autre nom"],
-              ["MX", "Serveur de messagerie du domaine"],
-              ["TXT", "Texte libre (vérifications, politiques de messagerie)"]
-            ] },
-            { "type": "p", "text": "Les réponses sont **mises en cache** pendant une durée appelée TTL. Cela accélère les recherches, mais explique aussi qu'un changement d'adresse mette du temps à se propager partout." },
-            { "type": "code", "lang": "bash", "title": "Interroger le DNS", "code": "nslookup example.com\ndig example.com A\ndig example.com MX" },
-            { "type": "warning", "text": "Après une modification de zone DNS, testez depuis un autre réseau : le cache local peut encore renvoyer l'ancienne adresse." }
+            {
+              "type": "p",
+              "text": "Les humains retiennent des noms, les machines utilisent des adresses IP. Le **DNS** (Domain Name System) fait la correspondance. Quand vous tapez un nom de domaine, votre machine interroge un résolveur, qui consulte des serveurs successifs jusqu'à trouver la réponse."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Signification"
+              ],
+              "rows": [
+                [
+                  "A",
+                  "Adresse IPv4 du nom"
+                ],
+                [
+                  "AAAA",
+                  "Adresse IPv6 du nom"
+                ],
+                [
+                  "CNAME",
+                  "Alias vers un autre nom"
+                ],
+                [
+                  "MX",
+                  "Serveur de messagerie du domaine"
+                ],
+                [
+                  "TXT",
+                  "Texte libre (vérifications, politiques de messagerie)"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Les réponses sont **mises en cache** pendant une durée appelée TTL. Cela accélère les recherches, mais explique aussi qu'un changement d'adresse mette du temps à se propager partout."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "title": "Interroger le DNS",
+              "code": "nslookup example.com\ndig example.com A\ndig example.com MX"
+            },
+            {
+              "type": "warning",
+              "text": "Après une modification de zone DNS, testez depuis un autre réseau : le cache local peut encore renvoyer l'ancienne adresse."
+            }
           ],
           "exercise": {
             "title": "Quel enregistrement ?",
             "instructions": "Vous voulez que le nom www.monsite.fr pointe vers monsite.fr, et que monsite.fr ait une adresse IPv6. Quels types d'enregistrements utilisez-vous ?",
-            "hints": ["Un nom qui pointe vers un autre nom est un alias.", "L'enregistrement des adresses IPv6 a un nom spécifique."],
-            "solution": "Un CNAME pour www.monsite.fr vers monsite.fr, et un enregistrement AAAA pour l'adresse IPv6 de monsite.fr."
+            "hints": [
+              "Un nom qui pointe vers un autre nom est un alias.",
+              "L'enregistrement des adresses IPv6 a un nom spécifique."
+            ],
+            "solution": "Un CNAME pour www.monsite.fr vers monsite.fr, et un enregistrement AAAA pour l'adresse IPv6 de monsite.fr.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cname",
+                "aaaa"
+              ],
+              "success": "Correct : CNAME pour l'alias, AAAA pour IPv6."
+            }
           },
           "quiz": [
-            { "id": "res-04-q1", "type": "single", "difficulty": 2, "question": "Quel type d'enregistrement contient une adresse IPv6 ?", "options": ["A", "AAAA", "CNAME", "MX"], "answer": 1, "explanation": "A correspond à IPv4, AAAA à IPv6.", "hints": [] },
-            { "id": "res-04-q2", "type": "single", "difficulty": 2, "question": "Pourquoi un changement de DNS met-il parfois plusieurs heures à être visible ?", "options": ["Le serveur redémarre", "Les réponses sont mises en cache selon leur TTL", "Le nom doit être racheté", "IPv6 n'est pas compatible"], "answer": 1, "explanation": "Le TTL indique combien de temps un résolveur peut conserver la réponse en cache.", "hints": [] }
+            {
+              "id": "res-04-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel type d'enregistrement contient une adresse IPv6 ?",
+              "options": [
+                "A",
+                "AAAA",
+                "CNAME",
+                "MX"
+              ],
+              "answer": 1,
+              "explanation": "A correspond à IPv4, AAAA à IPv6.",
+              "hints": []
+            },
+            {
+              "id": "res-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi un changement de DNS met-il parfois plusieurs heures à être visible ?",
+              "options": [
+                "Le serveur redémarre",
+                "Les réponses sont mises en cache selon leur TTL",
+                "Le nom doit être racheté",
+                "IPv6 n'est pas compatible"
+              ],
+              "answer": 1,
+              "explanation": "Le TTL indique combien de temps un résolveur peut conserver la réponse en cache.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « TCP, UDP et ports ».",
+          "summary": [
+            "Le DNS associe noms et adresses ; A pour IPv4, AAAA pour IPv6.",
+            "CNAME crée un alias vers un autre nom ; MX désigne le serveur de messagerie.",
+            "Les réponses sont mises en cache selon le TTL."
           ]
         },
         {
@@ -148,28 +484,120 @@
             "Associer des services à leurs ports usuels"
           ],
           "content": [
-            { "type": "p", "text": "Deux protocoles de transport dominent. **TCP** établit une connexion, numérote les segments et acquitte leur réception : rien ne se perd, mais cela coûte du temps. **UDP** envoie sans garantie : plus rapide, utilisé quand une perte est acceptable (DNS, voix, jeux, diffusion vidéo)." },
-            { "type": "table", "headers": ["Port", "Service"], "rows": [
-              ["22", "SSH (administration à distance)"],
-              ["53", "DNS"],
-              ["80", "HTTP"],
-              ["443", "HTTPS"],
-              ["5432", "PostgreSQL"],
-              ["3306", "MySQL"]
-            ] },
-            { "type": "p", "text": "Un **port** identifie un service sur une machine. Une même machine peut donc héberger plusieurs services, chacun sur son port. Pour savoir ce qui écoute sur votre machine, utilisez `ss -tulpn` sous Linux ou `netstat -an` sous Windows." },
-            { "type": "code", "lang": "bash", "title": "Ports en écoute", "code": "ss -tulpn\nnetstat -an" },
-            { "type": "warning", "text": "Chaque port ouvert est une porte d'entrée potentielle. Un serveur de base de données ne doit jamais être exposé directement à Internet." }
+            {
+              "type": "p",
+              "text": "Deux protocoles de transport dominent. **TCP** établit une connexion, numérote les segments et acquitte leur réception : rien ne se perd, mais cela coûte du temps. **UDP** envoie sans garantie : plus rapide, utilisé quand une perte est acceptable (DNS, voix, jeux, diffusion vidéo)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Port",
+                "Service"
+              ],
+              "rows": [
+                [
+                  "22",
+                  "SSH (administration à distance)"
+                ],
+                [
+                  "53",
+                  "DNS"
+                ],
+                [
+                  "80",
+                  "HTTP"
+                ],
+                [
+                  "443",
+                  "HTTPS"
+                ],
+                [
+                  "5432",
+                  "PostgreSQL"
+                ],
+                [
+                  "3306",
+                  "MySQL"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Un **port** identifie un service sur une machine. Une même machine peut donc héberger plusieurs services, chacun sur son port. Pour savoir ce qui écoute sur votre machine, utilisez `ss -tulpn` sous Linux ou `netstat -an` sous Windows."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "title": "Ports en écoute",
+              "code": "ss -tulpn\nnetstat -an"
+            },
+            {
+              "type": "warning",
+              "text": "Chaque port ouvert est une porte d'entrée potentielle. Un serveur de base de données ne doit jamais être exposé directement à Internet."
+            }
           ],
           "exercise": {
             "title": "Choisir un transport",
             "instructions": "Un service de messagerie instantanée accepte de perdre une image plutôt que d'attendre, et un transfert de fichier doit être parfaitement fiable. Quel protocole choisir dans chaque cas ?",
-            "hints": ["La messagerie instantanée privilégie la réactivité.", "Un fichier corrompu est inutilisable."],
-            "solution": "UDP pour la messagerie instantanée (latence prioritaire), TCP pour le transfert de fichier (fiabilité prioritaire)."
+            "hints": [
+              "La messagerie instantanée privilégie la réactivité.",
+              "Un fichier corrompu est inutilisable."
+            ],
+            "solution": "UDP pour la messagerie instantanée (latence prioritaire), TCP pour le transfert de fichier (fiabilité prioritaire).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "udp",
+                "tcp"
+              ],
+              "success": "Correct : UDP pour la latence, TCP pour la fiabilité."
+            }
           },
           "quiz": [
-            { "id": "res-05-q1", "type": "single", "difficulty": 2, "question": "Quel protocole garantit la livraison et l'ordre des données ?", "options": ["UDP", "TCP", "ICMP", "ARP"], "answer": 1, "explanation": "TCP numérote et acquitte les segments ; UDP ne le fait pas.", "hints": [] },
-            { "id": "res-05-q2", "type": "match", "difficulty": 2, "question": "Associez chaque service à son port par défaut.", "left": ["SSH", "HTTPS", "DNS"], "right": ["53", "22", "443"], "answer": [1, 2, 0], "explanation": "SSH utilise 22, HTTPS 443, DNS 53.", "hints": [] }
+            {
+              "id": "res-05-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel protocole garantit la livraison et l'ordre des données ?",
+              "options": [
+                "UDP",
+                "TCP",
+                "ICMP",
+                "ARP"
+              ],
+              "answer": 1,
+              "explanation": "TCP numérote et acquitte les segments ; UDP ne le fait pas.",
+              "hints": []
+            },
+            {
+              "id": "res-05-q2",
+              "type": "match",
+              "difficulty": 2,
+              "question": "Associez chaque service à son port par défaut.",
+              "left": [
+                "SSH",
+                "HTTPS",
+                "DNS"
+              ],
+              "right": [
+                "53",
+                "22",
+                "443"
+              ],
+              "answer": [
+                1,
+                2,
+                0
+              ],
+              "explanation": "SSH utilise 22, HTTPS 443, DNS 53.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "TCP établit une connexion et garantit l'ordre ; UDP est plus léger.",
+            "Les ports usuels : 22 SSH, 53 DNS, 80 HTTP, 443 HTTPS.",
+            "Un port ouvert expose un service : filtrez ce qui n'est pas nécessaire."
           ]
         }
       ]

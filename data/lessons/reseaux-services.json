@@ -1,0 +1,470 @@
+{
+  "courseId": "reseaux-services",
+  "modules": [
+    {
+      "id": "rsv-m1",
+      "title": "Services d'infrastructure",
+      "chapters": [
+        {
+          "id": "rsv-01",
+          "title": "DNS en pratique",
+          "duration": 22,
+          "objectives": [
+            "Choisir un type d'enregistrement",
+            "Diagnostiquer une résolution"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le DNS traduit les noms en adresses. En pratique, on distingue la **zone** (les enregistrements que vous contrôlez) du **résolveur** (le serveur qui répond aux clients). Un enregistrement `A` associe un nom à une IPv4, un `AAAA` à une IPv6, un `CNAME` crée un alias."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Zone exemple",
+              "code": "www    3600 IN A     203.0.113.10\nmail   3600 IN A     203.0.113.20\nblog   3600 IN CNAME www\n@      3600 IN MX     10 mail"
+            },
+            {
+              "type": "p",
+              "text": "Le champ **TTL** indique la durée de mise en cache. Un TTL court accélère la prise en compte d'un changement mais augmente la charge ; un TTL long fait traîner les erreurs de configuration."
+            },
+            {
+              "type": "warning",
+              "text": "Un CNAME ne doit pas cohabiter avec d'autres enregistrements sur le même nom, notamment pour la racine du domaine."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'enregistrement",
+            "instructions": "Vous voulez que shop.example.fr pointe vers www.example.fr, et que le serveur de messagerie soit déclaré. Quels enregistrements créez-vous ?",
+            "hints": [
+              "Un alias de nom vers nom est un CNAME.",
+              "La messagerie utilise un enregistrement MX."
+            ],
+            "solution": "Un CNAME shop → www, et un MX sur la racine pointant vers le serveur de messagerie.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cname",
+                "mx"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "rsv-01-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que règle le TTL d'un enregistrement DNS ?",
+              "options": [
+                "La durée de mise en cache",
+                "La taille de la zone",
+                "Le chiffrement",
+                "Le nombre de requêtes autorisées"
+              ],
+              "answer": 0,
+              "explanation": "Le TTL réduit la charge mais retarde la propagation des changements.",
+              "hints": []
+            },
+            {
+              "id": "rsv-01-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel enregistrement déclare un serveur de messagerie ?",
+              "options": [
+                "A",
+                "MX",
+                "CNAME",
+                "TXT"
+              ],
+              "answer": 1,
+              "explanation": "MX indique les serveurs qui reçoivent le courrier du domaine.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « DHCP : distribuer les adresses ».",
+          "summary": [
+            "CNAME crée un alias vers un autre nom.",
+            "MX déclare le serveur de messagerie.",
+            "A et AAAA donnent les adresses."
+          ]
+        },
+        {
+          "id": "rsv-02",
+          "title": "DHCP : distribuer les adresses",
+          "duration": 20,
+          "objectives": [
+            "Décrire le cycle DHCP",
+            "Configurer une étendue cohérente"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DHCP attribue automatiquement une adresse, un masque, une passerelle et des serveurs DNS. Le cycle se résume en quatre échanges : Discover, Offer, Request, Ack. Le bail a une durée : il est renouvelé avant expiration."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Élément",
+                "Rôle"
+              ],
+              "rows": [
+                [
+                  "Étendue",
+                  "Plage d'adresses distribuables"
+                ],
+                [
+                  "Exclusion",
+                  "Adresses réservées à l'infrastructure"
+                ],
+                [
+                  "Réservation",
+                  "Adresse fixe liée à une adresse MAC"
+                ],
+                [
+                  "Bail",
+                  "Durée d'attribution"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Deux serveurs DHCP non coordonnés sur le même réseau distribuent des adresses incohérentes. Utilisez une autorisation ou un basculement correctement configuré."
+            }
+          ],
+          "exercise": {
+            "title": "Définir une étendue",
+            "instructions": "Réseau 192.168.20.0/24, passerelle .1, serveurs .10 et .11. Quelle plage DHCP et quelles exclusions ?",
+            "hints": [
+              "L'infrastructure garde des adresses fixes.",
+              "Évitez le début de plage pour les serveurs."
+            ],
+            "solution": "Étendue .100 à .200 avec exclusion de .1 à .20 pour l'infrastructure.",
+            "check": {
+              "type": "any",
+              "any": [
+                "exclusion",
+                "exclu"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "rsv-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel message initie une demande DHCP ?",
+              "options": [
+                "Discover",
+                "Ack",
+                "Offer",
+                "Renew"
+              ],
+              "answer": 0,
+              "explanation": "Le client diffuse un Discover pour chercher un serveur.",
+              "hints": []
+            },
+            {
+              "id": "rsv-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "À quoi sert une réservation DHCP ?",
+              "options": [
+                "À fixer une adresse pour un matériel précis",
+                "À exclure un serveur",
+                "À changer le masque",
+                "À créer une zone DNS"
+              ],
+              "answer": 0,
+              "explanation": "La réservation associe une adresse à une adresse MAC.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « HTTP, HTTPS et en-têtes utiles ».",
+          "summary": [
+            "La plage DHCP évite l'infrastructure.",
+            "Les exclusions protègent les serveurs.",
+            "La passerelle est annoncée aux clients."
+          ]
+        },
+        {
+          "id": "rsv-03",
+          "title": "HTTP, HTTPS et en-têtes utiles",
+          "duration": 22,
+          "objectives": [
+            "Lire une réponse HTTP",
+            "Comprendre le rôle des en-têtes de sécurité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une requête HTTP contient une méthode, un chemin, des en-têtes et parfois un corps. La réponse contient un statut, des en-têtes et un corps. **HTTPS** ajoute TLS : confidentialité du transport et authentification du serveur."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "title": "Inspecter une réponse",
+              "code": "curl -I https://example.com\ncurl -s -o /dev/null -w \"%{http_code}\\n\" https://example.com"
+            },
+            {
+              "type": "p",
+              "text": "Les en-têtes de sécurité limitent les dégâts : `Strict-Transport-Security` impose HTTPS, `Content-Security-Policy` restreint les scripts, `X-Content-Type-Options` empêche la devinette de type."
+            },
+            {
+              "type": "warning",
+              "text": "HTTPS ne prouve pas qu'un site est fiable : n'importe qui peut obtenir un certificat. Vérifiez le nom de domaine, pas seulement le cadenas."
+            }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer un statut",
+            "instructions": "Une requête renvoie 301 vers une autre URL. Que signifie ce code et que doit faire le client ?",
+            "hints": [
+              "La série 3xx indique une redirection.",
+              "L'en-tête Location donne la cible."
+            ],
+            "solution": "301 indique un déplacement permanent ; le client suit l'en-tête Location vers la nouvelle URL.",
+            "check": {
+              "type": "any",
+              "any": [
+                "301",
+                "location"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "rsv-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que signifie un statut 301 ?",
+              "options": [
+                "Redirection permanente",
+                "Erreur du serveur",
+                "Requête invalide",
+                "Succès avec contenu"
+              ],
+              "answer": 0,
+              "explanation": "3xx signale une redirection ; 301 est permanente.",
+              "hints": []
+            },
+            {
+              "id": "rsv-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que limite une CSP ?",
+              "options": [
+                "Les sources de scripts autorisées",
+                "Le nombre de visiteurs",
+                "La taille des images",
+                "La durée du bail DHCP"
+              ],
+              "answer": 0,
+              "explanation": "La politique de sécurité du contenu restreint l'exécution de scripts.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Messagerie : SMTP, IMAP et POP ».",
+          "summary": [
+            "301 indique un déplacement permanent.",
+            "Location donne la nouvelle URL.",
+            "Le client suit la redirection."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rsv-m2",
+      "title": "Exploitation des services",
+      "chapters": [
+        {
+          "id": "rsv-04",
+          "title": "Messagerie : SMTP, IMAP et POP",
+          "duration": 20,
+          "objectives": [
+            "Distinguer envoi et consultation",
+            "Repérer les ports courants"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'envoi utilise **SMTP** ; la consultation utilise **IMAP** (synchronisée, idéale sur plusieurs appareils) ou **POP** (téléchargement local). Les ports usuels : 25 pour SMTP entre serveurs, 587 pour la soumission authentifiée, 993 pour IMAP sécurisé, 995 pour POP sécurisé."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Enregistrement",
+                "Utilité"
+              ],
+              "rows": [
+                [
+                  "MX",
+                  "Indique les serveurs de réception"
+                ],
+                [
+                  "SPF (TXT)",
+                  "Liste les serveurs autorisés à envoyer"
+                ],
+                [
+                  "DKIM (TXT)",
+                  "Signature cryptographique des messages"
+                ],
+                [
+                  "DMARC (TXT)",
+                  "Politique en cas d'échec SPF ou DKIM"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un serveur SMTP ouvert à tous (relais ouvert) est immédiatement utilisé pour du spam. L'authentification et la limitation sont indispensables."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir le protocole",
+            "instructions": "Une utilisatrice consulte ses messages sur téléphone et ordinateur et veut retrouver les mêmes dossiers. IMAP ou POP ?",
+            "hints": [
+              "POP télécharge et retire souvent du serveur.",
+              "IMAP synchronise les dossiers."
+            ],
+            "solution": "IMAP : les messages et dossiers restent sur le serveur et sont synchronisés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "imap"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "rsv-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel protocole sert à envoyer un message ?",
+              "options": [
+                "SMTP",
+                "IMAP",
+                "POP",
+                "DNS"
+              ],
+              "answer": 0,
+              "explanation": "SMTP transporte le courrier ; IMAP et POP le consultent.",
+              "hints": []
+            },
+            {
+              "id": "rsv-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "À quoi sert DMARC ?",
+              "options": [
+                "À définir la politique si SPF ou DKIM échoue",
+                "À chiffrer le message",
+                "À compresser les pièces jointes",
+                "À créer une boîte"
+              ],
+              "answer": 0,
+              "explanation": "DMARC indique quoi faire des messages non authentifiés.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Superviser et sécuriser un service ».",
+          "summary": [
+            "IMAP synchronise les dossiers sur le serveur.",
+            "POP télécharge et supprime souvent.",
+            "IMAP convient au multi-appareil."
+          ]
+        },
+        {
+          "id": "rsv-05",
+          "title": "Superviser et sécuriser un service",
+          "duration": 22,
+          "objectives": [
+            "Choisir des indicateurs utiles",
+            "Réduire l'exposition d'un service"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Superviser un service, c'est mesurer sa **disponibilité**, sa **latence** et son **taux d'erreur**, puis alerter quand l'expérience se dégrade. Une sonde externe détecte ce que la supervision interne ne voit pas."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Exposer un point de santé qui vérifie les dépendances essentielles.",
+                "Surveiller les certificats avant expiration.",
+                "Filtrer l'accès d'administration (VPN ou liste d'adresses).",
+                "Journaliser les erreurs avec un identifiant de corrélation."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un point de santé qui renvoie toujours « OK » sans tester la base ni le stockage donne une fausse assurance."
+            }
+          ],
+          "exercise": {
+            "title": "Alerte utile",
+            "instructions": "Le service répond mais 20 % des requêtes échouent depuis dix minutes. Sur quoi alerter ?",
+            "hints": [
+              "L'utilisateur est impacté.",
+              "Le taux d'erreur est l'indicateur."
+            ],
+            "solution": "Alerter sur le taux d'erreur dépassant le seuil convenu, avec un lien vers les journaux filtrés par identifiant de corrélation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "taux d'erreur",
+                "seuil"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "rsv-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel indicateur mesure l'expérience utilisateur ?",
+              "options": [
+                "Le taux d'erreur et la latence",
+                "Le nombre de fichiers",
+                "La version du noyau",
+                "Le nombre de comptes"
+              ],
+              "answer": 0,
+              "explanation": "Ces deux mesures reflètent directement le service rendu.",
+              "hints": []
+            },
+            {
+              "id": "rsv-05-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Un point de santé qui renvoie toujours OK est suffisant pour superviser un service.",
+              "answer": false,
+              "explanation": "Il doit vérifier les dépendances critiques pour être utile.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Alerter sur un seuil de taux d'erreur.",
+            "Relier l'alerte aux journaux.",
+            "Un seuil sans action possible est inutile."
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Plan de service pour une petite infrastructure",
+    "brief": "Documentez les services DNS, DHCP et web d'un réseau de laboratoire, avec supervision et filtration.",
+    "steps": [
+      "Décrire les zones DNS et les enregistrements nécessaires.",
+      "Définir l'étendue DHCP, les exclusions et les réservations.",
+      "Vérifier le comportement HTTP et les en-têtes de sécurité du service web.",
+      "Configurer une sonde de disponibilité et une alerte sur le taux d'erreur.",
+      "Lister les accès d'administration et leur restriction."
+    ],
+    "criteria": [
+      "Aucune adresse d'infrastructure n'est distribuée par DHCP.",
+      "Le point de santé vérifie réellement la base ou le stockage.",
+      "Les accès d'administration ne sont pas exposés publiquement."
+    ]
+  }
+}

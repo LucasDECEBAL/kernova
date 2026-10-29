@@ -1,0 +1,446 @@
+{
+  "courseId": "python-donnees-api",
+  "modules": [
+    {
+      "id": "pyd-m1",
+      "title": "Récupérer et lire des données",
+      "chapters": [
+        {
+          "id": "pyd-01",
+          "title": "Consommer une API HTTP",
+          "duration": 22,
+          "objectives": [
+            "Faire une requête GET",
+            "Traiter le statut et le JSON"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La bibliothèque standard suffit pour un appel simple : `urllib.request` ouvre une URL et renvoie une réponse. Le corps est souvent du **JSON** ; `json.loads` le convertit en dictionnaire Python."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import json\nimport urllib.request\n\nwith urllib.request.urlopen(\"https://api.example.org/items\", timeout=10) as reponse:\n    statut = reponse.status\n    donnees = json.loads(reponse.read().decode(\"utf-8\"))\n\nprint(statut, len(donnees[\"items\"]))"
+            },
+            {
+              "type": "p",
+              "text": "Un statut 4xx signale une erreur de requête (ressource absente, accès refusé), un statut 5xx une erreur du serveur. En cas d'erreur, `urllib` lève `HTTPError` : traitez-la explicitement."
+            },
+            {
+              "type": "warning",
+              "text": "Ne placez jamais de clé d'API dans un dépôt Git. Utilisez une variable d'environnement et ne journalisez jamais l'en-tête d'autorisation."
+            }
+          ],
+          "exercise": {
+            "title": "Gérer un statut d'erreur",
+            "instructions": "Quelle exception faut-il intercepter pour une réponse 404 avec urllib ?",
+            "hints": [
+              "Le module urllib.error contient les exceptions HTTP.",
+              "Le nom de classe évoque HTTP."
+            ],
+            "solution": "urllib.error.HTTPError (HTTPError hérite de URLError).",
+            "check": {
+              "type": "any",
+              "any": [
+                "httperror"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "pyd-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle fonction convertit un texte JSON en objet Python ?",
+              "options": [
+                "json.loads",
+                "json.dumps",
+                "str",
+                "open"
+              ],
+              "answer": 0,
+              "explanation": "loads lit une chaîne ; dumps produit une chaîne.",
+              "hints": []
+            },
+            {
+              "id": "pyd-01-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que signifie un statut 401 ?",
+              "options": [
+                "Authentification requise ou invalide",
+                "Ressource absente",
+                "Erreur interne",
+                "Succès"
+              ],
+              "answer": 0,
+              "explanation": "401 indique un problème d'authentification ; 403 un droit insuffisant.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « CSV et JSON sans erreur ».",
+          "summary": [
+            "HTTPError porte les statuts 4xx et 5xx.",
+            "URLError couvre les échecs réseau.",
+            "Gérer les deux cas."
+          ]
+        },
+        {
+          "id": "pyd-02",
+          "title": "CSV et JSON sans erreur",
+          "duration": 20,
+          "objectives": [
+            "Lire un CSV avec DictReader",
+            "Écrire un JSON lisible"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "`csv.DictReader` renvoie chaque ligne sous forme de dictionnaire : les noms de colonnes deviennent des clés. Préciser `encoding` et `newline` évite les surprises de plateforme."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import csv, json\nfrom pathlib import Path\n\nlignes = []\nwith Path(\"ventes.csv\").open(encoding=\"utf-8\", newline=\"\") as f:\n    for ligne in csv.DictReader(f):\n        lignes.append({\"produit\": ligne[\"produit\"], \"montant\": float(ligne[\"montant\"])})\n\nPath(\"ventes.json\").write_text(json.dumps(lignes, ensure_ascii=False, indent=2), encoding=\"utf-8\")"
+            },
+            {
+              "type": "p",
+              "text": "`ensure_ascii=False` conserve les accents lisibles ; `indent=2` rend le fichier diffable dans Git."
+            },
+            {
+              "type": "warning",
+              "text": "Un montant CSV est une chaîne. Convertissez-le explicitement avec `float` et prévoyez le cas d'une valeur vide ou mal formée."
+            }
+          ],
+          "exercise": {
+            "title": "Convertir une colonne",
+            "instructions": "Pourquoi convertir la colonne montant lue par DictReader ?",
+            "hints": [
+              "Le CSV ne transporte pas de types.",
+              "Les calculs nécessitent des nombres."
+            ],
+            "solution": "Parce que DictReader renvoie des chaînes : sans float(), l'addition concaténerait du texte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "chaîne",
+                "chaine",
+                "str",
+                "float"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "pyd-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que renvoie csv.DictReader pour chaque ligne ?",
+              "options": [
+                "Un dictionnaire",
+                "Une liste",
+                "Un entier",
+                "Un objet JSON"
+              ],
+              "answer": 0,
+              "explanation": "Les en-têtes fournissent les clés.",
+              "hints": []
+            },
+            {
+              "id": "pyd-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que fait ensure_ascii=False dans json.dumps ?",
+              "options": [
+                "Il conserve les caractères accentués lisibles",
+                "Il compresse le JSON",
+                "Il trie les clés",
+                "Il supprime les valeurs nulles"
+              ],
+              "answer": 0,
+              "explanation": "Par défaut, les caractères non ASCII sont échappés en \\uXXXX.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à pandas ».",
+          "summary": [
+            "DictReader renvoie des chaînes.",
+            "float() convertit avant le calcul.",
+            "Sans conversion, l'addition concatène."
+          ]
+        },
+        {
+          "id": "pyd-03",
+          "title": "Introduction à pandas",
+          "duration": 24,
+          "objectives": [
+            "Charger un tableau",
+            "Filtrer et agréger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "**pandas** fournit des tableaux étiquetés : `read_csv` charge un fichier, `head` affiche les premières lignes, une comparaison filtre, `groupby` regroupe. Il faut l'installer (environnement virtuel puis `pip install pandas`)."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import pandas as pd\n\ndf = pd.read_csv(\"ventes.csv\")\nprint(df.head())\n\nchers = df[df[\"montant\"] > 100]\npar_produit = df.groupby(\"produit\")[\"montant\"].sum().sort_values(ascending=False)\nprint(par_produit)"
+            },
+            {
+              "type": "p",
+              "text": "`df.info()` et `df.isna().sum()` donnent une première idée de la qualité des données : types lus, valeurs manquantes. À faire avant toute analyse."
+            },
+            {
+              "type": "warning",
+              "text": "pandas charge en mémoire : un fichier de plusieurs gigaoctets ne tiendra pas. Pour ces volumes, travaillez par morceaux (`chunksize`) ou avec un moteur adapté."
+            }
+          ],
+          "exercise": {
+            "title": "Premier contrôle",
+            "instructions": "Quelles deux opérations faites-vous avant d'analyser un CSV inconnu ?",
+            "hints": [
+              "Regardez la forme et les types.",
+              "Comptez les valeurs manquantes."
+            ],
+            "solution": "df.info() pour les types et la taille, puis df.isna().sum() pour les valeurs manquantes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "info(",
+                "isna"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "pyd-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle fonction charge un CSV en DataFrame ?",
+              "options": [
+                "pd.read_csv",
+                "pd.to_csv",
+                "pd.concat",
+                "pd.merge"
+              ],
+              "answer": 0,
+              "explanation": "read_csv lit, to_csv écrit.",
+              "hints": []
+            },
+            {
+              "id": "pyd-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que fait df.groupby(\"produit\")[\"montant\"].sum() ?",
+              "options": [
+                "La somme des montants par produit",
+                "Le nombre de produits",
+                "La moyenne des montants",
+                "Un tri alphabétique"
+              ],
+              "answer": 0,
+              "explanation": "groupby regroupe puis la fonction d'agrégation s'applique par groupe.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Un outil en ligne de commande ».",
+          "summary": [
+            "df.info() montre types et taille.",
+            "isna().sum() compte les valeurs manquantes.",
+            "Nettoyer avant d'analyser."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pyd-m2",
+      "title": "Outil fiable",
+      "chapters": [
+        {
+          "id": "pyd-04",
+          "title": "Un outil en ligne de commande",
+          "duration": 20,
+          "objectives": [
+            "Définir des arguments",
+            "Rendre l'outil utilisable"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "`argparse` génère une interface en ligne de commande : arguments positionnels, options, valeurs par défaut, aide automatique et messages d'erreur cohérents. Un bon outil refuse les arguments incohérents avant de travailler."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import argparse\n\ndef main():\n    parser = argparse.ArgumentParser(description=\"Analyse un fichier de ventes\")\n    parser.add_argument(\"fichier\", help=\"chemin du CSV\")\n    parser.add_argument(\"--min\", type=float, default=0.0, help=\"montant minimal\")\n    args = parser.parse_args()\n    print(args.fichier, args.min)\n\nif __name__ == \"__main__\":\n    main()"
+            },
+            {
+              "type": "p",
+              "text": "Le bloc `if __name__ == \"__main__\":` n'exécute le programme que s'il est lancé directement : le module reste importable dans les tests."
+            },
+            {
+              "type": "warning",
+              "text": "Un outil qui écrit ou supprime des fichiers doit offrir un mode simulation (`--dry-run`) avant l'exécution réelle."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter une option",
+            "instructions": "Quelle ligne ajoute une option --sortie acceptant un chemin, par défaut resultat.json ?",
+            "hints": [
+              "La méthode est add_argument.",
+              "default fixe la valeur par défaut."
+            ],
+            "solution": "parser.add_argument(\"--sortie\", default=\"resultat.json\")",
+            "check": {
+              "type": "any",
+              "any": [
+                "add_argument",
+                "--sortie"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "pyd-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel module standard gère les arguments ?",
+              "options": [
+                "argparse",
+                "csv",
+                "json",
+                "pathlib"
+              ],
+              "answer": 0,
+              "explanation": "argparse produit l'aide et la validation des arguments.",
+              "hints": []
+            },
+            {
+              "id": "pyd-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "À quoi sert if __name__ == \"__main__\" ?",
+              "options": [
+                "À n'exécuter le programme que s'il est lancé directement",
+                "À importer le module",
+                "À définir une classe",
+                "À créer un fichier"
+              ],
+              "answer": 0,
+              "explanation": "Le module reste importable sans exécuter main().",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Fiabiliser : erreurs, journaux et tests ».",
+          "summary": [
+            "add_argument déclare une option.",
+            "default fixe la valeur par défaut.",
+            "args.sortie récupère la valeur."
+          ]
+        },
+        {
+          "id": "pyd-05",
+          "title": "Fiabiliser : erreurs, journaux et tests",
+          "duration": 22,
+          "objectives": [
+            "Journaliser sans fuite",
+            "Tester la logique métier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un outil de traitement doit échouer clairement : message compréhensible, code de retour non nul, aucune trace technique pour l'utilisateur. `logging` sépare les niveaux et permet de désactiver le détail en production."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import logging\n\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s %(message)s\")\n\ntry:\n    total = sommes / len(lignes)\nexcept ZeroDivisionError:\n    logging.error(\"Aucune ligne à analyser\")\n    raise SystemExit(2)"
+            },
+            {
+              "type": "p",
+              "text": "Les tests portent sur les fonctions pures : parsing d'une ligne, calcul d'un total, validation d'un champ. Le programme principal se contente de lire les fichiers, appeler la logique et afficher."
+            },
+            {
+              "type": "warning",
+              "text": "Ne journalisez jamais un mot de passe, un jeton ou un numéro complet. Un journal se diffuse et se conserve."
+            }
+          ],
+          "exercise": {
+            "title": "Code de retour",
+            "instructions": "Pourquoi un outil en ligne de commande doit-il renvoyer un code non nul en cas d'erreur ?",
+            "hints": [
+              "Les scripts et pipelines lisent ce code.",
+              "Zéro signifie succès."
+            ],
+            "solution": "Pour qu'un script ou un pipeline détecte l'échec et s'arrête, au lieu de continuer sur des données invalides.",
+            "check": {
+              "type": "any",
+              "any": [
+                "code",
+                "non nul",
+                "échec",
+                "echec"
+              ]
+            }
+          },
+          "quiz": [
+            {
+              "id": "pyd-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel module standard gère la journalisation ?",
+              "options": [
+                "logging",
+                "print",
+                "csv",
+                "argparse"
+              ],
+              "answer": 0,
+              "explanation": "logging gère niveaux, formats et destinations.",
+              "hints": []
+            },
+            {
+              "id": "pyd-05-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que faut-il tester en priorité ?",
+              "options": [
+                "Les fonctions de traitement pures",
+                "Le thème du terminal",
+                "La version de pip",
+                "Le nom du fichier"
+              ],
+              "answer": 0,
+              "explanation": "Elles contiennent la logique métier et sont faciles à tester.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Un code non nul signale l'échec.",
+            "Un pipeline peut alors s'arrêter.",
+            "Les codes suivent des conventions."
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Rapport de ventes en ligne de commande",
+    "brief": "Écrivez un outil Python qui lit un CSV de ventes, produit un rapport JSON et gère les erreurs proprement.",
+    "steps": [
+      "Définir les arguments : fichier d'entrée, montant minimal, fichier de sortie.",
+      "Lire le CSV avec DictReader et convertir les montants.",
+      "Calculer total, moyenne et répartition par produit.",
+      "Écrire le rapport JSON lisible et journaliser le résumé.",
+      "Tester les fonctions de calcul et lancer l'outil sur un fichier invalide."
+    ],
+    "criteria": [
+      "Un fichier absent produit un message clair et un code de retour non nul.",
+      "Aucune donnée sensible n'apparaît dans les journaux.",
+      "Les calculs sont couverts par des tests."
+    ]
+  }
+}

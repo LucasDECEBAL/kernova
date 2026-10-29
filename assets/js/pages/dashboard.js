@@ -159,7 +159,9 @@ export function renderDashboardPage({ outlet }) {
       badgesGrid
     ),
     h('section', { class: 'card stack' },
-      h('h2', { style: 'margin:0;font-size:1.15rem' }, 'Dernières activités'),
+      h('div', { class: 'row', style: 'justify-content:space-between' },
+        h('h2', { style: 'margin:0;font-size:1.15rem' }, 'Dernières activités'),
+        h('a', { class: 'btn btn-small', href: '#/recent' }, 'Contenus récents')),
       activityRows
     ),
     h('p', { class: 'small muted' }, `Parcours disponibles : ${courses.length}. Les statistiques sont calculées sur cet appareil uniquement.`)

@@ -14,24 +14,96 @@
             "Répartir l'effort de test"
           ],
           "content": [
-            { "type": "p", "text": "Tous les tests ne coûtent pas la même chose. Un test **unitaire** vérifie une fonction isolée en quelques millisecondes. Un test d'**intégration** vérifie plusieurs composants ensemble (base de données, HTTP). Un test **de bout en bout** traverse l'application comme un utilisateur, dans un navigateur réel." },
-            { "type": "table", "headers": ["Type", "Rapidité", "Confiance", "Fragilité"], "rows": [
-              ["Unitaire", "Très rapide", "Locale", "Faible"],
-              ["Intégration", "Moyen", "Élevée sur les échanges", "Moyenne"],
-              ["Bout en bout", "Lent", "Élevée sur le parcours", "Élevée"]
-            ] },
-            { "type": "p", "text": "La **pyramide** propose beaucoup de tests unitaires, moins d'intégration, et peu de bout en bout. Le but n'est pas un ratio parfait, mais de couvrir au bon niveau : inutile de simuler un navigateur pour vérifier un calcul de remise." },
-            { "type": "tip", "text": "Posez-vous la question : « quel défaut ce test peut-il détecter que les autres ne détectent pas ? ». Si la réponse est « aucun », supprimez-le." }
+            {
+              "type": "p",
+              "text": "Tous les tests ne coûtent pas la même chose. Un test **unitaire** vérifie une fonction isolée en quelques millisecondes. Un test d'**intégration** vérifie plusieurs composants ensemble (base de données, HTTP). Un test **de bout en bout** traverse l'application comme un utilisateur, dans un navigateur réel."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Rapidité",
+                "Confiance",
+                "Fragilité"
+              ],
+              "rows": [
+                [
+                  "Unitaire",
+                  "Très rapide",
+                  "Locale",
+                  "Faible"
+                ],
+                [
+                  "Intégration",
+                  "Moyen",
+                  "Élevée sur les échanges",
+                  "Moyenne"
+                ],
+                [
+                  "Bout en bout",
+                  "Lent",
+                  "Élevée sur le parcours",
+                  "Élevée"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "La **pyramide** propose beaucoup de tests unitaires, moins d'intégration, et peu de bout en bout. Le but n'est pas un ratio parfait, mais de couvrir au bon niveau : inutile de simuler un navigateur pour vérifier un calcul de remise."
+            },
+            {
+              "type": "tip",
+              "text": "Posez-vous la question : « quel défaut ce test peut-il détecter que les autres ne détectent pas ? ». Si la réponse est « aucun », supprimez-le."
+            }
           ],
           "exercise": {
             "title": "Choisir le niveau",
             "instructions": "Un calcul de TVA et un parcours d'achat complet : à quel niveau tester chacun ?",
-            "hints": ["Le calcul est une règle isolée.", "Le parcours implique l'interface et le serveur."],
-            "solution": "Le calcul de TVA en test unitaire ; le parcours d'achat en test de bout en bout, complété par des tests d'intégration sur les échanges."
+            "hints": [
+              "Le calcul est une règle isolée.",
+              "Le parcours implique l'interface et le serveur."
+            ],
+            "solution": "Le calcul de TVA en test unitaire ; le parcours d'achat en test de bout en bout, complété par des tests d'intégration sur les échanges.",
+            "check": {
+              "type": "any",
+              "any": [
+                "unitaire",
+                "e2e",
+                "bout en bout"
+              ]
+            }
           },
           "quiz": [
-            { "id": "tq-01-q1", "type": "single", "difficulty": 1, "question": "Quel test est le plus rapide ?", "options": ["Unitaire", "Intégration", "Bout en bout", "Manuel"], "answer": 0, "explanation": "Le test unitaire isole une fonction, sans réseau ni base de données.", "hints": [] },
-            { "id": "tq-01-q2", "type": "truefalse", "difficulty": 2, "question": "La pyramide recommande de multiplier les tests de bout en bout.", "answer": false, "explanation": "Ils sont lents et fragiles : on en garde quelques-uns pour les parcours critiques.", "hints": [] }
+            {
+              "id": "tq-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel test est le plus rapide ?",
+              "options": [
+                "Unitaire",
+                "Intégration",
+                "Bout en bout",
+                "Manuel"
+              ],
+              "answer": 0,
+              "explanation": "Le test unitaire isole une fonction, sans réseau ni base de données.",
+              "hints": []
+            },
+            {
+              "id": "tq-01-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "La pyramide recommande de multiplier les tests de bout en bout.",
+              "answer": false,
+              "explanation": "Ils sont lents et fragiles : on en garde quelques-uns pour les parcours critiques.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Écrire un bon test unitaire ».",
+          "summary": [
+            "La pyramide : beaucoup d'unitaires, moins d'intégration, peu d'E2E.",
+            "L'unitaire est rapide et précis.",
+            "L'E2E valide le parcours complet."
           ]
         },
         {
@@ -43,20 +115,78 @@
             "Éviter les tests fragiles"
           ],
           "content": [
-            { "type": "p", "text": "Un test se lit en trois temps : **préparer** (arrange), **agir** (act), **vérifier** (assert). Un seul comportement par test, un nom qui décrit le comportement attendu, et une assertion précise." },
-            { "type": "code", "lang": "javascript", "code": "import { describe, it, expect } from \"vitest\";\nimport { appliquerRemise } from \"./remise.js\";\n\ndescribe(\"appliquerRemise\", () => {\n  it(\"applique 10 % au-dessus de 100 €\", () => {\n    // arrange\n    const panier = { total: 200 };\n    // act\n    const resultat = appliquerRemise(panier, 10);\n    // assert\n    expect(resultat).toBe(180);\n  });\n\n  it(\"laisse le total inchangé sous le seuil\", () => {\n    expect(appliquerRemise({ total: 50 }, 10)).toBe(50);\n  });\n});" },
-            { "type": "p", "text": "Un test doit être **déterministe** : mêmes entrées, même résultat, sans dépendre de l'heure, du hasard, du réseau ou de l'ordre d'exécution. Le hasard se remplace par une valeur fixe injectée, l'heure par une horloge simulée." },
-            { "type": "warning", "text": "Un test qui vérifie dix choses à la fois masque la cause d'un échec. Si la première assertion échoue, les suivantes ne sont jamais exécutées et le diagnostic devient plus lent." }
+            {
+              "type": "p",
+              "text": "Un test se lit en trois temps : **préparer** (arrange), **agir** (act), **vérifier** (assert). Un seul comportement par test, un nom qui décrit le comportement attendu, et une assertion précise."
+            },
+            {
+              "type": "code",
+              "lang": "javascript",
+              "code": "import { describe, it, expect } from \"vitest\";\nimport { appliquerRemise } from \"./remise.js\";\n\ndescribe(\"appliquerRemise\", () => {\n  it(\"applique 10 % au-dessus de 100 €\", () => {\n    // arrange\n    const panier = { total: 200 };\n    // act\n    const resultat = appliquerRemise(panier, 10);\n    // assert\n    expect(resultat).toBe(180);\n  });\n\n  it(\"laisse le total inchangé sous le seuil\", () => {\n    expect(appliquerRemise({ total: 50 }, 10)).toBe(50);\n  });\n});"
+            },
+            {
+              "type": "p",
+              "text": "Un test doit être **déterministe** : mêmes entrées, même résultat, sans dépendre de l'heure, du hasard, du réseau ou de l'ordre d'exécution. Le hasard se remplace par une valeur fixe injectée, l'heure par une horloge simulée."
+            },
+            {
+              "type": "warning",
+              "text": "Un test qui vérifie dix choses à la fois masque la cause d'un échec. Si la première assertion échoue, les suivantes ne sont jamais exécutées et le diagnostic devient plus lent."
+            }
           ],
           "exercise": {
             "title": "Nommer un test",
             "instructions": "Proposez un nom de test pour la règle : une remise de 10 % s'applique à partir de 100 €.",
-            "hints": ["Le nom décrit le comportement attendu.", "Il mentionne la condition et le résultat."],
-            "solution": "« applique 10 % à partir de 100 € » (et un second test pour le cas sous le seuil)."
+            "hints": [
+              "Le nom décrit le comportement attendu.",
+              "Il mentionne la condition et le résultat."
+            ],
+            "solution": "« applique 10 % à partir de 100 € » (et un second test pour le cas sous le seuil).",
+            "check": {
+              "type": "any",
+              "any": [
+                "10 %",
+                "10%",
+                "100"
+              ]
+            }
           },
           "quiz": [
-            { "id": "tq-02-q1", "type": "single", "difficulty": 1, "question": "Que signifie un test déterministe ?", "options": ["Il s'exécute vite", "Il donne toujours le même résultat pour les mêmes entrées", "Il ne teste qu'une fonction", "Il utilise le réseau"], "answer": 1, "explanation": "Le déterminisme est la condition d'un pipeline fiable.", "hints": [] },
-            { "id": "tq-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi une seule assertion logique par test ?", "options": ["Pour accélérer l'exécution", "Pour identifier immédiatement la cause d'un échec", "Pour éviter les mocks", "Pour supprimer la couverture"], "answer": 1, "explanation": "Un test ciblé produit un diagnostic clair.", "hints": [] }
+            {
+              "id": "tq-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que signifie un test déterministe ?",
+              "options": [
+                "Il s'exécute vite",
+                "Il donne toujours le même résultat pour les mêmes entrées",
+                "Il ne teste qu'une fonction",
+                "Il utilise le réseau"
+              ],
+              "answer": 1,
+              "explanation": "Le déterminisme est la condition d'un pipeline fiable.",
+              "hints": []
+            },
+            {
+              "id": "tq-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi une seule assertion logique par test ?",
+              "options": [
+                "Pour accélérer l'exécution",
+                "Pour identifier immédiatement la cause d'un échec",
+                "Pour éviter les mocks",
+                "Pour supprimer la couverture"
+              ],
+              "answer": 1,
+              "explanation": "Un test ciblé produit un diagnostic clair.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Doubles de test : stubs, mocks et fakes ».",
+          "summary": [
+            "Un test décrit un comportement attendu.",
+            "Arrange, act, assert.",
+            "Un test par règle, cas limite inclus."
           ]
         },
         {
@@ -68,20 +198,77 @@
             "Éviter les mocks inutiles"
           ],
           "content": [
-            { "type": "p", "text": "Un **double de test** remplace une dépendance réelle. Un **stub** renvoie une valeur fixe (« le serveur répond 200 »). Un **mock** vérifie qu'un appel a eu lieu avec certains arguments. Un **fake** est une implémentation simplifiée mais fonctionnelle (une base en mémoire)." },
-            { "type": "code", "lang": "javascript", "code": "// Stub : la dépendance renvoie une valeur contrôlée\nconst clientStub = {\n  get: async () => ({ statut: 200, corps: { nom: \"Ada\" } })\n};\n\n// Mock : on vérifie l'appel\nconst journal = { ecrire: vi.fn() };\nawait inscrire({ clientStub, journal }, { nom: \"Ada\" });\nexpect(journal.ecrire).toHaveBeenCalledWith(\"inscription:Ada\");" },
-            { "type": "p", "text": "Doublez les dépendances **externes** et instables : réseau, horloge, envoi d'e-mails, service de paiement. Ne doublez pas votre propre logique métier : vous testeriez le double, pas le code." },
-            { "type": "warning", "text": "Un test qui vérifie des détails d'implémentation (« appeler get deux fois ») casse au premier refactoring sans défaut réel. Vérifiez le comportement observable, pas la mécanique interne." }
+            {
+              "type": "p",
+              "text": "Un **double de test** remplace une dépendance réelle. Un **stub** renvoie une valeur fixe (« le serveur répond 200 »). Un **mock** vérifie qu'un appel a eu lieu avec certains arguments. Un **fake** est une implémentation simplifiée mais fonctionnelle (une base en mémoire)."
+            },
+            {
+              "type": "code",
+              "lang": "javascript",
+              "code": "// Stub : la dépendance renvoie une valeur contrôlée\nconst clientStub = {\n  get: async () => ({ statut: 200, corps: { nom: \"Ada\" } })\n};\n\n// Mock : on vérifie l'appel\nconst journal = { ecrire: vi.fn() };\nawait inscrire({ clientStub, journal }, { nom: \"Ada\" });\nexpect(journal.ecrire).toHaveBeenCalledWith(\"inscription:Ada\");"
+            },
+            {
+              "type": "p",
+              "text": "Doublez les dépendances **externes** et instables : réseau, horloge, envoi d'e-mails, service de paiement. Ne doublez pas votre propre logique métier : vous testeriez le double, pas le code."
+            },
+            {
+              "type": "warning",
+              "text": "Un test qui vérifie des détails d'implémentation (« appeler get deux fois ») casse au premier refactoring sans défaut réel. Vérifiez le comportement observable, pas la mécanique interne."
+            }
           ],
           "exercise": {
             "title": "Choisir le double",
             "instructions": "Vous testez l'envoi d'un e-mail de confirmation. Quel double utiliser : stub, mock ou fake ?",
-            "hints": ["Vous voulez éviter un vrai envoi.", "Vous vérifiez qu'un message a bien été transmis."],
-            "solution": "Un mock (ou un fake de service d'e-mail) : on vérifie que l'envoi a eu lieu avec le bon destinataire, sans expédier de vrai message."
+            "hints": [
+              "Vous voulez éviter un vrai envoi.",
+              "Vous vérifiez qu'un message a bien été transmis."
+            ],
+            "solution": "Un mock (ou un fake de service d'e-mail) : on vérifie que l'envoi a eu lieu avec le bon destinataire, sans expédier de vrai message.",
+            "check": {
+              "type": "any",
+              "any": [
+                "mock",
+                "fake"
+              ]
+            }
           },
           "quiz": [
-            { "id": "tq-03-q1", "type": "single", "difficulty": 2, "question": "Quelle est la différence entre stub et mock ?", "options": ["Le stub renvoie une valeur, le mock vérifie l'appel", "Aucune", "Le mock est plus rapide", "Le stub teste l'interface"], "answer": 0, "explanation": "Le stub fournit une réponse contrôlée ; le mock permet d'observer les interactions.", "hints": [] },
-            { "id": "tq-03-q2", "type": "single", "difficulty": 2, "question": "Que faut-il éviter de doubler dans un test ?", "options": ["Le réseau", "L'horloge système", "Votre propre logique métier", "Le service de paiement"], "answer": 2, "explanation": "Doubler sa propre logique revient à tester le double, sans vérifier le code réel.", "hints": [] }
+            {
+              "id": "tq-03-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quelle est la différence entre stub et mock ?",
+              "options": [
+                "Le stub renvoie une valeur, le mock vérifie l'appel",
+                "Aucune",
+                "Le mock est plus rapide",
+                "Le stub teste l'interface"
+              ],
+              "answer": 0,
+              "explanation": "Le stub fournit une réponse contrôlée ; le mock permet d'observer les interactions.",
+              "hints": []
+            },
+            {
+              "id": "tq-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que faut-il éviter de doubler dans un test ?",
+              "options": [
+                "Le réseau",
+                "L'horloge système",
+                "Votre propre logique métier",
+                "Le service de paiement"
+              ],
+              "answer": 2,
+              "explanation": "Doubler sa propre logique revient à tester le double, sans vérifier le code réel.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Tests d'intégration et de bout en bout ».",
+          "summary": [
+            "Un stub fournit une réponse, un mock vérifie un appel.",
+            "Un fake est une implémentation simplifiée.",
+            "Choisir le double le plus simple suffisant."
           ]
         }
       ]
@@ -99,21 +286,82 @@
             "Écrire un parcours de bout en bout utile"
           ],
           "content": [
-            { "type": "p", "text": "Un test d'intégration vérifie que plusieurs pièces fonctionnent ensemble : une requête HTTP traverse le routeur, la validation et la base. Il détecte les erreurs de contrat que les tests unitaires ignorent." },
-            { "type": "p", "text": "Chaque test doit partir d'un état connu : base de test dédiée, données créées puis supprimées, transactions annulées. Partager une base de développement entre les tests produit des échecs dépendants de l'ordre d'exécution." },
-            { "type": "code", "lang": "javascript", "code": "beforeEach(async () => {\n  await db.query(\"TRUNCATE taches RESTART IDENTITY\");\n});\n\nit(\"crée une tâche et la renvoie\", async () => {\n  const res = await request(app)\n    .post(\"/taches\")\n    .send({ titre: \"Acheter du pain\" });\n\n  expect(res.status).toBe(201);\n  expect(res.body.titre).toBe(\"Acheter du pain\");\n});" },
-            { "type": "p", "text": "Un test de bout en bout suit un **parcours utilisateur** : se connecter, remplir un formulaire, valider un résultat. On en garde peu, sur les chemins critiques (connexion, paiement, inscription), car ils sont lents et sensibles à l'environnement." },
-            { "type": "warning", "text": "Un test qui échoue parfois sans changement de code est **instable**. Ne le relancez pas jusqu'à ce qu'il passe : identifiez l'attente manquante, la dépendance réseau ou l'état partagé." }
+            {
+              "type": "p",
+              "text": "Un test d'intégration vérifie que plusieurs pièces fonctionnent ensemble : une requête HTTP traverse le routeur, la validation et la base. Il détecte les erreurs de contrat que les tests unitaires ignorent."
+            },
+            {
+              "type": "p",
+              "text": "Chaque test doit partir d'un état connu : base de test dédiée, données créées puis supprimées, transactions annulées. Partager une base de développement entre les tests produit des échecs dépendants de l'ordre d'exécution."
+            },
+            {
+              "type": "code",
+              "lang": "javascript",
+              "code": "beforeEach(async () => {\n  await db.query(\"TRUNCATE taches RESTART IDENTITY\");\n});\n\nit(\"crée une tâche et la renvoie\", async () => {\n  const res = await request(app)\n    .post(\"/taches\")\n    .send({ titre: \"Acheter du pain\" });\n\n  expect(res.status).toBe(201);\n  expect(res.body.titre).toBe(\"Acheter du pain\");\n});"
+            },
+            {
+              "type": "p",
+              "text": "Un test de bout en bout suit un **parcours utilisateur** : se connecter, remplir un formulaire, valider un résultat. On en garde peu, sur les chemins critiques (connexion, paiement, inscription), car ils sont lents et sensibles à l'environnement."
+            },
+            {
+              "type": "warning",
+              "text": "Un test qui échoue parfois sans changement de code est **instable**. Ne le relancez pas jusqu'à ce qu'il passe : identifiez l'attente manquante, la dépendance réseau ou l'état partagé."
+            }
           ],
           "exercise": {
             "title": "Isoler les tests",
             "instructions": "Deux tests d'intégration échouent seulement quand ils sont exécutés dans un ordre donné. Quelle est la cause probable et la correction ?",
-            "hints": ["Le second test voit les données du premier.", "Chaque test doit préparer son propre état."],
-            "solution": "Un état partagé : les données ne sont pas nettoyées entre les tests. Réinitialiser la base (ou utiliser une transaction annulée) avant chaque test."
+            "hints": [
+              "Le second test voit les données du premier.",
+              "Chaque test doit préparer son propre état."
+            ],
+            "solution": "Un état partagé : les données ne sont pas nettoyées entre les tests. Réinitialiser la base (ou utiliser une transaction annulée) avant chaque test.",
+            "check": {
+              "type": "any",
+              "any": [
+                "état partagé",
+                "ordre",
+                "nettoy"
+              ]
+            }
           },
           "quiz": [
-            { "id": "tq-04-q1", "type": "single", "difficulty": 2, "question": "Pourquoi isoler les données entre tests d'intégration ?", "options": ["Pour accélérer le réseau", "Pour éviter que les tests dépendent de l'ordre d'exécution", "Pour supprimer la base", "Pour éviter les mocks"], "answer": 1, "explanation": "Un état partagé crée des dépendances invisibles entre tests.", "hints": [] },
-            { "id": "tq-04-q2", "type": "single", "difficulty": 2, "question": "Que faire d'un test instable ?", "options": ["Le relancer jusqu'à ce qu'il passe", "Le supprimer systématiquement", "Identifier et corriger la cause", "L'exécuter en dernier"], "answer": 2, "explanation": "L'instabilité masque un vrai défaut : attente manquante, réseau, état partagé.", "hints": [] }
+            {
+              "id": "tq-04-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi isoler les données entre tests d'intégration ?",
+              "options": [
+                "Pour accélérer le réseau",
+                "Pour éviter que les tests dépendent de l'ordre d'exécution",
+                "Pour supprimer la base",
+                "Pour éviter les mocks"
+              ],
+              "answer": 1,
+              "explanation": "Un état partagé crée des dépendances invisibles entre tests.",
+              "hints": []
+            },
+            {
+              "id": "tq-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que faire d'un test instable ?",
+              "options": [
+                "Le relancer jusqu'à ce qu'il passe",
+                "Le supprimer systématiquement",
+                "Identifier et corriger la cause",
+                "L'exécuter en dernier"
+              ],
+              "answer": 2,
+              "explanation": "L'instabilité masque un vrai défaut : attente manquante, réseau, état partagé.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Qualité continue : lint, couverture et revue ».",
+          "summary": [
+            "Des tests dépendants partagent un état.",
+            "Chaque test prépare et nettoie ses données.",
+            "L'ordre d'exécution ne doit rien changer."
           ]
         },
         {
@@ -125,26 +373,102 @@
             "Organiser une revue de code utile"
           ],
           "content": [
-            { "type": "p", "text": "Les **linters** et **formateurs** mécanisent les règles de style et détectent des erreurs fréquentes (variable inutilisée, comparaison suspecte). Les faire tourner dans le pipeline évite les débats de goût en revue et garde un code homogène." },
-            { "type": "p", "text": "La **couverture** mesure la proportion de lignes ou de branches exécutées par les tests. Elle indique ce qui n'est **pas** testé, pas la qualité des tests : 100 % de couverture avec des assertions vides ne prouve rien." },
-            { "type": "table", "headers": ["Pratique", "Bénéfice"], "rows": [
-              ["Lint et format automatiques", "Code homogène, erreurs triviales écartées"],
-              ["Tests dans le pipeline", "Aucune régression fusionnée sans détection"],
-              ["Revue de code courte et ciblée", "Partage de connaissance, défauts repérés"],
-              ["Tests d'accessibilité", "Interface utilisable au clavier et au lecteur d'écran"]
-            ] },
-            { "type": "p", "text": "Le **TDD** (développement piloté par les tests) propose un cycle court : écrire un test qui échoue, écrire le minimum pour le faire passer, puis remanier. Le bénéfice principal est une conception testable, pas la couverture en elle-même." },
-            { "type": "warning", "text": "Une revue qui se limite au style oublie les vrais risques : erreurs de bord, oublis de droits, secrets exposés, requêtes coûteuses. Les outils traitent le style, la revue traite le raisonnement." }
+            {
+              "type": "p",
+              "text": "Les **linters** et **formateurs** mécanisent les règles de style et détectent des erreurs fréquentes (variable inutilisée, comparaison suspecte). Les faire tourner dans le pipeline évite les débats de goût en revue et garde un code homogène."
+            },
+            {
+              "type": "p",
+              "text": "La **couverture** mesure la proportion de lignes ou de branches exécutées par les tests. Elle indique ce qui n'est **pas** testé, pas la qualité des tests : 100 % de couverture avec des assertions vides ne prouve rien."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Pratique",
+                "Bénéfice"
+              ],
+              "rows": [
+                [
+                  "Lint et format automatiques",
+                  "Code homogène, erreurs triviales écartées"
+                ],
+                [
+                  "Tests dans le pipeline",
+                  "Aucune régression fusionnée sans détection"
+                ],
+                [
+                  "Revue de code courte et ciblée",
+                  "Partage de connaissance, défauts repérés"
+                ],
+                [
+                  "Tests d'accessibilité",
+                  "Interface utilisable au clavier et au lecteur d'écran"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Le **TDD** (développement piloté par les tests) propose un cycle court : écrire un test qui échoue, écrire le minimum pour le faire passer, puis remanier. Le bénéfice principal est une conception testable, pas la couverture en elle-même."
+            },
+            {
+              "type": "warning",
+              "text": "Une revue qui se limite au style oublie les vrais risques : erreurs de bord, oublis de droits, secrets exposés, requêtes coûteuses. Les outils traitent le style, la revue traite le raisonnement."
+            }
           ],
           "exercise": {
             "title": "Lire la couverture",
             "instructions": "Un module affiche 95 % de couverture mais aucune assertion n'est vérifiée. Quelle conclusion tirez-vous ?",
-            "hints": ["La couverture mesure l'exécution, pas la vérification.", "Un test sans assertion passe toujours."],
-            "solution": "La couverture est trompeuse : les lignes sont exécutées mais aucun comportement n'est vérifié. Il faut des assertions sur les résultats attendus."
+            "hints": [
+              "La couverture mesure l'exécution, pas la vérification.",
+              "Un test sans assertion passe toujours."
+            ],
+            "solution": "La couverture est trompeuse : les lignes sont exécutées mais aucun comportement n'est vérifié. Il faut des assertions sur les résultats attendus.",
+            "check": {
+              "type": "any",
+              "any": [
+                "assertion",
+                "trompeuse",
+                "trompeur"
+              ]
+            }
           },
           "quiz": [
-            { "id": "tq-05-q1", "type": "single", "difficulty": 1, "question": "Que mesure la couverture de code ?", "options": ["La qualité des assertions", "La proportion de code exécutée par les tests", "Le nombre de bugs restants", "La vitesse du pipeline"], "answer": 1, "explanation": "C'est une mesure d'exécution, pas une preuve de pertinence des tests.", "hints": [] },
-            { "id": "tq-05-q2", "type": "single", "difficulty": 2, "question": "Quel est le principal bénéfice du TDD ?", "options": ["Une couverture de 100 %", "Une conception testable et des tests écrits avant le code", "Moins de code", "Des tests plus rapides"], "answer": 1, "explanation": "Le cycle test-code-remaniement guide la conception et documente le comportement.", "hints": [] }
+            {
+              "id": "tq-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que mesure la couverture de code ?",
+              "options": [
+                "La qualité des assertions",
+                "La proportion de code exécutée par les tests",
+                "Le nombre de bugs restants",
+                "La vitesse du pipeline"
+              ],
+              "answer": 1,
+              "explanation": "C'est une mesure d'exécution, pas une preuve de pertinence des tests.",
+              "hints": []
+            },
+            {
+              "id": "tq-05-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel est le principal bénéfice du TDD ?",
+              "options": [
+                "Une couverture de 100 %",
+                "Une conception testable et des tests écrits avant le code",
+                "Moins de code",
+                "Des tests plus rapides"
+              ],
+              "answer": 1,
+              "explanation": "Le cycle test-code-remaniement guide la conception et documente le comportement.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "La couverture mesure l'exécution, pas la vérification.",
+            "Sans assertion, un test ne prouve rien.",
+            "Lint et revue complètent les tests."
           ]
         }
       ]

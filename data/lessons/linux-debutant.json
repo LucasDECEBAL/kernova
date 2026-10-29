@@ -11,27 +11,81 @@
         "Comprendre qu'un système Linux est multi-utilisateur"
       ],
       "content": [
-        { "type": "p", "text": "Linux est un **noyau** de système d'exploitation libre, créé par Linus Torvalds en 1991. Le noyau gère le processeur, la mémoire, les disques et les périphériques. Il n'est presque jamais utilisé seul : il est livré au sein d'une **distribution** (Debian, Ubuntu, Fedora, Arch Linux…) qui ajoute des programmes, un gestionnaire de paquets et, éventuellement, une interface graphique." },
-        { "type": "h", "text": "Noyau, distribution, shell" },
-        { "type": "list", "items": [
-          "**Noyau** : le cœur du système, qui dialogue avec le matériel.",
-          "**Distribution** : noyau + logiciels + outils de gestion, par exemple Debian ou Fedora.",
-          "**Shell** : l'interpréteur de commandes qui lit vos instructions. Bash est le plus répandu."
-        ] },
-        { "type": "h", "text": "Une arborescence unique" },
-        { "type": "p", "text": "Sous Linux, tout part d'une racine notée `/`. Il n'existe pas de lettres de lecteur comme `C:` : les disques et clés USB sont **montés** à un endroit de l'arborescence." },
-        { "type": "table", "headers": ["Dossier", "Rôle"], "rows": [
-          ["/home", "Dossiers personnels des utilisateurs (par exemple /home/alice)"],
-          ["/root", "Dossier personnel de l'administrateur root"],
-          ["/etc", "Fichiers de configuration du système"],
-          ["/var", "Données variables : journaux (/var/log), files d'attente, bases"],
-          ["/usr", "Logiciels et bibliothèques installés pour tous les utilisateurs"],
-          ["/bin et /usr/bin", "Programmes essentiels, dont les commandes de base"],
-          ["/tmp", "Fichiers temporaires, souvent effacés au redémarrage"]
-        ] },
-        { "type": "code", "lang": "bash", "title": "Explorer la racine", "code": "ls /\nls /home\nls /etc | head -n 5" },
-        { "type": "tip", "text": "Les noms sont sensibles à la casse : `Documents` et `documents` désignent deux dossiers différents." },
-        { "type": "p", "text": "Linux est **multi-utilisateur** : chaque personne possède un compte, un dossier personnel et des droits limités. Nous verrons plus loin comment ces droits fonctionnent." }
+        {
+          "type": "p",
+          "text": "Linux est un **noyau** de système d'exploitation libre, créé par Linus Torvalds en 1991. Le noyau gère le processeur, la mémoire, les disques et les périphériques. Il n'est presque jamais utilisé seul : il est livré au sein d'une **distribution** (Debian, Ubuntu, Fedora, Arch Linux…) qui ajoute des programmes, un gestionnaire de paquets et, éventuellement, une interface graphique."
+        },
+        {
+          "type": "h",
+          "text": "Noyau, distribution, shell"
+        },
+        {
+          "type": "list",
+          "items": [
+            "**Noyau** : le cœur du système, qui dialogue avec le matériel.",
+            "**Distribution** : noyau + logiciels + outils de gestion, par exemple Debian ou Fedora.",
+            "**Shell** : l'interpréteur de commandes qui lit vos instructions. Bash est le plus répandu."
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Une arborescence unique"
+        },
+        {
+          "type": "p",
+          "text": "Sous Linux, tout part d'une racine notée `/`. Il n'existe pas de lettres de lecteur comme `C:` : les disques et clés USB sont **montés** à un endroit de l'arborescence."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Dossier",
+            "Rôle"
+          ],
+          "rows": [
+            [
+              "/home",
+              "Dossiers personnels des utilisateurs (par exemple /home/alice)"
+            ],
+            [
+              "/root",
+              "Dossier personnel de l'administrateur root"
+            ],
+            [
+              "/etc",
+              "Fichiers de configuration du système"
+            ],
+            [
+              "/var",
+              "Données variables : journaux (/var/log), files d'attente, bases"
+            ],
+            [
+              "/usr",
+              "Logiciels et bibliothèques installés pour tous les utilisateurs"
+            ],
+            [
+              "/bin et /usr/bin",
+              "Programmes essentiels, dont les commandes de base"
+            ],
+            [
+              "/tmp",
+              "Fichiers temporaires, souvent effacés au redémarrage"
+            ]
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "title": "Explorer la racine",
+          "code": "ls /\nls /home\nls /etc | head -n 5"
+        },
+        {
+          "type": "tip",
+          "text": "Les noms sont sensibles à la casse : `Documents` et `documents` désignent deux dossiers différents."
+        },
+        {
+          "type": "p",
+          "text": "Linux est **multi-utilisateur** : chaque personne possède un compte, un dossier personnel et des droits limités. Nous verrons plus loin comment ces droits fonctionnent."
+        }
       ],
       "exercise": {
         "title": "Où se trouve la configuration ?",
@@ -40,7 +94,14 @@
           "Le nom du dossier est court et évoque la configuration.",
           "C'est le dossier situé directement à la racine, à côté de /home et /var."
         ],
-        "solution": "/etc. Des fichiers comme /etc/hosts ou la configuration réseau (selon la distribution) s'y trouvent."
+        "solution": "/etc. Des fichiers comme /etc/hosts ou la configuration réseau (selon la distribution) s'y trouvent.",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "/etc"
+          ],
+          "success": "Exact : /etc contient la configuration du système."
+        }
       },
       "quiz": [
         {
@@ -48,10 +109,17 @@
           "type": "single",
           "difficulty": 1,
           "question": "Quel élément correspond au noyau Linux ?",
-          "options": ["Ubuntu", "Le cœur du système qui gère le matériel", "Le navigateur web", "Un logiciel de bureautique"],
+          "options": [
+            "Ubuntu",
+            "Le cœur du système qui gère le matériel",
+            "Le navigateur web",
+            "Un logiciel de bureautique"
+          ],
           "answer": 1,
           "explanation": "Le noyau est le composant central qui pilote le matériel. Ubuntu est une distribution qui embarque ce noyau.",
-          "hints": ["Le noyau est en contact direct avec le matériel."]
+          "hints": [
+            "Le noyau est en contact direct avec le matériel."
+          ]
         },
         {
           "id": "linux-01-q2",
@@ -62,7 +130,13 @@
           "explanation": "Linux utilise une racine unique `/` et monte les disques à l'intérieur de l'arborescence.",
           "hints": []
         }
-      ]
+      ],
+      "summary": [
+        "Linux est un noyau ; une distribution ajoute les outils et le gestionnaire de paquets.",
+        "Tout part de la racine / ; les disques sont montés dans l'arborescence.",
+        "Chaque compte possède un dossier personnel et des droits limités."
+      ],
+      "nextStep": "Le chapitre suivant montre comment dialoguer avec le système : le terminal et ses raccourcis."
     },
     {
       "id": "linux-02",
@@ -74,25 +148,89 @@
         "Obtenir de l'aide sur une commande"
       ],
       "content": [
-        { "type": "p", "text": "Le terminal est la fenêtre qui envoie vos saisies au **shell**. Une commande suit presque toujours le même schéma : `commande [options] [arguments]`." },
-        { "type": "code", "lang": "bash", "title": "Décomposer une commande", "code": "ls -l /home\n# commande  : ls\n# option    : -l\n# argument  : /home" },
-        { "type": "p", "text": "L'invite de commande affiche le nom de l'utilisateur, la machine et le dossier courant. Le symbole `$` indique un utilisateur normal, `#` indique le compte root." },
-        { "type": "code", "lang": "text", "title": "Exemple d'invite", "code": "alice@portable:~$ whoami\nalice" },
-        { "type": "h", "text": "Raccourcis indispensables" },
-        { "type": "table", "headers": ["Touche", "Action"], "rows": [
-          ["Tab", "Complète le nom d'une commande ou d'un fichier"],
-          ["Tab Tab", "Affiche les propositions possibles"],
-          ["↑ / ↓", "Parcourt l'historique des commandes"],
-          ["Ctrl + C", "Interrompt la commande en cours"],
-          ["Ctrl + L", "Efface l'écran (équivalent de clear)"],
-          ["Ctrl + R", "Recherche dans l'historique"]
-        ] },
-        { "type": "h", "text": "Obtenir de l'aide" },
-        { "type": "p", "text": "La plupart des commandes acceptent `--help`. La commande `man` ouvre le manuel complet. Dans le manuel, `/mot` cherche un terme et `q` quitte." },
-        { "type": "code", "lang": "bash", "code": "ls --help\nman ls" },
-        { "type": "p", "text": "`echo` affiche simplement du texte. Il est utile pour tester une syntaxe :" },
-        { "type": "code", "lang": "bash", "code": "echo Bonjour Linux" },
-        { "type": "tip", "text": "Une erreur de syntaxe n'est pas dangereuse en soi. Lisez le message affiché avant de relancer la commande." }
+        {
+          "type": "p",
+          "text": "Le terminal est la fenêtre qui envoie vos saisies au **shell**. Une commande suit presque toujours le même schéma : `commande [options] [arguments]`."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "title": "Décomposer une commande",
+          "code": "ls -l /home\n# commande  : ls\n# option    : -l\n# argument  : /home"
+        },
+        {
+          "type": "p",
+          "text": "L'invite de commande affiche le nom de l'utilisateur, la machine et le dossier courant. Le symbole `$` indique un utilisateur normal, `#` indique le compte root."
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "title": "Exemple d'invite",
+          "code": "alice@portable:~$ whoami\nalice"
+        },
+        {
+          "type": "h",
+          "text": "Raccourcis indispensables"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Touche",
+            "Action"
+          ],
+          "rows": [
+            [
+              "Tab",
+              "Complète le nom d'une commande ou d'un fichier"
+            ],
+            [
+              "Tab Tab",
+              "Affiche les propositions possibles"
+            ],
+            [
+              "↑ / ↓",
+              "Parcourt l'historique des commandes"
+            ],
+            [
+              "Ctrl + C",
+              "Interrompt la commande en cours"
+            ],
+            [
+              "Ctrl + L",
+              "Efface l'écran (équivalent de clear)"
+            ],
+            [
+              "Ctrl + R",
+              "Recherche dans l'historique"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Obtenir de l'aide"
+        },
+        {
+          "type": "p",
+          "text": "La plupart des commandes acceptent `--help`. La commande `man` ouvre le manuel complet. Dans le manuel, `/mot` cherche un terme et `q` quitte."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "ls --help\nman ls"
+        },
+        {
+          "type": "p",
+          "text": "`echo` affiche simplement du texte. Il est utile pour tester une syntaxe :"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "echo Bonjour Linux"
+        },
+        {
+          "type": "tip",
+          "text": "Une erreur de syntaxe n'est pas dangereuse en soi. Lisez le message affiché avant de relancer la commande."
+        }
       ],
       "exercise": {
         "title": "Trouver l'aide",
@@ -101,7 +239,14 @@
           "Le manuel s'ouvre avec une commande dont le nom signifie « manual ».",
           "Le nom de la commande à documenter est cp."
         ],
-        "solution": "man cp"
+        "solution": "man cp",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "man cp"
+          ],
+          "success": "Oui : man cp ouvre le manuel de la commande cp."
+        }
       },
       "quiz": [
         {
@@ -109,21 +254,38 @@
           "type": "single",
           "difficulty": 1,
           "question": "Dans `ls -l /home`, que représente `-l` ?",
-          "options": ["Un argument", "Une option", "Le nom d'un fichier", "Un chemin relatif"],
+          "options": [
+            "Un argument",
+            "Une option",
+            "Le nom d'un fichier",
+            "Un chemin relatif"
+          ],
           "answer": 1,
           "explanation": "Les options commencent par un tiret et modifient le comportement de la commande.",
-          "hints": ["Pensez au tiret qui précède la lettre."]
+          "hints": [
+            "Pensez au tiret qui précède la lettre."
+          ]
         },
         {
           "id": "linux-02-q2",
           "type": "text",
           "difficulty": 1,
           "question": "Quelle commande affiche le manuel de `ls` ?",
-          "answer": ["man ls"],
+          "answer": [
+            "man ls"
+          ],
           "explanation": "`man` suivi du nom de la commande ouvre sa documentation complète.",
-          "hints": ["Le nom de la commande recherchée est ls."]
+          "hints": [
+            "Le nom de la commande recherchée est ls."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "Une commande se compose d'un nom, d'options introduites par un tiret et d'arguments.",
+        "Tab complète les noms, Ctrl+R cherche dans l'historique, Ctrl+C interrompt.",
+        "--help et man donnent la documentation d'une commande."
+      ],
+      "nextStep": "Vous savez lancer une commande : reste à vous déplacer dans l'arborescence."
     },
     {
       "id": "linux-03",
@@ -135,24 +297,70 @@
         "Lister un dossier avec les options utiles de ls"
       ],
       "content": [
-        { "type": "p", "text": "Le shell garde en mémoire un **dossier courant**. La commande `pwd` (print working directory) l'affiche et `cd` le change." },
-        { "type": "code", "lang": "bash", "title": "Premiers déplacements", "code": "pwd          # affiche /home/alice\ncd /etc      # va dans /etc\npwd          # affiche /etc\ncd ~         # retourne dans le dossier personnel\ncd ..        # remonte d'un niveau" },
-        { "type": "h", "text": "Chemin absolu et chemin relatif" },
-        { "type": "p", "text": "Un **chemin absolu** commence par `/` et décrit l'emplacement depuis la racine : `/home/alice/Documents`. Un **chemin relatif** part du dossier courant : `Documents/projets`." },
-        { "type": "table", "headers": ["Symbole", "Signification"], "rows": [
-          [".", "Le dossier courant"],
-          ["..", "Le dossier parent"],
-          ["~", "Le dossier personnel de l'utilisateur"],
-          ["-", "Le dossier précédent (cd -)"]
-        ] },
-        { "type": "h", "text": "Lister le contenu avec ls" },
-        { "type": "code", "lang": "bash", "code": "ls\nls -l\nls -a\nls -lh /var/log" },
-        { "type": "list", "items": [
-          "`-l` : format détaillé (droits, propriétaire, taille, date).",
-          "`-a` : affiche aussi les fichiers cachés, dont le nom commence par un point.",
-          "`-h` : tailles lisibles (Ko, Mo) lorsqu'elles sont combinées à `-l`."
-        ] },
-        { "type": "tip", "text": "Les options courtes se combinent : `ls -la` équivaut à `ls -l -a`." }
+        {
+          "type": "p",
+          "text": "Le shell garde en mémoire un **dossier courant**. La commande `pwd` (print working directory) l'affiche et `cd` le change."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "title": "Premiers déplacements",
+          "code": "pwd          # affiche /home/alice\ncd /etc      # va dans /etc\npwd          # affiche /etc\ncd ~         # retourne dans le dossier personnel\ncd ..        # remonte d'un niveau"
+        },
+        {
+          "type": "h",
+          "text": "Chemin absolu et chemin relatif"
+        },
+        {
+          "type": "p",
+          "text": "Un **chemin absolu** commence par `/` et décrit l'emplacement depuis la racine : `/home/alice/Documents`. Un **chemin relatif** part du dossier courant : `Documents/projets`."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Symbole",
+            "Signification"
+          ],
+          "rows": [
+            [
+              ".",
+              "Le dossier courant"
+            ],
+            [
+              "..",
+              "Le dossier parent"
+            ],
+            [
+              "~",
+              "Le dossier personnel de l'utilisateur"
+            ],
+            [
+              "-",
+              "Le dossier précédent (cd -)"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Lister le contenu avec ls"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "ls\nls -l\nls -a\nls -lh /var/log"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`-l` : format détaillé (droits, propriétaire, taille, date).",
+            "`-a` : affiche aussi les fichiers cachés, dont le nom commence par un point.",
+            "`-h` : tailles lisibles (Ko, Mo) lorsqu'elles sont combinées à `-l`."
+          ]
+        },
+        {
+          "type": "tip",
+          "text": "Les options courtes se combinent : `ls -la` équivaut à `ls -l -a`."
+        }
       ],
       "exercise": {
         "title": "Revenir chez soi",
@@ -161,7 +369,16 @@
           "Le symbole du dossier personnel est un tilde.",
           "Il suffit de cd suivi de ce symbole."
         ],
-        "solution": "cd ~ (ou simplement cd, sans argument)"
+        "solution": "cd ~ (ou simplement cd, sans argument)",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "cd ~",
+            "cd",
+            "cd /home/alice"
+          ],
+          "success": "Correct : cd ~ revient au dossier personnel."
+        }
       },
       "quiz": [
         {
@@ -169,10 +386,17 @@
           "type": "single",
           "difficulty": 1,
           "question": "Quel chemin est absolu ?",
-          "options": ["Documents/cours", "../notes", "/home/alice/cours", "cours"],
+          "options": [
+            "Documents/cours",
+            "../notes",
+            "/home/alice/cours",
+            "cours"
+          ],
           "answer": 2,
           "explanation": "Un chemin absolu commence par la racine `/`.",
-          "hints": ["Regardez le premier caractère du chemin."]
+          "hints": [
+            "Regardez le premier caractère du chemin."
+          ]
         },
         {
           "id": "linux-03-q2",
@@ -185,11 +409,23 @@
             "-r supprime les dossiers vides",
             "-h rend les tailles lisibles lorsqu'il est combiné à -l"
           ],
-          "answer": [0, 1, 3],
+          "answer": [
+            0,
+            1,
+            3
+          ],
           "explanation": "-r ne supprime rien : avec ls, il inverse simplement l'ordre du tri.",
-          "hints": ["Aucune commande de liste ne supprime de fichiers."]
+          "hints": [
+            "Aucune commande de liste ne supprime de fichiers."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "pwd affiche le dossier courant, cd le change.",
+        "Un chemin absolu part de / ; un chemin relatif part du dossier courant.",
+        "ls -l détaille, -a montre les fichiers cachés, -h rend les tailles lisibles."
+      ],
+      "nextStep": "Place aux fichiers : création, copie, déplacement et suppression."
     },
     {
       "id": "linux-04",
@@ -201,20 +437,56 @@
         "Supprimer sans risque inutile"
       ],
       "content": [
-        { "type": "p", "text": "Créer, copier, déplacer et supprimer sont les opérations de base sur les fichiers." },
-        { "type": "h", "text": "Créer" },
-        { "type": "code", "lang": "bash", "code": "mkdir projets\nmkdir -p projets/linux/notes\ntouch projets/linux/notes/intro.txt\nls -R projets" },
-        { "type": "list", "items": [
-          "`touch` crée un fichier vide, ou met à jour la date d'un fichier existant.",
-          "`mkdir` crée un dossier. L'option `-p` crée aussi les dossiers intermédiaires."
-        ] },
-        { "type": "h", "text": "Copier, déplacer, renommer" },
-        { "type": "code", "lang": "bash", "code": "cp intro.txt intro-backup.txt\ncp -r projets sauvegarde\nmv intro-backup.txt archive.txt\nmv archive.txt projets/" },
-        { "type": "p", "text": "Il n'existe pas de commande `rename` universelle : on renomme avec `mv`, car renommer et déplacer sont la même opération sur le système de fichiers." },
-        { "type": "h", "text": "Supprimer" },
-        { "type": "code", "lang": "bash", "code": "rm archive.txt\nrmdir dossier-vide\nrm -r sauvegarde\nrm -i notes.txt" },
-        { "type": "warning", "text": "`rm` supprime définitivement : il n'existe pas de corbeille en ligne de commande. `rm -r` efface un dossier et tout son contenu. Ne construisez jamais une suppression à partir d'une variable non vérifiée. `rm -i` demande une confirmation pour chaque fichier." },
-        { "type": "tip", "text": "Avant une suppression massive, listez d'abord les fichiers concernés avec `ls`, puis lancez la commande." }
+        {
+          "type": "p",
+          "text": "Créer, copier, déplacer et supprimer sont les opérations de base sur les fichiers."
+        },
+        {
+          "type": "h",
+          "text": "Créer"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "mkdir projets\nmkdir -p projets/linux/notes\ntouch projets/linux/notes/intro.txt\nls -R projets"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`touch` crée un fichier vide, ou met à jour la date d'un fichier existant.",
+            "`mkdir` crée un dossier. L'option `-p` crée aussi les dossiers intermédiaires."
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Copier, déplacer, renommer"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "cp intro.txt intro-backup.txt\ncp -r projets sauvegarde\nmv intro-backup.txt archive.txt\nmv archive.txt projets/"
+        },
+        {
+          "type": "p",
+          "text": "Il n'existe pas de commande `rename` universelle : on renomme avec `mv`, car renommer et déplacer sont la même opération sur le système de fichiers."
+        },
+        {
+          "type": "h",
+          "text": "Supprimer"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "rm archive.txt\nrmdir dossier-vide\nrm -r sauvegarde\nrm -i notes.txt"
+        },
+        {
+          "type": "warning",
+          "text": "`rm` supprime définitivement : il n'existe pas de corbeille en ligne de commande. `rm -r` efface un dossier et tout son contenu. Ne construisez jamais une suppression à partir d'une variable non vérifiée. `rm -i` demande une confirmation pour chaque fichier."
+        },
+        {
+          "type": "tip",
+          "text": "Avant une suppression massive, listez d'abord les fichiers concernés avec `ls`, puis lancez la commande."
+        }
       ],
       "exercise": {
         "title": "Structure de projet",
@@ -223,7 +495,14 @@
           "Une option de mkdir crée les dossiers parents.",
           "mkdir accepte plusieurs chemins en arguments."
         ],
-        "solution": "mkdir -p site/css site/img"
+        "solution": "mkdir -p site/css site/img",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "mkdir -p site/css site/img"
+          ],
+          "success": "Exact : -p crée parent et enfants en une commande."
+        }
       },
       "quiz": [
         {
@@ -231,21 +510,40 @@
           "type": "single",
           "difficulty": 1,
           "question": "Quelle commande crée `a/b/c` même si `a` n'existe pas ?",
-          "options": ["mkdir a/b/c", "mkdir -p a/b/c", "touch -p a/b/c", "cp -p a/b/c"],
+          "options": [
+            "mkdir a/b/c",
+            "mkdir -p a/b/c",
+            "touch -p a/b/c",
+            "cp -p a/b/c"
+          ],
           "answer": 1,
           "explanation": "`mkdir -p` crée toute l'arborescence intermédiaire.",
-          "hints": ["Cherchez l'option de mkdir qui concerne les « parents »."]
+          "hints": [
+            "Cherchez l'option de mkdir qui concerne les « parents »."
+          ]
         },
         {
           "id": "linux-04-q2",
           "type": "blank",
           "difficulty": 1,
           "question": "Pour renommer `old.txt` en `new.txt`, on utilise la commande ___ old.txt new.txt.",
-          "answers": [["mv"]],
+          "answers": [
+            [
+              "mv"
+            ]
+          ],
           "explanation": "`mv` déplace ou renomme un fichier selon les arguments fournis.",
-          "hints": ["Cette commande sert aussi à déplacer des fichiers."]
+          "hints": [
+            "Cette commande sert aussi à déplacer des fichiers."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "mkdir -p crée les dossiers parents ; touch crée un fichier vide.",
+        "cp -r copie un dossier ; mv déplace ou renomme.",
+        "rm est définitif : -r pour un dossier, -i pour confirmer chaque suppression."
+      ],
+      "nextStep": "Savoir créer ne suffit pas : apprenez à lire et modifier le contenu des fichiers."
     },
     {
       "id": "linux-05",
@@ -257,19 +555,52 @@
         "Modifier un fichier avec nano"
       ],
       "content": [
-        { "type": "p", "text": "Pour lire un fichier texte : `cat` affiche tout, `less` permet de le faire défiler, `head` et `tail` affichent le début ou la fin." },
-        { "type": "code", "lang": "bash", "code": "cat notes.txt\nless /var/log/syslog\nhead -n 5 notes.txt\ntail -n 10 notes.txt\ntail -f /var/log/syslog" },
-        { "type": "list", "items": [
-          "Dans `less` : `/mot` cherche, `q` quitte. Le fichier syslog n'existe pas sur toutes les distributions.",
-          "`tail -f` affiche les nouvelles lignes au fur et à mesure. Ctrl + C arrête la commande."
-        ] },
-        { "type": "h", "text": "Rediriger la sortie" },
-        { "type": "p", "text": "`>` écrit la sortie dans un fichier en l'écrasant. `>>` ajoute à la fin. `|` (pipe) envoie la sortie d'une commande vers l'entrée de la suivante." },
-        { "type": "code", "lang": "bash", "code": "echo Bonjour > salut.txt\necho Encore >> salut.txt\ncat salut.txt\nls -l | wc -l" },
-        { "type": "h", "text": "Éditer avec nano" },
-        { "type": "p", "text": "`nano` est un éditeur simple, présent sur la plupart des systèmes. Ctrl + O enregistre, Ctrl + X quitte, Ctrl + W cherche." },
-        { "type": "code", "lang": "bash", "code": "nano notes.txt" },
-        { "type": "tip", "text": "`>` efface le contenu existant du fichier avant d'écrire. Vérifiez la cible avant de l'utiliser." }
+        {
+          "type": "p",
+          "text": "Pour lire un fichier texte : `cat` affiche tout, `less` permet de le faire défiler, `head` et `tail` affichent le début ou la fin."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "cat notes.txt\nless /var/log/syslog\nhead -n 5 notes.txt\ntail -n 10 notes.txt\ntail -f /var/log/syslog"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Dans `less` : `/mot` cherche, `q` quitte. Le fichier syslog n'existe pas sur toutes les distributions.",
+            "`tail -f` affiche les nouvelles lignes au fur et à mesure. Ctrl + C arrête la commande."
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Rediriger la sortie"
+        },
+        {
+          "type": "p",
+          "text": "`>` écrit la sortie dans un fichier en l'écrasant. `>>` ajoute à la fin. `|` (pipe) envoie la sortie d'une commande vers l'entrée de la suivante."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "echo Bonjour > salut.txt\necho Encore >> salut.txt\ncat salut.txt\nls -l | wc -l"
+        },
+        {
+          "type": "h",
+          "text": "Éditer avec nano"
+        },
+        {
+          "type": "p",
+          "text": "`nano` est un éditeur simple, présent sur la plupart des systèmes. Ctrl + O enregistre, Ctrl + X quitte, Ctrl + W cherche."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "nano notes.txt"
+        },
+        {
+          "type": "tip",
+          "text": "`>` efface le contenu existant du fichier avant d'écrire. Vérifiez la cible avant de l'utiliser."
+        }
       ],
       "exercise": {
         "title": "Lire la fin d'un journal",
@@ -278,7 +609,15 @@
           "La commande qui lit la fin d'un fichier commence par t.",
           "L'option -n indique le nombre de lignes."
         ],
-        "solution": "tail -n 20 /var/log/app.log"
+        "solution": "tail -n 20 /var/log/app.log",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "tail -n 20 /var/log/app.log",
+            "tail -20 /var/log/app.log"
+          ],
+          "success": "Correct : tail -n 20 affiche les vingt dernières lignes."
+        }
       },
       "quiz": [
         {
@@ -294,19 +633,37 @@
           ],
           "answer": 1,
           "explanation": "`>` remplace le contenu, `>>` ajoute à la suite du contenu existant.",
-          "hints": ["Le double symbole signifie « ajouter »."]
+          "hints": [
+            "Le double symbole signifie « ajouter »."
+          ]
         },
         {
           "id": "linux-05-q2",
           "type": "order",
           "difficulty": 2,
           "question": "Remettez dans l'ordre les étapes : créer un fichier, l'afficher, puis compter ses lignes.",
-          "items": ["Compter les lignes avec wc -l", "Créer le fichier avec echo Bonjour > fichier.txt", "Afficher le contenu avec cat fichier.txt"],
-          "answer": [1, 2, 0],
+          "items": [
+            "Compter les lignes avec wc -l",
+            "Créer le fichier avec echo Bonjour > fichier.txt",
+            "Afficher le contenu avec cat fichier.txt"
+          ],
+          "answer": [
+            1,
+            2,
+            0
+          ],
           "explanation": "On ne peut afficher ou compter un fichier qu'après l'avoir créé.",
-          "hints": ["Commencez par l'étape qui crée le fichier."]
+          "hints": [
+            "Commencez par l'étape qui crée le fichier."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "cat, less, head et tail affichent un fichier ; tail -f suit un journal.",
+        "> écrase, >> ajoute, | enchaîne deux commandes.",
+        "nano édite un fichier : Ctrl+O enregistre, Ctrl+X quitte."
+      ],
+      "nextStep": "Les fichiers appartiennent à des utilisateurs : place aux permissions."
     },
     {
       "id": "linux-06",
@@ -318,24 +675,92 @@
         "Éviter les permissions trop ouvertes"
       ],
       "content": [
-        { "type": "p", "text": "Chaque fichier appartient à un **utilisateur propriétaire** et à un **groupe**. Les droits sont définis pour trois catégories : le propriétaire (u), le groupe (g) et les autres (o)." },
-        { "type": "code", "lang": "text", "title": "Lecture de ls -l", "code": "-rw-r--r-- 1 alice users 2048 oct. 12 10:04 notes.txt\ndrwxr-x--- 2 alice devs  4096 oct. 12 10:05 projet/" },
-        { "type": "table", "headers": ["Lettre", "Pour un fichier", "Pour un dossier"], "rows": [
-          ["r (read)", "Lire le contenu", "Lister les noms"],
-          ["w (write)", "Modifier le contenu", "Créer, renommer ou supprimer des entrées"],
-          ["x (execute)", "Exécuter le fichier", "Entrer dans le dossier (cd)"]
-        ] },
-        { "type": "h", "text": "Modifier avec chmod" },
-        { "type": "p", "text": "En notation **symbolique**, `chmod u+x script.sh` ajoute le droit d'exécution au propriétaire. En notation **octale**, chaque droit vaut r = 4, w = 2, x = 1 ; on additionne les valeurs par catégorie." },
-        { "type": "table", "headers": ["Octal", "Droits", "Usage courant"], "rows": [
-          ["755", "rwxr-xr-x", "Programmes et dossiers lisibles par tous"],
-          ["644", "rw-r--r--", "Fichiers texte ordinaires"],
-          ["600", "rw-------", "Fichiers privés, clés"],
-          ["700", "rwx------", "Dossier strictement privé"]
-        ] },
-        { "type": "code", "lang": "bash", "code": "chmod 644 notes.txt\nchmod u+x script.sh\nchmod go-w notes.txt\nchown alice:devs projet" },
-        { "type": "warning", "text": "Évitez `chmod 777` : il donne les droits d'écriture et d'exécution à tout le monde. C'est presque toujours une mauvaise solution." },
-        { "type": "p", "text": "L'utilisateur root contourne la plupart des contrôles de droits. Une erreur de permission signifie donc souvent qu'il faut corriger le propriétaire ou le groupe, pas élargir les droits." }
+        {
+          "type": "p",
+          "text": "Chaque fichier appartient à un **utilisateur propriétaire** et à un **groupe**. Les droits sont définis pour trois catégories : le propriétaire (u), le groupe (g) et les autres (o)."
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "title": "Lecture de ls -l",
+          "code": "-rw-r--r-- 1 alice users 2048 oct. 12 10:04 notes.txt\ndrwxr-x--- 2 alice devs  4096 oct. 12 10:05 projet/"
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Lettre",
+            "Pour un fichier",
+            "Pour un dossier"
+          ],
+          "rows": [
+            [
+              "r (read)",
+              "Lire le contenu",
+              "Lister les noms"
+            ],
+            [
+              "w (write)",
+              "Modifier le contenu",
+              "Créer, renommer ou supprimer des entrées"
+            ],
+            [
+              "x (execute)",
+              "Exécuter le fichier",
+              "Entrer dans le dossier (cd)"
+            ]
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Modifier avec chmod"
+        },
+        {
+          "type": "p",
+          "text": "En notation **symbolique**, `chmod u+x script.sh` ajoute le droit d'exécution au propriétaire. En notation **octale**, chaque droit vaut r = 4, w = 2, x = 1 ; on additionne les valeurs par catégorie."
+        },
+        {
+          "type": "table",
+          "headers": [
+            "Octal",
+            "Droits",
+            "Usage courant"
+          ],
+          "rows": [
+            [
+              "755",
+              "rwxr-xr-x",
+              "Programmes et dossiers lisibles par tous"
+            ],
+            [
+              "644",
+              "rw-r--r--",
+              "Fichiers texte ordinaires"
+            ],
+            [
+              "600",
+              "rw-------",
+              "Fichiers privés, clés"
+            ],
+            [
+              "700",
+              "rwx------",
+              "Dossier strictement privé"
+            ]
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "chmod 644 notes.txt\nchmod u+x script.sh\nchmod go-w notes.txt\nchown alice:devs projet"
+        },
+        {
+          "type": "warning",
+          "text": "Évitez `chmod 777` : il donne les droits d'écriture et d'exécution à tout le monde. C'est presque toujours une mauvaise solution."
+        },
+        {
+          "type": "p",
+          "text": "L'utilisateur root contourne la plupart des contrôles de droits. Une erreur de permission signifie donc souvent qu'il faut corriger le propriétaire ou le groupe, pas élargir les droits."
+        }
       ],
       "exercise": {
         "title": "Rendre un script exécutable",
@@ -344,7 +769,14 @@
           "La notation symbolique utilise u pour le propriétaire.",
           "Le droit d'exécution s'ajoute avec +x."
         ],
-        "solution": "chmod u+x backup.sh"
+        "solution": "chmod u+x backup.sh",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "chmod u+x backup.sh"
+          ],
+          "success": "Exact : seul le propriétaire reçoit le droit d'exécution."
+        }
       },
       "quiz": [
         {
@@ -360,16 +792,22 @@
           ],
           "answer": 1,
           "explanation": "Le premier caractère d indique un dossier. Les neuf suivants se lisent par blocs de trois : propriétaire, groupe, autres.",
-          "hints": ["Le premier caractère indique le type de l'entrée."]
+          "hints": [
+            "Le premier caractère indique le type de l'entrée."
+          ]
         },
         {
           "id": "linux-06-q2",
           "type": "text",
           "difficulty": 2,
           "question": "Quel mode octal correspond à `rw-r--r--` ?",
-          "answer": ["644"],
+          "answer": [
+            "644"
+          ],
           "explanation": "rw- = 6, r-- = 4, r-- = 4, soit 644.",
-          "hints": ["Additionnez r = 4, w = 2, x = 1 pour chaque bloc."]
+          "hints": [
+            "Additionnez r = 4, w = 2, x = 1 pour chaque bloc."
+          ]
         },
         {
           "id": "linux-06-q3",
@@ -380,7 +818,13 @@
           "explanation": "777 accorde l'écriture à tous les utilisateurs, ce qui expose inutilement la configuration.",
           "hints": []
         }
-      ]
+      ],
+      "summary": [
+        "Neuf caractères après le type : droits du propriétaire, du groupe, des autres.",
+        "r vaut 4, w vaut 2, x vaut 1 ; 644 et 755 couvrent la plupart des cas.",
+        "chmod u+x ajoute un droit sans toucher aux autres ; évitez 777."
+      ],
+      "nextStep": "Les droits s'appliquent à des comptes : voyons les utilisateurs et les groupes."
     },
     {
       "id": "linux-07",
@@ -392,20 +836,51 @@
         "Connaître les commandes de gestion des comptes"
       ],
       "content": [
-        { "type": "p", "text": "Chaque compte possède un identifiant numérique (**UID**), appartient à un ou plusieurs groupes (**GID**) et dispose d'un dossier personnel. Le compte `root` a tous les droits. Pour une action d'administration ponctuelle, on utilise `sudo`." },
-        { "type": "code", "lang": "bash", "code": "whoami\nid\ngroups\nid alice" },
-        { "type": "code", "lang": "text", "title": "Exemple de sortie de id", "code": "uid=1000(alice) gid=1000(alice) groupes=1000(alice),27(sudo)" },
-        { "type": "h", "text": "Fichiers de comptes" },
-        { "type": "p", "text": "`/etc/passwd` décrit les comptes (nom, UID, dossier personnel, shell). Les mots de passe hachés sont dans `/etc/shadow`, lisible uniquement par root. Ne modifiez jamais ces fichiers à la main : utilisez les commandes dédiées." },
-        { "type": "h", "text": "Commandes d'administration" },
-        { "type": "code", "lang": "bash", "code": "sudo useradd -m -s /bin/bash bob\nsudo passwd bob\nsudo usermod -aG sudo bob\nsudo userdel -r bob" },
-        { "type": "list", "items": [
-          "`useradd -m` crée le compte avec son dossier personnel ; `-s` définit le shell.",
-          "`passwd` définit le mot de passe.",
-          "`usermod -aG` ajoute des groupes. Sans `-a`, la liste des groupes est remplacée.",
-          "`userdel -r` supprime le compte et son dossier personnel."
-        ] },
-        { "type": "warning", "text": "Ces commandes modifient le système. Ne les exécutez que sur une machine de test ou une machine virtuelle dont vous êtes responsable. Oublier `-a` avec `usermod -G` retire l'utilisateur de ses autres groupes." }
+        {
+          "type": "p",
+          "text": "Chaque compte possède un identifiant numérique (**UID**), appartient à un ou plusieurs groupes (**GID**) et dispose d'un dossier personnel. Le compte `root` a tous les droits. Pour une action d'administration ponctuelle, on utilise `sudo`."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "whoami\nid\ngroups\nid alice"
+        },
+        {
+          "type": "code",
+          "lang": "text",
+          "title": "Exemple de sortie de id",
+          "code": "uid=1000(alice) gid=1000(alice) groupes=1000(alice),27(sudo)"
+        },
+        {
+          "type": "h",
+          "text": "Fichiers de comptes"
+        },
+        {
+          "type": "p",
+          "text": "`/etc/passwd` décrit les comptes (nom, UID, dossier personnel, shell). Les mots de passe hachés sont dans `/etc/shadow`, lisible uniquement par root. Ne modifiez jamais ces fichiers à la main : utilisez les commandes dédiées."
+        },
+        {
+          "type": "h",
+          "text": "Commandes d'administration"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "sudo useradd -m -s /bin/bash bob\nsudo passwd bob\nsudo usermod -aG sudo bob\nsudo userdel -r bob"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`useradd -m` crée le compte avec son dossier personnel ; `-s` définit le shell.",
+            "`passwd` définit le mot de passe.",
+            "`usermod -aG` ajoute des groupes. Sans `-a`, la liste des groupes est remplacée.",
+            "`userdel -r` supprime le compte et son dossier personnel."
+          ]
+        },
+        {
+          "type": "warning",
+          "text": "Ces commandes modifient le système. Ne les exécutez que sur une machine de test ou une machine virtuelle dont vous êtes responsable. Oublier `-a` avec `usermod -G` retire l'utilisateur de ses autres groupes."
+        }
       ],
       "exercise": {
         "title": "Vérifier son identité",
@@ -414,7 +889,14 @@
           "Le nom de la commande est très court.",
           "Cette commande n'a pas besoin d'option pour cet usage."
         ],
-        "solution": "id"
+        "solution": "id",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "id"
+          ],
+          "success": "Oui : id affiche UID, GID et groupes."
+        }
       },
       "quiz": [
         {
@@ -422,23 +904,50 @@
           "type": "single",
           "difficulty": 2,
           "question": "Quelle option de usermod ajoute un groupe sans retirer les autres ?",
-          "options": ["-G seul", "-aG", "-r", "-d"],
+          "options": [
+            "-G seul",
+            "-aG",
+            "-r",
+            "-d"
+          ],
           "answer": 1,
           "explanation": "`-aG` (append) ajoute des groupes supplémentaires. Sans `-a`, la liste existante est remplacée.",
-          "hints": ["Le « a » signifie « ajouter »."]
+          "hints": [
+            "Le « a » signifie « ajouter »."
+          ]
         },
         {
           "id": "linux-07-q2",
           "type": "match",
           "difficulty": 2,
           "question": "Associez chaque commande à son rôle.",
-          "left": ["whoami", "id", "sudo"],
-          "right": ["Exécuter une commande avec les droits d'administrateur", "Afficher le nom de l'utilisateur courant", "Afficher UID, GID et groupes"],
-          "answer": [1, 2, 0],
+          "left": [
+            "whoami",
+            "id",
+            "sudo"
+          ],
+          "right": [
+            "Exécuter une commande avec les droits d'administrateur",
+            "Afficher le nom de l'utilisateur courant",
+            "Afficher UID, GID et groupes"
+          ],
+          "answer": [
+            1,
+            2,
+            0
+          ],
           "explanation": "whoami donne le nom, id donne les identifiants et les groupes, sudo élève temporairement les privilèges.",
-          "hints": ["whoami est la commande la plus simple : elle répond à « qui suis-je ? »."]
+          "hints": [
+            "whoami est la commande la plus simple : elle répond à « qui suis-je ? »."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "id, whoami et groups identifient l'utilisateur et ses groupes.",
+        "/etc/passwd décrit les comptes ; /etc/shadow protège les empreintes.",
+        "useradd, passwd, usermod -aG et userdel -r administrent les comptes."
+      ],
+      "nextStep": "Un utilisateur lance des programmes : le chapitre suivant traite les processus."
     },
     {
       "id": "linux-08",
@@ -450,19 +959,52 @@
         "Lancer une tâche en arrière-plan"
       ],
       "content": [
-        { "type": "p", "text": "Un **processus** est un programme en cours d'exécution. Chacun reçoit un **PID** (identifiant de processus). Un processus peut en créer d'autres : le **PPID** désigne le processus parent." },
-        { "type": "code", "lang": "bash", "code": "ps\nps aux | head -n 5\ntop\nps -ef | grep bash" },
-        { "type": "list", "items": [
-          "`ps aux` liste tous les processus : utilisateur, PID, CPU, mémoire et commande.",
-          "`top` (ou `htop` si installé) affiche les processus en continu."
-        ] },
-        { "type": "h", "text": "Arrêter un processus" },
-        { "type": "code", "lang": "bash", "code": "kill 1234\nkill -TERM 1234\nkill -9 1234\npkill firefox" },
-        { "type": "p", "text": "Par défaut, `kill` envoie le signal **SIGTERM**, qui demande un arrêt propre. `kill -9` envoie **SIGKILL**, qui ne peut pas être ignoré mais ne laisse pas le programme enregistrer son état. Réservez-le à un dernier recours." },
-        { "type": "h", "text": "Arrière-plan" },
-        { "type": "code", "lang": "bash", "code": "sleep 300 &\njobs" },
-        { "type": "p", "text": "Le `&` lance la commande en arrière-plan. Sur les systèmes modernes, les services (serveurs, démons) sont généralement gérés par `systemctl`, par exemple `systemctl status ssh`." },
-        { "type": "tip", "text": "Vérifiez le PID avec `ps` avant d'utiliser `kill`. Tuer le mauvais processus peut interrompre un service important." }
+        {
+          "type": "p",
+          "text": "Un **processus** est un programme en cours d'exécution. Chacun reçoit un **PID** (identifiant de processus). Un processus peut en créer d'autres : le **PPID** désigne le processus parent."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "ps\nps aux | head -n 5\ntop\nps -ef | grep bash"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`ps aux` liste tous les processus : utilisateur, PID, CPU, mémoire et commande.",
+            "`top` (ou `htop` si installé) affiche les processus en continu."
+          ]
+        },
+        {
+          "type": "h",
+          "text": "Arrêter un processus"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "kill 1234\nkill -TERM 1234\nkill -9 1234\npkill firefox"
+        },
+        {
+          "type": "p",
+          "text": "Par défaut, `kill` envoie le signal **SIGTERM**, qui demande un arrêt propre. `kill -9` envoie **SIGKILL**, qui ne peut pas être ignoré mais ne laisse pas le programme enregistrer son état. Réservez-le à un dernier recours."
+        },
+        {
+          "type": "h",
+          "text": "Arrière-plan"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "sleep 300 &\njobs"
+        },
+        {
+          "type": "p",
+          "text": "Le `&` lance la commande en arrière-plan. Sur les systèmes modernes, les services (serveurs, démons) sont généralement gérés par `systemctl`, par exemple `systemctl status ssh`."
+        },
+        {
+          "type": "tip",
+          "text": "Vérifiez le PID avec `ps` avant d'utiliser `kill`. Tuer le mauvais processus peut interrompre un service important."
+        }
       ],
       "exercise": {
         "title": "Trouver un processus",
@@ -471,7 +1013,15 @@
           "Un pipe envoie la sortie d'une commande vers une autre.",
           "grep filtre les lignes contenant un texte donné."
         ],
-        "solution": "ps aux | grep nginx"
+        "solution": "ps aux | grep nginx",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "ps aux | grep nginx",
+            "ps -ef | grep nginx"
+          ],
+          "success": "Correct : le pipe filtre la sortie de ps."
+        }
       },
       "quiz": [
         {
@@ -479,10 +1029,17 @@
           "type": "single",
           "difficulty": 2,
           "question": "Quel signal `kill` envoie-t-il par défaut ?",
-          "options": ["SIGKILL (-9)", "SIGTERM (-15)", "SIGSTOP", "SIGQUIT (-3)"],
+          "options": [
+            "SIGKILL (-9)",
+            "SIGTERM (-15)",
+            "SIGSTOP",
+            "SIGQUIT (-3)"
+          ],
           "answer": 1,
           "explanation": "Sans option, kill envoie SIGTERM, qui demande au programme de s'arrêter proprement.",
-          "hints": ["Le signal demandant un arrêt propre est celui qui peut être intercepté."]
+          "hints": [
+            "Le signal demandant un arrêt propre est celui qui peut être intercepté."
+          ]
         },
         {
           "id": "linux-08-q2",
@@ -493,7 +1050,13 @@
           "explanation": "SIGKILL ne peut être ni intercepté ni ignoré : le programme est arrêté immédiatement.",
           "hints": []
         }
-      ]
+      ],
+      "summary": [
+        "ps aux liste les processus, top les suit en continu.",
+        "kill envoie SIGTERM par défaut ; kill -9 est un dernier recours.",
+        "& lance en arrière-plan, jobs liste les tâches de la session."
+      ],
+      "nextStep": "Vous savez repérer un processus : apprenez à chercher des fichiers et du texte."
     },
     {
       "id": "linux-09",
@@ -505,26 +1068,59 @@
         "Combiner les commandes avec les pipes"
       ],
       "content": [
-        { "type": "p", "text": "Sur un système qui contient des milliers de fichiers, savoir chercher est essentiel. Deux outils dominent : `find` cherche des **fichiers** selon leurs propriétés, `grep` cherche du **texte** à l'intérieur des fichiers." },
-        { "type": "h", "text": "find" },
-        { "type": "code", "lang": "bash", "code": "find . -name \"*.txt\"\nfind /var/log -type f -name \"*.log\"\nfind . -type d -name projets\nfind . -size +10M\nfind . -mtime -7" },
-        { "type": "list", "items": [
-          "`-name` accepte un motif. Les guillemets empêchent le shell de développer l'astérisque avant find.",
-          "`-type f` ne garde que les fichiers ; `-type d` ne garde que les dossiers.",
-          "`-size +10M` cherche les fichiers de plus de 10 Mo.",
-          "`-mtime -7` cherche les fichiers modifiés dans les 7 derniers jours."
-        ] },
-        { "type": "h", "text": "grep" },
-        { "type": "code", "lang": "bash", "code": "grep \"erreur\" app.log\ngrep -i \"erreur\" app.log\ngrep -n \"erreur\" app.log\ngrep -r \"TODO\" .\ngrep -v \"DEBUG\" app.log" },
-        { "type": "list", "items": [
-          "`-i` ignore la casse.",
-          "`-n` affiche le numéro de chaque ligne trouvée.",
-          "`-r` parcourt les dossiers récursivement.",
-          "`-v` inverse le filtre et affiche les lignes qui ne contiennent pas le motif."
-        ] },
-        { "type": "p", "text": "Combinez les outils avec les pipes. Cette commande compte les lignes contenant « erreur » sans tenir compte de la casse :" },
-        { "type": "code", "lang": "bash", "code": "grep -i erreur app.log | wc -l" },
-        { "type": "tip", "text": "`which commande` indique l'emplacement de l'exécutable. `type commande` indique aussi s'il s'agit d'un alias ou d'une commande intégrée au shell." }
+        {
+          "type": "p",
+          "text": "Sur un système qui contient des milliers de fichiers, savoir chercher est essentiel. Deux outils dominent : `find` cherche des **fichiers** selon leurs propriétés, `grep` cherche du **texte** à l'intérieur des fichiers."
+        },
+        {
+          "type": "h",
+          "text": "find"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "find . -name \"*.txt\"\nfind /var/log -type f -name \"*.log\"\nfind . -type d -name projets\nfind . -size +10M\nfind . -mtime -7"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`-name` accepte un motif. Les guillemets empêchent le shell de développer l'astérisque avant find.",
+            "`-type f` ne garde que les fichiers ; `-type d` ne garde que les dossiers.",
+            "`-size +10M` cherche les fichiers de plus de 10 Mo.",
+            "`-mtime -7` cherche les fichiers modifiés dans les 7 derniers jours."
+          ]
+        },
+        {
+          "type": "h",
+          "text": "grep"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "grep \"erreur\" app.log\ngrep -i \"erreur\" app.log\ngrep -n \"erreur\" app.log\ngrep -r \"TODO\" .\ngrep -v \"DEBUG\" app.log"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`-i` ignore la casse.",
+            "`-n` affiche le numéro de chaque ligne trouvée.",
+            "`-r` parcourt les dossiers récursivement.",
+            "`-v` inverse le filtre et affiche les lignes qui ne contiennent pas le motif."
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Combinez les outils avec les pipes. Cette commande compte les lignes contenant « erreur » sans tenir compte de la casse :"
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "grep -i erreur app.log | wc -l"
+        },
+        {
+          "type": "tip",
+          "text": "`which commande` indique l'emplacement de l'exécutable. `type commande` indique aussi s'il s'agit d'un alias ou d'une commande intégrée au shell."
+        }
       ],
       "exercise": {
         "title": "Compter les erreurs",
@@ -533,7 +1129,14 @@
           "wc -l compte les lignes.",
           "Ici, le filtre se fait sans option de casse."
         ],
-        "solution": "grep ERROR server.log | wc -l"
+        "solution": "grep ERROR server.log | wc -l",
+        "check": {
+          "type": "answers",
+          "accepted": [
+            "grep ERROR server.log | wc -l"
+          ],
+          "success": "Exact : grep filtre, wc -l compte les lignes."
+        }
       },
       "quiz": [
         {
@@ -549,18 +1152,32 @@
           ],
           "answer": 1,
           "explanation": "find recherche des fichiers par nom. grep chercherait du texte à l'intérieur des fichiers, pas leur nom.",
-          "hints": ["Le sujet est le nom du fichier, pas son contenu."]
+          "hints": [
+            "Le sujet est le nom du fichier, pas son contenu."
+          ]
         },
         {
           "id": "linux-09-q2",
           "type": "blank",
           "difficulty": 2,
           "question": "Pour chercher le mot « warning » sans tenir compte de la casse dans app.log : grep ___ warning app.log",
-          "answers": [["-i"]],
+          "answers": [
+            [
+              "-i"
+            ]
+          ],
           "explanation": "L'option -i ignore la casse : Warning, WARNING et warning correspondent.",
-          "hints": ["Cette option est la même que pour ignorer la casse."]
+          "hints": [
+            "Cette option est la même que pour ignorer la casse."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "find cherche par nom, type, taille ou date ; -name accepte un motif.",
+        "grep cherche du texte ; -i ignore la casse, -n affiche le numéro de ligne.",
+        "Les pipes combinent les outils : grep ... | wc -l compte les correspondances."
+      ],
+      "nextStep": "Vous avez les outils de base : assemblez-les dans un script Bash."
     },
     {
       "id": "linux-10",
@@ -572,18 +1189,45 @@
         "Appliquer les bonnes pratiques de base"
       ],
       "content": [
-        { "type": "p", "text": "Un script Bash est un fichier texte contenant une suite de commandes. La première ligne, appelée **shebang**, indique l'interpréteur à utiliser." },
-        { "type": "code", "lang": "bash", "title": "sauvegarde.sh", "code": "#!/usr/bin/env bash\n# Copie le dossier projets avec la date dans le nom\nsource_dir=\"$HOME/projets\"\ndest_dir=\"$HOME/sauvegardes\"\nmkdir -p \"$dest_dir\"\ncp -r \"$source_dir\" \"$dest_dir/projets-$(date +%F)\"\necho \"Sauvegarde terminée.\"" },
-        { "type": "p", "text": "Pour l'exécuter : `chmod u+x sauvegarde.sh` puis `./sauvegarde.sh`. Le préfixe `./` est nécessaire lorsque le dossier courant ne figure pas dans la variable PATH." },
-        { "type": "h", "text": "Variables, paramètres et codes de retour" },
-        { "type": "list", "items": [
-          "`nom=valeur` : aucun espace autour du signe égal. On lit la valeur avec `$nom` ou `\"$nom\"`.",
-          "`$1`, `$2`… : arguments passés au script.",
-          "`$?` : code de retour de la dernière commande. 0 signifie succès, toute autre valeur signifie échec."
-        ] },
-        { "type": "code", "lang": "bash", "code": "if [ -f notes.txt ]; then\n  echo \"Le fichier existe\"\nelse\n  echo \"Fichier absent\"\nfi\n\nfor fichier in *.txt; do\n  echo \"Traitement de $fichier\"\ndone" },
-        { "type": "warning", "text": "Entourez toujours vos variables de guillemets (\"$variable\"). Sans eux, un nom contenant un espace fait échouer la commande." },
-        { "type": "tip", "text": "Dans les scripts sérieux, `set -euo pipefail` arrête le script à la première erreur et signale les variables non définies." }
+        {
+          "type": "p",
+          "text": "Un script Bash est un fichier texte contenant une suite de commandes. La première ligne, appelée **shebang**, indique l'interpréteur à utiliser."
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "title": "sauvegarde.sh",
+          "code": "#!/usr/bin/env bash\n# Copie le dossier projets avec la date dans le nom\nsource_dir=\"$HOME/projets\"\ndest_dir=\"$HOME/sauvegardes\"\nmkdir -p \"$dest_dir\"\ncp -r \"$source_dir\" \"$dest_dir/projets-$(date +%F)\"\necho \"Sauvegarde terminée.\""
+        },
+        {
+          "type": "p",
+          "text": "Pour l'exécuter : `chmod u+x sauvegarde.sh` puis `./sauvegarde.sh`. Le préfixe `./` est nécessaire lorsque le dossier courant ne figure pas dans la variable PATH."
+        },
+        {
+          "type": "h",
+          "text": "Variables, paramètres et codes de retour"
+        },
+        {
+          "type": "list",
+          "items": [
+            "`nom=valeur` : aucun espace autour du signe égal. On lit la valeur avec `$nom` ou `\"$nom\"`.",
+            "`$1`, `$2`… : arguments passés au script.",
+            "`$?` : code de retour de la dernière commande. 0 signifie succès, toute autre valeur signifie échec."
+          ]
+        },
+        {
+          "type": "code",
+          "lang": "bash",
+          "code": "if [ -f notes.txt ]; then\n  echo \"Le fichier existe\"\nelse\n  echo \"Fichier absent\"\nfi\n\nfor fichier in *.txt; do\n  echo \"Traitement de $fichier\"\ndone"
+        },
+        {
+          "type": "warning",
+          "text": "Entourez toujours vos variables de guillemets (\"$variable\"). Sans eux, un nom contenant un espace fait échouer la commande."
+        },
+        {
+          "type": "tip",
+          "text": "Dans les scripts sérieux, `set -euo pipefail` arrête le script à la première erreur et signale les variables non définies."
+        }
       ],
       "exercise": {
         "title": "Script de salutation",
@@ -592,7 +1236,15 @@
           "Le premier argument est accessible par $1.",
           "echo peut afficher plusieurs éléments séparés par des espaces."
         ],
-        "solution": "#!/usr/bin/env bash\necho \"Bonjour $1\""
+        "solution": "#!/usr/bin/env bash\necho \"Bonjour $1\"",
+        "check": {
+          "type": "keywords",
+          "keywords": [
+            "echo",
+            "$1"
+          ],
+          "success": "Correct : echo affiche le premier argument reçu."
+        }
       },
       "quiz": [
         {
@@ -600,10 +1252,17 @@
           "type": "single",
           "difficulty": 2,
           "question": "Que vaut `$?` juste après une commande réussie ?",
-          "options": ["1", "0", "La sortie de la commande", "Le PID du shell"],
+          "options": [
+            "1",
+            "0",
+            "La sortie de la commande",
+            "Le PID du shell"
+          ],
           "answer": 1,
           "explanation": "Un code de retour de 0 signifie que la commande s'est terminée avec succès.",
-          "hints": ["Pensez à la convention des codes de retour : zéro signifie succès."]
+          "hints": [
+            "Pensez à la convention des codes de retour : zéro signifie succès."
+          ]
         },
         {
           "id": "linux-10-q2",
@@ -616,11 +1275,23 @@
             "Tester les commandes avec rm -rf /",
             "Vérifier les codes de retour"
           ],
-          "answer": [0, 1, 3],
+          "answer": [
+            0,
+            1,
+            3
+          ],
           "explanation": "Tester avec rm -rf / est dangereux et ne fait pas partie des bonnes pratiques.",
-          "hints": ["Une commande destructrice ne doit jamais servir de test."]
+          "hints": [
+            "Une commande destructrice ne doit jamais servir de test."
+          ]
         }
-      ]
+      ],
+      "summary": [
+        "Un script commence par un shebang ; chmod u+x le rend exécutable.",
+        "$1, $2... sont les arguments ; $? est le code de retour (0 = succès).",
+        "Entourez les variables de guillemets et utilisez set -euo pipefail."
+      ],
+      "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
     }
   ]
 }

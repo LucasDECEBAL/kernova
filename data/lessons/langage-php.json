@@ -9,64 +9,239 @@
           "id": "php-01",
           "title": "Syntaxe, variables et types",
           "duration": 18,
-          "objectives": ["Écrire un script PHP", "Connaître les types courants"],
+          "objectives": [
+            "Écrire un script PHP",
+            "Connaître les types courants"
+          ],
           "content": [
-            { "type": "p", "text": "PHP s'exécute côté **serveur** et produit du HTML envoyé au navigateur. Un fichier `.php` peut mélanger HTML et code délimité par `<?php ... ?>`. Les variables commencent par `$`." },
-            { "type": "code", "lang": "php", "code": "<?php\ndeclare(strict_types=1);\n\n$nom = \"Ada\";\n$age = 36;\n$prix = 19.90;\n$actif = true;\n\necho \"$nom a $age ans\\n\";\nvar_dump($prix);" },
-            { "type": "p", "text": "Les types courants sont `string`, `int`, `float`, `bool`, `array`, `null`. `declare(strict_types=1)` rend les conversions implicites plus strictes ; le placer en tête de fichier évite des surprises." },
-            { "type": "warning", "text": "PHP est faiblement typé par défaut : `\"5\" + 2` vaut 7. Activez le mode strict et validez les entrées plutôt que de compter sur les conversions." }
+            {
+              "type": "p",
+              "text": "PHP s'exécute côté **serveur** et produit du HTML envoyé au navigateur. Un fichier `.php` peut mélanger HTML et code délimité par `<?php ... ?>`. Les variables commencent par `$`."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "<?php\ndeclare(strict_types=1);\n\n$nom = \"Ada\";\n$age = 36;\n$prix = 19.90;\n$actif = true;\n\necho \"$nom a $age ans\\n\";\nvar_dump($prix);"
+            },
+            {
+              "type": "p",
+              "text": "Les types courants sont `string`, `int`, `float`, `bool`, `array`, `null`. `declare(strict_types=1)` rend les conversions implicites plus strictes ; le placer en tête de fichier évite des surprises."
+            },
+            {
+              "type": "warning",
+              "text": "PHP est faiblement typé par défaut : `\"5\" + 2` vaut 7. Activez le mode strict et validez les entrées plutôt que de compter sur les conversions."
+            }
           ],
           "exercise": {
             "title": "Afficher une variable",
             "instructions": "Écrivez un script qui affiche « Bonjour » suivi du contenu de la variable $nom.",
-            "hints": ["echo affiche du texte.", "Les guillemets doubles interprètent les variables."],
-            "solution": "<?php\n$nom = \"Ada\";\necho \"Bonjour $nom\";"
+            "hints": [
+              "echo affiche du texte.",
+              "Les guillemets doubles interprètent les variables."
+            ],
+            "solution": "<?php\n$nom = \"Ada\";\necho \"Bonjour $nom\";",
+            "check": {
+              "type": "any",
+              "any": [
+                "echo",
+                "$nom"
+              ]
+            }
           },
           "quiz": [
-            { "id": "php-01-q1", "type": "single", "difficulty": 1, "question": "Où s'exécute PHP ?", "options": ["Sur le serveur", "Dans le navigateur", "Dans la base de données", "Dans le DNS"], "answer": 0, "explanation": "PHP produit une réponse envoyée au client.", "hints": [] },
-            { "id": "php-01-q2", "type": "single", "difficulty": 2, "question": "Que fait declare(strict_types=1) ?", "options": ["Renforce la vérification des types", "Désactive les erreurs", "Compresse la page", "Crée une session"], "answer": 0, "explanation": "Le mode strict limite les conversions implicites.", "hints": [] }
+            {
+              "id": "php-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Où s'exécute PHP ?",
+              "options": [
+                "Sur le serveur",
+                "Dans le navigateur",
+                "Dans la base de données",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "PHP produit une réponse envoyée au client.",
+              "hints": []
+            },
+            {
+              "id": "php-01-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que fait declare(strict_types=1) ?",
+              "options": [
+                "Renforce la vérification des types",
+                "Désactive les erreurs",
+                "Compresse la page",
+                "Crée une session"
+              ],
+              "answer": 0,
+              "explanation": "Le mode strict limite les conversions implicites.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Conditions, boucles et fonctions ».",
+          "summary": [
+            "Un script PHP commence par <?php.",
+            "Les variables commencent par $.",
+            "Les guillemets doubles interpolent les variables."
           ]
         },
         {
           "id": "php-02",
           "title": "Conditions, boucles et fonctions",
           "duration": 18,
-          "objectives": ["Écrire des fonctions typées", "Parcourir un tableau"],
+          "objectives": [
+            "Écrire des fonctions typées",
+            "Parcourir un tableau"
+          ],
           "content": [
-            { "type": "p", "text": "PHP propose `if`, `switch`, `for`, `foreach` et `while`. `foreach` est la boucle naturelle pour les tableaux. Les fonctions se déclarent avec `function` et peuvent préciser les types des paramètres et du retour." },
-            { "type": "code", "lang": "php", "code": "<?php\nfunction ttc(float $ht, float $taux = 0.2): float {\n    return $ht * (1 + $taux);\n}\n\n$notes = [12, 15, 9];\nforeach ($notes as $note) {\n    echo $note . \"\\n\";\n}\n\necho ttc(100);   // 120" },
-            { "type": "tip", "text": "Déclarez les types de paramètres et de retour : PHP lève alors une erreur claire en cas d'appel incorrect, au lieu de produire un résultat faux." }
+            {
+              "type": "p",
+              "text": "PHP propose `if`, `switch`, `for`, `foreach` et `while`. `foreach` est la boucle naturelle pour les tableaux. Les fonctions se déclarent avec `function` et peuvent préciser les types des paramètres et du retour."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "<?php\nfunction ttc(float $ht, float $taux = 0.2): float {\n    return $ht * (1 + $taux);\n}\n\n$notes = [12, 15, 9];\nforeach ($notes as $note) {\n    echo $note . \"\\n\";\n}\n\necho ttc(100);   // 120"
+            },
+            {
+              "type": "tip",
+              "text": "Déclarez les types de paramètres et de retour : PHP lève alors une erreur claire en cas d'appel incorrect, au lieu de produire un résultat faux."
+            }
           ],
           "exercise": {
             "title": "Fonction typée",
             "instructions": "Écrivez une fonction moyenne(array $notes): float qui renvoie la moyenne.",
-            "hints": ["array_sum additionne.", "count donne le nombre d'éléments."],
-            "solution": "function moyenne(array $notes): float {\n    if (count($notes) === 0) return 0.0;\n    return array_sum($notes) / count($notes);\n}"
+            "hints": [
+              "array_sum additionne.",
+              "count donne le nombre d'éléments."
+            ],
+            "solution": "function moyenne(array $notes): float {\n    if (count($notes) === 0) return 0.0;\n    return array_sum($notes) / count($notes);\n}",
+            "check": {
+              "type": "any",
+              "any": [
+                "function",
+                "array_sum"
+              ]
+            }
           },
           "quiz": [
-            { "id": "php-02-q1", "type": "single", "difficulty": 1, "question": "Quelle boucle parcourt un tableau en PHP ?", "options": ["foreach", "repeat", "loop", "iterate"], "answer": 0, "explanation": "foreach parcourt clés ou valeurs d'un tableau.", "hints": [] },
-            { "id": "php-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi typer les paramètres ?", "options": ["Pour obtenir une erreur claire en cas d'appel incorrect", "Pour accélérer PHP", "Pour éviter les sessions", "Pour créer une base"], "answer": 0, "explanation": "Le typage documente et vérifie le contrat de la fonction.", "hints": [] }
+            {
+              "id": "php-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle boucle parcourt un tableau en PHP ?",
+              "options": [
+                "foreach",
+                "repeat",
+                "loop",
+                "iterate"
+              ],
+              "answer": 0,
+              "explanation": "foreach parcourt clés ou valeurs d'un tableau.",
+              "hints": []
+            },
+            {
+              "id": "php-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi typer les paramètres ?",
+              "options": [
+                "Pour obtenir une erreur claire en cas d'appel incorrect",
+                "Pour accélérer PHP",
+                "Pour éviter les sessions",
+                "Pour créer une base"
+              ],
+              "answer": 0,
+              "explanation": "Le typage documente et vérifie le contrat de la fonction.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux et formulaires ».",
+          "summary": [
+            "Une fonction peut typer paramètres et retour.",
+            "array_sum et count agrègent un tableau.",
+            "Gérer le tableau vide évite la division par zéro."
           ]
         },
         {
           "id": "php-03",
           "title": "Tableaux et formulaires",
           "duration": 20,
-          "objectives": ["Manipuler un tableau associatif", "Traiter un formulaire"],
+          "objectives": [
+            "Manipuler un tableau associatif",
+            "Traiter un formulaire"
+          ],
           "content": [
-            { "type": "p", "text": "Un **tableau associatif** associe des clés à des valeurs : `['nom' => 'Ada']`. Les données d'un formulaire arrivent dans `$_POST` ou `$_GET`. Chaque valeur doit être validée et échappée avant affichage." },
-            { "type": "code", "lang": "php", "code": "<form method=\"post\">\n  <label for=\"email\">E-mail</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required>\n  <button type=\"submit\">Envoyer</button>\n</form>\n\n<?php\nif ($_SERVER['REQUEST_METHOD'] === 'POST') {\n    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);\n    if ($email === false || $email === null) {\n        echo 'Adresse invalide';\n    } else {\n        echo 'Reçu : ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8');\n    }\n}" },
-            { "type": "warning", "text": "Afficher `$_POST` sans `htmlspecialchars` ouvre une faille XSS. Validez à l'entrée, échappez à la sortie." }
+            {
+              "type": "p",
+              "text": "Un **tableau associatif** associe des clés à des valeurs : `['nom' => 'Ada']`. Les données d'un formulaire arrivent dans `$_POST` ou `$_GET`. Chaque valeur doit être validée et échappée avant affichage."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "<form method=\"post\">\n  <label for=\"email\">E-mail</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required>\n  <button type=\"submit\">Envoyer</button>\n</form>\n\n<?php\nif ($_SERVER['REQUEST_METHOD'] === 'POST') {\n    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);\n    if ($email === false || $email === null) {\n        echo 'Adresse invalide';\n    } else {\n        echo 'Reçu : ' . htmlspecialchars($email, ENT_QUOTES, 'UTF-8');\n    }\n}"
+            },
+            {
+              "type": "warning",
+              "text": "Afficher `$_POST` sans `htmlspecialchars` ouvre une faille XSS. Validez à l'entrée, échappez à la sortie."
+            }
           ],
           "exercise": {
             "title": "Valider un e-mail",
             "instructions": "Quelle fonction filtre une valeur POST en adresse e-mail valide ?",
-            "hints": ["La fonction est filter_input.", "Le filtre s'appelle FILTER_VALIDATE_EMAIL."],
-            "solution": "filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)"
+            "hints": [
+              "La fonction est filter_input.",
+              "Le filtre s'appelle FILTER_VALIDATE_EMAIL."
+            ],
+            "solution": "filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL)",
+            "check": {
+              "type": "any",
+              "any": [
+                "filter_input",
+                "filter_validate_email",
+                "filter validate email"
+              ]
+            }
           },
           "quiz": [
-            { "id": "php-03-q1", "type": "single", "difficulty": 1, "question": "Que contient $_POST ?", "options": ["Les données envoyées par un formulaire en méthode post", "Les cookies", "Les fichiers du serveur", "La session"], "answer": 0, "explanation": "PHP remplit $_POST avec les champs du formulaire post.", "hints": [] },
-            { "id": "php-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi échapper une valeur avant affichage ?", "options": ["Pour éviter l'injection de HTML ou de script", "Pour accélérer l'affichage", "Pour créer une session", "Pour valider un e-mail"], "answer": 0, "explanation": "htmlspecialchars neutralise les caractères interprétés par le navigateur.", "hints": [] }
+            {
+              "id": "php-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que contient $_POST ?",
+              "options": [
+                "Les données envoyées par un formulaire en méthode post",
+                "Les cookies",
+                "Les fichiers du serveur",
+                "La session"
+              ],
+              "answer": 0,
+              "explanation": "PHP remplit $_POST avec les champs du formulaire post.",
+              "hints": []
+            },
+            {
+              "id": "php-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi échapper une valeur avant affichage ?",
+              "options": [
+                "Pour éviter l'injection de HTML ou de script",
+                "Pour accélérer l'affichage",
+                "Pour créer une session",
+                "Pour valider un e-mail"
+              ],
+              "answer": 0,
+              "explanation": "htmlspecialchars neutralise les caractères interprétés par le navigateur.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Sessions, cookies et fichiers ».",
+          "summary": [
+            "filter_input valide une entrée sans la modifier.",
+            "FILTER_VALIDATE_EMAIL vérifie le format.",
+            "Ne jamais faire confiance à $_POST."
           ]
         }
       ]
@@ -79,42 +254,149 @@
           "id": "php-04",
           "title": "Sessions, cookies et fichiers",
           "duration": 18,
-          "objectives": ["Démarrer une session", "Lire et écrire un fichier"],
+          "objectives": [
+            "Démarrer une session",
+            "Lire et écrire un fichier"
+          ],
           "content": [
-            { "type": "p", "text": "Une **session** conserve des données côté serveur entre deux requêtes, identifiées par un cookie de session. Un **cookie** est stocké chez le client : il ne doit contenir aucune donnée sensible." },
-            { "type": "code", "lang": "php", "code": "<?php\nsession_start();\n$_SESSION['utilisateur'] = 'ada';\n\nsetcookie('theme', 'sombre', [\n    'expires' => time() + 86400,\n    'httponly' => true,\n    'samesite' => 'Lax'\n]);\n\n$contenu = file_get_contents('notes.txt');\nfile_put_contents('notes.txt', \"nouvelle ligne\\n\", FILE_APPEND);" },
-            { "type": "warning", "text": "Un cookie de session doit être marqué `HttpOnly`, `Secure` en HTTPS et `SameSite` pour limiter le vol et les requêtes croisées." }
+            {
+              "type": "p",
+              "text": "Une **session** conserve des données côté serveur entre deux requêtes, identifiées par un cookie de session. Un **cookie** est stocké chez le client : il ne doit contenir aucune donnée sensible."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "<?php\nsession_start();\n$_SESSION['utilisateur'] = 'ada';\n\nsetcookie('theme', 'sombre', [\n    'expires' => time() + 86400,\n    'httponly' => true,\n    'samesite' => 'Lax'\n]);\n\n$contenu = file_get_contents('notes.txt');\nfile_put_contents('notes.txt', \"nouvelle ligne\\n\", FILE_APPEND);"
+            },
+            {
+              "type": "warning",
+              "text": "Un cookie de session doit être marqué `HttpOnly`, `Secure` en HTTPS et `SameSite` pour limiter le vol et les requêtes croisées."
+            }
           ],
           "exercise": {
             "title": "Où stocker un panier ?",
             "instructions": "Un panier non sensible doit-il être stocké en cookie ou en session, et pourquoi ?",
-            "hints": ["Un cookie est modifiable par le client.", "La session est côté serveur."],
-            "solution": "En session : le client ne peut pas modifier son contenu, alors qu'un cookie peut être falsifié."
+            "hints": [
+              "Un cookie est modifiable par le client.",
+              "La session est côté serveur."
+            ],
+            "solution": "En session : le client ne peut pas modifier son contenu, alors qu'un cookie peut être falsifié.",
+            "check": {
+              "type": "any",
+              "any": [
+                "session"
+              ]
+            }
           },
           "quiz": [
-            { "id": "php-04-q1", "type": "single", "difficulty": 1, "question": "Où sont stockées les données de session ?", "options": ["Sur le serveur", "Dans le cookie du client", "Dans l'URL", "Dans la base DNS"], "answer": 0, "explanation": "Seul l'identifiant circule, les données restent côté serveur.", "hints": [] },
-            { "id": "php-04-q2", "type": "truefalse", "difficulty": 2, "question": "Un cookie peut contenir un mot de passe sans risque.", "answer": false, "explanation": "Le client peut lire et modifier ses cookies.", "hints": [] }
+            {
+              "id": "php-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Où sont stockées les données de session ?",
+              "options": [
+                "Sur le serveur",
+                "Dans le cookie du client",
+                "Dans l'URL",
+                "Dans la base DNS"
+              ],
+              "answer": 0,
+              "explanation": "Seul l'identifiant circule, les données restent côté serveur.",
+              "hints": []
+            },
+            {
+              "id": "php-04-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Un cookie peut contenir un mot de passe sans risque.",
+              "answer": false,
+              "explanation": "Le client peut lire et modifier ses cookies.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « PDO et requêtes préparées ».",
+          "summary": [
+            "Un cookie est stocké chez le client et peut être falsifié.",
+            "La session garde les données côté serveur.",
+            "session_start démarre ou reprend la session."
           ]
         },
         {
           "id": "php-05",
           "title": "PDO et requêtes préparées",
           "duration": 20,
-          "objectives": ["Se connecter à une base", "Prévenir l'injection SQL"],
+          "objectives": [
+            "Se connecter à une base",
+            "Prévenir l'injection SQL"
+          ],
           "content": [
-            { "type": "p", "text": "**PDO** offre une interface unifiée vers plusieurs bases de données. Les **requêtes préparées** séparent la structure SQL des valeurs : c'est la contre-mesure de référence contre l'injection SQL." },
-            { "type": "code", "lang": "php", "code": "<?php\n$pdo = new PDO('pgsql:host=localhost;dbname=app', 'app', 'secret', [\n    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION\n]);\n\n$stmt = $pdo->prepare('SELECT id, nom FROM clients WHERE ville = :ville');\n$stmt->execute(['ville' => 'Lyon']);\n\nforeach ($stmt as $client) {\n    echo htmlspecialchars($client['nom'], ENT_QUOTES, 'UTF-8');\n}" },
-            { "type": "warning", "text": "Ne concaténez jamais une saisie dans une requête. Même avec des guillemets, la concaténation reste injectable." }
+            {
+              "type": "p",
+              "text": "**PDO** offre une interface unifiée vers plusieurs bases de données. Les **requêtes préparées** séparent la structure SQL des valeurs : c'est la contre-mesure de référence contre l'injection SQL."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "<?php\n$pdo = new PDO('pgsql:host=localhost;dbname=app', 'app', 'secret', [\n    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION\n]);\n\n$stmt = $pdo->prepare('SELECT id, nom FROM clients WHERE ville = :ville');\n$stmt->execute(['ville' => 'Lyon']);\n\nforeach ($stmt as $client) {\n    echo htmlspecialchars($client['nom'], ENT_QUOTES, 'UTF-8');\n}"
+            },
+            {
+              "type": "warning",
+              "text": "Ne concaténez jamais une saisie dans une requête. Même avec des guillemets, la concaténation reste injectable."
+            }
           ],
           "exercise": {
             "title": "Requête préparée",
             "instructions": "Écrivez la préparation d'une requête qui cherche un client par e-mail avec un paramètre nommé.",
-            "hints": ["prepare() prépare, execute() fournit les valeurs.", "Le paramètre s'écrit avec deux-points."],
-            "solution": "$stmt = $pdo->prepare('SELECT * FROM clients WHERE email = :email');\n$stmt->execute(['email' => $email]);"
+            "hints": [
+              "prepare() prépare, execute() fournit les valeurs.",
+              "Le paramètre s'écrit avec deux-points."
+            ],
+            "solution": "$stmt = $pdo->prepare('SELECT * FROM clients WHERE email = :email');\n$stmt->execute(['email' => $email]);",
+            "check": {
+              "type": "any",
+              "any": [
+                "prepare",
+                "pdo"
+              ]
+            }
           },
           "quiz": [
-            { "id": "php-05-q1", "type": "single", "difficulty": 2, "question": "Pourquoi les requêtes préparées empêchent-elles l'injection SQL ?", "options": ["Les valeurs ne sont jamais interprétées comme du SQL", "Elles chiffrent la requête", "Elles suppriment les entrées", "Elles utilisent un autre protocole"], "answer": 0, "explanation": "La structure et les données sont transmises séparément.", "hints": [] },
-            { "id": "php-05-q2", "type": "single", "difficulty": 1, "question": "Quel mode d'erreur PDO fait lever des exceptions ?", "options": ["ERRMODE_EXCEPTION", "ERRMODE_SILENT", "ERRMODE_WARNING", "ERRMODE_LOG"], "answer": 0, "explanation": "Les exceptions rendent les erreurs SQL visibles et traitables.", "hints": [] }
+            {
+              "id": "php-05-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi les requêtes préparées empêchent-elles l'injection SQL ?",
+              "options": [
+                "Les valeurs ne sont jamais interprétées comme du SQL",
+                "Elles chiffrent la requête",
+                "Elles suppriment les entrées",
+                "Elles utilisent un autre protocole"
+              ],
+              "answer": 0,
+              "explanation": "La structure et les données sont transmises séparément.",
+              "hints": []
+            },
+            {
+              "id": "php-05-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel mode d'erreur PDO fait lever des exceptions ?",
+              "options": [
+                "ERRMODE_EXCEPTION",
+                "ERRMODE_SILENT",
+                "ERRMODE_WARNING",
+                "ERRMODE_LOG"
+              ],
+              "answer": 0,
+              "explanation": "Les exceptions rendent les erreurs SQL visibles et traitables.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "PDO prépare puis exécute la requête.",
+            "Un paramètre nommé évite l'injection SQL.",
+            "fetch lit une ligne, fetchAll toutes."
           ]
         }
       ]

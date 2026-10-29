@@ -9,74 +9,266 @@
           "id": "ux-01",
           "title": "Recherche utilisateur et besoins",
           "duration": 18,
-          "objectives": ["Distinguer besoin et solution", "Mener un entretien utile"],
+          "objectives": [
+            "Distinguer besoin et solution",
+            "Mener un entretien utile"
+          ],
           "content": [
-            { "type": "p", "text": "Un **besoin** décrit un problème vécu ; une **solution** est une réponse possible. Les utilisateurs décrivent souvent une solution (« je veux un bouton ») alors que le problème est ailleurs. L'entretien sert à retrouver le problème." },
-            { "type": "list", "items": [
-              "Demander le dernier cas concret vécu, pas une opinion générale.",
-              "Creuser les contournements : ce que la personne fait déjà pour s'en sortir.",
-              "Éviter les questions orientées vers une solution.",
-              "Noter les mots exacts des utilisateurs : ils nourrissent l'interface."
-            ] },
-            { "type": "tip", "text": "« Racontez-moi la dernière fois que… » fournit plus d'informations utiles que « aimeriez-vous… »." }
+            {
+              "type": "p",
+              "text": "Un **besoin** décrit un problème vécu ; une **solution** est une réponse possible. Les utilisateurs décrivent souvent une solution (« je veux un bouton ») alors que le problème est ailleurs. L'entretien sert à retrouver le problème."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Demander le dernier cas concret vécu, pas une opinion générale.",
+                "Creuser les contournements : ce que la personne fait déjà pour s'en sortir.",
+                "Éviter les questions orientées vers une solution.",
+                "Noter les mots exacts des utilisateurs : ils nourrissent l'interface."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "« Racontez-moi la dernière fois que… » fournit plus d'informations utiles que « aimeriez-vous… »."
+            }
           ],
           "exercise": {
             "title": "Besoin ou solution ?",
             "instructions": "Un utilisateur dit « je veux un bouton d'export ». Comment reformulez-vous la recherche ?",
-            "hints": ["Le bouton est une solution.", "Cherchez la tâche et le blocage."],
-            "solution": "Demander ce qu'il fait des données après, où il les colle, et ce qui bloque aujourd'hui : le besoin réel peut être un format, un partage ou une fréquence."
+            "hints": [
+              "Le bouton est une solution.",
+              "Cherchez la tâche et le blocage."
+            ],
+            "solution": "Demander ce qu'il fait des données après, où il les colle, et ce qui bloque aujourd'hui : le besoin réel peut être un format, un partage ou une fréquence.",
+            "check": {
+              "type": "any",
+              "any": [
+                "besoin",
+                "objectif",
+                "pourquoi",
+                "usage"
+              ]
+            }
           },
           "quiz": [
-            { "id": "ux-01-q1", "type": "single", "difficulty": 1, "question": "Que décrit un besoin ?", "options": ["Un problème vécu par l'utilisateur", "Un bouton", "Une couleur", "Une technologie"], "answer": 0, "explanation": "Le besoin est le problème ; la solution est une réponse parmi d'autres.", "hints": [] },
-            { "id": "ux-01-q2", "type": "single", "difficulty": 2, "question": "Quelle question apporte le plus d'informations ?", "options": ["Racontez-moi la dernière fois que vous avez fait cette tâche", "Aimeriez-vous un bouton ?", "Préférez-vous le bleu ?", "Utilisez-vous notre concurrent ?"], "answer": 0, "explanation": "Le cas concret révèle les contraintes réelles.", "hints": [] }
+            {
+              "id": "ux-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que décrit un besoin ?",
+              "options": [
+                "Un problème vécu par l'utilisateur",
+                "Un bouton",
+                "Une couleur",
+                "Une technologie"
+              ],
+              "answer": 0,
+              "explanation": "Le besoin est le problème ; la solution est une réponse parmi d'autres.",
+              "hints": []
+            },
+            {
+              "id": "ux-01-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quelle question apporte le plus d'informations ?",
+              "options": [
+                "Racontez-moi la dernière fois que vous avez fait cette tâche",
+                "Aimeriez-vous un bouton ?",
+                "Préférez-vous le bleu ?",
+                "Utilisez-vous notre concurrent ?"
+              ],
+              "answer": 0,
+              "explanation": "Le cas concret révèle les contraintes réelles.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Architecture de l'information et parcours ».",
+          "summary": [
+            "Le besoin exprimé cache souvent l'objectif réel.",
+            "Creuser l'usage prévu après le bouton.",
+            "Reformuler en problème, pas en solution."
           ]
         },
         {
           "id": "ux-02",
           "title": "Architecture de l'information et parcours",
           "duration": 18,
-          "objectives": ["Organiser le contenu", "Cartographier un parcours"],
+          "objectives": [
+            "Organiser le contenu",
+            "Cartographier un parcours"
+          ],
           "content": [
-            { "type": "p", "text": "L'**architecture de l'information** regroupe et nomme les contenus selon la façon dont les utilisateurs les cherchent. Un **parcours utilisateur** décrit les étapes d'un objectif, avec les points de friction." },
-            { "type": "p", "text": "On commence par un tri de cartes ou un inventaire des contenus, puis on dessine un arbre de navigation simple. Les noms doivent être ceux des utilisateurs, pas ceux de l'organisation interne." },
-            { "type": "warning", "text": "Reproduire l'organigramme de l'entreprise dans le menu est une erreur fréquente : l'utilisateur cherche par tâche, pas par service." }
+            {
+              "type": "p",
+              "text": "L'**architecture de l'information** regroupe et nomme les contenus selon la façon dont les utilisateurs les cherchent. Un **parcours utilisateur** décrit les étapes d'un objectif, avec les points de friction."
+            },
+            {
+              "type": "p",
+              "text": "On commence par un tri de cartes ou un inventaire des contenus, puis on dessine un arbre de navigation simple. Les noms doivent être ceux des utilisateurs, pas ceux de l'organisation interne."
+            },
+            {
+              "type": "warning",
+              "text": "Reproduire l'organigramme de l'entreprise dans le menu est une erreur fréquente : l'utilisateur cherche par tâche, pas par service."
+            }
           ],
           "exercise": {
             "title": "Nommer une rubrique",
             "instructions": "Le service s'appelle « Direction des opérations ». Quel libellé de menu choisir pour les utilisateurs ?",
-            "hints": ["Les utilisateurs cherchent une tâche.", "Le nom interne n'a pas de sens pour eux."],
-            "solution": "Un libellé orienté tâche, par exemple « Suivre mes demandes », plutôt que le nom du service."
+            "hints": [
+              "Les utilisateurs cherchent une tâche.",
+              "Le nom interne n'a pas de sens pour eux."
+            ],
+            "solution": "Un libellé orienté tâche, par exemple « Suivre mes demandes », plutôt que le nom du service.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tâche",
+                "tache",
+                "suivre",
+                "action"
+              ]
+            }
           },
           "quiz": [
-            { "id": "ux-02-q1", "type": "single", "difficulty": 1, "question": "Comment nommer les rubriques d'un menu ?", "options": ["Avec les mots des utilisateurs", "Avec l'organigramme", "Avec des sigles internes", "Au hasard"], "answer": 0, "explanation": "La navigation doit refléter la recherche par tâche.", "hints": [] },
-            { "id": "ux-02-q2", "type": "single", "difficulty": 2, "question": "Que décrit un parcours utilisateur ?", "options": ["Les étapes vers un objectif et les frictions", "La charte graphique", "Le schéma de base de données", "Le plan de tests"], "answer": 0, "explanation": "Le parcours met en évidence les points de blocage.", "hints": [] }
+            {
+              "id": "ux-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Comment nommer les rubriques d'un menu ?",
+              "options": [
+                "Avec les mots des utilisateurs",
+                "Avec l'organigramme",
+                "Avec des sigles internes",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "La navigation doit refléter la recherche par tâche.",
+              "hints": []
+            },
+            {
+              "id": "ux-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que décrit un parcours utilisateur ?",
+              "options": [
+                "Les étapes vers un objectif et les frictions",
+                "La charte graphique",
+                "Le schéma de base de données",
+                "Le plan de tests"
+              ],
+              "answer": 0,
+              "explanation": "Le parcours met en évidence les points de blocage.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Hiérarchie visuelle, typographie et couleur ».",
+          "summary": [
+            "Les libellés décrivent des tâches, pas l'organigramme.",
+            "Le vocabulaire de l'utilisateur prime.",
+            "Un test rapide valide la compréhension."
           ]
         },
         {
           "id": "ux-03",
           "title": "Hiérarchie visuelle, typographie et couleur",
           "duration": 20,
-          "objectives": ["Construire une hiérarchie lisible", "Choisir des couleurs accessibles"],
+          "objectives": [
+            "Construire une hiérarchie lisible",
+            "Choisir des couleurs accessibles"
+          ],
           "content": [
-            { "type": "p", "text": "La **hiérarchie visuelle** indique par où commencer : taille, graisse, position et espace. Une seule action principale par écran, et un contraste net entre titres, texte et éléments secondaires." },
-            { "type": "table", "headers": ["Moyen", "Usage"], "rows": [
-              ["Taille", "Distinguer les niveaux de titre"],
-              ["Graisse", "Souligner une information importante"],
-              ["Espace", "Séparer les groupes sans lignes"],
-              ["Couleur", "Signaler un état, pas décorer"]
-            ] },
-            { "type": "p", "text": "Pour les couleurs, vérifiez le contraste (4,5:1 pour le texte courant) et ne transmettez jamais une information par la couleur seule : ajoutez un texte ou une icône." },
-            { "type": "warning", "text": "Une page où tout est gras et coloré n'a plus de hiérarchie. La mise en avant perd son sens quand elle est partout." }
+            {
+              "type": "p",
+              "text": "La **hiérarchie visuelle** indique par où commencer : taille, graisse, position et espace. Une seule action principale par écran, et un contraste net entre titres, texte et éléments secondaires."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Moyen",
+                "Usage"
+              ],
+              "rows": [
+                [
+                  "Taille",
+                  "Distinguer les niveaux de titre"
+                ],
+                [
+                  "Graisse",
+                  "Souligner une information importante"
+                ],
+                [
+                  "Espace",
+                  "Séparer les groupes sans lignes"
+                ],
+                [
+                  "Couleur",
+                  "Signaler un état, pas décorer"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Pour les couleurs, vérifiez le contraste (4,5:1 pour le texte courant) et ne transmettez jamais une information par la couleur seule : ajoutez un texte ou une icône."
+            },
+            {
+              "type": "warning",
+              "text": "Une page où tout est gras et coloré n'a plus de hiérarchie. La mise en avant perd son sens quand elle est partout."
+            }
           ],
           "exercise": {
             "title": "Contraste insuffisant",
             "instructions": "Un texte gris clair sur fond blanc indique un état « désactivé ». Quel est le problème ?",
-            "hints": ["Le contraste est trop faible.", "La couleur seule porte l'information."],
-            "solution": "Augmenter le contraste et ajouter un texte ou un attribut accessible (« désactivé ») plutôt que de compter sur la couleur."
+            "hints": [
+              "Le contraste est trop faible.",
+              "La couleur seule porte l'information."
+            ],
+            "solution": "Augmenter le contraste et ajouter un texte ou un attribut accessible (« désactivé ») plutôt que de compter sur la couleur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contraste",
+                "aria",
+                "texte"
+              ]
+            }
           },
           "quiz": [
-            { "id": "ux-03-q1", "type": "single", "difficulty": 1, "question": "Combien d'actions principales par écran ?", "options": ["Une", "Trois", "Cinq", "Autant que possible"], "answer": 0, "explanation": "Une action principale clarifie la décision attendue.", "hints": [] },
-            { "id": "ux-03-q2", "type": "single", "difficulty": 2, "question": "Quel contraste viser pour du texte courant ?", "options": ["4,5:1", "1:1", "2:1", "10:1 minimum"], "answer": 0, "explanation": "4,5:1 correspond au niveau AA pour le texte normal.", "hints": [] }
+            {
+              "id": "ux-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Combien d'actions principales par écran ?",
+              "options": [
+                "Une",
+                "Trois",
+                "Cinq",
+                "Autant que possible"
+              ],
+              "answer": 0,
+              "explanation": "Une action principale clarifie la décision attendue.",
+              "hints": []
+            },
+            {
+              "id": "ux-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel contraste viser pour du texte courant ?",
+              "options": [
+                "4,5:1",
+                "1:1",
+                "2:1",
+                "10:1 minimum"
+              ],
+              "answer": 0,
+              "explanation": "4,5:1 correspond au niveau AA pour le texte normal.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Accessibilité numérique ».",
+          "summary": [
+            "La couleur seule ne porte pas l'information.",
+            "Le contraste doit rester suffisant.",
+            "Ajouter un texte ou un attribut accessible."
           ]
         }
       ]
@@ -89,53 +281,161 @@
           "id": "ux-04",
           "title": "Accessibilité numérique",
           "duration": 20,
-          "objectives": ["Rendre une interface utilisable au clavier", "Rendre un formulaire compréhensible"],
+          "objectives": [
+            "Rendre une interface utilisable au clavier",
+            "Rendre un formulaire compréhensible"
+          ],
           "content": [
-            { "type": "p", "text": "L'**accessibilité** rend l'interface utilisable par tous : au clavier, avec un lecteur d'écran, avec une vision réduite ou une motricité limitée. Elle améliore aussi l'usage général." },
-            { "type": "list", "items": [
-              "Chaque action atteignable au clavier, avec un focus visible.",
-              "Libellés associés aux champs, messages d'erreur explicites.",
-              "Textes alternatifs pour les images porteuses d'information.",
-              "Structure de titres cohérente et repères de navigation.",
-              "Respect de la réduction des animations."
-            ] },
-            { "type": "warning", "text": "Un `div` cliquable n'est pas un bouton : impossible à atteindre au clavier, non annoncé par un lecteur d'écran. Utilisez l'élément natif correspondant." }
+            {
+              "type": "p",
+              "text": "L'**accessibilité** rend l'interface utilisable par tous : au clavier, avec un lecteur d'écran, avec une vision réduite ou une motricité limitée. Elle améliore aussi l'usage général."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chaque action atteignable au clavier, avec un focus visible.",
+                "Libellés associés aux champs, messages d'erreur explicites.",
+                "Textes alternatifs pour les images porteuses d'information.",
+                "Structure de titres cohérente et repères de navigation.",
+                "Respect de la réduction des animations."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un `div` cliquable n'est pas un bouton : impossible à atteindre au clavier, non annoncé par un lecteur d'écran. Utilisez l'élément natif correspondant."
+            }
           ],
           "exercise": {
             "title": "Focus invisible",
             "instructions": "Vous supprimez le contour de focus pour des raisons esthétiques. Quel est l'effet ?",
-            "hints": ["Le focus indique où se trouve le clavier.", "Sans repère, la navigation devient aveugle."],
-            "solution": "La navigation au clavier devient impossible à suivre. Conservez un focus visible et adaptez son style plutôt que de le supprimer."
+            "hints": [
+              "Le focus indique où se trouve le clavier.",
+              "Sans repère, la navigation devient aveugle."
+            ],
+            "solution": "La navigation au clavier devient impossible à suivre. Conservez un focus visible et adaptez son style plutôt que de le supprimer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "clavier",
+                "focus"
+              ]
+            }
           },
           "quiz": [
-            { "id": "ux-04-q1", "type": "single", "difficulty": 1, "question": "Pourquoi garder un contour de focus visible ?", "options": ["Pour indiquer la position du clavier", "Pour décorer", "Pour accélérer la page", "Pour le référencement"], "answer": 0, "explanation": "Le focus est le repère de navigation au clavier.", "hints": [] },
-            { "id": "ux-04-q2", "type": "single", "difficulty": 2, "question": "Quel élément utiliser pour une action cliquable ?", "options": ["Un bouton natif", "Un div", "Un span", "Une image"], "answer": 0, "explanation": "Le bouton apporte clavier, rôle et nom accessible.", "hints": [] }
+            {
+              "id": "ux-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Pourquoi garder un contour de focus visible ?",
+              "options": [
+                "Pour indiquer la position du clavier",
+                "Pour décorer",
+                "Pour accélérer la page",
+                "Pour le référencement"
+              ],
+              "answer": 0,
+              "explanation": "Le focus est le repère de navigation au clavier.",
+              "hints": []
+            },
+            {
+              "id": "ux-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel élément utiliser pour une action cliquable ?",
+              "options": [
+                "Un bouton natif",
+                "Un div",
+                "Un span",
+                "Une image"
+              ],
+              "answer": 0,
+              "explanation": "Le bouton apporte clavier, rôle et nom accessible.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Tests d'utilisabilité et itération ».",
+          "summary": [
+            "Supprimer le focus rend le clavier inutilisable.",
+            "Le focus doit rester visible.",
+            "On peut le restyler, pas le retirer."
           ]
         },
         {
           "id": "ux-05",
           "title": "Tests d'utilisabilité et itération",
           "duration": 18,
-          "objectives": ["Conduire un test simple", "Utiliser les résultats"],
+          "objectives": [
+            "Conduire un test simple",
+            "Utiliser les résultats"
+          ],
           "content": [
-            { "type": "p", "text": "Un test d'utilisabilité n'a pas besoin d'un laboratoire : cinq personnes représentatives suffisent à révéler la majorité des blocages. On leur donne une tâche, on observe sans guider, et on note les hésitations." },
-            { "type": "list", "items": [
-              "Formuler une tâche concrète, pas une consigne de navigation.",
-              "Laisser la personne agir et se tromper.",
-              "Noter les moments de blocage et les mots employés.",
-              "Corriger en priorité ce qui bloque la tâche principale."
-            ] },
-            { "type": "tip", "text": "Demandez à la personne de penser à voix haute : vous entendez le raisonnement, pas seulement le résultat." }
+            {
+              "type": "p",
+              "text": "Un test d'utilisabilité n'a pas besoin d'un laboratoire : cinq personnes représentatives suffisent à révéler la majorité des blocages. On leur donne une tâche, on observe sans guider, et on note les hésitations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Formuler une tâche concrète, pas une consigne de navigation.",
+                "Laisser la personne agir et se tromper.",
+                "Noter les moments de blocage et les mots employés.",
+                "Corriger en priorité ce qui bloque la tâche principale."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Demandez à la personne de penser à voix haute : vous entendez le raisonnement, pas seulement le résultat."
+            }
           ],
           "exercise": {
             "title": "Observer sans aider",
             "instructions": "Pendant un test, la personne cherche le bouton de validation. Que faites-vous ?",
-            "hints": ["Guider fausse le test.", "Le blocage est l'information."],
-            "solution": "Ne pas indiquer le bouton : noter la recherche, le temps et les tentatives, puis corriger la visibilité ou le libellé après le test."
+            "hints": [
+              "Guider fausse le test.",
+              "Le blocage est l'information."
+            ],
+            "solution": "Ne pas indiquer le bouton : noter la recherche, le temps et les tentatives, puis corriger la visibilité ou le libellé après le test.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ne pas",
+                "sans aider",
+                "observer",
+                "noter"
+              ]
+            }
           },
           "quiz": [
-            { "id": "ux-05-q1", "type": "single", "difficulty": 1, "question": "Combien de participants suffisent pour un premier test ?", "options": ["Environ cinq", "Cinquante", "Cent", "Un seul suffit toujours"], "answer": 0, "explanation": "Cinq participants révèlent déjà la plupart des problèmes majeurs.", "hints": [] },
-            { "id": "ux-05-q2", "type": "truefalse", "difficulty": 2, "question": "Aider le participant pendant un test améliore la qualité des résultats.", "answer": false, "explanation": "Guider masque précisément les points de blocage à corriger.", "hints": [] }
+            {
+              "id": "ux-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Combien de participants suffisent pour un premier test ?",
+              "options": [
+                "Environ cinq",
+                "Cinquante",
+                "Cent",
+                "Un seul suffit toujours"
+              ],
+              "answer": 0,
+              "explanation": "Cinq participants révèlent déjà la plupart des problèmes majeurs.",
+              "hints": []
+            },
+            {
+              "id": "ux-05-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Aider le participant pendant un test améliore la qualité des résultats.",
+              "answer": false,
+              "explanation": "Guider masque précisément les points de blocage à corriger.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Observer sans aider pendant le test.",
+            "Noter hésitations, erreurs et tentatives.",
+            "Corriger après le test, pas pendant."
           ]
         }
       ]

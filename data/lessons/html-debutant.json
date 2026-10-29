@@ -14,27 +14,87 @@
             "Distinguer balises, attributs et imbrication"
           ],
           "content": [
-            { "type": "p", "text": "HTML (HyperText Markup Language) décrit la **structure** d'une page : quels contenus existent et ce qu'ils représentent. Il ne décide pas des couleurs ni des polices, rôle du CSS. Un document est une suite d'**éléments** imbriqués, délimités par des balises." },
-            { "type": "code", "lang": "html", "title": "Page minimale", "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Mon premier site</title>\n</head>\n<body>\n  <h1>Bonjour</h1>\n  <p>Ma première page.</p>\n</body>\n</html>" },
-            { "type": "list", "items": [
-              "`<!doctype html>` indique au navigateur d'utiliser le mode standard.",
-              "`<head>` contient les métadonnées : encodage, titre, feuilles de style. Son contenu ne s'affiche pas.",
-              "`<body>` contient tout ce qui est visible.",
-              "`lang=\"fr\"` annonce la langue du document : utile aux lecteurs d'écran et aux moteurs de recherche."
-            ] },
-            { "type": "p", "text": "Une balise s'ouvre (`<p>`) et se ferme (`</p>`). Certaines sont vides, comme `<img>` ou `<input>`. Les **attributs** apportent une information supplémentaire : `<a href=\"page.html\">`. Leur valeur est entre guillemets." },
-            { "type": "warning", "text": "Une balise mal fermée crée un imbrication incorrecte, que le navigateur tente de corriger sans prévenir. Le résultat peut différer d'un navigateur à l'autre : validez votre code." },
-            { "type": "tip", "text": "Indentez les éléments imbriqués de deux espaces. Ce n'est pas obligatoire pour le navigateur, mais c'est indispensable pour vous relire." }
+            {
+              "type": "p",
+              "text": "HTML (HyperText Markup Language) décrit la **structure** d'une page : quels contenus existent et ce qu'ils représentent. Il ne décide pas des couleurs ni des polices, rôle du CSS. Un document est une suite d'**éléments** imbriqués, délimités par des balises."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "title": "Page minimale",
+              "code": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Mon premier site</title>\n</head>\n<body>\n  <h1>Bonjour</h1>\n  <p>Ma première page.</p>\n</body>\n</html>"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`<!doctype html>` indique au navigateur d'utiliser le mode standard.",
+                "`<head>` contient les métadonnées : encodage, titre, feuilles de style. Son contenu ne s'affiche pas.",
+                "`<body>` contient tout ce qui est visible.",
+                "`lang=\"fr\"` annonce la langue du document : utile aux lecteurs d'écran et aux moteurs de recherche."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Une balise s'ouvre (`<p>`) et se ferme (`</p>`). Certaines sont vides, comme `<img>` ou `<input>`. Les **attributs** apportent une information supplémentaire : `<a href=\"page.html\">`. Leur valeur est entre guillemets."
+            },
+            {
+              "type": "warning",
+              "text": "Une balise mal fermée crée un imbrication incorrecte, que le navigateur tente de corriger sans prévenir. Le résultat peut différer d'un navigateur à l'autre : validez votre code."
+            },
+            {
+              "type": "tip",
+              "text": "Indentez les éléments imbriqués de deux espaces. Ce n'est pas obligatoire pour le navigateur, mais c'est indispensable pour vous relire."
+            }
           ],
           "exercise": {
             "title": "Page minimale",
             "instructions": "Écrivez une page complète avec un titre d'onglet « Notes » et un paragraphe « Mes notes de cours » dans le corps.",
-            "hints": ["Le titre de l'onglet est un élément title dans head.", "Le texte visible va dans body."],
-            "solution": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Notes</title>\n</head>\n<body>\n  <p>Mes notes de cours</p>\n</body>\n</html>"
+            "hints": [
+              "Le titre de l'onglet est un élément title dans head.",
+              "Le texte visible va dans body."
+            ],
+            "solution": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <title>Notes</title>\n</head>\n<body>\n  <p>Mes notes de cours</p>\n</body>\n</html>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "<!doctype",
+                "<title>",
+                "<p>"
+              ],
+              "success": "Correct : structure, titre et paragraphe sont présents."
+            }
           },
           "quiz": [
-            { "id": "html-01-q1", "type": "single", "difficulty": 1, "question": "Où placer le titre affiché dans l'onglet du navigateur ?", "options": ["Dans un h1 du body", "Dans un title du head", "Dans un p du head", "Dans un meta du body"], "answer": 1, "explanation": "L'élément title du head définit le titre de l'onglet.", "hints": [] },
-            { "id": "html-01-q2", "type": "truefalse", "difficulty": 1, "question": "HTML sert à définir les couleurs et les polices d'une page.", "answer": false, "explanation": "HTML décrit la structure ; la présentation relève du CSS.", "hints": [] }
+            {
+              "id": "html-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Où placer le titre affiché dans l'onglet du navigateur ?",
+              "options": [
+                "Dans un h1 du body",
+                "Dans un title du head",
+                "Dans un p du head",
+                "Dans un meta du body"
+              ],
+              "answer": 1,
+              "explanation": "L'élément title du head définit le titre de l'onglet.",
+              "hints": []
+            },
+            {
+              "id": "html-01-q2",
+              "type": "truefalse",
+              "difficulty": 1,
+              "question": "HTML sert à définir les couleurs et les polices d'une page.",
+              "answer": false,
+              "explanation": "HTML décrit la structure ; la présentation relève du CSS.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Titres, paragraphes et listes ».",
+          "summary": [
+            "Le doctype déclare le mode standard ; html lang indique la langue.",
+            "Le head contient les métadonnées, le body le contenu visible.",
+            "Un attribut complète une balise, sa valeur est entre guillemets."
           ]
         },
         {
@@ -46,21 +106,83 @@
             "Choisir entre liste ordonnée et non ordonnée"
           ],
           "content": [
-            { "type": "p", "text": "Les titres vont de `<h1>` à `<h6>` et forment une **hiérarchie**, pas une échelle de tailles. Une page bien structurée possède un seul `<h1>` et des sous-titres `<h2>`, puis `<h3>`, sans sauter de niveau." },
-            { "type": "code", "lang": "html", "code": "<h1>Cours de HTML</h1>\n<p>Introduction à la structure d'une page.</p>\n\n<h2>Les listes</h2>\n<p>Deux familles :</p>\n<ul>\n  <li>liste non ordonnée</li>\n  <li>liste ordonnée</li>\n</ul>\n\n<h3>Étapes d'un exercice</h3>\n<ol>\n  <li>Lire l'énoncé</li>\n  <li>Écrire le code</li>\n  <li>Vérifier le résultat</li>\n</ol>" },
-            { "type": "p", "text": "Utilisez `<ul>` quand l'ordre n'a pas d'importance, `<ol>` quand il en a (une recette, des étapes). Chaque élément de liste est un `<li>`." },
-            { "type": "warning", "text": "Ne choisissez pas un niveau de titre pour sa taille. Un `<h3>` doit être un sous-titre d'un `<h2>`, même si visuellement vous préférez plus petit : la taille se règle en CSS." },
-            { "type": "tip", "text": "Une hiérarchie de titres correcte aide les lecteurs d'écran à naviguer et améliore le référencement." }
+            {
+              "type": "p",
+              "text": "Les titres vont de `<h1>` à `<h6>` et forment une **hiérarchie**, pas une échelle de tailles. Une page bien structurée possède un seul `<h1>` et des sous-titres `<h2>`, puis `<h3>`, sans sauter de niveau."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<h1>Cours de HTML</h1>\n<p>Introduction à la structure d'une page.</p>\n\n<h2>Les listes</h2>\n<p>Deux familles :</p>\n<ul>\n  <li>liste non ordonnée</li>\n  <li>liste ordonnée</li>\n</ul>\n\n<h3>Étapes d'un exercice</h3>\n<ol>\n  <li>Lire l'énoncé</li>\n  <li>Écrire le code</li>\n  <li>Vérifier le résultat</li>\n</ol>"
+            },
+            {
+              "type": "p",
+              "text": "Utilisez `<ul>` quand l'ordre n'a pas d'importance, `<ol>` quand il en a (une recette, des étapes). Chaque élément de liste est un `<li>`."
+            },
+            {
+              "type": "warning",
+              "text": "Ne choisissez pas un niveau de titre pour sa taille. Un `<h3>` doit être un sous-titre d'un `<h2>`, même si visuellement vous préférez plus petit : la taille se règle en CSS."
+            },
+            {
+              "type": "tip",
+              "text": "Une hiérarchie de titres correcte aide les lecteurs d'écran à naviguer et améliore le référencement."
+            }
           ],
           "exercise": {
             "title": "Structurer une recette",
             "instructions": "Écrivez un titre principal « Pain perdu », un sous-titre « Ingrédients » suivi d'une liste non ordonnée de deux ingrédients, puis un sous-titre « Étapes » suivi d'une liste ordonnée de deux étapes.",
-            "hints": ["Les sous-titres sont des h2 sous un h1.", "Les ingrédients n'ont pas d'ordre, les étapes oui."],
-            "solution": "<h1>Pain perdu</h1>\n<h2>Ingrédients</h2>\n<ul>\n  <li>Pain</li>\n  <li>Lait</li>\n</ul>\n<h2>Étapes</h2>\n<ol>\n  <li>Tremper le pain</li>\n  <li>Cuire à la poêle</li>\n</ol>"
+            "hints": [
+              "Les sous-titres sont des h2 sous un h1.",
+              "Les ingrédients n'ont pas d'ordre, les étapes oui."
+            ],
+            "solution": "<h1>Pain perdu</h1>\n<h2>Ingrédients</h2>\n<ul>\n  <li>Pain</li>\n  <li>Lait</li>\n</ul>\n<h2>Étapes</h2>\n<ol>\n  <li>Tremper le pain</li>\n  <li>Cuire à la poêle</li>\n</ol>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "<h1>",
+                "<ul>",
+                "<ol>"
+              ],
+              "success": "Correct : titre, liste non ordonnée et liste ordonnée."
+            }
           },
           "quiz": [
-            { "id": "html-02-q1", "type": "single", "difficulty": 1, "question": "Combien de titres h1 une page devrait-elle contenir ?", "options": ["Un seul", "Deux", "Autant que de sections", "Aucun"], "answer": 0, "explanation": "Un h1 unique décrit le sujet principal ; les sections utilisent h2 et suivants.", "hints": [] },
-            { "id": "html-02-q2", "type": "blank", "difficulty": 1, "question": "Pour une suite d'étapes dont l'ordre compte, on utilise la balise ___.", "answers": [["ol"]], "explanation": "ol signifie ordered list ; ul correspond à une liste non ordonnée.", "hints": ["Deux lettres."] }
+            {
+              "id": "html-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Combien de titres h1 une page devrait-elle contenir ?",
+              "options": [
+                "Un seul",
+                "Deux",
+                "Autant que de sections",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "Un h1 unique décrit le sujet principal ; les sections utilisent h2 et suivants.",
+              "hints": []
+            },
+            {
+              "id": "html-02-q2",
+              "type": "blank",
+              "difficulty": 1,
+              "question": "Pour une suite d'étapes dont l'ordre compte, on utilise la balise ___.",
+              "answers": [
+                [
+                  "ol"
+                ]
+              ],
+              "explanation": "ol signifie ordered list ; ul correspond à une liste non ordonnée.",
+              "hints": [
+                "Deux lettres."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Liens et images ».",
+          "summary": [
+            "Une page possède un seul h1 ; h2, h3… hiérarchisent les sous-titres.",
+            "ul pour une liste sans ordre, ol pour une suite d'étapes.",
+            "Ne choisissez pas un niveau de titre pour sa taille : la taille relève du CSS."
           ]
         }
       ]
@@ -78,26 +200,91 @@
             "Insérer une image accessible"
           ],
           "content": [
-            { "type": "p", "text": "Le lien hypertexte est la base du Web. Il utilise l'élément `<a>` et l'attribut `href`, qui contient la destination : un fichier local, une autre page ou une adresse complète." },
-            { "type": "code", "lang": "html", "code": "<a href=\"contact.html\">Nous contacter</a>\n<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">Site externe</a>\n\n<img src=\"images/equipe.webp\" alt=\"L'équipe réunie autour d'une table\" width=\"640\" height=\"360\" loading=\"lazy\">" },
-            { "type": "list", "items": [
-              "Un chemin relatif part du dossier de la page : `contact.html` ou `images/photo.jpg`.",
-              "`../` remonte d'un dossier.",
-              "`target=\"_blank\"` ouvre dans un nouvel onglet ; ajoutez `rel=\"noopener noreferrer\"` par sécurité.",
-              "`alt` décrit l'image : il est lu par les lecteurs d'écran et affiché si l'image ne charge pas."
-            ] },
-            { "type": "p", "text": "Pour les images, préférez les formats modernes (WebP, AVIF) et indiquez `width` et `height` pour éviter que la page ne « saute » pendant le chargement. `loading=\"lazy\"` diffère le chargement des images hors écran." },
-            { "type": "warning", "text": "Un lien « cliquez ici » ne dit rien hors contexte, ni à un lecteur d'écran ni à un moteur de recherche. Le texte du lien doit décrire la destination." }
+            {
+              "type": "p",
+              "text": "Le lien hypertexte est la base du Web. Il utilise l'élément `<a>` et l'attribut `href`, qui contient la destination : un fichier local, une autre page ou une adresse complète."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<a href=\"contact.html\">Nous contacter</a>\n<a href=\"https://example.com\" target=\"_blank\" rel=\"noopener noreferrer\">Site externe</a>\n\n<img src=\"images/equipe.webp\" alt=\"L'équipe réunie autour d'une table\" width=\"640\" height=\"360\" loading=\"lazy\">"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un chemin relatif part du dossier de la page : `contact.html` ou `images/photo.jpg`.",
+                "`../` remonte d'un dossier.",
+                "`target=\"_blank\"` ouvre dans un nouvel onglet ; ajoutez `rel=\"noopener noreferrer\"` par sécurité.",
+                "`alt` décrit l'image : il est lu par les lecteurs d'écran et affiché si l'image ne charge pas."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Pour les images, préférez les formats modernes (WebP, AVIF) et indiquez `width` et `height` pour éviter que la page ne « saute » pendant le chargement. `loading=\"lazy\"` diffère le chargement des images hors écran."
+            },
+            {
+              "type": "warning",
+              "text": "Un lien « cliquez ici » ne dit rien hors contexte, ni à un lecteur d'écran ni à un moteur de recherche. Le texte du lien doit décrire la destination."
+            }
           ],
           "exercise": {
             "title": "Un lien utile",
             "instructions": "Écrivez un lien vers la page tarifs.html dont le texte indique clairement la destination, puis une image logo.png dont l'alternative est « Logo de l'association ».",
-            "hints": ["Le texte du lien doit décrire ce qu'on trouve au bout.", "L'attribut d'alternative s'appelle alt."],
-            "solution": "<a href=\"tarifs.html\">Consulter les tarifs</a>\n<img src=\"logo.png\" alt=\"Logo de l'association\">"
+            "hints": [
+              "Le texte du lien doit décrire ce qu'on trouve au bout.",
+              "L'attribut d'alternative s'appelle alt."
+            ],
+            "solution": "<a href=\"tarifs.html\">Consulter les tarifs</a>\n<img src=\"logo.png\" alt=\"Logo de l'association\">",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "href",
+                "tarifs.html",
+                "alt"
+              ],
+              "success": "Correct : lien explicite et alternative textuelle."
+            }
           },
           "quiz": [
-            { "id": "html-03-q1", "type": "single", "difficulty": 1, "question": "Quel attribut contient l'adresse de destination d'un lien ?", "options": ["src", "href", "link", "url"], "answer": 1, "explanation": "href signifie hypertext reference. src sert à l'élément img.", "hints": [] },
-            { "id": "html-03-q2", "type": "multiple", "difficulty": 2, "question": "Quelles affirmations sur l'attribut alt d'une image sont exactes ?", "options": ["Il décrit l'image pour les lecteurs d'écran", "Il s'affiche si l'image ne charge pas", "Il remplace l'attribut src", "Il est inutile si l'image est décorative"], "answer": [0, 1], "explanation": "Une image purement décorative peut avoir un alt vide, mais l'attribut reste présent ; il ne remplace jamais src.", "hints": [] }
+            {
+              "id": "html-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel attribut contient l'adresse de destination d'un lien ?",
+              "options": [
+                "src",
+                "href",
+                "link",
+                "url"
+              ],
+              "answer": 1,
+              "explanation": "href signifie hypertext reference. src sert à l'élément img.",
+              "hints": []
+            },
+            {
+              "id": "html-03-q2",
+              "type": "multiple",
+              "difficulty": 2,
+              "question": "Quelles affirmations sur l'attribut alt d'une image sont exactes ?",
+              "options": [
+                "Il décrit l'image pour les lecteurs d'écran",
+                "Il s'affiche si l'image ne charge pas",
+                "Il remplace l'attribut src",
+                "Il est inutile si l'image est décorative"
+              ],
+              "answer": [
+                0,
+                1
+              ],
+              "explanation": "Une image purement décorative peut avoir un alt vide, mais l'attribut reste présent ; il ne remplace jamais src.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux et éléments sémantiques ».",
+          "summary": [
+            "Un lien utilise a et href ; un chemin relatif part du dossier de la page.",
+            "target=\"_blank\" ouvre un nouvel onglet, avec rel=\"noopener noreferrer\".",
+            "alt décrit l'image pour les lecteurs d'écran et si le fichier ne charge pas."
           ]
         },
         {
@@ -109,21 +296,78 @@
             "Structurer une page avec les éléments sémantiques"
           ],
           "content": [
-            { "type": "p", "text": "Un tableau sert à présenter des **données** organisées en lignes et colonnes. Il ne sert plus à mettre en page un site : cette pratique est obsolète et inaccessible." },
-            { "type": "code", "lang": "html", "title": "Tableau de données", "code": "<table>\n  <caption>Heures d'ouverture</caption>\n  <thead>\n    <tr>\n      <th scope=\"col\">Jour</th>\n      <th scope=\"col\">Horaire</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th scope=\"row\">Lundi</th>\n      <td>9 h – 17 h</td>\n    </tr>\n  </tbody>\n</table>" },
-            { "type": "p", "text": "Les éléments **sémantiques** décrivent le rôle des zones d'une page : `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`. Ils remplacent des `<div>` sans signification et aident les technologies d'assistance à comprendre la page." },
-            { "type": "code", "lang": "html", "code": "<body>\n  <header>Logo et titre du site</header>\n  <nav>Liens de navigation</nav>\n  <main>\n    <article>Contenu principal de la page</article>\n  </main>\n  <footer>Informations légales</footer>\n</body>" },
-            { "type": "warning", "text": "Un tableau sans `<th>` ni `<caption>` est illisible pour un lecteur d'écran : la personne ne sait pas ce que signifie chaque colonne." }
+            {
+              "type": "p",
+              "text": "Un tableau sert à présenter des **données** organisées en lignes et colonnes. Il ne sert plus à mettre en page un site : cette pratique est obsolète et inaccessible."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "title": "Tableau de données",
+              "code": "<table>\n  <caption>Heures d'ouverture</caption>\n  <thead>\n    <tr>\n      <th scope=\"col\">Jour</th>\n      <th scope=\"col\">Horaire</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th scope=\"row\">Lundi</th>\n      <td>9 h – 17 h</td>\n    </tr>\n  </tbody>\n</table>"
+            },
+            {
+              "type": "p",
+              "text": "Les éléments **sémantiques** décrivent le rôle des zones d'une page : `<header>`, `<nav>`, `<main>`, `<section>`, `<article>`, `<aside>`, `<footer>`. Ils remplacent des `<div>` sans signification et aident les technologies d'assistance à comprendre la page."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<body>\n  <header>Logo et titre du site</header>\n  <nav>Liens de navigation</nav>\n  <main>\n    <article>Contenu principal de la page</article>\n  </main>\n  <footer>Informations légales</footer>\n</body>"
+            },
+            {
+              "type": "warning",
+              "text": "Un tableau sans `<th>` ni `<caption>` est illisible pour un lecteur d'écran : la personne ne sait pas ce que signifie chaque colonne."
+            }
           ],
           "exercise": {
             "title": "Structure sémantique",
             "instructions": "Quel élément choisir pour la liste des liens de navigation principale, et pour le contenu unique de la page ?",
-            "hints": ["La navigation a un élément dédié.", "Le contenu principal aussi."],
-            "solution": "<nav> pour la navigation principale et <main> pour le contenu unique de la page."
+            "hints": [
+              "La navigation a un élément dédié.",
+              "Le contenu principal aussi."
+            ],
+            "solution": "<nav> pour la navigation principale et <main> pour le contenu unique de la page.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "nav",
+                "main"
+              ],
+              "success": "Oui : nav pour la navigation, main pour le contenu principal."
+            }
           },
           "quiz": [
-            { "id": "html-04-q1", "type": "single", "difficulty": 2, "question": "À quoi sert l'attribut scope sur une cellule th ?", "options": ["À indiquer si le titre concerne une colonne ou une ligne", "À fusionner des cellules", "À définir la couleur", "À trier le tableau"], "answer": 0, "explanation": "scope=\"col\" ou scope=\"row\" précise la portée du titre pour les technologies d'assistance.", "hints": [] },
-            { "id": "html-04-q2", "type": "truefalse", "difficulty": 1, "question": "Les tableaux HTML sont recommandés pour mettre en page la structure générale d'un site.", "answer": false, "explanation": "La mise en page relève du CSS ; un tableau sert uniquement à présenter des données tabulaires.", "hints": [] }
+            {
+              "id": "html-04-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "À quoi sert l'attribut scope sur une cellule th ?",
+              "options": [
+                "À indiquer si le titre concerne une colonne ou une ligne",
+                "À fusionner des cellules",
+                "À définir la couleur",
+                "À trier le tableau"
+              ],
+              "answer": 0,
+              "explanation": "scope=\"col\" ou scope=\"row\" précise la portée du titre pour les technologies d'assistance.",
+              "hints": []
+            },
+            {
+              "id": "html-04-q2",
+              "type": "truefalse",
+              "difficulty": 1,
+              "question": "Les tableaux HTML sont recommandés pour mettre en page la structure générale d'un site.",
+              "answer": false,
+              "explanation": "La mise en page relève du CSS ; un tableau sert uniquement à présenter des données tabulaires.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Formulaires et validation ».",
+          "summary": [
+            "Un tableau sert des données, pas la mise en page.",
+            "th et scope précisent les en-têtes pour les technologies d'assistance.",
+            "header, nav, main, article et footer décrivent le rôle des zones."
           ]
         },
         {
@@ -135,27 +379,112 @@
             "Utiliser les types de champs et la validation native"
           ],
           "content": [
-            { "type": "p", "text": "Un formulaire recueille des saisies et les envoie à un serveur. Le conteneur `<form>` indique la destination (`action`) et la méthode (`method`). Chaque champ doit avoir un **libellé** associé par `for` et `id` : c'est indispensable au clavier et aux lecteurs d'écran." },
-            { "type": "code", "lang": "html", "code": "<form action=\"/inscription\" method=\"post\">\n  <label for=\"email\">Adresse e-mail</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required autocomplete=\"email\">\n\n  <label for=\"age\">Âge</label>\n  <input id=\"age\" name=\"age\" type=\"number\" min=\"13\" max=\"120\">\n\n  <label for=\"message\">Message</label>\n  <textarea id=\"message\" name=\"message\" rows=\"4\"></textarea>\n\n  <button type=\"submit\">Envoyer</button>\n</form>" },
-            { "type": "table", "headers": ["Attribut", "Effet"], "rows": [
-              ["required", "Le champ doit être rempli"],
-              ["type=\"email\"", "Le navigateur vérifie la forme de l'adresse"],
-              ["min / max", "Bornes pour un nombre ou une date"],
-              ["pattern", "Expression régulière à respecter"],
-              ["autocomplete", "Aide au remplissage automatique"]
-            ] },
-            { "type": "p", "text": "L'attribut `name` est essentiel : c'est lui qui identifie la donnée envoyée au serveur. Sans `name`, le champ n'est pas transmis." },
-            { "type": "warning", "text": "La validation HTML est un confort d'usage, pas une sécurité. Un utilisateur peut la contourner : le serveur doit toujours revalider les données reçues." }
+            {
+              "type": "p",
+              "text": "Un formulaire recueille des saisies et les envoie à un serveur. Le conteneur `<form>` indique la destination (`action`) et la méthode (`method`). Chaque champ doit avoir un **libellé** associé par `for` et `id` : c'est indispensable au clavier et aux lecteurs d'écran."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<form action=\"/inscription\" method=\"post\">\n  <label for=\"email\">Adresse e-mail</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required autocomplete=\"email\">\n\n  <label for=\"age\">Âge</label>\n  <input id=\"age\" name=\"age\" type=\"number\" min=\"13\" max=\"120\">\n\n  <label for=\"message\">Message</label>\n  <textarea id=\"message\" name=\"message\" rows=\"4\"></textarea>\n\n  <button type=\"submit\">Envoyer</button>\n</form>"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Attribut",
+                "Effet"
+              ],
+              "rows": [
+                [
+                  "required",
+                  "Le champ doit être rempli"
+                ],
+                [
+                  "type=\"email\"",
+                  "Le navigateur vérifie la forme de l'adresse"
+                ],
+                [
+                  "min / max",
+                  "Bornes pour un nombre ou une date"
+                ],
+                [
+                  "pattern",
+                  "Expression régulière à respecter"
+                ],
+                [
+                  "autocomplete",
+                  "Aide au remplissage automatique"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "L'attribut `name` est essentiel : c'est lui qui identifie la donnée envoyée au serveur. Sans `name`, le champ n'est pas transmis."
+            },
+            {
+              "type": "warning",
+              "text": "La validation HTML est un confort d'usage, pas une sécurité. Un utilisateur peut la contourner : le serveur doit toujours revalider les données reçues."
+            }
           ],
           "exercise": {
             "title": "Champ e-mail obligatoire",
             "instructions": "Écrivez un libellé et un champ e-mail obligatoire nommé email, avec autocomplétion adaptée.",
-            "hints": ["Le libellé pointe vers l'identifiant du champ.", "Trois attributs sont attendus sur le champ : type, name et required."],
-            "solution": "<label for=\"email\">Adresse e-mail</label>\n<input id=\"email\" type=\"email\" name=\"email\" required autocomplete=\"email\">"
+            "hints": [
+              "Le libellé pointe vers l'identifiant du champ.",
+              "Trois attributs sont attendus sur le champ : type, name et required."
+            ],
+            "solution": "<label for=\"email\">Adresse e-mail</label>\n<input id=\"email\" type=\"email\" name=\"email\" required autocomplete=\"email\">",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "type=",
+                "required",
+                "name="
+              ],
+              "success": "Correct : type email, champ obligatoire et nom transmis."
+            }
           },
           "quiz": [
-            { "id": "html-05-q1", "type": "single", "difficulty": 2, "question": "Pourquoi relier un label à son champ avec for et id ?", "options": ["Pour changer la couleur du champ", "Pour que le clic sur le libellé active le champ et que les lecteurs d'écran l'annoncent", "Pour envoyer la donnée au serveur", "Pour valider la saisie"], "answer": 1, "explanation": "L'association améliore l'accessibilité et l'ergonomie ; c'est name qui sert à l'envoi.", "hints": [] },
-            { "id": "html-05-q2", "type": "multiple", "difficulty": 2, "question": "Quels attributs participent à la validation native d'un formulaire ?", "options": ["required", "pattern", "min", "placeholder"], "answer": [0, 1, 2], "explanation": "placeholder n'est qu'un texte indicatif ; il ne valide rien.", "hints": [] }
+            {
+              "id": "html-05-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi relier un label à son champ avec for et id ?",
+              "options": [
+                "Pour changer la couleur du champ",
+                "Pour que le clic sur le libellé active le champ et que les lecteurs d'écran l'annoncent",
+                "Pour envoyer la donnée au serveur",
+                "Pour valider la saisie"
+              ],
+              "answer": 1,
+              "explanation": "L'association améliore l'accessibilité et l'ergonomie ; c'est name qui sert à l'envoi.",
+              "hints": []
+            },
+            {
+              "id": "html-05-q2",
+              "type": "multiple",
+              "difficulty": 2,
+              "question": "Quels attributs participent à la validation native d'un formulaire ?",
+              "options": [
+                "required",
+                "pattern",
+                "min",
+                "placeholder"
+              ],
+              "answer": [
+                0,
+                1,
+                2
+              ],
+              "explanation": "placeholder n'est qu'un texte indicatif ; il ne valide rien.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Chaque champ possède un label associé par for et id, et un attribut name.",
+            "type, required, min, max et pattern offrent une validation native.",
+            "La validation HTML est un confort : le serveur doit revalider."
           ]
         }
       ]

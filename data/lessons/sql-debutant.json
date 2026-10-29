@@ -14,26 +14,81 @@
             "Distinguer clé primaire et clé étrangère"
           ],
           "content": [
-            { "type": "p", "text": "Une base de données **relationnelle** range les données dans des **tables**. Une table est un tableau : chaque **ligne** est un enregistrement, chaque **colonne** un attribut du même type (texte, nombre, date). Le langage SQL sert à interroger et modifier ces tables." },
-            { "type": "code", "lang": "sql", "title": "Créer une table", "code": "CREATE TABLE clients (\n  id      INTEGER PRIMARY KEY,\n  nom     TEXT NOT NULL,\n  ville   TEXT,\n  email   TEXT UNIQUE\n);" },
-            { "type": "list", "items": [
-              "La **clé primaire** identifie chaque ligne de façon unique et ne peut pas être nulle.",
-              "La **clé étrangère** référence la clé d'une autre table : elle relie les enregistrements.",
-              "`NOT NULL` interdit l'absence de valeur ; `UNIQUE` interdit les doublons.",
-              "Les types exacts varient selon le système de gestion de base de données (PostgreSQL, MySQL, SQLite)."
-            ] },
-            { "type": "p", "text": "Exemple de lien : la table `commandes` possède une colonne `client_id` qui contient l'`id` d'un client. On dit que `client_id` est une clé étrangère vers `clients.id`." },
-            { "type": "warning", "text": "Sans clé primaire, rien n'empêche deux lignes identiques. Une table sans clé devient très difficile à mettre à jour avec certitude." }
+            {
+              "type": "p",
+              "text": "Une base de données **relationnelle** range les données dans des **tables**. Une table est un tableau : chaque **ligne** est un enregistrement, chaque **colonne** un attribut du même type (texte, nombre, date). Le langage SQL sert à interroger et modifier ces tables."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "title": "Créer une table",
+              "code": "CREATE TABLE clients (\n  id      INTEGER PRIMARY KEY,\n  nom     TEXT NOT NULL,\n  ville   TEXT,\n  email   TEXT UNIQUE\n);"
+            },
+            {
+              "type": "list",
+              "items": [
+                "La **clé primaire** identifie chaque ligne de façon unique et ne peut pas être nulle.",
+                "La **clé étrangère** référence la clé d'une autre table : elle relie les enregistrements.",
+                "`NOT NULL` interdit l'absence de valeur ; `UNIQUE` interdit les doublons.",
+                "Les types exacts varient selon le système de gestion de base de données (PostgreSQL, MySQL, SQLite)."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Exemple de lien : la table `commandes` possède une colonne `client_id` qui contient l'`id` d'un client. On dit que `client_id` est une clé étrangère vers `clients.id`."
+            },
+            {
+              "type": "warning",
+              "text": "Sans clé primaire, rien n'empêche deux lignes identiques. Une table sans clé devient très difficile à mettre à jour avec certitude."
+            }
           ],
           "exercise": {
             "title": "Identifier les clés",
             "instructions": "La table commandes contient les colonnes id, client_id, date et montant. Quelle colonne joue le rôle de clé primaire, et laquelle est probablement une clé étrangère ?",
-            "hints": ["La clé primaire identifie une commande.", "Une clé étrangère porte souvent le nom de la table qu'elle référence, suivi de _id."],
-            "solution": "Clé primaire : id (identifie la commande). Clé étrangère : client_id (référence clients.id)."
+            "hints": [
+              "La clé primaire identifie une commande.",
+              "Une clé étrangère porte souvent le nom de la table qu'elle référence, suivi de _id."
+            ],
+            "solution": "Clé primaire : id (identifie la commande). Clé étrangère : client_id (référence clients.id).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "id",
+                "client_id"
+              ]
+            }
           },
           "quiz": [
-            { "id": "sql-01-q1", "type": "single", "difficulty": 1, "question": "Quel est le rôle d'une clé primaire ?", "options": ["Identifier chaque ligne de façon unique", "Trier les lignes", "Relier deux tables", "Stocker du texte libre"], "answer": 0, "explanation": "La clé primaire garantit l'unicité et l'absence de valeur nulle.", "hints": [] },
-            { "id": "sql-01-q2", "type": "truefalse", "difficulty": 2, "question": "Une table peut posséder deux clés primaires différentes.", "answer": false, "explanation": "Une table a une seule clé primaire, qui peut toutefois être composée de plusieurs colonnes.", "hints": [] }
+            {
+              "id": "sql-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel est le rôle d'une clé primaire ?",
+              "options": [
+                "Identifier chaque ligne de façon unique",
+                "Trier les lignes",
+                "Relier deux tables",
+                "Stocker du texte libre"
+              ],
+              "answer": 0,
+              "explanation": "La clé primaire garantit l'unicité et l'absence de valeur nulle.",
+              "hints": []
+            },
+            {
+              "id": "sql-01-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Une table peut posséder deux clés primaires différentes.",
+              "answer": false,
+              "explanation": "Une table a une seule clé primaire, qui peut toutefois être composée de plusieurs colonnes.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « SELECT et WHERE ».",
+          "summary": [
+            "Une table est un ensemble de lignes et de colonnes.",
+            "La clé primaire identifie une ligne de façon unique.",
+            "La clé étrangère référence la clé primaire d'une autre table."
           ]
         }
       ]
@@ -51,26 +106,103 @@
             "Filtrer des lignes avec WHERE"
           ],
           "content": [
-            { "type": "p", "text": "`SELECT` choisit les **colonnes**, `FROM` la table, `WHERE` filtre les **lignes**. La requête se termine par un point-virgule. Les chaînes de caractères s'écrivent entre apostrophes simples." },
-            { "type": "code", "lang": "sql", "code": "SELECT nom, ville\nFROM clients;\n\nSELECT nom\nFROM clients\nWHERE ville = 'Lyon';\n\nSELECT *\nFROM clients\nWHERE ville = 'Lyon' AND nom LIKE 'M%';" },
-            { "type": "table", "headers": ["Opérateur", "Exemple"], "rows": [
-              ["Comparaison", "`ville = 'Lyon'`, `age >= 18`, `age <> 30`"],
-              ["Combinaison", "`AND`, `OR`, `NOT`"],
-              ["Motif", "`nom LIKE 'M%'` (commence par M), `'%on%'` (contient on)"],
-              ["Absence", "`email IS NULL`"]
-            ] },
-            { "type": "p", "text": "`SELECT *` renvoie toutes les colonnes. C'est pratique pour explorer, mais en production on liste explicitement les colonnes utiles : la requête reste lisible et résiste aux changements de schéma." },
-            { "type": "warning", "text": "`NULL` signifie « valeur inconnue » et n'est pas égal à une chaîne vide. `email = NULL` ne renvoie jamais de ligne : utilisez `IS NULL` ou `IS NOT NULL`." }
+            {
+              "type": "p",
+              "text": "`SELECT` choisit les **colonnes**, `FROM` la table, `WHERE` filtre les **lignes**. La requête se termine par un point-virgule. Les chaînes de caractères s'écrivent entre apostrophes simples."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT nom, ville\nFROM clients;\n\nSELECT nom\nFROM clients\nWHERE ville = 'Lyon';\n\nSELECT *\nFROM clients\nWHERE ville = 'Lyon' AND nom LIKE 'M%';"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Opérateur",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Comparaison",
+                  "`ville = 'Lyon'`, `age >= 18`, `age <> 30`"
+                ],
+                [
+                  "Combinaison",
+                  "`AND`, `OR`, `NOT`"
+                ],
+                [
+                  "Motif",
+                  "`nom LIKE 'M%'` (commence par M), `'%on%'` (contient on)"
+                ],
+                [
+                  "Absence",
+                  "`email IS NULL`"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "`SELECT *` renvoie toutes les colonnes. C'est pratique pour explorer, mais en production on liste explicitement les colonnes utiles : la requête reste lisible et résiste aux changements de schéma."
+            },
+            {
+              "type": "warning",
+              "text": "`NULL` signifie « valeur inconnue » et n'est pas égal à une chaîne vide. `email = NULL` ne renvoie jamais de ligne : utilisez `IS NULL` ou `IS NOT NULL`."
+            }
           ],
           "exercise": {
             "title": "Clients de Paris",
             "instructions": "Écrivez une requête qui affiche le nom et l'e-mail des clients dont la ville est Paris.",
-            "hints": ["Deux colonnes à sélectionner, séparées par une virgule.", "La ville est une chaîne : utilisez des apostrophes simples."],
-            "solution": "SELECT nom, email\nFROM clients\nWHERE ville = 'Paris';"
+            "hints": [
+              "Deux colonnes à sélectionner, séparées par une virgule.",
+              "La ville est une chaîne : utilisez des apostrophes simples."
+            ],
+            "solution": "SELECT nom, email\nFROM clients\nWHERE ville = 'Paris';",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "select",
+                "where",
+                "paris"
+              ]
+            }
           },
           "quiz": [
-            { "id": "sql-02-q1", "type": "single", "difficulty": 1, "question": "Quelle clause filtre les lignes ?", "options": ["SELECT", "FROM", "WHERE", "ORDER BY"], "answer": 2, "explanation": "WHERE applique une condition aux lignes ; SELECT choisit les colonnes.", "hints": [] },
-            { "id": "sql-02-q2", "type": "blank", "difficulty": 2, "question": "Pour trouver les noms contenant « on », on écrit : nom ___ '%on%'.", "answers": [["LIKE"]], "explanation": "LIKE compare un texte à un motif où % remplace une suite de caractères.", "hints": ["Quatre lettres, mot-clé de comparaison de motif."] }
+            {
+              "id": "sql-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle clause filtre les lignes ?",
+              "options": [
+                "SELECT",
+                "FROM",
+                "WHERE",
+                "ORDER BY"
+              ],
+              "answer": 2,
+              "explanation": "WHERE applique une condition aux lignes ; SELECT choisit les colonnes.",
+              "hints": []
+            },
+            {
+              "id": "sql-02-q2",
+              "type": "blank",
+              "difficulty": 2,
+              "question": "Pour trouver les noms contenant « on », on écrit : nom ___ '%on%'.",
+              "answers": [
+                [
+                  "LIKE"
+                ]
+              ],
+              "explanation": "LIKE compare un texte à un motif où % remplace une suite de caractères.",
+              "hints": [
+                "Quatre lettres, mot-clé de comparaison de motif."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Trier, limiter et dédoublonner ».",
+          "summary": [
+            "SELECT choisit les colonnes, FROM la table.",
+            "WHERE filtre les lignes avant l'affichage.",
+            "Les chaînes sont entre apostrophes en SQL standard."
           ]
         },
         {
@@ -82,24 +214,91 @@
             "Limiter le nombre de lignes renvoyées"
           ],
           "content": [
-            { "type": "p", "text": "`ORDER BY` trie les résultats selon une ou plusieurs colonnes, en ordre croissant (`ASC`, par défaut) ou décroissant (`DESC`). `LIMIT` restreint le nombre de lignes, ce qui permet la pagination avec `OFFSET`. `DISTINCT` supprime les doublons." },
-            { "type": "code", "lang": "sql", "code": "SELECT nom, ville\nFROM clients\nORDER BY ville ASC, nom ASC;\n\nSELECT nom\nFROM clients\nORDER BY id DESC\nLIMIT 5;\n\nSELECT DISTINCT ville\nFROM clients;" },
-            { "type": "list", "items": [
-              "Sans `ORDER BY`, aucun ordre n'est garanti, même si les résultats semblent triés.",
-              "`LIMIT 5 OFFSET 10` renvoie les lignes 11 à 15 d'un tri stable.",
-              "`DISTINCT` s'applique à la combinaison des colonnes sélectionnées."
-            ] },
-            { "type": "warning", "text": "Une pagination sans `ORDER BY` peut afficher deux fois la même ligne ou en oublier, car l'ordre peut changer entre deux requêtes." }
+            {
+              "type": "p",
+              "text": "`ORDER BY` trie les résultats selon une ou plusieurs colonnes, en ordre croissant (`ASC`, par défaut) ou décroissant (`DESC`). `LIMIT` restreint le nombre de lignes, ce qui permet la pagination avec `OFFSET`. `DISTINCT` supprime les doublons."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT nom, ville\nFROM clients\nORDER BY ville ASC, nom ASC;\n\nSELECT nom\nFROM clients\nORDER BY id DESC\nLIMIT 5;\n\nSELECT DISTINCT ville\nFROM clients;"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sans `ORDER BY`, aucun ordre n'est garanti, même si les résultats semblent triés.",
+                "`LIMIT 5 OFFSET 10` renvoie les lignes 11 à 15 d'un tri stable.",
+                "`DISTINCT` s'applique à la combinaison des colonnes sélectionnées."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une pagination sans `ORDER BY` peut afficher deux fois la même ligne ou en oublier, car l'ordre peut changer entre deux requêtes."
+            }
           ],
           "exercise": {
             "title": "Les cinq derniers inscrits",
             "instructions": "Affichez le nom des cinq clients les plus récents, en supposant que l'identifiant le plus grand correspond à l'inscription la plus récente.",
-            "hints": ["Le tri doit être décroissant sur l'identifiant.", "Le nombre maximal de lignes se fixe avec LIMIT."],
-            "solution": "SELECT nom\nFROM clients\nORDER BY id DESC\nLIMIT 5;"
+            "hints": [
+              "Le tri doit être décroissant sur l'identifiant.",
+              "Le nombre maximal de lignes se fixe avec LIMIT."
+            ],
+            "solution": "SELECT nom\nFROM clients\nORDER BY id DESC\nLIMIT 5;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "order by",
+                "desc",
+                "limit"
+              ]
+            }
           },
           "quiz": [
-            { "id": "sql-03-q1", "type": "single", "difficulty": 1, "question": "Que fait SELECT DISTINCT ville FROM clients ?", "options": ["Compte les villes", "Renvoie chaque ville une seule fois", "Trie les villes", "Supprime la colonne ville"], "answer": 1, "explanation": "DISTINCT élimine les doublons dans le résultat.", "hints": [] },
-            { "id": "sql-03-q2", "type": "order", "difficulty": 2, "question": "Remettez les clauses dans l'ordre d'écriture d'une requête.", "items": ["ORDER BY nom", "SELECT nom", "LIMIT 10", "FROM clients", "WHERE ville = 'Lyon'"], "answer": [1, 3, 4, 0, 2], "explanation": "L'ordre est SELECT, FROM, WHERE, ORDER BY, LIMIT.", "hints": ["On commence toujours par la projection."] }
+            {
+              "id": "sql-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que fait SELECT DISTINCT ville FROM clients ?",
+              "options": [
+                "Compte les villes",
+                "Renvoie chaque ville une seule fois",
+                "Trie les villes",
+                "Supprime la colonne ville"
+              ],
+              "answer": 1,
+              "explanation": "DISTINCT élimine les doublons dans le résultat.",
+              "hints": []
+            },
+            {
+              "id": "sql-03-q2",
+              "type": "order",
+              "difficulty": 2,
+              "question": "Remettez les clauses dans l'ordre d'écriture d'une requête.",
+              "items": [
+                "ORDER BY nom",
+                "SELECT nom",
+                "LIMIT 10",
+                "FROM clients",
+                "WHERE ville = 'Lyon'"
+              ],
+              "answer": [
+                1,
+                3,
+                4,
+                0,
+                2
+              ],
+              "explanation": "L'ordre est SELECT, FROM, WHERE, ORDER BY, LIMIT.",
+              "hints": [
+                "On commence toujours par la projection."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Agrégations et regroupements ».",
+          "summary": [
+            "ORDER BY trie, ASC par défaut, DESC inverse.",
+            "LIMIT borne le nombre de lignes renvoyées.",
+            "DISTINCT supprime les doublons du résultat."
           ]
         },
         {
@@ -111,20 +310,78 @@
             "Regrouper avec GROUP BY et filtrer avec HAVING"
           ],
           "content": [
-            { "type": "p", "text": "Les **fonctions d'agrégation** résument plusieurs lignes en une valeur : `COUNT` compte, `SUM` additionne, `AVG` calcule une moyenne, `MIN` et `MAX` donnent les extrêmes. `GROUP BY` forme des groupes, par exemple un par ville." },
-            { "type": "code", "lang": "sql", "code": "SELECT COUNT(*) AS nombre_clients\nFROM clients;\n\nSELECT ville, COUNT(*) AS nombre\nFROM clients\nGROUP BY ville;\n\nSELECT ville, AVG(age) AS age_moyen\nFROM clients\nGROUP BY ville\nHAVING COUNT(*) >= 3;" },
-            { "type": "p", "text": "`WHERE` filtre les lignes **avant** le regroupement. `HAVING` filtre les groupes **après** le calcul, par exemple pour ne garder que les villes ayant au moins trois clients." },
-            { "type": "warning", "text": "Une colonne sélectionnée sans agrégation doit figurer dans `GROUP BY`, sinon le résultat est incohérent ou refusé par le SGBD." }
+            {
+              "type": "p",
+              "text": "Les **fonctions d'agrégation** résument plusieurs lignes en une valeur : `COUNT` compte, `SUM` additionne, `AVG` calcule une moyenne, `MIN` et `MAX` donnent les extrêmes. `GROUP BY` forme des groupes, par exemple un par ville."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT COUNT(*) AS nombre_clients\nFROM clients;\n\nSELECT ville, COUNT(*) AS nombre\nFROM clients\nGROUP BY ville;\n\nSELECT ville, AVG(age) AS age_moyen\nFROM clients\nGROUP BY ville\nHAVING COUNT(*) >= 3;"
+            },
+            {
+              "type": "p",
+              "text": "`WHERE` filtre les lignes **avant** le regroupement. `HAVING` filtre les groupes **après** le calcul, par exemple pour ne garder que les villes ayant au moins trois clients."
+            },
+            {
+              "type": "warning",
+              "text": "Une colonne sélectionnée sans agrégation doit figurer dans `GROUP BY`, sinon le résultat est incohérent ou refusé par le SGBD."
+            }
           ],
           "exercise": {
             "title": "Commandes par client",
             "instructions": "Écrivez une requête qui affiche, pour la table commandes, le nombre de commandes par client_id, trié du plus grand au plus petit.",
-            "hints": ["Le regroupement se fait sur client_id.", "Le tri porte sur le résultat de COUNT."],
-            "solution": "SELECT client_id, COUNT(*) AS nombre\nFROM commandes\nGROUP BY client_id\nORDER BY nombre DESC;"
+            "hints": [
+              "Le regroupement se fait sur client_id.",
+              "Le tri porte sur le résultat de COUNT."
+            ],
+            "solution": "SELECT client_id, COUNT(*) AS nombre\nFROM commandes\nGROUP BY client_id\nORDER BY nombre DESC;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "group by",
+                "count",
+                "order by"
+              ]
+            }
           },
           "quiz": [
-            { "id": "sql-04-q1", "type": "single", "difficulty": 2, "question": "Quelle clause filtre les groupes après une agrégation ?", "options": ["WHERE", "HAVING", "GROUP BY", "ORDER BY"], "answer": 1, "explanation": "HAVING s'applique aux groupes ; WHERE s'applique aux lignes avant regroupement.", "hints": [] },
-            { "id": "sql-04-q2", "type": "text", "difficulty": 1, "question": "Quelle fonction compte le nombre de lignes d'une table ?", "answer": ["COUNT", "COUNT(*)", "count(*)"], "explanation": "COUNT(*) compte toutes les lignes, valeurs nulles comprises.", "hints": ["Cinq lettres."] }
+            {
+              "id": "sql-04-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quelle clause filtre les groupes après une agrégation ?",
+              "options": [
+                "WHERE",
+                "HAVING",
+                "GROUP BY",
+                "ORDER BY"
+              ],
+              "answer": 1,
+              "explanation": "HAVING s'applique aux groupes ; WHERE s'applique aux lignes avant regroupement.",
+              "hints": []
+            },
+            {
+              "id": "sql-04-q2",
+              "type": "text",
+              "difficulty": 1,
+              "question": "Quelle fonction compte le nombre de lignes d'une table ?",
+              "answer": [
+                "COUNT",
+                "COUNT(*)",
+                "count(*)"
+              ],
+              "explanation": "COUNT(*) compte toutes les lignes, valeurs nulles comprises.",
+              "hints": [
+                "Cinq lettres."
+              ]
+            }
+          ],
+          "nextStep": "Chapitre suivant : « INSERT, UPDATE, DELETE et jointures ».",
+          "summary": [
+            "COUNT, SUM, AVG, MIN et MAX agrègent plusieurs lignes.",
+            "GROUP BY forme un groupe par valeur.",
+            "Les agrégats se filtrent avec HAVING, pas WHERE."
           ]
         }
       ]
@@ -142,22 +399,88 @@
             "Combiner deux tables avec INNER JOIN"
           ],
           "content": [
-            { "type": "code", "lang": "sql", "title": "Modifier les données", "code": "INSERT INTO clients (nom, ville)\nVALUES ('Ada', 'Lyon');\n\nUPDATE clients\nSET ville = 'Paris'\nWHERE id = 42;\n\nDELETE FROM clients\nWHERE id = 42;" },
-            { "type": "p", "text": "`UPDATE` et `DELETE` acceptent une clause `WHERE`. **Sans elle, toutes les lignes sont concernées.** Prenez l'habitude d'écrire d'abord un `SELECT` avec la même condition pour vérifier les lignes visées." },
-            { "type": "h", "text": "Joindre deux tables" },
-            { "type": "p", "text": "Un `INNER JOIN` combine les lignes de deux tables ayant une correspondance. Il ne garde que les lignes présentes des deux côtés." },
-            { "type": "code", "lang": "sql", "code": "SELECT c.nom, o.date, o.montant\nFROM commandes AS o\nINNER JOIN clients AS c ON c.id = o.client_id\nWHERE o.montant > 100;" },
-            { "type": "warning", "text": "`DELETE FROM clients;` vide la table entière. Sur un serveur de production, exécutez ce type d'opération dans une transaction et vérifiez le nombre de lignes affectées." }
+            {
+              "type": "code",
+              "lang": "sql",
+              "title": "Modifier les données",
+              "code": "INSERT INTO clients (nom, ville)\nVALUES ('Ada', 'Lyon');\n\nUPDATE clients\nSET ville = 'Paris'\nWHERE id = 42;\n\nDELETE FROM clients\nWHERE id = 42;"
+            },
+            {
+              "type": "p",
+              "text": "`UPDATE` et `DELETE` acceptent une clause `WHERE`. **Sans elle, toutes les lignes sont concernées.** Prenez l'habitude d'écrire d'abord un `SELECT` avec la même condition pour vérifier les lignes visées."
+            },
+            {
+              "type": "h",
+              "text": "Joindre deux tables"
+            },
+            {
+              "type": "p",
+              "text": "Un `INNER JOIN` combine les lignes de deux tables ayant une correspondance. Il ne garde que les lignes présentes des deux côtés."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT c.nom, o.date, o.montant\nFROM commandes AS o\nINNER JOIN clients AS c ON c.id = o.client_id\nWHERE o.montant > 100;"
+            },
+            {
+              "type": "warning",
+              "text": "`DELETE FROM clients;` vide la table entière. Sur un serveur de production, exécutez ce type d'opération dans une transaction et vérifiez le nombre de lignes affectées."
+            }
           ],
           "exercise": {
             "title": "Mettre à jour un prix",
             "instructions": "Écrivez une requête qui passe à 19.90 le prix du produit dont l'identifiant est 7.",
-            "hints": ["Il s'agit de UPDATE ... SET.", "La clause WHERE limite la modification à une ligne."],
-            "solution": "UPDATE produits\nSET prix = 19.90\nWHERE id = 7;"
+            "hints": [
+              "Il s'agit de UPDATE ... SET.",
+              "La clause WHERE limite la modification à une ligne."
+            ],
+            "solution": "UPDATE produits\nSET prix = 19.90\nWHERE id = 7;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "update",
+                "produits",
+                "where"
+              ]
+            }
           },
           "quiz": [
-            { "id": "sql-05-q1", "type": "single", "difficulty": 1, "question": "Que se passe-t-il avec DELETE FROM clients sans clause WHERE ?", "options": ["Rien", "Toutes les lignes sont supprimées", "La table est supprimée", "Seule la première ligne est supprimée"], "answer": 1, "explanation": "Sans condition, toutes les lignes de la table sont concernées.", "hints": [] },
-            { "id": "sql-05-q2", "type": "single", "difficulty": 2, "question": "Que renvoie un INNER JOIN entre clients et commandes ?", "options": ["Tous les clients, même sans commande", "Uniquement les lignes ayant une correspondance dans les deux tables", "Toutes les commandes, même sans client", "La somme des deux tables"], "answer": 1, "explanation": "INNER JOIN conserve seulement les correspondances ; LEFT JOIN garderait aussi les clients sans commande.", "hints": [] }
+            {
+              "id": "sql-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que se passe-t-il avec DELETE FROM clients sans clause WHERE ?",
+              "options": [
+                "Rien",
+                "Toutes les lignes sont supprimées",
+                "La table est supprimée",
+                "Seule la première ligne est supprimée"
+              ],
+              "answer": 1,
+              "explanation": "Sans condition, toutes les lignes de la table sont concernées.",
+              "hints": []
+            },
+            {
+              "id": "sql-05-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que renvoie un INNER JOIN entre clients et commandes ?",
+              "options": [
+                "Tous les clients, même sans commande",
+                "Uniquement les lignes ayant une correspondance dans les deux tables",
+                "Toutes les commandes, même sans client",
+                "La somme des deux tables"
+              ],
+              "answer": 1,
+              "explanation": "INNER JOIN conserve seulement les correspondances ; LEFT JOIN garderait aussi les clients sans commande.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "INSERT ajoute, UPDATE modifie, DELETE supprime.",
+            "Un UPDATE sans WHERE touche toutes les lignes.",
+            "JOIN relie les tables par leurs clés."
           ]
         }
       ]

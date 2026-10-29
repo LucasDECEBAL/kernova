@@ -14,13 +14,44 @@
             "Exécuter un fichier Python depuis le terminal"
           ],
           "content": [
-            { "type": "p", "text": "Python est un langage lisible, qui se rapproche de l'anglais et de la pensée humaine. Un programme est un fichier texte d'extension `.py`, exécuté par l'**interpréteur** `python`." },
-            { "type": "code", "lang": "bash", "code": "python --version\n# ou, sur certains systèmes :\npython3 --version" },
-            { "type": "p", "text": "Créez un fichier `bonjour.py` contenant une seule instruction :" },
-            { "type": "code", "lang": "python", "title": "bonjour.py", "code": "print(\"Bonjour, Python !\")" },
-            { "type": "code", "lang": "bash", "code": "python bonjour.py" },
-            { "type": "p", "text": "`print()` affiche le texte entre parenthèses dans le terminal. Les guillemets indiquent qu'il s'agit d'une **chaîne de caractères**, un texte que Python ne doit pas interpréter." },
-            { "type": "tip", "text": "Python exécute les instructions de haut en bas. Une erreur de frappe provoque un message indiquant la ligne concernée : lisez-le avant de modifier le code au hasard." }
+            {
+              "type": "p",
+              "text": "Python est un langage lisible, qui se rapproche de l'anglais et de la pensée humaine. Un programme est un fichier texte d'extension `.py`, exécuté par l'**interpréteur** `python`."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "python --version\n# ou, sur certains systèmes :\npython3 --version"
+            },
+            {
+              "type": "p",
+              "text": "Créez un fichier `bonjour.py` contenant une seule instruction :"
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "title": "bonjour.py",
+              "code": "print(\"Bonjour, Python !\")"
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "python bonjour.py"
+            },
+            {
+              "type": "p",
+              "text": "`print()` affiche le texte entre parenthèses dans le terminal. Les guillemets indiquent qu'il s'agit d'une **chaîne de caractères**, un texte que Python ne doit pas interpréter."
+            },
+            {
+              "type": "tip",
+              "text": "Python exécute les instructions de haut en bas. Une erreur de frappe provoque un message indiquant la ligne concernée : lisez-le avant de modifier le code au hasard."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Variables et types de données ».",
+          "summary": [
+            "print affiche du texte dans le terminal.",
+            "Un script s'exécute ligne par ligne.",
+            "python3 fichier.py lance le programme."
           ]
         },
         {
@@ -33,17 +64,64 @@
             "Afficher une valeur avec une f-string"
           ],
           "content": [
-            { "type": "p", "text": "Une **variable** est un nom qui désigne une valeur. On l'affecte avec le signe `=`. Python détermine le type de la valeur, on ne le déclare pas." },
-            { "type": "code", "lang": "python", "code": "nom = \"Ada\"\nage = 36\ntaille = 1.62\nest_etudiante = False\n\nprint(type(age))  # <class 'int'>\nprint(type(taille))  # <class 'float'>" },
-            { "type": "table", "headers": ["Type", "Exemple", "Usage"], "rows": [
-              ["`int`", "`42`", "Nombres entiers"],
-              ["`float`", "`3.14`", "Nombres à virgule"],
-              ["`str`", "`\"Bonjour\"`", "Texte"],
-              ["`bool`", "`True`, `False`", "Vrai ou faux"]
-            ] },
-            { "type": "p", "text": "Une **f-string** insère des valeurs dans un texte. Il suffit de mettre un `f` devant les guillemets et les variables entre accolades." },
-            { "type": "code", "lang": "python", "code": "print(f\"{nom} a {age} ans.\")" },
-            { "type": "warning", "text": "Une variable doit être affectée avant d'être utilisée. `print(x)` sans affectation préalable produit une erreur `NameError`." }
+            {
+              "type": "p",
+              "text": "Une **variable** est un nom qui désigne une valeur. On l'affecte avec le signe `=`. Python détermine le type de la valeur, on ne le déclare pas."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "nom = \"Ada\"\nage = 36\ntaille = 1.62\nest_etudiante = False\n\nprint(type(age))  # <class 'int'>\nprint(type(taille))  # <class 'float'>"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Exemple",
+                "Usage"
+              ],
+              "rows": [
+                [
+                  "`int`",
+                  "`42`",
+                  "Nombres entiers"
+                ],
+                [
+                  "`float`",
+                  "`3.14`",
+                  "Nombres à virgule"
+                ],
+                [
+                  "`str`",
+                  "`\"Bonjour\"`",
+                  "Texte"
+                ],
+                [
+                  "`bool`",
+                  "`True`, `False`",
+                  "Vrai ou faux"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Une **f-string** insère des valeurs dans un texte. Il suffit de mettre un `f` devant les guillemets et les variables entre accolades."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "print(f\"{nom} a {age} ans.\")"
+            },
+            {
+              "type": "warning",
+              "text": "Une variable doit être affectée avant d'être utilisée. `print(x)` sans affectation préalable produit une erreur `NameError`."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Calculs et saisie utilisateur ».",
+          "summary": [
+            "Une variable associe un nom à une valeur.",
+            "Les types de base : int, float, str, bool.",
+            "Une f-string insère une expression entre accolades."
           ]
         },
         {
@@ -55,15 +133,60 @@
             "Lire une saisie avec input() et la convertir"
           ],
           "content": [
-            { "type": "table", "headers": ["Opérateur", "Rôle", "Exemple", "Résultat"], "rows": [
-              ["`+ - * /`", "Calculs de base", "`7 / 2`", "`3.5`"],
-              ["`//`", "Division entière", "`7 // 2`", "`3`"],
-              ["`%`", "Reste de la division", "`7 % 2`", "`1`"],
-              ["`**`", "Puissance", "`2 ** 3`", "`8`"]
-            ] },
-            { "type": "p", "text": "`input()` attend une saisie au clavier. **Le résultat est toujours une chaîne de caractères.** Pour calculer, il faut le convertir avec `int()` ou `float()`." },
-            { "type": "code", "lang": "python", "code": "saisie = input(\"Votre âge : \")\nage = int(saisie)\nprint(f\"Dans dix ans, vous aurez {age + 10} ans.\")" },
-            { "type": "warning", "text": "`\"2\" + \"3\"` donne `\"23\"` : deux chaînes sont collées. `2 + 3` donne `5`. Vérifiez toujours le type de vos données." }
+            {
+              "type": "table",
+              "headers": [
+                "Opérateur",
+                "Rôle",
+                "Exemple",
+                "Résultat"
+              ],
+              "rows": [
+                [
+                  "`+ - * /`",
+                  "Calculs de base",
+                  "`7 / 2`",
+                  "`3.5`"
+                ],
+                [
+                  "`//`",
+                  "Division entière",
+                  "`7 // 2`",
+                  "`3`"
+                ],
+                [
+                  "`%`",
+                  "Reste de la division",
+                  "`7 % 2`",
+                  "`1`"
+                ],
+                [
+                  "`**`",
+                  "Puissance",
+                  "`2 ** 3`",
+                  "`8`"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "`input()` attend une saisie au clavier. **Le résultat est toujours une chaîne de caractères.** Pour calculer, il faut le convertir avec `int()` ou `float()`."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "saisie = input(\"Votre âge : \")\nage = int(saisie)\nprint(f\"Dans dix ans, vous aurez {age + 10} ans.\")"
+            },
+            {
+              "type": "warning",
+              "text": "`\"2\" + \"3\"` donne `\"23\"` : deux chaînes sont collées. `2 + 3` donne `5`. Vérifiez toujours le type de vos données."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Conditions ».",
+          "summary": [
+            "// donne le quotient entier, % le reste.",
+            "/ renvoie toujours un flottant.",
+            "input renvoie une chaîne à convertir."
           ]
         }
       ]
@@ -81,13 +204,32 @@
             "Combiner des conditions avec and, or et not"
           ],
           "content": [
-            { "type": "p", "text": "Une condition exécute un bloc de code seulement si une expression est vraie. En Python, **l'indentation** (quatre espaces) délimite le bloc. Elle n'est pas facultative." },
-            { "type": "code", "lang": "python", "code": "note = int(input(\"Note sur 20 : \"))\n\nif note >= 16:\n    print(\"Très bien\")\nelif note >= 10:\n    print(\"Validé\")\nelse:\n    print(\"À retravailler\")" },
-            { "type": "list", "items": [
-              "Les comparaisons : `==` (égal), `!=` (différent), `<`, `<=`, `>`, `>=`.",
-              "`and` : vrai si les deux conditions sont vraies. `or` : vrai si l'une l'est. `not` : inverse."
-            ] },
-            { "type": "warning", "text": "Le signe `=` affecte une valeur, le signe `==` compare deux valeurs. Confondre les deux est une erreur classique." }
+            {
+              "type": "p",
+              "text": "Une condition exécute un bloc de code seulement si une expression est vraie. En Python, **l'indentation** (quatre espaces) délimite le bloc. Elle n'est pas facultative."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "note = int(input(\"Note sur 20 : \"))\n\nif note >= 16:\n    print(\"Très bien\")\nelif note >= 10:\n    print(\"Validé\")\nelse:\n    print(\"À retravailler\")"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Les comparaisons : `==` (égal), `!=` (différent), `<`, `<=`, `>`, `>=`.",
+                "`and` : vrai si les deux conditions sont vraies. `or` : vrai si l'une l'est. `not` : inverse."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Le signe `=` affecte une valeur, le signe `==` compare deux valeurs. Confondre les deux est une erreur classique."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Boucles ».",
+          "summary": [
+            "if, elif et else choisissent un bloc.",
+            "L'indentation délimite les blocs.",
+            "== compare, = affecte."
           ]
         },
         {
@@ -99,15 +241,41 @@
             "Répéter une action tant qu'une condition est vraie avec while"
           ],
           "content": [
-            { "type": "p", "text": "Une boucle répète un bloc de code. `for` parcourt une séquence élément par élément. `range(n)` produit les nombres de 0 à n - 1." },
-            { "type": "code", "lang": "python", "code": "for i in range(3):\n    print(\"Tour\", i)\n\nfor lettre in \"Git\":\n    print(lettre)" },
-            { "type": "p", "text": "`while` répète tant que la condition reste vraie. Il faut toujours prévoir ce qui la rendra fausse, sinon la boucle ne s'arrête jamais." },
-            { "type": "code", "lang": "python", "code": "compteur = 3\nwhile compteur > 0:\n    print(compteur)\n    compteur = compteur - 1\nprint(\"Décollage !\")" },
-            { "type": "list", "items": [
-              "`break` interrompt la boucle immédiatement.",
-              "`continue` passe directement à l'itération suivante."
-            ] },
-            { "type": "tip", "text": "Si vous ne savez pas combien de fois répéter, `while` convient. Si vous parcourez une liste ou un intervalle connu, `for` est plus lisible." }
+            {
+              "type": "p",
+              "text": "Une boucle répète un bloc de code. `for` parcourt une séquence élément par élément. `range(n)` produit les nombres de 0 à n - 1."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "for i in range(3):\n    print(\"Tour\", i)\n\nfor lettre in \"Git\":\n    print(lettre)"
+            },
+            {
+              "type": "p",
+              "text": "`while` répète tant que la condition reste vraie. Il faut toujours prévoir ce qui la rendra fausse, sinon la boucle ne s'arrête jamais."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "compteur = 3\nwhile compteur > 0:\n    print(compteur)\n    compteur = compteur - 1\nprint(\"Décollage !\")"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`break` interrompt la boucle immédiatement.",
+                "`continue` passe directement à l'itération suivante."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Si vous ne savez pas combien de fois répéter, `while` convient. Si vous parcourez une liste ou un intervalle connu, `for` est plus lisible."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Écrire des fonctions ».",
+          "summary": [
+            "for parcourt une séquence, range produit des entiers.",
+            "range(1, 6) va de 1 à 5.",
+            "while répète tant que la condition est vraie."
           ]
         }
       ]
@@ -125,11 +293,34 @@
             "Utiliser des paramètres et une valeur de retour"
           ],
           "content": [
-            { "type": "p", "text": "Une fonction regroupe des instructions sous un nom. Elle reçoit des **paramètres** et peut renvoyer une valeur avec `return`. Une fonction bien nommée remplace un commentaire explicatif." },
-            { "type": "code", "lang": "python", "code": "def calcul_moyenne(notes):\n    \"\"\"Renvoie la moyenne d'une liste de notes.\"\"\"\n    return sum(notes) / len(notes)\n\nmoyenne = calcul_moyenne([12, 15, 9])\nprint(moyenne)  # 12.0" },
-            { "type": "p", "text": "Un paramètre peut avoir une valeur par défaut. Elle est utilisée si l'appelant ne fournit pas l'argument." },
-            { "type": "code", "lang": "python", "code": "def saluer(nom, ponctuation=\"!\"):\n    return f\"Bonjour {nom}{ponctuation}\"\n\nprint(saluer(\"Ada\"))\nprint(saluer(\"Ada\", \"?\"))" },
-            { "type": "warning", "text": "Sans `return`, une fonction renvoie `None`. Afficher le résultat d'une fonction qui affiche elle-même produit donc une ligne `None` inutile." }
+            {
+              "type": "p",
+              "text": "Une fonction regroupe des instructions sous un nom. Elle reçoit des **paramètres** et peut renvoyer une valeur avec `return`. Une fonction bien nommée remplace un commentaire explicatif."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "def calcul_moyenne(notes):\n    \"\"\"Renvoie la moyenne d'une liste de notes.\"\"\"\n    return sum(notes) / len(notes)\n\nmoyenne = calcul_moyenne([12, 15, 9])\nprint(moyenne)  # 12.0"
+            },
+            {
+              "type": "p",
+              "text": "Un paramètre peut avoir une valeur par défaut. Elle est utilisée si l'appelant ne fournit pas l'argument."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "def saluer(nom, ponctuation=\"!\"):\n    return f\"Bonjour {nom}{ponctuation}\"\n\nprint(saluer(\"Ada\"))\nprint(saluer(\"Ada\", \"?\"))"
+            },
+            {
+              "type": "warning",
+              "text": "Sans `return`, une fonction renvoie `None`. Afficher le résultat d'une fonction qui affiche elle-même produit donc une ligne `None` inutile."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Listes ».",
+          "summary": [
+            "def définit une fonction, return renvoie une valeur.",
+            "Les paramètres peuvent avoir une valeur par défaut.",
+            "Une fonction sans return renvoie None."
           ]
         }
       ]
@@ -147,14 +338,33 @@
             "Utiliser le découpage (slicing)"
           ],
           "content": [
-            { "type": "p", "text": "Une **liste** contient plusieurs valeurs ordonnées, accessibles par leur position (indice). Le premier élément est à l'indice 0." },
-            { "type": "code", "lang": "python", "code": "fruits = [\"pomme\", \"poire\", \"figue\"]\nprint(fruits[0])     # pomme\nprint(fruits[-1])    # figue\n\nfruits.append(\"kiwi\")\nfruits.remove(\"poire\")\nprint(len(fruits))   # 3\n\nprint(fruits[0:2])   # ['pomme', 'figue']" },
-            { "type": "list", "items": [
-              "`append(x)` ajoute un élément à la fin.",
-              "`remove(x)` retire la première occurrence de x.",
-              "`fruits[1:3]` renvoie les éléments d'indice 1 et 2 : la borne haute n'est jamais incluse."
-            ] },
-            { "type": "tip", "text": "Une liste peut contenir des valeurs de types différents, mais garder un seul type par liste rend le code plus simple à lire." }
+            {
+              "type": "p",
+              "text": "Une **liste** contient plusieurs valeurs ordonnées, accessibles par leur position (indice). Le premier élément est à l'indice 0."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "fruits = [\"pomme\", \"poire\", \"figue\"]\nprint(fruits[0])     # pomme\nprint(fruits[-1])    # figue\n\nfruits.append(\"kiwi\")\nfruits.remove(\"poire\")\nprint(len(fruits))   # 3\n\nprint(fruits[0:2])   # ['pomme', 'figue']"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`append(x)` ajoute un élément à la fin.",
+                "`remove(x)` retire la première occurrence de x.",
+                "`fruits[1:3]` renvoie les éléments d'indice 1 et 2 : la borne haute n'est jamais incluse."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une liste peut contenir des valeurs de types différents, mais garder un seul type par liste rend le code plus simple à lire."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Dictionnaires ».",
+          "summary": [
+            "Une liste est ordonnée et modifiable.",
+            "append ajoute à la fin ; les indices commencent à 0.",
+            "len donne le nombre d'éléments."
           ]
         },
         {
@@ -166,14 +376,33 @@
             "Accéder aux valeurs par clé en évitant les erreurs"
           ],
           "content": [
-            { "type": "p", "text": "Un **dictionnaire** associe des clés à des valeurs. Il sert à représenter une fiche : un nom, un âge, une adresse." },
-            { "type": "code", "lang": "python", "code": "etudiant = {\"nom\": \"Ada\", \"notes\": [15, 18]}\nprint(etudiant[\"nom\"])\n\netudiant[\"ville\"] = \"Lyon\"\nprint(etudiant.get(\"age\", \"inconnu\"))\n\nfor cle, valeur in etudiant.items():\n    print(cle, valeur)" },
-            { "type": "list", "items": [
-              "`d[\"cle\"]` renvoie la valeur, mais lève une erreur `KeyError` si la clé est absente.",
-              "`d.get(\"cle\", defaut)` renvoie la valeur ou la valeur par défaut, sans erreur.",
-              "`d.keys()` et `d.values()` donnent les clés et les valeurs."
-            ] },
-            { "type": "warning", "text": "Les clés doivent être immuables : un texte, un nombre ou un tuple conviennent, une liste non." }
+            {
+              "type": "p",
+              "text": "Un **dictionnaire** associe des clés à des valeurs. Il sert à représenter une fiche : un nom, un âge, une adresse."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "etudiant = {\"nom\": \"Ada\", \"notes\": [15, 18]}\nprint(etudiant[\"nom\"])\n\netudiant[\"ville\"] = \"Lyon\"\nprint(etudiant.get(\"age\", \"inconnu\"))\n\nfor cle, valeur in etudiant.items():\n    print(cle, valeur)"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`d[\"cle\"]` renvoie la valeur, mais lève une erreur `KeyError` si la clé est absente.",
+                "`d.get(\"cle\", defaut)` renvoie la valeur ou la valeur par défaut, sans erreur.",
+                "`d.keys()` et `d.values()` donnent les clés et les valeurs."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Les clés doivent être immuables : un texte, un nombre ou un tuple conviennent, une liste non."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Lire et écrire un fichier ».",
+          "summary": [
+            "Un dictionnaire associe des clés à des valeurs.",
+            "get renvoie une valeur par défaut si la clé manque.",
+            "Les clés doivent être immuables."
           ]
         }
       ]
@@ -191,14 +420,46 @@
             "Écrire et ajouter du texte dans un fichier"
           ],
           "content": [
-            { "type": "p", "text": "`open()` ouvre un fichier. Utilisé avec `with`, le fichier est fermé automatiquement, même en cas d'erreur." },
-            { "type": "code", "lang": "python", "code": "with open(\"notes.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Première note\\n\")\n\nwith open(\"notes.txt\", \"a\", encoding=\"utf-8\") as f:\n    f.write(\"Deuxième note\\n\")\n\nwith open(\"notes.txt\", \"r\", encoding=\"utf-8\") as f:\n    for ligne in f:\n        print(ligne.rstrip())" },
-            { "type": "table", "headers": ["Mode", "Effet"], "rows": [
-              ["`\"r\"`", "Lecture seule"],
-              ["`\"w\"`", "Écriture : le contenu précédent est effacé"],
-              ["`\"a\"`", "Ajout à la fin du fichier"]
-            ] },
-            { "type": "warning", "text": "Le mode `\"w\"` efface le fichier sans demander de confirmation. Utilisez `\"a\"` si vous voulez conserver le contenu existant." }
+            {
+              "type": "p",
+              "text": "`open()` ouvre un fichier. Utilisé avec `with`, le fichier est fermé automatiquement, même en cas d'erreur."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "with open(\"notes.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Première note\\n\")\n\nwith open(\"notes.txt\", \"a\", encoding=\"utf-8\") as f:\n    f.write(\"Deuxième note\\n\")\n\nwith open(\"notes.txt\", \"r\", encoding=\"utf-8\") as f:\n    for ligne in f:\n        print(ligne.rstrip())"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Mode",
+                "Effet"
+              ],
+              "rows": [
+                [
+                  "`\"r\"`",
+                  "Lecture seule"
+                ],
+                [
+                  "`\"w\"`",
+                  "Écriture : le contenu précédent est effacé"
+                ],
+                [
+                  "`\"a\"`",
+                  "Ajout à la fin du fichier"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Le mode `\"w\"` efface le fichier sans demander de confirmation. Utilisez `\"a\"` si vous voulez conserver le contenu existant."
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les erreurs ».",
+          "summary": [
+            "\"r\" lit, \"w\" écrase, \"a\" ajoute à la fin.",
+            "Toujours préciser encoding=\"utf-8\".",
+            "with ferme le fichier automatiquement."
           ]
         },
         {
@@ -210,14 +471,33 @@
             "Lever une exception volontairement"
           ],
           "content": [
-            { "type": "p", "text": "Une exception est une erreur à l'exécution. Plutôt que de laisser le programme s'arrêter, on peut la traiter avec `try` et `except`." },
-            { "type": "code", "lang": "python", "code": "saisie = input(\"Un nombre : \")\ntry:\n    valeur = int(saisie)\nexcept ValueError:\n    print(\"Ce n'est pas un nombre entier.\")\nelse:\n    print(f\"Le double est {valeur * 2}\")\nfinally:\n    print(\"Fin de la vérification.\")" },
-            { "type": "list", "items": [
-              "`except` ne doit viser que les erreurs prévues : un `except:` nu masque les autres erreurs.",
-              "`else` s'exécute si aucune erreur n'a eu lieu. `finally` s'exécute toujours.",
-              "`raise ValueError(\"message\")` provoque volontairement une exception."
-            ] },
-            { "type": "tip", "text": "Lire le message d'une exception et son numéro de ligne suffit souvent à trouver le problème. Le nom de l'exception indique la catégorie d'erreur." }
+            {
+              "type": "p",
+              "text": "Une exception est une erreur à l'exécution. Plutôt que de laisser le programme s'arrêter, on peut la traiter avec `try` et `except`."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "saisie = input(\"Un nombre : \")\ntry:\n    valeur = int(saisie)\nexcept ValueError:\n    print(\"Ce n'est pas un nombre entier.\")\nelse:\n    print(f\"Le double est {valeur * 2}\")\nfinally:\n    print(\"Fin de la vérification.\")"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`except` ne doit viser que les erreurs prévues : un `except:` nu masque les autres erreurs.",
+                "`else` s'exécute si aucune erreur n'a eu lieu. `finally` s'exécute toujours.",
+                "`raise ValueError(\"message\")` provoque volontairement une exception."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Lire le message d'une exception et son numéro de ligne suffit souvent à trouver le problème. Le nom de l'exception indique la catégorie d'erreur."
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "try et except interceptent les erreurs prévues.",
+            "ValueError signale une conversion impossible.",
+            "Ne pas masquer les erreurs inattendues."
           ]
         }
       ]

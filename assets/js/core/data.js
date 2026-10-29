@@ -160,6 +160,25 @@ export async function loadData() {
     cache.execution = null;
   }
 
+  // Atelier d'éditeurs : validation pédagogique, sans compilation ni exécution
+  try {
+    const editors = await fetchJson('data/editors.json');
+    cache.editors = editors && Array.isArray(editors.languages)
+      ? editors.languages.filter((l) => isStr(l.id) && isStr(l.name) && Array.isArray(l.exercises))
+      : [];
+  } catch (err) {
+    cache.issues.push(`éditeurs : ${err.message}`);
+    cache.editors = [];
+  }
+
+  // Compléments de projets : fichiers de départ et indices
+  try {
+    const extra = await fetchJson('data/projects-extra.json');
+    cache.projectExtras = extra && typeof extra === 'object' ? extra : {};
+  } catch {
+    cache.projectExtras = {};
+  }
+
   cache.catalog = catalog;
   return catalog;
 }
@@ -192,6 +211,16 @@ export function getCheatsheets() {
 /** Exemples et schéma pour l'exécution Python et SQL. */
 export function getExecutionData() {
   return cache.execution || null;
+}
+
+/** Langages de l'atelier de code et leurs exercices. */
+export function getEditorLanguages() {
+  return cache.editors || [];
+}
+
+/** Fichiers de départ et indices des projets, par identifiant de cours. */
+export function getProjectExtras() {
+  return cache.projectExtras || {};
 }
 
 export function getDataIssues() {

@@ -4,7 +4,7 @@
 import { h, icon, emptyState, alertBox } from '../core/dom.js';
 import { getExecutionData } from '../core/data.js';
 import { createEditor } from '../components/editor.js';
-import { runPython } from '../runtime/python.js';
+import { runPython, resetPythonWorker } from '../runtime/python.js';
 import { createDemoDatabase, runSql } from '../runtime/sql.js';
 import { copyText, toast } from '../core/ui.js';
 
@@ -76,6 +76,19 @@ export function renderExecutionPage({ outlet }) {
   });
 
   const pyRunBtn = h('button', { class: 'btn btn-primary', type: 'button' }, icon('play', { size: 16 }), 'Exécuter');
+  const pyStopBtn = h('button', {
+    class: 'btn',
+    type: 'button',
+    disabled: true,
+    onClick: () => {
+      resetPythonWorker();
+      running = false;
+      pyRunBtn.disabled = false;
+      pyStopBtn.disabled = true;
+      pyStatus.textContent = 'Exécution interrompue.';
+      pyErr.textContent = 'Le worker Python a été arrêté : les variables ont été réinitialisées.';
+    }
+  }, icon('x', { size: 16 }), 'Arrêter');
   const pyResetBtn = h('button', {
     class: 'btn',
     type: 'button',
@@ -86,7 +99,8 @@ export function renderExecutionPage({ outlet }) {
       pyEditor.setValue(example.code);
       pyOut.textContent = '';
       pyErr.textContent = '';
-      pyStatus.textContent = 'Exemple restauré.';
+      resetPythonWorker();
+      pyStatus.textContent = 'Exemple restauré. Variables réinitialisées.';
       persist();
     }
   }, icon('refresh', { size: 16 }), 'Réinitialiser');
@@ -103,6 +117,7 @@ export function renderExecutionPage({ outlet }) {
     if (running) return;
     running = true;
     pyRunBtn.disabled = true;
+    pyStopBtn.disabled = false;
     pyOut.textContent = '';
     pyErr.textContent = '';
     pyStatus.textContent = 'Préparation du runtime…';
@@ -112,7 +127,7 @@ export function renderExecutionPage({ outlet }) {
         onOutput: (text) => { pyOut.textContent += text; }
       });
       if (!result.ok) {
-        pyStatus.textContent = 'Erreur d\'exécution.';
+        pyStatus.textContent = result.interrupted ? 'Exécution interrompue.' : 'Erreur d\'exécution.';
         pyErr.textContent += `\n${result.error}`;
       } else {
         pyStatus.textContent = 'Exécution terminée.';
@@ -123,6 +138,7 @@ export function renderExecutionPage({ outlet }) {
     } finally {
       running = false;
       pyRunBtn.disabled = false;
+      pyStopBtn.disabled = true;
     }
   }
   pyRunBtn.addEventListener('click', executerPython);
@@ -255,7 +271,7 @@ export function renderExecutionPage({ outlet }) {
   pyPanel.append(
     h('div', { class: 'exec-toolbar' },
       h('div', { class: 'field', style: 'min-width:220px' }, h('label', { for: 'py-example' }, 'Exemple'), pyExampleSelect),
-      h('div', { class: 'row', style: 'margin-left:auto' }, pyRunBtn, pyResetBtn, pyCopyBtn)),
+      h('div', { class: 'row', style: 'margin-left:auto' }, pyRunBtn, pyStopBtn, pyResetBtn, pyCopyBtn)),
     pyEditor.element,
     pyStatus,
     h('div', { class: 'exec-console' }, pyOut, pyErr)
@@ -301,7 +317,7 @@ export function renderExecutionPage({ outlet }) {
     h('div', { class: 'pg-tabs', role: 'tablist', 'aria-label': 'Langage' }, pyTab, sqlTab),
     pyPanel,
     sqlPanel,
-    h('p', { class: 'small muted' }, 'Limites : une boucle infinie ou une requête très lourde peut figer l\'onglet ; rechargez la page dans ce cas. Les appels réseau, l\'accès aux fichiers de votre machine et les paquets ne sont pas disponibles.')
+    h('p', { class: 'small muted' }, 'Limites : Python s\'exécute dans un Web Worker dédié, interrompu automatiquement après 15 secondes ou via « Arrêter » (les variables sont alors perdues). Une requête SQL très lourde peut encore ralentir l\'onglet. Les appels réseau, l\'accès aux fichiers de votre machine et les paquets ne sont pas disponibles.')
   ));
 
   writeDrafts({ python: values.python, sql: values.sql });

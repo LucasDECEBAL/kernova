@@ -1,12 +1,18 @@
 // Page de résultats de la recherche globale (#/recherche?q=...).
 
-import { h, icon, emptyState , setChildren } from '../core/dom.js';
-import { getCourses, getDomains } from '../core/data.js';
+import { h, icon, emptyState } from '../core/dom.js';
+import { getCourses, getDomains, getCheatsheets, getFlashPacks } from '../core/data.js';
 import { search, highlightSegments } from '../core/search.js';
 import { courseCard } from '../components/widgets.js';
 
 function highlighted(text, query) {
   return highlightSegments(text, query).map((seg) => (seg.hit ? h('mark', { text: seg.text }) : seg.text));
+}
+
+function section(id, title, count, children) {
+  return h('section', { 'aria-labelledby': id },
+    h('h2', { id, style: 'margin-top:0', text: `${title} (${count})` }),
+    children);
 }
 
 export function renderSearchPage({ outlet, query }) {
@@ -26,9 +32,15 @@ export function renderSearchPage({ outlet, query }) {
 
   let body;
   if (!q) {
-    body = emptyState({ icon: 'search', title: 'Que voulez-vous apprendre ?', text: 'Saisissez un mot-clé : une commande, une technologie, un concept comme « permissions » ou « processus ».' });
+    body = emptyState({ icon: 'search', title: 'Que voulez-vous apprendre ?', text: 'Saisissez un mot-clé : une commande, une technologie, un concept comme « permissions » ou « processus ». La recherche couvre les cours, les chapitres, les fiches, les cartes, les projets et les domaines.' });
   } else {
-    const result = search(q, { courses: getCourses(), domains: getDomains() });
+    const result = search(q, {
+      courses: getCourses(),
+      domains: getDomains(),
+      sheets: getCheatsheets(),
+      packs: getFlashPacks()
+    });
+
     if (!result.total) {
       body = emptyState({
         icon: 'search',
@@ -37,28 +49,62 @@ export function renderSearchPage({ outlet, query }) {
         actions: [h('a', { class: 'btn', href: '#/catalogue' }, 'Parcourir le catalogue')]
       });
     } else {
-      body = h('div', { class: 'stack', style: 'gap:var(--space-6)' },
-        result.courses.length
-          ? h('section', { 'aria-labelledby': 'res-courses' },
-            h('h2', { id: 'res-courses', style: 'margin-top:0', text: `Cours (${result.courses.length})` }),
-            h('div', { class: 'grid-cards' }, result.courses.map((r) => courseCard(r.course))))
-          : null,
-        result.chapters.length
-          ? h('section', { 'aria-labelledby': 'res-chapters' },
-            h('h2', { id: 'res-chapters', style: 'margin-top:0', text: `Chapitres (${result.chapters.length})` }),
-            h('ul', { class: 'list-plain' }, result.chapters.slice(0, 40).map((r) => h('li', { style: 'display:block' },
-              h('a', { href: `#/cours/${r.course.id}/${r.chapter.id}`, style: 'font-weight:600' }, highlighted(r.chapter.title, q)),
-              h('div', { class: 'small muted' }, `${r.course.title}, chapitre ${r.chapter.index + 1}`)
-            ))))
-          : null
-      );
+      const blocks = [];
+
+      if (result.courses.length) {
+        blocks.push(section('res-courses', 'Cours', result.courses.length,
+          h('div', { class: 'grid-cards' }, result.courses.map((r) => courseCard(r.course)))));
+      }
+
+      if (result.sheets.length) {
+        blocks.push(section('res-sheets', 'Fiches mémo', result.sheets.length,
+          h('ul', { class: 'list-plain' }, result.sheets.map((r) => h('li', { style: 'display:block' },
+            h('a', { href: '#/fiches', style: 'font-weight:600' }, highlighted(r.sheet.title, q)),
+            h('div', { class: 'small muted', text: `${r.sheet.category} · ${r.entries.length} commande(s) correspondante(s)` }),
+            h('div', { class: 'small' }, (r.entries || []).slice(0, 3).map((e) => h('code', { style: 'margin-right:6px', text: e.command })))
+          )))));
+      }
+
+      if (result.packs.length) {
+        blocks.push(section('res-packs', 'Cartes mémo', result.packs.length,
+          h('ul', { class: 'list-plain' }, result.packs.map((r) => h('li', {},
+            h('a', { href: `#/cartes/${r.pack.id}?mode=all`, style: 'font-weight:600' }, highlighted(r.pack.title, q)),
+            h('span', { class: 'small muted', text: `${r.cards.length} carte(s) correspondante(s)` })
+          )))));
+      }
+
+      if (result.projects.length) {
+        blocks.push(section('res-projects', 'Projets', result.projects.length,
+          h('ul', { class: 'list-plain' }, result.projects.map((r) => h('li', {},
+            h('a', { href: `#/projets/${r.course.id}`, style: 'font-weight:600' }, highlighted(r.project.title, q)),
+            h('span', { class: 'small muted', text: r.course.title })
+          )))));
+      }
+
+      if (result.domains.length) {
+        blocks.push(section('res-domains', 'Domaines', result.domains.length,
+          h('ul', { class: 'list-plain' }, result.domains.map((r) => h('li', {},
+            h('a', { href: `#/domaines/${r.domain.id}`, style: 'font-weight:600' }, highlighted(r.domain.name, q)),
+            h('span', { class: 'small muted', text: r.domain.description })
+          )))));
+      }
+
+      if (result.chapters.length) {
+        blocks.push(section('res-chapters', 'Chapitres', result.chapters.length,
+          h('ul', { class: 'list-plain' }, result.chapters.slice(0, 40).map((r) => h('li', { style: 'display:block' },
+            h('a', { href: `#/cours/${r.course.id}/${r.chapter.id}`, style: 'font-weight:600' }, highlighted(r.chapter.title, q)),
+            h('div', { class: 'small muted' }, `${r.course.title}, chapitre ${r.chapter.index + 1}`)
+          )))));
+      }
+
+      body = h('div', { class: 'stack', style: 'gap:var(--space-6)' }, blocks);
     }
   }
 
-  setChildren(outlet, h('div', { class: 'page' },
+  outlet.replaceChildren(h('div', { class: 'page' },
     h('header', { class: 'page-head' },
       h('h1', { tabindex: '-1' }, q ? `Résultats pour « ${q} »` : 'Recherche'),
-      q ? h('p', { class: 'muted', role: 'status' }, icon('search', { size: 16 }), ' Recherche insensible à la casse et aux accents.') : null
+      q ? h('p', { class: 'muted', role: 'status' }, icon('search', { size: 16 }), ' Recherche dans les cours, chapitres, fiches, cartes, projets et domaines. Casse et accents ignorés.') : null
     ),
     form,
     h('div', { style: 'margin-top:var(--space-5)' }, body)

@@ -14,26 +14,97 @@
             "Identifier ce qui bloque un pipeline"
           ],
           "content": [
-            { "type": "p", "text": "Le **DevOps** rapproche le développement et l'exploitation autour d'un objectif : livrer des changements petits, fréquents et fiables. L'**intégration continue** (CI) consiste à vérifier automatiquement chaque modification dès qu'elle est poussée : compilation, tests, analyse statique." },
-            { "type": "p", "text": "Le principe central est le **retour rapide**. Un pipeline qui prend une heure sera contourné ; un pipeline qui répond en quelques minutes corrige les erreurs avant qu'elles ne s'accumulent. On privilégie des branches courtes et des fusions fréquentes." },
-            { "type": "code", "lang": "yaml", "title": "Principe d'un déclencheur", "code": "on:\n  push:\n    branches: [main]\n  pull_request:" },
-            { "type": "table", "headers": ["Étape", "Question"], "rows": [
-              ["Installation", "Les dépendances sont-elles reproductibles (version figée) ?"],
-              ["Tests", "Échouent-ils vraiment quand le code est faux ?"],
-              ["Analyse", "Les erreurs de style bloquent-elles la fusion ?"],
-              ["Construction", "L'artefact est-il produit une seule fois ?"]
-            ] },
-            { "type": "warning", "text": "Un pipeline qui « passe » alors que les tests sont ignorés donne une fausse sécurité. Vérifiez qu'un échec de test bloque bien la fusion." }
+            {
+              "type": "p",
+              "text": "Le **DevOps** rapproche le développement et l'exploitation autour d'un objectif : livrer des changements petits, fréquents et fiables. L'**intégration continue** (CI) consiste à vérifier automatiquement chaque modification dès qu'elle est poussée : compilation, tests, analyse statique."
+            },
+            {
+              "type": "p",
+              "text": "Le principe central est le **retour rapide**. Un pipeline qui prend une heure sera contourné ; un pipeline qui répond en quelques minutes corrige les erreurs avant qu'elles ne s'accumulent. On privilégie des branches courtes et des fusions fréquentes."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "title": "Principe d'un déclencheur",
+              "code": "on:\n  push:\n    branches: [main]\n  pull_request:"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Question"
+              ],
+              "rows": [
+                [
+                  "Installation",
+                  "Les dépendances sont-elles reproductibles (version figée) ?"
+                ],
+                [
+                  "Tests",
+                  "Échouent-ils vraiment quand le code est faux ?"
+                ],
+                [
+                  "Analyse",
+                  "Les erreurs de style bloquent-elles la fusion ?"
+                ],
+                [
+                  "Construction",
+                  "L'artefact est-il produit une seule fois ?"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un pipeline qui « passe » alors que les tests sont ignorés donne une fausse sécurité. Vérifiez qu'un échec de test bloque bien la fusion."
+            }
           ],
           "exercise": {
             "title": "Pipeline trop lent",
             "instructions": "Un pipeline dure 70 minutes et l'équipe le contourne. Citez deux leviers pour le raccourcir.",
-            "hints": ["Tout est-il rejoué à chaque fois ?", "Certaines étapes peuvent-elles s'exécuter en parallèle ?"],
-            "solution": "Mettre en cache les dépendances et paralléliser les étapes indépendantes (tests par module, analyse statique en parallèle des tests)."
+            "hints": [
+              "Tout est-il rejoué à chaque fois ?",
+              "Certaines étapes peuvent-elles s'exécuter en parallèle ?"
+            ],
+            "solution": "Mettre en cache les dépendances et paralléliser les étapes indépendantes (tests par module, analyse statique en parallèle des tests).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cache",
+                "parallé"
+              ]
+            }
           },
           "quiz": [
-            { "id": "dv-01-q1", "type": "single", "difficulty": 1, "question": "Que vérifie l'intégration continue ?", "options": ["Que chaque modification est compilée et testée automatiquement", "Que le serveur est redémarré chaque nuit", "Que les utilisateurs sont satisfaits", "Que la base est sauvegardée"], "answer": 0, "explanation": "La CI exécute automatiquement les vérifications à chaque modification.", "hints": [] },
-            { "id": "dv-01-q2", "type": "truefalse", "difficulty": 1, "question": "Un pipeline lent améliore la qualité parce qu'il vérifie davantage de choses.", "answer": false, "explanation": "Un pipeline trop lent pousse l'équipe à le contourner ; la rapidité du retour fait partie de la qualité.", "hints": [] }
+            {
+              "id": "dv-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que vérifie l'intégration continue ?",
+              "options": [
+                "Que chaque modification est compilée et testée automatiquement",
+                "Que le serveur est redémarré chaque nuit",
+                "Que les utilisateurs sont satisfaits",
+                "Que la base est sauvegardée"
+              ],
+              "answer": 0,
+              "explanation": "La CI exécute automatiquement les vérifications à chaque modification.",
+              "hints": []
+            },
+            {
+              "id": "dv-01-q2",
+              "type": "truefalse",
+              "difficulty": 1,
+              "question": "Un pipeline lent améliore la qualité parce qu'il vérifie davantage de choses.",
+              "answer": false,
+              "explanation": "Un pipeline trop lent pousse l'équipe à le contourner ; la rapidité du retour fait partie de la qualité.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Un pipeline qui teste vraiment ».",
+          "summary": [
+            "La CI intègre et teste à chaque changement.",
+            "Un pipeline lent finit contourné.",
+            "Cache et parallélisation sont les premiers leviers."
           ]
         },
         {
@@ -45,25 +116,87 @@
             "Rendre les échecs explicites"
           ],
           "content": [
-            { "type": "p", "text": "Un pipeline lisible s'organise en étapes courtes et nommées : installation, vérification statique, tests, construction de l'artefact, publication. Chaque étape doit échouer avec un message qui indique quoi corriger." },
-            { "type": "code", "lang": "yaml", "title": "Étapes (exemple générique)", "code": "steps:\n  - name: installer\n    run: npm ci\n  - name: verifier\n    run: npm run lint && npm run typecheck\n  - name: tester\n    run: npm test\n  - name: construire\n    run: npm run build" },
-            { "type": "p", "text": "Les tests doivent être **déterministes** : mêmes entrées, même résultat. Un test qui échoue une fois sur cinq détruit la confiance dans le pipeline. Traitez les tests instables comme des défauts, pas comme une fatalité." },
-            { "type": "list", "items": [
-              "Échouez tôt : les vérifications rapides avant les lentes.",
-              "Affichez les journaux utiles et masquez les secrets.",
-              "Conservez les rapports de tests comme artefacts en cas d'échec."
-            ] },
-            { "type": "warning", "text": "Ne stockez jamais de jeton ou de mot de passe dans le fichier de pipeline. Utilisez les secrets du système de CI, disponibles uniquement à l'exécution." }
+            {
+              "type": "p",
+              "text": "Un pipeline lisible s'organise en étapes courtes et nommées : installation, vérification statique, tests, construction de l'artefact, publication. Chaque étape doit échouer avec un message qui indique quoi corriger."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "title": "Étapes (exemple générique)",
+              "code": "steps:\n  - name: installer\n    run: npm ci\n  - name: verifier\n    run: npm run lint && npm run typecheck\n  - name: tester\n    run: npm test\n  - name: construire\n    run: npm run build"
+            },
+            {
+              "type": "p",
+              "text": "Les tests doivent être **déterministes** : mêmes entrées, même résultat. Un test qui échoue une fois sur cinq détruit la confiance dans le pipeline. Traitez les tests instables comme des défauts, pas comme une fatalité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Échouez tôt : les vérifications rapides avant les lentes.",
+                "Affichez les journaux utiles et masquez les secrets.",
+                "Conservez les rapports de tests comme artefacts en cas d'échec."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Ne stockez jamais de jeton ou de mot de passe dans le fichier de pipeline. Utilisez les secrets du système de CI, disponibles uniquement à l'exécution."
+            }
           ],
           "exercise": {
             "title": "Test instable",
             "instructions": "Un test échoue environ une fois sur dix sans modification du code. Que faites-vous ?",
-            "hints": ["Le problème vient souvent d'une dépendance au temps, à l'ordre ou au réseau.", "Relancer jusqu'à ce que ça passe n'est pas une correction."],
-            "solution": "Isoler la cause (horloge, ordre d'exécution, état partagé, réseau), corriger le test ou le code, et non relancer en boucle. Marquer le test comme instable en attendant."
+            "hints": [
+              "Le problème vient souvent d'une dépendance au temps, à l'ordre ou au réseau.",
+              "Relancer jusqu'à ce que ça passe n'est pas une correction."
+            ],
+            "solution": "Isoler la cause (horloge, ordre d'exécution, état partagé, réseau), corriger le test ou le code, et non relancer en boucle. Marquer le test comme instable en attendant.",
+            "check": {
+              "type": "any",
+              "any": [
+                "instable",
+                "cause",
+                "corriger"
+              ]
+            }
           },
           "quiz": [
-            { "id": "dv-02-q1", "type": "single", "difficulty": 1, "question": "Pourquoi placer les vérifications rapides avant les lentes ?", "options": ["Pour économiser la batterie", "Pour obtenir un retour plus tôt en cas d'erreur évidente", "Pour éviter les tests unitaires", "Pour accélérer le réseau"], "answer": 1, "explanation": "Un échec détecté en trente secondes évite d'attendre la fin d'un long pipeline.", "hints": [] },
-            { "id": "dv-02-q2", "type": "single", "difficulty": 2, "question": "Où stocker les secrets utilisés par un pipeline ?", "options": ["Dans le fichier de configuration versionné", "Dans le gestionnaire de secrets du système de CI", "Dans un commentaire du code", "Dans le README"], "answer": 1, "explanation": "Les secrets du système de CI sont injectés à l'exécution et ne sont pas versionnés.", "hints": [] }
+            {
+              "id": "dv-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Pourquoi placer les vérifications rapides avant les lentes ?",
+              "options": [
+                "Pour économiser la batterie",
+                "Pour obtenir un retour plus tôt en cas d'erreur évidente",
+                "Pour éviter les tests unitaires",
+                "Pour accélérer le réseau"
+              ],
+              "answer": 1,
+              "explanation": "Un échec détecté en trente secondes évite d'attendre la fin d'un long pipeline.",
+              "hints": []
+            },
+            {
+              "id": "dv-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Où stocker les secrets utilisés par un pipeline ?",
+              "options": [
+                "Dans le fichier de configuration versionné",
+                "Dans le gestionnaire de secrets du système de CI",
+                "Dans un commentaire du code",
+                "Dans le README"
+              ],
+              "answer": 1,
+              "explanation": "Les secrets du système de CI sont injectés à l'exécution et ne sont pas versionnés.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Artefacts et environnements ».",
+          "summary": [
+            "Un test instable détruit la confiance dans la suite.",
+            "La cause est souvent un état partagé, une horloge ou le réseau.",
+            "Corriger, pas relancer jusqu'à ce que ça passe."
           ]
         }
       ]
@@ -81,24 +214,89 @@
             "Séparer configuration et code"
           ],
           "content": [
-            { "type": "p", "text": "Un **artefact** est le résultat construit par le pipeline : paquet, binaire ou image de conteneur, identifié par une version. Le principe « **build once, deploy many** » impose de déployer exactement le même artefact en recette puis en production : ce qui a été testé est ce qui est livré." },
-            { "type": "p", "text": "Ce qui change d'un environnement à l'autre doit être de la **configuration**, pas du code : adresse de la base, niveau de journalisation, clés. On utilise des variables d'environnement ou un service de configuration, jamais des `if (production)` dispersés." },
-            { "type": "table", "headers": ["Environnement", "Rôle"], "rows": [
-              ["Développement", "Itérer vite, données fictives"],
-              ["Recette", "Valider avant diffusion, proche de la production"],
-              ["Production", "Servir les utilisateurs réels"]
-            ] },
-            { "type": "warning", "text": "Reconstruire l'application pour la production à partir d'un autre commit annule le bénéfice des tests. Si l'artefact diffère, les validations ne prouvent plus rien." }
+            {
+              "type": "p",
+              "text": "Un **artefact** est le résultat construit par le pipeline : paquet, binaire ou image de conteneur, identifié par une version. Le principe « **build once, deploy many** » impose de déployer exactement le même artefact en recette puis en production : ce qui a été testé est ce qui est livré."
+            },
+            {
+              "type": "p",
+              "text": "Ce qui change d'un environnement à l'autre doit être de la **configuration**, pas du code : adresse de la base, niveau de journalisation, clés. On utilise des variables d'environnement ou un service de configuration, jamais des `if (production)` dispersés."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Environnement",
+                "Rôle"
+              ],
+              "rows": [
+                [
+                  "Développement",
+                  "Itérer vite, données fictives"
+                ],
+                [
+                  "Recette",
+                  "Valider avant diffusion, proche de la production"
+                ],
+                [
+                  "Production",
+                  "Servir les utilisateurs réels"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Reconstruire l'application pour la production à partir d'un autre commit annule le bénéfice des tests. Si l'artefact diffère, les validations ne prouvent plus rien."
+            }
           ],
           "exercise": {
             "title": "Même artefact",
             "instructions": "Le pipeline teste la version 1.4.2 en recette, puis reconstruit l'application pour la production. Quel problème cela pose-t-il ?",
-            "hints": ["Le code source a-t-il changé entre les deux constructions ?", "Que garantit alors le test de recette ?"],
-            "solution": "Les deux artefacts peuvent différer (dépendances, ordre de construction) : la production ne reçoit pas ce qui a été testé. Il faut promouvoir l'artefact 1.4.2 tel quel."
+            "hints": [
+              "Le code source a-t-il changé entre les deux constructions ?",
+              "Que garantit alors le test de recette ?"
+            ],
+            "solution": "Les deux artefacts peuvent différer (dépendances, ordre de construction) : la production ne reçoit pas ce qui a été testé. Il faut promouvoir l'artefact 1.4.2 tel quel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "artefact",
+                "reconstru",
+                "identique",
+                "promouvoir"
+              ]
+            }
           },
           "quiz": [
-            { "id": "dv-03-q1", "type": "single", "difficulty": 1, "question": "Que signifie « build once, deploy many » ?", "options": ["Construire une fois et déployer le même artefact dans chaque environnement", "Construire à chaque déploiement", "Déployer uniquement en production", "Recompiler sur chaque serveur"], "answer": 0, "explanation": "L'artefact validé est promu d'un environnement à l'autre sans reconstruction.", "hints": [] },
-            { "id": "dv-03-q2", "type": "truefalse", "difficulty": 2, "question": "Les différences entre environnements doivent être gérées par la configuration, pas par des conditions dans le code.", "answer": true, "explanation": "Cela évite les branches spécifiques non testées et garde un artefact unique.", "hints": [] }
+            {
+              "id": "dv-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que signifie « build once, deploy many » ?",
+              "options": [
+                "Construire une fois et déployer le même artefact dans chaque environnement",
+                "Construire à chaque déploiement",
+                "Déployer uniquement en production",
+                "Recompiler sur chaque serveur"
+              ],
+              "answer": 0,
+              "explanation": "L'artefact validé est promu d'un environnement à l'autre sans reconstruction.",
+              "hints": []
+            },
+            {
+              "id": "dv-03-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Les différences entre environnements doivent être gérées par la configuration, pas par des conditions dans le code.",
+              "answer": true,
+              "explanation": "Cela évite les branches spécifiques non testées et garde un artefact unique.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Infrastructure as code et configuration ».",
+          "summary": [
+            "On construit une fois, on promeut l'artefact identique.",
+            "Reconstruire pour la production change le binaire.",
+            "Chaque environnement reçoit la même version."
           ]
         },
         {
@@ -110,24 +308,98 @@
             "Comprendre l'idempotence et l'état"
           ],
           "content": [
-            { "type": "p", "text": "L'**infrastructure as code** décrit les serveurs, réseaux et services dans des fichiers versionnés. L'approche **déclarative** décrit le résultat attendu ; l'outil calcule les actions nécessaires. L'approche **impérative** liste les commandes à exécuter, dans l'ordre." },
-            { "type": "table", "headers": ["Outil", "Approche", "Usage typique"], "rows": [
-              ["Terraform", "Déclaratif", "Créer et modifier l'infrastructure (réseaux, VM, bases)"],
-              ["Ansible", "Déclaratif, idempotent", "Configurer des machines (paquets, fichiers, services)"]
-            ] },
-            { "type": "p", "text": "Un outil **idempotent** produit le même résultat qu'on l'exécute une ou dix fois : si le paquet est déjà installé, il ne fait rien. C'est ce qui rend les exécutions répétables et sûres." },
-            { "type": "p", "text": "Terraform conserve un fichier d'**état** qui associe la description aux ressources réelles. Cet état contient des informations sensibles : stockez-le dans un backend distant verrouillé, pas dans le dépôt Git." },
-            { "type": "warning", "text": "Modifier une ressource à la main hors de l'outil crée une dérive : le prochain `apply` peut la supprimer ou la recréer. Toute modification passe par le code." }
+            {
+              "type": "p",
+              "text": "L'**infrastructure as code** décrit les serveurs, réseaux et services dans des fichiers versionnés. L'approche **déclarative** décrit le résultat attendu ; l'outil calcule les actions nécessaires. L'approche **impérative** liste les commandes à exécuter, dans l'ordre."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Outil",
+                "Approche",
+                "Usage typique"
+              ],
+              "rows": [
+                [
+                  "Terraform",
+                  "Déclaratif",
+                  "Créer et modifier l'infrastructure (réseaux, VM, bases)"
+                ],
+                [
+                  "Ansible",
+                  "Déclaratif, idempotent",
+                  "Configurer des machines (paquets, fichiers, services)"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Un outil **idempotent** produit le même résultat qu'on l'exécute une ou dix fois : si le paquet est déjà installé, il ne fait rien. C'est ce qui rend les exécutions répétables et sûres."
+            },
+            {
+              "type": "p",
+              "text": "Terraform conserve un fichier d'**état** qui associe la description aux ressources réelles. Cet état contient des informations sensibles : stockez-le dans un backend distant verrouillé, pas dans le dépôt Git."
+            },
+            {
+              "type": "warning",
+              "text": "Modifier une ressource à la main hors de l'outil crée une dérive : le prochain `apply` peut la supprimer ou la recréer. Toute modification passe par le code."
+            }
           ],
           "exercise": {
             "title": "Idempotence",
             "instructions": "Un playbook installe nginx puis démarre le service. Que doit-il se passer à la deuxième exécution ?",
-            "hints": ["Le paquet est déjà installé.", "Le service tourne déjà."],
-            "solution": "Rien ne doit être modifié : le playbook constate que l'état est déjà conforme et n'effectue aucune action (ni réinstallation, ni redémarrage inutile)."
+            "hints": [
+              "Le paquet est déjà installé.",
+              "Le service tourne déjà."
+            ],
+            "solution": "Rien ne doit être modifié : le playbook constate que l'état est déjà conforme et n'effectue aucune action (ni réinstallation, ni redémarrage inutile).",
+            "check": {
+              "type": "any",
+              "any": [
+                "rien",
+                "aucune",
+                "idempotent",
+                "conforme"
+              ]
+            }
           },
           "quiz": [
-            { "id": "dv-04-q1", "type": "single", "difficulty": 1, "question": "Que signifie idempotent ?", "options": ["Rejouer l'opération donne le même résultat", "L'opération est très rapide", "L'opération est chiffrée", "L'opération supprime l'état"], "answer": 0, "explanation": "L'idempotence rend les exécutions répétables sans effet de bord cumulatif.", "hints": [] },
-            { "id": "dv-04-q2", "type": "single", "difficulty": 2, "question": "Où stocker le fichier d'état de Terraform ?", "options": ["Dans le dépôt Git public", "Dans un backend distant verrouillé", "Dans le README", "Sur le poste de chaque développeur"], "answer": 1, "explanation": "L'état contient des données sensibles et doit être partagé avec verrouillage.", "hints": [] }
+            {
+              "id": "dv-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que signifie idempotent ?",
+              "options": [
+                "Rejouer l'opération donne le même résultat",
+                "L'opération est très rapide",
+                "L'opération est chiffrée",
+                "L'opération supprime l'état"
+              ],
+              "answer": 0,
+              "explanation": "L'idempotence rend les exécutions répétables sans effet de bord cumulatif.",
+              "hints": []
+            },
+            {
+              "id": "dv-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Où stocker le fichier d'état de Terraform ?",
+              "options": [
+                "Dans le dépôt Git public",
+                "Dans un backend distant verrouillé",
+                "Dans le README",
+                "Sur le poste de chaque développeur"
+              ],
+              "answer": 1,
+              "explanation": "L'état contient des données sensibles et doit être partagé avec verrouillage.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Déployer, mesurer et revenir en arrière ».",
+          "summary": [
+            "L'idempotence donne le même résultat à chaque exécution.",
+            "Un playbook conforme ne doit rien modifier.",
+            "Les modules décrivent un état, pas des ordres."
           ]
         },
         {
@@ -139,21 +411,89 @@
             "Définir un SLI et un SLO"
           ],
           "content": [
-            { "type": "p", "text": "Deux stratégies limitent le risque. Le **blue-green** bascule tout le trafic vers un nouvel environnement, ce qui permet un retour immédiat. Le **canary** expose d'abord une petite part du trafic à la nouvelle version, puis l'augmente si les indicateurs restent bons." },
-            { "type": "p", "text": "Un **SLI** est un indicateur mesuré (taux d'erreur, latence au 95e centile, disponibilité). Un **SLO** est l'objectif interne fixé pour cet indicateur. Un **SLA** est l'engagement contractuel envers les clients, généralement moins exigeant que le SLO." },
-            { "type": "code", "lang": "text", "title": "Exemple", "code": "SLI : proportion de requêtes HTTP réussies sur 5 minutes\nSLO : 99,5 % sur 30 jours\nSLA : 99,0 % (contrat)" },
-            { "type": "p", "text": "Les alertes doivent viser l'expérience utilisateur, pas chaque courbe. Alerter sur un taux d'erreur qui dépasse le SLO est utile ; alerter sur un usage processeur à 70 % ne l'est pas." },
-            { "type": "warning", "text": "Un retour arrière doit être préparé avant le déploiement : version précédente disponible, base compatible, procédure écrite. Découvrir ces points pendant l'incident coûte des minutes précieuses." }
+            {
+              "type": "p",
+              "text": "Deux stratégies limitent le risque. Le **blue-green** bascule tout le trafic vers un nouvel environnement, ce qui permet un retour immédiat. Le **canary** expose d'abord une petite part du trafic à la nouvelle version, puis l'augmente si les indicateurs restent bons."
+            },
+            {
+              "type": "p",
+              "text": "Un **SLI** est un indicateur mesuré (taux d'erreur, latence au 95e centile, disponibilité). Un **SLO** est l'objectif interne fixé pour cet indicateur. Un **SLA** est l'engagement contractuel envers les clients, généralement moins exigeant que le SLO."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "title": "Exemple",
+              "code": "SLI : proportion de requêtes HTTP réussies sur 5 minutes\nSLO : 99,5 % sur 30 jours\nSLA : 99,0 % (contrat)"
+            },
+            {
+              "type": "p",
+              "text": "Les alertes doivent viser l'expérience utilisateur, pas chaque courbe. Alerter sur un taux d'erreur qui dépasse le SLO est utile ; alerter sur un usage processeur à 70 % ne l'est pas."
+            },
+            {
+              "type": "warning",
+              "text": "Un retour arrière doit être préparé avant le déploiement : version précédente disponible, base compatible, procédure écrite. Découvrir ces points pendant l'incident coûte des minutes précieuses."
+            }
           ],
           "exercise": {
             "title": "Choisir une stratégie",
             "instructions": "L'équipe veut exposer la nouvelle version à 5 % des utilisateurs avant généralisation. Quelle stratégie choisit-elle et pourquoi ?",
-            "hints": ["Blue-green bascule tout le trafic.", "Une petite part du trafic permet de détecter les incidents."],
-            "solution": "Un déploiement canary : 5 % du trafic, surveillance des erreurs et de la latence, puis augmentation progressive ou retour arrière."
+            "hints": [
+              "Blue-green bascule tout le trafic.",
+              "Une petite part du trafic permet de détecter les incidents."
+            ],
+            "solution": "Un déploiement canary : 5 % du trafic, surveillance des erreurs et de la latence, puis augmentation progressive ou retour arrière.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "canary"
+              ]
+            }
           },
           "quiz": [
-            { "id": "dv-05-q1", "type": "single", "difficulty": 1, "question": "Quelle stratégie bascule tout le trafic vers un nouvel environnement ?", "options": ["Canary", "Blue-green", "Rolling restart", "Shadow"], "answer": 1, "explanation": "Blue-green alterne entre deux environnements complets, ce qui permet un retour immédiat.", "hints": [] },
-            { "id": "dv-05-q2", "type": "match", "difficulty": 2, "question": "Associez chaque terme à sa définition.", "left": ["SLI", "SLO", "SLA"], "right": ["Engagement contractuel", "Indicateur mesuré", "Objectif interne"], "answer": [1, 2, 0], "explanation": "Le SLI se mesure, le SLO est l'objectif interne, le SLA l'engagement contractuel.", "hints": [] }
+            {
+              "id": "dv-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle stratégie bascule tout le trafic vers un nouvel environnement ?",
+              "options": [
+                "Canary",
+                "Blue-green",
+                "Rolling restart",
+                "Shadow"
+              ],
+              "answer": 1,
+              "explanation": "Blue-green alterne entre deux environnements complets, ce qui permet un retour immédiat.",
+              "hints": []
+            },
+            {
+              "id": "dv-05-q2",
+              "type": "match",
+              "difficulty": 2,
+              "question": "Associez chaque terme à sa définition.",
+              "left": [
+                "SLI",
+                "SLO",
+                "SLA"
+              ],
+              "right": [
+                "Engagement contractuel",
+                "Indicateur mesuré",
+                "Objectif interne"
+              ],
+              "answer": [
+                1,
+                2,
+                0
+              ],
+              "explanation": "Le SLI se mesure, le SLO est l'objectif interne, le SLA l'engagement contractuel.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Le canary expose une petite part du trafic.",
+            "On surveille erreurs et latence avant d'élargir.",
+            "Le retour arrière doit être préparé."
           ]
         }
       ]

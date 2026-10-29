@@ -9,49 +9,169 @@
           "id": "lxa-01",
           "title": "LVM : volumes logiques",
           "duration": 22,
-          "objectives": ["Comprendre les couches LVM", "Étendre un volume"],
+          "objectives": [
+            "Comprendre les couches LVM",
+            "Étendre un volume"
+          ],
           "content": [
-            { "type": "p", "text": "**LVM** ajoute une couche d'abstraction entre les disques et les systèmes de fichiers. On regroupe des disques en **groupe de volumes** (VG), puis on découpe des **volumes logiques** (LV) redimensionnables." },
-            { "type": "code", "lang": "bash", "code": "pvcreate /dev/sdb\nvgcreate vgdata /dev/sdb\nlvcreate -L 20G -n logs vgdata\nmkfs.ext4 /dev/vgdata/logs\n\n# Étendre de 5 Go\nlvextend -L +5G /dev/vgdata/logs\nresize2fs /dev/vgdata/logs" },
-            { "type": "p", "text": "L'extension se fait en deux temps : le volume logique, puis le système de fichiers. Oublier le second laisse de l'espace alloué mais non utilisé." },
-            { "type": "warning", "text": "Agrandir est sûr ; réduire un système de fichiers est risqué et parfois impossible selon le type. Sauvegardez avant toute réduction." }
+            {
+              "type": "p",
+              "text": "**LVM** ajoute une couche d'abstraction entre les disques et les systèmes de fichiers. On regroupe des disques en **groupe de volumes** (VG), puis on découpe des **volumes logiques** (LV) redimensionnables."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "pvcreate /dev/sdb\nvgcreate vgdata /dev/sdb\nlvcreate -L 20G -n logs vgdata\nmkfs.ext4 /dev/vgdata/logs\n\n# Étendre de 5 Go\nlvextend -L +5G /dev/vgdata/logs\nresize2fs /dev/vgdata/logs"
+            },
+            {
+              "type": "p",
+              "text": "L'extension se fait en deux temps : le volume logique, puis le système de fichiers. Oublier le second laisse de l'espace alloué mais non utilisé."
+            },
+            {
+              "type": "warning",
+              "text": "Agrandir est sûr ; réduire un système de fichiers est risqué et parfois impossible selon le type. Sauvegardez avant toute réduction."
+            }
           ],
           "exercise": {
             "title": "Étendre un volume",
             "instructions": "Vous ajoutez 5 Go à un LV ext4. Quelles deux commandes exécutez-vous ?",
-            "hints": ["D'abord le volume logique.", "Puis le système de fichiers."],
-            "solution": "lvextend -L +5G /dev/vgdata/logs puis resize2fs /dev/vgdata/logs"
+            "hints": [
+              "D'abord le volume logique.",
+              "Puis le système de fichiers."
+            ],
+            "solution": "lvextend -L +5G /dev/vgdata/logs puis resize2fs /dev/vgdata/logs",
+            "check": {
+              "type": "any",
+              "any": [
+                "lvextend",
+                "resize2fs"
+              ]
+            }
           },
           "quiz": [
-            { "id": "lxa-01-q1", "type": "single", "difficulty": 2, "question": "Quel est l'ordre des couches LVM ?", "options": ["Volume physique, groupe de volumes, volume logique", "Volume logique, disque, partition", "Système de fichiers, disque, VG", "Partition, LV, PV"], "answer": 0, "explanation": "PV regroupe les disques, VG les assemble, LV les découpe.", "hints": [] },
-            { "id": "lxa-01-q2", "type": "single", "difficulty": 2, "question": "Que faut-il faire après lvextend sur ext4 ?", "options": ["Agrandir le système de fichiers", "Redémarrer", "Recréer le LV", "Formater"], "answer": 0, "explanation": "Sans resize2fs, l'espace reste inutilisé.", "hints": [] }
+            {
+              "id": "lxa-01-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel est l'ordre des couches LVM ?",
+              "options": [
+                "Volume physique, groupe de volumes, volume logique",
+                "Volume logique, disque, partition",
+                "Système de fichiers, disque, VG",
+                "Partition, LV, PV"
+              ],
+              "answer": 0,
+              "explanation": "PV regroupe les disques, VG les assemble, LV les découpe.",
+              "hints": []
+            },
+            {
+              "id": "lxa-01-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Que faut-il faire après lvextend sur ext4 ?",
+              "options": [
+                "Agrandir le système de fichiers",
+                "Redémarrer",
+                "Recréer le LV",
+                "Formater"
+              ],
+              "answer": 0,
+              "explanation": "Sans resize2fs, l'espace reste inutilisé.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Sauvegardes avec rsync ».",
+          "summary": [
+            "LVM empile volumes physiques, groupe et volumes logiques.",
+            "lvextend agrandit le volume logique.",
+            "resize2fs agrandit le système de fichiers."
           ]
         },
         {
           "id": "lxa-02",
           "title": "Sauvegardes avec rsync",
           "duration": 20,
-          "objectives": ["Écrire une sauvegarde incrémentale", "Vérifier une sauvegarde"],
+          "objectives": [
+            "Écrire une sauvegarde incrémentale",
+            "Vérifier une sauvegarde"
+          ],
           "content": [
-            { "type": "p", "text": "`rsync` synchronise des arborescences en ne transférant que les différences. L'option `--delete` supprime à la destination ce qui n'existe plus à la source : utile pour une copie miroir, dangereux sans vérification." },
-            { "type": "code", "lang": "bash", "code": "rsync -avh --delete /srv/app/ /srv/backup/app/\nrsync -avh --dry-run --delete /srv/app/ /srv/backup/app/" },
-            { "type": "list", "items": [
-              "`-a` conserve permissions, dates et liens.",
-              "`-h` rend les tailles lisibles.",
-              "`--dry-run` simule sans rien modifier.",
-              "Une barre oblique finale change le sens : `/src/` copie le contenu, `/src` copie le dossier."
-            ] },
-            { "type": "warning", "text": "`--delete` sur une source montée à vide efface la destination. Testez toujours avec --dry-run et vérifiez le point de montage avant." }
+            {
+              "type": "p",
+              "text": "`rsync` synchronise des arborescences en ne transférant que les différences. L'option `--delete` supprime à la destination ce qui n'existe plus à la source : utile pour une copie miroir, dangereux sans vérification."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "rsync -avh --delete /srv/app/ /srv/backup/app/\nrsync -avh --dry-run --delete /srv/app/ /srv/backup/app/"
+            },
+            {
+              "type": "list",
+              "items": [
+                "`-a` conserve permissions, dates et liens.",
+                "`-h` rend les tailles lisibles.",
+                "`--dry-run` simule sans rien modifier.",
+                "Une barre oblique finale change le sens : `/src/` copie le contenu, `/src` copie le dossier."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "`--delete` sur une source montée à vide efface la destination. Testez toujours avec --dry-run et vérifiez le point de montage avant."
+            }
           ],
           "exercise": {
             "title": "Simuler d'abord",
             "instructions": "Quelle option permet de voir ce que rsync ferait sans rien modifier ?",
-            "hints": ["Le nom évoque une répétition à blanc.", "Deux mots séparés par un tiret."],
-            "solution": "--dry-run"
+            "hints": [
+              "Le nom évoque une répétition à blanc.",
+              "Deux mots séparés par un tiret."
+            ],
+            "solution": "--dry-run",
+            "check": {
+              "type": "any",
+              "any": [
+                "dry-run",
+                "dry run"
+              ]
+            }
           },
           "quiz": [
-            { "id": "lxa-02-q1", "type": "single", "difficulty": 1, "question": "Que fait --delete avec rsync ?", "options": ["Supprime à la destination ce qui n'existe plus à la source", "Supprime la source", "Supprime les journaux", "Désactive la copie"], "answer": 0, "explanation": "C'est un miroir : la destination reflète la source.", "hints": [] },
-            { "id": "lxa-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi tester avec --dry-run ?", "options": ["Pour voir les actions sans les exécuter", "Pour accélérer la copie", "Pour chiffrer les fichiers", "Pour créer un snapshot"], "answer": 0, "explanation": "La simulation révèle une suppression massive avant qu'elle ait lieu.", "hints": [] }
+            {
+              "id": "lxa-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que fait --delete avec rsync ?",
+              "options": [
+                "Supprime à la destination ce qui n'existe plus à la source",
+                "Supprime la source",
+                "Supprime les journaux",
+                "Désactive la copie"
+              ],
+              "answer": 0,
+              "explanation": "C'est un miroir : la destination reflète la source.",
+              "hints": []
+            },
+            {
+              "id": "lxa-02-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Pourquoi tester avec --dry-run ?",
+              "options": [
+                "Pour voir les actions sans les exécuter",
+                "Pour accélérer la copie",
+                "Pour chiffrer les fichiers",
+                "Pour créer un snapshot"
+              ],
+              "answer": 0,
+              "explanation": "La simulation révèle une suppression massive avant qu'elle ait lieu.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Pare-feu et durcissement réseau ».",
+          "summary": [
+            "rsync synchronise efficacement les fichiers.",
+            "--dry-run simule sans rien modifier.",
+            "-a conserve les attributs."
           ]
         }
       ]
@@ -64,75 +184,264 @@
           "id": "lxa-03",
           "title": "Pare-feu et durcissement réseau",
           "duration": 20,
-          "objectives": ["Écrire une règle de pare-feu", "Appliquer le refus par défaut"],
+          "objectives": [
+            "Écrire une règle de pare-feu",
+            "Appliquer le refus par défaut"
+          ],
           "content": [
-            { "type": "p", "text": "Un pare-feu applique une politique par défaut, puis des exceptions. Le principe est de **refuser** par défaut et de n'autoriser que les services nécessaires. `nftables` remplace progressivement `iptables` ; `ufw` offre une interface simplifiée." },
-            { "type": "code", "lang": "bash", "code": "ufw default deny incoming\nufw default allow outgoing\nufw allow 22/tcp\nufw allow 443/tcp\nufw enable\nufw status verbose" },
-            { "type": "p", "text": "Vérifiez toujours la règle d'administration avant d'activer : se couper l'accès SSH est l'erreur la plus fréquente." },
-            { "type": "warning", "text": "Ouvrir un port « pour tester » l'oublie souvent. Documentez chaque ouverture et sa justification, puis relisez la liste régulièrement." }
+            {
+              "type": "p",
+              "text": "Un pare-feu applique une politique par défaut, puis des exceptions. Le principe est de **refuser** par défaut et de n'autoriser que les services nécessaires. `nftables` remplace progressivement `iptables` ; `ufw` offre une interface simplifiée."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "ufw default deny incoming\nufw default allow outgoing\nufw allow 22/tcp\nufw allow 443/tcp\nufw enable\nufw status verbose"
+            },
+            {
+              "type": "p",
+              "text": "Vérifiez toujours la règle d'administration avant d'activer : se couper l'accès SSH est l'erreur la plus fréquente."
+            },
+            {
+              "type": "warning",
+              "text": "Ouvrir un port « pour tester » l'oublie souvent. Documentez chaque ouverture et sa justification, puis relisez la liste régulièrement."
+            }
           ],
           "exercise": {
             "title": "Ouvrir SSH",
             "instructions": "Quelle commande ufw autorise uniquement SSH puis active le pare-feu ?",
-            "hints": ["Le port SSH est 22.", "L'activation se fait par ufw enable."],
-            "solution": "ufw allow 22/tcp puis ufw enable"
+            "hints": [
+              "Le port SSH est 22.",
+              "L'activation se fait par ufw enable."
+            ],
+            "solution": "ufw allow 22/tcp puis ufw enable",
+            "check": {
+              "type": "any",
+              "any": [
+                "ufw allow",
+                "ufw enable"
+              ]
+            }
           },
           "quiz": [
-            { "id": "lxa-03-q1", "type": "single", "difficulty": 1, "question": "Quelle politique par défaut est recommandée ?", "options": ["Refuser l'entrée", "Tout autoriser", "Autoriser l'entrée", "Aucun pare-feu"], "answer": 0, "explanation": "Le refus par défaut oblige à justifier chaque ouverture.", "hints": [] },
-            { "id": "lxa-03-q2", "type": "single", "difficulty": 2, "question": "Quel port autoriser pour l'administration à distance ?", "options": ["22", "443", "53", "3306"], "answer": 0, "explanation": "SSH utilise le port 22 par défaut.", "hints": [] }
+            {
+              "id": "lxa-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle politique par défaut est recommandée ?",
+              "options": [
+                "Refuser l'entrée",
+                "Tout autoriser",
+                "Autoriser l'entrée",
+                "Aucun pare-feu"
+              ],
+              "answer": 0,
+              "explanation": "Le refus par défaut oblige à justifier chaque ouverture.",
+              "hints": []
+            },
+            {
+              "id": "lxa-03-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel port autoriser pour l'administration à distance ?",
+              "options": [
+                "22",
+                "443",
+                "53",
+                "3306"
+              ],
+              "answer": 0,
+              "explanation": "SSH utilise le port 22 par défaut.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Surveiller les ressources ».",
+          "summary": [
+            "ufw allow définit une règle.",
+            "ufw enable active le filtrage.",
+            "ufw status vérifie l'état."
           ]
         },
         {
           "id": "lxa-04",
           "title": "Surveiller les ressources",
           "duration": 20,
-          "objectives": ["Identifier un goulot d'étranglement", "Lire des métriques système"],
+          "objectives": [
+            "Identifier un goulot d'étranglement",
+            "Lire des métriques système"
+          ],
           "content": [
-            { "type": "p", "text": "Quatre ressources peuvent saturer : processeur, mémoire, disque et réseau. Chaque outil répond à une question précise. Confondre la cause et le symptôme mène à ajouter des ressources inutilement." },
-            { "type": "table", "headers": ["Outil", "Question"], "rows": [
-              ["`uptime`", "Quelle est la charge ?"],
-              ["`vmstat 1`", "Le système échange-t-il en mémoire ?"],
-              ["`iostat -x 1`", "Le disque est-il saturé ?"],
-              ["`ss -s`", "Combien de connexions ?"],
-              ["`journalctl -p err -b`", "Quelles erreurs depuis le démarrage ?"]
-            ] },
-            { "type": "warning", "text": "Une charge élevée n'indique pas toujours un manque de processeur : des entrées-sorties lentes produisent le même symptôme. Vérifiez l'attente disque avant d'ajouter des cœurs." }
+            {
+              "type": "p",
+              "text": "Quatre ressources peuvent saturer : processeur, mémoire, disque et réseau. Chaque outil répond à une question précise. Confondre la cause et le symptôme mène à ajouter des ressources inutilement."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Outil",
+                "Question"
+              ],
+              "rows": [
+                [
+                  "`uptime`",
+                  "Quelle est la charge ?"
+                ],
+                [
+                  "`vmstat 1`",
+                  "Le système échange-t-il en mémoire ?"
+                ],
+                [
+                  "`iostat -x 1`",
+                  "Le disque est-il saturé ?"
+                ],
+                [
+                  "`ss -s`",
+                  "Combien de connexions ?"
+                ],
+                [
+                  "`journalctl -p err -b`",
+                  "Quelles erreurs depuis le démarrage ?"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une charge élevée n'indique pas toujours un manque de processeur : des entrées-sorties lentes produisent le même symptôme. Vérifiez l'attente disque avant d'ajouter des cœurs."
+            }
           ],
           "exercise": {
             "title": "Une machine lente",
             "instructions": "La charge est élevée, le processeur peu utilisé. Quelle hypothèse examinez-vous ?",
-            "hints": ["Regardez les attentes d'entrées-sorties.", "vmstat et iostat donnent la réponse."],
-            "solution": "Une saturation des entrées-sorties disque : vérifier iostat et vmstat (colonne d'attente), puis l'espace et la santé du disque."
+            "hints": [
+              "Regardez les attentes d'entrées-sorties.",
+              "vmstat et iostat donnent la réponse."
+            ],
+            "solution": "Une saturation des entrées-sorties disque : vérifier iostat et vmstat (colonne d'attente), puis l'espace et la santé du disque.",
+            "check": {
+              "type": "any",
+              "any": [
+                "iostat",
+                "vmstat",
+                "disque",
+                "e/s"
+              ]
+            }
           },
           "quiz": [
-            { "id": "lxa-04-q1", "type": "single", "difficulty": 2, "question": "Quel outil montre la saturation disque ?", "options": ["iostat", "dig", "ufw", "lsblk"], "answer": 0, "explanation": "iostat détaille les temps et débits par périphérique.", "hints": [] },
-            { "id": "lxa-04-q2", "type": "single", "difficulty": 2, "question": "Une charge élevée signifie-t-elle toujours un manque de CPU ?", "options": ["Non, les entrées-sorties peuvent en être la cause", "Oui, toujours", "Oui, sur Linux seulement", "Non, la charge ne mesure rien"], "answer": 0, "explanation": "Les processus en attente d'entrées-sorties comptent dans la charge.", "hints": [] }
+            {
+              "id": "lxa-04-q1",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Quel outil montre la saturation disque ?",
+              "options": [
+                "iostat",
+                "dig",
+                "ufw",
+                "lsblk"
+              ],
+              "answer": 0,
+              "explanation": "iostat détaille les temps et débits par périphérique.",
+              "hints": []
+            },
+            {
+              "id": "lxa-04-q2",
+              "type": "single",
+              "difficulty": 2,
+              "question": "Une charge élevée signifie-t-elle toujours un manque de CPU ?",
+              "options": [
+                "Non, les entrées-sorties peuvent en être la cause",
+                "Oui, toujours",
+                "Oui, sur Linux seulement",
+                "Non, la charge ne mesure rien"
+              ],
+              "answer": 0,
+              "explanation": "Les processus en attente d'entrées-sorties comptent dans la charge.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Chapitre suivant : « Mises à jour et dépannage avancé ».",
+          "summary": [
+            "Une charge élevée avec un CPU faible évoque les entrées-sorties.",
+            "iostat et vmstat montrent l'attente.",
+            "Vérifier espace et santé du disque."
           ]
         },
         {
           "id": "lxa-05",
           "title": "Mises à jour et dépannage avancé",
           "duration": 22,
-          "objectives": ["Planifier des mises à jour", "Utiliser un runbook"],
+          "objectives": [
+            "Planifier des mises à jour",
+            "Utiliser un runbook"
+          ],
           "content": [
-            { "type": "p", "text": "Les mises à jour corrigent des failles : elles se planifient, se testent et se déploient avec un retour arrière prévu. Un **runbook** décrit les vérifications et les actions pour un incident connu." },
-            { "type": "list", "items": [
-              "Lire les notes de version avant une mise à jour majeure.",
-              "Tester sur un environnement de recette représentatif.",
-              "Prévoir l'instantané ou la sauvegarde et la procédure de retour.",
-              "Surveiller après application, pas seulement pendant."
-            ] },
-            { "type": "warning", "text": "Ne lancez jamais une mise à jour majeure sans sauvegarde vérifiée ni fenêtre de maintenance annoncée." }
+            {
+              "type": "p",
+              "text": "Les mises à jour corrigent des failles : elles se planifient, se testent et se déploient avec un retour arrière prévu. Un **runbook** décrit les vérifications et les actions pour un incident connu."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lire les notes de version avant une mise à jour majeure.",
+                "Tester sur un environnement de recette représentatif.",
+                "Prévoir l'instantané ou la sauvegarde et la procédure de retour.",
+                "Surveiller après application, pas seulement pendant."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Ne lancez jamais une mise à jour majeure sans sauvegarde vérifiée ni fenêtre de maintenance annoncée."
+            }
           ],
           "exercise": {
             "title": "Avant une mise à jour majeure",
             "instructions": "Citez trois précautions avant de mettre à jour un serveur de production.",
-            "hints": ["Test, sauvegarde, retour arrière.", "Et l'information des utilisateurs."],
-            "solution": "Lire les notes de version, tester en recette, sauvegarder, prévoir un retour arrière et prévenir dans une fenêtre de maintenance."
+            "hints": [
+              "Test, sauvegarde, retour arrière.",
+              "Et l'information des utilisateurs."
+            ],
+            "solution": "Lire les notes de version, tester en recette, sauvegarder, prévoir un retour arrière et prévenir dans une fenêtre de maintenance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sauvegard",
+                "recette",
+                "retour arrière",
+                "retour arriere"
+              ]
+            }
           },
           "quiz": [
-            { "id": "lxa-05-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qu'un runbook ?", "options": ["Une procédure pour un incident connu", "Un type de disque", "Un pare-feu", "Un journal"], "answer": 0, "explanation": "Il décrit vérifications et actions pour reprendre la main rapidement.", "hints": [] },
-            { "id": "lxa-05-q2", "type": "truefalse", "difficulty": 2, "question": "Une mise à jour majeure peut se faire sans sauvegarde si le serveur est récent.", "answer": false, "explanation": "La sauvegarde est la condition d'un retour arrière possible.", "hints": [] }
+            {
+              "id": "lxa-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Qu'est-ce qu'un runbook ?",
+              "options": [
+                "Une procédure pour un incident connu",
+                "Un type de disque",
+                "Un pare-feu",
+                "Un journal"
+              ],
+              "answer": 0,
+              "explanation": "Il décrit vérifications et actions pour reprendre la main rapidement.",
+              "hints": []
+            },
+            {
+              "id": "lxa-05-q2",
+              "type": "truefalse",
+              "difficulty": 2,
+              "question": "Une mise à jour majeure peut se faire sans sauvegarde si le serveur est récent.",
+              "answer": false,
+              "explanation": "La sauvegarde est la condition d'un retour arrière possible.",
+              "hints": []
+            }
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "summary": [
+            "Lire les notes de version.",
+            "Tester en recette et sauvegarder.",
+            "Prévoir un retour arrière et une fenêtre de maintenance."
           ]
         }
       ]
