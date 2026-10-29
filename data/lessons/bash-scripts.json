@@ -1,0 +1,190 @@
+{
+  "courseId": "bash-scripts",
+  "modules": [
+    {
+      "id": "bash-m1",
+      "title": "Écrire un script",
+      "chapters": [
+        {
+          "id": "bash-01",
+          "title": "Variables, arguments et codes de retour",
+          "duration": 20,
+          "objectives": [
+            "Utiliser les paramètres d'un script",
+            "Tester le code de retour d'une commande"
+          ],
+          "content": [
+            { "type": "p", "text": "Un script Bash est un fichier exécutable commençant par un **shebang**. Les paramètres sont accessibles par `$1`, `$2`…, le nombre par `$#`, et la liste complète par `$@`. Le code de retour de la dernière commande est dans `$?`." },
+            { "type": "code", "lang": "bash", "title": "arguments.sh", "code": "#!/usr/bin/env bash\nset -euo pipefail\n\nif [ \"$#\" -lt 1 ]; then\n  echo \"Usage : $0 <nom>\" >&2\n  exit 2\nfi\n\nnom=\"$1\"\necho \"Bonjour, $nom\"\nexit 0" },
+            { "type": "table", "headers": ["Variable", "Contenu"], "rows": [
+              ["`$0`", "Nom du script"],
+              ["`$1` à `$9`", "Paramètres positionnels"],
+              ["`$#`", "Nombre de paramètres"],
+              ["`$@`", "Tous les paramètres, un par un"],
+              ["`$?`", "Code de retour de la dernière commande"]
+            ] },
+            { "type": "p", "text": "Un code de retour 0 signifie succès, toute autre valeur un échec. Un script doit renvoyer un code cohérent : c'est ce que lit un appelant, un pipeline ou un orchestrateur." },
+            { "type": "warning", "text": "Écrivez `\"$variable\"` avec des guillemets. Sans eux, un nom contenant un espace est découpé en plusieurs arguments : c'est l'une des causes d'erreur les plus fréquentes." }
+          ],
+          "exercise": {
+            "title": "Vérifier les arguments",
+            "instructions": "Écrivez le début d'un script qui s'arrête avec le code 2 et un message d'usage si aucun argument n'est fourni.",
+            "hints": ["Le nombre d'arguments est dans $#.", "Un message d'erreur s'écrit sur la sortie d'erreur avec >&2."],
+            "solution": "if [ \"$#\" -lt 1 ]; then\n  echo \"Usage : $0 <argument>\" >&2\n  exit 2\nfi"
+          },
+          "quiz": [
+            { "id": "bash-01-q1", "type": "single", "difficulty": 1, "question": "Quelle variable contient le nombre de paramètres du script ?", "options": ["$1", "$#", "$?", "$0"], "answer": 1, "explanation": "$# donne le nombre d'arguments ; $? le code de retour.", "hints": [] },
+            { "id": "bash-01-q2", "type": "single", "difficulty": 2, "question": "Que signifie un code de retour 0 ?", "options": ["Échec", "Succès", "Avertissement", "Script absent"], "answer": 1, "explanation": "La convention Unix réserve 0 au succès.", "hints": [] }
+          ]
+        },
+        {
+          "id": "bash-02",
+          "title": "Conditions et tests",
+          "duration": 20,
+          "objectives": [
+            "Tester un fichier, une chaîne et un nombre",
+            "Écrire des conditions lisibles"
+          ],
+          "content": [
+            { "type": "p", "text": "Le test `[ ... ]` (ou `[[ ... ]]` en Bash) évalue une condition. Les tests les plus courants portent sur l'existence d'un fichier, le type d'un fichier, l'égalité de chaînes et les comparaisons numériques." },
+            { "type": "code", "lang": "bash", "code": "if [ -f \"$fichier\" ]; then\n  echo \"fichier présent\"\nelif [ -d \"$fichier\" ]; then\n  echo \"c'est un dossier\"\nfi\n\nif [ \"$mode\" = \"prod\" ]; then\n  echo \"production\"\nfi\n\nif [ \"$age\" -ge 18 ]; then\n  echo \"majeur\"\nfi" },
+            { "type": "table", "headers": ["Test", "Vrai si…"], "rows": [
+              ["`-e chemin`", "Le chemin existe"],
+              ["`-f chemin`", "C'est un fichier régulier"],
+              ["`-d chemin`", "C'est un dossier"],
+              ["`-r / -w / -x`", "Lisible, inscriptible, exécutable"],
+              ["`-z \"$var\"`", "La chaîne est vide"],
+              ["`-n \"$var\"`", "La chaîne n'est pas vide"]
+            ] },
+            { "type": "p", "text": "Les comparaisons numériques utilisent `-eq`, `-ne`, `-lt`, `-le`, `-gt`, `-ge`. Les comparaisons de chaînes utilisent `=` et `!=`. Confondre les deux familles produit des résultats inattendus." },
+            { "type": "warning", "text": "`[ $var = x ]` sans guillemets échoue si `var` est vide : le test reçoit moins d'arguments. Utilisez `[ \"$var\" = x ]`." }
+          ],
+          "exercise": {
+            "title": "Tester un dossier de sauvegarde",
+            "instructions": "Écrivez une condition qui vérifie que /srv/backup existe et est un dossier, et qui le crée sinon.",
+            "hints": ["On teste un dossier avec -d.", "mkdir -p crée le dossier et ses parents."],
+            "solution": "if [ ! -d /srv/backup ]; then\n  mkdir -p /srv/backup\nfi"
+          },
+          "quiz": [
+            { "id": "bash-02-q1", "type": "single", "difficulty": 1, "question": "Quel test vérifie qu'un fichier régulier existe ?", "options": ["-d", "-f", "-z", "-eq"], "answer": 1, "explanation": "-f teste un fichier régulier ; -d teste un dossier.", "hints": [] },
+            { "id": "bash-02-q2", "type": "single", "difficulty": 2, "question": "Quelle syntaxe compare correctement deux nombres ?", "options": ["[ \"$a\" = \"$b\" ]", "[ \"$a\" -eq \"$b\" ]", "[ \"$a\" == \"$b\" ]", "[ \"$a\" -z \"$b\" ]"], "answer": 1, "explanation": "-eq est l'opérateur numérique ; = compare des chaînes.", "hints": [] }
+          ]
+        },
+        {
+          "id": "bash-03",
+          "title": "Boucles et lecture de fichiers",
+          "duration": 22,
+          "objectives": [
+            "Parcourir des fichiers ligne par ligne",
+            "Éviter les pièges de découpage"
+          ],
+          "content": [
+            { "type": "p", "text": "Deux boucles servent constamment : `for` pour parcourir une liste d'éléments, `while read` pour traiter un flux ligne par ligne. La seconde est bien plus sûre pour des fichiers contenant espaces et caractères spéciaux." },
+            { "type": "code", "lang": "bash", "code": "# Parcours de fichiers\nfor fichier in /var/log/*.log; do\n  [ -e \"$fichier\" ] || continue\n  echo \"$(wc -l < \"$fichier\") lignes : $fichier\"\ndone\n\n# Lecture ligne par ligne\nwhile IFS= read -r ligne; do\n  echo \"Lu : $ligne\"\ndone < /etc/hosts" },
+            { "type": "list", "items": [
+              "`IFS=` empêche la suppression des espaces de début et de fin.",
+              "`-r` empêche l'interprétation des barres obliques inverses.",
+              "`\"$@\"` préserve les arguments contenant des espaces.",
+              "`[ -e \"$fichier\" ] || continue` évite de traiter un motif sans correspondance."
+            ] },
+            { "type": "warning", "text": "Ne parcourez pas la sortie de `ls` : les noms de fichiers peuvent contenir des espaces ou des retours à la ligne. Utilisez des motifs (`*.txt`) ou `find -print0` avec `read -d ''`." }
+          ],
+          "exercise": {
+            "title": "Compter les lignes",
+            "instructions": "Écrivez une boucle qui affiche le nombre de lignes de chaque fichier .log du dossier courant.",
+            "hints": ["Le motif *.log sélectionne les fichiers.", "wc -l < fichier donne le nombre de lignes."],
+            "solution": "for f in *.log; do\n  [ -e \"$f\" ] || continue\n  echo \"$(wc -l < \"$f\") $f\"\ndone"
+          },
+          "quiz": [
+            { "id": "bash-03-q1", "type": "single", "difficulty": 2, "question": "Pourquoi utiliser while IFS= read -r ligne plutôt que for ligne in $(cat fichier) ?", "options": ["C'est plus rapide", "Cela préserve les espaces et les caractères spéciaux", "Cela évite les permissions", "Cela trie les lignes"], "answer": 1, "explanation": "Le découpage de mots de la substitution de commande détruit espaces et caractères spéciaux.", "hints": [] },
+            { "id": "bash-03-q2", "type": "single", "difficulty": 2, "question": "Que fait [ -e \"$f\" ] || continue dans une boucle sur *.log ?", "options": ["Ignore le motif non trouvé", "Supprime le fichier", "Relance la boucle", "Affiche le fichier"], "answer": 0, "explanation": "Sans correspondance, le motif reste littéral ; le test évite de traiter un fichier inexistant.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bash-m2",
+      "title": "Scripts fiables",
+      "chapters": [
+        {
+          "id": "bash-04",
+          "title": "Fonctions et mode strict",
+          "duration": 22,
+          "objectives": [
+            "Découper un script en fonctions",
+            "Activer les protections de Bash"
+          ],
+          "content": [
+            { "type": "p", "text": "Les fonctions rendent un script lisible et testable. Elles reçoivent leurs arguments comme un script (`$1`, `$2`) et renvoient un code de retour. `local` limite la portée des variables à la fonction." },
+            { "type": "code", "lang": "bash", "code": "#!/usr/bin/env bash\nset -euo pipefail\n\nlog() {\n  printf '%s %s\\n' \"$(date -Is)\" \"$*\" >&2\n}\n\ncopier() {\n  local source=\"$1\" dest=\"$2\"\n  if [ ! -d \"$source\" ]; then\n    log \"Source absente : $source\"\n    return 1\n  fi\n  cp -r -- \"$source\" \"$dest\"\n}" },
+            { "type": "table", "headers": ["Option", "Effet"], "rows": [
+              ["`set -e`", "Arrêt à la première commande en échec"],
+              ["`set -u`", "Erreur si une variable non définie est utilisée"],
+              ["`set -o pipefail`", "Un échec dans un pipeline fait échouer l'ensemble"],
+              ["`set -x`", "Affiche chaque commande exécutée (débogage)"]
+            ] },
+            { "type": "p", "text": "`printf` est préférable à `echo` pour les messages formatés : il gère les sauts de ligne et les caractères spéciaux de façon prévisible." },
+            { "type": "warning", "text": "`set -e` ne s'applique pas à l'intérieur des conditions (`if`, `&&`, `||`). Une commande dont vous testez explicitement l'échec ne provoquera pas l'arrêt." }
+          ],
+          "exercise": {
+            "title": "Fonction de contrôle",
+            "instructions": "Écrivez une fonction exiger_dossier qui vérifie l'existence d'un dossier et renvoie 1 avec un message sur la sortie d'erreur sinon.",
+            "hints": ["Le chemin est passé en paramètre.", "return 1 signale l'échec."],
+            "solution": "exiger_dossier() {\n  if [ ! -d \"$1\" ]; then\n    echo \"Dossier introuvable : $1\" >&2\n    return 1\n  fi\n}"
+          },
+          "quiz": [
+            { "id": "bash-04-q1", "type": "single", "difficulty": 2, "question": "Que fait set -u ?", "options": ["Arrête le script sur une variable non définie", "Trie la sortie", "Désactive les fonctions", "Active le débogage"], "answer": 0, "explanation": "-u transforme l'usage d'une variable non définie en erreur, ce qui évite des comportements silencieux.", "hints": [] },
+            { "id": "bash-04-q2", "type": "single", "difficulty": 2, "question": "Que fait set -o pipefail ?", "options": ["Ignore les erreurs", "Fait échouer le pipeline si une commande échoue", "Affiche les pipes", "Limite la mémoire"], "answer": 1, "explanation": "Sans pipefail, seul le code de la dernière commande du pipeline est retenu.", "hints": [] }
+          ]
+        },
+        {
+          "id": "bash-05",
+          "title": "Scénarios robustes : sauvegarde et verrouillage",
+          "duration": 24,
+          "objectives": [
+            "Écrire un script de sauvegarde complet",
+            "Empêcher deux exécutions simultanées"
+          ],
+          "content": [
+            { "type": "p", "text": "Un script destiné à la production doit être prudent : vérifier ses entrées, journaliser, échouer proprement, ne jamais supprimer de données sans confirmation et éviter de s'exécuter deux fois en même temps." },
+            { "type": "code", "lang": "bash", "title": "sauvegarde.sh", "code": "#!/usr/bin/env bash\nset -euo pipefail\n\nSOURCE=/srv/app\nDEST=/srv/backup\nJOUR=$(date +%F)\nARCHIVE=\"$DEST/app-$JOUR.tar.gz\"\n\njournaux() { printf '%s %s\\n' \"$(date -Is)\" \"$*\" >&2; }\n\ncommand -v tar >/dev/null || { journaux \"tar manquant\"; exit 3; }\n[ -d \"$SOURCE\" ] || { journaux \"source absente\"; exit 4; }\nmkdir -p \"$DEST\"\n\n# Empêche deux exécutions simultanées\nexec 9>\"$DEST/.verrou\"\nflock -n 9 || { journaux \"sauvegarde déjà en cours\"; exit 5; }\n\ntar -czf \"$ARCHIVE\" -C \"$SOURCE\" .\njournaux \"archive créée : $ARCHIVE\"\n\n# Purge des archives de plus de 14 jours\nfind \"$DEST\" -name 'app-*.tar.gz' -mtime +14 -delete\njournaux \"purge terminée\"" },
+            { "type": "p", "text": "`flock` pose un verrou sur un descripteur de fichier : si le verrou est déjà pris, l'option `-n` échoue immédiatement au lieu d'attendre. C'est la protection standard contre les exécutions concurrentes déclenchées par cron." },
+            { "type": "list", "items": [
+              "Vérifiez les prérequis (`command -v`) avant d'agir.",
+              "Journalisez sur la sortie d'erreur avec un horodatage.",
+              "Utilisez des noms d'archive horodatés et purgez selon une durée explicite.",
+              "Testez la restauration : une archive non testée ne prouve rien."
+            ] },
+            { "type": "warning", "text": "`find ... -delete` supprime sans confirmation. Testez d'abord avec `-print`, puis remplacez par `-delete` une fois le filtre vérifié." }
+          ],
+          "exercise": {
+            "title": "Éviter le double lancement",
+            "instructions": "Deux exécutions de cron se chevauchent et corrompent l'archive. Quelle protection ajoutez-vous ?",
+            "hints": ["Un verrou exclusif sur un fichier empêche la seconde exécution.", "L'option -n échoue au lieu d'attendre."],
+            "solution": "Un verrou flock exclusif (exec 9>fichier puis flock -n 9), avec sortie propre si le verrou est déjà pris."
+          },
+          "quiz": [
+            { "id": "bash-05-q1", "type": "single", "difficulty": 2, "question": "À quoi sert flock dans un script planifié ?", "options": ["À chiffrer l'archive", "À empêcher deux exécutions simultanées", "À accélérer la compression", "À purger les journaux"], "answer": 1, "explanation": "flock pose un verrou exclusif : la seconde instance échoue ou attend.", "hints": [] },
+            { "id": "bash-05-q2", "type": "multiple", "difficulty": 3, "question": "Quelles pratiques rendent un script de sauvegarde plus sûr ?", "options": ["Vérifier la présence des outils requis", "Journaliser avec horodatage", "Supprimer les archives sans test préalable", "Tester la restauration"], "answer": [0, 1, 3], "explanation": "La purge doit être vérifiée avec -print avant d'utiliser -delete.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Script de sauvegarde et de rotation",
+    "brief": "Écrivez un script Bash idempotent qui archive un dossier, journalise chaque étape, évite les exécutions concurrentes et purge les archives anciennes.",
+    "steps": [
+      "Écrire le script avec set -euo pipefail et une fonction de journalisation horodatée.",
+      "Vérifier la présence des outils (tar, flock) et de la source avant toute action.",
+      "Poser un verrou exclusif et produire une archive horodatée.",
+      "Ajouter la purge des archives de plus de 14 jours, testée d'abord avec -print.",
+      "Planifier le script avec cron et vérifier le lendemain que l'archive et le journal existent."
+    ],
+    "criteria": [
+      "Le script se termine avec un code non nul en cas d'erreur, et un journal l'explique.",
+      "Deux exécutions simultanées ne produisent pas deux archives en conflit.",
+      "La purge ne supprime que les archives correspondant au motif et à l'âge prévus."
+    ]
+  }
+}

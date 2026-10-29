@@ -1,0 +1,182 @@
+{
+  "courseId": "ia-debutant",
+  "modules": [
+    {
+      "id": "ia-m1",
+      "title": "Notions fondamentales",
+      "chapters": [
+        {
+          "id": "ia-01",
+          "title": "Ce qu'est, et n'est pas, l'intelligence artificielle",
+          "duration": 18,
+          "objectives": [
+            "Distinguer IA, machine learning et deep learning",
+            "Reconnaître les limites d'un système entraîné"
+          ],
+          "content": [
+            { "type": "p", "text": "L'**intelligence artificielle** désigne l'ensemble des techniques qui font accomplir à une machine des tâches attribuées à l'intelligence humaine. Le **machine learning** en est une famille : au lieu d'écrire des règles à la main, on apprend ces règles à partir d'exemples. Le **deep learning** est un machine learning fondé sur des réseaux de neurones profonds." },
+            { "type": "table", "headers": ["Approche", "Principe", "Exemple"], "rows": [
+              ["Règles écrites", "Un humain décrit la logique", "Calcul de la TVA"],
+              ["Machine learning", "Le modèle apprend à partir d'exemples", "Détection de courrier indésirable"],
+              ["Deep learning", "Réseaux profonds, données nombreuses", "Reconnaissance d'images"]
+            ] },
+            { "type": "p", "text": "Un modèle entraîné ne « comprend » pas : il calcule une sortie à partir d'une entrée, en s'appuyant sur des régularités statistiques. Il peut donc se tromper de façon plausible, reproduire des biais présents dans les données et échouer sur des cas jamais vus." },
+            { "type": "p", "text": "On distingue l'apprentissage **supervisé** (données étiquetées), **non supervisé** (recherche de structures) et par **renforcement** (apprentissage par récompense et pénalité)." },
+            { "type": "warning", "text": "Une démonstration convaincante ne prouve pas qu'un modèle est fiable. Sans jeu de test séparé et sans mesure, on ne sait pas s'il généralise." }
+          ],
+          "exercise": {
+            "title": "Règles ou apprentissage ?",
+            "instructions": "Un programme doit décider si un e-mail est indésirable. Quand faut-il écrire des règles, et quand vaut-il mieux entraîner un modèle ?",
+            "hints": ["Les règles sont fiables quand le critère est explicite.", "Un modèle est utile quand les motifs sont nombreux et implicites."],
+            "solution": "Des règles suffisent pour un critère explicite (expéditeur bloqué). Un modèle est préférable quand les indices sont nombreux, évolutifs et difficiles à formuler, à condition de pouvoir l'évaluer."
+          },
+          "quiz": [
+            { "id": "ia-01-q1", "type": "single", "difficulty": 1, "question": "Quelle relation décrit correctement le deep learning ?", "options": ["C'est un synonyme d'IA", "C'est une famille de machine learning fondée sur des réseaux profonds", "C'est une base de données", "C'est une méthode sans données"], "answer": 1, "explanation": "Le deep learning est une sous-catégorie du machine learning, lui-même sous-catégorie de l'IA.", "hints": [] },
+            { "id": "ia-01-q2", "type": "truefalse", "difficulty": 2, "question": "Un modèle entraîné peut se tromper avec assurance.", "answer": true, "explanation": "Il produit une sortie plausible même hors de sa zone de fiabilité.", "hints": [] }
+          ]
+        },
+        {
+          "id": "ia-02",
+          "title": "Données et apprentissage supervisé",
+          "duration": 20,
+          "objectives": [
+            "Identifier variables et étiquettes",
+            "Séparer entraînement et test"
+          ],
+          "content": [
+            { "type": "p", "text": "En apprentissage supervisé, chaque exemple associe des **variables** (les informations disponibles) à une **étiquette** (la réponse attendue). Le modèle apprend la relation, puis la généralise à de nouveaux exemples." },
+            { "type": "table", "headers": ["Tâche", "Sortie", "Exemple"], "rows": [
+              ["Classification", "Une catégorie", "Spam ou non"],
+              ["Régression", "Une valeur continue", "Prix d'un logement"],
+              ["Clustering", "Des groupes", "Segmentation de clients"]
+            ] },
+            { "type": "p", "text": "Les données se séparent en jeu d'**entraînement** (le modèle apprend), jeu de **validation** (on ajuste les choix) et jeu de **test** (on mesure une seule fois, à la fin). Mélanger les rôles donne une évaluation trompeuse." },
+            { "type": "code", "lang": "python", "title": "Principe de séparation", "code": "from sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42, stratify=y\n)" },
+            { "type": "warning", "text": "La **fuite de données** (data leakage) survient quand le jeu de test influence l'entraînement, par exemple si l'on normalise avant la séparation. Les scores deviennent excellents en apparence, faux en pratique." }
+          ],
+          "exercise": {
+            "title": "Classer ou prédire ?",
+            "instructions": "Prédire le montant d'une facture et prédire si un client résiliera son abonnement : quelle tâche pour chacun ?",
+            "hints": ["Un montant est une valeur continue.", "Une résiliation est une catégorie."],
+            "solution": "Le montant relève de la régression ; la résiliation, de la classification binaire."
+          },
+          "quiz": [
+            { "id": "ia-02-q1", "type": "single", "difficulty": 1, "question": "À quoi sert le jeu de test ?", "options": ["À entraîner le modèle", "À mesurer la performance sur des données jamais vues", "À nettoyer les données", "À choisir la base de données"], "answer": 1, "explanation": "Le jeu de test est réservé à l'évaluation finale, pour estimer la généralisation.", "hints": [] },
+            { "id": "ia-02-q2", "type": "single", "difficulty": 2, "question": "Qu'est-ce qu'une fuite de données ?", "options": ["Un vol de base de données", "Une information du test utilisée pendant l'entraînement", "Une erreur de sauvegarde", "Un biais de sélection"], "answer": 1, "explanation": "La fuite gonfle artificiellement les scores et invalide l'évaluation.", "hints": [] }
+          ]
+        },
+        {
+          "id": "ia-03",
+          "title": "Évaluer un modèle",
+          "duration": 22,
+          "objectives": [
+            "Choisir une métrique adaptée",
+            "Repérer surapprentissage et sous-apprentissage"
+          ],
+          "content": [
+            { "type": "p", "text": "La **matrice de confusion** croise les prédictions et la réalité. On en tire la **précision** (parmi les positifs prédits, combien le sont vraiment), le **rappel** (parmi les positifs réels, combien sont détectés) et l'**exactitude** (proportion globale de bonnes réponses)." },
+            { "type": "table", "headers": ["Situation", "Métrique prioritaire"], "rows": [
+              ["Détection de fraude", "Rappel, car manquer un cas coûte cher"],
+              ["Filtre d'e-mails urgents", "Précision, pour éviter les fausses alertes"],
+              ["Classes équilibrées", "Exactitude et F1 acceptables"]
+            ] },
+            { "type": "p", "text": "Le **surapprentissage** (overfitting) donne d'excellents scores en entraînement et de mauvais en test : le modèle a mémorisé les exemples. Le **sous-apprentissage** (underfitting) échoue des deux côtés : le modèle est trop simple." },
+            { "type": "code", "lang": "python", "code": "from sklearn.metrics import accuracy_score, precision_score, recall_score\n\nprint(accuracy_score(y_test, pred))\nprint(precision_score(y_test, pred))\nprint(recall_score(y_test, pred))" },
+            { "type": "warning", "text": "L'exactitude seule est trompeuse sur des classes déséquilibrées : prédire toujours « pas de fraude » donne 99 % d'exactitude et zéro utilité." }
+          ],
+          "exercise": {
+            "title": "Choisir la métrique",
+            "instructions": "Un modèle dépiste une maladie rare. Vaut-il mieux privilégier la précision ou le rappel ?",
+            "hints": ["Manquer un malade a un coût élevé.", "Le rappel mesure les cas réellement détectés."],
+            "solution": "Le rappel : on cherche à ne manquer aucun cas, quitte à accepter davantage de fausses alertes confirmées par un examen."
+          },
+          "quiz": [
+            { "id": "ia-03-q1", "type": "single", "difficulty": 2, "question": "Que mesure le rappel ?", "options": ["La proportion de positifs prédits qui sont corrects", "La proportion de positifs réels détectés", "La vitesse d'entraînement", "La taille du modèle"], "answer": 1, "explanation": "Rappel = positifs correctement détectés / positifs réels.", "hints": [] },
+            { "id": "ia-03-q2", "type": "single", "difficulty": 2, "question": "Un modèle a 99 % en entraînement et 60 % en test. Que se passe-t-il ?", "options": ["Sous-apprentissage", "Surapprentissage", "Fuite de données", "Modèle parfait"], "answer": 1, "explanation": "L'écart important entre entraînement et test indique une mémorisation des exemples.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ia-m2",
+      "title": "Limites et modèles de langage",
+      "chapters": [
+        {
+          "id": "ia-04",
+          "title": "Apprentissage non supervisé et biais",
+          "duration": 20,
+          "objectives": [
+            "Expliquer le principe du clustering",
+            "Identifier les biais d'un jeu de données"
+          ],
+          "content": [
+            { "type": "p", "text": "L'apprentissage **non supervisé** cherche des structures sans étiquettes. Le **clustering** regroupe des exemples similaires : segmentation de clients, détection d'anomalies, regroupement de documents. K-means est l'algorithme le plus courant : il faut fixer le nombre de groupes à l'avance." },
+            { "type": "code", "lang": "python", "code": "from sklearn.cluster import KMeans\n\nmodele = KMeans(n_clusters=3, random_state=42, n_init=\"auto\")\nmodele.fit(X)\nprint(modele.labels_)" },
+            { "type": "p", "text": "Les **biais** viennent des données : un jeu d'entraînement qui sous-représente une population produit un modèle moins fiable pour elle. L'historique peut aussi encoder des décisions passées inéquitables." },
+            { "type": "list", "items": [
+              "Vérifier la représentativité des données par sous-population.",
+              "Documenter l'origine des données et les transformations appliquées.",
+              "Tester les performances séparément sur chaque groupe.",
+              "Prévoir une révision humaine pour les décisions à fort impact."
+            ] },
+            { "type": "warning", "text": "Un système d'IA qui décide d'un crédit, d'un recrutement ou d'une sanction doit rester sous contrôle humain et respecter le cadre légal applicable. Ce cours ne fournit aucun conseil juridique." }
+          ],
+          "exercise": {
+            "title": "Biais de représentation",
+            "instructions": "Un modèle de reconnaissance vocale est entraîné uniquement sur des voix d'hommes adultes. Quel problème prévoyez-vous ?",
+            "hints": ["Les voix des autres groupes sont absentes de l'entraînement.", "La performance se mesure aussi par sous-groupe."],
+            "solution": "Le modèle sera nettement moins fiable pour les femmes, les enfants et les accents absents des données. Il faut diversifier le jeu de données et mesurer par sous-groupe."
+          },
+          "quiz": [
+            { "id": "ia-04-q1", "type": "single", "difficulty": 1, "question": "Que fait un algorithme de clustering ?", "options": ["Il prédit une étiquette connue", "Il regroupe des exemples similaires sans étiquettes", "Il chiffre les données", "Il supprime les valeurs manquantes"], "answer": 1, "explanation": "Le clustering est non supervisé : il découvre des groupes.", "hints": [] },
+            { "id": "ia-04-q2", "type": "truefalse", "difficulty": 2, "question": "Un modèle peut être performant en moyenne et peu fiable pour un sous-groupe.", "answer": true, "explanation": "La moyenne masque les écarts entre populations ; il faut mesurer par sous-groupe.", "hints": [] }
+          ]
+        },
+        {
+          "id": "ia-05",
+          "title": "Modèles de langage et RAG",
+          "duration": 24,
+          "objectives": [
+            "Décrire le fonctionnement général d'un modèle de langage",
+            "Concevoir une réponse fondée sur des documents"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **modèle de langage** prédit la suite d'un texte à partir de son contexte. Le texte est découpé en **tokens** ; le modèle les transforme en vecteurs (**embeddings**) et calcule, grâce au mécanisme d'**attention**, quels éléments du contexte sont pertinents." },
+            { "type": "p", "text": "Un modèle ne consulte pas une base de faits : il produit la suite la plus probable. Il peut donc **halluciner**, c'est-à-dire affirmer avec assurance une information fausse. C'est pourquoi on limite son rôle aux cas où une vérification est possible." },
+            { "type": "h", "text": "RAG : répondre avec des documents" },
+            { "type": "p", "text": "Le **RAG** (Retrieval-Augmented Generation) cherche d'abord les passages pertinents dans vos documents, puis les fournit au modèle comme contexte. La réponse s'appuie alors sur des sources identifiables." },
+            { "type": "code", "lang": "text", "title": "Chaîne RAG", "code": "1. découper les documents (chunking)\n2. calculer les embeddings et les stocker dans une base vectorielle\n3. encoder la question, rechercher les passages proches\n4. envoyer question + passages au modèle\n5. citer les sources et vérifier la réponse" },
+            { "type": "p", "text": "Sécurité : un document piégé peut contenir des instructions (**injection de prompt**) que le modèle suivrait. Traitez les documents comme des données non fiables, n'accordez au modèle aucun droit direct et filtrez ce qu'il renvoie." },
+            { "type": "warning", "text": "Ne placez jamais de clé d'API dans un code côté navigateur. Les appels à un modèle payant passent par un service intermédiaire qui contrôle les quotas et les droits." }
+          ],
+          "exercise": {
+            "title": "Réduire les hallucinations",
+            "instructions": "Vous construisez un assistant qui répond sur une documentation interne. Quelle architecture choisir, et comment vérifier les réponses ?",
+            "hints": ["Le modèle doit recevoir les passages utiles.", "Une réponse doit citer ses sources."],
+            "solution": "Un RAG : recherche des passages pertinents, réponse limitée à ce contexte, citations obligatoires des sources et vérification par un humain pour les cas sensibles."
+          },
+          "quiz": [
+            { "id": "ia-05-q1", "type": "single", "difficulty": 2, "question": "Que fait un système RAG ?", "options": ["Il entraîne un modèle de zéro", "Il fournit au modèle des passages de documents pertinents", "Il chiffre les données", "Il remplace le modèle par une base de données"], "answer": 1, "explanation": "RAG ajoute une étape de recherche documentaire avant la génération.", "hints": [] },
+            { "id": "ia-05-q2", "type": "single", "difficulty": 3, "question": "Pourquoi ne jamais mettre une clé d'API de modèle dans le code côté navigateur ?", "options": ["Elle serait visible et réutilisable par n'importe qui", "Elle ralentit la page", "Elle empêche le JSON", "Elle n'est pas compatible HTTPS"], "answer": 0, "explanation": "Tout code envoyé au navigateur est lisible ; la clé doit rester côté serveur.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Assistant documentaire évalué",
+    "brief": "Concevez un assistant qui répond à partir d'une documentation de démonstration, avec sources citées et mesure de la qualité.",
+    "steps": [
+      "Constituer un petit corpus de documents de démonstration non sensibles.",
+      "Découper les documents en passages cohérents et calculer leurs embeddings.",
+      "Écrire quinze questions de test avec la réponse attendue et le passage source.",
+      "Mesurer le taux de réponses correctes, le taux de citations valides et les cas d'échec.",
+      "Ajouter une consigne de refus lorsque les documents ne contiennent pas la réponse."
+    ],
+    "criteria": [
+      "Chaque réponse cite au moins un passage du corpus, vérifiable.",
+      "Le système refuse de répondre quand l'information est absente.",
+      "Les résultats sont mesurés sur les quinze questions, avec les échecs documentés."
+    ]
+  }
+}

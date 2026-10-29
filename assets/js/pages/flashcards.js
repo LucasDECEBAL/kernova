@@ -1,6 +1,6 @@
 // Cartes mémo : index des paquets, cartes personnelles (CRUD, import, export) et séance de révision.
 
-import { h, icon, emptyState, alertBox, progressBar } from '../core/dom.js';
+import { h, icon, emptyState, alertBox, progressBar , setChildren } from '../core/dom.js';
 import { getFlashPacks } from '../core/data.js';
 import { get } from '../core/store.js';
 import { localDay } from '../core/utils.js';
@@ -67,7 +67,7 @@ export function renderFlashIndex({ outlet }) {
       const a = e.currentTarget.querySelector('#card-a');
       const result = addCustomCard(q.value, a.value);
       if (!result.ok) {
-        customStatus.replaceChildren(alertBox('danger', result.message));
+        setChildren(customStatus, alertBox('danger', result.message));
         return;
       }
       toast('Carte ajoutée.', 'success', 2000);
@@ -105,22 +105,22 @@ export function renderFlashIndex({ outlet }) {
     onClick: async () => {
       const file = importInput.files?.[0];
       if (!file) {
-        importStatus.replaceChildren(alertBox('warning', 'Choisissez d\'abord un fichier de cartes (.json).'));
+        setChildren(importStatus, alertBox('warning', 'Choisissez d\'abord un fichier de cartes (.json).'));
         return;
       }
       try {
         const { added, rejected } = importCustomCards(await file.text());
         toast(`${added} carte(s) importée(s).`, 'success');
-        importStatus.replaceChildren(alertBox(rejected ? 'warning' : 'info',
+        setChildren(importStatus, alertBox(rejected ? 'warning' : 'info',
           `${added} carte(s) ajoutée(s).${rejected ? ` ${rejected} entrée(s) invalide(s) ignorée(s).` : ''}`));
         if (added) rebuild();
       } catch (err) {
-        importStatus.replaceChildren(alertBox('danger', `Import impossible : ${err.message}`));
+        setChildren(importStatus, alertBox('danger', `Import impossible : ${err.message}`));
       }
     }
   }, icon('upload', { size: 15 }), ' Importer des cartes');
 
-  outlet.replaceChildren(h('div', { class: 'page' },
+  setChildren(outlet, h('div', { class: 'page' },
     h('header', { class: 'page-head' },
       h('h1', { tabindex: '-1', text: 'Cartes mémo' }),
       h('p', { text: 'Une carte à revoir revient le lendemain. Une carte maîtrisée s’espace de plus en plus. Tout est enregistré sur cet appareil.' })
@@ -172,13 +172,13 @@ export function renderFlashIndex({ outlet }) {
 function customItem(card, onChange) {
   const li = h('li', { style: 'display:block' });
   const view = () => {
-    li.replaceChildren(
+    setChildren(li, 
       h('div', { class: 'row', style: 'justify-content:space-between;align-items:start' },
         h('div', { style: 'min-width:0;flex:1' },
           h('strong', { style: 'display:block', text: card.q }),
           h('span', { class: 'small muted', style: 'display:block', text: card.a })),
         h('div', { class: 'row', style: 'gap:6px' },
-          h('button', { class: 'btn btn-small', type: 'button', onClick: () => li.replaceChildren(editForm()) }, 'Modifier'),
+          h('button', { class: 'btn btn-small', type: 'button', onClick: () => setChildren(li, editForm()) }, 'Modifier'),
           h('button', {
             class: 'btn btn-small btn-danger',
             type: 'button',
@@ -211,7 +211,7 @@ function customItem(card, onChange) {
         e.preventDefault();
         const result = updateCustomCard(card.id, qInput.value, aInput.value);
         if (!result.ok) {
-          status.replaceChildren(alertBox('danger', result.message));
+          setChildren(status, alertBox('danger', result.message));
           return;
         }
         toast('Carte modifiée.', 'success', 2000);
@@ -240,7 +240,7 @@ export function renderFlashSession({ outlet, params, query }) {
     : packs.find((p) => p.id === packId);
 
   if (!pack) {
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       emptyState({ icon: 'alert', title: 'Paquet introuvable', text: 'Ce paquet de cartes n\'existe pas.', actions: [h('a', { class: 'btn', href: '#/cartes' }, 'Retour aux cartes mémo')] })));
     return undefined;
   }
@@ -356,7 +356,7 @@ export function renderFlashSession({ outlet, params, query }) {
 
   function render() {
     const body = !queue.length ? emptyView() : index >= queue.length ? summaryView() : cardView();
-    outlet.replaceChildren(h('div', { class: 'page', style: 'max-width:760px' },
+    setChildren(outlet, h('div', { class: 'page', style: 'max-width:760px' },
       h('nav', { class: 'breadcrumb', 'aria-label': 'Fil d\'Ariane' },
         h('ol', {}, h('li', {}, h('a', { href: '#/cartes' }, 'Cartes mémo')), h('li', { 'aria-current': 'page' }, pack.title))),
       h('header', { class: 'page-head', style: 'margin-bottom:var(--space-5)' },

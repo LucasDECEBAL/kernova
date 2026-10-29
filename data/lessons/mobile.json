@@ -1,0 +1,154 @@
+{
+  "courseId": "mobile",
+  "modules": [
+    {
+      "id": "mob-m1",
+      "title": "Comprendre une application mobile",
+      "chapters": [
+        {
+          "id": "mob-01",
+          "title": "Natif ou multiplateforme",
+          "duration": 18,
+          "objectives": ["Comparer les approches", "Choisir selon le besoin"],
+          "content": [
+            { "type": "p", "text": "Une application **native** utilise les outils de la plateforme (Kotlin pour Android, Swift pour iOS) : performances et intégration maximales, mais deux bases de code. Une application **multiplateforme** (React Native, Flutter) partage une grande partie du code, au prix d'adaptations et d'un accès parfois indirect aux fonctions du système." },
+            { "type": "table", "headers": ["Critère", "Natif", "Multiplateforme"], "rows": [
+              ["Performance", "Optimale", "Très bonne, dépendante du cas"],
+              ["Code partagé", "Faible", "Élevé"],
+              ["Accès matériel", "Direct", "Via des modules ou plugins"],
+              ["Équipe", "Deux compétences", "Souvent une seule"]
+            ] },
+            { "type": "tip", "text": "Le choix se fait sur les contraintes réelles : date de sortie, compétences de l'équipe, besoins matériels. Pas sur la mode." }
+          ],
+          "exercise": {
+            "title": "Choisir une approche",
+            "instructions": "Une petite équipe doit livrer une application Android et iOS en trois mois, sans usage intensif de capteurs. Quelle approche privilégier ?",
+            "hints": ["Le temps est court et l'équipe est petite.", "Les besoins matériels sont limités."],
+            "solution": "Une approche multiplateforme, qui réduit le volume de code à produire et maintient une seule base pour les deux plateformes."
+          },
+          "quiz": [
+            { "id": "mob-01-q1", "type": "single", "difficulty": 1, "question": "Quel avantage principal offre le natif ?", "options": ["Performance et intégration système", "Moins de code", "Une seule base pour iOS et Android", "Aucune compilation"], "answer": 0, "explanation": "Le natif utilise directement les API de la plateforme.", "hints": [] },
+            { "id": "mob-01-q2", "type": "single", "difficulty": 2, "question": "Quelle contrainte pèse sur le multiplateforme ?", "options": ["L'accès au matériel passe souvent par des modules", "Il ne fonctionne pas hors ligne", "Il interdit les tests", "Il supprime le stockage local"], "answer": 0, "explanation": "Les fonctions spécifiques nécessitent des ponts ou des plugins.", "hints": [] }
+          ]
+        },
+        {
+          "id": "mob-02",
+          "title": "Cycle de vie d'une application",
+          "duration": 18,
+          "objectives": ["Identifier les états d'une application", "Gérer la mise en arrière-plan"],
+          "content": [
+            { "type": "p", "text": "Une application mobile n'est pas toujours au premier plan : elle est lancée, mise en arrière-plan, arrêtée par le système. Le **cycle de vie** impose de sauvegarder l'état et de libérer les ressources quand l'écran disparaît." },
+            { "type": "list", "items": [
+              "Au démarrage : restaurer l'état utile, pas tout recharger.",
+              "En arrière-plan : suspendre les animations et les requêtes non essentielles.",
+              "À la destruction : libérer les écouteurs et les ressources.",
+              "Après un retour : rafraîchir les données si nécessaire."
+            ] },
+            { "type": "warning", "text": "Le système peut tuer une application en arrière-plan sans prévenir. Un formulaire non sauvegardé peut être perdu : enregistrez régulièrement les saisies." }
+          ],
+          "exercise": {
+            "title": "Sauvegarder une saisie",
+            "instructions": "Un utilisateur remplit un long formulaire puis reçoit un appel. Que doit faire l'application ?",
+            "hints": ["L'application passe en arrière-plan.", "Le système peut la détruire."],
+            "solution": "Sauvegarder l'état du formulaire lorsqu'il passe en arrière-plan, et le restaurer au retour."
+          },
+          "quiz": [
+            { "id": "mob-02-q1", "type": "single", "difficulty": 1, "question": "Que fait une application correctement conçue en arrière-plan ?", "options": ["Elle libère les ressources non nécessaires", "Elle continue toutes les animations", "Elle supprime ses données", "Elle s'arrête définitivement"], "answer": 0, "explanation": "La mise en arrière-plan suspend ce qui coûte sans être utile.", "hints": [] },
+            { "id": "mob-02-q2", "type": "truefalse", "difficulty": 2, "question": "Le système mobile peut arrêter une application en arrière-plan sans prévenir.", "answer": true, "explanation": "D'où l'importance de sauvegarder l'état au bon moment.", "hints": [] }
+          ]
+        },
+        {
+          "id": "mob-03",
+          "title": "Navigation et interfaces adaptatives",
+          "duration": 18,
+          "objectives": ["Choisir un modèle de navigation", "Adapter l'interface aux tailles d'écran"],
+          "content": [
+            { "type": "p", "text": "Sur mobile, la navigation doit rester simple : trois à cinq destinations principales, accessibles en un geste. Les modèles courants sont la barre d'onglets, le menu latéral et la pile d'écrans avec retour." },
+            { "type": "p", "text": "Les **interfaces adaptatives** s'appuient sur des unités relatives et des contraintes, pas sur des positions fixes. Un même écran doit fonctionner sur un téléphone compact, une tablette et un écran plié." },
+            { "type": "tip", "text": "Prévoyez les zones tactiles d'au moins 44 à 48 points et un contraste suffisant : les doigts ne sont pas des curseurs." }
+          ],
+          "exercise": {
+            "title": "Trop d'onglets",
+            "instructions": "Une application a huit sections. Comment organiser la navigation principale ?",
+            "hints": ["Trop d'onglets nuit à la lisibilité.", "Regroupez par intention d'usage."],
+            "solution": "Regrouper en trois à cinq destinations principales, les autres sections étant accessibles depuis une de ces destinations (menu, écran de second niveau)."
+          },
+          "quiz": [
+            { "id": "mob-03-q1", "type": "single", "difficulty": 1, "question": "Combien de destinations principales viser sur mobile ?", "options": ["Trois à cinq", "Dix à quinze", "Une seule", "Autant que possible"], "answer": 0, "explanation": "Au-delà, la navigation devient difficile à mémoriser.", "hints": [] },
+            { "id": "mob-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi éviter les positions fixes en pixels ?", "options": ["Les tailles d'écran varient", "Les pixels n'existent pas", "C'est plus lent", "Cela supprime les gestes"], "answer": 0, "explanation": "Des unités relatives et des contraintes s'adaptent à chaque écran.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mob-m2",
+      "title": "Données, sécurité et publication",
+      "chapters": [
+        {
+          "id": "mob-04",
+          "title": "Stockage local et requêtes réseau",
+          "duration": 20,
+          "objectives": ["Choisir un stockage local", "Gérer le mode hors ligne"],
+          "content": [
+            { "type": "p", "text": "Le stockage local sert à conserver préférences et données consultables hors ligne. Selon la plateforme : préférences clé-valeur pour les petits réglages, base locale (SQLite/Room, Core Data) pour les données structurées, fichiers pour le reste." },
+            { "type": "p", "text": "Les requêtes réseau doivent gérer l'absence de connexion, les délais d'attente et les erreurs. Affichez un état explicite plutôt qu'un écran vide." },
+            { "type": "code", "lang": "javascript", "code": "// Principe : cache puis réseau, avec repli\ntry {\n  const donnees = await fetchJson(\"/api/articles\");\n  await sauvegarderEnLocal(donnees);\n  afficher(donnees);\n} catch (e) {\n  const cache = await lireLocal();\n  cache ? afficher(cache, { horsLigne: true }) : afficherErreur(e);\n}" },
+            { "type": "warning", "text": "Ne stockez jamais de jeton d'authentification en clair dans un stockage non protégé. Utilisez le stockage sécurisé de la plateforme." }
+          ],
+          "exercise": {
+            "title": "Mode hors ligne",
+            "instructions": "Un utilisateur ouvre l'application sans connexion. Que doit-elle afficher ?",
+            "hints": ["Un cache local peut exister.", "L'absence de données doit être expliquée."],
+            "solution": "Les données en cache si elles existent, avec une indication « hors ligne » ; sinon un message clair et une action pour réessayer."
+          },
+          "quiz": [
+            { "id": "mob-04-q1", "type": "single", "difficulty": 1, "question": "Quel stockage convient aux données structurées volumineuses ?", "options": ["Une base locale", "Les préférences clé-valeur", "Un e-mail", "Le presse-papiers"], "answer": 0, "explanation": "Une base locale gère requêtes et volumes mieux qu'un simple dictionnaire.", "hints": [] },
+            { "id": "mob-04-q2", "type": "truefalse", "difficulty": 2, "question": "Un jeton d'authentification peut être stocké en clair dans un fichier de préférences.", "answer": false, "explanation": "Il faut le stockage sécurisé de la plateforme.", "hints": [] }
+          ]
+        },
+        {
+          "id": "mob-05",
+          "title": "Permissions, sécurité et publication",
+          "duration": 20,
+          "objectives": ["Demander les permissions au bon moment", "Préparer une publication"],
+          "content": [
+            { "type": "p", "text": "Les **permissions** mobiles contrôlent l'accès à la caméra, aux contacts, à la localisation. Demandez-les au moment de l'usage, avec une explication, et dégradez proprement le service si elles sont refusées." },
+            { "type": "list", "items": [
+              "Ne demander que les permissions réellement utilisées.",
+              "Expliquer la raison avant la demande système.",
+              "Prévoir un fonctionnement dégradé si l'utilisateur refuse.",
+              "Publier avec une fiche claire : captures, description, politique de confidentialité."
+            ] },
+            { "type": "warning", "text": "Une demande de permission sans contexte fait refuser : l'utilisateur ne comprend pas l'utilité. Expliquez avant, pas après." }
+          ],
+          "exercise": {
+            "title": "Demander la caméra",
+            "instructions": "Une application de scan de documents demande l'accès à la caméra au premier lancement. Que changez-vous ?",
+            "hints": ["La permission n'est utile qu'au moment du scan.", "Le contexte améliore l'acceptation."],
+            "solution": "Demander la permission au moment où l'utilisateur lance un scan, avec une explication courte, et proposer une alternative si elle est refusée."
+          },
+          "quiz": [
+            { "id": "mob-05-q1", "type": "single", "difficulty": 1, "question": "Quand demander une permission ?", "options": ["Au moment de l'usage concerné", "Au premier lancement", "Après une erreur", "Jamais"], "answer": 0, "explanation": "Le contexte immédiat rend la demande compréhensible.", "hints": [] },
+            { "id": "mob-05-q2", "type": "single", "difficulty": 2, "question": "Que faire si une permission est refusée ?", "options": ["Proposer un fonctionnement dégradé", "Bloquer définitivement l'application", "Redemander en boucle", "Ignorer le refus"], "answer": 0, "explanation": "L'application doit rester utilisable sans la fonction refusée.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Maquette fonctionnelle d'application mobile",
+    "brief": "Concevez et prototypiez une application mobile simple (liste et détail), avec états hors ligne et permissions expliquées.",
+    "steps": [
+      "Définir trois à cinq destinations principales et les parcours.",
+      "Construire les écrans liste et détail avec des composants adaptatifs.",
+      "Prévoir les états : chargement, erreur, vide, hors ligne.",
+      "Expliquer les permissions au moment de l'usage.",
+      "Tester sur deux tailles d'écran et corriger les débordements."
+    ],
+    "criteria": [
+      "Aucun débordement sur petit écran.",
+      "Les états vide et hors ligne sont visibles et expliqués.",
+      "Aucune donnée sensible stockée en clair."
+    ]
+  }
+}

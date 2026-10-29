@@ -1,6 +1,6 @@
 // Tableau de bord : statistiques calculées uniquement à partir de l'activité locale.
 
-import { h, icon, progressBar, emptyState } from '../core/dom.js';
+import { h, icon, progressBar, emptyState , setChildren } from '../core/dom.js';
 import { getCourses, getAllChapters } from '../core/data.js';
 import { get } from '../core/store.js';
 import { setDailyGoal } from '../core/progress.js';
@@ -16,7 +16,7 @@ export function renderDashboardPage({ outlet }) {
   const stats = computeStats(state, courses, findChapter, localDay());
 
   if (!stats.hasActivity) {
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       pageHead(),
       emptyState({
         icon: 'chart',
@@ -101,7 +101,7 @@ export function renderDashboardPage({ outlet }) {
       h('div', { class: 'small muted' }, r.text))))
     : h('p', { class: 'muted small' }, 'Rien de particulier pour le moment.');
 
-  outlet.replaceChildren(h('div', { class: 'page stack', style: 'gap:var(--space-5)' },
+  setChildren(outlet, h('div', { class: 'page stack', style: 'gap:var(--space-5)' },
     pageHead(),
     h('section', { class: 'kpis', 'aria-label': 'Indicateurs clés' },
       kpi(`${stats.startedCount}`, 'cours commencés'),

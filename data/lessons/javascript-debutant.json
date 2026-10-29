@@ -1,0 +1,179 @@
+{
+  "courseId": "javascript-debutant",
+  "modules": [
+    {
+      "id": "js-m1",
+      "title": "Le langage",
+      "chapters": [
+        {
+          "id": "js-01",
+          "title": "Variables, types et opérateurs",
+          "duration": 20,
+          "objectives": [
+            "Choisir entre let et const",
+            "Comparer des valeurs avec === et non =="
+          ],
+          "content": [
+            { "type": "p", "text": "JavaScript s'exécute dans le navigateur, mais aussi côté serveur avec Node.js. Une **variable** désigne une valeur. `const` déclare une liaison qui ne sera pas réaffectée ; `let` autorise la réaffectation. Évitez `var`, hérité et source de pièges de portée." },
+            { "type": "code", "lang": "javascript", "code": "const nom = \"Ada\";\nlet compteur = 0;\ncompteur = compteur + 1;\n\nconst prix = 19.9;\nconst disponible = true;\nconst liste = [1, 2, 3];\nconst personne = { nom: \"Ada\", age: 36 };\n\nconsole.log(typeof nom);        // string\nconsole.log(`${nom} a ${prix} €`);" },
+            { "type": "table", "headers": ["Type", "Exemple"], "rows": [
+              ["`string`", "`\"texte\"`, `` `texte ${variable}` ``"],
+              ["`number`", "`42`, `3.14`, `NaN`"],
+              ["`boolean`", "`true`, `false`"],
+              ["`undefined`", "Variable déclarée sans valeur"],
+              ["`object`", "`{ clé: valeur }`, tableaux, `null`"],
+              ["`function`", "`function () {}`"]
+            ] },
+            { "type": "p", "text": "`===` compare valeur **et** type. `==` effectue des conversions implicites : `\"5\" == 5` est vrai, `\"5\" === 5` est faux. Utilisez toujours `===` et `!==`." },
+            { "type": "warning", "text": "Une `const` empêche de réaffecter la variable, pas de modifier l'objet qu'elle désigne : `const p = { a: 1 }; p.a = 2;` est autorisé." }
+          ],
+          "exercise": {
+            "title": "Constante ou variable ?",
+            "instructions": "Déclarez une constante pour la taxe (0.2) et une variable pour un prix qui sera modifié plus tard.",
+            "hints": ["La taxe ne change pas dans le programme.", "Le prix doit pouvoir être réaffecté."],
+            "solution": "const taxe = 0.2;\nlet prix = 19.9;"
+          },
+          "quiz": [
+            { "id": "js-01-q1", "type": "single", "difficulty": 1, "question": "Quelle comparaison vérifie la valeur et le type ?", "options": ["==", "===", "=", "!="], "answer": 1, "explanation": "=== est l'égalité stricte ; == convertit les types avant de comparer.", "hints": [] },
+            { "id": "js-01-q2", "type": "single", "difficulty": 2, "question": "Que vaut l'expression \"5\" == 5 ?", "options": ["true", "false", "undefined", "Une erreur"], "answer": 0, "explanation": "== convertit la chaîne en nombre ; === renverrait false.", "hints": [] }
+          ]
+        },
+        {
+          "id": "js-02",
+          "title": "Conditions et boucles",
+          "duration": 18,
+          "objectives": [
+            "Écrire des conditions lisibles",
+            "Parcourir une collection avec for...of"
+          ],
+          "content": [
+            { "type": "p", "text": "Une condition exécute un bloc si une expression est vraie. Utilisez `else if` plutôt que d'imbriquer plusieurs `if` : le code reste plat et lisible." },
+            { "type": "code", "lang": "javascript", "code": "const note = 14;\n\nif (note >= 16) {\n  console.log(\"Très bien\");\n} else if (note >= 10) {\n  console.log(\"Validé\");\n} else {\n  console.log(\"À retravailler\");\n}\n\nfor (let i = 0; i < 3; i++) {\n  console.log(i);\n}\n\nconst couleurs = [\"rouge\", \"vert\"];\nfor (const couleur of couleurs) {\n  console.log(couleur);\n}" },
+            { "type": "p", "text": "`for...of` parcourt les **valeurs** d'un tableau ou d'une chaîne. `for...in` parcourt les **clés** d'un objet : réservez-le aux objets, pas aux tableaux." },
+            { "type": "list", "items": [
+              "`break` sort de la boucle, `continue` passe à l'itération suivante.",
+              "Une boucle `while` doit voir sa condition évoluer, sinon elle ne s'arrête jamais.",
+              "Regroupez les conditions complexes dans une variable nommée : `const majeur = age >= 18;`."
+            ] },
+            { "type": "tip", "text": "Une variable bien nommée remplace un commentaire : `if (estValide)` se lit mieux que `if (x === 1 || y !== 0)`." }
+          ],
+          "exercise": {
+            "title": "Parcourir une liste",
+            "instructions": "Affichez chaque prénom du tableau prenoms avec une boucle for...of.",
+            "hints": ["La boucle s'écrit for (const p of prenoms).", "console.log affiche chaque valeur."],
+            "solution": "const prenoms = [\"Ada\", \"Linus\"];\nfor (const p of prenoms) {\n  console.log(p);\n}"
+          },
+          "quiz": [
+            { "id": "js-02-q1", "type": "single", "difficulty": 1, "question": "Que fait break dans une boucle ?", "options": ["Passe à l'itération suivante", "Sort immédiatement de la boucle", "Recommence la boucle", "Lève une erreur"], "answer": 1, "explanation": "continue passe à l'itération suivante ; break quitte la boucle.", "hints": [] },
+            { "id": "js-02-q2", "type": "text", "difficulty": 1, "question": "Quel mot-clé parcourt les valeurs d'un tableau sous la forme for (... of ...) ?", "answer": ["of"], "explanation": "for...of parcourt les valeurs ; for...in parcourt les clés.", "hints": ["Deux lettres."] }
+          ]
+        },
+        {
+          "id": "js-03",
+          "title": "Fonctions et tableaux",
+          "duration": 22,
+          "objectives": [
+            "Écrire une fonction avec paramètres et valeur de retour",
+            "Transformer un tableau avec map et filter"
+          ],
+          "content": [
+            { "type": "p", "text": "Une fonction regroupe des instructions. Elle reçoit des paramètres et renvoie une valeur avec `return`. Une fonction fléchée est une écriture plus courte, pratique pour les fonctions anonymes." },
+            { "type": "code", "lang": "javascript", "code": "function moyenne(notes) {\n  const total = notes.reduce((somme, n) => somme + n, 0);\n  return total / notes.length;\n}\n\nconst doubler = (n) => n * 2;\n\nconsole.log(moyenne([12, 15, 9])); // 12\nconsole.log(doubler(4));           // 8" },
+            { "type": "p", "text": "Les méthodes de tableau évitent les boucles manuelles : `map` transforme chaque élément, `filter` garde ceux qui passent un test, `reduce` agrège en une seule valeur, `find` renvoie le premier élément correspondant." },
+            { "type": "code", "lang": "javascript", "code": "const prix = [12, 30, 5, 48];\n\nconst ttc = prix.map((p) => p * 1.2);\nconst chers = prix.filter((p) => p > 20);\nconst total = prix.reduce((s, p) => s + p, 0);\n\nconsole.log(ttc, chers, total);" },
+            { "type": "warning", "text": "`sort()` trie par défaut en comparant des chaînes : `[10, 9, 1].sort()` donne `[1, 10, 9]`. Passez une fonction de comparaison : `.sort((a, b) => a - b)`." }
+          ],
+          "exercise": {
+            "title": "Filtrer et transformer",
+            "instructions": "À partir du tableau notes = [8, 12, 17, 9, 15], gardez uniquement les notes supérieures ou égales à 10, puis multipliez-les par 2.",
+            "hints": ["filter garde les éléments qui passent le test.", "map transforme chaque élément conservé."],
+            "solution": "const notes = [8, 12, 17, 9, 15];\nconst resultat = notes.filter((n) => n >= 10).map((n) => n * 2);\n// [24, 34, 30]"
+          },
+          "quiz": [
+            { "id": "js-03-q1", "type": "single", "difficulty": 1, "question": "Quelle méthode garde les éléments qui satisfont une condition ?", "options": ["map", "filter", "reduce", "forEach"], "answer": 1, "explanation": "filter renvoie un nouveau tableau avec les éléments retenus.", "hints": [] },
+            { "id": "js-03-q2", "type": "multiple", "difficulty": 2, "question": "Quelles méthodes renvoient un nouveau tableau sans modifier l'original ?", "options": ["map", "filter", "push", "slice"], "answer": [0, 1, 3], "explanation": "push modifie le tableau d'origine ; map, filter et slice renvoient un nouveau tableau.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "js-m2",
+      "title": "Dans le navigateur",
+      "chapters": [
+        {
+          "id": "js-04",
+          "title": "Le DOM et les événements",
+          "duration": 24,
+          "objectives": [
+            "Sélectionner un élément et modifier son texte",
+            "Réagir à un clic avec addEventListener"
+          ],
+          "content": [
+            { "type": "p", "text": "Le **DOM** est la représentation de la page sous forme d'arbre d'objets. JavaScript peut le lire et le modifier. `document.querySelector` renvoie le premier élément correspondant à un sélecteur CSS." },
+            { "type": "code", "lang": "html", "code": "<button id=\"compter\" type=\"button\">Cliqué 0 fois</button>\n<p id=\"message\" aria-live=\"polite\"></p>" },
+            { "type": "code", "lang": "javascript", "code": "const bouton = document.querySelector(\"#compter\");\nconst message = document.querySelector(\"#message\");\nlet clics = 0;\n\nbouton.addEventListener(\"click\", () => {\n  clics += 1;\n  bouton.textContent = `Cliqué ${clics} fois`;\n  message.textContent = clics === 1 ? \"Premier clic\" : \"Encore un clic\";\n});" },
+            { "type": "p", "text": "Pour insérer du **texte**, utilisez `textContent`. `innerHTML` interprète le HTML : l'utiliser avec une donnée saisie par une personne ouvre la porte aux injections de script." },
+            { "type": "warning", "text": "Un script placé dans `head` s'exécute avant que le DOM existe : `querySelector` renvoie alors `null`. Placez le script en fin de `body` ou ajoutez l'attribut `defer`." }
+          ],
+          "exercise": {
+            "title": "Compteur de clics",
+            "instructions": "Écrivez le script qui incrémente un compteur à chaque clic sur le bouton #plus et affiche la valeur dans #total avec textContent.",
+            "hints": ["Écoutez l'événement click.", "Mettez à jour textContent dans le gestionnaire."],
+            "solution": "const plus = document.querySelector(\"#plus\");\nconst total = document.querySelector(\"#total\");\nlet n = 0;\nplus.addEventListener(\"click\", () => {\n  n += 1;\n  total.textContent = String(n);\n});"
+          },
+          "quiz": [
+            { "id": "js-04-q1", "type": "single", "difficulty": 1, "question": "Quelle propriété insère du texte sans interpréter le HTML ?", "options": ["innerHTML", "textContent", "outerHTML", "innerText"], "answer": 1, "explanation": "textContent traite la valeur comme du texte brut, ce qui évite l'injection de balises.", "hints": [] },
+            { "id": "js-04-q2", "type": "single", "difficulty": 2, "question": "Pourquoi placer un script en fin de body ou avec defer ?", "options": ["Pour accélérer le réseau", "Pour que le DOM soit disponible au moment de l'exécution", "Pour éviter les erreurs de syntaxe", "Pour activer le mode strict"], "answer": 1, "explanation": "Le script doit trouver les éléments qu'il manipule ; defer attend l'analyse du document.", "hints": [] }
+          ]
+        },
+        {
+          "id": "js-05",
+          "title": "Stockage local et JSON",
+          "duration": 20,
+          "objectives": [
+            "Enregistrer et relire une valeur avec localStorage",
+            "Convertir des objets avec JSON"
+          ],
+          "content": [
+            { "type": "p", "text": "`localStorage` conserve des chaînes de caractères dans le navigateur, même après fermeture de l'onglet. Pour stocker un objet, il faut le convertir en texte avec `JSON.stringify`, puis le relire avec `JSON.parse`." },
+            { "type": "code", "lang": "javascript", "code": "const prefs = { theme: \"sombre\", taille: 16 };\n\nlocalStorage.setItem(\"prefs\", JSON.stringify(prefs));\n\nconst brut = localStorage.getItem(\"prefs\");\ntry {\n  const lues = brut ? JSON.parse(brut) : null;\n  console.log(lues?.theme);\n} catch {\n  console.error(\"Données illisibles : on repart des valeurs par défaut.\");\n}" },
+            { "type": "table", "headers": ["Méthode", "Rôle"], "rows": [
+              ["`setItem(clé, valeur)`", "Enregistre une chaîne"],
+              ["`getItem(clé)`", "Relit la valeur, ou null"],
+              ["`removeItem(clé)`", "Supprime l'entrée"],
+              ["`clear()`", "Vide tout le stockage de l'origine"]
+            ] },
+            { "type": "p", "text": "`sessionStorage` fonctionne de la même façon mais ne dure que le temps de l'onglet. Les **cookies** sont envoyés au serveur à chaque requête et servent à la session, pas au stockage de données volumineuses." },
+            { "type": "warning", "text": "`JSON.parse` lève une exception sur un texte invalide. Entourez toujours la lecture de `try` et `catch` : des données corrompues ne doivent pas casser la page." }
+          ],
+          "exercise": {
+            "title": "Sauver un compteur",
+            "instructions": "Au chargement, lisez la clé visites dans localStorage, convertissez-la en nombre, puis incrémentez-la et enregistrez-la.",
+            "hints": ["localStorage renvoie une chaîne ou null.", "Number() ou parseInt() convertit le texte."],
+            "solution": "const brut = localStorage.getItem(\"visites\");\nconst n = brut ? Number(brut) : 0;\nlocalStorage.setItem(\"visites\", String(n + 1));"
+          },
+          "quiz": [
+            { "id": "js-05-q1", "type": "single", "difficulty": 1, "question": "Quelle fonction convertit un objet en chaîne JSON ?", "options": ["JSON.parse", "JSON.stringify", "Object.keys", "String.raw"], "answer": 1, "explanation": "JSON.stringify sérialise ; JSON.parse fait l'opération inverse.", "hints": [] },
+            { "id": "js-05-q2", "type": "truefalse", "difficulty": 2, "question": "localStorage peut stocker directement un objet JavaScript sans conversion.", "answer": false, "explanation": "Il ne stocke que des chaînes : il faut sérialiser avec JSON.stringify.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Liste de tâches persistante",
+    "brief": "Créez une petite application de tâches : ajout, coche, suppression, et conservation des données après rechargement.",
+    "steps": [
+      "Construire le formulaire d'ajout et la liste vide dans le HTML.",
+      "Écrire une fonction afficher() qui reconstruit la liste à partir d'un tableau de tâches.",
+      "Écouter l'événement submit du formulaire pour ajouter une tâche et la sauvegarder.",
+      "Ajouter une case à cocher par tâche et un bouton de suppression avec confirmation.",
+      "Enregistrer le tableau avec JSON.stringify et le relire au chargement, en gérant les données corrompues avec try et catch."
+    ],
+    "criteria": [
+      "Les tâches restent présentes après un rechargement de la page.",
+      "Le texte saisi est inséré avec textContent, jamais avec innerHTML.",
+      "Un contenu de stockage invalide n'empêche pas l'application de démarrer."
+    ]
+  }
+}

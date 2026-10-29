@@ -1,6 +1,6 @@
 // Point d'entrée : initialisation, shell (header, navigation, recherche globale) et routes.
 
-import { h, icon, alertBox, emptyState } from './core/dom.js';
+import { h, icon, alertBox, emptyState , setChildren } from './core/dom.js';
 import * as store from './core/store.js';
 import { get, update } from './core/store.js';
 import { loadData, getDataIssues } from './core/data.js';
@@ -16,6 +16,7 @@ import { renderSearchPage } from './pages/search.js';
 import { renderDashboardPage } from './pages/dashboard.js';
 import { renderDataPage } from './pages/data.js';
 import { renderFlashIndex, renderFlashSession } from './pages/flashcards.js';
+import { renderPlaygroundPage } from './pages/playground.js';
 
 const main = document.getElementById('main');
 const nav = document.getElementById('site-nav');
@@ -80,7 +81,7 @@ function updateThemeIcon() {
   const dark = effectiveTheme() === 'dark';
   themeToggle.setAttribute('aria-label', dark ? 'Passer au thème clair' : 'Passer au thème sombre');
   themeToggle.title = dark ? 'Thème clair' : 'Thème sombre';
-  themeToggle.replaceChildren(icon(dark ? 'sun' : 'moon'));
+  setChildren(themeToggle, icon(dark ? 'sun' : 'moon'));
 }
 
 function registerRoutes() {
@@ -96,8 +97,10 @@ function registerRoutes() {
   route('/donnees', renderDataPage);
   route('/cartes', renderFlashIndex);
   route('/cartes/:pack', renderFlashSession);
+  route('/playground', renderPlaygroundPage);
+  route('/playground/:exampleId', renderPlaygroundPage);
   setNotFound(({ outlet }) => {
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       emptyState({
         icon: 'alert',
         title: 'Page introuvable',
@@ -116,7 +119,7 @@ async function boot() {
   try {
     await loadData();
   } catch (err) {
-    main.replaceChildren(h('div', { class: 'page' },
+    setChildren(main, h('div', { class: 'page' },
       alertBox('danger', `Impossible de charger les contenus : ${err.message}`),
       h('p', { class: 'muted' }, 'Ouvrez kernova via un serveur statique (voir les instructions du README ou la commande « python -m http.server » dans le dossier du projet). Les modules et fichiers JSON ne se chargent pas depuis file://.')
     ));
@@ -126,7 +129,7 @@ async function boot() {
   const issues = getDataIssues();
   if (issues.length) console.warn('kernova : contenus ignorés', issues);
 
-  main.replaceChildren();
+  setChildren(main, );
   showStoreNotices();
   start(main);
   window.addEventListener('error', (e) => console.error('kernova : erreur non gérée', e.error || e.message));

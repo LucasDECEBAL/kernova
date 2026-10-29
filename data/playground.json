@@ -1,0 +1,74 @@
+{
+  "examples": [
+    {
+      "id": "page-personnelle",
+      "title": "Page personnelle",
+      "description": "Structure HTML et mise en forme CSS d'une page de présentation.",
+      "level": "debutant",
+      "html": "<header class=\"entete\">\n  <h1>Ada Lovelace</h1>\n  <p>Étudiante en informatique</p>\n</header>\n\n<main>\n  <section>\n    <h2>À propos</h2>\n    <p>J'apprends le développement web et j'aime les problèmes bien posés.</p>\n  </section>\n</main>\n\n<footer class=\"pied\">© 2026</footer>",
+      "css": "body {\n  font-family: Georgia, serif;\n  margin: 0;\n  background: #f4f6f4;\n  color: #17202b;\n}\n\n.entete {\n  padding: 48px 24px;\n  border-bottom: 1px solid #c3cbd3;\n}\n\nh1 { margin: 0 0 8px; font-size: 2.4rem; }\n\nmain { padding: 24px; max-width: 640px; }\n\n.pied { padding: 24px; color: #4f5b6a; font-size: 0.9rem; }",
+      "js": "",
+      "solution": {
+        "html": "<header class=\"entete\">\n  <h1>Ada Lovelace</h1>\n  <p>Étudiante en informatique</p>\n</header>\n\n<main>\n  <section>\n    <h2>À propos</h2>\n    <p>J'apprends le développement web et j'aime les problèmes bien posés.</p>\n  </section>\n  <section>\n    <h2>Projets</h2>\n    <ul>\n      <li>Portfolio responsive</li>\n      <li>Liste de tâches</li>\n    </ul>\n  </section>\n</main>\n\n<footer class=\"pied\">© 2026</footer>",
+        "css": "body {\n  font-family: Georgia, serif;\n  margin: 0;\n  background: #f4f6f4;\n  color: #17202b;\n  line-height: 1.6;\n}\n\n.entete {\n  padding: 48px 24px;\n  border-bottom: 1px solid #c3cbd3;\n}\n\nh1 { margin: 0 0 8px; font-size: 2.4rem; letter-spacing: -0.02em; }\nh2 { margin-top: 32px; }\n\nmain { padding: 24px; max-width: 65ch; }\n\n.pied { padding: 24px; color: #4f5b6a; font-size: 0.9rem; }",
+        "js": ""
+      }
+    },
+    {
+      "id": "compteur",
+      "title": "Compteur de clics",
+      "description": "JavaScript et DOM : capter un clic et mettre à jour l'affichage.",
+      "level": "debutant",
+      "html": "<main class=\"boite\">\n  <p id=\"valeur\">0</p>\n  <button id=\"plus\" type=\"button\">Ajouter</button>\n  <button id=\"raz\" type=\"button\">Remettre à zéro</button>\n</main>",
+      "css": "body { font-family: system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; background: #eef1ef; }\n.boite { text-align: center; }\n#valeur { font-size: 3rem; margin: 0 0 16px; }\nbutton { padding: 8px 16px; margin: 0 4px; }",
+      "js": "const valeur = document.querySelector(\"#valeur\");\nconst plus = document.querySelector(\"#plus\");\nconst raz = document.querySelector(\"#raz\");\n\nlet compte = 0;\n\nplus.addEventListener(\"click\", () => {\n  compte += 1;\n  valeur.textContent = String(compte);\n  console.log(\"clic\", compte);\n});\n\nraz.addEventListener(\"click\", () => {\n  compte = 0;\n  valeur.textContent = \"0\";\n});",
+      "solution": {
+        "html": "<main class=\"boite\">\n  <p id=\"valeur\">0</p>\n  <button id=\"plus\" type=\"button\">Ajouter</button>\n  <button id=\"moins\" type=\"button\">Retirer</button>\n  <button id=\"raz\" type=\"button\">Remettre à zéro</button>\n</main>",
+        "css": "body { font-family: system-ui, sans-serif; display: grid; place-items: center; min-height: 100vh; margin: 0; background: #eef1ef; }\n.boite { text-align: center; }\n#valeur { font-size: 3rem; margin: 0 0 16px; }\nbutton { padding: 8px 16px; margin: 0 4px; }",
+        "js": "const valeur = document.querySelector(\"#valeur\");\nconst compteEl = () => Number(valeur.textContent);\n\nfunction afficher(n) {\n  valeur.textContent = String(Math.max(0, n));\n}\n\ndocument.querySelector(\"#plus\").addEventListener(\"click\", () => afficher(compteEl() + 1));\ndocument.querySelector(\"#moins\").addEventListener(\"click\", () => afficher(compteEl() - 1));\ndocument.querySelector(\"#raz\").addEventListener(\"click\", () => afficher(0));"
+      }
+    },
+    {
+      "id": "liste-taches",
+      "title": "Liste de tâches",
+      "description": "Formulaires, création d'éléments et suppression.",
+      "level": "intermediaire",
+      "html": "<main class=\"app\">\n  <h1>Mes tâches</h1>\n  <form id=\"form\">\n    <label for=\"titre\">Nouvelle tâche</label>\n    <input id=\"titre\" name=\"titre\" autocomplete=\"off\">\n    <button type=\"submit\">Ajouter</button>\n  </form>\n  <ul id=\"liste\"></ul>\n</main>",
+      "css": "body { font-family: system-ui, sans-serif; background: #f2f4f2; margin: 0; color: #17202b; }\n.app { max-width: 520px; margin: 40px auto; padding: 0 16px; }\nform { display: grid; gap: 8px; margin-bottom: 20px; }\ninput { padding: 8px; font: inherit; }\nul { list-style: none; padding: 0; }\nli { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #c3cbd3; }",
+      "js": "const form = document.querySelector(\"#form\");\nconst champ = document.querySelector(\"#titre\");\nconst liste = document.querySelector(\"#liste\");\n\nform.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  const texte = champ.value.trim();\n  if (!texte) return;\n\n  const li = document.createElement(\"li\");\n  const span = document.createElement(\"span\");\n  span.textContent = texte;\n  const bouton = document.createElement(\"button\");\n  bouton.type = \"button\";\n  bouton.textContent = \"Supprimer\";\n  bouton.addEventListener(\"click\", () => li.remove());\n\n  li.append(span, bouton);\n  liste.append(li);\n  champ.value = \"\";\n  champ.focus();\n});",
+      "solution": {
+        "html": "<main class=\"app\">\n  <h1>Mes tâches</h1>\n  <form id=\"form\">\n    <label for=\"titre\">Nouvelle tâche</label>\n    <input id=\"titre\" name=\"titre\" autocomplete=\"off\" required>\n    <button type=\"submit\">Ajouter</button>\n  </form>\n  <p id=\"vide\">Aucune tâche pour le moment.</p>\n  <ul id=\"liste\"></ul>\n</main>",
+        "css": "body { font-family: system-ui, sans-serif; background: #f2f4f2; margin: 0; color: #17202b; }\n.app { max-width: 520px; margin: 40px auto; padding: 0 16px; }\nform { display: grid; gap: 8px; margin-bottom: 20px; }\ninput { padding: 8px; font: inherit; }\n#vide { color: #4f5b6a; }\nul { list-style: none; padding: 0; }\nli { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px solid #c3cbd3; }",
+        "js": "const form = document.querySelector(\"#form\");\nconst champ = document.querySelector(\"#titre\");\nconst liste = document.querySelector(\"#liste\");\nconst vide = document.querySelector(\"#vide\");\n\nfunction majVide() {\n  vide.hidden = liste.children.length > 0;\n}\n\nform.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  const texte = champ.value.trim();\n  if (!texte) return;\n\n  const li = document.createElement(\"li\");\n  const span = document.createElement(\"span\");\n  span.textContent = texte;\n  const bouton = document.createElement(\"button\");\n  bouton.type = \"button\";\n  bouton.textContent = \"Supprimer\";\n  bouton.addEventListener(\"click\", () => {\n    li.remove();\n    majVide();\n  });\n\n  li.append(span, bouton);\n  liste.append(li);\n  champ.value = \"\";\n  champ.focus();\n  majVide();\n});\n\nmajVide();"
+      }
+    },
+    {
+      "id": "galerie",
+      "title": "Galerie responsive",
+      "description": "CSS Grid et media queries, sans image externe.",
+      "level": "intermediaire",
+      "html": "<main>\n  <h1>Galerie</h1>\n  <div class=\"grille\">\n    <article class=\"tuile\">Un</article>\n    <article class=\"tuile\">Deux</article>\n    <article class=\"tuile\">Trois</article>\n    <article class=\"tuile\">Quatre</article>\n    <article class=\"tuile\">Cinq</article>\n    <article class=\"tuile\">Six</article>\n  </div>\n</main>",
+      "css": "body { font-family: system-ui, sans-serif; margin: 0; padding: 24px; background: #f2f4f2; color: #17202b; }\nmain { max-width: 900px; margin: 0 auto; }\n.grille { display: grid; gap: 12px; grid-template-columns: 1fr; }\n.tuile { display: grid; place-items: center; min-height: 120px; background: #dfe5e2; border: 1px solid #c3cbd3; }",
+      "js": "",
+      "solution": {
+        "html": "<main>\n  <h1>Galerie</h1>\n  <div class=\"grille\">\n    <article class=\"tuile\">Un</article>\n    <article class=\"tuile\">Deux</article>\n    <article class=\"tuile\">Trois</article>\n    <article class=\"tuile\">Quatre</article>\n    <article class=\"tuile\">Cinq</article>\n    <article class=\"tuile\">Six</article>\n  </div>\n</main>",
+        "css": "body { font-family: system-ui, sans-serif; margin: 0; padding: 24px; background: #f2f4f2; color: #17202b; }\nmain { max-width: 900px; margin: 0 auto; }\n.grille { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }\n.tuile { display: grid; place-items: center; min-height: 140px; background: #dfe5e2; border: 1px solid #c3cbd3; transition: transform 120ms ease; }\n.tuile:hover { transform: translateY(-2px); }\n\n@media (prefers-reduced-motion: reduce) {\n  .tuile { transition: none; }\n}",
+        "js": ""
+      }
+    },
+    {
+      "id": "formulaire",
+      "title": "Formulaire validé",
+      "description": "Validation native et messages d'erreur gérés en JavaScript.",
+      "level": "intermediaire",
+      "html": "<main class=\"carte\">\n  <h1>Inscription</h1>\n  <form id=\"form\" novalidate>\n    <label for=\"email\">E-mail</label>\n    <input id=\"email\" name=\"email\" type=\"email\" required>\n    <p id=\"message\" role=\"status\"></p>\n    <button type=\"submit\">Envoyer</button>\n  </form>\n</main>",
+      "css": "body { font-family: system-ui, sans-serif; background: #eef1ef; margin: 0; display: grid; place-items: center; min-height: 100vh; }\n.carte { background: #fff; padding: 24px; border: 1px solid #c3cbd3; max-width: 360px; width: 100%; }\nform { display: grid; gap: 8px; }\ninput { padding: 8px; font: inherit; }\n#message { min-height: 1.4em; margin: 4px 0; font-size: 0.9rem; }\n#message.erreur { color: #a33b2f; }\n#message.ok { color: #2c6e4d; }",
+      "js": "const form = document.querySelector(\"#form\");\nconst email = document.querySelector(\"#email\");\nconst message = document.querySelector(\"#message\");\n\nform.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  message.className = \"\";\n  message.textContent = \"\";\n\n  if (!email.value.includes(\"@\")) {\n    message.classList.add(\"erreur\");\n    message.textContent = \"L'adresse doit contenir un arobase.\";\n    return;\n  }\n\n  message.classList.add(\"ok\");\n  message.textContent = \"Inscription enregistrée localement.\";\n});",
+      "solution": {
+        "html": "<main class=\"carte\">\n  <h1>Inscription</h1>\n  <form id=\"form\" novalidate>\n    <label for=\"email\">E-mail</label>\n    <input id=\"email\" name=\"email\" type=\"email\" required autocomplete=\"email\">\n    <p id=\"message\" role=\"status\" aria-live=\"polite\"></p>\n    <button type=\"submit\">Envoyer</button>\n  </form>\n</main>",
+        "css": "body { font-family: system-ui, sans-serif; background: #eef1ef; margin: 0; display: grid; place-items: center; min-height: 100vh; }\n.carte { background: #fff; padding: 24px; border: 1px solid #c3cbd3; max-width: 360px; width: 100%; }\nform { display: grid; gap: 8px; }\ninput { padding: 8px; font: inherit; }\n#message { min-height: 1.4em; margin: 4px 0; font-size: 0.9rem; }\n#message.erreur { color: #a33b2f; }\n#message.ok { color: #2c6e4d; }",
+        "js": "const form = document.querySelector(\"#form\");\nconst email = document.querySelector(\"#email\");\nconst message = document.querySelector(\"#message\");\n\nfunction afficher(texte, type) {\n  message.textContent = texte;\n  message.className = type;\n}\n\nform.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  const valeur = email.value.trim();\n\n  if (!email.validity.valid) {\n    afficher(\"Saisissez une adresse e-mail valide.\", \"erreur\");\n    email.focus();\n    return;\n  }\n\n  afficher(\"Inscription enregistrée localement.\", \"ok\");\n  console.log(\"inscription\", valeur);\n});"
+      }
+    }
+  ]
+}

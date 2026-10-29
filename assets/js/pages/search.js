@@ -1,6 +1,6 @@
 // Page de résultats de la recherche globale (#/recherche?q=...).
 
-import { h, icon, emptyState } from '../core/dom.js';
+import { h, icon, emptyState , setChildren } from '../core/dom.js';
 import { getCourses, getDomains } from '../core/data.js';
 import { search, highlightSegments } from '../core/search.js';
 import { courseCard } from '../components/widgets.js';
@@ -55,7 +55,7 @@ export function renderSearchPage({ outlet, query }) {
     }
   }
 
-  outlet.replaceChildren(h('div', { class: 'page' },
+  setChildren(outlet, h('div', { class: 'page' },
     h('header', { class: 'page-head' },
       h('h1', { tabindex: '-1' }, q ? `Résultats pour « ${q} »` : 'Recherche'),
       q ? h('p', { class: 'muted', role: 'status' }, icon('search', { size: 16 }), ' Recherche insensible à la casse et aux accents.') : null

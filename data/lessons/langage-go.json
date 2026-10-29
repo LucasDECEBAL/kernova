@@ -1,0 +1,143 @@
+{
+  "courseId": "langage-go",
+  "modules": [
+    {
+      "id": "go-m1",
+      "title": "Langage et structures",
+      "chapters": [
+        {
+          "id": "go-01",
+          "title": "Modules et premier programme",
+          "duration": 16,
+          "objectives": ["Créer un module Go", "Compiler et exécuter"],
+          "content": [
+            { "type": "p", "text": "Go est compilé, typé statiquement et livré en un binaire autonome. Un module est décrit par `go.mod` ; il regroupe des paquets. Le point d'entrée est `main` dans le paquet `main`." },
+            { "type": "code", "lang": "go", "title": "main.go", "code": "package main\n\nimport \"fmt\"\n\nfunc main() {\n    fmt.Println(\"Bonjour\")\n}" },
+            { "type": "code", "lang": "bash", "code": "go mod init example.com/demo\ngo run .\ngo build -o demo ." },
+            { "type": "tip", "text": "`go fmt` formate le code selon la convention officielle : lancez-le avant chaque commit, l'équipe n'a plus à en débattre." }
+          ],
+          "exercise": {
+            "title": "Initialiser un module",
+            "instructions": "Quelle commande crée le fichier go.mod dans un nouveau projet ?",
+            "hints": ["C'est une sous-commande de go.", "Elle prend le chemin du module en argument."],
+            "solution": "go mod init example.com/mon-projet"
+          },
+          "quiz": [
+            { "id": "go-01-q1", "type": "single", "difficulty": 1, "question": "Quel fichier décrit un module Go ?", "options": ["go.mod", "package.json", "Cargo.toml", "composer.json"], "answer": 0, "explanation": "go.mod déclare le chemin du module et ses dépendances.", "hints": [] },
+            { "id": "go-01-q2", "type": "single", "difficulty": 1, "question": "Que produit go build ?", "options": ["Un binaire exécutable", "Une page HTML", "Un fichier de configuration", "Une base de données"], "answer": 0, "explanation": "Go compile en un binaire autonome.", "hints": [] }
+          ]
+        },
+        {
+          "id": "go-02",
+          "title": "Types, fonctions et gestion des erreurs",
+          "duration": 20,
+          "objectives": ["Écrire une fonction qui renvoie une erreur", "Utiliser l'idiome error"],
+          "content": [
+            { "type": "p", "text": "Go gère les erreurs comme des **valeurs** : une fonction renvoie son résultat et une erreur. L'appelant doit vérifier l'erreur avant d'utiliser le résultat. Pas d'exceptions." },
+            { "type": "code", "lang": "go", "code": "import (\n    \"errors\"\n    \"fmt\"\n)\n\nfunc diviser(a, b float64) (float64, error) {\n    if b == 0 {\n        return 0, errors.New(\"division par zéro\")\n    }\n    return a / b, nil\n}\n\nfunc main() {\n    r, err := diviser(10, 0)\n    if err != nil {\n        fmt.Println(\"erreur :\", err)\n    }\n    fmt.Println(r)\n}" },
+            { "type": "p", "text": "Pour enrichir une erreur, on l'enveloppe avec `fmt.Errorf(\"contexte : %w\", err)`, ce qui conserve la chaîne pour `errors.Is` et `errors.As`." },
+            { "type": "warning", "text": "Ignorer une erreur avec `_` doit rester exceptionnel. Une erreur non vérifiée produit souvent des données invalides plus loin." }
+          ],
+          "exercise": {
+            "title": "Envelopper une erreur",
+            "instructions": "Comment ajouter du contexte à une erreur en conservant sa chaîne d'origine ?",
+            "hints": ["fmt.Errorf existe.", "Le verbe %w enveloppe l'erreur."],
+            "solution": "fmt.Errorf(\"lecture du fichier %s : %w\", chemin, err)"
+          },
+          "quiz": [
+            { "id": "go-02-q1", "type": "single", "difficulty": 1, "question": "Comment Go signale une erreur ?", "options": ["Par une valeur de retour", "Par une exception", "Par un signal", "Par un log"], "answer": 0, "explanation": "L'erreur est une valeur que l'appelant doit vérifier.", "hints": [] },
+            { "id": "go-02-q2", "type": "single", "difficulty": 2, "question": "Que fait le verbe %w dans fmt.Errorf ?", "options": ["Enveloppe l'erreur en conservant sa chaîne", "Affiche un nombre", "Ignore l'erreur", "Crée un fichier"], "answer": 0, "explanation": "L'enveloppement permet errors.Is et errors.As.", "hints": [] }
+          ]
+        },
+        {
+          "id": "go-03",
+          "title": "Structures, interfaces et méthodes",
+          "duration": 20,
+          "objectives": ["Définir une structure avec méthodes", "Implémenter une interface"],
+          "content": [
+            { "type": "p", "text": "Une **structure** regroupe des champs typés. Les **méthodes** s'attachent à un type via un récepteur. Une **interface** décrit un ensemble de méthodes ; l'implémentation est implicite, il suffit d'avoir les bonnes signatures." },
+            { "type": "code", "lang": "go", "code": "type Forme interface {\n    Aire() float64\n}\n\ntype Cercle struct {\n    R float64\n}\n\nfunc (c Cercle) Aire() float64 {\n    return 3.14159 * c.R * c.R\n}\n\nfunc total(formes []Forme) float64 {\n    var t float64\n    for _, f := range formes {\n        t += f.Aire()\n    }\n    return t\n}" },
+            { "type": "p", "text": "Les interfaces Go sont petites et satisfaites implicitement : `io.Writer`, `error` et `fmt.Stringer` n'ont qu'une méthode. C'est ce qui rend la composition naturelle." },
+            { "type": "warning", "text": "Un récepteur pointeur (`func (c *Cercle)`) modifie l'objet ; un récepteur valeur travaille sur une copie. Mélanger les deux pour un même type complique la lecture." }
+          ],
+          "exercise": {
+            "title": "Satisfaire une interface",
+            "instructions": "Que faut-il pour qu'un type implémente l'interface Forme définie dans le cours ?",
+            "hints": ["Go n'utilise pas le mot implements.", "La signature doit correspondre exactement."],
+            "solution": "Définir une méthode Aire() float64 sur ce type : l'implémentation est implicite."
+          },
+          "quiz": [
+            { "id": "go-03-q1", "type": "single", "difficulty": 2, "question": "Comment un type implémente-t-il une interface en Go ?", "options": ["Implicitement, en ayant les bonnes méthodes", "Avec le mot-clé implements", "Par héritage", "Par annotation"], "answer": 0, "explanation": "Go utilise la satisfaction structurelle des interfaces.", "hints": [] },
+            { "id": "go-03-q2", "type": "single", "difficulty": 2, "question": "Quelle différence entre récepteur valeur et pointeur ?", "options": ["Le pointeur permet de modifier l'objet", "Aucune", "La valeur est plus rapide", "Le pointeur crée une copie"], "answer": 0, "explanation": "Le récepteur valeur travaille sur une copie de la structure.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "go-m2",
+      "title": "Concurrence et services",
+      "chapters": [
+        {
+          "id": "go-04",
+          "title": "Goroutines et channels",
+          "duration": 20,
+          "objectives": ["Lancer une goroutine", "Communiquer par channel"],
+          "content": [
+            { "type": "p", "text": "Une **goroutine** est une fonction exécutée concurremment, avec un coût très faible. Les **channels** transmettent des valeurs entre goroutines et synchronisent naturellement les échanges." },
+            { "type": "code", "lang": "go", "code": "func somme(t []int, c chan<- int) {\n    total := 0\n    for _, v := range t {\n        total += v\n    }\n    c <- total\n}\n\nfunc main() {\n    c := make(chan int)\n    go somme([]int{1, 2, 3}, c)\n    go somme([]int{4, 5}, c)\n    a, b := <-c, <-c\n    fmt.Println(a + b) // 15\n}" },
+            { "type": "p", "text": "Un channel non tamponné bloque l'émetteur jusqu'à la réception. Cette synchronisation est une fonctionnalité : elle évite de partager de la mémoire sans contrôle." },
+            { "type": "warning", "text": "Une goroutine qui écrit dans un channel que personne ne lit reste bloquée : fuite de goroutine. Utilisez un `select` avec `time.After` ou un `context` pour borner l'attente." }
+          ],
+          "exercise": {
+            "title": "Récupérer deux résultats",
+            "instructions": "Deux goroutines écrivent un total dans le même channel non tamponné. Comment récupérer les deux valeurs ?",
+            "hints": ["Chaque envoi correspond à une réception.", "L'ordre de réception n'est pas garanti."],
+            "solution": "Lire deux fois depuis le channel : a, b := <-c, <-c. L'ordre dépend de l'ordonnancement."
+          },
+          "quiz": [
+            { "id": "go-04-q1", "type": "single", "difficulty": 1, "question": "Comment lancer une fonction en goroutine ?", "options": ["go maFonction()", "async maFonction()", "thread maFonction()", "spawn maFonction()"], "answer": 0, "explanation": "Le mot-clé go précède l'appel.", "hints": [] },
+            { "id": "go-04-q2", "type": "single", "difficulty": 3, "question": "Que provoque une goroutine bloquée sur un channel jamais lu ?", "options": ["Une fuite de goroutine", "Un redémarrage", "Une erreur de compilation", "Rien du tout"], "answer": 0, "explanation": "La goroutine reste vivante et consomme des ressources.", "hints": [] }
+          ]
+        },
+        {
+          "id": "go-05",
+          "title": "API HTTP et tests",
+          "duration": 22,
+          "objectives": ["Écrire un handler HTTP", "Tester un handler"],
+          "content": [
+            { "type": "p", "text": "Le paquet `net/http` fournit le serveur et le client. Un **handler** reçoit la requête et écrit la réponse. Les tests utilisent `httptest` pour simuler une requête sans ouvrir de port." },
+            { "type": "code", "lang": "go", "code": "func sante(w http.ResponseWriter, r *http.Request) {\n    if r.Method != http.MethodGet {\n        http.Error(w, \"méthode non autorisée\", http.StatusMethodNotAllowed)\n        return\n    }\n    w.Header().Set(\"Content-Type\", \"application/json\")\n    io.WriteString(w, `{\"statut\":\"ok\"}`)\n}\n\nfunc main() {\n    http.HandleFunc(\"/sante\", sante)\n    http.ListenAndServe(\":8080\", nil)\n}" },
+            { "type": "code", "lang": "go", "code": "func TestSante(t *testing.T) {\n    req := httptest.NewRequest(http.MethodGet, \"/sante\", nil)\n    rec := httptest.NewRecorder()\n    sante(rec, req)\n    if rec.Code != http.StatusOK {\n        t.Fatalf(\"statut attendu 200, obtenu %d\", rec.Code)\n    }\n}" },
+            { "type": "warning", "text": "Ne lancez jamais un serveur HTTP avec un timeouts par défaut en production : configurez des délais de lecture et d'écriture pour éviter les connexions qui immobilisent des ressources." }
+          ],
+          "exercise": {
+            "title": "Tester sans serveur",
+            "instructions": "Quel outil de la bibliothèque standard permet de tester un handler sans ouvrir de port ?",
+            "hints": ["Le paquet s'appelle net/http/httptest.", "Il fournit un enregistreur de réponse."],
+            "solution": "httptest.NewRequest et httptest.NewRecorder, puis appel direct du handler."
+          },
+          "quiz": [
+            { "id": "go-05-q1", "type": "single", "difficulty": 1, "question": "Quelle interface représente un handler HTTP ?", "options": ["http.Handler", "io.Reader", "error", "fmt.Stringer"], "answer": 0, "explanation": "Un handler implémente ServeHTTP, souvent via http.HandlerFunc.", "hints": [] },
+            { "id": "go-05-q2", "type": "single", "difficulty": 2, "question": "Que permet httptest ?", "options": ["Tester un handler sans réseau", "Compiler plus vite", "Générer la documentation", "Créer une base"], "answer": 0, "explanation": "Il simule requête et réponse en mémoire.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Service de tâches en Go",
+    "brief": "Écrivez une petite API HTTP qui liste et ajoute des tâches, avec tests.",
+    "steps": [
+      "Créer le module et définir la structure Tache.",
+      "Implémenter les handlers de liste et d'ajout avec validation.",
+      "Protéger les accès concurrents aux données partagées.",
+      "Ajouter des tests avec httptest pour les cas normaux et les erreurs.",
+      "Exécuter go vet, go fmt et les tests avant de livrer."
+    ],
+    "criteria": [
+      "Les erreurs sont renvoyées comme valeurs et traitées.",
+      "Un accès concurrent ne provoque pas de corruption.",
+      "Les tests couvrent au moins un cas d'erreur."
+    ]
+  }
+}

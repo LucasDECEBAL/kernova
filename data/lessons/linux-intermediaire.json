@@ -1,0 +1,168 @@
+{
+  "courseId": "linux-intermediaire",
+  "modules": [
+    {
+      "id": "lin2-m1",
+      "title": "Processus et services",
+      "chapters": [
+        {
+          "id": "lin2-01",
+          "title": "Processus et signaux",
+          "duration": 22,
+          "objectives": [
+            "Lire l'état des processus",
+            "Choisir le bon signal d'arrêt"
+          ],
+          "content": [
+            { "type": "p", "text": "Chaque processus a un identifiant (PID), un propriétaire, une priorité et un état. `ps` donne un instantané, `top` ou `htop` une vue continue. La charge (`load average`) indique le nombre de processus en attente d'exécution." },
+            { "type": "code", "lang": "bash", "code": "ps aux --sort=-%mem | head -n 5\ntop -b -n 1 | head -n 15\npgrep -a nginx\nuptime" },
+            { "type": "table", "headers": ["Signal", "Effet"], "rows": [
+              ["`SIGTERM` (15)", "Demande un arrêt propre, interruptible"],
+              ["`SIGKILL` (9)", "Arrêt immédiat, non interceptable"],
+              ["`SIGHUP` (1)", "Souvent relire la configuration"],
+              ["`SIGSTOP` / `SIGCONT`", "Suspendre puis reprendre"]
+            ] },
+            { "type": "p", "text": "La priorité se règle avec `nice` (valeur de -20 à 19) et `renice`. Un processus à faible priorité cède le processeur aux autres : à réserver aux tâches longues et non urgentes, comme une sauvegarde." },
+            { "type": "warning", "text": "`kill -9` ne laisse pas le programme enregistrer son état ni libérer proprement ses ressources. Épuisez d'abord `SIGTERM`, puis attendez quelques secondes." }
+          ],
+          "exercise": {
+            "title": "Arrêter proprement",
+            "instructions": "Une sauvegarde longue bloque la machine. Quelle commande lui donne une priorité plus basse, et comment l'arrêter proprement ensuite ?",
+            "hints": ["Une priorité plus basse s'obtient en augmentant la valeur de nice.", "L'arrêt propre utilise le signal par défaut."],
+            "solution": "renice +10 -p <PID> (ou lancer avec nice -n 10 commande), puis kill <PID> pour envoyer SIGTERM."
+          },
+          "quiz": [
+            { "id": "lin2-01-q1", "type": "single", "difficulty": 2, "question": "Quel signal envoie kill par défaut ?", "options": ["SIGKILL", "SIGTERM", "SIGHUP", "SIGSTOP"], "answer": 1, "explanation": "kill envoie SIGTERM, qui permet un arrêt propre.", "hints": [] },
+            { "id": "lin2-01-q2", "type": "single", "difficulty": 2, "question": "Que signifie une charge de 4 sur une machine à 4 cœurs ?", "options": ["La machine est totalement inutilisée", "Les ressources sont pleinement utilisées, voire saturées", "Il manque 4 processus", "La mémoire est pleine"], "answer": 1, "explanation": "Une charge égale au nombre de cœurs indique une utilisation complète ; au-delà, des processus attendent.", "hints": [] }
+          ]
+        },
+        {
+          "id": "lin2-02",
+          "title": "Services et systemd",
+          "duration": 24,
+          "objectives": [
+            "Gérer un service avec systemctl",
+            "Lire les journaux d'un service"
+          ],
+          "content": [
+            { "type": "p", "text": "Sur la plupart des distributions modernes, les services sont gérés par **systemd**. `systemctl` démarre, arrête, active au démarrage et inspecte les services. `journalctl` consulte leurs journaux." },
+            { "type": "code", "lang": "bash", "code": "systemctl status nginx\nsystemctl start nginx\nsystemctl enable --now nginx\nsystemctl restart nginx\nsystemctl list-units --type=service --state=running\njournalctl -u nginx -n 50 --no-pager" },
+            { "type": "p", "text": "Un service se décrit dans une **unité** (`.service`) : quel programme exécuter, quel utilisateur, les dépendances, la politique de redémarrage. Une unité personnalisée se place dans `/etc/systemd/system/`." },
+            { "type": "code", "lang": "ini", "title": "mon-app.service", "code": "[Unit]\nDescription=Mon application\nAfter=network.target\n\n[Service]\nUser=app\nWorkingDirectory=/srv/app\nExecStart=/srv/app/start.sh\nRestart=on-failure\n\n[Install]\nWantedBy=multi-user.target" },
+            { "type": "warning", "text": "Après avoir modifié une unité, exécutez `systemctl daemon-reload`, sinon systemd continue d'utiliser l'ancienne définition." }
+          ],
+          "exercise": {
+            "title": "Activer au démarrage",
+            "instructions": "Vous venez de créer mon-app.service. Quelles commandes faut-il exécuter pour l'activer immédiatement et au prochain démarrage ?",
+            "hints": ["daemon-reload relit les unités.", "enable --now combine activation et démarrage."],
+            "solution": "systemctl daemon-reload, puis systemctl enable --now mon-app"
+          },
+          "quiz": [
+            { "id": "lin2-02-q1", "type": "single", "difficulty": 2, "question": "Que fait systemctl enable ?", "options": ["Démarre le service une fois", "Active le service au démarrage de la machine", "Supprime le service", "Recharge la configuration"], "answer": 1, "explanation": "enable crée les liens nécessaires pour démarrer le service au boot ; --now le démarre aussi tout de suite.", "hints": [] },
+            { "id": "lin2-02-q2", "type": "text", "difficulty": 2, "question": "Quelle commande consulte les journaux du service nginx ?", "answer": ["journalctl -u nginx"], "explanation": "journalctl -u filtre le journal par unité.", "hints": ["L'option -u signifie unit."] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lin2-m2",
+      "title": "Journalisation, stockage et réseau",
+      "chapters": [
+        {
+          "id": "lin2-03",
+          "title": "Journaux et tâches planifiées",
+          "duration": 20,
+          "objectives": [
+            "Filtrer les journaux par date et priorité",
+            "Planifier une tâche récurrente"
+          ],
+          "content": [
+            { "type": "p", "text": "`journalctl` permet de filtrer par unité, par période et par priorité. Les journaux applicatifs classiques restent souvent dans `/var/log`. La rotation évite qu'un fichier ne remplisse le disque." },
+            { "type": "code", "lang": "bash", "code": "journalctl --since \"2026-10-01\" --until \"2026-10-02\"\njournalctl -p err -b\nls /var/log\nlogrotate --debug /etc/logrotate.conf" },
+            { "type": "p", "text": "Pour une tâche récurrente, deux approches : **cron** (simple, horaire fixe) ou les **timers systemd** (plus de contrôle, journaux intégrés). Cron utilise cinq champs : minute, heure, jour du mois, mois, jour de la semaine." },
+            { "type": "code", "lang": "text", "title": "crontab -e", "code": "# Tous les jours à 2 h 30 : sauvegarde\n30 2 * * * /usr/local/bin/sauvegarde.sh >> /var/log/sauvegarde.log 2>&1" },
+            { "type": "warning", "text": "Le cron n'a pas le même environnement que votre terminal : chemins et variables diffèrent. Utilisez des chemins absolus et testez la commande avec `env -i`." }
+          ],
+          "exercise": {
+            "title": "Planifier une sauvegarde",
+            "instructions": "Écrivez la ligne de crontab qui exécute /usr/local/bin/sauvegarde.sh chaque dimanche à 3 h du matin.",
+            "hints": ["Le premier champ est la minute, le second l'heure.", "Dimanche correspond à 0 dans le champ jour de la semaine."],
+            "solution": "0 3 * * 0 /usr/local/bin/sauvegarde.sh"
+          },
+          "quiz": [
+            { "id": "lin2-03-q1", "type": "single", "difficulty": 2, "question": "Quelle option filtre journalctl sur les erreurs ?", "options": ["-p err", "-u err", "-e", "--boot"], "answer": 0, "explanation": "-p filtre par priorité ; err correspond au niveau erreur.", "hints": [] },
+            { "id": "lin2-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi utiliser des chemins absolus dans une tâche cron ?", "options": ["Parce que le PATH de cron est minimal", "Parce que cron refuse les chemins relatifs", "Parce que cela accélère l'exécution", "Parce que les fichiers relatifs n'existent pas"], "answer": 0, "explanation": "L'environnement de cron est réduit : le PATH ne contient pas les dossiers habituels.", "hints": [] }
+          ]
+        },
+        {
+          "id": "lin2-04",
+          "title": "Disques, partitions et montage",
+          "duration": 22,
+          "objectives": [
+            "Identifier les disques et leur occupation",
+            "Monter un volume durablement"
+          ],
+          "content": [
+            { "type": "p", "text": "`lsblk` montre les disques et partitions, `df -h` l'espace des systèmes de fichiers montés, `du -sh` la taille d'un dossier. Un disque doit contenir un **système de fichiers** (ext4, xfs…) avant d'être monté sur un point de montage." },
+            { "type": "code", "lang": "bash", "code": "lsblk -f\ndf -h\ndu -sh /var/log/* | sort -h | tail -n 5\nsudo mkfs.ext4 /dev/sdb1\nsudo mkdir -p /mnt/donnees\nsudo mount /dev/sdb1 /mnt/donnees" },
+            { "type": "p", "text": "Pour un montage permanent, on ajoute une ligne dans `/etc/fstab`, idéalement en désignant le disque par son **UUID** plutôt que par `/dev/sdb1`, dont le nom peut changer." },
+            { "type": "code", "lang": "text", "title": "/etc/fstab", "code": "UUID=8f3c-1a2b  /mnt/donnees  ext4  defaults,nofail  0  2" },
+            { "type": "warning", "text": "Une erreur dans `/etc/fstab` peut empêcher la machine de démarrer. Testez avec `mount -a` et conservez une session ouverte avant de redémarrer." }
+          ],
+          "exercise": {
+            "title": "Montage permanent",
+            "instructions": "Quelles informations faut-il relever pour monter un disque de façon permanente, et où les déclare-t-on ?",
+            "hints": ["Le nom /dev/sdb peut changer d'un démarrage à l'autre.", "Le fichier se lit au démarrage."],
+            "solution": "L'UUID du système de fichiers (blkid), son type et le point de montage ; on les déclare dans /etc/fstab."
+          },
+          "quiz": [
+            { "id": "lin2-04-q1", "type": "single", "difficulty": 2, "question": "Quelle commande affiche l'espace utilisé des systèmes de fichiers montés ?", "options": ["lsblk", "df -h", "du -sh", "fdisk -l"], "answer": 1, "explanation": "df -h résume l'occupation par système de fichiers monté.", "hints": [] },
+            { "id": "lin2-04-q2", "type": "truefalse", "difficulty": 3, "question": "Utiliser l'UUID dans fstab est plus fiable que /dev/sdb1.", "answer": true, "explanation": "Les noms de périphériques peuvent changer ; l'UUID reste stable.", "hints": [] }
+          ]
+        },
+        {
+          "id": "lin2-05",
+          "title": "Réseau et SSH",
+          "duration": 22,
+          "objectives": [
+            "Diagnostiquer une connexion réseau",
+            "Configurer un accès SSH par clé"
+          ],
+          "content": [
+            { "type": "p", "text": "Les commandes de diagnostic forment une chaîne : `ip addr` (adresses), `ip route` (passerelle), `ss -tulpn` (ports en écoute), `ping` (joignabilité), `dig` (DNS). On vérifie dans cet ordre avant de suspecter l'application." },
+            { "type": "code", "lang": "bash", "code": "ip addr show\nip route\nss -tulpn\nping -c 3 1.1.1.1\ndig example.com +short" },
+            { "type": "p", "text": "**SSH** permet d'administrer une machine à distance. L'authentification par clé remplace avantageusement le mot de passe : la clé privée reste sur le poste, la clé publique est déposée sur le serveur." },
+            { "type": "code", "lang": "bash", "code": "ssh-keygen -t ed25519 -C \"poste-alice\"\nssh-copy-id alice@serveur.example\nssh alice@serveur.example\nscp fichier.txt alice@serveur.example:/home/alice/\nrsync -av --delete dossier/ alice@serveur.example:/srv/dossier/" },
+            { "type": "warning", "text": "Ne désactivez pas l'authentification par mot de passe avant d'avoir vérifié que la connexion par clé fonctionne, et gardez une session ouverte pendant la modification de la configuration du serveur SSH." }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer une panne",
+            "instructions": "Un service web n'est pas joignable depuis un autre réseau, alors qu'il répond en local. Quelles vérifications menez-vous ?",
+            "hints": ["Le service écoute-t-il sur toutes les interfaces ou seulement sur la boucle locale ?", "Le port est-il filtré en amont ?"],
+            "solution": "Vérifier l'adresse d'écoute avec ss -tulpn (127.0.0.1 au lieu de 0.0.0.0), puis la passerelle et le pare-feu (règles locales et amont)."
+          },
+          "quiz": [
+            { "id": "lin2-05-q1", "type": "single", "difficulty": 2, "question": "Que signifie écouter sur 127.0.0.1 plutôt que sur 0.0.0.0 ?", "options": ["Le service n'est joignable que depuis la machine locale", "Le service est plus rapide", "Le service est chiffré", "Le service est en panne"], "answer": 0, "explanation": "127.0.0.1 est l'interface de boucle locale, inaccessible depuis le réseau.", "hints": [] },
+            { "id": "lin2-05-q2", "type": "single", "difficulty": 2, "question": "Quel fichier contient la clé publique à déposer sur le serveur ?", "options": ["~/.ssh/id_ed25519", "~/.ssh/id_ed25519.pub", "/etc/ssh/sshd_config", "~/.ssh/known_hosts"], "answer": 1, "explanation": "La clé publique porte l'extension .pub ; la clé privée ne doit jamais être transmise.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Mettre en service un serveur de laboratoire",
+    "brief": "Sur une machine virtuelle de test, installez un service, rendez-le résilient, planifiez sa sauvegarde et documentez l'accès.",
+    "steps": [
+      "Créer une unité systemd pour une petite application et vérifier son redémarrage automatique.",
+      "Déclarer la rotation des journaux et vérifier la présence des entrées dans journalctl.",
+      "Planifier une sauvegarde quotidienne par cron et vérifier son exécution le lendemain.",
+      "Configurer l'accès SSH par clé, puis désactiver l'authentification par mot de passe après vérification.",
+      "Documenter les commandes de diagnostic utilisées et les résultats obtenus."
+    ],
+    "criteria": [
+      "Le service redémarre seul après un arrêt forcé du processus.",
+      "La tâche planifiée produit un journal exploitable, avec des chemins absolus.",
+      "La connexion SSH par clé fonctionne avant la désactivation des mots de passe."
+    ]
+  }
+}

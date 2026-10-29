@@ -1,0 +1,184 @@
+{
+  "courseId": "virtualisation",
+  "modules": [
+    {
+      "id": "virt-m1",
+      "title": "Hyperviseurs et machines",
+      "chapters": [
+        {
+          "id": "virt-01",
+          "title": "Hyperviseurs de type 1 et 2",
+          "duration": 20,
+          "objectives": [
+            "Distinguer les deux familles d'hyperviseurs",
+            "Choisir un outil selon l'usage"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **hyperviseur** crée et exécute des machines virtuelles. Le **type 1** (bare metal) s'installe directement sur le matériel : ESXi, Hyper-V en mode serveur, KVM, Proxmox VE. Le **type 2** (hébergé) s'exécute comme une application au-dessus d'un système : VirtualBox, VMware Workstation." },
+            { "type": "table", "headers": ["Type", "Performances", "Usage typique"], "rows": [
+              ["Type 1", "Élevées, proches du matériel", "Serveurs, production, laboratoires permanents"],
+              ["Type 2", "Correctes pour un poste", "Apprentissage, tests locaux, maquettes"]
+            ] },
+            { "type": "p", "text": "Chaque machine virtuelle a du matériel **virtuel** : processeur, mémoire, disques, carte réseau. L'hyperviseur traduit ces ressources vers le matériel réel. Il faut donc des pilotes adaptés (**virtio** sous KVM/QEMU) pour de bonnes performances." },
+            { "type": "p", "text": "Contrairement à un conteneur, une machine virtuelle embarque un système complet : elle démarre comme un vrai ordinateur, avec son noyau. C'est plus lourd, mais l'isolation est plus forte et le système invité peut être n'importe quoi." },
+            { "type": "warning", "text": "Les fonctions de virtualisation doivent être activées dans le firmware (VT-x / AMD-V). Sans elles, les performances s'effondrent ou la machine virtuelle refuse de démarrer." }
+          ],
+          "exercise": {
+            "title": "Quel hyperviseur ?",
+            "instructions": "Vous voulez tester trois systèmes sur votre ordinateur portable, sans matériel dédié. Quel type d'hyperviseur utiliser, et pourquoi ?",
+            "hints": ["Le poste a déjà un système principal.", "Une installation bare metal écraserait ce système."],
+            "solution": "Un hyperviseur de type 2 (VirtualBox, VMware Workstation), qui s'installe comme une application sans remplacer le système du poste."
+          },
+          "quiz": [
+            { "id": "virt-01-q1", "type": "single", "difficulty": 1, "question": "Quel type d'hyperviseur s'installe directement sur le matériel ?", "options": ["Type 1", "Type 2", "Type 3", "Aucun"], "answer": 0, "explanation": "Le type 1 est un système d'exploitation dédié à l'exécution de machines virtuelles.", "hints": [] },
+            { "id": "virt-01-q2", "type": "single", "difficulty": 2, "question": "Qu'est-ce qui distingue une machine virtuelle d'un conteneur ?", "options": ["La machine virtuelle embarque un système complet", "Le conteneur est plus lourd", "La machine virtuelle partage le noyau", "Il n'y a aucune différence"], "answer": 0, "explanation": "Une VM possède son noyau et démarre comme un ordinateur ; un conteneur partage le noyau hôte.", "hints": [] }
+          ]
+        },
+        {
+          "id": "virt-02",
+          "title": "Processeur, mémoire et disques virtuels",
+          "duration": 22,
+          "objectives": [
+            "Dimensionner une machine virtuelle",
+            "Comprendre le surengagement"
+          ],
+          "content": [
+            { "type": "p", "text": "Les ressources d'une machine virtuelle se déclarent à sa création, et parfois à chaud. Le **vCPU** est un processeur virtuel planifié sur un cœur physique. La mémoire est allouée à la machine, mais l'hyperviseur peut la récupérer partiellement (**ballooning**) quand l'hôte manque." },
+            { "type": "table", "headers": ["Ressource", "Piège fréquent"], "rows": [
+              ["vCPU", "Surallouer : les machines se disputent les cœurs"],
+              ["Mémoire", "Promettre plus que la mémoire physique disponible"],
+              ["Disque", "Choisir thick (réservé) ou thin (à la demande) sans comprendre l'impact"],
+              ["Réseau", "Oublier les pilotes paravirtualisés (virtio)"]
+            ] },
+            { "type": "p", "text": "Le **thin provisioning** alloue l'espace au fur et à mesure : pratique, mais le disque physique peut se remplir avant que les machines ne le signalent. Le **thick** réserve tout de suite la place : plus sûr, moins souple." },
+            { "type": "code", "lang": "bash", "code": "qemu-img create -f qcow2 disque.qcow2 40G   # thin, à la demande\nqemu-img info disque.qcow2\nvirt-install --name lab --memory 2048 --vcpus 2 \\\n  --disk path=disque.qcow2,format=qcow2 --cdrom iso/debian.iso" },
+            { "type": "warning", "text": "Surallouer la mémoire sans surveillance provoque du swap sur l'hôte et des machines très lentes. Surveillez la mémoire réellement consommée, pas seulement celle attribuée." }
+          ],
+          "exercise": {
+            "title": "Dimensionner un serveur de test",
+            "instructions": "Un serveur Linux de test doit exécuter une base de données et une application. Comment répartir 8 Go de mémoire disponibles entre deux machines virtuelles ?",
+            "hints": ["Il faut garder de la marge pour l'hyperviseur.", "La base consomme plus que l'application."],
+            "solution": "Par exemple 4 Go pour la base et 2 Go pour l'application, en laissant 2 Go à l'hôte, avec surveillance de la mémoire réellement utilisée."
+          },
+          "quiz": [
+            { "id": "virt-02-q1", "type": "single", "difficulty": 2, "question": "Que fait le thin provisioning ?", "options": ["Alloue l'espace disque au fur et à mesure", "Réserve tout l'espace immédiatement", "Supprime les snapshots", "Compresse la mémoire"], "answer": 0, "explanation": "Le disque grossit à l'usage ; il faut surveiller l'espace physique.", "hints": [] },
+            { "id": "virt-02-q2", "type": "single", "difficulty": 3, "question": "Que se passe-t-il si l'on suralloue la mémoire de l'hôte ?", "options": ["L'hôte peut swapper et les machines ralentissent", "Les machines accélèrent", "Les disques se vident", "Le réseau s'isole"], "answer": 0, "explanation": "La mémoire promise dépasse la mémoire physique : l'hôte échange sur disque.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "virt-m2",
+      "title": "Laboratoire et exploitation",
+      "chapters": [
+        {
+          "id": "virt-03",
+          "title": "Réseaux virtuels et laboratoire isolé",
+          "duration": 22,
+          "objectives": [
+            "Choisir un mode réseau",
+            "Isoler un laboratoire"
+          ],
+          "content": [
+            { "type": "p", "text": "Une machine virtuelle se connecte au réseau selon le mode choisi. En **NAT**, elle sort vers Internet via l'hôte mais n'est pas joignable de l'extérieur. En **pont (bridge)**, elle obtient une adresse sur le réseau physique comme une vraie machine. En **réseau interne**, elle ne parle qu'aux autres machines virtuelles du même réseau." },
+            { "type": "table", "headers": ["Mode", "Accès Internet", "Joignable depuis le LAN", "Usage"], "rows": [
+              ["NAT", "Oui, via l'hôte", "Non", "Navigation, mises à jour"],
+              ["Pont", "Oui", "Oui", "Serveur de test accessible"],
+              ["Interne / hôte seul", "Non", "Non", "Laboratoire isolé"]
+            ] },
+            { "type": "p", "text": "Un **laboratoire isolé** est indispensable pour les exercices de sécurité : les machines attaquantes et cibles ne doivent pas atteindre le réseau de production ni Internet. Un instantané propre permet de revenir en arrière après chaque manipulation." },
+            { "type": "warning", "text": "Ne connectez jamais en pont une machine de test vulnérable sur le réseau d'une entreprise ou d'un domicile. Une mauvaise configuration suffit à exposer la machine." }
+          ],
+          "exercise": {
+            "title": "Isoler un laboratoire",
+            "instructions": "Vous devez monter deux machines de test qui ne doivent pas atteindre Internet ni votre réseau domestique, mais communiquer entre elles. Quel mode réseau ?",
+            "hints": ["Le NAT donne accès à Internet.", "Le pont expose au réseau physique."],
+            "solution": "Un réseau interne (ou « hôte seul » selon l'hyperviseur), qui relie uniquement les machines virtuelles entre elles."
+          },
+          "quiz": [
+            { "id": "virt-03-q1", "type": "single", "difficulty": 2, "question": "Quel mode réseau rend une machine virtuelle joignable depuis le réseau physique ?", "options": ["NAT", "Pont", "Interne", "Hôte seul"], "answer": 1, "explanation": "Le pont place la machine sur le même réseau que l'hôte physique.", "hints": [] },
+            { "id": "virt-03-q2", "type": "truefalse", "difficulty": 2, "question": "Un laboratoire de sécurité peut être connecté en pont au réseau de production sans risque.", "answer": false, "explanation": "Une machine vulnérable exposée peut être compromise et servir de point d'entrée.", "hints": [] }
+          ]
+        },
+        {
+          "id": "virt-04",
+          "title": "Snapshots, clones et modèles",
+          "duration": 20,
+          "objectives": [
+            "Distinguer snapshot et sauvegarde",
+            "Créer un modèle réutilisable"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **snapshot** fige l'état d'une machine à un instant donné et permet d'y revenir rapidement. Il ne remplace pas une sauvegarde : si le disque physique tombe en panne, les snapshots disparaissent avec lui. Il dépend aussi du disque d'origine." },
+            { "type": "table", "headers": ["Élément", "Rôle"], "rows": [
+              ["Snapshot", "Retour arrière rapide, avant une manipulation risquée"],
+              ["Clone complet", "Copie indépendante de la machine"],
+              ["Clone lié", "Copie partageant le disque parent, gain d'espace"],
+              ["Modèle (template)", "Machine préparée, copiée pour créer de nouvelles instances"]
+            ] },
+            { "type": "p", "text": "Une chaîne de snapshots longue dégrade les performances et complique la gestion. Après validation, consolidez (supprimez les snapshots intermédiaires) et gardez une sauvegarde externe." },
+            { "type": "code", "lang": "text", "code": "Créer une VM de base → installer → mettre à jour → arrêter\n→ convertir en modèle (template)\n→ cloner le modèle pour chaque exercice\n→ faire un snapshot avant chaque manipulation risquée" },
+            { "type": "warning", "text": "Revenir à un snapshot annule aussi ce qui a été produit depuis : journaux, données de test, corrections. Prévenez les utilisateurs avant, et exportez ce qui doit être conservé." }
+          ],
+          "exercise": {
+            "title": "Snapshot ou sauvegarde ?",
+            "instructions": "Le disque physique de votre hôte tombe en panne. Que retrouvez-vous si vous n'aviez que des snapshots ?",
+            "hints": ["Un snapshot est stocké sur le même stockage.", "Une sauvegarde doit être externe."],
+            "solution": "Rien : les snapshots étaient sur le disque défaillant. Il faut une sauvegarde sur un support distinct, idéalement hors site."
+          },
+          "quiz": [
+            { "id": "virt-04-q1", "type": "single", "difficulty": 1, "question": "Un snapshot remplace-t-il une sauvegarde ?", "options": ["Oui, toujours", "Non, il dépend du même stockage", "Oui, s'il est récent", "Uniquement sur Windows"], "answer": 1, "explanation": "Le snapshot est un retour arrière local ; la sauvegarde protège d'une perte de stockage.", "hints": [] },
+            { "id": "virt-04-q2", "type": "single", "difficulty": 2, "question": "À quoi sert un modèle (template) ?", "options": ["À créer rapidement des machines préparées", "À chiffrer les disques", "À remplacer le pare-feu", "À superviser le réseau"], "answer": 0, "explanation": "Un modèle évite de réinstaller et reconfigurer chaque machine de test.", "hints": [] }
+          ]
+        },
+        {
+          "id": "virt-05",
+          "title": "Ressources, haute disponibilité et dépannage",
+          "duration": 22,
+          "objectives": [
+            "Diagnostiquer une machine lente",
+            "Comprendre la haute disponibilité"
+          ],
+          "content": [
+            { "type": "p", "text": "Une machine virtuelle lente a souvent une cause mesurable : saturation processeur sur l'hôte, mémoire insuffisante, disque lent (iowait), ou contention réseau. La démarche consiste à comparer ce que voit la machine invitée et ce que voit l'hyperviseur." },
+            { "type": "code", "lang": "bash", "code": "# Invité\nuptime\ntop -b -n 1 | head -n 12\nvmstat 1 5\n\n# Hôte (KVM)\nvirsh list --all\nvirsh dominfo lab\nvirsh domstats lab" },
+            { "type": "table", "headers": ["Symptôme", "Cause probable"], "rows": [
+              ["Temps d'attente élevé (steal time)", "vCPU en concurrence sur l'hôte"],
+              ["Échanges mémoire (swap) dans l'invité", "Mémoire sous-dimensionnée"],
+              ["Latence disque forte", "Stockage saturé ou thin provisioning"],
+              ["Réseau lent uniquement en VM", "Pilotes non paravirtualisés"]
+            ] },
+            { "type": "p", "text": "La **haute disponibilité** en virtualisation repose sur plusieurs hôtes d'un cluster : si l'un tombe, les machines redémarrent ailleurs. Elle exige un stockage partagé, un quorum et des tests réguliers. Sans test, la bascule est une hypothèse, pas une garantie." },
+            { "type": "warning", "text": "La HA ne remplace ni la sauvegarde ni la réplication applicative : elle protège d'une panne de serveur, pas d'une suppression de données." }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer un steal time",
+            "instructions": "Dans une machine virtuelle, le « steal time » est élevé alors que son processeur est peu utilisé. Que concluez-vous ?",
+            "hints": ["Le steal time mesure l'attente du processeur physique.", "La cause est côté hôte."],
+            "solution": "Les vCPU attendent le processeur physique : l'hôte est surchargé ou suralloué. Réduire le nombre de vCPU, répartir les machines ou ajouter des ressources à l'hôte."
+          },
+          "quiz": [
+            { "id": "virt-05-q1", "type": "single", "difficulty": 3, "question": "Que mesure le steal time dans une machine invitée ?", "options": ["Le temps d'attente du processeur physique", "Le temps de démarrage", "La latence réseau", "L'espace disque utilisé"], "answer": 0, "explanation": "Il indique que l'hyperviseur n'a pas pu donner le processeur demandé.", "hints": [] },
+            { "id": "virt-05-q2", "type": "truefalse", "difficulty": 2, "question": "La haute disponibilité remplace les sauvegardes.", "answer": false, "explanation": "La HA protège d'une panne matérielle, pas d'une erreur de manipulation ou d'une corruption.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Laboratoire de test isolé et reproductible",
+    "brief": "Construisez un laboratoire de deux machines virtuelles isolées, avec un modèle réutilisable et une procédure de remise à zéro.",
+    "steps": [
+      "Créer une machine de base, l'installer, la mettre à jour et l'arrêter proprement.",
+      "La convertir en modèle et cloner deux machines à partir de ce modèle.",
+      "Les placer sur un réseau interne, sans accès Internet, et vérifier la connectivité entre elles.",
+      "Faire un snapshot avant une manipulation risquée, puis revenir à l'état initial.",
+      "Mesurer les ressources consommées sur l'hôte et documenter la procédure de remise à zéro."
+    ],
+    "criteria": [
+      "Aucune des machines du laboratoire n'atteint Internet ni le réseau local physique.",
+      "Le retour au snapshot restaure l'état attendu, vérifié par une commande.",
+      "La procédure permet à une autre personne de reconstruire le laboratoire."
+    ]
+  }
+}

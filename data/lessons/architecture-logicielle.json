@@ -1,0 +1,189 @@
+{
+  "courseId": "architecture-logicielle",
+  "modules": [
+    {
+      "id": "arch-m1",
+      "title": "Concevoir des modules",
+      "chapters": [
+        {
+          "id": "arch-01",
+          "title": "Couplage, cohésion et frontières",
+          "duration": 22,
+          "objectives": [
+            "Évaluer un couplage",
+            "Regrouper le code par responsabilité"
+          ],
+          "content": [
+            { "type": "p", "text": "Deux mesures guident la découpe d'un logiciel. La **cohésion** dit si les éléments d'un module travaillent sur la même responsabilité. Le **couplage** dit à quel point un module dépend des détails d'un autre. On vise une cohésion forte et un couplage faible." },
+            { "type": "table", "headers": ["Situation", "Diagnostic"], "rows": [
+              ["Un module de 2 000 lignes qui gère commandes, factures et e-mails", "Cohésion faible"],
+              ["Un service qui importe directement les tables d'un autre service", "Couplage fort"],
+              ["Une fonction de calcul qui reçoit ses données en paramètres", "Couplage faible"],
+              ["Deux modules qui s'appellent mutuellement", "Dépendance circulaire"]
+            ] },
+            { "type": "p", "text": "Une **frontière** est l'endroit où l'on peut changer une décision sans toucher au reste : remplacer une base de données, un fournisseur de paiement, une interface. Bien placer les frontières coûte moins cher que de les déplacer plus tard." },
+            { "type": "code", "lang": "javascript", "code": "// Couplage fort : le domaine connaît la base\nfunction confirmerCommande(id) {\n  const row = db.query(\"SELECT * FROM commandes WHERE id = ?\", [id]);\n  mailer.send(row.email, \"Commande confirmée\");\n}\n\n// Couplage faible : le domaine reçoit ses dépendances\nfunction confirmerCommande({ id }, { commandes, notifications }) {\n  const commande = commandes.trouver(id);\n  notifications.envoyerConfirmation(commande);\n}" },
+            { "type": "warning", "text": "Découper trop tôt crée des frontières que personne ne comprend. Commencez par un module simple, puis séparez quand une raison concrète apparaît : équipe, charge, cycle de livraison." }
+          ],
+          "exercise": {
+            "title": "Repérer un couplage",
+            "instructions": "Une fonction d'export CSV appelle directement la base et envoie un e-mail. Quelles dépendances faut-il extraire, et pourquoi ?",
+            "hints": ["Le calcul d'export ne devrait pas connaître le stockage.", "L'envoi de message est un effet de bord."],
+            "solution": "Extraire l'accès aux données (par une fonction de lecture passée en paramètre) et l'envoi de message (par une interface de notification). L'export devient testable sans base ni messagerie."
+          },
+          "quiz": [
+            { "id": "arch-01-q1", "type": "single", "difficulty": 2, "question": "Que signifie un couplage faible ?", "options": ["Les modules partagent peu de détails internes", "Les modules sont dans le même fichier", "Les modules n'échangent jamais", "Les modules sont petits"], "answer": 0, "explanation": "Un couplage faible permet de modifier un module sans casser les autres.", "hints": [] },
+            { "id": "arch-01-q2", "type": "single", "difficulty": 3, "question": "Deux modules qui s'importent mutuellement créent…", "options": ["Une cohésion forte", "Une dépendance circulaire", "Un pattern", "Une frontière"], "answer": 1, "explanation": "La dépendance circulaire rend les tests et l'évolution difficiles.", "hints": [] }
+          ]
+        },
+        {
+          "id": "arch-02",
+          "title": "SOLID en pratique",
+          "duration": 24,
+          "objectives": [
+            "Appliquer les principes SOLID sans dogmatisme",
+            "Reconnaître une abstraction prématurée"
+          ],
+          "content": [
+            { "type": "p", "text": "SOLID regroupe cinq principes de conception orientée objet. Ils ne sont pas des règles absolues : ce sont des signatures de problèmes récurrents." },
+            { "type": "list", "items": [
+              "**S** — responsabilité unique : une classe, une raison de changer.",
+              "**O** — ouverture/fermeture : étendre sans modifier le code existant, par polymorphisme ou configuration.",
+              "**L** — substitution de Liskov : un sous-type doit respecter le contrat de son parent.",
+              "**I** — ségrégation des interfaces : mieux vaut plusieurs interfaces fines qu'une interface fourre-tout.",
+              "**D** — inversion des dépendances : dépendre d'abstractions, pas de détails (base, HTTP)."
+            ] },
+            { "type": "code", "lang": "javascript", "code": "// D : le cas d'usage dépend d'une interface\nfunction creerFacture(depot, facture) {\n  if (facture.total <= 0) throw new Error(\"Montant invalide\");\n  return depot.enregistrer(facture);\n}\n\n// Deux implémentations possibles\nconst depotMemoire = { enregistrer: (f) => ({ ...f, id: 1 }) };\nconst depotSQL = { enregistrer: async (f) => db.insert(\"factures\", f) };" },
+            { "type": "p", "text": "Attention aux abstractions **prématurées** : une interface créée pour une seule implémentation encore instable ajoute de l'indirection sans bénéfice. L'inversion de dépendance se justifie quand une frontière doit varier ou être testée." },
+            { "type": "warning", "text": "Violer la substitution de Liskov — par exemple un sous-type qui lève une exception là où le parent réussit — casse le code appelant de façon silencieuse. Préférez la composition à un héritage douteux." }
+          ],
+          "exercise": {
+            "title": "Choisir entre héritage et composition",
+            "instructions": "Un service d'envoi de notifications doit pouvoir utiliser e-mail, SMS ou notification interne. Héritage ou composition ?",
+            "hints": ["Les trois canaux partagent un contrat, pas un comportement.", "Un canal peut être ajouté sans modifier le service."],
+            "solution": "Composition : un service unique dépend d'une interface de canal, avec une implémentation par moyen d'envoi. Cela respecte l'ouverture/fermeture sans hiérarchie rigide."
+          },
+          "quiz": [
+            { "id": "arch-02-q1", "type": "single", "difficulty": 2, "question": "Que garantit le principe de substitution de Liskov ?", "options": ["Qu'un sous-type peut remplacer son parent sans casser le contrat", "Que toute classe a une interface", "Que les classes sont immuables", "Que les dépendances sont globales"], "answer": 0, "explanation": "Le code qui utilise un type parent doit fonctionner avec n'importe quel sous-type conforme.", "hints": [] },
+            { "id": "arch-02-q2", "type": "truefalse", "difficulty": 3, "question": "Créer une interface pour chaque classe améliore toujours la conception.", "answer": false, "explanation": "Une abstraction sans second cas d'usage ajoute de l'indirection inutile.", "hints": [] }
+          ]
+        },
+        {
+          "id": "arch-03",
+          "title": "Patterns utiles et leurs pièges",
+          "duration": 22,
+          "objectives": [
+            "Reconnaître les patterns classiques",
+            "Éviter la sur-ingénierie"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **design pattern** est une solution nommée à un problème de conception récurrent. Le nom aide à communiquer ; le code aide à résoudre. Les patterns ne remplacent pas la réflexion sur le problème concret." },
+            { "type": "table", "headers": ["Pattern", "Problème résolu", "Piège"], "rows": [
+              ["Strategy", "Choisir un algorithme à l'exécution", "Multiplier les classes pour un seul cas"],
+              ["Adapter", "Faire dialoguer deux interfaces incompatibles", "Masquer un mauvais découpage"],
+              ["Factory", "Centraliser une création complexe", "Devenir un dieu-objet"],
+              ["Repository", "Isoler l'accès aux données", "Réinventer une couche ORM complète"],
+              ["Observer", "Notifier plusieurs abonnés", "Chaînes de notifications impossibles à suivre"]
+            ] },
+            { "type": "code", "lang": "javascript", "code": "// Strategy : le calcul de remise varie\nconst remises = {\n  aucune: (total) => total,\n  fidelite: (total) => total * 0.95,\n  solde: (total) => total * 0.8\n};\n\nfunction prixFinal(total, type) {\n  const appliquer = remises[type] ?? remises.aucune;\n  return appliquer(total);\n}" },
+            { "type": "p", "text": "Avant d'introduire un pattern, posez trois questions : le problème est-il réel et présent, le pattern simplifie-t-il la lecture, et le test devient-il plus simple ? Trois « non » signifient probablement du code direct." },
+            { "type": "warning", "text": "La **sur-ingénierie** est un défaut fréquent : couches, fabriques et interfaces empilées pour un formulaire de contact. Le coût se paie à chaque modification, pendant des années." }
+          ],
+          "exercise": {
+            "title": "Pattern ou code direct ?",
+            "instructions": "Une application a deux modes de calcul de frais de port, stables depuis un an. Faut-il une fabrique, un registre de stratégies ou un simple if ?",
+            "hints": ["Deux cas stables ne justifient pas une infrastructure.", "La lisibilité prime."],
+            "solution": "Un simple if/else ou une table de deux fonctions suffit. La fabrique n'apporterait rien tant que les cas restent stables et peu nombreux."
+          },
+          "quiz": [
+            { "id": "arch-03-q1", "type": "single", "difficulty": 2, "question": "Quel pattern isole l'accès aux données du domaine ?", "options": ["Observer", "Repository", "Adapter", "Strategy"], "answer": 1, "explanation": "Repository fournit une interface de collection au domaine, indépendante du stockage.", "hints": [] },
+            { "id": "arch-03-q2", "type": "single", "difficulty": 3, "question": "Quand un pattern est-il contre-productif ?", "options": ["Quand il résout un problème réel", "Quand il ajoute de l'indirection sans problème réel", "Quand il simplifie les tests", "Quand il est connu de l'équipe"], "answer": 1, "explanation": "La sur-ingénierie augmente le coût de maintenance sans bénéfice.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "arch-m2",
+      "title": "Architectures et distribution",
+      "chapters": [
+        {
+          "id": "arch-04",
+          "title": "Couches, hexagonale et clean architecture",
+          "duration": 24,
+          "objectives": [
+            "Appliquer la règle de dépendance",
+            "Isoler le domaine des détails techniques"
+          ],
+          "content": [
+            { "type": "p", "text": "Les architectures en **couches** séparent présentation, application, domaine et infrastructure. La **règle de dépendance** est le point central : les couches internes ne connaissent jamais les couches externes. Le domaine ne sait pas qu'une base de données existe." },
+            { "type": "table", "headers": ["Style", "Idée directrice"], "rows": [
+              ["En couches", "Séparer les responsabilités par niveau"],
+              ["Hexagonale (ports et adaptateurs)", "Le domaine expose des ports, l'infrastructure fournit des adaptateurs"],
+              ["Clean Architecture", "Même règle de dépendance, formalisée en cercles"]
+            ] },
+            { "type": "code", "lang": "javascript", "code": "// Port (interface du domaine)\n// interface DepotCommandes { enregistrer(c); trouverParId(id); }\n\n// Adaptateur SQL (infrastructure)\nclass DepotCommandesSQL {\n  constructor(db) { this.db = db; }\n  async enregistrer(c) { /* INSERT */ }\n  async trouverParId(id) { /* SELECT */ }\n}\n\n// Cas d'usage (application) : dépend du port, pas de SQL\nasync function confirmer(id, depot) {\n  const c = await depot.trouverParId(id);\n  c.confirmer();\n  await depot.enregistrer(c);\n}" },
+            { "type": "p", "text": "Le bénéfice est tangible : on teste le domaine sans base ni serveur, on change de stockage sans réécrire les règles, et les erreurs techniques restent en périphérie." },
+            { "type": "warning", "text": "Ces architectures ne justifient pas une couche par table ni un fichier par classe. Une petite application peut rester simple : la règle de dépendance compte plus que le nombre de dossiers." }
+          ],
+          "exercise": {
+            "title": "Appliquer la règle de dépendance",
+            "instructions": "Une entité du domaine importe directement le client de base de données. Quel est le problème et la correction ?",
+            "hints": ["Le domaine ne doit pas connaître l'infrastructure.", "Un port peut être défini côté domaine."],
+            "solution": "Le domaine dépend d'un détail technique, ce qui empêche de le tester seul. Définir un port de persistance dans le domaine et le faire implémenter par un adaptateur SQL en périphérie."
+          },
+          "quiz": [
+            { "id": "arch-04-q1", "type": "single", "difficulty": 2, "question": "Que dit la règle de dépendance ?", "options": ["Les couches internes ne dépendent pas des externes", "Les couches externes ne dépendent de rien", "Toutes les couches se connaissent", "Le domaine dépend de la base"], "answer": 0, "explanation": "Les dépendances pointent vers l'intérieur : le domaine ne connaît pas l'infrastructure.", "hints": [] },
+            { "id": "arch-04-q2", "type": "single", "difficulty": 3, "question": "Quel est le rôle d'un adaptateur ?", "options": ["Implémenter un port du domaine avec une technologie concrète", "Remplacer le domaine", "Générer les tests", "Définir les règles métier"], "answer": 0, "explanation": "L'adaptateur relie une interface du domaine à une technologie (SQL, HTTP, messagerie).", "hints": [] }
+          ]
+        },
+        {
+          "id": "arch-05",
+          "title": "Monolithe, microservices et événements",
+          "duration": 24,
+          "objectives": [
+            "Comparer monolithe et microservices",
+            "Connaître les risques d'un système distribué"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **monolithe** regroupe l'application en un seul déploiement. C'est souvent le bon choix : transactions simples, débogage direct, un seul pipeline. Les **microservices** découpent l'application en services déployables indépendamment, ce qui paie à l'échelle des équipes et des charges, mais ajoute une complexité réelle." },
+            { "type": "table", "headers": ["Aspect", "Monolithe", "Microservices"], "rows": [
+              ["Transactions", "Locales et simples", "Réparties, à concevoir (sagas, compensations)"],
+              ["Déploiement", "Un artefact", "Plusieurs, avec versionnement"],
+              ["Diagnostic", "Une trace", "Traces distribuées, corrélation"],
+              ["Équipes", "Coordination forte", "Autonomie, contrats entre services"]
+            ] },
+            { "type": "p", "text": "Un système **événementiel** publie des faits (« CommandePayée ») que d'autres services consomment. Cela découple producteur et consommateur, au prix de la cohérence immédiate : les consommateurs deviennent **idempotents** et tolèrent les doublons et le désordre." },
+            { "type": "code", "lang": "javascript", "code": "// Consommateur idempotent : un identifiant d'événement évite le double traitement\nasync function traiter(evenement) {\n  if (await dejaTraite(evenement.id)) return;\n  await appliquer(evenement);\n  await marquerTraite(evenement.id);\n}" },
+            { "type": "warning", "text": "Les microservices distribués sans observabilité ni contrats clairs produisent des pannes difficiles à localiser. Commencez par un monolithe bien modularisé : il est possible d'en extraire des services plus tard." }
+          ],
+          "exercise": {
+            "title": "Choisir la distribution",
+            "instructions": "Une équipe de trois développeurs construit une première version d'un produit. Un monolithe ou des microservices ?",
+            "hints": ["La complexité de distribution a un coût fixe.", "Le découpage peut venir plus tard."],
+            "solution": "Un monolithe bien modularisé : moins de complexité opérationnelle, plus rapide à livrer. Le découpage pourra suivre les besoins réels."
+          },
+          "quiz": [
+            { "id": "arch-05-q1", "type": "single", "difficulty": 2, "question": "Quel est le coût principal des microservices ?", "options": ["La complexité de distribution et d'exploitation", "La lenteur du langage", "L'impossibilité de tester", "L'absence de base de données"], "answer": 0, "explanation": "Transactions réparties, observabilité, contrats et déploiements multiples.", "hints": [] },
+            { "id": "arch-05-q2", "type": "single", "difficulty": 2, "question": "Pourquoi un consommateur d'événements doit-il être idempotent ?", "options": ["Les événements peuvent être livrés plusieurs fois", "Les événements sont chiffrés", "Le réseau est toujours fiable", "Les événements arrivent dans l'ordre"], "answer": 0, "explanation": "La livraison au moins une fois implique des doublons possibles : le traitement doit être rejouable.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Refactoriser un module couplé",
+    "brief": "Prenez un module qui mélange accès aux données, règles métier et envoi de messages, puis séparez-le en respectant la règle de dépendance.",
+    "steps": [
+      "Lister les responsabilités du module et les dépendances externes.",
+      "Extraire les règles métier dans des fonctions pures, sans accès à la base ni au réseau.",
+      "Définir les ports nécessaires (persistance, notification) et écrire des adaptateurs.",
+      "Écrire des tests du domaine avec des doubles de test, sans base de données.",
+      "Comparer le nombre de tests possibles et le temps d'exécution avant et après."
+    ],
+    "criteria": [
+      "Le code du domaine n'importe aucune bibliothèque d'infrastructure.",
+      "Les règles métier sont testées sans base ni réseau.",
+      "Aucun pattern n'est introduit sans justification écrite."
+    ]
+  }
+}

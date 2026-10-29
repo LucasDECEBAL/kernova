@@ -1,6 +1,6 @@
 // Catalogue : recherche instantanée, filtres combinables, tri et chargement progressif.
 
-import { h, icon, emptyState } from '../core/dom.js';
+import { h, icon, emptyState , setChildren } from '../core/dom.js';
 import { getCourses, getDomains } from '../core/data.js';
 import { get } from '../core/store.js';
 import { courseProgress, isFavorite } from '../core/progress.js';
@@ -29,7 +29,7 @@ const SORTS = {
 };
 
 const DEFAULT_FILTERS = {
-  q: '', tech: '', level: '', domain: '', duration: '', type: '', progress: '', favorites: false, sort: 'title'
+  q: '', tech: '', level: '', domain: '', subdomain: '', duration: '', type: '', progress: '', favorites: false, sort: 'title'
 };
 
 export function renderCatalogPage({ outlet, query }) {
@@ -40,6 +40,15 @@ export function renderCatalogPage({ outlet, query }) {
   let visible = PAGE_SIZE;
 
   const technologies = [...new Set(courses.flatMap((c) => c.technologies || []))].sort((a, b) => a.localeCompare(b, 'fr'));
+
+  // Sous-domaines : valeur « domaine||sous-domaine », libellé lisible avec le domaine
+  const subdomains = [...new Set(courses.filter((c) => c.subdomain).map((c) => `${c.domain}||${c.subdomain}`))]
+    .map((key) => {
+      const [domainId, sub] = key.split('||');
+      const domain = domains.find((d) => d.id === domainId);
+      return { value: key, label: domain ? `${domain.name} (${sub})` : sub };
+    })
+    .sort((a, b) => a.label.localeCompare(b.label, 'fr'));
 
   const select = (id, label, options, value, onChange) => h('div', { class: 'field' },
     h('label', { for: id }, label),
@@ -77,6 +86,7 @@ export function renderCatalogPage({ outlet, query }) {
       select('cat-tech', 'Technologie', [['', 'Toutes'], ...technologies.map((t) => [t, t])], filters.tech, (v) => { filters.tech = v; }),
       select('cat-level', 'Difficulté', [['', 'Toutes'], ...Object.entries(LEVELS).map(([k, v]) => [k, v.label])], filters.level, (v) => { filters.level = v; }),
       select('cat-domain', 'Catégorie', [['', 'Toutes'], ...domains.map((d) => [d.id, d.name])], filters.domain, (v) => { filters.domain = v; }),
+      select('cat-subdomain', 'Sous-catégorie', [['', 'Toutes'], ...subdomains.map((s) => [s.value, s.label])], filters.subdomain, (v) => { filters.subdomain = v; }),
       select('cat-duration', 'Durée', [['', 'Toutes'], ...Object.entries(DURATION_RANGES).map(([k, v]) => [k, v.label])], filters.duration, (v) => { filters.duration = v; }),
       select('cat-type', 'Type de contenu', [['', 'Tous'], ...Object.entries(TYPES).map(([k, v]) => [k, v])], filters.type, (v) => { filters.type = v; }),
       select('cat-progress', 'Progression', [['', 'Toutes'], ...Object.entries(PROGRESS_FILTERS).map(([k, v]) => [k, v.label])], filters.progress, (v) => { filters.progress = v; }),
@@ -101,6 +111,10 @@ export function renderCatalogPage({ outlet, query }) {
     if (filters.tech && !(course.technologies || []).includes(filters.tech)) return false;
     if (filters.level && course.level !== filters.level) return false;
     if (filters.domain && course.domain !== filters.domain) return false;
+    if (filters.subdomain) {
+      const [domainId, sub] = filters.subdomain.split('||');
+      if (course.domain !== domainId || course.subdomain !== sub) return false;
+    }
     if (filters.duration && !DURATION_RANGES[filters.duration].test(course.duration)) return false;
     if (filters.type && course.type !== filters.type) return false;
     if (filters.progress && !PROGRESS_FILTERS[filters.progress].test(p)) return false;
@@ -122,7 +136,7 @@ export function renderCatalogPage({ outlet, query }) {
     resultsRegion.textContent = `${rows.length} résultat${rows.length > 1 ? 's' : ''}`;
 
     if (!rows.length) {
-      listEl.replaceChildren(emptyState({
+      setChildren(listEl, emptyState({
         icon: 'search',
         title: 'Aucun résultat',
         text: 'Aucun contenu ne correspond à ces critères. Essayez un autre mot-clé ou réinitialisez les filtres.',
@@ -133,10 +147,10 @@ export function renderCatalogPage({ outlet, query }) {
         }, 'Réinitialiser les filtres')]
       }));
     } else {
-      listEl.replaceChildren(...shown.map((r) => courseCard(r.course)));
+      setChildren(listEl, ...shown.map((r) => courseCard(r.course)));
     }
 
-    moreWrap.replaceChildren();
+    setChildren(moreWrap, );
     if (rows.length > visible) {
       moreWrap.append(h('button', {
         class: 'btn',
@@ -149,14 +163,14 @@ export function renderCatalogPage({ outlet, query }) {
   function render() {
     searchInput.value = filters.q;
     favCheck.checked = filters.favorites;
-    for (const [id, key] of [['cat-tech', 'tech'], ['cat-level', 'level'], ['cat-domain', 'domain'], ['cat-duration', 'duration'], ['cat-type', 'type'], ['cat-progress', 'progress'], ['cat-sort', 'sort']]) {
+    for (const [id, key] of [['cat-tech', 'tech'], ['cat-level', 'level'], ['cat-domain', 'domain'], ['cat-subdomain', 'subdomain'], ['cat-duration', 'duration'], ['cat-type', 'type'], ['cat-progress', 'progress'], ['cat-sort', 'sort']]) {
       const el = filtersBar.querySelector(`#${id}`);
       if (el) el.value = filters[key];
     }
     update();
   }
 
-  outlet.replaceChildren(
+  setChildren(outlet, 
     h('div', { class: 'page' },
       h('header', { class: 'page-head' },
         h('h1', { text: 'Catalogue', tabindex: '-1' }),

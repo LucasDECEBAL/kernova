@@ -1,0 +1,146 @@
+{
+  "courseId": "environnements-travail",
+  "modules": [
+    {
+      "id": "env-m1",
+      "title": "Outils du quotidien",
+      "chapters": [
+        {
+          "id": "env-01",
+          "title": "Terminal et variables d'environnement",
+          "duration": 18,
+          "objectives": ["Se repérer dans un terminal", "Comprendre une variable d'environnement"],
+          "content": [
+            { "type": "p", "text": "Le terminal exécute des commandes dans un dossier courant. Sous Windows, l'invite de commandes (`cmd`) et PowerShell coexistent ; sous Linux et macOS, le shell est généralement Bash ou Zsh. Les commandes de navigation sont presque identiques." },
+            { "type": "code", "lang": "text", "code": "pwd / cd / ls        (Linux, macOS)\ncd / dir             (Windows)" },
+            { "type": "p", "text": "Une **variable d'environnement** est une valeur nommée disponible pour les programmes : chemin des exécutables (`PATH`), dossier personnel (`HOME` ou `USERPROFILE`), configuration. Modifier `PATH` permet d'appeler un programme sans écrire son chemin complet." },
+            { "type": "warning", "text": "Une variable ajoutée seulement dans la session courante disparaît à la fermeture du terminal. Pour la conserver, modifiez la configuration du shell ou les variables système." }
+          ],
+          "exercise": {
+            "title": "Afficher le PATH",
+            "instructions": "Quelle commande affiche le contenu de la variable PATH selon le système ?",
+            "hints": ["Sous Linux et macOS, on préfixe par $.", "PowerShell utilise une syntaxe différente."],
+            "solution": "Linux/macOS : echo $PATH. PowerShell : $env:PATH. Invite de commandes : echo %PATH%."
+          },
+          "quiz": [
+            { "id": "env-01-q1", "type": "single", "difficulty": 1, "question": "À quoi sert la variable PATH ?", "options": ["À localiser les exécutables", "À stocker les mots de passe", "À définir l'heure", "À choisir le navigateur"], "answer": 0, "explanation": "PATH liste les dossiers où le shell cherche les commandes.", "hints": [] },
+            { "id": "env-01-q2", "type": "truefalse", "difficulty": 2, "question": "Une variable définie dans un terminal reste disponible après sa fermeture.", "answer": false, "explanation": "Elle est propre à la session, sauf configuration persistante.", "hints": [] }
+          ]
+        },
+        {
+          "id": "env-02",
+          "title": "Utiliser efficacement un éditeur de code",
+          "duration": 18,
+          "objectives": ["Naviguer sans la souris", "Tirer parti de la recherche et des extensions"],
+          "content": [
+            { "type": "p", "text": "Un éditeur moderne (VS Code, Neovim, JetBrains) fait gagner du temps par trois fonctions : la **recherche globale**, la **palette de commandes** et la navigation entre fichiers. Les apprendre vaut mieux qu'accumuler des extensions." },
+            { "type": "list", "items": [
+              "Ouvrir la palette de commandes (Ctrl+Shift+P) pour accéder à toutes les actions.",
+              "Rechercher dans tout le projet (Ctrl+Shift+F) plutôt que fichier par fichier.",
+              "Aller à la définition et aux références d'un symbole.",
+              "Sélection multiple et renommage symbolique pour les modifications répétitives."
+            ] },
+            { "type": "tip", "text": "Apprenez cinq raccourcis à la fois et pratiquez-les une semaine. Une liste de cinquante raccourcis apprise en un jour s'oublie." }
+          ],
+          "exercise": {
+            "title": "Renommer partout",
+            "instructions": "Vous devez renommer une fonction utilisée dans douze fichiers. Quelle fonction de l'éditeur utilisez-vous, et pourquoi pas un remplacement de texte ?",
+            "hints": ["Un remplacement de texte touche aussi les chaînes et les commentaires.", "Le renommage symbolique connaît la portée."],
+            "solution": "Le renommage symbolique (F2 dans VS Code) : il ne modifie que les identifiants concernés, pas les occurrences dans le texte."
+          },
+          "quiz": [
+            { "id": "env-02-q1", "type": "single", "difficulty": 1, "question": "Que fait la recherche globale d'un éditeur ?", "options": ["Elle cherche dans tous les fichiers du projet", "Elle cherche sur Internet", "Elle remplace le terminal", "Elle compile le code"], "answer": 0, "explanation": "La recherche globale évite d'ouvrir les fichiers un par un.", "hints": [] },
+            { "id": "env-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi préférer le renommage symbolique au remplacement de texte ?", "options": ["Il ne touche que les identifiants concernés", "Il est plus lent", "Il supprime les commentaires", "Il ne fonctionne pas"], "answer": 0, "explanation": "Le remplacement brut modifie aussi les occurrences dans les chaînes et commentaires.", "hints": [] }
+          ]
+        },
+        {
+          "id": "env-03",
+          "title": "Dépendances et versions",
+          "duration": 18,
+          "objectives": ["Installer une dépendance proprement", "Comprendre un fichier de verrouillage"],
+          "content": [
+            { "type": "p", "text": "Une **dépendance** est une bibliothèque externe utilisée par le projet. Les gestionnaires de paquets (`npm`, `pip`, `composer`, `cargo`) téléchargent et enregistrent les versions. Un **fichier de verrouillage** fige les versions exactes installées." },
+            { "type": "code", "lang": "bash", "code": "npm install                 # installe selon package.json + lock\nnpm ci                      # installation reproductible (CI)\npython -m venv .venv        # environnement isolé\npip install -r requirements.txt" },
+            { "type": "p", "text": "Un **environnement virtuel** Python isole les dépendances d'un projet pour éviter les conflits entre projets. L'équivalent en Node.js est le dossier local `node_modules`, propre au projet." },
+            { "type": "warning", "text": "Ne versionnez jamais le dossier des dépendances installées, mais versionnez toujours le fichier de verrouillage : il garantit les mêmes versions partout." }
+          ],
+          "exercise": {
+            "title": "Installation reproductible",
+            "instructions": "Quelle commande npm installe exactement les versions du fichier de verrouillage, sans le modifier ?",
+            "hints": ["Ce n'est pas install, qui peut mettre à jour.", "L'option est utilisée en intégration continue."],
+            "solution": "npm ci : installation reproductible à partir du fichier de verrouillage."
+          },
+          "quiz": [
+            { "id": "env-03-q1", "type": "single", "difficulty": 2, "question": "À quoi sert un fichier de verrouillage ?", "options": ["À figer les versions exactes des dépendances", "À bloquer l'installation", "À chiffrer les paquets", "À supprimer les dépendances"], "answer": 0, "explanation": "Il garantit des installations identiques sur toutes les machines.", "hints": [] },
+            { "id": "env-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi créer un environnement virtuel Python par projet ?", "options": ["Pour isoler les dépendances entre projets", "Pour accélérer le processeur", "Pour éviter le terminal", "Pour compiler le code"], "answer": 0, "explanation": "Chaque projet garde ses versions sans conflit avec les autres.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "env-m2",
+      "title": "Fichiers, projets et documentation",
+      "chapters": [
+        {
+          "id": "env-04",
+          "title": "Archives et compression",
+          "duration": 16,
+          "objectives": ["Choisir un format d'archive", "Créer et extraire proprement"],
+          "content": [
+            { "type": "p", "text": "Une **archive** regroupe plusieurs fichiers en un seul ; la **compression** réduit leur taille. Les formats courants sont ZIP (universel), TAR.GZ (standard sous Linux) et 7z (fort taux de compression)." },
+            { "type": "code", "lang": "bash", "code": "tar -czf sauvegarde.tar.gz dossier/\ntar -xzf sauvegarde.tar.gz\nzip -r projet.zip dossier/\nunzip projet.zip -d destination/" },
+            { "type": "warning", "text": "Extrayez toujours dans un dossier dédié. Une archive peut contenir des chemins relatifs (`../`) qui écraseraient des fichiers hors du dossier cible." }
+          ],
+          "exercise": {
+            "title": "Créer une archive compressée",
+            "instructions": "Quelle commande crée une archive sauvegarde.tar.gz contenant le dossier projets ?",
+            "hints": ["c crée, z compresse, f nomme le fichier.", "Le dossier est le dernier argument."],
+            "solution": "tar -czf sauvegarde.tar.gz projets/"
+          },
+          "quiz": [
+            { "id": "env-04-q1", "type": "single", "difficulty": 1, "question": "Que signifie le z dans tar -czf ?", "options": ["Compresser avec gzip", "Créer une archive", "Nommer le fichier", "Lister l'archive"], "answer": 0, "explanation": "c crée, z compresse, f désigne le nom de l'archive.", "hints": [] },
+            { "id": "env-04-q2", "type": "truefalse", "difficulty": 2, "question": "Extraire une archive dans n'importe quel dossier est sans risque.", "answer": false, "explanation": "Des chemins relatifs peuvent écraser des fichiers hors du dossier cible.", "hints": [] }
+          ]
+        },
+        {
+          "id": "env-05",
+          "title": "Organiser un projet et lire la documentation",
+          "duration": 18,
+          "objectives": ["Structurer un dépôt", "Trouver l'information dans une documentation"],
+          "content": [
+            { "type": "p", "text": "Une structure claire rend un projet reprenable par quelqu'un d'autre : code source, tests, documentation, configuration, scripts. Le fichier `README` explique à quoi sert le projet, comment l'installer et comment le lancer." },
+            { "type": "code", "lang": "text", "code": "projet/\n├── README.md\n├── src/\n├── tests/\n├── docs/\n├── .env.example\n└── package.json" },
+            { "type": "p", "text": "Lire une documentation technique se fait par couches : page d'introduction, guide de démarrage, référence des fonctions, notes de version. Cherchez d'abord la version installée : une réponse issue d'une autre version peut être fausse." },
+            { "type": "tip", "text": "Datez vos sources. Une réponse de forum sans version ni date est une piste, pas une vérité." }
+          ],
+          "exercise": {
+            "title": "Contenu d'un README",
+            "instructions": "Quelles informations minimales un README doit-il contenir pour qu'un nouveau venu démarre ?",
+            "hints": ["Pensez à l'objectif, à l'installation et à l'exécution.", "Mentionnez aussi les prérequis."],
+            "solution": "Objet du projet, prérequis, installation, commande de lancement, tests, et structure ou documentation complémentaire."
+          },
+          "quiz": [
+            { "id": "env-05-q1", "type": "single", "difficulty": 1, "question": "Quel fichier décrit l'installation et l'utilisation d'un projet ?", "options": ["README", ".env", "package-lock.json", ".gitignore"], "answer": 0, "explanation": "Le README est le point d'entrée de la documentation.", "hints": [] },
+            { "id": "env-05-q2", "type": "single", "difficulty": 2, "question": "Pourquoi vérifier la version dans une documentation ?", "options": ["Les comportements changent selon la version", "La documentation est payante", "Les versions n'existent pas", "Pour citer la source"], "answer": 0, "explanation": "Une réponse valable pour une autre version peut induire en erreur.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Poste de travail prêt à coder",
+    "brief": "Documentez l'installation d'un environnement de développement reproductible sur votre machine.",
+    "steps": [
+      "Lister les outils nécessaires et leurs versions.",
+      "Configurer les variables d'environnement utiles et vérifier leur persistance.",
+      "Créer un projet avec environnement isolé et fichier de verrouillage.",
+      "Écrire un README avec installation, lancement et tests.",
+      "Vérifier la reproductibilité sur un second compte ou une machine virtuelle."
+    ],
+    "criteria": [
+      "Une autre personne peut reproduire l'environnement à partir du README.",
+      "Les versions des dépendances sont figées.",
+      "Aucun secret n'apparaît dans le dépôt."
+    ]
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "courseId": "reseaux-avance",
+  "modules": [
+    {
+      "id": "rsa-m1",
+      "title": "Commutateurs et routage",
+      "chapters": [
+        {
+          "id": "rsa-01",
+          "title": "VLAN et liens trunk",
+          "duration": 22,
+          "objectives": ["Expliquer un VLAN", "Comprendre un trunk 802.1Q"],
+          "content": [
+            { "type": "p", "text": "Un **VLAN** découpe un commutateur en plusieurs réseaux logiques : le trafic d'un VLAN ne parvient pas aux autres sans routage. Un **trunk** transporte plusieurs VLAN sur un seul lien grâce à l'étiquette **802.1Q**." },
+            { "type": "list", "items": [
+              "Un port d'accès appartient à un seul VLAN.",
+              "Un port trunk porte plusieurs VLAN étiquetés.",
+              "Le routage entre VLAN exige une interface de routage (routeur ou commutateur de niveau 3).",
+              "Le VLAN natif d'un trunk ne porte pas d'étiquette : une divergence entre équipements crée des fuites de trafic."
+            ] },
+            { "type": "warning", "text": "Un trunk mal configuré peut faire passer un VLAN dans un autre. Vérifiez explicitement la liste des VLAN autorisés sur chaque extrémité." }
+          ],
+          "exercise": {
+            "title": "Accès ou trunk ?",
+            "instructions": "Un port relie un poste de travail. Un autre relie deux commutateurs. Quel mode pour chacun ?",
+            "hints": ["Un poste appartient à un seul réseau.", "Deux commutateurs transportent plusieurs VLAN."],
+            "solution": "Mode accès pour le poste, mode trunk pour le lien entre commutateurs."
+          },
+          "quiz": [
+            { "id": "rsa-01-q1", "type": "single", "difficulty": 2, "question": "Quel protocole étiquette les VLAN sur un trunk ?", "options": ["802.1Q", "802.3", "802.11", "ICMP"], "answer": 0, "explanation": "802.1Q ajoute une étiquette identifiant le VLAN.", "hints": [] },
+            { "id": "rsa-01-q2", "type": "single", "difficulty": 2, "question": "Que faut-il pour faire communiquer deux VLAN ?", "options": ["Un routage entre les deux réseaux", "Un câble supplémentaire", "Un serveur DHCP unique", "Rien, c'est automatique"], "answer": 0, "explanation": "Les VLAN sont isolés au niveau 2 : il faut router.", "hints": [] }
+          ]
+        },
+        {
+          "id": "rsa-02",
+          "title": "Routage statique et dynamique",
+          "duration": 22,
+          "objectives": ["Écrire une route statique", "Comprendre le principe d'OSPF"],
+          "content": [
+            { "type": "p", "text": "Une **route statique** indique manuellement le prochain saut vers un réseau. Simple et prévisible, elle ne s'adapte pas aux pannes. Le **routage dynamique** échange des informations entre routeurs : OSPF calcule le plus court chemin à partir d'un coût de lien." },
+            { "type": "code", "lang": "bash", "code": "ip route add 10.20.0.0/16 via 192.168.1.1\nip route show" },
+            { "type": "p", "text": "OSPF est un protocole à **état de liens** : chaque routeur connaît la topologie de sa zone et recalcule les chemins en cas de changement. Une zone mal conçue propage les instabilités." },
+            { "type": "warning", "text": "Une route par défaut mal placée attire tout le trafic inconnu. Vérifiez l'ordre de priorité et les métriques avant de l'ajouter." }
+          ],
+          "exercise": {
+            "title": "Route statique",
+            "instructions": "Écrivez la commande qui ajoute une route vers 10.20.0.0/16 via 192.168.1.1.",
+            "hints": ["La commande est ip route add.", "Le préfixe précède via."],
+            "solution": "ip route add 10.20.0.0/16 via 192.168.1.1"
+          },
+          "quiz": [
+            { "id": "rsa-02-q1", "type": "single", "difficulty": 2, "question": "Quel est le principal inconvénient d'une route statique ?", "options": ["Elle ne s'adapte pas automatiquement aux pannes", "Elle est illisible", "Elle interdit le NAT", "Elle supprime le DNS"], "answer": 0, "explanation": "Il faut la modifier à la main quand la topologie change.", "hints": [] },
+            { "id": "rsa-02-q2", "type": "single", "difficulty": 3, "question": "Sur quoi repose le calcul de chemin d'OSPF ?", "options": ["Un coût de lien", "Le nombre d'utilisateurs", "L'adresse MAC", "Le TTL"], "answer": 0, "explanation": "OSPF utilise un coût dérivé de la bande passante pour choisir le chemin.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rsa-m2",
+      "title": "Filtrer et diagnostiquer",
+      "chapters": [
+        {
+          "id": "rsa-03",
+          "title": "Listes de contrôle d'accès",
+          "duration": 20,
+          "objectives": ["Écrire une règle ordonnée", "Comprendre le filtrage d'état"],
+          "content": [
+            { "type": "p", "text": "Une **ACL** filtre le trafic selon des critères (source, destination, port, protocole). Les règles sont évaluées **dans l'ordre** et la première correspondance s'applique ; un refus implicite termine souvent la liste." },
+            { "type": "code", "lang": "text", "title": "Principe", "code": "1. autoriser 192.168.10.0/24 vers 10.0.0.10 port 443\n2. refuser   toute source vers 10.0.0.10 port 22\n3. autoriser le reste du trafic nécessaire\n4. refuser   tout le reste (explicite)" },
+            { "type": "p", "text": "Un pare-feu **avec état** mémorise les connexions autorisées et laisse revenir leurs réponses. Un filtrage **sans état** exige une règle dans chaque sens." },
+            { "type": "warning", "text": "Placer une règle de refus générale en tête bloque tout, y compris l'administration. Testez chaque règle avec une session de secours ouverte." }
+          ],
+          "exercise": {
+            "title": "Ordre des règles",
+            "instructions": "Vous voulez autoriser le SSH depuis un seul poste d'administration et le refuser ailleurs. Dans quel ordre écrire les règles ?",
+            "hints": ["La première correspondance gagne.", "Le refus général doit venir après l'autorisation."],
+            "solution": "D'abord autoriser l'adresse du poste d'administration, puis refuser le SSH pour tout le reste, puis les autres règles légitimes."
+          },
+          "quiz": [
+            { "id": "rsa-03-q1", "type": "single", "difficulty": 2, "question": "Comment les règles d'une ACL sont-elles évaluées ?", "options": ["Dans l'ordre, la première correspondance gagne", "Toutes en même temps", "Par ordre alphabétique", "Au hasard"], "answer": 0, "explanation": "L'ordre détermine le résultat : une règle large en tête masque les suivantes.", "hints": [] },
+            { "id": "rsa-03-q2", "type": "single", "difficulty": 2, "question": "Que permet un pare-feu avec état ?", "options": ["Laisser revenir les réponses des connexions autorisées", "Supprimer les ACL", "Chiffrer le trafic", "Attribuer des adresses"], "answer": 0, "explanation": "Il suit les connexions établies.", "hints": [] }
+          ]
+        },
+        {
+          "id": "rsa-04",
+          "title": "Dépannage méthodique",
+          "duration": 22,
+          "objectives": ["Suivre une méthode par couche", "Utiliser les bons outils"],
+          "content": [
+            { "type": "p", "text": "Le dépannage réseau suit un ordre : liaison physique, adressage, résolution de noms, filtrage, application. On vérifie chaque niveau avant de passer au suivant, sinon on cherche au hasard." },
+            { "type": "table", "headers": ["Niveau", "Outil"], "rows": [
+              ["Liaison", "État du lien, `ip link`"],
+              ["Adressage", "`ip addr`, `ip route`, ping vers la passerelle"],
+              ["Noms", "`dig`, `getent hosts`"],
+              ["Transport", "`ss -tulpn`, test du port"],
+              ["Application", "Journaux du service, réponse HTTP"]
+            ] },
+            { "type": "warning", "text": "Un `ping` qui échoue ne prouve pas l'absence de connectivité : un pare-feu peut bloquer ICMP et laisser passer le service. Testez le port réellement utilisé." }
+          ],
+          "exercise": {
+            "title": "Par où commencer ?",
+            "instructions": "Un utilisateur n'atteint plus une application interne. Quelle première vérification ?",
+            "hints": ["Commencez par le plus proche.", "L'utilisateur a-t-il une adresse correcte ?"],
+            "solution": "Vérifier l'adresse, le masque et la passerelle de l'utilisateur, puis la joignabilité de la passerelle avant de tester le service."
+          },
+          "quiz": [
+            { "id": "rsa-04-q1", "type": "single", "difficulty": 1, "question": "Pourquoi vérifier les couches dans l'ordre ?", "options": ["Pour éviter de chercher au hasard", "Pour aller plus vite en réseau", "Pour supprimer les ACL", "Pour changer le DNS"], "answer": 0, "explanation": "Une méthode ordonnée élimine les causes une par une.", "hints": [] },
+            { "id": "rsa-04-q2", "type": "truefalse", "difficulty": 2, "question": "Un ping bloqué prouve que le service est injoignable.", "answer": false, "explanation": "ICMP peut être filtré alors que le port applicatif est ouvert.", "hints": [] }
+          ]
+        },
+        {
+          "id": "rsa-05",
+          "title": "Supervision et analyse de trafic",
+          "duration": 20,
+          "objectives": ["Choisir une métrique réseau", "Cadrer une capture"],
+          "content": [
+            { "type": "p", "text": "La supervision réseau collecte des métriques d'interface (débit, erreurs, saturation) et des flux. Une **capture de paquets** sert au diagnostic ciblé, jamais à surveiller en permanence." },
+            { "type": "list", "items": [
+              "Surveiller l'utilisation des liens et les erreurs matérielles.",
+              "Mesurer la latence et la perte vers les services critiques.",
+              "Capturer uniquement le trafic nécessaire, pendant une durée définie.",
+              "Ne jamais analyser le trafic d'un réseau sans autorisation."
+            ] },
+            { "type": "warning", "text": "Une capture peut contenir des données personnelles ou des identifiants. Limitez le périmètre, stockez-la de façon protégée et supprimez-la après analyse." }
+          ],
+          "exercise": {
+            "title": "Capture ciblée",
+            "instructions": "Un service HTTPS est lent. Que capturez-vous et comment limitez-vous la collecte ?",
+            "hints": ["Filtrez par hôte et port.", "Limitez la durée et la taille."],
+            "solution": "Une capture filtrée sur l'adresse du serveur et le port 443, sur une courte durée, avec un volume maximal, puis analyse et suppression."
+          },
+          "quiz": [
+            { "id": "rsa-05-q1", "type": "single", "difficulty": 2, "question": "Pourquoi filtrer une capture de paquets ?", "options": ["Pour limiter le volume et les données sensibles", "Pour accélérer le réseau", "Pour supprimer les VLAN", "Pour changer le DNS"], "answer": 0, "explanation": "Une capture non filtrée collecte bien plus que nécessaire.", "hints": [] },
+            { "id": "rsa-05-q2", "type": "single", "difficulty": 2, "question": "Quel indicateur révèle un lien saturé ?", "options": ["L'utilisation proche de la capacité avec pertes", "Le nombre de fichiers", "La version du noyau", "Le nombre d'utilisateurs"], "answer": 0, "explanation": "La saturation se traduit par des pertes et une latence accrue.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Maquette réseau segmentée",
+    "brief": "Concevez et testez sur un simulateur ou un laboratoire deux VLAN reliés par un routage filtré.",
+    "steps": [
+      "Définir deux VLAN avec leur plan d'adressage.",
+      "Configurer les ports d'accès et le trunk entre commutateurs.",
+      "Mettre en place le routage entre VLAN.",
+      "Écrire des ACL limitant l'accès au serveur d'administration.",
+      "Tester chaque scénario et documenter les résultats, y compris les refus attendus."
+    ],
+    "criteria": [
+      "Chaque VLAN est isolé sans routage.",
+      "Les règles autorisent uniquement les flux prévus.",
+      "Les tests prouvent le fonctionnement et les refus."
+    ]
+  }
+}

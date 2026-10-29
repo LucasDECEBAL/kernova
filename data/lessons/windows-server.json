@@ -1,0 +1,183 @@
+{
+  "courseId": "windows-server",
+  "modules": [
+    {
+      "id": "win-m1",
+      "title": "Administrer un serveur",
+      "chapters": [
+        {
+          "id": "win-01",
+          "title": "Rôles, fonctionnalités et services",
+          "duration": 20,
+          "objectives": [
+            "Distinguer rôle et fonctionnalité",
+            "Inventorier l'état d'un serveur"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **rôle** est un service principal rendu par le serveur : DNS, DHCP, Active Directory, serveur de fichiers, Remote Desktop Services. Une **fonctionnalité** est un composant de support (client Telnet, sauvegarde Windows Server, outils d'administration). Un serveur ne doit héberger que les rôles nécessaires." },
+            { "type": "code", "lang": "powershell", "code": "Get-WindowsFeature | Where-Object Installed | Select-Object Name, DisplayName\nGet-Service | Where-Object Status -eq Running | Sort-Object DisplayName\nGet-ComputerInfo | Select-Object WindowsProductName, OsVersion, CsTotalPhysicalMemory" },
+            { "type": "table", "headers": ["Commande", "Usage"], "rows": [
+              ["`Get-WindowsFeature`", "Lister rôles et fonctionnalités (Windows Server)"],
+              ["`Install-WindowsFeature`", "Installer un rôle ou une fonctionnalité"],
+              ["`Get-Service`", "État des services"],
+              ["`Get-EventLog` / `Get-WinEvent`", "Consulter les journaux"]
+            ] },
+            { "type": "p", "text": "Chaque rôle ajoute une surface d'attaque et des mises à jour à suivre. Le principe est le même que sous Linux : moins de services, moins de ports, moins de risques." },
+            { "type": "warning", "text": "L'installation d'un rôle peut imposer un redémarrage. Planifiez-la dans une fenêtre de maintenance et vérifiez les dépendances avant, sur un serveur de test." }
+          ],
+          "exercise": {
+            "title": "Rôle ou fonctionnalité ?",
+            "instructions": "DNS et les outils d'administration RSAT : lequel est un rôle, lequel est une fonctionnalité ?",
+            "hints": ["Un rôle rend un service aux clients du réseau.", "Les outils servent à administrer, pas à servir."],
+            "solution": "DNS est un rôle (service rendu aux clients) ; les outils RSAT sont une fonctionnalité d'administration."
+          },
+          "quiz": [
+            { "id": "win-01-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qu'un rôle Windows Server ?", "options": ["Un service principal rendu par le serveur", "Un thème graphique", "Un pilote", "Un compte utilisateur"], "answer": 0, "explanation": "Les rôles (DNS, AD DS, DHCP) fournissent des services aux clients.", "hints": [] },
+            { "id": "win-01-q2", "type": "single", "difficulty": 2, "question": "Quelle commande liste les rôles et fonctionnalités installés ?", "options": ["Get-Service", "Get-WindowsFeature", "Get-Process", "ipconfig"], "answer": 1, "explanation": "Get-WindowsFeature affiche l'état d'installation des rôles et fonctionnalités.", "hints": [] }
+          ]
+        },
+        {
+          "id": "win-02",
+          "title": "Active Directory : domaines, OU et comptes",
+          "duration": 24,
+          "objectives": [
+            "Décrire l'organisation d'un annuaire",
+            "Gérer comptes et groupes au moindre privilège"
+          ],
+          "content": [
+            { "type": "p", "text": "**Active Directory Domain Services** (AD DS) est l'annuaire central d'un domaine Windows. Il stocke les comptes, groupes et ordinateurs, et permet l'authentification unique sur le réseau. Une **forêt** regroupe un ou plusieurs **domaines** qui partagent un schéma et des relations de confiance." },
+            { "type": "p", "text": "Les **unités d'organisation** (OU) servent à organiser les objets pour déléguer l'administration et appliquer des stratégies. Une OU n'est pas un groupe de sécurité : elle structure l'annuaire, elle ne donne pas de droits." },
+            { "type": "code", "lang": "powershell", "code": "New-ADOrganizationalUnit -Name \"Postes\" -Path \"DC=lab,DC=local\"\nNew-ADUser -Name \"Alice Martin\" -SamAccountName amartin `\n  -UserPrincipalName amartin@lab.local -Path \"OU=Postes,DC=lab,DC=local\" `\n  -AccountPassword (Read-Host -AsSecureString)\nAdd-ADGroupMember -Identity \"GG-Compta-RW\" -Members amartin\nGet-ADUser amartin -Properties MemberOf, LastLogonDate" },
+            { "type": "p", "text": "Les bonnes pratiques sont constantes : des comptes nominatifs, des groupes globaux pour les droits, des groupes locaux de domaine pour les ressources, et un compte administrateur distinct du compte quotidien." },
+            { "type": "warning", "text": "Ne donnez jamais de droits directement à un utilisateur : passez par un groupe. Sans cela, l'audit devient impossible et le départ d'une personne laisse des droits orphelins." }
+          ],
+          "exercise": {
+            "title": "Structurer un annuaire",
+            "instructions": "Une entreprise a deux services et des postes clients. Proposez une organisation simple en unités d'organisation.",
+            "hints": ["Une OU par besoin de délégation ou de stratégie.", "Séparer les utilisateurs des ordinateurs simplifie les GPO."],
+            "solution": "Par exemple OU=Utilisateurs (sous-OU Compta, Technique) et OU=Ordinateurs (sous-OU Postes, Serveurs), selon les besoins réels de délégation et de stratégie."
+          },
+          "quiz": [
+            { "id": "win-02-q1", "type": "single", "difficulty": 2, "question": "À quoi sert une unité d'organisation ?", "options": ["À organiser les objets et déléguer l'administration", "À chiffrer les disques", "À remplacer les groupes de sécurité", "À créer des domaines"], "answer": 0, "explanation": "L'OU structure l'annuaire pour la délégation et les stratégies ; elle ne donne pas de droits.", "hints": [] },
+            { "id": "win-02-q2", "type": "truefalse", "difficulty": 2, "question": "Ajouter un utilisateur directement à une ressource partagée est une bonne pratique d'administration.", "answer": false, "explanation": "On passe par des groupes pour tracer et révoquer les droits proprement.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "win-m2",
+      "title": "Stratégies, services et permissions",
+      "chapters": [
+        {
+          "id": "win-03",
+          "title": "Stratégies de groupe",
+          "duration": 22,
+          "objectives": [
+            "Appliquer une stratégie à une OU",
+            "Comprendre l'ordre d'application"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **stratégie de groupe** (GPO) configure des postes et des comptes : mots de passe, restrictions, scripts de démarrage, mappages de lecteurs, paramètres de sécurité. Une GPO se lie à un site, un domaine ou une OU." },
+            { "type": "table", "headers": ["Niveau", "Portée"], "rows": [
+              ["Site", "Tous les objets du site"],
+              ["Domaine", "Tous les objets du domaine"],
+              ["OU", "Les objets de l'OU et de ses sous-OU"]
+            ] },
+            { "type": "p", "text": "L'ordre d'application va du plus large au plus précis : site, domaine, OU. En cas de conflit, la dernière appliquée gagne, sauf paramètre marqué comme prioritaire. Les filtres de sécurité permettent de restreindre une GPO à un groupe." },
+            { "type": "code", "lang": "powershell", "code": "Get-GPO -All | Select-Object DisplayName, GpoStatus\nGet-GPResultantSetOfPolicy -ReportType Html -Path C:\\temp\\rsop.html" },
+            { "type": "warning", "text": "Une GPO mal testée peut verrouiller tous les postes d'une OU, y compris les comptes d'administration. Testez d'abord sur une OU de test, avec un filtrage limité." }
+          ],
+          "exercise": {
+            "title": "Portée d'une stratégie",
+            "instructions": "Vous voulez appliquer une règle de mot de passe aux comptes du domaine entier. À quel niveau liez-vous la GPO ?",
+            "hints": ["Les stratégies de mot de passe de domaine s'appliquent à la racine du domaine.", "Une OU ne porte pas la politique de mot de passe du domaine."],
+            "solution": "À la racine du domaine, car les paramètres de mot de passe de domaine se configurent au niveau du domaine."
+          },
+          "quiz": [
+            { "id": "win-03-q1", "type": "single", "difficulty": 2, "question": "Dans quel ordre les GPO s'appliquent-elles ?", "options": ["Site, domaine, OU", "OU, domaine, site", "Domaine, site, OU", "Aléatoire"], "answer": 0, "explanation": "Du plus large au plus précis ; le dernier niveau l'emporte en cas de conflit.", "hints": [] },
+            { "id": "win-03-q2", "type": "single", "difficulty": 2, "question": "Que produit Get-GPResultantSetOfPolicy ?", "options": ["Un rapport des stratégies effectivement appliquées", "Une sauvegarde du domaine", "Une liste des users", "Un correctif"], "answer": 0, "explanation": "Le rapport RSoP montre le résultat réel des GPO pour un utilisateur ou un ordinateur.", "hints": [] }
+          ]
+        },
+        {
+          "id": "win-04",
+          "title": "DNS et DHCP sous Windows Server",
+          "duration": 22,
+          "objectives": [
+            "Comprendre la zone DNS d'un domaine",
+            "Configurer une étendue DHCP"
+          ],
+          "content": [
+            { "type": "p", "text": "Active Directory repose sur le **DNS** : les clients localisent les contrôleurs de domaine par des enregistrements `_ldap._tcp`. Une zone intégrée à Active Directory se réplique avec l'annuaire." },
+            { "type": "table", "headers": ["Élément DNS", "Rôle"], "rows": [
+              ["Zone directe", "Nom → adresse"],
+              ["Zone inverse", "Adresse → nom"],
+              ["Enregistrement A / AAAA", "Hôte IPv4 / IPv6"],
+              ["Enregistrement SRV", "Localisation d'un service (contrôleur de domaine)"],
+              ["Redirecteur", "Serveur interrogé pour les noms externes"]
+            ] },
+            { "type": "p", "text": "Le **DHCP** attribue automatiquement les adresses. Une étendue définit la plage, le masque, la passerelle et les serveurs DNS. Les réservations fixent une adresse par matériel ; les exclusions évitent d'attribuer des adresses réservées à des serveurs." },
+            { "type": "code", "lang": "powershell", "code": "Add-DhcpServerv4Scope -Name \"LAN\" -StartRange 192.168.10.100 `\n  -EndRange 192.168.10.200 -SubnetMask 255.255.255.0\nSet-DhcpServerv4OptionValue -ScopeId 192.168.10.0 `\n  -Router 192.168.10.1 -DnsServer 192.168.10.10" },
+            { "type": "warning", "text": "Deux serveurs DHCP actifs sur le même réseau distribuent des adresses incohérentes. Utilisez une autorisation dans Active Directory ou un basculement correctement configuré." }
+          ],
+          "exercise": {
+            "title": "Plage DHCP",
+            "instructions": "Un réseau 192.168.10.0/24 a un routeur en .1 et un serveur DNS en .10. Quelle plage DHCP proposez-vous, et quelles adresses exclure ?",
+            "hints": ["Les adresses d'infrastructure doivent rester fixes.", "La diffusion .255 et le réseau .0 ne s'attribuent pas."],
+            "solution": "Par exemple .100 à .200 pour les clients, en excluant .1 à .20 (infrastructure). Le réseau .0 et la diffusion .255 ne sont jamais attribuables."
+          },
+          "quiz": [
+            { "id": "win-04-q1", "type": "single", "difficulty": 2, "question": "Quel enregistrement DNS permet de localiser un contrôleur de domaine ?", "options": ["A", "SRV", "MX", "TXT"], "answer": 1, "explanation": "Les enregistrements SRV _ldap._tcp indiquent les contrôleurs de domaine.", "hints": [] },
+            { "id": "win-04-q2", "type": "single", "difficulty": 2, "question": "À quoi sert une réservation DHCP ?", "options": ["À associer toujours la même adresse à un matériel", "À supprimer une étendue", "À chiffrer les baux", "À créer une zone DNS"], "answer": 0, "explanation": "La réservation fixe l'adresse pour un identifiant matériel donné.", "hints": [] }
+          ]
+        },
+        {
+          "id": "win-05",
+          "title": "Permissions NTFS et partages",
+          "duration": 22,
+          "objectives": [
+            "Calculer un droit effectif",
+            "Éviter les erreurs de permissions"
+          ],
+          "content": [
+            { "type": "p", "text": "Sur Windows, deux systèmes de droits se superposent. Les permissions de **partage** s'appliquent à l'accès réseau ; les permissions **NTFS** s'appliquent au système de fichiers, en local comme en réseau. En accès réseau, le droit effectif est le plus **restrictif** des deux." },
+            { "type": "table", "headers": ["Permission", "Effet sur un dossier"], "rows": [
+              ["Lecture", "Voir le contenu et ouvrir les fichiers"],
+              ["Écriture", "Créer des fichiers et dossiers"],
+              ["Modification", "Lire, écrire, supprimer"],
+              ["Contrôle total", "Modifier aussi les permissions"]
+            ] },
+            { "type": "p", "text": "Les droits **explicites** l'emportent sur les droits **hérités**, et un **refus** explicite l'emporte sur une autorisation. C'est une source classique d'effets inattendus : mieux vaut retirer une appartenance à un groupe que multiplier les refus." },
+            { "type": "code", "lang": "powershell", "code": "icacls \"D:\\Partages\\Compta\"\nget-smbshare\nGet-SmbShareAccess -Name Compta\nGrant-SmbShareAccess -Name Compta -AccountName \"GG-Compta-RW\" -AccessRight Change" },
+            { "type": "warning", "text": "Accorder « Contrôle total » à « Tout le monde » sur un partage est l'erreur la plus fréquente. Le partage doit limiter l'accès, et NTFS affiner les droits." }
+          ],
+          "exercise": {
+            "title": "Droit effectif",
+            "instructions": "Un partage autorise « Modification » au groupe Compta. Le dossier NTFS n'accorde que « Lecture » à ce groupe. Quel droit effectif en accès réseau ?",
+            "hints": ["Le plus restrictif s'applique.", "NTFS et partage se combinent."],
+            "solution": "Lecture seule : le droit effectif est l'intersection des permissions de partage et NTFS."
+          },
+          "quiz": [
+            { "id": "win-05-q1", "type": "single", "difficulty": 2, "question": "Comment se combinent permissions de partage et NTFS en accès réseau ?", "options": ["Le plus restrictif l'emporte", "Le plus permissif l'emporte", "Seul NTFS compte", "Seul le partage compte"], "answer": 0, "explanation": "Les deux couches s'appliquent : l'accès effectif est le plus restrictif.", "hints": [] },
+            { "id": "win-05-q2", "type": "single", "difficulty": 3, "question": "Quelle permission l'emporte entre un refus explicite et une autorisation héritée ?", "options": ["Le refus explicite", "L'autorisation héritée", "La plus récente", "Aucune"], "answer": 0, "explanation": "Le refus explicite est prioritaire, ce qui peut produire des blocages difficiles à diagnostiquer.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Structure de domaine pour une PME",
+    "brief": "Concevez et documentez une organisation Active Directory simple : unités d'organisation, groupes, stratégies et partage de fichiers.",
+    "steps": [
+      "Décrire les services de l'entreprise et les besoins d'accès aux fichiers.",
+      "Proposer une arborescence d'unités d'organisation et justifier chaque niveau.",
+      "Définir les groupes de sécurité et leur rôle, sans droits directs aux utilisateurs.",
+      "Écrire deux GPO : politique de mot de passe et restriction d'ouverture de session.",
+      "Configurer un partage avec permissions NTFS cohérentes et vérifier avec icacls et Get-SmbShareAccess."
+    ],
+    "criteria": [
+      "Aucun utilisateur ne reçoit de droit direct sur une ressource.",
+      "Les permissions de partage et NTFS se combinent sans contradiction.",
+      "Chaque GPO est testée sur une OU de test avant généralisation."
+    ]
+  }
+}

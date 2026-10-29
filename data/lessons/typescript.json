@@ -1,0 +1,173 @@
+{
+  "courseId": "typescript",
+  "modules": [
+    {
+      "id": "ts-m1",
+      "title": "Typer le langage",
+      "chapters": [
+        {
+          "id": "ts-01",
+          "title": "Pourquoi ajouter des types",
+          "duration": 18,
+          "objectives": [
+            "Expliquer l'intérêt du typage statique",
+            "Comprendre la transpilation"
+          ],
+          "content": [
+            { "type": "p", "text": "**TypeScript** ajoute un système de types à JavaScript. Le navigateur ne sait pas exécuter du TypeScript : un compilateur le **transpile** en JavaScript. Les types disparaissent à l'exécution ; ils servent à l'analyse, pendant le développement et dans l'éditeur." },
+            { "type": "code", "lang": "typescript", "code": "function totalTTC(prixHT: number, taux: number = 0.2): number {\n  return prixHT * (1 + taux);\n}\n\ntotalTTC(100);        // OK : 120\ntotalTTC(\"100\");      // erreur détectée à la compilation" },
+            { "type": "p", "text": "Les bénéfices sont concrets : l'éditeur propose les propriétés disponibles, signale une faute de frappe avant l'exécution, et un renommage devient fiable. Les erreurs se déplacent du runtime vers l'édition du code." },
+            { "type": "table", "headers": ["Situation", "JavaScript", "TypeScript"], "rows": [
+              ["Appel avec un mauvais type", "Échoue à l'exécution", "Signalé pendant l'édition"],
+              ["Propriété inexistante", "`undefined` silencieux", "Erreur de compilation"],
+              ["Refactoring", "Recherche manuelle", "Vérifié par le compilateur"]
+            ] },
+            { "type": "warning", "text": "Un type ne protège pas les données reçues du réseau. Une réponse d'API peut mentir sur sa forme : les types doivent être vérifiés à l'exécution (validation) pour les entrées externes." }
+          ],
+          "exercise": {
+            "title": "Typer une fonction",
+            "instructions": "Écrivez une fonction aireRectangle(largeur: number, hauteur: number) qui renvoie un number.",
+            "hints": ["Le type des paramètres suit les deux-points.", "Le type de retour suit les parenthèses."],
+            "solution": "function aireRectangle(largeur: number, hauteur: number): number {\n  return largeur * hauteur;\n}"
+          },
+          "quiz": [
+            { "id": "ts-01-q1", "type": "single", "difficulty": 1, "question": "Que fait le compilateur TypeScript du code avant l'exécution ?", "options": ["Il le transpile en JavaScript", "Il le compresse", "Il le chiffre", "Il le convertit en HTML"], "answer": 0, "explanation": "Les types sont effacés et le code produit est du JavaScript exécutable.", "hints": [] },
+            { "id": "ts-01-q2", "type": "truefalse", "difficulty": 2, "question": "Les types TypeScript empêchent toute donnée invalide de venir d'une API.", "answer": false, "explanation": "Les types n'existent plus à l'exécution : une donnée externe doit être validée.", "hints": [] }
+          ]
+        },
+        {
+          "id": "ts-02",
+          "title": "Types primitifs et inférence",
+          "duration": 20,
+          "objectives": [
+            "Utiliser l'inférence à bon escient",
+            "Éviter any quand unknown convient"
+          ],
+          "content": [
+            { "type": "p", "text": "TypeScript **infère** le type à partir de la valeur affectée. Il n'est pas nécessaire d'annoter chaque variable : l'annotation sert aux frontières (paramètres de fonctions, structures de données partagées, données externes)." },
+            { "type": "code", "lang": "typescript", "code": "let compteur = 0;            // number (inféré)\ncompteur = \"un\";             // erreur\n\nconst noms: string[] = [];\nnoms.push(\"Ada\");\n\nlet inconnu: unknown = JSON.parse(texte);\nif (typeof inconnu === \"string\") {\n  console.log(inconnu.toUpperCase());\n}" },
+            { "type": "table", "headers": ["Type", "Usage"], "rows": [
+              ["`string`, `number`, `boolean`", "Valeurs primitives"],
+              ["`string[]` ou `Array<string>`", "Tableaux typés"],
+              ["`unknown`", "Valeur de type inconnu, à vérifier avant usage"],
+              ["`any`", "Désactive la vérification : à éviter"],
+              ["`null` / `undefined`", "Absence de valeur, à gérer explicitement"]
+            ] },
+            { "type": "p", "text": "`unknown` oblige à vérifier le type avant d'utiliser la valeur. `any` fait l'inverse : il propage le silence dans tout le code qui le touche, y compris dans les fichiers qui consomment votre module." },
+            { "type": "warning", "text": "`strictNullChecks` (activé par `strict`) distingue `string` et `string | undefined`. Sans lui, les erreurs d'accès à une valeur absente reviennent à l'exécution." }
+          ],
+          "exercise": {
+            "title": "unknown plutôt que any",
+            "instructions": "Vous recevez une valeur de type inconnu et devez afficher sa longueur si c'est une chaîne. Écrivez le test de type nécessaire.",
+            "hints": ["typeof permet de vérifier une chaîne.", "Le type est réduit dans le bloc du test."],
+            "solution": "let valeur: unknown = ...;\nif (typeof valeur === \"string\") {\n  console.log(valeur.length);\n}"
+          },
+          "quiz": [
+            { "id": "ts-02-q1", "type": "single", "difficulty": 1, "question": "Quel type accepte une valeur sans vérification préalable ?", "options": ["unknown", "any", "never", "void"], "answer": 1, "explanation": "any désactive la vérification ; unknown force un test avant usage.", "hints": [] },
+            { "id": "ts-02-q2", "type": "single", "difficulty": 2, "question": "Que fait l'option strict ?", "options": ["Elle minifie le code", "Elle active un ensemble de vérifications strictes, dont les valeurs nulles", "Elle supprime les types", "Elle accélère le runtime"], "answer": 1, "explanation": "strict regroupe plusieurs options, dont strictNullChecks.", "hints": [] }
+          ]
+        },
+        {
+          "id": "ts-03",
+          "title": "Interfaces, types et unions",
+          "duration": 22,
+          "objectives": [
+            "Décrire la forme d'un objet",
+            "Restreindre les valeurs possibles avec une union"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **interface** décrit la forme d'un objet : quelles propriétés existent et de quel type. Un **type** peut décrire la même chose et davantage : unions, intersections, types littéraux. Les deux se valent pour les objets ; choisissez une convention et tenez-la." },
+            { "type": "code", "lang": "typescript", "code": "interface Client {\n  id: number;\n  nom: string;\n  email?: string;          // propriété facultative\n  readonly creeLe: string; // non modifiable après création\n}\n\ntype Statut = \"actif\" | \"suspendu\" | \"archive\";\ntype Reponse =\n  | { ok: true; donnees: Client }\n  | { ok: false; erreur: string };" },
+            { "type": "p", "text": "Un **type littéral** restreint une valeur à un ensemble fini : `\"actif\" | \"suspendu\"` empêche la faute de frappe `\"actf\"`. Une **union discriminée** ajoute un champ commun (`ok`) qui permet de traiter chaque cas séparément." },
+            { "type": "code", "lang": "typescript", "code": "function traiter(r: Reponse) {\n  if (r.ok) {\n    console.log(r.donnees.nom); // TypeScript sait que donnees existe\n  } else {\n    console.error(r.erreur);    // et ici, qu'il n'existe pas\n  }\n}" },
+            { "type": "warning", "text": "Une propriété facultative (`?`) n'est pas la même chose qu'une propriété qui peut être `undefined`. La première peut être absente de l'objet, la seconde doit être déclarée." }
+          ],
+          "exercise": {
+            "title": "Limiter les valeurs",
+            "instructions": "Écrivez un type Priorite qui n'accepte que les valeurs basses, normale et haute.",
+            "hints": ["Une union de chaînes littérales suffit.", "Les valeurs sont entre guillemets."],
+            "solution": "type Priorite = \"basse\" | \"normale\" | \"haute\";"
+          },
+          "quiz": [
+            { "id": "ts-03-q1", "type": "single", "difficulty": 2, "question": "Que permet une union discriminée ?", "options": ["De traiter chaque variante avec ses propriétés propres", "D'éviter les interfaces", "De supprimer les vérifications", "De fusionner deux modules"], "answer": 0, "explanation": "Le champ discriminant permet à TypeScript de réduire le type dans chaque branche.", "hints": [] },
+            { "id": "ts-03-q2", "type": "single", "difficulty": 2, "question": "Que signifie le point d'interrogation dans email?: string ?", "options": ["La propriété est obligatoire", "La propriété est facultative", "La propriété est en lecture seule", "La propriété est un tableau"], "answer": 1, "explanation": "`?` rend la propriété facultative ; `readonly` empêche la modification.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ts-m2",
+      "title": "Fonctions, génériques et projet",
+      "chapters": [
+        {
+          "id": "ts-04",
+          "title": "Fonctions typées et génériques",
+          "duration": 22,
+          "objectives": [
+            "Typer paramètres et valeurs de retour",
+            "Écrire une fonction générique réutilisable"
+          ],
+          "content": [
+            { "type": "p", "text": "Une fonction typée documente son contrat : ce qu'elle attend et ce qu'elle renvoie. Les paramètres optionnels (`?`) et les valeurs par défaut rendent ce contrat explicite, au lieu de dépendre de vérifications internes." },
+            { "type": "code", "lang": "typescript", "code": "function formater(valeur: number, decimales = 2): string {\n  return valeur.toFixed(decimales);\n}\n\nfunction premier<T>(elements: T[]): T | undefined {\n  return elements[0];\n}\n\nconst n = premier([1, 2, 3]);        // number | undefined\nconst s = premier([\"a\", \"b\"]);      // string | undefined" },
+            { "type": "p", "text": "Un **générique** (`<T>`) conserve le lien entre l'entrée et la sortie : la fonction fonctionne pour tout type sans perdre l'information. C'est ce qui distingue `premier<T>` d'une signature qui renverrait `any`." },
+            { "type": "p", "text": "Les **types utilitaires** évitent de répéter des définitions : `Partial<T>` rend toutes les propriétés facultatives, `Pick<T, K>` en sélectionne, `Readonly<T>` les rend non modifiables, `Record<K, V>` construit un dictionnaire." },
+            { "type": "warning", "text": "Une valeur `T | undefined` oblige l'appelant à traiter le cas vide. Ne masquez pas ce cas avec une assertion `!` : vous déplacez simplement l'erreur à l'exécution." }
+          ],
+          "exercise": {
+            "title": "Fonction générique",
+            "instructions": "Écrivez une fonction dernier<T> qui renvoie le dernier élément d'un tableau, ou undefined si le tableau est vide.",
+            "hints": ["Le type générique s'écrit avant les parenthèses.", "Le type de retour est T | undefined."],
+            "solution": "function dernier<T>(elements: T[]): T | undefined {\n  return elements[elements.length - 1];\n}"
+          },
+          "quiz": [
+            { "id": "ts-04-q1", "type": "single", "difficulty": 2, "question": "À quoi sert un générique ?", "options": ["À conserver le lien de type entre entrée et sortie", "À accélérer l'exécution", "À supprimer les types", "À créer un module"], "answer": 0, "explanation": "Le générique rend la fonction réutilisable sans perdre la précision du type.", "hints": [] },
+            { "id": "ts-04-q2", "type": "single", "difficulty": 2, "question": "Que fait Partial<T> ?", "options": ["Rend toutes les propriétés facultatives", "Supprime l'objet", "Rend les propriétés obligatoires", "Trie les propriétés"], "answer": 0, "explanation": "Partial est utilisé par exemple pour un objet de mise à jour partielle.", "hints": [] }
+          ]
+        },
+        {
+          "id": "ts-05",
+          "title": "Modules et configuration du compilateur",
+          "duration": 20,
+          "objectives": [
+            "Configurer un projet TypeScript strict",
+            "Organiser les imports et les exports"
+          ],
+          "content": [
+            { "type": "p", "text": "Un projet TypeScript se configure avec `tsconfig.json`. Les options qui comptent le plus sont `strict`, `target` (version JavaScript produite), `module` (format des modules) et `outDir` (dossier de sortie)." },
+            { "type": "code", "lang": "json", "title": "tsconfig.json", "code": "{\n  \"compilerOptions\": {\n    \"target\": \"ES2022\",\n    \"module\": \"ESNext\",\n    \"moduleResolution\": \"Bundler\",\n    \"strict\": true,\n    \"noUncheckedIndexedAccess\": true,\n    \"outDir\": \"dist\",\n    \"skipLibCheck\": true\n  },\n  \"include\": [\"src\"]\n}" },
+            { "type": "p", "text": "Les modules utilisent `export` et `import`. Préférez des exports nommés : ils se renomment proprement et se vérifient mieux que les exports par défaut, surtout dans les gros projets." },
+            { "type": "code", "lang": "typescript", "code": "// client.ts\nexport interface Client { id: number; nom: string }\n\nexport function nomComplet(c: Client): string {\n  return c.nom;\n}\n\n// main.ts\nimport { nomComplet } from \"./client.js\";" },
+            { "type": "warning", "text": "Avec `moduleResolution: Bundler` ou `NodeNext`, l'extension du fichier importé peut être nécessaire. Une erreur « module introuvable » vient souvent de là, pas du code." }
+          ],
+          "exercise": {
+            "title": "Activer le strict",
+            "instructions": "Quelles deux options de configuration activent le maximum de vérifications, dont la gestion des valeurs nulles ?",
+            "hints": ["Une option regroupe plusieurs vérifications.", "L'autre contrôle l'accès aux index de tableau."],
+            "solution": "strict en premier lieu (qui inclut strictNullChecks), et éventuellement noUncheckedIndexedAccess pour les accès par indice."
+          },
+          "quiz": [
+            { "id": "ts-05-q1", "type": "single", "difficulty": 1, "question": "Quel fichier configure un projet TypeScript ?", "options": ["package.json", "tsconfig.json", "index.html", ".gitignore"], "answer": 1, "explanation": "tsconfig.json contient les options du compilateur et les fichiers inclus.", "hints": [] },
+            { "id": "ts-05-q2", "type": "single", "difficulty": 2, "question": "Pourquoi préférer les exports nommés ?", "options": ["Ils sont plus rapides", "Ils se renomment et se vérifient mieux", "Ils évitent les modules", "Ils suppriment les types"], "answer": 1, "explanation": "Les exports nommés facilitent le refactoring et rendent les dépendances explicites.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Utilitaire typé de traitement de données",
+    "brief": "Écrivez un petit module TypeScript strict qui lit une liste hétérogène, la filtre et renvoie des objets typés.",
+    "steps": [
+      "Créer un tsconfig strict et un dossier src.",
+      "Définir les interfaces des données d'entrée et de sortie.",
+      "Écrire une fonction générique de filtrage avec un prédicat de type.",
+      "Valider les données externes avant de les convertir, sans utiliser any.",
+      "Compiler et vérifier qu'aucune erreur de type ne subsiste, puis exécuter le JavaScript produit."
+    ],
+    "criteria": [
+      "Aucun any dans le code produit, et strict activé.",
+      "Les données externes sont validées avant usage.",
+      "Le projet compile sans erreur et le code JavaScript généré s'exécute."
+    ]
+  }
+}

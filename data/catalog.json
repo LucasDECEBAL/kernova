@@ -1,42 +1,329 @@
 {
   "domains": [
-    { "id": "informatique-generale", "name": "Informatique générale", "description": "Comprendre un ordinateur, ses composants, les données et Internet." },
-    { "id": "maintenance", "name": "Maintenance informatique", "description": "Assembler, installer, diagnostiquer et sauvegarder un poste de travail." },
-    { "id": "environnements", "name": "Environnements de travail", "description": "Windows, PowerShell, terminaux, éditeurs et organisation d'un projet." },
-    { "id": "algorithmique", "name": "Algorithmique et logique", "description": "Raisonner pas à pas, structures de données, tris, recherche et complexité." },
-    { "id": "git-github", "name": "Git et GitHub", "description": "Versionner un projet, travailler à plusieurs et publier son code." },
-    { "id": "html", "name": "HTML", "description": "Structurer une page web : balises, formulaires, sémantique et accessibilité." },
-    { "id": "css", "name": "CSS et design web", "description": "Mettre en forme une page, la rendre responsive et concevoir une identité visuelle." },
-    { "id": "javascript", "name": "JavaScript", "description": "Programmer dans le navigateur, manipuler le DOM et gérer l'asynchrone." },
-    { "id": "typescript-frontend", "name": "TypeScript et frontend", "description": "Typer son code, construire des interfaces avec React et d'autres frameworks." },
-    { "id": "python", "name": "Python", "description": "Langage lisible et polyvalent, utilisé pour les scripts, les données et le web." },
-    { "id": "autres-langages", "name": "Autres langages", "description": "C, C++, Java, PHP, Go, Rust et langages complémentaires." },
-    { "id": "backend-api", "name": "Backend et API", "description": "Concevoir des services HTTP, des API REST et leur sécurité." },
-    { "id": "bases-donnees", "name": "SQL et bases de données", "description": "Modéliser des données, écrire des requêtes et administrer une base." },
-    { "id": "linux", "name": "Linux", "description": "Utiliser, comprendre et administrer un système Linux au quotidien." },
-    { "id": "bash-automatisation", "name": "Bash et scripts Linux", "description": "Écrire des scripts Bash pour automatiser les tâches d'administration." },
-    { "id": "windows", "name": "Windows et Windows Server", "description": "Administrer Windows, Active Directory, stratégies de groupe et services." },
-    { "id": "reseaux", "name": "Réseaux informatiques", "description": "Adressage IP, protocoles, commutation, routage et dépannage." },
-    { "id": "cybersecurite", "name": "Cybersécurité", "description": "Fondamentaux défensifs, sécurité des systèmes et des applications, réponse aux incidents." },
-    { "id": "ethical-hacking", "name": "Ethical hacking", "description": "Tests de sécurité réalisés uniquement dans un cadre autorisé et documenté." },
-    { "id": "cloud-computing", "name": "Cloud computing", "description": "Concepts du cloud, services AWS, Azure et Google Cloud, architectures." },
-    { "id": "virtualisation", "name": "Virtualisation", "description": "Hyperviseurs, machines virtuelles, laboratoires et réseaux isolés." },
-    { "id": "docker", "name": "Docker et conteneurs", "description": "Images, conteneurs, volumes, réseaux et Docker Compose." },
-    { "id": "kubernetes", "name": "Kubernetes", "description": "Orchestration de conteneurs : pods, déploiements, services et diagnostic." },
-    { "id": "devops", "name": "DevOps et CI/CD", "description": "Intégration et livraison continues, infrastructure as code, fiabilité." },
-    { "id": "tests-qualite", "name": "Tests et qualité logicielle", "description": "Tests unitaires, d'intégration, de bout en bout et revue de code." },
-    { "id": "architecture-logicielle", "name": "Architecture logicielle", "description": "Principes de conception, patterns, couches et choix d'architecture." },
-    { "id": "intelligence-artificielle", "name": "Intelligence artificielle", "description": "Fondamentaux du machine learning, du deep learning et des modèles de langage." },
-    { "id": "automatisation-workflows", "name": "Automatisation et workflows", "description": "Connecter des services, déclencheurs, webhooks et automatisations sans code." },
-    { "id": "mobile", "name": "Développement mobile", "description": "Applications Android, iOS et multiplateformes." },
-    { "id": "ux-ui", "name": "UX, UI et accessibilité", "description": "Recherche utilisateur, interfaces lisibles, accessibilité numérique." },
-    { "id": "deploiement-seo", "name": "Déploiement web et SEO", "description": "Hébergement statique, nom de domaine, HTTPS, performance et référencement." },
-    { "id": "observabilite", "name": "Observabilité et supervision", "description": "Métriques, journaux, traces et alertes pour surveiller un service." },
-    { "id": "gestion-projet", "name": "Gestion de projet informatique", "description": "Spécifications, méthodes agiles, planification et documentation." },
-    { "id": "reglementation", "name": "Réglementation et bonnes pratiques", "description": "RGPD, licences logicielles, gestion des secrets et conformité, à titre pédagogique." },
-    { "id": "projets-pratiques", "name": "Projets pratiques", "description": "Projets guidés qui combinent plusieurs compétences, avec critères de réussite." }
+    {
+      "id": "informatique-generale",
+      "name": "Informatique générale",
+      "description": "Comprendre un ordinateur, ses composants, les données et Internet."
+    },
+    {
+      "id": "maintenance",
+      "name": "Maintenance informatique",
+      "description": "Assembler, installer, diagnostiquer et sauvegarder un poste de travail."
+    },
+    {
+      "id": "environnements",
+      "name": "Environnements de travail",
+      "description": "Windows, PowerShell, terminaux, éditeurs et organisation d'un projet."
+    },
+    {
+      "id": "algorithmique",
+      "name": "Algorithmique et logique",
+      "description": "Raisonner pas à pas, structures de données, tris, recherche et complexité."
+    },
+    {
+      "id": "git-github",
+      "name": "Git et GitHub",
+      "description": "Versionner un projet, travailler à plusieurs et publier son code."
+    },
+    {
+      "id": "html",
+      "name": "HTML",
+      "description": "Structurer une page web : balises, formulaires, sémantique et accessibilité."
+    },
+    {
+      "id": "css",
+      "name": "CSS et design web",
+      "description": "Mettre en forme une page, la rendre responsive et concevoir une identité visuelle."
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "description": "Programmer dans le navigateur, manipuler le DOM et gérer l'asynchrone."
+    },
+    {
+      "id": "typescript-frontend",
+      "name": "TypeScript et frontend",
+      "description": "Typer son code, construire des interfaces avec React et d'autres frameworks."
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "description": "Langage lisible et polyvalent, utilisé pour les scripts, les données et le web."
+    },
+    {
+      "id": "autres-langages",
+      "name": "Autres langages",
+      "description": "C, C++, Java, PHP, Go, Rust et langages complémentaires."
+    },
+    {
+      "id": "backend-api",
+      "name": "Backend et API",
+      "description": "Concevoir des services HTTP, des API REST et leur sécurité."
+    },
+    {
+      "id": "bases-donnees",
+      "name": "SQL et bases de données",
+      "description": "Modéliser des données, écrire des requêtes et administrer une base."
+    },
+    {
+      "id": "linux",
+      "name": "Linux",
+      "description": "Utiliser, comprendre et administrer un système Linux au quotidien."
+    },
+    {
+      "id": "bash-automatisation",
+      "name": "Bash et scripts Linux",
+      "description": "Écrire des scripts Bash pour automatiser les tâches d'administration."
+    },
+    {
+      "id": "windows",
+      "name": "Windows et Windows Server",
+      "description": "Administrer Windows, Active Directory, stratégies de groupe et services."
+    },
+    {
+      "id": "reseaux",
+      "name": "Réseaux informatiques",
+      "description": "Adressage IP, protocoles, commutation, routage et dépannage."
+    },
+    {
+      "id": "cybersecurite",
+      "name": "Cybersécurité",
+      "description": "Fondamentaux défensifs, sécurité des systèmes et des applications, réponse aux incidents."
+    },
+    {
+      "id": "ethical-hacking",
+      "name": "Ethical hacking",
+      "description": "Tests de sécurité réalisés uniquement dans un cadre autorisé et documenté."
+    },
+    {
+      "id": "cloud-computing",
+      "name": "Cloud computing",
+      "description": "Concepts du cloud, services AWS, Azure et Google Cloud, architectures."
+    },
+    {
+      "id": "virtualisation",
+      "name": "Virtualisation",
+      "description": "Hyperviseurs, machines virtuelles, laboratoires et réseaux isolés."
+    },
+    {
+      "id": "docker",
+      "name": "Docker et conteneurs",
+      "description": "Images, conteneurs, volumes, réseaux et Docker Compose."
+    },
+    {
+      "id": "kubernetes",
+      "name": "Kubernetes",
+      "description": "Orchestration de conteneurs : pods, déploiements, services et diagnostic."
+    },
+    {
+      "id": "devops",
+      "name": "DevOps et CI/CD",
+      "description": "Intégration et livraison continues, infrastructure as code, fiabilité."
+    },
+    {
+      "id": "tests-qualite",
+      "name": "Tests et qualité logicielle",
+      "description": "Tests unitaires, d'intégration, de bout en bout et revue de code."
+    },
+    {
+      "id": "architecture-logicielle",
+      "name": "Architecture logicielle",
+      "description": "Principes de conception, patterns, couches et choix d'architecture."
+    },
+    {
+      "id": "intelligence-artificielle",
+      "name": "Intelligence artificielle",
+      "description": "Fondamentaux du machine learning, du deep learning et des modèles de langage."
+    },
+    {
+      "id": "automatisation-workflows",
+      "name": "Automatisation et workflows",
+      "description": "Connecter des services, déclencheurs, webhooks et automatisations sans code."
+    },
+    {
+      "id": "mobile",
+      "name": "Développement mobile",
+      "description": "Applications Android, iOS et multiplateformes."
+    },
+    {
+      "id": "ux-ui",
+      "name": "UX, UI et accessibilité",
+      "description": "Recherche utilisateur, interfaces lisibles, accessibilité numérique."
+    },
+    {
+      "id": "deploiement-seo",
+      "name": "Déploiement web et SEO",
+      "description": "Hébergement statique, nom de domaine, HTTPS, performance et référencement."
+    },
+    {
+      "id": "observabilite",
+      "name": "Observabilité et supervision",
+      "description": "Métriques, journaux, traces et alertes pour surveiller un service."
+    },
+    {
+      "id": "gestion-projet",
+      "name": "Gestion de projet informatique",
+      "description": "Spécifications, méthodes agiles, planification et documentation."
+    },
+    {
+      "id": "reglementation",
+      "name": "Réglementation et bonnes pratiques",
+      "description": "RGPD, licences logicielles, gestion des secrets et conformité, à titre pédagogique."
+    },
+    {
+      "id": "projets-pratiques",
+      "name": "Projets pratiques",
+      "description": "Projets guidés qui combinent plusieurs compétences, avec critères de réussite."
+    }
   ],
   "courses": [
+    {
+      "id": "informatique-debutant",
+      "title": "Informatique : les fondamentaux",
+      "domain": "informatique-generale",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Ordinateur",
+        "Système d'exploitation",
+        "Internet"
+      ],
+      "description": "Le point de départ : comprendre de quoi est fait un ordinateur, ce que fait un système d'exploitation, comment sont organisés les fichiers, comment on compte en binaire et comment fonctionne Internet.",
+      "objectives": [
+        "Distinguer matériel et logiciel, et nommer le rôle des composants",
+        "Expliquer le rôle du système d'exploitation et la notion de processus",
+        "Se repérer dans une arborescence de fichiers",
+        "Convertir un nombre en binaire et en hexadécimal",
+        "Décrire le trajet d'une requête entre client et serveur"
+      ],
+      "prerequisites": [
+        "Aucun. Ce cours est le point d'entrée du catalogue."
+      ],
+      "prerequisiteCourses": [],
+      "nextCourses": [
+        "html-debutant",
+        "reseaux-debutant",
+        "sql-debutant",
+        "reglementation"
+      ],
+      "skills": [
+        "Comprendre un ordinateur",
+        "Lire une configuration de base",
+        "Situer les technologies entre elles"
+      ],
+      "file": "informatique-debutant.json"
+    },
+    {
+      "id": "html-debutant",
+      "title": "HTML débutant",
+      "domain": "html",
+      "subdomain": "Structure et contenu",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "HTML"
+      ],
+      "description": "Construire des pages web valides et accessibles : structure d'un document, titres et listes, liens et images, tableaux de données, éléments sémantiques et formulaires.",
+      "objectives": [
+        "Écrire un document HTML valide",
+        "Hiérarchiser le contenu avec les titres appropriés",
+        "Créer des liens et des images accessibles",
+        "Structurer une page avec header, nav, main et footer",
+        "Construire un formulaire avec libellés associés et validation native"
+      ],
+      "prerequisites": [
+        "Savoir utiliser un ordinateur et un éditeur de texte."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "css-debutant",
+        "langage-php",
+        "ux-ui",
+        "deploiement-seo",
+        "projets-pratiques"
+      ],
+      "skills": [
+        "Écrire du HTML sémantique",
+        "Rendre une page accessible",
+        "Construire un formulaire utilisable"
+      ],
+      "file": "html-debutant.json"
+    },
+    {
+      "id": "reseaux-debutant",
+      "title": "Réseaux débutant",
+      "domain": "reseaux",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Réseaux",
+        "IPv4",
+        "DNS",
+        "TCP"
+      ],
+      "description": "Comprendre comment les machines communiquent : types de réseaux et équipements, adressage IPv4, masques et calcul de sous-réseaux, DNS, TCP, UDP et ports.",
+      "objectives": [
+        "Distinguer LAN, WAN et WLAN, et le rôle des équipements",
+        "Lire et configurer une adresse IPv4",
+        "Calculer le nombre d'hôtes d'un sous-réseau",
+        "Expliquer la résolution DNS",
+        "Choisir entre TCP et UDP et identifier les ports usuels"
+      ],
+      "prerequisites": [
+        "Savoir ce qu'est une adresse IP, vu dans le cours Informatique : les fondamentaux."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "reseaux-avance"
+      ],
+      "skills": [
+        "Adresser un petit réseau",
+        "Diagnostiquer une configuration IP",
+        "Identifier les services et leurs ports"
+      ],
+      "file": "reseaux-debutant.json"
+    },
+    {
+      "id": "sql-debutant",
+      "title": "SQL débutant",
+      "domain": "bases-donnees",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "SQL",
+        "Bases de données"
+      ],
+      "description": "Découvrir les bases de données relationnelles : tables et clés, lecture des données avec SELECT et WHERE, tri et pagination, agrégations, puis modification des données et jointures.",
+      "objectives": [
+        "Décrire une table, une clé primaire et une clé étrangère",
+        "Écrire des requêtes SELECT avec filtres et tri",
+        "Agréger et regrouper des données",
+        "Insérer, modifier et supprimer des lignes en sécurité",
+        "Combiner deux tables avec INNER JOIN"
+      ],
+      "prerequisites": [
+        "Aucune expérience de SQL : le cours part de zéro."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "bases-donnees-avancees"
+      ],
+      "skills": [
+        "Interroger une base de données",
+        "Modéliser des données simples",
+        "Éviter les modifications destructrices"
+      ],
+      "file": "sql-debutant.json"
+    },
     {
       "id": "linux-debutant",
       "title": "Linux débutant",
@@ -44,7 +331,11 @@
       "subdomain": "Terminal et fichiers",
       "level": "debutant",
       "type": "parcours",
-      "technologies": ["Linux", "Bash", "Terminal"],
+      "technologies": [
+        "Linux",
+        "Bash",
+        "Terminal"
+      ],
       "description": "Un parcours progressif pour prendre en main le terminal Linux : naviguer, manipuler les fichiers, comprendre les droits, gérer les processus et écrire vos premiers scripts. Chaque chapitre débloque le suivant.",
       "objectives": [
         "Naviguer dans l'arborescence avec le terminal",
@@ -53,10 +344,20 @@
         "Rechercher des fichiers et du texte",
         "Écrire un script Bash simple"
       ],
-      "prerequisites": ["Aucun. Un ordinateur et un navigateur suffisent pour lire le cours."],
+      "prerequisites": [
+        "Aucun. Un ordinateur et un navigateur suffisent pour lire le cours."
+      ],
       "prerequisiteCourses": [],
-      "nextCourses": ["python-debutant"],
-      "skills": ["Naviguer en ligne de commande", "Gérer fichiers et droits", "Écrire un script Bash simple"],
+      "nextCourses": [
+        "linux-intermediaire",
+        "python-debutant",
+        "docker-debutant"
+      ],
+      "skills": [
+        "Naviguer en ligne de commande",
+        "Gérer fichiers et droits",
+        "Écrire un script Bash simple"
+      ],
       "file": "linux-debutant.json"
     },
     {
@@ -66,7 +367,10 @@
       "subdomain": "Git",
       "level": "debutant",
       "type": "parcours",
-      "technologies": ["Git", "GitHub"],
+      "technologies": [
+        "Git",
+        "GitHub"
+      ],
       "description": "Apprenez à versionner un projet : enregistrer l'historique, créer des branches, fusionner, résoudre un conflit et publier votre dépôt sur GitHub. Aucun prérequis technique.",
       "objectives": [
         "Expliquer ce qu'est un contrôle de version",
@@ -75,10 +379,19 @@
         "Travailler sur des branches et fusionner",
         "Publier un dépôt sur GitHub"
       ],
-      "prerequisites": ["Aucun. Un compte GitHub gratuit est utile pour la dernière partie."],
+      "prerequisites": [
+        "Aucun. Un compte GitHub gratuit est utile pour la dernière partie."
+      ],
       "prerequisiteCourses": [],
-      "nextCourses": ["linux-debutant"],
-      "skills": ["Versionner un projet", "Gérer les branches", "Publier sur GitHub"],
+      "nextCourses": [
+        "linux-debutant",
+        "gestion-projet"
+      ],
+      "skills": [
+        "Versionner un projet",
+        "Gérer les branches",
+        "Publier sur GitHub"
+      ],
       "file": "git-debutant.json"
     },
     {
@@ -88,7 +401,9 @@
       "subdomain": "Fondamentaux",
       "level": "debutant",
       "type": "parcours",
-      "technologies": ["Python"],
+      "technologies": [
+        "Python"
+      ],
       "description": "Découvrez la programmation avec Python : variables, conditions, boucles, fonctions, listes, dictionnaires, fichiers et gestion des erreurs. Le parcours se termine par un petit projet de carnet de dépenses.",
       "objectives": [
         "Écrire et exécuter un programme Python",
@@ -97,11 +412,1406 @@
         "Manipuler listes et dictionnaires",
         "Lire et écrire des fichiers, gérer les erreurs"
       ],
-      "prerequisites": ["Aucun. Python 3 doit être installé sur votre machine."],
+      "prerequisites": [
+        "Aucun. Python 3 doit être installé sur votre machine."
+      ],
       "prerequisiteCourses": [],
-      "nextCourses": ["git-debutant"],
-      "skills": ["Écrire des programmes simples", "Structurer le code avec des fonctions", "Traiter des données et des fichiers"],
+      "nextCourses": [
+        "git-debutant",
+        "sql-debutant",
+        "ia-debutant",
+        "python-intermediaire"
+      ],
+      "skills": [
+        "Écrire des programmes simples",
+        "Structurer le code avec des fonctions",
+        "Traiter des données et des fichiers"
+      ],
       "file": "python-debutant.json"
+    },
+    {
+      "id": "css-debutant",
+      "title": "CSS débutant",
+      "domain": "css",
+      "subdomain": "Mise en forme",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "CSS"
+      ],
+      "description": "Mettre en forme des pages web : sélecteurs et cascade, couleurs et typographie, modèle de boîte, mise en page avec Flexbox et adaptation aux écrans.",
+      "objectives": [
+        "Relier une feuille de style et cibler les bons éléments",
+        "Choisir des unités et régler une typographie lisible",
+        "Calculer la largeur réelle d'un élément",
+        "Aligner des éléments avec Flexbox",
+        "Adapter une page aux petits écrans avec des media queries"
+      ],
+      "prerequisites": [
+        "Savoir écrire une page HTML avec des classes et des identifiants."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant"
+      ],
+      "nextCourses": [
+        "javascript-debutant"
+      ],
+      "skills": [
+        "Mettre en forme une page",
+        "Construire une mise en page flexible",
+        "Rendre une page responsive"
+      ],
+      "file": "css-debutant.json"
+    },
+    {
+      "id": "javascript-debutant",
+      "title": "JavaScript débutant",
+      "domain": "javascript",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "JavaScript"
+      ],
+      "description": "Programmer dans le navigateur : variables et types, conditions, fonctions et tableaux, manipulation du DOM, événements et stockage local avec JSON.",
+      "objectives": [
+        "Déclarer des variables et comparer des valeurs sans conversion implicite",
+        "Écrire des fonctions et transformer des tableaux",
+        "Modifier la page et réagir aux clics",
+        "Enregistrer des données dans le navigateur",
+        "Éviter les erreurs classiques de sécurité côté client"
+      ],
+      "prerequisites": [
+        "Connaître HTML et les bases de CSS."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant",
+        "css-debutant"
+      ],
+      "nextCourses": [
+        "typescript",
+        "tests-qualite",
+        "mobile",
+        "javascript-avance"
+      ],
+      "skills": [
+        "Écrire du JavaScript lisible",
+        "Manipuler le DOM",
+        "Persister des données locales"
+      ],
+      "file": "javascript-debutant.json"
+    },
+    {
+      "id": "algorithmique-debutant",
+      "title": "Algorithmique débutant",
+      "domain": "algorithmique",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Algorithmique",
+        "Pseudocode"
+      ],
+      "description": "Apprendre à raisonner avant de coder : algorithmes et pseudocode, variables et opérateurs, conditions et boucles, décomposition en fonctions, tableaux et première approche de la complexité.",
+      "objectives": [
+        "Décrire un algorithme en pseudocode",
+        "Utiliser division entière et modulo à bon escient",
+        "Choisir entre boucle for et while",
+        "Décomposer un problème en fonctions testables",
+        "Estimer le coût d'une recherche linéaire"
+      ],
+      "prerequisites": [
+        "Aucun langage n'est exigé : les exercices sont en pseudocode."
+      ],
+      "prerequisiteCourses": [],
+      "nextCourses": [
+        "langage-c",
+        "langage-java",
+        "langage-go"
+      ],
+      "skills": [
+        "Structurer un raisonnement",
+        "Écrire des algorithmes lisibles",
+        "Anticiper le coût d'un traitement"
+      ],
+      "file": "algorithmique-debutant.json"
+    },
+    {
+      "id": "cybersecurite-debutant",
+      "title": "Cybersécurité débutant",
+      "domain": "cybersecurite",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Sécurité",
+        "TLS",
+        "Journalisation"
+      ],
+      "description": "Poser les bases de la défense : triade CID et gestion du risque, authentification et mots de passe, chiffrement et hachage, prévention des XSS et injections SQL, journaux, mises à jour et sauvegardes. Tous les exercices restent défensifs.",
+      "objectives": [
+        "Distinguer menace, vulnérabilité et risque",
+        "Expliquer le stockage sûr d'un mot de passe",
+        "Choisir entre chiffrer, hacher et signer",
+        "Appliquer les contre-mesures aux injections",
+        "Mettre en place journaux, mises à jour et sauvegardes"
+      ],
+      "prerequisites": [
+        "Savoir ce qu'est un serveur, une base de données et une page web.",
+        "Les exercices offensifs sont hors de ce cours : ils exigent un laboratoire autorisé."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "cybersecurite-avancee"
+      ],
+      "skills": [
+        "Raisonner en risques",
+        "Sécuriser les comptes",
+        "Prévenir les vulnérabilités web courantes"
+      ],
+      "file": "cybersecurite-debutant.json"
+    },
+    {
+      "id": "docker-debutant",
+      "title": "Docker débutant",
+      "domain": "docker",
+      "subdomain": "Conteneurs",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Docker",
+        "Conteneurs",
+        "Docker Compose"
+      ],
+      "description": "Découvrir les conteneurs et construire ses propres images : images et conteneurs, Dockerfile et cache, volumes pour conserver les données, réseaux et Docker Compose pour une application multi-services.",
+      "objectives": [
+        "Distinguer conteneur et machine virtuelle",
+        "Construire et lancer une image",
+        "Écrire un Dockerfile efficace",
+        "Conserver des données dans un volume",
+        "Décrire une application multi-conteneurs avec Compose"
+      ],
+      "prerequisites": [
+        "Savoir utiliser un terminal et éditer un fichier de configuration."
+      ],
+      "prerequisiteCourses": [
+        "linux-debutant"
+      ],
+      "nextCourses": [
+        "kubernetes-debutant"
+      ],
+      "skills": [
+        "Conteneuriser une application",
+        "Écrire des Dockerfiles raisonnables",
+        "Relier plusieurs services"
+      ],
+      "file": "docker-debutant.json"
+    },
+    {
+      "id": "kubernetes-debutant",
+      "title": "Kubernetes débutant",
+      "domain": "kubernetes",
+      "subdomain": "Orchestration",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Kubernetes",
+        "kubectl"
+      ],
+      "description": "Piloter des conteneurs à l'échelle d'un cluster : architecture et état désiré, Pods et Deployments, Services, ConfigMaps et Secrets, sondes et ressources, diagnostic d'un déploiement.",
+      "objectives": [
+        "Décrire l'architecture d'un cluster",
+        "Déployer une application avec des réplicas",
+        "Exposer un service correctement",
+        "Configurer sans reconstruire l'image",
+        "Diagnostiquer un pod en échec"
+      ],
+      "prerequisites": [
+        "Savoir construire une image de conteneur (cours Docker)."
+      ],
+      "prerequisiteCourses": [
+        "docker-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Déployer sur un cluster",
+        "Lire un manifeste YAML",
+        "Diagnostiquer un pod"
+      ],
+      "file": "kubernetes-debutant.json"
+    },
+    {
+      "id": "cloud-debutant",
+      "title": "Cloud computing débutant",
+      "domain": "cloud-computing",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Cloud",
+        "IaaS",
+        "PaaS"
+      ],
+      "description": "Comprendre les fondamentaux du cloud : modèles de service, régions et zones, calcul et stockage, réseaux virtuels et identités, sécurité, responsabilité partagée et maîtrise des coûts.",
+      "objectives": [
+        "Distinguer IaaS, PaaS et SaaS",
+        "Choisir une région et répartir sur des zones",
+        "Choisir un mode de calcul et de stockage",
+        "Cloisonner un réseau virtuel",
+        "Appliquer la responsabilité partagée et maîtriser les coûts"
+      ],
+      "prerequisites": [
+        "Connaître les bases d'un réseau et d'un serveur."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant",
+        "reseaux-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Lire une architecture cloud",
+        "Choisir un service adapté",
+        "Éviter les erreurs de coût et d'exposition"
+      ],
+      "file": "cloud-debutant.json"
+    },
+    {
+      "id": "devops-debutant",
+      "title": "DevOps et CI/CD débutant",
+      "domain": "devops",
+      "subdomain": "CI/CD",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "CI/CD",
+        "DevOps",
+        "Terraform",
+        "Ansible"
+      ],
+      "description": "Livrer du logiciel de façon fiable : intégration continue et retour rapide, pipeline qui teste réellement, artefacts et environnements, infrastructure as code, déploiements canary ou blue-green et indicateurs de fiabilité.",
+      "objectives": [
+        "Expliquer l'intégration et la livraison continues",
+        "Organiser un pipeline qui bloque en cas d'échec",
+        "Promouvoir un artefact unique entre environnements",
+        "Comprendre l'infrastructure déclarative et l'idempotence",
+        "Choisir une stratégie de déploiement et définir un SLO"
+      ],
+      "prerequisites": [
+        "Savoir versionner un projet avec Git."
+      ],
+      "prerequisiteCourses": [
+        "git-debutant"
+      ],
+      "nextCourses": [
+        "observabilite"
+      ],
+      "skills": [
+        "Concevoir un pipeline",
+        "Séparer configuration et code",
+        "Déployer avec retour arrière"
+      ],
+      "file": "devops-debutant.json"
+    },
+    {
+      "id": "bases-donnees-avancees",
+      "title": "Bases de données avancées",
+      "domain": "bases-donnees",
+      "subdomain": "SQL avancé",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "SQL",
+        "PostgreSQL",
+        "Index"
+      ],
+      "description": "Rendre une base rapide et fiable : index et coût des écritures, plans d'exécution et optimisation, transactions ACID, isolation et verrouillage, sauvegarde, réplication et choix du système.",
+      "objectives": [
+        "Choisir un index adapté aux requêtes réelles",
+        "Lire un plan d'exécution et repérer un N+1",
+        "Écrire des transactions correctes",
+        "Comprendre l'isolation et les interblocages",
+        "Concevoir une stratégie de sauvegarde testée"
+      ],
+      "prerequisites": [
+        "Savoir écrire des requêtes SELECT, jointures et requêtes de modification."
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Optimiser une requête",
+        "Garantir l'intégrité des données",
+        "Exploiter une base en production"
+      ],
+      "file": "bases-donnees-avancees.json"
+    },
+    {
+      "id": "linux-intermediaire",
+      "title": "Linux intermédiaire",
+      "domain": "linux",
+      "subdomain": "Administration",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Linux",
+        "systemd",
+        "SSH"
+      ],
+      "description": "Administrer un serveur Linux : processus et signaux, services systemd et journaux, tâches planifiées, disques et montages, diagnostic réseau et accès SSH par clé.",
+      "objectives": [
+        "Diagnostiquer un processus ou une charge anormale",
+        "Créer et gérer un service systemd",
+        "Planifier une tâche et consulter les journaux",
+        "Monter un disque de façon durable",
+        "Sécuriser un accès SSH"
+      ],
+      "prerequisites": [
+        "Savoir naviguer et manipuler des fichiers en ligne de commande."
+      ],
+      "prerequisiteCourses": [
+        "linux-debutant"
+      ],
+      "nextCourses": [
+        "bash-scripts",
+        "cybersecurite-avancee",
+        "linux-administration"
+      ],
+      "skills": [
+        "Exploiter un service",
+        "Diagnostiquer un serveur",
+        "Administrer les accès"
+      ],
+      "file": "linux-intermediaire.json"
+    },
+    {
+      "id": "bash-scripts",
+      "title": "Scripts Bash",
+      "domain": "bash-automatisation",
+      "subdomain": "Scripts",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Bash",
+        "cron",
+        "shell"
+      ],
+      "description": "Écrire des scripts fiables : paramètres et codes de retour, conditions et tests, boucles et lecture de fichiers, fonctions et mode strict, sauvegarde avec verrouillage et rotation.",
+      "objectives": [
+        "Écrire un script qui valide ses arguments",
+        "Tester fichiers, chaînes et nombres",
+        "Traiter un fichier ligne par ligne sans perdre de caractères",
+        "Activer les protections set -euo pipefail",
+        "Planifier une sauvegarde robuste avec verrou"
+      ],
+      "prerequisites": [
+        "Connaître les commandes de base de Linux et savoir éditer un fichier."
+      ],
+      "prerequisiteCourses": [
+        "linux-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Automatiser une tâche",
+        "Écrire du Bash lisible",
+        "Sécuriser une exécution planifiée"
+      ],
+      "file": "bash-scripts.json"
+    },
+    {
+      "id": "backend-api",
+      "title": "Backend et API REST",
+      "domain": "backend-api",
+      "subdomain": "HTTP et REST",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "HTTP",
+        "REST",
+        "API"
+      ],
+      "description": "Concevoir un service HTTP : échanges client-serveur et codes de statut, ressources et verbes REST, validation et erreurs exploitables, authentification et autorisation, pagination, cache et limitation de débit.",
+      "objectives": [
+        "Choisir les codes de statut corrects",
+        "Concevoir des routes REST et des opérations idempotentes",
+        "Valider les entrées et renvoyer des erreurs claires",
+        "Contrôler l'accès au niveau de chaque ressource",
+        "Paginer, mettre en cache et limiter le débit"
+      ],
+      "prerequisites": [
+        "Savoir programmer les bases (Python ou JavaScript) et écrire des requêtes SQL."
+      ],
+      "prerequisiteCourses": [
+        "python-debutant",
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "architecture-logicielle"
+      ],
+      "skills": [
+        "Concevoir une API",
+        "Sécuriser les accès",
+        "Rendre un service exploitable"
+      ],
+      "file": "backend-api.json"
+    },
+    {
+      "id": "ia-debutant",
+      "title": "Intelligence artificielle : fondamentaux",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "IA",
+        "Machine learning",
+        "Python"
+      ],
+      "description": "Comprendre ce que fait réellement un système d'IA : IA, machine learning et deep learning, données et apprentissage supervisé, évaluation d'un modèle, biais, puis modèles de langage et architectures RAG.",
+      "objectives": [
+        "Distinguer IA, machine learning et deep learning",
+        "Séparer entraînement, validation et test",
+        "Choisir une métrique adaptée et détecter le surapprentissage",
+        "Identifier les biais d'un jeu de données",
+        "Comprendre les limites d'un modèle de langage et le principe du RAG"
+      ],
+      "prerequisites": [
+        "Savoir écrire un programme Python simple (variables, fonctions, boucles)."
+      ],
+      "prerequisiteCourses": [
+        "python-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Lire une démarche d'apprentissage",
+        "Évaluer un modèle",
+        "Concevoir un assistant documentaire simple"
+      ],
+      "file": "ia-debutant.json"
+    },
+    {
+      "id": "typescript",
+      "title": "TypeScript",
+      "domain": "typescript-frontend",
+      "subdomain": "TypeScript",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "TypeScript",
+        "JavaScript"
+      ],
+      "description": "Ajouter des types à JavaScript : intérêt du typage statique et transpilation, types primitifs et inférence, interfaces et unions discriminées, fonctions génériques, modules et configuration stricte.",
+      "objectives": [
+        "Expliquer ce que fait le compilateur",
+        "Utiliser l'inférence et éviter any",
+        "Décrire des formes de données avec interface et type",
+        "Écrire des fonctions génériques",
+        "Configurer un projet en mode strict"
+      ],
+      "prerequisites": [
+        "Maîtriser les bases de JavaScript : variables, fonctions, objets et modules."
+      ],
+      "prerequisiteCourses": [
+        "javascript-debutant"
+      ],
+      "nextCourses": [
+        "react"
+      ],
+      "skills": [
+        "Typer un projet",
+        "Concevoir des contrats de données",
+        "Refactoriser sans casser"
+      ],
+      "file": "typescript.json"
+    },
+    {
+      "id": "react",
+      "title": "React",
+      "domain": "typescript-frontend",
+      "subdomain": "React",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "React",
+        "JSX"
+      ],
+      "description": "Construire des interfaces avec React : composants et props, état local et formulaires contrôlés, listes et rendu conditionnel, effets et chargement de données, structure, tests et accessibilité.",
+      "objectives": [
+        "Écrire des composants et transmettre des props",
+        "Gérer un état sans mutation",
+        "Afficher des listes avec des clés stables",
+        "Charger des données en annulant les requêtes obsolètes",
+        "Tester et rendre une interface accessible"
+      ],
+      "prerequisites": [
+        "Maîtriser JavaScript (fonctions, tableaux, objets) et savoir écrire du HTML."
+      ],
+      "prerequisiteCourses": [
+        "javascript-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Composer une interface",
+        "Gérer l'état et les effets",
+        "Écrire des composants testables"
+      ],
+      "file": "react.json"
+    },
+    {
+      "id": "tests-qualite",
+      "title": "Tests et qualité logicielle",
+      "domain": "tests-qualite",
+      "subdomain": "Stratégie de test",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Tests",
+        "Qualité",
+        "CI"
+      ],
+      "description": "Mettre en place une stratégie de test utile : pyramide des tests, tests unitaires lisibles, doubles de test, intégration et bout en bout, lint, couverture et revue de code.",
+      "objectives": [
+        "Choisir le niveau de test adapté",
+        "Écrire des tests déterministes et ciblés",
+        "Utiliser stubs, mocks et fakes à bon escient",
+        "Isoler les tests d'intégration",
+        "Interpréter la couverture et organiser une revue utile"
+      ],
+      "prerequisites": [
+        "Savoir écrire des fonctions et les exécuter (JavaScript ou Python)."
+      ],
+      "prerequisiteCourses": [
+        "javascript-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Concevoir une suite de tests",
+        "Diagnostiquer un échec",
+        "Améliorer la qualité en continu"
+      ],
+      "file": "tests-qualite.json"
+    },
+    {
+      "id": "architecture-logicielle",
+      "title": "Architecture logicielle",
+      "domain": "architecture-logicielle",
+      "subdomain": "Conception",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Architecture",
+        "Design patterns",
+        "SOLID"
+      ],
+      "description": "Concevoir un logiciel qui reste maintenable : couplage et cohésion, principes SOLID sans dogmatisme, patterns utiles et sur-ingénierie, architectures en couches et hexagonale, monolithe, microservices et événements.",
+      "objectives": [
+        "Évaluer couplage et cohésion d'un module",
+        "Appliquer SOLID avec discernement",
+        "Choisir un pattern quand il résout un problème réel",
+        "Isoler le domaine des détails techniques",
+        "Arbitrer entre monolithe, microservices et événements"
+      ],
+      "prerequisites": [
+        "Avoir conçu un service HTTP et écrit des tests (Backend et API, Tests et qualité)."
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Structurer un code maintenable",
+        "Placer les frontières",
+        "Justifier une architecture"
+      ],
+      "file": "architecture-logicielle.json"
+    },
+    {
+      "id": "cybersecurite-avancee",
+      "title": "Cybersécurité avancée",
+      "domain": "cybersecurite",
+      "subdomain": "Défense avancée",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Sécurité",
+        "Durcissement",
+        "SOC",
+        "SIEM"
+      ],
+      "description": "Passer de la théorie à la défense opérationnelle : durcissement d'un serveur, segmentation et Zero Trust, journalisation et triage d'alertes, réponse à incident avec préservation des preuves, gestion des vulnérabilités et audit autorisé.",
+      "objectives": [
+        "Durcir un serveur et vérifier chaque mesure",
+        "Concevoir une segmentation et régler un IDS/IPS",
+        "Trier une alerte avec prudence",
+        "Conduire les phases d'une réponse à incident",
+        "Prioriser des vulnérabilités et cadrer un audit"
+      ],
+      "prerequisites": [
+        "Connaître les fondamentaux de sécurité et administrer un serveur Linux."
+      ],
+      "prerequisiteCourses": [
+        "cybersecurite-debutant",
+        "linux-intermediaire"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Durcir un système",
+        "Détecter et qualifier",
+        "Répondre à un incident"
+      ],
+      "file": "cybersecurite-avancee.json"
+    },
+    {
+      "id": "virtualisation",
+      "title": "Virtualisation",
+      "domain": "virtualisation",
+      "subdomain": "Hyperviseurs",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Virtualisation",
+        "Hyperviseur",
+        "KVM"
+      ],
+      "description": "Comprendre et exploiter la virtualisation : hyperviseurs de type 1 et 2, dimensionnement processeur, mémoire et disques, réseaux virtuels et laboratoire isolé, snapshots, modèles et dépannage des performances.",
+      "objectives": [
+        "Choisir un hyperviseur adapté",
+        "Dimensionner une machine virtuelle sans surallouer",
+        "Isoler un laboratoire du réseau réel",
+        "Utiliser snapshots, clones et modèles à bon escient",
+        "Diagnostiquer une machine virtuelle lente"
+      ],
+      "prerequisites": [
+        "Savoir installer un système et se repérer dans un réseau local."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Monter un laboratoire",
+        "Gérer des ressources virtuelles",
+        "Diagnostiquer un hôte"
+      ],
+      "file": "virtualisation.json"
+    },
+    {
+      "id": "windows-server",
+      "title": "Windows Server",
+      "domain": "windows",
+      "subdomain": "Windows Server",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Windows Server",
+        "Active Directory",
+        "PowerShell"
+      ],
+      "description": "Administrer un serveur Windows : rôles et fonctionnalités, Active Directory et unités d'organisation, stratégies de groupe, DNS et DHCP, permissions NTFS et partages.",
+      "objectives": [
+        "Inventorier rôles et services d'un serveur",
+        "Organiser un annuaire et gérer les comptes par groupes",
+        "Appliquer des stratégies de groupe au bon niveau",
+        "Configurer DNS et DHCP",
+        "Calculer un droit effectif entre partage et NTFS"
+      ],
+      "prerequisites": [
+        "Comprendre le rôle d'un serveur et d'un réseau local."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Administrer un domaine",
+        "Gérer les accès aux fichiers",
+        "Automatiser avec PowerShell"
+      ],
+      "file": "windows-server.json"
+    },
+    {
+      "id": "maintenance-informatique",
+      "title": "Maintenance informatique",
+      "domain": "maintenance",
+      "subdomain": "Diagnostic et réparation",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Matériel",
+        "Diagnostic",
+        "Sauvegarde"
+      ],
+      "description": "Diagnostiquer et entretenir un poste : pannes de démarrage, mémoire et stockage, pannes logicielles et pilotes, sauvegarde et restauration, températures et entretien.",
+      "objectives": [
+        "Suivre un ordre de diagnostic",
+        "Lire les indicateurs SMART",
+        "Revenir à un état système stable",
+        "Mettre en place une sauvegarde testée",
+        "Prévenir la surchauffe"
+      ],
+      "prerequisites": [
+        "Savoir ce qu'est un ordinateur et un système d'exploitation."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Diagnostiquer une panne",
+        "Protéger les données",
+        "Entretenir un poste"
+      ],
+      "file": "maintenance-informatique.json"
+    },
+    {
+      "id": "environnements-travail",
+      "title": "Environnements de travail",
+      "domain": "environnements",
+      "subdomain": "Outils du développeur",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "VS Code",
+        "Dépendances",
+        "Archives"
+      ],
+      "description": "Configurer un poste de développeur : terminal et variables d'environnement, éditeur de code efficace, dépendances et versions, archives et compression, organisation d'un projet et lecture de la documentation.",
+      "objectives": [
+        "Comprendre les variables d'environnement",
+        "Naviguer sans la souris dans un éditeur",
+        "Installer des dépendances de façon reproductible",
+        "Créer et extraire des archives",
+        "Structurer un projet documenté"
+      ],
+      "prerequisites": [
+        "Savoir utiliser un ordinateur."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "automatisation-workflows"
+      ],
+      "skills": [
+        "Préparer un environnement",
+        "Gérer les dépendances",
+        "Documenter un projet"
+      ],
+      "file": "environnements-travail.json"
+    },
+    {
+      "id": "ethical-hacking",
+      "title": "Ethical hacking : cadre et méthode",
+      "domain": "ethical-hacking",
+      "subdomain": "Cadre et méthode",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Audit",
+        "Reconnaissance",
+        "Rapport"
+      ],
+      "description": "Réaliser un audit de sécurité dans un cadre strictement autorisé : règles d'engagement et périmètre, reconnaissance passive, découverte de services en laboratoire, constats reproductibles, rapport et vérification des corrections.",
+      "objectives": [
+        "Rédiger un périmètre et des règles d'engagement",
+        "Mener une reconnaissance passive",
+        "Cartographier les services d'un laboratoire",
+        "Documenter un constat reproductible",
+        "Vérifier une correction"
+      ],
+      "prerequisites": [
+        "Connaître les fondamentaux de la cybersécurité et le réseau.",
+        "Les exercices se font uniquement dans un laboratoire isolé et autorisé."
+      ],
+      "prerequisiteCourses": [
+        "cybersecurite-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Cadrer un audit",
+        "Documenter un constat",
+        "Recommander une correction"
+      ],
+      "file": "ethical-hacking.json"
+    },
+    {
+      "id": "langage-c",
+      "title": "Langage C",
+      "domain": "autres-langages",
+      "subdomain": "C",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "C",
+        "gcc"
+      ],
+      "description": "Programmer en C : compilation, types et opérateurs, conditions, boucles et fonctions, tableaux, chaînes et pointeurs, structures, allocation dynamique et fichiers.",
+      "objectives": [
+        "Compiler avec avertissements",
+        "Écrire des fonctions avec prototype",
+        "Comprendre pointeurs et tableaux",
+        "Allouer et libérer la mémoire",
+        "Lire et écrire des fichiers"
+      ],
+      "prerequisites": [
+        "Connaître les bases de l'algorithmique."
+      ],
+      "prerequisiteCourses": [
+        "algorithmique-debutant"
+      ],
+      "nextCourses": [
+        "langage-cpp"
+      ],
+      "skills": [
+        "Écrire du C sûr",
+        "Gérer la mémoire",
+        "Compiler et diagnostiquer"
+      ],
+      "file": "langage-c.json"
+    },
+    {
+      "id": "langage-cpp",
+      "title": "Langage C++",
+      "domain": "autres-langages",
+      "subdomain": "C++",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "C++",
+        "STL"
+      ],
+      "description": "C++ moderne : références et surcharge, classes et RAII, héritage et polymorphisme, conteneurs et itérateurs de la STL, pointeurs intelligents et gestion des ressources.",
+      "objectives": [
+        "Utiliser références et surcharge",
+        "Appliquer RAII",
+        "Écrire une hiérarchie polymorphe",
+        "Choisir un conteneur STL",
+        "Éviter les fuites mémoire"
+      ],
+      "prerequisites": [
+        "Savoir programmer en C (pointeurs, structures)."
+      ],
+      "prerequisiteCourses": [
+        "langage-c"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Concevoir des classes",
+        "Gérer les ressources",
+        "Utiliser la STL"
+      ],
+      "file": "langage-cpp.json"
+    },
+    {
+      "id": "langage-java",
+      "title": "Langage Java",
+      "domain": "autres-langages",
+      "subdomain": "Java",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Java",
+        "JVM",
+        "JUnit"
+      ],
+      "description": "Java et la JVM : compilation et exécution, classes et encapsulation, héritage, interfaces et polymorphisme, collections et génériques, exceptions et tests unitaires.",
+      "objectives": [
+        "Compiler et exécuter une classe",
+        "Encapsuler un état cohérent",
+        "Utiliser interfaces et polymorphisme",
+        "Choisir une collection typée",
+        "Écrire des tests JUnit"
+      ],
+      "prerequisites": [
+        "Connaître les bases de l'algorithmique."
+      ],
+      "prerequisiteCourses": [
+        "algorithmique-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Programmer orienté objet",
+        "Utiliser les collections",
+        "Tester en Java"
+      ],
+      "file": "langage-java.json"
+    },
+    {
+      "id": "langage-php",
+      "title": "Langage PHP",
+      "domain": "autres-langages",
+      "subdomain": "PHP",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "PHP",
+        "PDO"
+      ],
+      "description": "PHP côté serveur : syntaxe et types, conditions et fonctions, tableaux et formulaires, sessions et fichiers, PDO et requêtes préparées contre l'injection SQL.",
+      "objectives": [
+        "Écrire un script PHP typé",
+        "Traiter et valider un formulaire",
+        "Échapper les sorties",
+        "Gérer sessions et cookies",
+        "Interroger une base avec PDO"
+      ],
+      "prerequisites": [
+        "Savoir écrire une page HTML."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Développer côté serveur",
+        "Sécuriser un formulaire",
+        "Accéder à une base"
+      ],
+      "file": "langage-php.json"
+    },
+    {
+      "id": "langage-go",
+      "title": "Langage Go",
+      "domain": "autres-langages",
+      "subdomain": "Go",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Go",
+        "HTTP"
+      ],
+      "description": "Go de bout en bout : modules et compilation, types et idiome error, structures et interfaces, goroutines et channels, API HTTP et tests avec httptest.",
+      "objectives": [
+        "Créer un module et compiler",
+        "Traiter les erreurs comme valeurs",
+        "Implémenter des interfaces",
+        "Écrire du code concurrent sûr",
+        "Exposer et tester un service HTTP"
+      ],
+      "prerequisites": [
+        "Connaître les bases de l'algorithmique."
+      ],
+      "prerequisiteCourses": [
+        "algorithmique-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Écrire un service Go",
+        "Gérer la concurrence",
+        "Tester une API"
+      ],
+      "file": "langage-go.json"
+    },
+    {
+      "id": "automatisation-workflows",
+      "title": "Automatisation et workflows",
+      "domain": "automatisation-workflows",
+      "subdomain": "Workflows",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Automatisation",
+        "Webhooks",
+        "JSON"
+      ],
+      "description": "Automatiser sans écrire d'application : repérer les tâches utiles, déclencheurs et actions, webhooks, manipulation de JSON, gestion des erreurs et des relances, sécurisation et documentation.",
+      "objectives": [
+        "Évaluer le gain d'une automatisation",
+        "Décrire un workflow",
+        "Manipuler du JSON",
+        "Gérer erreurs et relances",
+        "Sécuriser et documenter"
+      ],
+      "prerequisites": [
+        "Savoir utiliser un environnement de travail et manipuler des fichiers."
+      ],
+      "prerequisiteCourses": [
+        "environnements-travail"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Concevoir un workflow",
+        "Fiabiliser une automatisation",
+        "Protéger les secrets"
+      ],
+      "file": "automatisation-workflows.json"
+    },
+    {
+      "id": "mobile",
+      "title": "Développement mobile",
+      "domain": "mobile",
+      "subdomain": "Fondamentaux",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Mobile",
+        "Android",
+        "iOS"
+      ],
+      "description": "Comprendre le développement mobile : natif ou multiplateforme, cycle de vie, navigation et interfaces adaptatives, stockage local et réseau, permissions, sécurité et publication.",
+      "objectives": [
+        "Choisir une approche native ou multiplateforme",
+        "Gérer le cycle de vie",
+        "Concevoir une navigation simple",
+        "Stocker et charger des données",
+        "Gérer les permissions"
+      ],
+      "prerequisites": [
+        "Maîtriser JavaScript et les bases du web."
+      ],
+      "prerequisiteCourses": [
+        "javascript-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Concevoir une application mobile",
+        "Gérer les états",
+        "Préparer une publication"
+      ],
+      "file": "mobile.json"
+    },
+    {
+      "id": "ux-ui",
+      "title": "UX/UI et accessibilité",
+      "domain": "ux-ui",
+      "subdomain": "Conception d'interface",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "UX",
+        "UI",
+        "Accessibilité"
+      ],
+      "description": "Concevoir des interfaces utilisables : recherche utilisateur, architecture de l'information, hiérarchie visuelle, typographie et couleur, accessibilité clavier et lecteurs d'écran, tests d'utilisabilité.",
+      "objectives": [
+        "Distinguer besoin et solution",
+        "Organiser l'information",
+        "Construire une hiérarchie visuelle",
+        "Rendre une interface accessible",
+        "Conduire un test d'utilisabilité"
+      ],
+      "prerequisites": [
+        "Savoir écrire une page HTML."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Cadrer un besoin",
+        "Concevoir une interface lisible",
+        "Tester avec des utilisateurs"
+      ],
+      "file": "ux-ui.json"
+    },
+    {
+      "id": "deploiement-seo",
+      "title": "Déploiement web et SEO",
+      "domain": "deploiement-seo",
+      "subdomain": "Mise en ligne",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "DNS",
+        "HTTPS",
+        "SEO"
+      ],
+      "description": "Mettre un site en ligne : domaine et DNS, hébergement statique, HTTPS et en-têtes de sécurité, performance et Core Web Vitals, SEO technique.",
+      "objectives": [
+        "Comprendre domaine, DNS et hébergement",
+        "Déployer un site statique",
+        "Configurer HTTPS",
+        "Améliorer la performance perçue",
+        "Soigner le SEO technique"
+      ],
+      "prerequisites": [
+        "Savoir écrire une page HTML et la mettre en forme."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Publier un site",
+        "Sécuriser le transport",
+        "Rendre un site rapide et explorable"
+      ],
+      "file": "deploiement-seo.json"
+    },
+    {
+      "id": "observabilite",
+      "title": "Observabilité et supervision",
+      "domain": "observabilite",
+      "subdomain": "Supervision",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Métriques",
+        "Journaux",
+        "Traces"
+      ],
+      "description": "Comprendre et surveiller un système : métriques, journaux et traces, instrumentation et corrélation, tableaux de bord et alertes utiles, analyse d'incident, SLI/SLO et astreinte.",
+      "objectives": [
+        "Choisir le bon signal",
+        "Instrumenter une application",
+        "Concevoir des alertes actionnables",
+        "Mener un postmortem",
+        "Définir un SLO"
+      ],
+      "prerequisites": [
+        "Comprendre un pipeline CI/CD et un service en production."
+      ],
+      "prerequisiteCourses": [
+        "devops-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Observer un service",
+        "Diagnostiquer un incident",
+        "Définir des objectifs de fiabilité"
+      ],
+      "file": "observabilite.json"
+    },
+    {
+      "id": "gestion-projet",
+      "title": "Gestion de projet informatique",
+      "domain": "gestion-projet",
+      "subdomain": "Pilotage",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Gestion de projet",
+        "Agilité"
+      ],
+      "description": "Piloter un projet informatique : cadrer le besoin et les spécifications, découper et prioriser, agilité avec Scrum et Kanban, documentation et collaboration, risques et dette technique.",
+      "objectives": [
+        "Écrire des critères vérifiables",
+        "Découper en incréments livrables",
+        "Choisir Scrum ou Kanban",
+        "Documenter les décisions",
+        "Gérer risques et dette"
+      ],
+      "prerequisites": [
+        "Savoir versionner un projet avec Git."
+      ],
+      "prerequisiteCourses": [
+        "git-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Cadrer un projet",
+        "Planifier par incréments",
+        "Piloter les risques"
+      ],
+      "file": "gestion-projet.json"
+    },
+    {
+      "id": "reglementation",
+      "title": "Réglementation et bonnes pratiques",
+      "domain": "reglementation",
+      "subdomain": "Données et licences",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "RGPD",
+        "Licences",
+        "Sécurité"
+      ],
+      "description": "Comprendre le cadre des données et des logiciels, à titre pédagogique : principes du RGPD et minimisation, bases légales et conservation, licences et propriété intellectuelle, sécurité dès la conception, référentiels et risques.",
+      "objectives": [
+        "Appliquer la minimisation",
+        "Distinguer les bases légales",
+        "Comparer les licences",
+        "Intégrer la sécurité dès la conception",
+        "Construire une analyse de risque simple"
+      ],
+      "prerequisites": [
+        "Aucun prérequis technique : le cours reste général et pédagogique."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Lire une obligation de données",
+        "Choisir une licence",
+        "Documenter une conformité"
+      ],
+      "file": "reglementation.json"
+    },
+    {
+      "id": "projets-pratiques",
+      "title": "Projets pratiques guidés",
+      "domain": "projets-pratiques",
+      "subdomain": "Projets guidés",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Projets",
+        "HTML",
+        "JavaScript",
+        "Python",
+        "Docker"
+      ],
+      "description": "Cinq projets guidés qui combinent plusieurs compétences : page personnelle et portfolio, calculatrice et liste de tâches, outil Python de notes, API REST avec base de données, conteneurisation et déploiement.",
+      "objectives": [
+        "Mener un projet du cahier des charges au résultat",
+        "Tester les cas limites",
+        "Documenter les choix techniques",
+        "Publier un résultat utilisable"
+      ],
+      "prerequisites": [
+        "Avoir suivi les cours HTML/CSS et JavaScript au minimum."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant",
+        "javascript-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Conduire un projet",
+        "Vérifier un livrable",
+        "Présenter un travail technique"
+      ],
+      "file": "projets-pratiques.json"
+    },
+    {
+      "id": "reseaux-avance",
+      "title": "Réseaux avancé",
+      "domain": "reseaux",
+      "subdomain": "Routage et commutation",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "VLAN",
+        "OSPF",
+        "ACL"
+      ],
+      "description": "Aller plus loin sur le réseau : VLAN et trunks, routage statique et OSPF, listes de contrôle d'accès, dépannage méthodique couche par couche, supervision et analyse de trafic encadrée.",
+      "objectives": [
+        "Segmenter avec des VLAN",
+        "Comprendre un routage dynamique",
+        "Écrire des ACL ordonnées",
+        "Dépanner par couche",
+        "Cadrer une capture de trafic"
+      ],
+      "prerequisites": [
+        "Maîtriser l'adressage IP et les services réseau de base."
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Segmenter un réseau",
+        "Filtrer le trafic",
+        "Diagnostiquer une panne réseau"
+      ],
+      "file": "reseaux-avance.json"
+    },
+    {
+      "id": "python-intermediaire",
+      "title": "Python intermédiaire",
+      "domain": "python",
+      "subdomain": "Intermédiaire",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Python",
+        "pytest",
+        "pathlib"
+      ],
+      "description": "Structurer un projet Python : classes et objets, héritage, composition et dataclasses, modules et environnements virtuels, fichiers CSV et JSON, tests unitaires avec pytest.",
+      "objectives": [
+        "Écrire des classes qui maintiennent leurs invariants",
+        "Choisir composition ou héritage",
+        "Organiser modules et dépendances",
+        "Lire des fichiers structurés",
+        "Tester avec pytest"
+      ],
+      "prerequisites": [
+        "Maîtriser les bases de Python : fonctions, listes, dictionnaires, fichiers."
+      ],
+      "prerequisiteCourses": [
+        "python-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Concevoir du code orienté objet",
+        "Organiser un projet",
+        "Tester et fiabiliser"
+      ],
+      "file": "python-intermediaire.json"
+    },
+    {
+      "id": "linux-administration",
+      "title": "Administration Linux avancée",
+      "domain": "linux",
+      "subdomain": "Administration avancée",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "LVM",
+        "rsync",
+        "nftables"
+      ],
+      "description": "Administrer un serveur de production : volumes logiques LVM, sauvegardes rsync vérifiées, pare-feu en refus par défaut, supervision des ressources, mises à jour et runbooks de dépannage.",
+      "objectives": [
+        "Gérer du stockage LVM",
+        "Écrire et vérifier une sauvegarde",
+        "Configurer un pare-feu minimal",
+        "Identifier un goulot d'étranglement",
+        "Documenter un runbook"
+      ],
+      "prerequisites": [
+        "Administrer un serveur Linux : services, journaux, stockage et réseau."
+      ],
+      "prerequisiteCourses": [
+        "linux-intermediaire"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Gérer le stockage",
+        "Protéger un serveur",
+        "Diagnostiquer en production"
+      ],
+      "file": "linux-administration.json"
+    },
+    {
+      "id": "javascript-avance",
+      "title": "JavaScript avancé",
+      "domain": "javascript",
+      "subdomain": "Asynchrone et modules",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "JavaScript",
+        "IndexedDB",
+        "fetch"
+      ],
+      "description": "Maîtriser l'asynchrone et l'organisation : promesses et async/await, fetch et annulation, modules ES et dépendances propres, event loop et performance, IndexedDB pour les données volumineuses.",
+      "objectives": [
+        "Écrire du code asynchrone lisible",
+        "Gérer les erreurs réseau",
+        "Organiser en modules",
+        "Comprendre l'event loop",
+        "Choisir un stockage adapté"
+      ],
+      "prerequisites": [
+        "Maîtriser les bases de JavaScript et le DOM."
+      ],
+      "prerequisiteCourses": [
+        "javascript-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Gérer l'asynchrone",
+        "Structurer une application",
+        "Préserver la réactivité"
+      ],
+      "file": "javascript-avance.json"
     }
   ]
 }

@@ -1,0 +1,178 @@
+{
+  "courseId": "cloud-debutant",
+  "modules": [
+    {
+      "id": "cl-m1",
+      "title": "Comprendre le cloud",
+      "chapters": [
+        {
+          "id": "cl-01",
+          "title": "Ce qu'est le cloud computing",
+          "duration": 18,
+          "objectives": [
+            "Définir le cloud computing",
+            "Distinguer IaaS, PaaS et SaaS"
+          ],
+          "content": [
+            { "type": "p", "text": "Le **cloud computing** consiste à utiliser, via un réseau, des ressources informatiques gérées par un fournisseur : calcul, stockage, réseau, bases de données. On ne possède plus le matériel ; on le loue à la demande, avec une facturation à l'usage." },
+            { "type": "p", "text": "Le modèle économique change : les investissements matériels (CAPEX) deviennent des dépenses d'exploitation (OPEX). L'**élasticité** permet d'augmenter les ressources en quelques minutes, puis de les libérer." },
+            { "type": "table", "headers": ["Modèle", "Ce que le fournisseur gère", "Ce que vous gérez"], "rows": [
+              ["IaaS", "Matériel, virtualisation, réseau", "Système, runtime, application, données"],
+              ["PaaS", "Tout jusqu'au runtime", "Application et données"],
+              ["SaaS", "Tout", "Utilisation et configuration de vos données"]
+            ] },
+            { "type": "p", "text": "On distingue aussi le cloud **public** (ressources partagées chez un fournisseur), **privé** (dédié à une organisation) et **hybride** (combinaison des deux). Le choix dépend surtout des contraintes réglementaires, de la charge et des compétences disponibles." },
+            { "type": "warning", "text": "« Le cloud » n'est pas automatiquement plus sûr ni moins cher. Sans gouvernance, la facture et la surface d'attaque augmentent vite." }
+          ],
+          "exercise": {
+            "title": "Quel modèle ?",
+            "instructions": "Une équipe veut déployer une application sans administrer de système d'exploitation ni de runtime. Quel modèle choisir : IaaS, PaaS ou SaaS ?",
+            "hints": ["IaaS fournit la machine, pas le runtime.", "PaaS fournit la plateforme d'exécution."],
+            "solution": "PaaS : la plateforme gère le système et le runtime, l'équipe ne s'occupe que de l'application et des données."
+          },
+          "quiz": [
+            { "id": "cl-01-q1", "type": "single", "difficulty": 1, "question": "Que désigne IaaS ?", "options": ["Un logiciel prêt à l'emploi", "Une infrastructure louée (machines, réseau, stockage)", "Une plateforme d'exécution", "Un service de messagerie"], "answer": 1, "explanation": "IaaS fournit les ressources brutes ; vous gérez le système et au-delà.", "hints": [] },
+            { "id": "cl-01-q2", "type": "truefalse", "difficulty": 1, "question": "Le cloud transforme des investissements matériels en coûts d'usage.", "answer": true, "explanation": "CAPEX devient OPEX : on paie à la consommation.", "hints": [] }
+          ]
+        },
+        {
+          "id": "cl-02",
+          "title": "Régions, zones et disponibilité",
+          "duration": 18,
+          "objectives": [
+            "Choisir une région",
+            "Comprendre la redondance entre zones"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **région** est une zone géographique (par exemple Paris). À l'intérieur, plusieurs **zones de disponibilité** sont des centres de données isolés : panne électrique, réseau ou incendie n'affectent en principe qu'une zone." },
+            { "type": "p", "text": "Répartir les instances sur deux ou trois zones permet de survivre à la perte d'un centre de données. En contrepartie, les échanges entre zones sont facturés et légèrement plus lents qu'au sein d'une même zone." },
+            { "type": "table", "headers": ["Critère de choix d'une région", "Question à se poser"], "rows": [
+              ["Latence", "Où se trouvent les utilisateurs ?"],
+              ["Conformité", "Les données peuvent-elles sortir du pays ?"],
+              ["Coût", "Quel est le prix du calcul et de la sortie de données ?"],
+              ["Services", "Le service voulu est-il disponible dans cette région ?"]
+            ] },
+            { "type": "warning", "text": "Les **frais de sortie de données** (egress) sont souvent la surprise de la facture. Un service qui interroge massivement une autre région peut coûter bien plus que prévu." }
+          ],
+          "exercise": {
+            "title": "Répartir sur deux zones",
+            "instructions": "Une application doit résister à la perte d'un centre de données. Combien de zones minimum utiliser, et quels échanges surveiller ?",
+            "hints": ["Une seule zone tombe avec le centre de données.", "Les échanges inter-zones sont facturés."],
+            "solution": "Au moins deux zones, idéalement trois. Surveiller le trafic entre zones, qui est facturé et plus lent qu'en zone unique."
+          },
+          "quiz": [
+            { "id": "cl-02-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qu'une zone de disponibilité ?", "options": ["Un pays", "Un centre de données isolé dans une région", "Un type de facturation", "Un service de stockage"], "answer": 1, "explanation": "Les zones d'une région sont physiquement séparées pour limiter les pannes communes.", "hints": [] },
+            { "id": "cl-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi les frais de sortie de données sont-ils souvent sous-estimés ?", "options": ["Ils sont gratuits", "Ils dépendent des volumes échangés, notamment entre régions et vers Internet", "Ils sont fixes", "Ils ne concernent que le stockage"], "answer": 1, "explanation": "Le coût dépend du volume sortant et de la destination ; une architecture bavarde coûte cher.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cl-m2",
+      "title": "Services et sécurité",
+      "chapters": [
+        {
+          "id": "cl-03",
+          "title": "Calcul et stockage",
+          "duration": 20,
+          "objectives": [
+            "Comparer machine virtuelle, conteneur et serverless",
+            "Distinguer stockage objet, bloc et fichier"
+          ],
+          "content": [
+            { "type": "p", "text": "Trois modes de calcul dominent. La **machine virtuelle** offre un système complet, que vous administrez. Le **conteneur** (service type ECS, AKS, GKE, Cloud Run) isole l'application et démarre vite. Le **serverless** exécute une fonction à la demande, sans serveur à gérer, mais avec des limites de durée et de démarrage à froid." },
+            { "type": "table", "headers": ["Stockage", "Usage"], "rows": [
+              ["Objet", "Fichiers par clé, volumes importants, sites statiques, sauvegardes"],
+              ["Bloc", "Disque attaché à une machine, base de données, système de fichiers"],
+              ["Fichier", "Partage réseau entre plusieurs machines (NFS, SMB)"]
+            ] },
+            { "type": "p", "text": "Le stockage objet n'est pas un disque : on écrit et lit des objets entiers par clé, sans modifier un octet au milieu. Il est très durable et peu coûteux, mais inadapté à une base de données transactionnelle." },
+            { "type": "tip", "text": "Choisissez d'abord selon la contrainte technique (accès aléatoire, latence, partage) puis selon le coût. L'inverse mène à des architectures fragiles." }
+          ],
+          "exercise": {
+            "title": "Stockage d'images",
+            "instructions": "Une application doit stocker des millions de photos téléversées, servies depuis un site web. Quel type de stockage choisir ?",
+            "hints": ["Les photos sont lues en entier et rarement modifiées.", "Un disque attaché à une machine ne passe pas à l'échelle simplement."],
+            "solution": "Le stockage objet : adapté aux volumes importants, durable, accessible par HTTP et souvent servi via un CDN."
+          },
+          "quiz": [
+            { "id": "cl-03-q1", "type": "single", "difficulty": 1, "question": "Quel mode de calcul ne nécessite aucune gestion de serveur ?", "options": ["Machine virtuelle", "Serverless", "Serveur dédié", "Conteneur auto-hébergé"], "answer": 1, "explanation": "Le serverless exécute du code à la demande, sans serveur à administrer.", "hints": [] },
+            { "id": "cl-03-q2", "type": "single", "difficulty": 2, "question": "Quel stockage est le plus adapté à des sauvegardes et des fichiers statiques ?", "options": ["Bloc", "Objet", "Fichier", "Mémoire vive"], "answer": 1, "explanation": "Le stockage objet est durable, peu coûteux et adapté aux fichiers lus en entier.", "hints": [] }
+          ]
+        },
+        {
+          "id": "cl-04",
+          "title": "Réseau virtuel et identités",
+          "duration": 20,
+          "objectives": [
+            "Décrire un réseau virtuel",
+            "Appliquer le moindre privilège aux identités"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **réseau virtuel** (VPC) isole vos ressources dans le cloud. On le découpe en **sous-réseaux**, publics (accessibles depuis Internet via une passerelle) ou privés. Les règles de pare-feu (security groups) filtrent le trafic à l'entrée et à la sortie." },
+            { "type": "code", "lang": "text", "title": "Principe de cloisonnement", "code": "VPC 10.0.0.0/16\n├── sous-réseau public   10.0.1.0/24  (équilibreur, bastion)\n├── sous-réseau privé    10.0.2.0/24  (application)\n└── sous-réseau privé    10.0.3.0/24  (base de données)" },
+            { "type": "p", "text": "Les **identités** (utilisateurs, services, rôles) reçoivent des droits par politique. Le principe du **moindre privilège** impose de n'accorder que le nécessaire. Un rôle attribué à une instance évite de stocker des clés d'accès dans le code." },
+            { "type": "warning", "text": "Une base de données dans un sous-réseau public, même protégée par un mot de passe, est exposée à des tentatives constantes. Placez-la en privé." }
+          ],
+          "exercise": {
+            "title": "Où placer la base ?",
+            "instructions": "Vous concevez un VPC avec trois sous-réseaux. Où placer l'équilibreur de charge, l'application et la base de données ?",
+            "hints": ["L'équilibreur doit être joignable depuis Internet.", "La base ne doit être joignable que par l'application."],
+            "solution": "Équilibreur en sous-réseau public, application en privé (sortie contrôlée), base de données en privé, accessible uniquement depuis le sous-réseau applicatif."
+          },
+          "quiz": [
+            { "id": "cl-04-q1", "type": "single", "difficulty": 1, "question": "À quoi sert un sous-réseau privé ?", "options": ["À héberger des ressources non accessibles directement depuis Internet", "À accélérer le réseau", "À stocker des fichiers", "À remplacer un pare-feu"], "answer": 0, "explanation": "Les ressources privées ne sont joignables que depuis l'intérieur du réseau.", "hints": [] },
+            { "id": "cl-04-q2", "type": "truefalse", "difficulty": 2, "question": "Attribuer un rôle à une instance est préférable à stocker des clés d'accès dans le code.", "answer": true, "explanation": "Les clés dans le code fuient facilement ; un rôle fournit des identifiants temporaires.", "hints": [] }
+          ]
+        },
+        {
+          "id": "cl-05",
+          "title": "Sécurité, coûts et responsabilité partagée",
+          "duration": 20,
+          "objectives": [
+            "Expliquer le modèle de responsabilité partagée",
+            "Identifier les leviers de maîtrise des coûts"
+          ],
+          "content": [
+            { "type": "p", "text": "Le **modèle de responsabilité partagée** répartit les devoirs : le fournisseur sécurise l'infrastructure physique, l'hyperviseur et les services gérés ; le client reste responsable de ses données, de ses identités, de sa configuration et de son code." },
+            { "type": "table", "headers": ["Levier", "Effet"], "rows": [
+              ["Étiquetage des ressources (tags)", "Imputer les coûts à une équipe ou un projet"],
+              ["Arrêt des ressources inutilisées", "Supprimer les coûts fixes"],
+              ["Ajustement des tailles", "Éviter le surdimensionnement"],
+              ["Stockage hiérarchisé", "Placer les données froides sur un stockage moins cher"],
+              ["Alertes budgétaires", "Détecter une dérive avant la facture"]
+            ] },
+            { "type": "p", "text": "Côté sécurité, chiffrez les données au repos et en transit, activez la journalisation des accès et testez la restauration des sauvegardes. La traçabilité est aussi un outil de maîtrise des coûts : on voit qui a créé quoi." },
+            { "type": "warning", "text": "Supprimer une ressource ne supprime pas toujours les données associées (instantanés, sauvegardes). Vérifiez le cycle de vie complet avant de conclure qu'une donnée a disparu." }
+          ],
+          "exercise": {
+            "title": "Qui est responsable ?",
+            "instructions": "Une base de données gérée est accessible publiquement par erreur. Qui est responsable : le fournisseur ou le client ?",
+            "hints": ["Le fournisseur gère l'infrastructure et le moteur.", "La configuration de l'accès relève du client."],
+            "solution": "Le client : le fournisseur garantit l'infrastructure, mais la configuration réseau et des accès relève de sa responsabilité."
+          },
+          "quiz": [
+            { "id": "cl-05-q1", "type": "single", "difficulty": 1, "question": "Dans le modèle de responsabilité partagée, qui protège les données et les identités ?", "options": ["Le fournisseur uniquement", "Le client", "Personne", "Un tiers certifié"], "answer": 1, "explanation": "Le client reste responsable de ses données, identités et configurations.", "hints": [] },
+            { "id": "cl-05-q2", "type": "multiple", "difficulty": 2, "question": "Quels leviers réduisent la facture cloud ?", "options": ["Étiqueter les ressources", "Laisser tourner les environnements de test", "Ajuster les tailles d'instances", "Activer des alertes budgétaires"], "answer": [0, 2, 3], "explanation": "Les environnements oubliés allumés sont une source classique de surcoût.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Architecture cloud d'un site vitrine",
+    "brief": "Concevez et chiffrez l'architecture d'un petit site vitrine avec une base de données, en respectant le cloisonnement réseau.",
+    "steps": [
+      "Décrire les composants : réseau virtuel, sous-réseaux, calcul, stockage, base de données et CDN.",
+      "Placer chaque composant dans le sous-réseau adapté et justifier l'exposition.",
+      "Estimer le coût mensuel avec le calculateur du fournisseur et proposer deux optimisations.",
+      "Définir la stratégie de sauvegarde et la procédure de restauration.",
+      "Lister les trois alertes de supervision les plus utiles pour ce site."
+    ],
+    "criteria": [
+      "La base de données n'est joignable que depuis le sous-réseau applicatif.",
+      "Chaque coût annoncé provient d'un calculateur, pas d'une estimation au doigt mouillé.",
+      "Une restauration est décrite étape par étape et testable."
+    ]
+  }
+}

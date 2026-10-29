@@ -1,0 +1,203 @@
+{
+  "courseId": "cybersecurite-avancee",
+  "modules": [
+    {
+      "id": "seca-m1",
+      "title": "Durcir et détecter",
+      "chapters": [
+        {
+          "id": "seca-01",
+          "title": "Durcir un serveur Linux",
+          "duration": 24,
+          "objectives": [
+            "Réduire la surface d'attaque",
+            "Appliquer un durcissement vérifiable"
+          ],
+          "content": [
+            { "type": "p", "text": "**Durcir** un système, c'est réduire ce qui peut être attaqué : moins de services, moins de comptes, moins de droits. Le travail commence par un inventaire : quels services écoutent, quels comptes se connectent, quelles mises à jour sont en retard." },
+            { "type": "code", "lang": "bash", "code": "ss -tulpn                    # services en écoute\nsystemctl list-unit-files --state=enabled\nlastlog                      # dernières connexions\nsudo apt update && apt list --upgradable\nsudo passwd -S alice         # état du mot de passe" },
+            { "type": "table", "headers": ["Mesure", "Effet"], "rows": [
+              ["Désactiver les services inutiles", "Réduit les ports exposés"],
+              ["SSH par clé, mot de passe désactivé", "Supprime les attaques par force brute en ligne"],
+              ["`PermitRootLogin no`", "Interdit la connexion directe en root"],
+              ["Comptes nominatifs, pas de comptes partagés", "Trace les actions"],
+              ["Mises à jour régulières", "Ferme les failles connues"],
+              ["Pare-feu avec politique par défaut en refus", "N'ouvre que le nécessaire"]
+            ] },
+            { "type": "code", "lang": "text", "title": "/etc/ssh/sshd_config (extraits)", "code": "PermitRootLogin no\nPasswordAuthentication no\nAllowUsers alice ops\nMaxAuthTries 3" },
+            { "type": "p", "text": "Chaque mesure doit être **vérifiable** : après modification, recontrôlez l'écoute réseau, l'accès effectif et les journaux. Une configuration écrite mais non appliquée ne protège rien." },
+            { "type": "warning", "text": "Testez toute modification d'accès à distance dans une session ouverte et avec un compte de secours. Couper SSH par erreur peut rendre un serveur inaccessible sans intervention physique." }
+          ],
+          "exercise": {
+            "title": "Réduire la surface",
+            "instructions": "Un serveur web expose aussi un service de base de données sur 0.0.0.0. Quelle correction appliquez-vous ?",
+            "hints": ["La base ne doit être joignable que par l'application.", "Deux niveaux : écoute et pare-feu."],
+            "solution": "Faire écouter la base sur 127.0.0.1 (ou l'interface interne), restreindre par pare-feu au serveur applicatif, et vérifier avec ss que le port n'est plus exposé publiquement."
+          },
+          "quiz": [
+            { "id": "seca-01-q1", "type": "single", "difficulty": 2, "question": "Quelle option SSH empêche la connexion directe en root ?", "options": ["PermitRootLogin no", "PasswordAuthentication no", "MaxAuthTries 3", "AllowUsers alice"], "answer": 0, "explanation": "PermitRootLogin no impose un compte nominatif puis une élévation de privilèges.", "hints": [] },
+            { "id": "seca-01-q2", "type": "truefalse", "difficulty": 2, "question": "Désactiver l'authentification par mot de passe SSH réduit les attaques par force brute en ligne.", "answer": true, "explanation": "Sans mot de passe accepté, l'attaque par devinette en ligne ne fonctionne plus.", "hints": [] }
+          ]
+        },
+        {
+          "id": "seca-02",
+          "title": "Segmentation, IDS/IPS et Zero Trust",
+          "duration": 24,
+          "objectives": [
+            "Concevoir une segmentation utile",
+            "Distinguer détection et blocage"
+          ],
+          "content": [
+            { "type": "p", "text": "La **segmentation** découpe le réseau en zones : postes, serveurs applicatifs, bases de données, administration. L'objectif est de limiter les mouvements latéraux : une machine compromise ne doit pas atteindre tout le reste." },
+            { "type": "table", "headers": ["Équipement", "Rôle"], "rows": [
+              ["Pare-feu", "Filtre selon des règles, autorise ou refuse"],
+              ["IDS", "Détecte et alerte, sans bloquer"],
+              ["IPS", "Détecte et bloque, avec risque de faux positifs"],
+              ["Proxy inverse", "Point d'entrée HTTP, terminaison TLS possible"]
+            ] },
+            { "type": "p", "text": "Le modèle **Zero Trust** déplace la confiance du réseau vers l'identité : chaque accès est authentifié, autorisé et journalisé, quel que soit l'emplacement de la machine. En pratique, on combine segmentation, authentification forte et moindre privilège." },
+            { "type": "list", "items": [
+              "Politique par défaut en refus, puis ouvertures explicites.",
+              "Flux d'administration isolés, jamais exposés à Internet.",
+              "Journaux conservés hors de la machine surveillée.",
+              "TLS de bout en bout entre services sensibles."
+            ] },
+            { "type": "warning", "text": "Un IPS mal réglé bloque du trafic légitime et provoque des pannes. Commencez en mode détection, mesurez les faux positifs, puis activez le blocage règle par règle." }
+          ],
+          "exercise": {
+            "title": "Limiter le mouvement latéral",
+            "instructions": "Un poste de travail est compromis. Quelles mesures réduisent ce qu'il peut atteindre ?",
+            "hints": ["Le poste doit-il joindre directement la base de données ?", "Les flux doivent être explicitement autorisés."],
+            "solution": "Segmenter le réseau, n'autoriser du poste que les flux nécessaires (proxy web, services métier), isoler les bases et l'administration, et journaliser les refus."
+          },
+          "quiz": [
+            { "id": "seca-02-q1", "type": "single", "difficulty": 2, "question": "Quelle différence entre IDS et IPS ?", "options": ["L'IDS alerte, l'IPS bloque", "L'IDS chiffre, l'IPS déchiffre", "L'IDS est un pare-feu", "Ils sont identiques"], "answer": 0, "explanation": "L'IPS agit sur le trafic ; l'IDS se contente de détecter et d'alerter.", "hints": [] },
+            { "id": "seca-02-q2", "type": "single", "difficulty": 3, "question": "Que change le modèle Zero Trust ?", "options": ["Il considère le réseau interne comme non fiable par défaut", "Il supprime les pare-feu", "Il autorise tout en interne", "Il remplace l'authentification"], "answer": 0, "explanation": "La confiance repose sur l'identité et l'autorisation, pas sur la position réseau.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "seca-m2",
+      "title": "Détection, incident et audit",
+      "chapters": [
+        {
+          "id": "seca-03",
+          "title": "Journalisation et détection",
+          "duration": 22,
+          "objectives": [
+            "Choisir les sources de journaux utiles",
+            "Trier une alerte"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **SOC** surveille en continu. La valeur vient des sources collectées : authentifications, journaux système, pare-feu, applications, services cloud. Un **SIEM** centralise, normalise et corrèle ces événements pour produire des alertes." },
+            { "type": "code", "lang": "bash", "code": "journalctl -u ssh --since \"1 hour ago\" | grep -i \"failed\"\nlastb | head\naureport --summary" },
+            { "type": "p", "text": "Le **triage** d'une alerte suit un ordre simple : que dit l'alerte, l'activité est-elle réelle ou un faux positif, quel est l'impact potentiel, et quelles actions immédiates ? On documente chaque décision pour l'analyse ultérieure." },
+            { "type": "table", "headers": ["Signal", "Interprétation prudente"], "rows": [
+              ["Nombre élevé d'échecs SSH depuis une IP", "Tentative de force brute, à confirmer"],
+              ["Connexion réussie après de nombreux échecs", "Compromission possible : à examiner"],
+              ["Nouveau compte administrateur créé", "Vérifier l'origine et l'autorisation"],
+              ["Pic de trafic sortant", "Exfiltration possible ou sauvegarde légitime"]
+            ] },
+            { "type": "warning", "text": "Une alerte n'est pas une preuve. Ne concluez pas à une intrusion sans corréler plusieurs sources : un pic peut être une sauvegarde planifiée." }
+          ],
+          "exercise": {
+            "title": "Trier un signal",
+            "instructions": "Les journaux montrent cinquante échecs SSH puis une connexion réussie depuis la même IP. Que faites-vous en priorité ?",
+            "hints": ["Une réussite après des échecs est un signal fort.", "Il faut préserver les preuves avant d'agir."],
+            "solution": "Traiter comme une compromission probable : préserver les journaux, vérifier le compte concerné, ses sessions et actions, puis isoler la machine selon la procédure d'incident."
+          },
+          "quiz": [
+            { "id": "seca-03-q1", "type": "single", "difficulty": 2, "question": "Quel est le rôle d'un SIEM ?", "options": ["Centraliser et corréler les journaux", "Chiffrer les disques", "Remplacer le pare-feu", "Sauvegarder les bases"], "answer": 0, "explanation": "Le SIEM agrège et corrèle les événements pour détecter des schémas.", "hints": [] },
+            { "id": "seca-03-q2", "type": "truefalse", "difficulty": 2, "question": "Une alerte unique suffit à confirmer une intrusion.", "answer": false, "explanation": "Il faut corréler plusieurs sources et écarter les faux positifs.", "hints": [] }
+          ]
+        },
+        {
+          "id": "seca-04",
+          "title": "Réponse à incident",
+          "duration": 24,
+          "objectives": [
+            "Suivre les phases de réponse",
+            "Préserver les preuves"
+          ],
+          "content": [
+            { "type": "p", "text": "La réponse à incident suit des phases connues : **préparation**, **identification**, **confinement**, **éradication**, **rétablissement**, **retour d'expérience**. Sauter le confinement pour « nettoyer vite » laisse souvent l'attaquant revenir." },
+            { "type": "table", "headers": ["Phase", "Objectif"], "rows": [
+              ["Préparation", "Contacts, procédures, journaux conservés, sauvegardes testées"],
+              ["Identification", "Confirmer l'incident et son périmètre"],
+              ["Confinement", "Limiter la propagation sans détruire les preuves"],
+              ["Éradication", "Supprimer la cause : compte compromis, faille, logiciel"],
+              ["Rétablissement", "Remettre en service et surveiller"],
+              ["Retour d'expérience", "Corriger les causes profondes"]
+            ] },
+            { "type": "p", "text": "La **préservation des preuves** suit l'ordre de volatilité : mémoire et connexions d'abord, puis disques, puis sauvegardes et journaux archivés. On documente les horodatages et les manipulations pour que les éléments restent exploitables." },
+            { "type": "code", "lang": "bash", "code": "# Capture minimale avant confinement (exemple de laboratoire)\ndate -Is\nss -tupn > /tmp/connexions.txt\nps auxf > /tmp/processus.txt" },
+            { "type": "warning", "text": "Un incident réel peut avoir des conséquences juridiques. Prévenez la personne responsable de la sécurité et suivez la procédure de l'organisation ; ce cours ne donne aucun conseil juridique." }
+          ],
+          "exercise": {
+            "title": "Ordre des actions",
+            "instructions": "Un serveur est suspecté compromis. Dans quel ordre agir : éteindre, préserver les preuves, isoler le réseau, analyser ?",
+            "hints": ["Éteindre détruit la mémoire.", "Isoler limite la propagation."],
+            "solution": "Préserver les preuves volatiles, isoler le réseau (confinement), puis analyser. Éteindre en dernier recours, car cela efface la mémoire."
+          },
+          "quiz": [
+            { "id": "seca-04-q1", "type": "single", "difficulty": 2, "question": "Quelle preuve est la plus volatile ?", "options": ["Le contenu de la mémoire vive", "Les fichiers du disque", "Les sauvegardes", "Les journaux archivés"], "answer": 0, "explanation": "La mémoire disparaît à l'extinction : elle se collecte en premier.", "hints": [] },
+            { "id": "seca-04-q2", "type": "single", "difficulty": 3, "question": "Pourquoi ne pas éteindre immédiatement une machine compromise ?", "options": ["Cela détruit les preuves volatiles", "Cela accélère l'attaque", "Cela vide les sauvegardes", "Cela désactive le pare-feu"], "answer": 0, "explanation": "L'extinction efface la mémoire et les connexions actives, utiles à l'analyse.", "hints": [] }
+          ]
+        },
+        {
+          "id": "seca-05",
+          "title": "Vulnérabilités et audit autorisé",
+          "duration": 22,
+          "objectives": [
+            "Prioriser les vulnérabilités",
+            "Cadrer un test autorisé"
+          ],
+          "content": [
+            { "type": "p", "text": "La gestion des vulnérabilités est un cycle : inventaire des actifs, scan, priorisation, correction, vérification. On ne corrige pas tout en même temps : on corrige selon l'exposition, l'exploitabilité et l'impact métier." },
+            { "type": "table", "headers": ["Critère", "Question"], "rows": [
+              ["Exposition", "Le service est-il joignable depuis Internet ?"],
+              ["Exploitabilité", "Un exploit public existe-t-il ?"],
+              ["Impact", "Quelles données ou fonctions sont concernées ?"],
+              ["Compensations", "Un contrôle réduit-il le risque en attendant la correction ?"]
+            ] },
+            { "type": "p", "text": "Un **audit autorisé** repose sur un périmètre écrit : actifs concernés, dates, méthodes permises, contacts, procédure d'arrêt. Sans ce document, les tests techniques relèvent d'une activité illégale." },
+            { "type": "list", "items": [
+              "Lister les actifs et exclure explicitement ce qui ne doit pas être testé.",
+              "Définir les fenêtres horaires et les niveaux d'intrusion acceptés.",
+              "Prévoir un canal d'urgence et un plan de retour arrière.",
+              "Documenter les constats avec preuves, risque et recommandation."
+            ] },
+            { "type": "warning", "text": "Scanner un réseau ou un site dont vous n'êtes pas responsable est illégal, même « pour tester ». Ce cours ne couvre que les audits sur des systèmes possédés ou explicitement autorisés." }
+          ],
+          "exercise": {
+            "title": "Prioriser deux failles",
+            "instructions": "Deux vulnérabilités : une critique sur un service interne non exposé, une moyenne sur un portail public. Laquelle corriger d'abord, et pourquoi ?",
+            "hints": ["L'exposition change le risque réel.", "La gravité seule ne suffit pas."],
+            "solution": "Le portail public : l'exposition rend l'exploitation bien plus probable. La faille critique interne reste prioritaire dès que l'exposition change ou qu'un mouvement latéral est possible."
+          },
+          "quiz": [
+            { "id": "seca-05-q1", "type": "single", "difficulty": 2, "question": "Que doit définir un audit autorisé avant tout test ?", "options": ["Un périmètre écrit et des méthodes permises", "Le prix du rapport", "Le nombre de failles attendues", "Le fournisseur cloud"], "answer": 0, "explanation": "Le périmètre et les règles d'engagement encadrent légalement et opérationnellement l'audit.", "hints": [] },
+            { "id": "seca-05-q2", "type": "single", "difficulty": 3, "question": "Pourquoi la gravité d'une faille ne suffit-elle pas à fixer l'ordre de correction ?", "options": ["L'exposition et l'impact réel modifient le risque", "La gravité est toujours fausse", "Seuls les correctifs comptent", "Les failles internes sont sans risque"], "answer": 0, "explanation": "Le risque combine probabilité d'exploitation et impact ; l'exposition pèse lourd.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Durcissement et supervision d'un serveur de laboratoire",
+    "brief": "Sur une machine virtuelle isolée, appliquez un durcissement mesurable et mettez en place une détection minimale.",
+    "steps": [
+      "Inventorier les services en écoute, les comptes et les mises à jour en retard.",
+      "Désactiver les services inutiles et durcir SSH (clé, root interdit).",
+      "Configurer un pare-feu en refus par défaut, avec les seules ouvertures nécessaires.",
+      "Mettre en place une règle de détection simple sur les échecs d'authentification.",
+      "Rédiger un rapport avant/après avec les commandes de vérification et les preuves."
+    ],
+    "criteria": [
+      "Chaque mesure est vérifiée par une commande dont la sortie est jointe au rapport.",
+      "La machine reste accessible pour l'administration après durcissement.",
+      "Toute la manipulation est réalisée dans un laboratoire isolé et autorisé."
+    ]
+  }
+}

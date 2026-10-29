@@ -1,0 +1,161 @@
+{
+  "courseId": "maintenance-informatique",
+  "modules": [
+    {
+      "id": "mnt-m1",
+      "title": "Diagnostiquer",
+      "chapters": [
+        {
+          "id": "mnt-01",
+          "title": "Un ordinateur qui ne démarre pas",
+          "duration": 18,
+          "objectives": ["Suivre un ordre de diagnostic", "Distinguer panne matérielle et logicielle"],
+          "content": [
+            { "type": "p", "text": "Un démarrage raté se diagnostique dans un ordre fixe : alimentation, affichage, réaction du firmware, puis système. Chaque étape élimine une famille de causes avant de passer à la suivante." },
+            { "type": "list", "items": [
+              "Pas de voyant ni de ventilateur : alimentation ou prise.",
+              "Ventilateurs mais aucun affichage : mémoire, carte graphique ou carte mère.",
+              "Logo du firmware puis arrêt : disque ou système corrompu.",
+              "Message d'erreur de démarrage : lire le code exact, il oriente le diagnostic."
+            ] },
+            { "type": "p", "text": "Les **bips** du firmware et les voyants de la carte mère encodent souvent la cause. Consultez le manuel de la carte : un même nombre de bips n'a pas la même signification selon le fabricant." },
+            { "type": "tip", "text": "Notez ce qui se passe avant de toucher au matériel. Une observation précise évite de démonter une machine pour rien." }
+          ],
+          "exercise": {
+            "title": "Ordre du diagnostic",
+            "instructions": "La machine s'allume, les ventilateurs tournent, aucun affichage. Quelles deux vérifications menez-vous d'abord ?",
+            "hints": ["Le firmware produit-il un signal d'erreur sonore ?", "Un composant mal enfiché empêche l'affichage."],
+            "solution": "Vérifier les bips ou voyants du firmware, puis le bon enfichage de la mémoire et de la carte graphique, en testant une barrette à la fois."
+          },
+          "quiz": [
+            { "id": "mnt-01-q1", "type": "single", "difficulty": 1, "question": "La machine ne s'allume pas du tout. Quelle cause examiner en premier ?", "options": ["Le système d'exploitation", "L'alimentation électrique", "Les logiciels installés", "Le navigateur"], "answer": 1, "explanation": "Sans alimentation, aucun autre composant ne peut fonctionner.", "hints": [] },
+            { "id": "mnt-01-q2", "type": "truefalse", "difficulty": 2, "question": "Un même nombre de bips a la même signification sur toutes les cartes mères.", "answer": false, "explanation": "Les codes dépendent du firmware et du fabricant : consultez la documentation.", "hints": [] }
+          ]
+        },
+        {
+          "id": "mnt-02",
+          "title": "Mémoire et stockage",
+          "duration": 18,
+          "objectives": ["Reconnaître un défaut de mémoire", "Diagnostiquer un disque défaillant"],
+          "content": [
+            { "type": "p", "text": "Une **mémoire défectueuse** provoque des redémarrages aléatoires, des écrans bleus ou des corruptions de fichiers. Un test mémoire lancé au démarrage isole le problème : testez les barrettes une par une, dans des emplacements différents." },
+            { "type": "p", "text": "Un **disque en fin de vie** se signale par des ralentissements, des erreurs d'écriture et des secteurs réalloués. Les outils d'auto-surveillance (SMART) donnent des indicateurs avant la panne totale." },
+            { "type": "code", "lang": "bash", "code": "smartctl -a /dev/sda        # état SMART sous Linux\ndf -h                       # espace disponible\nsudo dmesg | grep -i error  # erreurs matérielles" },
+            { "type": "warning", "text": "Un disque qui montre des erreurs d'écriture peut lâcher sans prévenir. Sauvegardez immédiatement les données avant tout autre test." }
+          ],
+          "exercise": {
+            "title": "Lire un SMART",
+            "instructions": "SMART indique « secteurs réalloués » en hausse régulière. Que faites-vous en priorité ?",
+            "hints": ["La valeur augmente avec les défauts physiques.", "La priorité est la donnée, pas le test."],
+            "solution": "Sauvegarder les données immédiatement, puis remplacer le disque : la hausse indique une dégradation physique."
+          },
+          "quiz": [
+            { "id": "mnt-02-q1", "type": "single", "difficulty": 1, "question": "Quel outil surveille l'état d'un disque ?", "options": ["SMART", "DNS", "SSH", "DHCP"], "answer": 0, "explanation": "SMART expose les indicateurs d'usure et d'erreur du disque.", "hints": [] },
+            { "id": "mnt-02-q2", "type": "single", "difficulty": 2, "question": "Des redémarrages aléatoires et des fichiers corrompus orientent vers…", "options": ["Un défaut de mémoire", "Un problème de souris", "Un pare-feu", "Un manque d'espace disque"], "answer": 0, "explanation": "Une mémoire instable corrompt les données en mémoire et provoque des arrêts.", "hints": [] }
+          ]
+        },
+        {
+          "id": "mnt-03",
+          "title": "Pannes logicielles, pilotes et mises à jour",
+          "duration": 18,
+          "objectives": ["Isoler une panne logicielle", "Revenir à un état stable"],
+          "content": [
+            { "type": "p", "text": "Une panne logicielle apparaît souvent après un changement : mise à jour, pilote, nouvelle extension. Le raisonnement consiste à identifier **ce qui a changé** et à revenir en arrière pour confirmer." },
+            { "type": "list", "items": [
+              "Démarrage sans échec ou session sans extensions pour isoler la cause.",
+              "Restauration d'un point de contrôle ou retour à la version précédente du pilote.",
+              "Consultation des journaux système pour l'erreur exacte.",
+              "Désinstallation propre des logiciels suspects, pas seulement du raccourci."
+            ] },
+            { "type": "tip", "text": "Mettez à jour les pilotes depuis le site du fabricant du composant, pas depuis un site de téléchargement tiers." }
+          ],
+          "exercise": {
+            "title": "Isoler un pilote",
+            "instructions": "Après une mise à jour de pilote graphique, l'écran clignote. Quelle démarche suivez-vous ?",
+            "hints": ["Le changement est identifié et récent.", "Le retour à la version précédente confirme la cause."],
+            "solution": "Démarrer sans échec si nécessaire, revenir à la version précédente du pilote, vérifier la disparition du symptôme, puis tester une version plus récente ou attendre une correction."
+          },
+          "quiz": [
+            { "id": "mnt-03-q1", "type": "single", "difficulty": 1, "question": "Que faire en premier face à une panne apparue après une mise à jour ?", "options": ["Réinstaller tout le système", "Identifier le changement récent et revenir en arrière", "Changer le disque", "Désactiver le pare-feu"], "answer": 1, "explanation": "Le retour arrière confirme la cause et rétablit le service.", "hints": [] },
+            { "id": "mnt-03-q2", "type": "truefalse", "difficulty": 2, "question": "Un pilote doit toujours être téléchargé depuis un site de téléchargement tiers.", "answer": false, "explanation": "Privilégiez le site du fabricant du composant ou du système.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mnt-m2",
+      "title": "Sauvegarder et entretenir",
+      "chapters": [
+        {
+          "id": "mnt-04",
+          "title": "Sauvegarder et restaurer",
+          "duration": 20,
+          "objectives": ["Choisir une stratégie de sauvegarde", "Tester une restauration"],
+          "content": [
+            { "type": "p", "text": "Une sauvegarde utile répond à trois questions : que protège-t-elle, à quelle fréquence, et combien de temps conserve-t-on les copies ? La règle **3-2-1** sert de base : trois copies, deux supports, une hors site." },
+            { "type": "table", "headers": ["Type", "Restauration"], "rows": [
+              ["Image complète", "Rapide, tout le système"],
+              ["Sauvegarde de fichiers", "Sélective, pour les documents"],
+              ["Instantané de machine virtuelle", "Très rapide mais local"],
+              ["Synchronisation cloud", "Pratique, ne remplace pas un historique"]
+            ] },
+            { "type": "p", "text": "Une sauvegarde n'a de valeur que si la **restauration** fonctionne. Testez-la sur un autre support ou une machine de test, en mesurant le temps nécessaire." },
+            { "type": "warning", "text": "Une synchronisation supprime aussi ce qui a été supprimé en local. Pour se protéger d'une erreur humaine, il faut un historique avec plusieurs versions." }
+          ],
+          "exercise": {
+            "title": "Stratégie 3-2-1",
+            "instructions": "Un utilisateur sauvegarde chaque soir sur un disque externe rangé à côté de l'ordinateur. Quelles faiblesses identifiez-vous ?",
+            "hints": ["Un incendie ou un vol toucherait les deux.", "La règle demande une copie hors site."],
+            "solution": "Il manque une copie hors site et un second type de support. Un vol ou un sinistre détruirait l'ordinateur et la sauvegarde."
+          },
+          "quiz": [
+            { "id": "mnt-04-q1", "type": "single", "difficulty": 1, "question": "Que signifie 3-2-1 ?", "options": ["3 copies, 2 supports, 1 hors site", "3 disques, 2 serveurs, 1 utilisateur", "3 jours, 2 semaines, 1 mois", "3 mots de passe, 2 comptes, 1 clé"], "answer": 0, "explanation": "La règle répartit les copies pour survivre à une panne ou un sinistre.", "hints": [] },
+            { "id": "mnt-04-q2", "type": "truefalse", "difficulty": 2, "question": "Une sauvegarde jamais restaurée est une sauvegarde fiable.", "answer": false, "explanation": "Seule une restauration testée prouve que la sauvegarde est exploitable.", "hints": [] }
+          ]
+        },
+        {
+          "id": "mnt-05",
+          "title": "Entretien, températures et bonnes pratiques",
+          "duration": 18,
+          "objectives": ["Prévenir la surchauffe", "Planifier un entretien"],
+          "content": [
+            { "type": "p", "text": "La poussière bloque les dissipateurs et fait monter les températures : le processeur ralentit (**throttling**) ou s'arrête. Un entretien physique régulier, avec les précautions antistatiques, prolonge la durée de vie du matériel." },
+            { "type": "list", "items": [
+              "Nettoyer les entrées d'air et les ventilateurs, machine éteinte et débranchée.",
+              "Vérifier les températures au repos et en charge.",
+              "Remplacer la pâte thermique seulement si les températures l'exigent.",
+              "Surveiller les journaux de température et les erreurs matérielles."
+            ] },
+            { "type": "tip", "text": "Notez la température habituelle en charge. Une hausse progressive de dix degrés est un signal d'encrassement avant tout symptôme visible." }
+          ],
+          "exercise": {
+            "title": "Surchauffe",
+            "instructions": "Le processeur passe de 70 °C à 95 °C en charge et ralentit. Quelles vérifications menez-vous ?",
+            "hints": ["Un refroidissement encrassé est la cause la plus fréquente.", "Le ventilateur tourne-t-il à la bonne vitesse ?"],
+            "solution": "Contrôler l'encrassement du dissipateur et des entrées d'air, la vitesse du ventilateur, puis la pâte thermique si le problème persiste."
+          },
+          "quiz": [
+            { "id": "mnt-05-q1", "type": "single", "difficulty": 1, "question": "Que signifie throttling ?", "options": ["Le processeur ralentit pour se protéger", "Le disque se remplit", "Le réseau sature", "La mémoire se vide"], "answer": 0, "explanation": "La réduction de fréquence protège le processeur en cas de surchauffe.", "hints": [] },
+            { "id": "mnt-05-q2", "type": "single", "difficulty": 2, "question": "Quand changer la pâte thermique ?", "options": ["Chaque mois", "Quand les températures l'exigent après vérification", "À chaque nettoyage", "Jamais"], "answer": 1, "explanation": "On ne remplace pas la pâte sans raison mesurée : c'est une opération délicate.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Fiche de diagnostic d'un poste",
+    "brief": "Rédigez une procédure de diagnostic réutilisable pour un poste qui ne démarre pas ou ralentit.",
+    "steps": [
+      "Décrire l'ordre de vérification, de l'alimentation à l'application.",
+      "Prévoir les cas : pas d'allumage, pas d'affichage, démarrage puis arrêt, système lent.",
+      "Indiquer les outils de mesure (SMART, journaux, températures).",
+      "Définir la stratégie de sauvegarde à appliquer avant toute réparation.",
+      "Tester la procédure sur une machine de test et noter les corrections."
+    ],
+    "criteria": [
+      "La procédure commence toujours par protéger les données.",
+      "Chaque étape indique ce qu'elle élimine et ce qu'elle permet de conclure.",
+      "La procédure a été testée réellement, pas seulement relue."
+    ]
+  }
+}

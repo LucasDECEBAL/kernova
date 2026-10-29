@@ -88,11 +88,35 @@ export async function loadData() {
 
   // Paquets de cartes mémo : optionnels, un échec ne bloque pas l'application
   try {
-    const flash = await fetchJson('data/flashcards.json');
-    cache.flashcards = Array.isArray(flash.packs) ? flash.packs.filter((p) => isStr(p.id) && Array.isArray(p.cards)) : [];
+    const packs = [];
+    for (const file of ['data/flashcards.json', 'data/flashcards-extra.json']) {
+      try {
+        const flash = await fetchJson(file);
+        if (Array.isArray(flash.packs)) packs.push(...flash.packs);
+      } catch {
+        if (file === 'data/flashcards.json') throw new Error('fichier principal introuvable');
+      }
+    }
+    const seen = new Set();
+    cache.flashcards = packs.filter((p) => {
+      const ok = p && isStr(p.id) && Array.isArray(p.cards) && !seen.has(p.id);
+      if (ok) seen.add(p.id);
+      return ok;
+    });
   } catch (err) {
     cache.issues.push(`cartes mémo : ${err.message}`);
     cache.flashcards = [];
+  }
+
+  // Exemples du playground : optionnels
+  try {
+    const pg = await fetchJson('data/playground.json');
+    cache.playground = Array.isArray(pg.examples)
+      ? pg.examples.filter((e) => isStr(e.id) && typeof e.html === 'string' && typeof e.js === 'string')
+      : [];
+  } catch (err) {
+    cache.issues.push(`playground : ${err.message}`);
+    cache.playground = [];
   }
 
   cache.catalog = catalog;
@@ -102,6 +126,11 @@ export async function loadData() {
 /** Paquets de cartes fournis avec l'application. */
 export function getFlashPacks() {
   return cache.flashcards || [];
+}
+
+/** Exemples de code du playground. */
+export function getPlaygroundExamples() {
+  return cache.playground || [];
 }
 
 export function getDataIssues() {

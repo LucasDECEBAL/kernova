@@ -38,6 +38,16 @@ export function clear(el) {
   return el;
 }
 
+/**
+ * Remplace le contenu d'un élément en ignorant les valeurs nulles.
+ * Nécessaire car `replaceChildren(null)` insère un texte « null » dans la page.
+ */
+export function setChildren(el, ...nodes) {
+  const flat = nodes.flat(Infinity).filter((n) => n !== null && n !== undefined && n !== false && n !== '');
+  el.replaceChildren(...flat);
+  return el;
+}
+
 /** Icônes : chaînes SVG constantes définies dans ce fichier (jamais de contenu utilisateur). */
 const ICONS = {
   search: '<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',

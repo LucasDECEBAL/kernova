@@ -1,0 +1,171 @@
+{
+  "courseId": "cybersecurite-debutant",
+  "modules": [
+    {
+      "id": "sec-m1",
+      "title": "Principes de sécurité",
+      "chapters": [
+        {
+          "id": "sec-01",
+          "title": "Confidentialité, intégrité, disponibilité",
+          "duration": 18,
+          "objectives": [
+            "Définir la triade CID",
+            "Distinguer menace, vulnérabilité et risque"
+          ],
+          "content": [
+            { "type": "p", "text": "La sécurité de l'information vise trois propriétés, souvent appelées **triade CID** : la **confidentialité** (seules les personnes autorisées lisent), l'**intégrité** (les données ne sont pas modifiées sans trace) et la **disponibilité** (le service répond quand on en a besoin)." },
+            { "type": "table", "headers": ["Propriété", "Question posée", "Exemple d'atteinte"], "rows": [
+              ["Confidentialité", "Qui peut lire cette donnée ?", "Fuite d'un fichier de clients"],
+              ["Intégrité", "La donnée est-elle fiable ?", "Montant d'une facture modifié"],
+              ["Disponibilité", "Le service répond-il ?", "Attaque par déni de service"]
+            ] },
+            { "type": "p", "text": "Trois notions voisines ne doivent pas être confondues. Une **menace** est ce qui peut nuire (un attaquant, un incendie). Une **vulnérabilité** est une faiblesse exploitable (logiciel non mis à jour). Un **risque** combine les deux : probabilité qu'une menace exploite une vulnérabilité, multipliée par l'impact." },
+            { "type": "p", "text": "La **défense en profondeur** empile plusieurs protections indépendantes : si l'une cède, les autres ralentissent encore l'attaquant. Le **moindre privilège** limite les droits au strict nécessaire, ce qui réduit l'impact d'une compromission." },
+            { "type": "warning", "text": "La sécurité absolue n'existe pas. On cherche à réduire le risque à un niveau accepté par l'organisation, en documentant les mesures prises." }
+          ],
+          "exercise": {
+            "title": "Classer les atteintes",
+            "instructions": "Classez chaque situation selon la propriété atteinte : un serveur qui ne répond plus, un mot de passe publié par erreur, une ligne de commande ajoutée dans une base.",
+            "hints": ["La disponibilité concerne l'accès au service.", "La confidentialité concerne la lecture indue."],
+            "solution": "Serveur indisponible : disponibilité. Mot de passe publié : confidentialité. Ligne ajoutée dans la base : intégrité."
+          },
+          "quiz": [
+            { "id": "sec-01-q1", "type": "match", "difficulty": 1, "question": "Associez chaque propriété à sa définition.", "left": ["Confidentialité", "Intégrité", "Disponibilité"], "right": ["Le service reste accessible", "Seules les personnes autorisées accèdent aux données", "Les données ne sont pas altérées sans trace"], "answer": [1, 2, 0], "explanation": "La triade CID se lit dans cet ordre : confidentialité, intégrité, disponibilité.", "hints": [] },
+            { "id": "sec-01-q2", "type": "single", "difficulty": 2, "question": "Un logiciel non mis à jour constitue…", "options": ["Une menace", "Une vulnérabilité", "Un risque accepté", "Une politique de sécurité"], "answer": 1, "explanation": "C'est une faiblesse exploitable ; la menace est l'attaquant qui pourrait l'exploiter.", "hints": [] }
+          ]
+        },
+        {
+          "id": "sec-02",
+          "title": "Authentification et mots de passe",
+          "duration": 20,
+          "objectives": [
+            "Distinguer authentification et autorisation",
+            "Expliquer l'intérêt du hachage et de la double authentification"
+          ],
+          "content": [
+            { "type": "p", "text": "L'**authentification** vérifie l'identité (« qui êtes-vous ? »). L'**autorisation** décide des droits (« que pouvez-vous faire ? »). Un utilisateur authentifié n'a pas forcément accès à tout : c'est le rôle des permissions et du moindre privilège." },
+            { "type": "p", "text": "Un serveur ne doit **jamais** stocker les mots de passe en clair. Il conserve une **empreinte** calculée avec une fonction de hachage lente et un **sel** aléatoire par utilisateur. Impossible de retrouver le mot de passe à partir de l'empreinte ; le sel empêche de réutiliser des tables précalculées." },
+            { "type": "code", "lang": "text", "title": "Principe (conceptuel)", "code": "inscription : empreinte = hacher(motDePasse + sel)\n              stocker (sel, empreinte)\n\nconnexion  : empreinte = hacher(saisie + sel stocké)\n              comparer avec l'empreinte stockée" },
+            { "type": "p", "text": "L'**authentification multifacteur** ajoute un second facteur (code temporaire, clé physique) : un mot de passe volé ne suffit plus. Un gestionnaire de mots de passe permet d'utiliser des mots de passe longs et différents pour chaque service." },
+            { "type": "warning", "text": "Réutiliser le même mot de passe partout transforme une fuite locale en compromission de tous vos comptes. C'est l'un des risques les plus fréquents." }
+          ],
+          "exercise": {
+            "title": "Clair ou haché ?",
+            "instructions": "Un site vous envoie votre ancien mot de passe par e-mail pour vous le rappeler. Qu'en déduisez-vous sur son stockage ?",
+            "hints": ["Un serveur qui hache correctement ne peut pas retrouver le mot de passe.", "La seule façon d'envoyer le mot de passe est de le connaître."],
+            "solution": "Le site stocke probablement les mots de passe de façon réversible ou en clair : c'est une mauvaise pratique. Changez ce mot de passe et ne le réutilisez pas ailleurs."
+          },
+          "quiz": [
+            { "id": "sec-02-q1", "type": "single", "difficulty": 1, "question": "Que vérifie l'authentification ?", "options": ["Les droits d'accès", "L'identité de la personne", "La disponibilité du serveur", "L'intégrité des sauvegardes"], "answer": 1, "explanation": "L'authentification établit l'identité ; l'autorisation décide ensuite des droits.", "hints": [] },
+            { "id": "sec-02-q2", "type": "multiple", "difficulty": 2, "question": "Quelles pratiques améliorent la sécurité des comptes ?", "options": ["Un mot de passe différent par service", "Le même mot de passe partout pour le retenir", "L'authentification multifacteur", "Un gestionnaire de mots de passe"], "answer": [0, 2, 3], "explanation": "La réutilisation est précisément le risque à éviter.", "hints": [] }
+          ]
+        },
+        {
+          "id": "sec-03",
+          "title": "Chiffrement et hachage",
+          "duration": 20,
+          "objectives": [
+            "Distinguer chiffrement et hachage",
+            "Choisir le bon outil selon le besoin"
+          ],
+          "content": [
+            { "type": "p", "text": "Le **chiffrement** protège la confidentialité : il transforme un message en texte illisible, réversible avec la bonne clé. Le **hachage** produit une empreinte de taille fixe, à sens unique : impossible de revenir au message, mais utile pour vérifier une intégrité." },
+            { "type": "table", "headers": ["Besoin", "Outil", "Pourquoi"], "rows": [
+              ["Protéger un échange", "Chiffrement (TLS)", "Révélable par les parties"],
+              ["Stocker un mot de passe", "Hachage lent + sel", "Irréversible, résistant au vol"],
+              ["Vérifier qu'un fichier n'a pas changé", "Empreinte (SHA-256)", "Toute modification change l'empreinte"],
+              ["Prouver l'auteur d'un message", "Signature numérique", "Liée à une clé privée"]
+            ] },
+            { "type": "p", "text": "Le chiffrement **symétrique** utilise la même clé pour chiffrer et déchiffrer (AES) : rapide, mais il faut transmettre la clé. Le chiffrement **asymétrique** utilise une paire de clés (publique pour chiffrer, privée pour déchiffrer) : plus lent, il sert à échanger une clé symétrique. **HTTPS** combine les deux." },
+            { "type": "warning", "text": "Un hachage comme MD5 ou SHA-1 n'est plus acceptable pour des mots de passe. Utilisez des fonctions conçues pour cela (bcrypt, scrypt, Argon2)." }
+          ],
+          "exercise": {
+            "title": "Quel outil ?",
+            "instructions": "Pour chacun de ces besoins, indiquez s'il faut chiffrer, hacher ou signer : stocker un mot de passe, protéger une carte bancaire en transit, garantir l'origine d'un contrat.",
+            "hints": ["On ne veut jamais pouvoir relire un mot de passe stocké.", "Le transit relève du chiffrement."],
+            "solution": "Mot de passe : hacher avec sel. Données en transit : chiffrer (TLS). Origine d'un contrat : signature numérique."
+          },
+          "quiz": [
+            { "id": "sec-03-q1", "type": "single", "difficulty": 1, "question": "Quelle opération est à sens unique ?", "options": ["Le chiffrement symétrique", "Le chiffrement asymétrique", "Le hachage", "La signature"], "answer": 2, "explanation": "Une empreinte de hachage ne permet pas de retrouver le message d'origine.", "hints": [] },
+            { "id": "sec-03-q2", "type": "truefalse", "difficulty": 2, "question": "HTTPS protège les données en transit et garantit que le site est honnête.", "answer": false, "explanation": "HTTPS chiffre le transport ; il n'atteste pas des intentions du site.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sec-m2",
+      "title": "Défense pratique",
+      "chapters": [
+        {
+          "id": "sec-04",
+          "title": "Sécurité web : XSS et injection SQL",
+          "duration": 24,
+          "objectives": [
+            "Expliquer le mécanisme d'une XSS et d'une injection SQL",
+            "Appliquer la contre-mesure adaptée"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **injection** se produit quand une donnée saisie est interprétée comme du code. Deux cas classiques : la **XSS** (le navigateur exécute un script inséré dans la page) et l'**injection SQL** (la base exécute une requête construite à partir d'une saisie). Les deux découlent de la même erreur : ne pas séparer données et code." },
+            { "type": "code", "lang": "javascript", "title": "XSS : ce qu'il ne faut pas faire", "code": "// Dangereux : la saisie devient du HTML exécutable\nzone.innerHTML = saisieUtilisateur;\n\n// Correct : la saisie reste du texte\nzone.textContent = saisieUtilisateur;" },
+            { "type": "code", "lang": "sql", "title": "Injection SQL : ce qu'il ne faut pas faire", "code": "-- Dangereux : concaténation de la saisie\n\"SELECT * FROM clients WHERE email = '\" + email + \"'\"\n\n-- Correct : requête préparée avec paramètre\n\"SELECT * FROM clients WHERE email = ?\"  -- puis lier email" },
+            { "type": "p", "text": "Les contre-mesures sont systématiques : encoder les données au moment de l'affichage, utiliser des **requêtes préparées** pour la base, valider le format des entrées côté serveur et appliquer le **moindre privilège** au compte de l'application." },
+            { "type": "warning", "text": "Les exercices offensifs ne se pratiquent que sur des systèmes dont vous êtes responsable, dans un laboratoire isolé et avec une autorisation écrite. Tester un site tiers sans accord est illégal." }
+          ],
+          "exercise": {
+            "title": "Choisir la contre-mesure",
+            "instructions": "Un commentaire d'utilisateur est affiché sur une page, et un formulaire recherche un compte par e-mail. Quelle contre-mesure appliquez-vous dans chaque cas ?",
+            "hints": ["L'affichage relève de l'encodage du texte.", "La recherche en base relève de la requête préparée."],
+            "solution": "Affichage : insertion en texte (textContent ou échappement à la génération HTML). Recherche : requête préparée avec un paramètre lié, plus validation du format de l'e-mail."
+          },
+          "quiz": [
+            { "id": "sec-04-q1", "type": "single", "difficulty": 2, "question": "Quelle pratique prévient une injection SQL ?", "options": ["Concaténer la saisie dans la requête", "Utiliser des requêtes préparées avec paramètres", "Masquer les messages d'erreur", "Chiffrer la base"], "answer": 1, "explanation": "La requête préparée sépare la structure SQL des données.", "hints": [] },
+            { "id": "sec-04-q2", "type": "truefalse", "difficulty": 1, "question": "Une XSS permet d'exécuter du script dans le navigateur d'une autre personne.", "answer": true, "explanation": "Le navigateur interprète la donnée comme du code et l'exécute avec les droits de la page.", "hints": [] }
+          ]
+        },
+        {
+          "id": "sec-05",
+          "title": "Journaux, mises à jour et sauvegardes",
+          "duration": 20,
+          "objectives": [
+            "Justifier la journalisation",
+            "Appliquer la règle de sauvegarde 3-2-1"
+          ],
+          "content": [
+            { "type": "p", "text": "Les **journaux** enregistrent ce qui se passe : connexions, erreurs, changements de configuration. Sans eux, un incident est indétectable et inexplicable. Ils doivent être horodatés, conservés assez longtemps et protégés en écriture pour qu'un attaquant ne puisse pas les effacer." },
+            { "type": "code", "lang": "bash", "title": "Consulter les journaux sous Linux", "code": "journalctl -b            # journal du démarrage courant\njournalctl -u ssh --since \"1 hour ago\"\ntail -n 50 /var/log/auth.log" },
+            { "type": "p", "text": "Les **mises à jour** corrigent des vulnérabilités connues. La plupart des intrusions exploitent des failles déjà corrigées : un système à jour est la mesure la plus rentable. Testez les mises à jour sur un environnement de préproduction avant la production." },
+            { "type": "p", "text": "La règle **3-2-1** pour les sauvegardes : trois copies des données, sur deux supports différents, dont une hors site. Une sauvegarde jamais testée n'est pas une sauvegarde : restaurez régulièrement pour vérifier." },
+            { "type": "warning", "text": "Un rançongiciel chiffre aussi les disques connectés. Une sauvegarde accessible en écriture depuis la machine compromise sera chiffrée elle aussi : gardez une copie hors ligne." }
+          ],
+          "exercise": {
+            "title": "Vérifier une sauvegarde",
+            "instructions": "Votre organisation sauvegarde chaque nuit sur un NAS du même bâtiment. Quelles faiblesses identifiez-vous, et que proposez-vous ?",
+            "hints": ["Que se passe-t-il en cas d'incendie dans le bâtiment ?", "La règle 3-2-1 aide à structurer la réponse."],
+            "solution": "La sauvegarde est sur un seul support et sur site : un incendie ou un rançongiciel peut détruire l'original et la copie. Ajouter une seconde copie sur un autre support et une copie hors site, puis tester la restauration."
+          },
+          "quiz": [
+            { "id": "sec-05-q1", "type": "single", "difficulty": 1, "question": "Que signifie la règle 3-2-1 pour les sauvegardes ?", "options": ["3 copies, 2 supports, 1 hors site", "3 sauvegardes par jour, 2 serveurs, 1 disque", "3 mois d'historique, 2 vérifications, 1 responsable", "3 utilisateurs, 2 mots de passe, 1 accès"], "answer": 0, "explanation": "Trois copies, deux types de support, une copie hors site.", "hints": [] },
+            { "id": "sec-05-q2", "type": "single", "difficulty": 2, "question": "Pourquoi tester la restauration d'une sauvegarde ?", "options": ["Pour libérer de l'espace", "Pour vérifier qu'elle est réellement exploitable", "Pour accélérer les sauvegardes", "Pour chiffrer les données"], "answer": 1, "explanation": "Une sauvegarde illisible ou incomplète ne protège de rien.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Audit défensif d'un poste de travail",
+    "brief": "Réalisez l'inventaire des protections d'un poste que vous possédez, puis proposez un plan d'amélioration priorisé.",
+    "steps": [
+      "Lister les mises à jour disponibles et la date de la dernière installation.",
+      "Vérifier l'état de l'authentification multifacteur sur les comptes importants.",
+      "Inventorier les sauvegardes existantes et vérifier qu'au moins une restauration a été testée.",
+      "Recenser les logiciels installés et désinstaller ceux qui ne servent plus.",
+      "Rédiger un plan d'action classé par rapport bénéfice/effort, en commençant par les mises à jour et les sauvegardes."
+    ],
+    "criteria": [
+      "Le constat est factuel : chaque ligne s'appuie sur une vérification effectuée, pas sur une supposition.",
+      "Le plan distingue les actions immédiates des actions à moyen terme.",
+      "Aucune action intrusive n'est menée sur un système qui n'appartient pas à l'auteur."
+    ]
+  }
+}

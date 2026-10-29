@@ -1,0 +1,172 @@
+{
+  "courseId": "react",
+  "modules": [
+    {
+      "id": "react-m1",
+      "title": "Composants et état",
+      "chapters": [
+        {
+          "id": "react-01",
+          "title": "Composants et JSX",
+          "duration": 20,
+          "objectives": [
+            "Écrire un composant fonction",
+            "Transmettre des données par props"
+          ],
+          "content": [
+            { "type": "p", "text": "React construit l'interface à partir de **composants** : des fonctions qui renvoient du JSX, une syntaxe proche du HTML. Un composant reçoit des **props** (données en lecture seule) et décrit ce qui doit être affiché pour ces données." },
+            { "type": "code", "lang": "jsx", "code": "function Badge({ niveau, children }) {\n  return (\n    <span className={`badge badge-${niveau}`}>\n      {children}\n    </span>\n  );\n}\n\nfunction Carte({ titre, auteur }) {\n  return (\n    <article className=\"carte\">\n      <h2>{titre}</h2>\n      <p>par {auteur}</p>\n      <Badge niveau=\"info\">Nouveau</Badge>\n    </article>\n  );\n}" },
+            { "type": "p", "text": "Le flux de données est **unidirectionnel** : les props descendent du parent vers l'enfant. Un enfant ne modifie jamais les props reçues ; s'il doit signaler une action, le parent lui passe une fonction de rappel." },
+            { "type": "table", "headers": ["Concept", "Règle"], "rows": [
+              ["Nom du composant", "Majuscule initiale obligatoire"],
+              ["JSX", "Un seul élément racine, ou un fragment `<>...</>`"],
+              ["Attributs", "`className` et `htmlFor` remplacent class et for"],
+              ["Affichage conditionnel", "Accolades et opérateurs JavaScript"]
+            ] },
+            { "type": "warning", "text": "Un composant doit rester **pur** : mêmes props, même rendu, sans effet de bord pendant le rendu. Écrire dans une variable externe ou modifier des props casse la prédictibilité." }
+          ],
+          "exercise": {
+            "title": "Composant avec props",
+            "instructions": "Écrivez un composant Bouton qui affiche son libellé reçu en prop et appelle onClick au clic.",
+            "hints": ["Les props se destructurent dans les paramètres.", "L'événement s'écrit onClick en camelCase."],
+            "solution": "function Bouton({ label, onClick }) {\n  return (\n    <button type=\"button\" onClick={onClick}>\n      {label}\n    </button>\n  );\n}"
+          },
+          "quiz": [
+            { "id": "react-01-q1", "type": "single", "difficulty": 1, "question": "Que sont les props ?", "options": ["Des données en lecture seule transmises par le parent", "Un état interne modifiable", "Des variables globales", "Des feuilles de style"], "answer": 0, "explanation": "Les props descendent du parent ; l'enfant ne doit pas les modifier.", "hints": [] },
+            { "id": "react-01-q2", "type": "single", "difficulty": 2, "question": "Quel attribut JSX remplace l'attribut HTML class ?", "options": ["style", "className", "id", "classList"], "answer": 1, "explanation": "class est un mot réservé en JavaScript : JSX utilise className.", "hints": [] }
+          ]
+        },
+        {
+          "id": "react-02",
+          "title": "État local et événements",
+          "duration": 22,
+          "objectives": [
+            "Utiliser useState",
+            "Mettre à jour l'état sans le muter"
+          ],
+          "content": [
+            { "type": "p", "text": "L'**état** est une donnée qui change au cours du temps et dont le changement doit provoquer un nouveau rendu. `useState` renvoie la valeur courante et une fonction de mise à jour. Toute modification passe par cette fonction." },
+            { "type": "code", "lang": "jsx", "code": "import { useState } from \"react\";\n\nfunction Compteur() {\n  const [valeur, setValeur] = useState(0);\n\n  return (\n    <div>\n      <p>Valeur : {valeur}</p>\n      <button type=\"button\" onClick={() => setValeur(valeur + 1)}>\n        Incrémenter\n      </button>\n    </div>\n  );\n}" },
+            { "type": "p", "text": "Les mises à jour sont **asynchrones** du point de vue de votre code : après `setValeur`, la variable `valeur` garde l'ancienne valeur jusqu'au rendu suivant. Pour une mise à jour basée sur la précédente, utilisez la forme fonctionnelle `setValeur((v) => v + 1)`." },
+            { "type": "code", "lang": "jsx", "code": "// Formulaire contrôlé\nfunction Recherche({ onEnvoyer }) {\n  const [texte, setTexte] = useState(\"\");\n\n  return (\n    <form onSubmit={(e) => { e.preventDefault(); onEnvoyer(texte); }}>\n      <label htmlFor=\"q\">Rechercher</label>\n      <input\n        id=\"q\"\n        value={texte}\n        onChange={(e) => setTexte(e.target.value)}\n      />\n      <button type=\"submit\">Chercher</button>\n    </form>\n  );\n}" },
+            { "type": "warning", "text": "Ne modifiez jamais un objet ou un tableau d'état directement (`items.push(...)`). Créez une nouvelle valeur (`[...items, item]`) : React compare les références pour décider du rendu." }
+          ],
+          "exercise": {
+            "title": "Incrémenter deux fois",
+            "instructions": "Dans un gestionnaire, vous appelez deux fois setValeur(valeur + 1) et la valeur n'augmente que de 1. Pourquoi, et comment corriger ?",
+            "hints": ["Les deux appels lisent la même valeur courante.", "La forme fonctionnelle reçoit la valeur précédente."],
+            "solution": "Les deux appels utilisent la valeur de la fermeture, identique. Utilisez setValeur((v) => v + 1) deux fois pour composer les mises à jour."
+          },
+          "quiz": [
+            { "id": "react-02-q1", "type": "single", "difficulty": 1, "question": "Que renvoie useState ?", "options": ["La valeur et une fonction de mise à jour", "Un objet et une promesse", "Un composant", "Un effet"], "answer": 0, "explanation": "useState renvoie un tableau de deux éléments : valeur courante et setter.", "hints": [] },
+            { "id": "react-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi ne pas modifier un tableau d'état avec push ?", "options": ["C'est plus lent", "React ne détecte pas le changement de référence", "Cela supprime le tableau", "Cela casse le JSX"], "answer": 1, "explanation": "React compare les références : muter la même référence ne déclenche pas de rendu fiable.", "hints": [] }
+          ]
+        },
+        {
+          "id": "react-03",
+          "title": "Listes, conditions et clés",
+          "duration": 20,
+          "objectives": [
+            "Afficher une liste avec des clés stables",
+            "Écrire un rendu conditionnel lisible"
+          ],
+          "content": [
+            { "type": "p", "text": "Une liste se rend avec `map`, et chaque élément reçoit une prop **key** unique et stable. La clé aide React à identifier les éléments entre deux rendus ; sans elle, l'ordre et l'état des composants peuvent être mal conservés." },
+            { "type": "code", "lang": "jsx", "code": "function ListeTaches({ taches, onBasculer }) {\n  if (taches.length === 0) {\n    return <p>Aucune tâche pour le moment.</p>;\n  }\n\n  return (\n    <ul>\n      {taches.map((tache) => (\n        <li key={tache.id}>\n          <label>\n            <input\n              type=\"checkbox\"\n              checked={tache.faite}\n              onChange={() => onBasculer(tache.id)}\n            />\n            {tache.titre}\n          </label>\n        </li>\n      ))}\n    </ul>\n  );\n}" },
+            { "type": "p", "text": "Pour le rendu conditionnel, préférez un `if` en début de fonction pour les cas vides ou les erreurs, et l'opérateur ternaire pour choisir entre deux rendus simples. `&&` convient pour afficher un élément si une condition est vraie, à condition que la valeur ne soit jamais 0." },
+            { "type": "warning", "text": "Utiliser l'index du tableau comme clé pose problème dès que la liste est réordonnée, filtrée ou complétée : l'état des composants se retrouve attaché au mauvais élément." }
+          ],
+          "exercise": {
+            "title": "Choisir une clé",
+            "instructions": "Une liste de messages peut être filtrée et réordonnée. Peut-on utiliser l'index comme key ?",
+            "hints": ["L'index change quand la liste change.", "Un identifiant stable identifie le message."],
+            "solution": "Non : utilisez l'identifiant du message (key={message.id}). L'index attacherait l'état au mauvais élément après un filtrage ou un réordonnancement."
+          },
+          "quiz": [
+            { "id": "react-03-q1", "type": "single", "difficulty": 2, "question": "Quelle clé utiliser pour une liste réordonnable ?", "options": ["L'index du tableau", "L'identifiant stable de l'élément", "Math.random() à chaque rendu", "Le titre affiché"], "answer": 1, "explanation": "Une clé stable permet à React de suivre correctement les éléments entre deux rendus.", "hints": [] },
+            { "id": "react-03-q2", "type": "truefalse", "difficulty": 2, "question": "Écrire {compteur && <p>...</p>} affiche toujours le paragraphe quand compteur vaut 0.", "answer": false, "explanation": "0 est falsy et React affichera 0, pas le paragraphe. Utilisez une comparaison explicite.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "react-m2",
+      "title": "Effets et qualité",
+      "chapters": [
+        {
+          "id": "react-04",
+          "title": "Effets et chargement de données",
+          "duration": 24,
+          "objectives": [
+            "Synchroniser un composant avec l'extérieur",
+            "Annuler une requête à l'abandon"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **effet** sert à synchroniser le composant avec quelque chose d'extérieur : requête réseau, abonnement, minuteur, accès au stockage. `useEffect` s'exécute après le rendu, selon les dépendances déclarées." },
+            { "type": "code", "lang": "jsx", "code": "import { useEffect, useState } from \"react\";\n\nfunction Produits({ categorie }) {\n  const [etat, setEtat] = useState({ chargement: true, donnees: [], erreur: null });\n\n  useEffect(() => {\n    const controleur = new AbortController();\n    setEtat({ chargement: true, donnees: [], erreur: null });\n\n    fetch(`/api/produits?categorie=${categorie}`, { signal: controleur.signal })\n      .then((r) => {\n        if (!r.ok) throw new Error(`Erreur ${r.status}`);\n        return r.json();\n      })\n      .then((donnees) => setEtat({ chargement: false, donnees, erreur: null }))\n      .catch((erreur) => {\n        if (erreur.name !== \"AbortError\") setEtat({ chargement: false, donnees: [], erreur });\n      });\n\n    return () => controleur.abort();\n  }, [categorie]);\n\n  if (etat.chargement) return <p>Chargement…</p>;\n  if (etat.erreur) return <p>Impossible de charger les produits.</p>;\n  return <ul>{etat.donnees.map((p) => <li key={p.id}>{p.nom}</li>)}</ul>;\n}" },
+            { "type": "p", "text": "La fonction de nettoyage renvoyée par l'effet s'exécute avant la prochaine exécution et au démontage. C'est là qu'on annule une requête, un minuteur ou un abonnement, pour éviter des mises à jour sur un composant disparu." },
+            { "type": "warning", "text": "Un tableau de dépendances incomplet provoque des données obsolètes ; un tableau vide alors que la valeur change fige le résultat du premier rendu. La règle : toute valeur extérieure utilisée dans l'effet doit y figurer." }
+          ],
+          "exercise": {
+            "title": "Nettoyer un minuteur",
+            "instructions": "Un effet démarre setInterval pour rafraîchir l'heure chaque seconde. Que doit renvoyer l'effet ?",
+            "hints": ["Sans nettoyage, les minuteurs s'accumulent.", "clearInterval annule un minuteur."],
+            "solution": "Une fonction de nettoyage qui appelle clearInterval(id), afin d'arrêter le minuteur avant le prochain effet et au démontage."
+          },
+          "quiz": [
+            { "id": "react-04-q1", "type": "single", "difficulty": 2, "question": "Quand s'exécute la fonction de nettoyage d'un effet ?", "options": ["Avant chaque nouvel effet et au démontage", "Jamais", "Uniquement au premier rendu", "Pendant le rendu"], "answer": 0, "explanation": "Le nettoyage évite les fuites : minuteurs, abonnements et requêtes en cours.", "hints": [] },
+            { "id": "react-04-q2", "type": "single", "difficulty": 3, "question": "Pourquoi annuler une requête au démontage ?", "options": ["Pour économiser la batterie", "Pour éviter de mettre à jour un composant qui n'existe plus", "Pour accélérer le serveur", "Pour éviter le cache"], "answer": 1, "explanation": "Une réponse tardive sur un composant démonté provoque des avertissements et des fuites.", "hints": [] }
+          ]
+        },
+        {
+          "id": "react-05",
+          "title": "Structurer, tester et rendre accessible",
+          "duration": 22,
+          "objectives": [
+            "Découper une interface en composants",
+            "Écrire un test de composant utile"
+          ],
+          "content": [
+            { "type": "p", "text": "Une interface se découpe par **responsabilité**, pas par taille de fichier : un composant qui récupère les données, un qui les affiche, un qui gère un formulaire. L'état remonte au plus proche ancêtre commun (**lifting state up**) plutôt que d'être dupliqué." },
+            { "type": "code", "lang": "jsx", "code": "// Le parent détient l'état, les enfants le reçoivent\nfunction Page() {\n  const [filtre, setFiltre] = useState(\"\");\n  return (\n    <>\n      <Recherche valeur={filtre} onChange={setFiltre} />\n      <Liste filtre={filtre} />\n    </>\n  );\n}" },
+            { "type": "p", "text": "Un test de composant simule l'usage réel : il rend le composant, cherche un élément par son rôle ou son libellé accessible, déclenche une interaction et vérifie le résultat. Tester par le rôle plutôt que par une classe CSS rend le test résistant aux changements de style." },
+            { "type": "code", "lang": "jsx", "code": "import { render, screen } from \"@testing-library/react\";\nimport userEvent from \"@testing-library/user-event\";\n\ntest(\"incrémente au clic\", async () => {\n  render(<Compteur />);\n  await userEvent.click(screen.getByRole(\"button\", { name: /incrémenter/i }));\n  expect(screen.getByText(/valeur : 1/i)).toBeInTheDocument();\n});" },
+            { "type": "list", "items": [
+              "Utilisez des éléments HTML natifs (button, label, input) : ils apportent le clavier et l'accessibilité.",
+              "Fournissez un nom accessible à chaque contrôle.",
+              "Gérez les états de chargement, d'erreur et de liste vide.",
+              "Ajoutez une région `aria-live` pour les messages dynamiques."
+            ] },
+            { "type": "warning", "text": "Un `div` cliquable n'est pas un bouton : il n'est pas atteignable au clavier et les lecteurs d'écran ne l'annoncent pas. Utilisez l'élément natif qui correspond à l'action." }
+          ],
+          "exercise": {
+            "title": "Nom accessible",
+            "instructions": "Un champ de recherche n'a pas de libellé visible. Comment lui donner un nom accessible sans inventer un texte affiché ?",
+            "hints": ["Un libellé peut être masqué visuellement sans être absent du DOM.", "Le label doit pointer vers l'identifiant du champ."],
+            "solution": "Associer un <label htmlFor=\"q\" class=\"sr-only\">Rechercher</label> à l'input d'identifiant q, ou utiliser aria-label."
+          },
+          "quiz": [
+            { "id": "react-05-q1", "type": "single", "difficulty": 2, "question": "Que signifie lifting state up ?", "options": ["Déplacer l'état vers le plus proche ancêtre commun", "Supprimer l'état", "Mettre l'état dans une variable globale", "Passer l'état au serveur"], "answer": 0, "explanation": "L'état partagé remonte pour éviter les copies divergentes.", "hints": [] },
+            { "id": "react-05-q2", "type": "single", "difficulty": 2, "question": "Pourquoi tester en cherchant un bouton par son rôle ?", "options": ["C'est plus rapide à écrire", "Le test résiste aux changements de style et vérifie l'accessibilité", "Cela évite de rendre le composant", "Cela supprime les mocks"], "answer": 1, "explanation": "Les requêtes par rôle s'appuient sur la sémantique perçue par l'utilisateur.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Application de gestion de collection",
+    "brief": "Construisez une petite application React qui liste, filtre et ajoute des éléments, avec états de chargement et d'erreur.",
+    "steps": [
+      "Découper l'interface en composants : recherche, liste, formulaire d'ajout.",
+      "Détenir l'état dans le composant le plus haut concerné et le transmettre par props.",
+      "Charger les données avec useEffect, avec annulation et gestion d'erreur.",
+      "Afficher un état vide explicite et un message d'erreur actionnable.",
+      "Écrire deux tests : ajout d'un élément et filtrage par recherche."
+    ],
+    "criteria": [
+      "Aucune mutation directe d'un tableau ou objet d'état.",
+      "Les états chargement, erreur et vide sont tous visibles et testables.",
+      "Les champs et boutons sont accessibles au clavier avec un nom explicite."
+    ]
+  }
+}

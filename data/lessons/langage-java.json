@@ -1,0 +1,143 @@
+{
+  "courseId": "langage-java",
+  "modules": [
+    {
+      "id": "java-m1",
+      "title": "Langage et objets",
+      "chapters": [
+        {
+          "id": "java-01",
+          "title": "JVM, compilation et exécution",
+          "duration": 18,
+          "objectives": ["Compiler et exécuter une classe", "Comprendre le rôle de la JVM"],
+          "content": [
+            { "type": "p", "text": "Java est compilé en **bytecode**, exécuté par la **JVM**. Le même bytecode fonctionne sur toute plateforme disposant d'une JVM. La compilation produit des fichiers `.class` à partir des `.java`." },
+            { "type": "code", "lang": "java", "title": "Main.java", "code": "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"Bonjour\");\n    }\n}" },
+            { "type": "code", "lang": "bash", "code": "javac Main.java\njava Main" },
+            { "type": "warning", "text": "Le nom du fichier public doit correspondre au nom de la classe. Une erreur « class X is public, should be declared in a file named X.java » vient de là." }
+          ],
+          "exercise": {
+            "title": "Compiler et lancer",
+            "instructions": "Quelles deux commandes compilent puis exécutent Main.java ?",
+            "hints": ["javac compile.", "java exécute la classe, sans extension."],
+            "solution": "javac Main.java puis java Main"
+          },
+          "quiz": [
+            { "id": "java-01-q1", "type": "single", "difficulty": 1, "question": "Qu'exécute la JVM ?", "options": ["Le bytecode", "Le code source", "Le HTML", "Le shell"], "answer": 0, "explanation": "La JVM exécute le bytecode produit par javac.", "hints": [] },
+            { "id": "java-01-q2", "type": "truefalse", "difficulty": 2, "question": "Une classe publique peut être dans un fichier portant un autre nom.", "answer": false, "explanation": "Le fichier doit porter le nom de la classe publique.", "hints": [] }
+          ]
+        },
+        {
+          "id": "java-02",
+          "title": "Classes, objets et encapsulation",
+          "duration": 20,
+          "objectives": ["Écrire une classe avec champs privés", "Utiliser constructeur et accesseurs"],
+          "content": [
+            { "type": "p", "text": "L'**encapsulation** protège l'état interne : les champs sont `private`, l'accès passe par des méthodes. Ainsi, les règles de validation restent dans la classe." },
+            { "type": "code", "lang": "java", "code": "public class Compte {\n    private double solde;\n\n    public Compte(double initial) {\n        if (initial < 0) throw new IllegalArgumentException(\"solde négatif\");\n        this.solde = initial;\n    }\n\n    public double solde() { return solde; }\n\n    public void retirer(double montant) {\n        if (montant <= 0 || montant > solde) throw new IllegalArgumentException(\"montant invalide\");\n        solde -= montant;\n    }\n}" },
+            { "type": "p", "text": "Un champ `final` ne peut être affecté qu'une fois, souvent dans le constructeur. Une classe `record` (Java 16 et plus) génère automatiquement constructeur, accesseurs et `equals` pour les données immuables." },
+            { "type": "warning", "text": "Exposer directement un champ public permet à n'importe quel code de mettre l'objet dans un état incohérent, sans contrôle." }
+          ],
+          "exercise": {
+            "title": "Protéger un invariant",
+            "instructions": "Un solde ne doit jamais devenir négatif. Où placer la vérification, et pourquoi ?",
+            "hints": ["La classe détient l'état.", "Le constructeur aussi doit valider."],
+            "solution": "Dans les méthodes qui modifient le solde et dans le constructeur : l'état reste cohérent quel que soit l'appelant."
+          },
+          "quiz": [
+            { "id": "java-02-q1", "type": "single", "difficulty": 1, "question": "Que protège l'encapsulation ?", "options": ["L'état interne de l'objet", "La mémoire", "Le réseau", "Le compilateur"], "answer": 0, "explanation": "Les champs privés ne sont modifiables que par les méthodes de la classe.", "hints": [] },
+            { "id": "java-02-q2", "type": "single", "difficulty": 2, "question": "Que garantit le mot-clé final sur un champ ?", "options": ["Une seule affectation", "Une valeur nulle", "Un accès public", "Une copie automatique"], "answer": 0, "explanation": "Le champ est affecté une fois, souvent dans le constructeur.", "hints": [] }
+          ]
+        },
+        {
+          "id": "java-03",
+          "title": "Héritage, interfaces et polymorphisme",
+          "duration": 20,
+          "objectives": ["Étendre une classe", "Implémenter une interface"],
+          "content": [
+            { "type": "p", "text": "Java autorise l'héritage simple (`extends`) et l'implémentation de plusieurs interfaces (`implements`). Une **interface** décrit un contrat sans état ; une classe peut en implémenter plusieurs." },
+            { "type": "code", "lang": "java", "code": "interface Forme {\n    double aire();\n}\n\nclass Cercle implements Forme {\n    private final double r;\n    Cercle(double r) { this.r = r; }\n    public double aire() { return Math.PI * r * r; }\n}\n\nForme f = new Cercle(2);\nSystem.out.println(f.aire());" },
+            { "type": "p", "text": "Le **polymorphisme** choisit la méthode selon le type réel de l'objet. Une méthode `toString()` redéfinie avec `@Override` améliore l'affichage et le débogage." },
+            { "type": "warning", "text": "Préférez la composition à l'héritage quand la relation n'est pas réellement « est un ». L'héritage fige la hiérarchie et complique l'évolution." }
+          ],
+          "exercise": {
+            "title": "Contrat par interface",
+            "instructions": "Trois classes doivent exposer un calcul d'aire sans partager de code. Interface ou classe abstraite ?",
+            "hints": ["Aucun état commun n'est nécessaire.", "Une interface décrit le contrat."],
+            "solution": "Une interface : les trois classes l'implémentent librement, sans héritage commun."
+          },
+          "quiz": [
+            { "id": "java-03-q1", "type": "single", "difficulty": 1, "question": "Combien de classes une classe Java peut-elle étendre ?", "options": ["Une seule", "Deux", "Autant que voulu", "Aucune"], "answer": 0, "explanation": "L'héritage de classe est simple ; les interfaces peuvent être multiples.", "hints": [] },
+            { "id": "java-03-q2", "type": "single", "difficulty": 2, "question": "Que fait @Override ?", "options": ["Il fait vérifier la redéfinition par le compilateur", "Il rend la méthode privée", "Il supprime la méthode", "Il la rend statique"], "answer": 0, "explanation": "L'annotation détecte une signature incorrecte.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "java-m2",
+      "title": "Collections et robustesse",
+      "chapters": [
+        {
+          "id": "java-04",
+          "title": "Collections et génériques",
+          "duration": 20,
+          "objectives": ["Choisir une collection", "Utiliser les génériques"],
+          "content": [
+            { "type": "p", "text": "Les **génériques** rendent les collections sûres au type : `List<String>` ne peut contenir que des chaînes. Les principales collections sont `ArrayList` (liste ordonnée), `HashMap` (clé-valeur), `HashSet` (unicité)." },
+            { "type": "code", "lang": "java", "code": "import java.util.*;\n\nList<String> noms = new ArrayList<>();\nnoms.add(\"Ada\");\nnoms.add(\"Linus\");\nnoms.remove(\"Ada\");\n\nMap<String, Integer> ages = new HashMap<>();\nages.put(\"Ada\", 36);\nint a = ages.getOrDefault(\"Ada\", 0);" },
+            { "type": "p", "text": "Programmez contre l'interface (`List`, `Map`), pas contre l'implémentation : le jour où vous changez de structure, le reste du code reste valable." },
+            { "type": "warning", "text": "`equals` et `hashCode` doivent être cohérents pour qu'un objet fonctionne correctement dans un `HashMap` ou un `HashSet`." }
+          ],
+          "exercise": {
+            "title": "Choisir une collection",
+            "instructions": "Vous stockez des identifiants uniques sans ordre. Quelle collection choisir ?",
+            "hints": ["L'unicité est la contrainte principale.", "L'ordre n'a pas d'importance."],
+            "solution": "Un HashSet (ou LinkedHashSet si l'ordre d'insertion doit être conservé)."
+          },
+          "quiz": [
+            { "id": "java-04-q1", "type": "single", "difficulty": 1, "question": "Quel avantage apportent les génériques ?", "options": ["La sûreté de type à la compilation", "Un programme plus court", "La suppression des collections", "L'accès au réseau"], "answer": 0, "explanation": "Le compilateur vérifie les types contenus dans la collection.", "hints": [] },
+            { "id": "java-04-q2", "type": "single", "difficulty": 2, "question": "Pourquoi equals et hashCode doivent-ils être cohérents ?", "options": ["Pour fonctionner correctement dans un HashMap", "Pour accélérer la JVM", "Pour sérialiser", "Pour compiler"], "answer": 0, "explanation": "Les collections à hachage s'appuient sur ces deux méthodes.", "hints": [] }
+          ]
+        },
+        {
+          "id": "java-05",
+          "title": "Exceptions et tests unitaires",
+          "duration": 20,
+          "objectives": ["Gérer une exception", "Écrire un test JUnit"],
+          "content": [
+            { "type": "p", "text": "Une **exception** signale une erreur à l'exécution. On la traite avec `try`/`catch`, ou on la déclare pour la laisser remonter. Les exceptions vérifiées obligent l'appelant à décider." },
+            { "type": "code", "lang": "java", "code": "try {\n    int n = Integer.parseInt(saisie);\n    System.out.println(n * 2);\n} catch (NumberFormatException e) {\n    System.err.println(\"Saisie invalide : \" + saisie);\n}" },
+            { "type": "code", "lang": "java", "code": "import org.junit.jupiter.api.Test;\nimport static org.junit.jupiter.api.Assertions.*;\n\nclass CompteTest {\n    @Test\n    void refuseUnRetraitSuperieurAuSolde() {\n        Compte c = new Compte(100);\n        assertThrows(IllegalArgumentException.class, () -> c.retirer(150));\n    }\n}" },
+            { "type": "warning", "text": "Un `catch (Exception e) {}` vide masque toutes les erreurs. Traitez uniquement ce que vous savez gérer et laissez remonter le reste." }
+          ],
+          "exercise": {
+            "title": "Tester un cas d'erreur",
+            "instructions": "Quelle assertion JUnit vérifie qu'un retrait de 150 sur un solde de 100 lève une exception ?",
+            "hints": ["L'assertion s'appelle assertThrows.", "On précise la classe d'exception attendue."],
+            "solution": "assertThrows(IllegalArgumentException.class, () -> compte.retirer(150));"
+          },
+          "quiz": [
+            { "id": "java-05-q1", "type": "single", "difficulty": 1, "question": "Que fait un bloc try/catch ?", "options": ["Il traite une exception à l'exécution", "Il compile le code", "Il crée un thread", "Il importe une classe"], "answer": 0, "explanation": "Le catch intercepte l'exception levée dans le try.", "hints": [] },
+            { "id": "java-05-q2", "type": "truefalse", "difficulty": 2, "question": "Un catch qui ne fait rien est une bonne pratique.", "answer": false, "explanation": "Il masque les erreurs et rend le diagnostic impossible.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Gestion de bibliothèque en Java",
+    "brief": "Écrivez un programme Java qui gère des livres, des emprunts et des retours, avec tests unitaires.",
+    "steps": [
+      "Créer les classes Livre et Bibliotheque avec des champs privés.",
+      "Implémenter l'ajout, l'emprunt et le retour avec validation des règles.",
+      "Stocker les livres dans une collection typée et exposer des vues non modifiables.",
+      "Écrire des tests JUnit pour les cas normaux et les cas d'erreur.",
+      "Compiler et exécuter la suite de tests."
+    ],
+    "criteria": [
+      "Les règles métier sont testées, y compris les cas d'erreur.",
+      "Aucun champ public mutable.",
+      "Les tests passent sans modification de l'ordre d'exécution."
+    ]
+  }
+}

@@ -1,0 +1,178 @@
+{
+  "courseId": "kubernetes-debutant",
+  "modules": [
+    {
+      "id": "k8s-m1",
+      "title": "Le cluster et ses objets",
+      "chapters": [
+        {
+          "id": "k8s-01",
+          "title": "Architecture d'un cluster",
+          "duration": 20,
+          "objectives": [
+            "Distinguer le plan de contrôle et les nœuds",
+            "Expliquer la notion d'état désiré"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **cluster** Kubernetes regroupe des machines. Le **plan de contrôle** prend les décisions : il enregistre l'état désiré, planifie les charges et surveille le cluster. Les **nœuds** exécutent les conteneurs, via un agent local (kubelet) et un moteur de conteneurs." },
+            { "type": "table", "headers": ["Composant", "Rôle"], "rows": [
+              ["API server", "Point d'entrée unique : toutes les commandes passent par lui"],
+              ["etcd", "Stockage clé-valeur de l'état du cluster"],
+              ["Scheduler", "Choisit le nœud où placer chaque charge"],
+              ["Controller manager", "Ramène le cluster vers l'état désiré"],
+              ["kubelet (nœud)", "Démarre et surveille les conteneurs du nœud"]
+            ] },
+            { "type": "p", "text": "Kubernetes fonctionne en boucle de **réconciliation** : vous déclarez un état désiré (trois réplicas d'une application), et les contrôleurs agissent en continu pour s'en rapprocher. Si un pod meurt, il est recréé." },
+            { "type": "code", "lang": "bash", "code": "kubectl get nodes\nkubectl cluster-info\nkubectl get pods -A" },
+            { "type": "tip", "text": "Tout objet se décrit en YAML et s'applique avec `kubectl apply -f fichier.yaml`. C'est cette description versionnée qui rend les déploiements reproductibles." }
+          ],
+          "exercise": {
+            "title": "Qui fait quoi ?",
+            "instructions": "Un pod est supprimé accidentellement. Quel composant recrée un pod pour respecter l'état désiré, et pourquoi le scheduler n'est-il pas le bon responsable ?",
+            "hints": ["Le scheduler choisit un nœud au moment de la création.", "Un contrôleur compare en continu le réel et le désiré."],
+            "solution": "Le contrôleur du Deployment (controller manager) recrée le pod. Le scheduler ne fait que choisir un nœud pour un pod qui vient d'être créé."
+          },
+          "quiz": [
+            { "id": "k8s-01-q1", "type": "single", "difficulty": 1, "question": "Quel composant stocke l'état du cluster ?", "options": ["etcd", "kubelet", "nginx", "Docker Compose"], "answer": 0, "explanation": "etcd conserve l'ensemble des objets et leur état.", "hints": [] },
+            { "id": "k8s-01-q2", "type": "truefalse", "difficulty": 1, "question": "Kubernetes rejoue en continu l'écart entre l'état réel et l'état désiré.", "answer": true, "explanation": "C'est le principe de réconciliation, assuré par les contrôleurs.", "hints": [] }
+          ]
+        },
+        {
+          "id": "k8s-02",
+          "title": "Pods et Deployments",
+          "duration": 22,
+          "objectives": [
+            "Décrire un Pod",
+            "Gérer des réplicas avec un Deployment"
+          ],
+          "content": [
+            { "type": "p", "text": "Le **Pod** est la plus petite unité déployable : un ou plusieurs conteneurs qui partagent le réseau et les volumes. En pratique, on ne crée presque jamais un Pod seul : un **Deployment** le fait pour vous, en maintenant un nombre de réplicas et en gérant les mises à jour." },
+            { "type": "code", "lang": "yaml", "title": "deployment.yaml", "code": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: web\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: web\n  template:\n    metadata:\n      labels:\n        app: web\n    spec:\n      containers:\n        - name: web\n          image: nginx:1.27\n          ports:\n            - containerPort: 80" },
+            { "type": "p", "text": "Les **labels** identifient les objets ; le `selector` du Deployment relie le Deployment aux pods qu'il gère. Une erreur de label casse ce lien : le Deployment crée des pods, mais ne les reconnaît pas comme les siens." },
+            { "type": "code", "lang": "bash", "code": "kubectl apply -f deployment.yaml\nkubectl get deployments\nkubectl get pods -l app=web\nkubectl scale deployment web --replicas=5\nkubectl rollout status deployment/web" },
+            { "type": "warning", "text": "Un pod nu (`kubectl run`) n'est pas redémarré sur un autre nœud s'il meurt. Pour tout service réel, utilisez un Deployment." }
+          ],
+          "exercise": {
+            "title": "Trois réplicas",
+            "instructions": "Écrivez un Deployment nommé api, avec 3 réplicas, le label app: api et l'image mon-api:1.0 sur le port 8080.",
+            "hints": ["Le sélecteur doit correspondre exactement aux labels du template.", "Le port se déclare dans containerPort."],
+            "solution": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\nspec:\n  replicas: 3\n  selector:\n    matchLabels:\n      app: api\n  template:\n    metadata:\n      labels:\n        app: api\n    spec:\n      containers:\n        - name: api\n          image: mon-api:1.0\n          ports:\n            - containerPort: 8080"
+          },
+          "quiz": [
+            { "id": "k8s-02-q1", "type": "single", "difficulty": 1, "question": "Quelle est la plus petite unité déployable dans Kubernetes ?", "options": ["Le conteneur", "Le Pod", "Le Deployment", "Le nœud"], "answer": 1, "explanation": "Le Pod regroupe un ou plusieurs conteneurs partageant réseau et volumes.", "hints": [] },
+            { "id": "k8s-02-q2", "type": "single", "difficulty": 2, "question": "Que se passe-t-il si le selector ne correspond pas aux labels du template ?", "options": ["Le Deployment gère les pods d'un autre projet", "Le Deployment ne reconnaît pas ses pods et ne les maintient pas", "Rien, les labels sont décoratifs", "Le cluster redémarre"], "answer": 1, "explanation": "Le lien entre Deployment et pods repose uniquement sur les labels.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "k8s-m2",
+      "title": "Exposer et configurer",
+      "chapters": [
+        {
+          "id": "k8s-03",
+          "title": "Services et exposition",
+          "duration": 20,
+          "objectives": [
+            "Choisir un type de Service",
+            "Comprendre la sélection par labels"
+          ],
+          "content": [
+            { "type": "p", "text": "Les pods changent d'adresse IP à chaque recréation. Un **Service** fournit une adresse stable et répartit le trafic vers les pods correspondant à un sélecteur de labels." },
+            { "type": "table", "headers": ["Type", "Portée"], "rows": [
+              ["`ClusterIP`", "Visible uniquement dans le cluster (par défaut)"],
+              ["`NodePort`", "Ouvre un port sur chaque nœud"],
+              ["`LoadBalancer`", "Demande un équilibreur au fournisseur cloud"],
+              ["`Ingress`", "Routage HTTP par nom d'hôte et par chemin (ressource distincte)"]
+            ] },
+            { "type": "code", "lang": "yaml", "code": "apiVersion: v1\nkind: Service\nmetadata:\n  name: web\nspec:\n  selector:\n    app: web\n  ports:\n    - port: 80\n      targetPort: 80\n  type: ClusterIP" },
+            { "type": "p", "text": "Un Service `ClusterIP` suffit pour une communication interne. On expose au monde extérieur via un `Ingress` ou un `LoadBalancer`, en terminant TLS à ce niveau." },
+            { "type": "warning", "text": "Un Service sans pod correspondant n'a aucun endpoint : la requête échoue. Vérifiez le sélecteur et l'état des pods avant de chercher ailleurs." }
+          ],
+          "exercise": {
+            "title": "Exposer en interne",
+            "instructions": "Vous voulez que le service web joigne les pods portant app: web sur le port 80, sans exposition hors du cluster. Quel type de Service choisissez-vous ?",
+            "hints": ["L'exposition interne est le comportement par défaut.", "Un autre type ouvre un port sur chaque nœud."],
+            "solution": "Un Service de type ClusterIP, avec selector app: web et port 80 vers targetPort 80."
+          },
+          "quiz": [
+            { "id": "k8s-03-q1", "type": "single", "difficulty": 1, "question": "Quel type de Service est interne au cluster par défaut ?", "options": ["ClusterIP", "NodePort", "LoadBalancer", "ExternalName"], "answer": 0, "explanation": "ClusterIP n'est joignable que depuis l'intérieur du cluster.", "hints": [] },
+            { "id": "k8s-03-q2", "type": "match", "difficulty": 2, "question": "Associez chaque type de Service à sa portée.", "left": ["ClusterIP", "NodePort", "LoadBalancer"], "right": ["Port sur chaque nœud", "Équilibreur fourni par le cloud", "Interne au cluster"], "answer": [2, 0, 1], "explanation": "ClusterIP reste interne, NodePort ouvre un port sur les nœuds, LoadBalancer demande une IP publique au fournisseur.", "hints": [] }
+          ]
+        },
+        {
+          "id": "k8s-04",
+          "title": "Configuration, secrets et ressources",
+          "duration": 22,
+          "objectives": [
+            "Configurer une application sans reconstruire l'image",
+            "Déclarer des ressources et des sondes"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **ConfigMap** stocke de la configuration non sensible ; un **Secret** stocke des données sensibles. Les deux peuvent être injectés en variables d'environnement ou montés en fichiers. Les données ne sont donc pas figées dans l'image." },
+            { "type": "code", "lang": "yaml", "code": "envFrom:\n  - configMapRef:\n      name: app-config\n  - secretRef:\n      name: app-secret\nresources:\n  requests:\n    cpu: 100m\n    memory: 128Mi\n  limits:\n    cpu: 500m\n    memory: 256Mi\nreadinessProbe:\n  httpGet:\n    path: /sante\n    port: 8080\n  initialDelaySeconds: 5" },
+            { "type": "p", "text": "`requests` indique ce que le pod demande pour être planifié ; `limits` plafonne ce qu'il peut consommer. Une **readinessProbe** retire le pod du Service tant qu'il n'est pas prêt ; une **livenessProbe** le redémarre s'il est bloqué." },
+            { "type": "warning", "text": "Un Secret n'est pas chiffré par défaut dans etcd : il est encodé en base64. Activez le chiffrement au repos et limitez les droits de lecture avec RBAC." }
+          ],
+          "exercise": {
+            "title": "Probe de démarrage lent",
+            "instructions": "L'application met 30 secondes à démarrer. Quelle sonde évite de recevoir du trafic avant qu'elle soit prête, et quelle valeur régler ?",
+            "hints": ["La sonde qui conditionne l'entrée dans le Service est la readiness.", "Un délai initial est prévu par initialDelaySeconds."],
+            "solution": "Une readinessProbe avec initialDelaySeconds d'au moins 30 (ou un failureThreshold adapté), pour ne router le trafic qu'une fois l'application prête."
+          },
+          "quiz": [
+            { "id": "k8s-04-q1", "type": "single", "difficulty": 1, "question": "Quel objet stocke une configuration non sensible ?", "options": ["Secret", "ConfigMap", "Service", "Pod"], "answer": 1, "explanation": "ConfigMap est prévu pour la configuration ; Secret pour les données sensibles.", "hints": [] },
+            { "id": "k8s-04-q2", "type": "single", "difficulty": 2, "question": "Quelle sonde retire un pod du Service tant qu'il n'est pas prêt ?", "options": ["livenessProbe", "readinessProbe", "startupProbe", "restartPolicy"], "answer": 1, "explanation": "La readiness conditionne la réception du trafic ; la liveness déclenche un redémarrage.", "hints": [] }
+          ]
+        },
+        {
+          "id": "k8s-05",
+          "title": "Diagnostiquer un déploiement",
+          "duration": 22,
+          "objectives": [
+            "Lire l'état d'un pod",
+            "Identifier les causes fréquentes d'échec"
+          ],
+          "content": [
+            { "type": "p", "text": "La démarche de diagnostic suit toujours le même ordre : état des objets, description détaillée avec les événements, puis journaux applicatifs. Ces trois commandes résolvent la majorité des problèmes." },
+            { "type": "code", "lang": "bash", "code": "kubectl get pods\nkubectl describe pod web-7d9f8c6b5-abcde\nkubectl logs web-7d9f8c6b5-abcde\nkubectl get events --sort-by=.lastTimestamp\nkubectl exec -it web-7d9f8c6b5-abcde -- sh" },
+            { "type": "table", "headers": ["Symptôme", "Cause probable"], "rows": [
+              ["`ImagePullBackOff`", "Image ou étiquette inexistante, ou identifiants de registre manquants"],
+              ["`CrashLoopBackOff`", "L'application plante au démarrage : voir les logs"],
+              ["`Pending`", "Aucun nœud ne peut satisfaire les demandes de ressources"],
+              ["`Running` mais inaccessible", "Readiness en échec ou Service mal sélectionné"]
+            ] },
+            { "type": "p", "text": "`describe` affiche la section **Events** : c'est là que figurent les refus du scheduler, les échecs de téléchargement d'image et les redémarrages, avec leurs messages exacts." },
+            { "type": "warning", "text": "`kubectl exec` ouvre un shell dans le conteneur : pratique pour diagnostiquer, mais ne modifiez jamais un conteneur à la main en production. La correction doit passer par une nouvelle image." }
+          ],
+          "exercise": {
+            "title": "Pod en attente",
+            "instructions": "Un pod reste en état Pending. Quelles informations consultez-vous en premier, et que cherche-t-on ?",
+            "hints": ["describe affiche les événements liés au pod.", "Un pod non planifié indique un manque de ressources."],
+            "solution": "kubectl describe pod <nom> : la section Events indique si le scheduler refuse le pod faute de ressources (mémoire, processeur) ou à cause d'une contrainte (taint, affinité)."
+          },
+          "quiz": [
+            { "id": "k8s-05-q1", "type": "single", "difficulty": 2, "question": "Que signifie ImagePullBackOff ?", "options": ["L'application plante", "L'image ne peut pas être téléchargée", "Le service n'a pas d'endpoint", "Le pod manque de mémoire"], "answer": 1, "explanation": "Kubernetes réessaie de télécharger l'image : nom, étiquette ou identifiants sont en cause.", "hints": [] },
+            { "id": "k8s-05-q2", "type": "single", "difficulty": 1, "question": "Où trouver les messages expliquant un échec de planification ?", "options": ["Dans les logs de l'application", "Dans les Events de kubectl describe", "Dans le Dockerfile", "Dans le ConfigMap"], "answer": 1, "explanation": "Les événements du pod décrivent les décisions du scheduler et les erreurs du kubelet.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Déployer une application sur un cluster local",
+    "brief": "Déployez une application conteneurisée sur un cluster local (minikube, kind ou k3s) avec configuration, secrets et exposition.",
+    "steps": [
+      "Créer le Deployment avec 2 réplicas, des requests et limits, et une readinessProbe.",
+      "Exposer l'application avec un Service ClusterIP, puis vérifier la résolution du nom depuis un autre pod.",
+      "Externaliser la configuration dans un ConfigMap et le mot de passe dans un Secret.",
+      "Provoquer volontairement une erreur d'image, observer ImagePullBackOff, puis corriger.",
+      "Réaliser une mise à jour d'image et suivre le rollout, puis revenir en arrière avec kubectl rollout undo."
+    ],
+    "criteria": [
+      "Les pods passent en Ready et le Service répond depuis le cluster.",
+      "La configuration n'est pas codée dans l'image.",
+      "Le retour arrière du déploiement est réalisé et vérifié."
+    ]
+  }
+}

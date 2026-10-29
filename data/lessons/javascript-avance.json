@@ -1,0 +1,143 @@
+{
+  "courseId": "javascript-avance",
+  "modules": [
+    {
+      "id": "jsa-m1",
+      "title": "Asynchrone",
+      "chapters": [
+        {
+          "id": "jsa-01",
+          "title": "Promesses et async/await",
+          "duration": 22,
+          "objectives": ["Écrire une promesse", "Gérer succès et échec"],
+          "content": [
+            { "type": "p", "text": "Une **promesse** représente un résultat futur : en attente, résolue ou rejetée. `async` transforme une fonction en promesse ; `await` attend son résultat sans bloquer le fil principal." },
+            { "type": "code", "lang": "javascript", "code": "async function chargerUtilisateur(id) {\n  try {\n    const reponse = await fetch(`/api/utilisateurs/${id}`);\n    if (!reponse.ok) throw new Error(`HTTP ${reponse.status}`);\n    return await reponse.json();\n  } catch (err) {\n    console.error(\"échec :\", err.message);\n    throw err;\n  }\n}" },
+            { "type": "p", "text": "`Promise.all` exécute plusieurs opérations en parallèle et échoue dès la première erreur ; `Promise.allSettled` attend toutes les opérations et renvoie leurs résultats individuels." },
+            { "type": "warning", "text": "Oublier `await` renvoie une promesse au lieu de la valeur. Le code continue et l'erreur apparaît plus loin, souvent incompréhensible." }
+          ],
+          "exercise": {
+            "title": "Parallèle ou séquentiel ?",
+            "instructions": "Vous chargez trois ressources indépendantes. Quelle fonction utiliser pour attendre les trois ?",
+            "hints": ["Elles sont indépendantes : pas besoin d'ordre.", "Promise.all attend toutes les promesses."],
+            "solution": "Promise.all([p1, p2, p3]) pour lancer les trois en parallèle et attendre l'ensemble."
+          },
+          "quiz": [
+            { "id": "jsa-01-q1", "type": "single", "difficulty": 1, "question": "Que fait await ?", "options": ["Il attend le résultat d'une promesse", "Il bloque tout le navigateur", "Il crée un thread", "Il annule la requête"], "answer": 0, "explanation": "await suspend la fonction async, pas le fil principal.", "hints": [] },
+            { "id": "jsa-01-q2", "type": "single", "difficulty": 2, "question": "Que garantit Promise.allSettled ?", "options": ["D'attendre toutes les promesses, même rejetées", "D'échouer à la première erreur", "D'annuler les requêtes", "De trier les résultats"], "answer": 0, "explanation": "allSettled renvoie un résultat par promesse, succès ou échec.", "hints": [] }
+          ]
+        },
+        {
+          "id": "jsa-02",
+          "title": "fetch, erreurs réseau et annulation",
+          "duration": 22,
+          "objectives": ["Vérifier une réponse HTTP", "Annuler une requête"],
+          "content": [
+            { "type": "p", "text": "`fetch` ne rejette pas sur un statut d'erreur : une réponse 404 ou 500 est une promesse résolue. Il faut vérifier `response.ok`. Seule une panne réseau rejette la promesse." },
+            { "type": "code", "lang": "javascript", "code": "const controleur = new AbortController();\nconst timeout = setTimeout(() => controleur.abort(), 5000);\n\ntry {\n  const reponse = await fetch(url, { signal: controleur.signal });\n  if (!reponse.ok) throw new Error(`HTTP ${reponse.status}`);\n  return await reponse.json();\n} catch (err) {\n  if (err.name === \"AbortError\") return null; // délai dépassé\n  throw err;\n} finally {\n  clearTimeout(timeout);\n}" },
+            { "type": "p", "text": "Toujours prévoir un délai maximal et un état d'interface : chargement, erreur, absence de résultat. Un écran vide sans explication est un défaut." },
+            { "type": "warning", "text": "Ne renvoyez jamais un message d'erreur technique brut à l'utilisateur. Affichez un message compréhensible et journalisez le détail." }
+          ],
+          "exercise": {
+            "title": "Erreur HTTP",
+            "instructions": "Que renvoie fetch sur une réponse 500 ?",
+            "hints": ["La promesse n'est pas rejetée.", "Il faut vérifier une propriété."],
+            "solution": "Une promesse résolue contenant une réponse avec ok à false et status 500 ; à vous de lever une erreur."
+          },
+          "quiz": [
+            { "id": "jsa-02-q1", "type": "single", "difficulty": 2, "question": "Que faut-il vérifier après fetch ?", "options": ["response.ok", "response.headers", "le DOM", "localStorage"], "answer": 0, "explanation": "fetch ne rejette pas sur un statut 4xx ou 5xx.", "hints": [] },
+            { "id": "jsa-02-q2", "type": "single", "difficulty": 2, "question": "À quoi sert AbortController ?", "options": ["À annuler une requête", "À chiffrer la requête", "À mettre en cache", "À trier la réponse"], "answer": 0, "explanation": "Il permet d'interrompre une requête devenue inutile ou trop longue.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "jsa-m2",
+      "title": "Organisation et performance",
+      "chapters": [
+        {
+          "id": "jsa-03",
+          "title": "Modules ES et organisation",
+          "duration": 20,
+          "objectives": ["Découper en modules", "Éviter les dépendances circulaires"],
+          "content": [
+            { "type": "p", "text": "Les **modules ES** isolent le code : chaque fichier exporte ce qu'il veut rendre disponible et importe ce dont il a besoin. Les dépendances deviennent explicites, et le chargement peut être différé." },
+            { "type": "code", "lang": "javascript", "code": "// api.js\nexport async function chargerTaches() { /* ... */ }\n\n// ui.js\nimport { chargerTaches } from \"./api.js\";\nexport function afficherTaches() { /* ... */ }\n\n// main.js\nimport { afficherTaches } from \"./ui.js\";\nafficherTaches();" },
+            { "type": "p", "text": "Une **dépendance circulaire** (A importe B qui importe A) produit des valeurs indéfinies au chargement. Elle signale souvent une responsabilité mal placée : déplacez le code partagé dans un troisième module." },
+            { "type": "warning", "text": "Un module ne doit pas avoir d'effet de bord à l'import (requête, mutation globale). Réservez les effets à une fonction explicite appelée au démarrage." }
+          ],
+          "exercise": {
+            "title": "Casser un cycle",
+            "instructions": "A importe B et B importe A. Comment corriger proprement ?",
+            "hints": ["Le cycle vient d'un code partagé.", "Un troisième module peut porter la dépendance commune."],
+            "solution": "Extraire la partie commune dans un module C importé par A et B, ce qui supprime le cycle."
+          },
+          "quiz": [
+            { "id": "jsa-03-q1", "type": "single", "difficulty": 1, "question": "Que permet un module ES ?", "options": ["D'isoler et d'exporter du code explicitement", "De compiler le code", "De créer une base", "De chiffrer les données"], "answer": 0, "explanation": "Les imports et exports rendent les dépendances visibles.", "hints": [] },
+            { "id": "jsa-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi éviter les effets de bord à l'import ?", "options": ["Ils s'exécutent sans contrôle et compliquent les tests", "Ils sont plus lents", "Ils suppriment les exports", "Ils bloquent le HTML"], "answer": 0, "explanation": "Un import doit être une déclaration, pas une action.", "hints": [] }
+          ]
+        },
+        {
+          "id": "jsa-04",
+          "title": "Event loop et performance",
+          "duration": 22,
+          "objectives": ["Expliquer l'event loop", "Éviter de bloquer le fil principal"],
+          "content": [
+            { "type": "p", "text": "JavaScript s'exécute sur un seul fil. L'**event loop** traite les tâches dans l'ordre : la pile d'appels, puis les microtâches (promesses), puis les macrotâches (minuteurs, événements). Une opération longue bloque tout, y compris l'interface." },
+            { "type": "code", "lang": "javascript", "code": "console.log(\"1\");\nsetTimeout(() => console.log(\"3\"), 0);\nPromise.resolve().then(() => console.log(\"2\"));\nconsole.log(\"4\");\n// 1, 4, 2, 3" },
+            { "type": "p", "text": "Pour les traitements lourds, découpez le travail en morceaux ou déplacez-le dans un **Web Worker**. Le DOM n'est jamais accessible depuis un worker : communiquez par messages." },
+            { "type": "warning", "text": "Un `while` long ou un tri de millions d'éléments dans le fil principal gèle l'interface. L'utilisateur croit à une panne et quitte la page." }
+          ],
+          "exercise": {
+            "title": "Ordre d'exécution",
+            "instructions": "Dans l'exemple du cours, quel est l'ordre affiché ?",
+            "hints": ["Les microtâches passent avant les macrotâches.", "Le code synchrone passe en premier."],
+            "solution": "1, 4, 2, 3 : synchrone, puis microtâche de promesse, puis minuteur."
+          },
+          "quiz": [
+            { "id": "jsa-04-q1", "type": "single", "difficulty": 2, "question": "Que traite l'event loop en premier après le code synchrone ?", "options": ["Les microtâches (promesses)", "Les minuteurs", "Les requêtes réseau", "Les animations"], "answer": 0, "explanation": "Les microtâches sont vidées avant les macrotâches.", "hints": [] },
+            { "id": "jsa-04-q2", "type": "single", "difficulty": 2, "question": "Quel outil déplace un calcul lourd hors du fil principal ?", "options": ["Web Worker", "localStorage", "CSS Grid", "fetch"], "answer": 0, "explanation": "Le worker exécute dans un autre fil et communique par messages.", "hints": [] }
+          ]
+        },
+        {
+          "id": "jsa-05",
+          "title": "IndexedDB et données locales volumineuses",
+          "duration": 20,
+          "objectives": ["Choisir un stockage", "Utiliser IndexedDB à bon escient"],
+          "content": [
+            { "type": "p", "text": "`localStorage` convient aux petites valeurs texte ; il est synchrone et limité à quelques mégaoctets. **IndexedDB** stocke des structures volumineuses, indexables et asynchrones : adapté aux caches de données et aux fichiers." },
+            { "type": "code", "lang": "javascript", "code": "const requete = indexedDB.open(\"kernova\", 1);\nrequete.onupgradeneeded = () => {\n  requete.result.createObjectStore(\"notes\", { keyPath: \"id\" });\n};\nrequete.onsuccess = () => {\n  const db = requete.result;\n  const tx = db.transaction(\"notes\", \"readwrite\");\n  tx.objectStore(\"notes\").put({ id: 1, texte: \"brouillon\" });\n};" },
+            { "type": "p", "text": "IndexedDB est asynchrone et verbeux : encapsulez-le dans de petites fonctions, ou utilisez une bibliothèque légère si le besoin le justifie." },
+            { "type": "warning", "text": "Les données locales peuvent être effacées par le navigateur (stockage plein, nettoyage, navigation privée). Elles ne remplacent pas une sauvegarde côté serveur." }
+          ],
+          "exercise": {
+            "title": "Choisir le stockage",
+            "instructions": "Vous devez mettre en cache 50 Mo de réponses pour un usage hors ligne. localStorage ou IndexedDB ?",
+            "hints": ["localStorage est limité et synchrone.", "IndexedDB gère de gros volumes de façon asynchrone."],
+            "solution": "IndexedDB : adapté au volume et non bloquant pour l'interface."
+          },
+          "quiz": [
+            { "id": "jsa-05-q1", "type": "single", "difficulty": 1, "question": "Quel stockage gère de gros volumes de façon asynchrone ?", "options": ["IndexedDB", "localStorage", "sessionStorage", "Un cookie"], "answer": 0, "explanation": "IndexedDB est conçu pour des données volumineuses et indexées.", "hints": [] },
+            { "id": "jsa-05-q2", "type": "truefalse", "difficulty": 2, "question": "Les données locales d'un navigateur sont garanties à vie.", "answer": false, "explanation": "Le navigateur peut les effacer : ce n'est pas une sauvegarde.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Tableau de bord hors ligne",
+    "brief": "Construisez une petite application qui charge des données, les met en cache dans IndexedDB et reste utilisable sans réseau.",
+    "steps": [
+      "Découper le code en modules : api, stockage, interface.",
+      "Charger les données avec fetch, délai maximal et gestion des erreurs.",
+      "Stocker les données dans IndexedDB et les relire au démarrage.",
+      "Afficher un état clair hors ligne et un bouton de rechargement.",
+      "Tester en coupant le réseau et vérifier que l'interface ne se fige pas."
+    ],
+    "criteria": [
+      "Aucun blocage de l'interface pendant le chargement.",
+      "Les données en cache s'affichent hors ligne avec une indication.",
+      "Les modules n'ont pas d'effet de bord à l'import."
+    ]
+  }
+}

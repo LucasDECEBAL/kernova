@@ -1,0 +1,154 @@
+{
+  "courseId": "automatisation-workflows",
+  "modules": [
+    {
+      "id": "aut-m1",
+      "title": "Construire un workflow",
+      "chapters": [
+        {
+          "id": "aut-01",
+          "title": "Repérer les tâches à automatiser",
+          "duration": 16,
+          "objectives": ["Évaluer le gain d'une automatisation", "Éviter d'automatiser un processus instable"],
+          "content": [
+            { "type": "p", "text": "Une tâche mérite d'être automatisée quand elle est **répétitive**, **régulière** et **bien définie**. Automatiser un processus qui change chaque semaine coûte plus cher qu'il ne rapporte : on fige une décision encore instable." },
+            { "type": "list", "items": [
+              "Fréquence : combien de fois par semaine ?",
+              "Durée : combien de minutes par occurrence ?",
+              "Risque d'erreur humaine : copier-coller, ressaisie.",
+              "Stabilité : les règles changent-elles souvent ?"
+            ] },
+            { "type": "tip", "text": "Chronométrez la tâche une fois et notez les exceptions. Si les exceptions dépassent 20 % des cas, clarifiez le processus avant d'automatiser." }
+          ],
+          "exercise": {
+            "title": "Automatiser ou pas ?",
+            "instructions": "Un rapport est produit chaque semaine par copier-coller, avec des règles qui changent tous les mois. Faut-il l'automatiser tout de suite ?",
+            "hints": ["Le volume est intéressant.", "Les règles instables rendent l'automatisation fragile."],
+            "solution": "Pas immédiatement : stabiliser d'abord les règles, puis automatiser la version stable. Sinon chaque changement casserait le workflow."
+          },
+          "quiz": [
+            { "id": "aut-01-q1", "type": "single", "difficulty": 1, "question": "Quel critère rend une tâche un bon candidat à l'automatisation ?", "options": ["Elle est répétitive et stable", "Elle est unique", "Elle change chaque jour", "Elle n'a pas de règle"], "answer": 0, "explanation": "La répétition apporte le gain, la stabilité garantit la fiabilité.", "hints": [] },
+            { "id": "aut-01-q2", "type": "truefalse", "difficulty": 2, "question": "Automatiser un processus instable le rend plus fiable.", "answer": false, "explanation": "L'automatisation fige le processus : ses changements continueront de le casser.", "hints": [] }
+          ]
+        },
+        {
+          "id": "aut-02",
+          "title": "Déclencheurs, actions et webhooks",
+          "duration": 18,
+          "objectives": ["Décrire un workflow en déclencheur et actions", "Comprendre un webhook"],
+          "content": [
+            { "type": "p", "text": "Un workflow se compose d'un **déclencheur** (événement de départ) et d'**actions** enchaînées. Le déclencheur peut être planifié (toutes les heures), un formulaire soumis, un e-mail reçu ou un appel HTTP." },
+            { "type": "p", "text": "Un **webhook** est une URL fournie par le service cible, que le service source appelle quand un événement survient. C'est l'inverse d'une interrogation périodique : le service prévient au lieu d'être questionné." },
+            { "type": "code", "lang": "json", "title": "Charge utile typique", "code": "{\n  \"evenement\": \"commande.creee\",\n  \"id\": \"evt_123\",\n  \"donnees\": { \"commande_id\": 42, \"montant\": 89.9 }\n}" },
+            { "type": "warning", "text": "Un webhook peut être appelé plusieurs fois, dans le désordre, ou par un tiers malveillant. Vérifiez la signature et rendez le traitement idempotent avec l'identifiant d'événement." }
+          ],
+          "exercise": {
+            "title": "Déclencheur ou action ?",
+            "instructions": "Dans « quand un formulaire est soumis, créer une ligne dans un tableur et envoyer un e-mail », identifiez le déclencheur et les actions.",
+            "hints": ["Le déclencheur est le premier événement.", "Les actions suivent, dans l'ordre."],
+            "solution": "Déclencheur : soumission du formulaire. Actions : créer la ligne dans le tableur, puis envoyer l'e-mail."
+          },
+          "quiz": [
+            { "id": "aut-02-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qu'un webhook ?", "options": ["Une URL appelée par un service lors d'un événement", "Un mot de passe", "Un type de base de données", "Un serveur DNS"], "answer": 0, "explanation": "Le service source pousse une notification vers l'URL cible.", "hints": [] },
+            { "id": "aut-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi vérifier la signature d'un webhook ?", "options": ["Pour s'assurer que l'appel vient du service attendu", "Pour accélérer le traitement", "Pour compresser les données", "Pour créer un utilisateur"], "answer": 0, "explanation": "Sans vérification, n'importe qui peut déclencher le workflow.", "hints": [] }
+          ]
+        },
+        {
+          "id": "aut-03",
+          "title": "Manipuler du JSON entre services",
+          "duration": 18,
+          "objectives": ["Extraire une valeur d'un JSON", "Transformer une structure"],
+          "content": [
+            { "type": "p", "text": "La plupart des services échangent du **JSON**. Il faut savoir lire un chemin (`donnees.commande_id`), gérer les listes et transformer une structure en une autre pour l'action suivante." },
+            { "type": "code", "lang": "javascript", "code": "const evt = JSON.parse(payload);\nconst commande = evt.donnees.commande_id;\nconst lignes = evt.donnees.articles.map((a) => ({\n  reference: a.sku,\n  quantite: a.qte\n}));" },
+            { "type": "warning", "text": "Un champ absent renvoie `undefined` sans erreur. Validez la présence des champs obligatoires avant de continuer, sinon l'action échoue plus loin avec un message obscur." }
+          ],
+          "exercise": {
+            "title": "Extraire une valeur",
+            "instructions": "Avec l'objet { donnees: { commande_id: 42 } }, quelle expression lit l'identifiant de commande ?",
+            "hints": ["L'objet racine contient la clé donnees.", "La clé interne est commande_id."],
+            "solution": "objet.donnees.commande_id (ou objet['donnees']['commande_id'])"
+          },
+          "quiz": [
+            { "id": "aut-03-q1", "type": "single", "difficulty": 1, "question": "Que renvoie l'accès à un champ JSON absent ?", "options": ["undefined", "0", "Une erreur", "null systématiquement"], "answer": 0, "explanation": "L'accès manquant renvoie undefined : il faut tester la présence.", "hints": [] },
+            { "id": "aut-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi valider les champs avant l'action suivante ?", "options": ["Pour éviter un échec tardif et obscur", "Pour accélérer le réseau", "Pour compresser le JSON", "Pour créer une signature"], "answer": 0, "explanation": "Une validation précoce donne une erreur claire au bon endroit.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "aut-m2",
+      "title": "Fiabilité et sécurité",
+      "chapters": [
+        {
+          "id": "aut-04",
+          "title": "Erreurs, relances et files d'attente",
+          "duration": 18,
+          "objectives": ["Prévoir les échecs", "Configurer une relance raisonnable"],
+          "content": [
+            { "type": "p", "text": "Un service externe peut être indisponible, lent ou renvoyer une erreur. Un workflow robuste distingue les erreurs **temporaires** (réessayer) des erreurs **définitives** (corriger ou alerter)." },
+            { "type": "list", "items": [
+              "Réessai avec délai croissant (1 s, 5 s, 30 s) pour les erreurs temporaires.",
+              "Limite du nombre de tentatives, puis mise en échec explicite.",
+              "File d'attente pour ne pas perdre les événements pendant une panne.",
+              "Alerte adressée à une personne, pas seulement un journal."
+            ] },
+            { "type": "warning", "text": "Une relance automatique sur une action non idempotente peut créer des doublons : deux e-mails envoyés, deux commandes enregistrées. L'identifiant d'événement doit être vérifié avant chaque traitement." }
+          ],
+          "exercise": {
+            "title": "Erreur temporaire ou définitive ?",
+            "instructions": "Le service cible répond 503 puis 401. Comment traitez-vous chaque cas ?",
+            "hints": ["503 indique une indisponibilité passagère.", "401 signale un problème d'identifiants."],
+            "solution": "503 : réessai avec délai croissant. 401 : ne pas réessayer en boucle, corriger la configuration d'accès et alerter."
+          },
+          "quiz": [
+            { "id": "aut-04-q1", "type": "single", "difficulty": 2, "question": "Pourquoi espacer les tentatives ?", "options": ["Pour laisser le service se rétablir et éviter de l'aggraver", "Pour économiser la batterie", "Pour compresser les données", "Pour changer d'identifiant"], "answer": 0, "explanation": "Le délai croissant évite de marteler un service déjà en difficulté.", "hints": [] },
+            { "id": "aut-04-q2", "type": "truefalse", "difficulty": 2, "question": "Relancer indéfiniment une action qui renvoie 401 est une bonne stratégie.", "answer": false, "explanation": "401 est une erreur définitive : l'authentification doit être corrigée.", "hints": [] }
+          ]
+        },
+        {
+          "id": "aut-05",
+          "title": "Sécuriser et documenter un workflow",
+          "duration": 18,
+          "objectives": ["Protéger les secrets", "Documenter un workflow exploitable"],
+          "content": [
+            { "type": "p", "text": "Un workflow contient des **identifiants** vers plusieurs services. Ces secrets doivent être stockés dans le coffre du service d'automatisation, jamais dans les nœuds ni dans la documentation partagée." },
+            { "type": "list", "items": [
+              "Limiter chaque connexion au strict nécessaire.",
+              "Nommer les secrets par service et par environnement.",
+              "Documenter le déclencheur, les actions et les cas d'erreur.",
+              "Prévoir la désactivation du workflow et la rotation des secrets."
+            ] },
+            { "type": "tip", "text": "Documentez un workflow avec un schéma simple et la liste des données manipulées. Une personne extérieure doit pouvoir le comprendre sans ouvrir chaque nœud." }
+          ],
+          "exercise": {
+            "title": "Où mettre la clé d'API ?",
+            "instructions": "Un workflow appelle une API payante. Où stockez-vous sa clé ?",
+            "hints": ["Le workflow est visible par plusieurs personnes.", "Le service propose un coffre de secrets."],
+            "solution": "Dans le coffre de secrets du service d'automatisation, avec un nom explicite et des droits limités, jamais en clair dans un nœud."
+          },
+          "quiz": [
+            { "id": "aut-05-q1", "type": "single", "difficulty": 1, "question": "Où stocker les identifiants d'un workflow ?", "options": ["Dans le coffre de secrets du service", "Dans un commentaire du workflow", "Dans un e-mail", "Dans le nom du nœud"], "answer": 0, "explanation": "Le coffre limite l'exposition et permet la rotation.", "hints": [] },
+            { "id": "aut-05-q2", "type": "single", "difficulty": 2, "question": "Que doit contenir la documentation d'un workflow ?", "options": ["Déclencheur, actions et gestion des erreurs", "Uniquement une capture d'écran", "Les secrets", "Le prix du service"], "answer": 0, "explanation": "La documentation doit permettre la reprise et le diagnostic.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Workflow de veille automatisée",
+    "brief": "Construisez un workflow qui surveille une source publique, filtre les nouveautés et envoie une synthèse quotidienne.",
+    "steps": [
+      "Définir le déclencheur planifié et la source de données publique.",
+      "Extraire et normaliser les éléments utiles en JSON.",
+      "Dédupliquer avec un identifiant stable et stocker les déjà vus.",
+      "Envoyer une notification avec un lien source, et prévoir les erreurs.",
+      "Journaliser chaque exécution et documenter le workflow."
+    ],
+    "criteria": [
+      "Aucun doublon dans les notifications.",
+      "Une panne de la source n'interrompt pas la planification.",
+      "Les secrets sont stockés hors du workflow et la documentation permet la reprise."
+    ]
+  }
+}

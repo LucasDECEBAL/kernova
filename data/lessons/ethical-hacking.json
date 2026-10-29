@@ -1,0 +1,169 @@
+{
+  "courseId": "ethical-hacking",
+  "modules": [
+    {
+      "id": "eh-m1",
+      "title": "Cadre et méthode",
+      "chapters": [
+        {
+          "id": "eh-01",
+          "title": "Cadre légal et périmètre",
+          "duration": 20,
+          "objectives": ["Distinguer test autorisé et intrusion", "Rédiger un périmètre de test"],
+          "content": [
+            { "type": "p", "text": "Un test d'intrusion est **légal uniquement** avec une autorisation écrite du propriétaire des systèmes. Sans ce document, les mêmes actions sont des infractions, quel que soit l'intention. Le cadre est donc le premier livrable, avant toute technique." },
+            { "type": "list", "items": [
+              "Actifs concernés et actifs explicitement exclus.",
+              "Fenêtre horaire et durée du test.",
+              "Méthodes autorisées et limites (pas de déni de service, pas d'exfiltration réelle).",
+              "Contacts d'urgence et procédure d'arrêt immédiat.",
+              "Traitement des données sensibles et confidentialité du rapport."
+            ] },
+            { "type": "p", "text": "Les **règles d'engagement** précisent aussi ce qui se passe en cas de découverte critique : prévenir immédiatement, sans attendre le rapport final." },
+            { "type": "warning", "text": "Scanner, explorer ou tester un système dont vous n'êtes pas responsable est illégal, même pour « s'entraîner ». Ce cours ne couvre que les laboratoires isolés et les missions autorisées par écrit." }
+          ],
+          "exercise": {
+            "title": "Avant de commencer",
+            "instructions": "Un client vous demande oralement de « tester son site ». Quels éléments exigez-vous avant d'agir ?",
+            "hints": ["Une autorisation orale n'est pas vérifiable.", "Le périmètre évite de toucher un système tiers."],
+            "solution": "Une autorisation écrite, un périmètre listant les domaines et adresses, une fenêtre horaire, des contacts et des règles d'engagement signées."
+          },
+          "quiz": [
+            { "id": "eh-01-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qui rend un test d'intrusion légal ?", "options": ["L'autorisation écrite du propriétaire et un périmètre défini", "Le fait d'utiliser un VPN", "La discrétion", "Le paiement d'une licence"], "answer": 0, "explanation": "L'autorisation et le périmètre encadrent juridiquement la mission.", "hints": [] },
+            { "id": "eh-01-q2", "type": "truefalse", "difficulty": 2, "question": "Une autorisation orale suffit si le client est de bonne foi.", "answer": false, "explanation": "Seule une trace écrite protège les deux parties et délimite la mission.", "hints": [] }
+          ]
+        },
+        {
+          "id": "eh-02",
+          "title": "Reconnaissance passive",
+          "duration": 18,
+          "objectives": ["Utiliser des sources publiques", "Éviter le contact direct avec la cible"],
+          "content": [
+            { "type": "p", "text": "La **reconnaissance passive** collecte des informations sans interroger directement la cible : registres de domaines, certificats publics, offres d'emploi, documentation technique, code publié. Elle est discrète et sans impact." },
+            { "type": "p", "text": "L'objectif est de cartographier la surface publique : noms de domaine, sous-domaines connus, technologies visibles, fournisseurs. On note les sources pour que le rapport soit vérifiable." },
+            { "type": "list", "items": [
+              "Noter la date et la source de chaque information.",
+              "Distinguer ce qui est public de ce qui a été découvert par test actif.",
+              "Signaler au client les informations sensibles exposées publiquement."
+            ] },
+            { "type": "warning", "text": "Même passif, le recueil d'informations doit respecter la vie privée et le RGPD. Ne collectez que ce qui est nécessaire à la mission." }
+          ],
+          "exercise": {
+            "title": "Source ou test ?",
+            "instructions": "Consulter un certificat public et envoyer une requête à un serveur pour lister ses ports : laquelle est passive, laquelle est active ?",
+            "hints": ["Passive signifie sans contact direct.", "Une requête atteint la cible et laisse une trace."],
+            "solution": "Le certificat public relève de la reconnaissance passive ; l'envoi de requêtes pour découvrir des ports est actif et doit être couvert par le périmètre."
+          },
+          "quiz": [
+            { "id": "eh-02-q1", "type": "single", "difficulty": 1, "question": "Que caractérise la reconnaissance passive ?", "options": ["Aucun contact direct avec la cible", "Un scan de ports", "Une attaque par force brute", "Un déni de service"], "answer": 0, "explanation": "Elle utilise des sources publiques ou tierces.", "hints": [] },
+            { "id": "eh-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi dater les informations collectées ?", "options": ["Pour la traçabilité du rapport", "Pour accélérer le scan", "Pour chiffrer les preuves", "Pour éviter le RGPD"], "answer": 0, "explanation": "Une information datée reste vérifiable et contextualisée.", "hints": [] }
+          ]
+        },
+        {
+          "id": "eh-03",
+          "title": "Découverte de services en laboratoire",
+          "duration": 20,
+          "objectives": ["Cartographier les services d'un laboratoire", "Interpréter un port ouvert"],
+          "content": [
+            { "type": "p", "text": "Dans un **laboratoire isolé** dont vous êtes responsable, un scan de services identifie ce qui écoute : ports ouverts, bannières, versions. Le résultat alimente le périmètre d'analyse, il ne prouve aucune vulnérabilité à lui seul." },
+            { "type": "code", "lang": "bash", "code": "# Uniquement sur une machine du laboratoire isolé\nnmap -sV 192.168.56.10\nss -tulpn        # côté machine cible" },
+            { "type": "table", "headers": ["Observation", "Interprétation prudente"], "rows": [
+              ["Port 22 ouvert", "Service SSH accessible, à durcir"],
+              ["Port 3306 accessible depuis le réseau", "Base de données probablement mal cloisonnée"],
+              ["Version ancienne affichée", "À rapprocher des avis de sécurité"],
+              ["Nombreux ports ouverts", "Surface d'attaque à réduire"]
+            ] },
+            { "type": "warning", "text": "Un scan agressif peut faire tomber un service fragile. Sur un laboratoire, cela n'a pas de conséquence ; sur un système de production, cela peut constituer un déni de service." }
+          ],
+          "exercise": {
+            "title": "Interpréter un résultat",
+            "instructions": "Le scan d'une machine de laboratoire montre le port 3306 accessible depuis le réseau. Que recommandez-vous ?",
+            "hints": ["Le port correspond à MySQL.", "Une base ne doit être joignable que par l'application."],
+            "solution": "Restreindre l'écoute à l'interface locale ou au sous-réseau applicatif, filtrer par pare-feu, et vérifier l'authentification et les droits de la base."
+          },
+          "quiz": [
+            { "id": "eh-03-q1", "type": "single", "difficulty": 1, "question": "Un port ouvert prouve-t-il une vulnérabilité ?", "options": ["Non, il indique seulement un service en écoute", "Oui, toujours", "Oui, si c'est le port 22", "Uniquement sur Windows"], "answer": 0, "explanation": "L'exposition est un facteur de risque, pas une faille prouvée.", "hints": [] },
+            { "id": "eh-03-q2", "type": "truefalse", "difficulty": 2, "question": "Un scan de ports peut perturber un service fragile.", "answer": true, "explanation": "C'est pourquoi il se limite à un périmètre et à des fenêtres autorisées.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eh-m2",
+      "title": "Constat et rapport",
+      "chapters": [
+        {
+          "id": "eh-04",
+          "title": "Vérifier une configuration vulnérable",
+          "duration": 20,
+          "objectives": ["Confirmer un défaut de configuration", "Évaluer son impact"],
+          "content": [
+            { "type": "p", "text": "Beaucoup de vulnérabilités réelles ne viennent pas d'un code exotique mais de **configurations** : service exposé inutilement, TLS obsolète, droits trop larges, en-têtes de sécurité absents, sauvegardes accessibles." },
+            { "type": "list", "items": [
+              "Vérifier la version de TLS et les suites autorisées.",
+              "Contrôler les en-têtes de sécurité HTTP (HSTS, CSP, nosniff).",
+              "Tester les permissions d'un répertoire ou d'un partage.",
+              "Confirmer l'absence de mécanisme anti-force brute sur l'authentification."
+            ] },
+            { "type": "p", "text": "Un constat doit être **reproductible** : configuration observée, manipulation effectuée, résultat obtenu. La preuve se limite au strict nécessaire, sans exfiltrer de données réelles." },
+            { "type": "warning", "text": "Ne testez jamais une faille sur des données de production réelles : utilisez un compte de test et des données fictives prévus dans les règles d'engagement." }
+          ],
+          "exercise": {
+            "title": "Constat reproductible",
+            "instructions": "Comment rédiger un constat sur un en-tête de sécurité absent ?",
+            "hints": ["Indiquez la requête, le résultat, l'attendu.", "Précisez l'impact et la recommandation."],
+            "solution": "Requête utilisée, réponse observée sans l'en-tête, en-tête attendu, conséquence (par exemple risque de clickjacking), recommandation de configuration et référence."
+          },
+          "quiz": [
+            { "id": "eh-04-q1", "type": "single", "difficulty": 2, "question": "Qu'est-ce qui rend un constat exploitable par le client ?", "options": ["Il est reproductible et documenté", "Il est long", "Il utilise un outil payant", "Il reste confidentiel"], "answer": 0, "explanation": "Le client doit pouvoir reproduire et vérifier le défaut.", "hints": [] },
+            { "id": "eh-04-q2", "type": "single", "difficulty": 2, "question": "Quel impact a un en-tête CSP absent ?", "options": ["Il augmente le risque d'injection de script", "Il supprime le HTTPS", "Il ouvre les ports", "Il chiffre mal les mots de passe"], "answer": 0, "explanation": "La politique de sécurité du contenu limite l'exécution de scripts non désirés.", "hints": [] }
+          ]
+        },
+        {
+          "id": "eh-05",
+          "title": "Rapport, remédiation et vérification",
+          "duration": 20,
+          "objectives": ["Structurer un rapport", "Vérifier une correction"],
+          "content": [
+            { "type": "p", "text": "Un rapport d'audit se lit par un décideur et par un technicien. Il commence par un **résumé** avec le niveau de risque global, puis détaille chaque constat : description, preuve, impact, recommandation, référence." },
+            { "type": "table", "headers": ["Section", "Contenu"], "rows": [
+              ["Résumé", "Périmètre, dates, risque global, priorités"],
+              ["Constats", "Un bloc par défaut, numéroté"],
+              ["Preuves", "Captures ou extraits minimaux, sans données réelles"],
+              ["Recommandations", "Actions concrètes et hiérarchisées"],
+              ["Vérification", "Nouveau test après correction"]
+            ] },
+            { "type": "p", "text": "La **vérification après correction** est une étape de la mission : on rejoue le test qui avait mis le défaut en évidence et on documente le résultat. Une correction non vérifiée reste une déclaration." },
+            { "type": "warning", "text": "Le rapport contient des informations sensibles. Chiffrez-le, limitez sa diffusion et prévoyez sa destruction à échéance selon les règles d'engagement." }
+          ],
+          "exercise": {
+            "title": "Prioriser les recommandations",
+            "instructions": "Trois constats : base accessible depuis Internet, en-tête manquant, bannière de version. Dans quel ordre les corriger ?",
+            "hints": ["L'exposition d'une base est le risque le plus direct.", "L'absence d'en-tête est un durcissement."],
+            "solution": "D'abord restreindre l'accès à la base, puis ajouter les en-têtes de sécurité, puis masquer la bannière (mesure d'hygiène, impact faible)."
+          },
+          "quiz": [
+            { "id": "eh-05-q1", "type": "single", "difficulty": 2, "question": "Que contient le résumé d'un rapport d'audit ?", "options": ["Périmètre, dates, risque global et priorités", "Le code source complet", "Les mots de passe trouvés", "L'historique du fournisseur"], "answer": 0, "explanation": "Le résumé permet une décision rapide sans lire tous les détails.", "hints": [] },
+            { "id": "eh-05-q2", "type": "truefalse", "difficulty": 2, "question": "Une correction déclarée par le client n'a pas besoin d'être vérifiée.", "answer": false, "explanation": "La vérification après correction fait partie de la mission.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Rapport d'audit d'un laboratoire autorisé",
+    "brief": "Réalisez un audit encadré d'un laboratoire virtuel que vous avez monté, puis rédigez un rapport professionnel.",
+    "steps": [
+      "Rédiger un périmètre et des règles d'engagement, même pour votre propre laboratoire.",
+      "Inventorier les actifs et réaliser une reconnaissance passive documentée.",
+      "Découvrir les services du laboratoire et relever les configurations à risque.",
+      "Rédiger un constat reproductible par défaut, avec preuve minimale et recommandation.",
+      "Corriger, rejouer le test de vérification et mettre à jour le rapport."
+    ],
+    "criteria": [
+      "Chaque test est réalisé dans le laboratoire isolé, jamais sur un système tiers.",
+      "Chaque constat contient une preuve reproductible et une recommandation.",
+      "La vérification après correction est documentée."
+    ]
+  }
+}

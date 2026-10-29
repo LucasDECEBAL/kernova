@@ -1,6 +1,6 @@
 // Composants réutilisables : badges, cartes de cours, blocs de code, favoris.
 
-import { h, icon, progressBar } from '../core/dom.js';
+import { h, icon, progressBar , setChildren } from '../core/dom.js';
 import { LEVELS, TYPES, formatDuration } from '../core/utils.js';
 import { courseProgress, isFavorite, toggleFavorite } from '../core/progress.js';
 import { toast, copyText } from '../core/ui.js';
@@ -86,7 +86,7 @@ export function codeBlock({ code, lang = 'text', title }) {
       toast(ok ? 'Code copié.' : 'Copie impossible. Sélectionnez le texte manuellement.', ok ? 'success' : 'error', 2200);
       if (ok) {
         copy.textContent = 'Copié';
-        setTimeout(() => { copy.replaceChildren(icon('copy', { size: 14 }), ' Copier'); }, 1500);
+        setTimeout(() => { setChildren(copy, icon('copy', { size: 14 }), ' Copier'); }, 1500);
       }
     }
   }, icon('copy', { size: 14 }), ' Copier');

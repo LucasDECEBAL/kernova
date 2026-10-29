@@ -1,6 +1,6 @@
 // Mes données : export/import JSON validés, préférences de thème, réinitialisation confirmée.
 
-import { h, icon, alertBox } from '../core/dom.js';
+import { h, icon, alertBox , setChildren } from '../core/dom.js';
 import * as store from '../core/store.js';
 import { get, update } from '../core/store.js';
 import { getDataIssues } from '../core/data.js';
@@ -43,11 +43,11 @@ export function renderDataPage({ outlet }) {
   const doImport = async () => {
     const file = fileInput.files?.[0];
     if (!file) {
-      importResult.replaceChildren(alertBox('warning', 'Choisissez d\'abord un fichier JSON.'));
+      setChildren(importResult, alertBox('warning', 'Choisissez d\'abord un fichier JSON.'));
       return;
     }
     if (file.size > MAX_IMPORT_CHARS) {
-      importResult.replaceChildren(alertBox('danger', 'Fichier trop volumineux (2 Mo maximum).'));
+      setChildren(importResult, alertBox('danger', 'Fichier trop volumineux (2 Mo maximum).'));
       return;
     }
     const ok = await confirmDialog({
@@ -61,12 +61,12 @@ export function renderDataPage({ outlet }) {
       const { issues } = store.importJson(text);
       const summary = summarizeIssues(issues);
       toast('Données importées.', 'success');
-      importResult.replaceChildren(alertBox(issues.length ? 'warning' : 'info',
+      setChildren(importResult, alertBox(issues.length ? 'warning' : 'info',
         summary ? `Import réussi. Éléments ignorés car invalides : ${summary}.` : 'Import réussi. Toutes les données ont été acceptées.'));
       applyTheme(get().prefs.theme);
       themeSelect.value = get().prefs.theme;
     } catch (err) {
-      importResult.replaceChildren(alertBox('danger', `Import impossible : ${err.message}`));
+      setChildren(importResult, alertBox('danger', `Import impossible : ${err.message}`));
     }
   };
 
@@ -116,7 +116,7 @@ export function renderDataPage({ outlet }) {
 
   const dataIssues = getDataIssues();
 
-  outlet.replaceChildren(h('div', { class: 'page stack', style: 'gap:var(--space-5)' },
+  setChildren(outlet, h('div', { class: 'page stack', style: 'gap:var(--space-5)' },
     h('header', { class: 'page-head' },
       h('h1', { tabindex: '-1', text: 'Mes données' }),
       h('p', { text: 'Toutes vos données sont stockées dans ce navigateur. Aucune information n\'est envoyée à un serveur. Exportez-les pour les conserver ou les transférer.' })

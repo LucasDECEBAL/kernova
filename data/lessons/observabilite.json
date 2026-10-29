@@ -1,0 +1,153 @@
+{
+  "courseId": "observabilite",
+  "modules": [
+    {
+      "id": "obs-m1",
+      "title": "Les trois signaux",
+      "chapters": [
+        {
+          "id": "obs-01",
+          "title": "Métriques, journaux et traces",
+          "duration": 18,
+          "objectives": ["Distinguer les trois signaux", "Choisir le bon signal"],
+          "content": [
+            { "type": "p", "text": "L'**observabilité** permet de comprendre un système de l'extérieur. Elle repose sur trois signaux complémentaires : les **métriques** (valeurs agrégées dans le temps), les **journaux** (événements datés) et les **traces** (parcours d'une requête entre services)." },
+            { "type": "table", "headers": ["Signal", "Répond à", "Coût"], "rows": [
+              ["Métrique", "Combien, à quelle fréquence ?", "Faible"],
+              ["Journal", "Que s'est-il passé exactement ?", "Moyen à élevé"],
+              ["Trace", "Où le temps est-il passé ?", "Moyen"]
+            ] },
+            { "type": "tip", "text": "Commencez par les métriques pour détecter, puis descendez dans les journaux et les traces pour expliquer. L'inverse coûte cher en volume." }
+          ],
+          "exercise": {
+            "title": "Quel signal ?",
+            "instructions": "Une alerte indique que 8 % des requêtes échouent. Vous voulez savoir pourquoi une requête précise a échoué. Quel signal consultez-vous ?",
+            "hints": ["La métrique détecte, elle n'explique pas le détail.", "Il faut l'événement daté de cette requête."],
+            "solution": "Le journal correspondant à la requête, éventuellement relié par un identifiant de corrélation, puis la trace pour le parcours."
+          },
+          "quiz": [
+            { "id": "obs-01-q1", "type": "single", "difficulty": 1, "question": "Quel signal décrit le parcours d'une requête entre services ?", "options": ["La trace", "La métrique", "Le journal", "Le DNS"], "answer": 0, "explanation": "La trace distribuée suit la requête de service en service.", "hints": [] },
+            { "id": "obs-01-q2", "type": "single", "difficulty": 2, "question": "Pourquoi ne pas tout journaliser en détail ?", "options": ["Le volume et le coût deviennent importants", "Les journaux sont interdits", "Cela supprime les métriques", "Cela ralentit le DNS"], "answer": 0, "explanation": "Le volume de journaux a un coût de stockage et de traitement.", "hints": [] }
+          ]
+        },
+        {
+          "id": "obs-02",
+          "title": "Instrumenter une application",
+          "duration": 20,
+          "objectives": ["Ajouter un identifiant de corrélation", "Mesurer une durée utile"],
+          "content": [
+            { "type": "p", "text": "Instrumenter, c'est ajouter des points de mesure dans le code. Le minimum utile : un **identifiant de corrélation** par requête, la **durée** des opérations critiques et le **résultat** (succès ou erreur)." },
+            { "type": "code", "lang": "javascript", "code": "const id = crypto.randomUUID();\nconst debut = performance.now();\n\ntry {\n  const resultat = await traiter(demande);\n  journal.info({ id, dureeMs: performance.now() - debut, statut: 200 });\n  return resultat;\n} catch (err) {\n  journal.error({ id, dureeMs: performance.now() - debut, err });\n  throw err;\n}" },
+            { "type": "warning", "text": "Ne journalisez jamais de données personnelles ou de secrets : mots de passe, jetons, numéros complets. Un journal se diffuse largement dans l'organisation." }
+          ],
+          "exercise": {
+            "title": "Corréler deux services",
+            "instructions": "Le service A appelle le service B. Comment retrouver dans les journaux de B la requête qui pose problème ?",
+            "hints": ["Un identifiant commun doit traverser l'appel.", "Il se transmet par un en-tête HTTP."],
+            "solution": "Propager un identifiant de corrélation dans un en-tête (par exemple X-Request-Id) et l'inclure dans tous les journaux des deux services."
+          },
+          "quiz": [
+            { "id": "obs-02-q1", "type": "single", "difficulty": 1, "question": "À quoi sert un identifiant de corrélation ?", "options": ["À relier les journaux d'une même requête", "À chiffrer la requête", "À accélérer le serveur", "À créer une session"], "answer": 0, "explanation": "Il permet de suivre la requête à travers plusieurs services.", "hints": [] },
+            { "id": "obs-02-q2", "type": "truefalse", "difficulty": 2, "question": "Les journaux peuvent contenir des mots de passe si le serveur est privé.", "answer": false, "explanation": "Les journaux se diffusent et se conservent : aucune donnée sensible n'y a sa place.", "hints": [] }
+          ]
+        },
+        {
+          "id": "obs-03",
+          "title": "Tableaux de bord et alertes utiles",
+          "duration": 18,
+          "objectives": ["Concevoir un tableau de bord", "Alerter sur l'expérience utilisateur"],
+          "content": [
+            { "type": "p", "text": "Un tableau de bord répond à une question précise : « le service fonctionne-t-il pour les utilisateurs ? ». Il montre peu de courbes, choisies pour leur valeur de décision, pas tout ce qui est mesurable." },
+            { "type": "list", "items": [
+              "Alerter sur le taux d'erreur et la latence perçue, pas sur le processeur.",
+              "Relier chaque alerte à une action ou à une procédure.",
+              "Éviter les alertes qui se déclenchent sans conséquence.",
+              "Afficher la fenêtre temporelle et la source des données."
+            ] },
+            { "type": "warning", "text": "Trop d'alertes habituent l'équipe à les ignorer. Une alerte sans action possible est une pollution." }
+          ],
+          "exercise": {
+            "title": "Alerte utile",
+            "instructions": "Le processeur est à 80 % mais les requêtes répondent normalement. Faut-il alerter ?",
+            "hints": ["L'utilisateur n'est pas impacté.", "Une alerte doit appeler une action."],
+            "solution": "Non : surveiller la tendance dans un tableau de bord, sans alerte. L'alerte se déclenche sur une dégradation de l'expérience utilisateur."
+          },
+          "quiz": [
+            { "id": "obs-03-q1", "type": "single", "difficulty": 1, "question": "Sur quoi doit porter une alerte prioritaire ?", "options": ["L'expérience utilisateur dégradée", "L'usage du processeur", "Le nombre de fichiers", "La version du noyau"], "answer": 0, "explanation": "Les alertes visent ce qui impacte réellement le service rendu.", "hints": [] },
+            { "id": "obs-03-q2", "type": "truefalse", "difficulty": 2, "question": "Une alerte qui ne déclenche aucune action est utile.", "answer": false, "explanation": "Elle fatigue l'équipe et brouille les signaux importants.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "obs-m2",
+      "title": "Incidents et fiabilité",
+      "chapters": [
+        {
+          "id": "obs-04",
+          "title": "Analyse d'incident et postmortem",
+          "duration": 20,
+          "objectives": ["Mener une analyse sans blâme", "Tirer des actions concrètes"],
+          "content": [
+            { "type": "p", "text": "Le **postmortem** reconstruit la chronologie d'un incident : détection, diagnostic, actions, rétablissement. Il vise à corriger le système, pas à désigner un coupable." },
+            { "type": "list", "items": [
+              "Chronologie factuelle avec horodatages.",
+              "Impact mesuré : durée, utilisateurs, données.",
+              "Causes contributives, pas une cause unique.",
+              "Actions datées, avec responsable et priorité.",
+              "Partage des enseignements avec l'équipe."
+            ] },
+            { "type": "warning", "text": "Un postmortem qui cherche un responsable fait taire les informations. Sans culture sans blâme, les incidents se répètent faute de causes réelles." }
+          ],
+          "exercise": {
+            "title": "Cause unique ?",
+            "instructions": "Un incident est attribué à « une erreur humaine ». Pourquoi cette conclusion est-elle insuffisante ?",
+            "hints": ["Pourquoi l'erreur était-elle possible ?", "Cherchez les garde-fous absents."],
+            "solution": "Parce qu'elle s'arrête au symptôme. Il faut identifier les causes contributives : absence de test, de validation, d'alerte, de procédure ou d'automatisation."
+          },
+          "quiz": [
+            { "id": "obs-04-q1", "type": "single", "difficulty": 1, "question": "Que doit contenir un postmortem ?", "options": ["Une chronologie et des actions datées", "Un responsable à sanctionner", "Uniquement des excuses", "Le code source complet"], "answer": 0, "explanation": "L'objectif est d'améliorer le système.", "hints": [] },
+            { "id": "obs-04-q2", "type": "single", "difficulty": 2, "question": "Pourquoi éviter la culture du blâme ?", "options": ["Elle empêche l'équipe de rapporter les faits", "Elle accélère la résolution", "Elle supprime les alertes", "Elle réduit les coûts"], "answer": 0, "explanation": "La peur masque les informations nécessaires à l'analyse.", "hints": [] }
+          ]
+        },
+        {
+          "id": "obs-05",
+          "title": "SLI, SLO et astreinte",
+          "duration": 18,
+          "objectives": ["Définir un objectif mesurable", "Organiser une astreinte soutenable"],
+          "content": [
+            { "type": "p", "text": "Un **SLI** est un indicateur mesuré ; un **SLO** est l'objectif interne visé sur une période. Le **budget d'erreur** (100 % moins le SLO) indique combien de dégradation on peut accepter, et sert à arbitrer entre nouvelles fonctionnalités et fiabilité." },
+            { "type": "code", "lang": "text", "code": "SLI : requêtes réussies / requêtes totales, sur 5 minutes\nSLO : 99,5 % sur 30 jours\nBudget d'erreur : 0,5 % de requêtes en échec autorisées" },
+            { "type": "warning", "text": "Une astreinte sans procédure ni relais épuise l'équipe. Prévoyez une escalade, des alertes actionnables et une rotation réaliste." }
+          ],
+          "exercise": {
+            "title": "Budget d'erreur",
+            "instructions": "Un SLO de 99,5 % sur 30 jours laisse quel budget d'erreur ?",
+            "hints": ["Le budget est le complément du SLO.", "Exprimez-le en pourcentage."],
+            "solution": "0,5 % : sur 30 jours, cela représente environ 3 h 36 min d'indisponibilité totale équivalente."
+          },
+          "quiz": [
+            { "id": "obs-05-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qu'un SLO ?", "options": ["Un objectif interne de fiabilité", "Une loi", "Un serveur", "Un journal"], "answer": 0, "explanation": "Le SLO fixe la cible interne sur une période.", "hints": [] },
+            { "id": "obs-05-q2", "type": "single", "difficulty": 2, "question": "À quoi sert le budget d'erreur ?", "options": ["À arbitrer entre fiabilité et nouvelles fonctionnalités", "À supprimer les alertes", "À chiffrer les journaux", "À créer un domaine"], "answer": 0, "explanation": "Il rend explicite la dégradation acceptable.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Tableau de bord et postmortem",
+    "brief": "Instrumentez un petit service, définissez un SLO et rédigez le postmortem d'un incident simulé.",
+    "steps": [
+      "Ajouter un identifiant de corrélation et mesurer durée et statut.",
+      "Définir un SLI et un SLO réalistes pour le service.",
+      "Construire un tableau de bord avec trois courbes utiles.",
+      "Provoquer une panne en environnement de test et observer la détection.",
+      "Rédiger le postmortem avec chronologie et actions datées."
+    ],
+    "criteria": [
+      "Chaque alerte correspond à une action possible.",
+      "Le postmortem ne désigne pas de coupable et propose des actions vérifiables.",
+      "Le SLO et le budget d'erreur sont justifiés."
+    ]
+  }
+}

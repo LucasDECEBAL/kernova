@@ -1,0 +1,181 @@
+{
+  "courseId": "docker-debutant",
+  "modules": [
+    {
+      "id": "dk-m1",
+      "title": "Conteneurs et images",
+      "chapters": [
+        {
+          "id": "dk-01",
+          "title": "Conteneur ou machine virtuelle",
+          "duration": 18,
+          "objectives": [
+            "Expliquer ce qu'est un conteneur",
+            "Distinguer conteneur et machine virtuelle"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **conteneur** est un processus isolé qui embarque son application et ses dépendances. Contrairement à une machine virtuelle, il ne contient pas de système d'exploitation complet : il partage le noyau de la machine hôte. Conséquence directe : il démarre en quelques secondes et consomme peu de mémoire." },
+            { "type": "table", "headers": ["Critère", "Machine virtuelle", "Conteneur"], "rows": [
+              ["Système invité", "Complet, par machine", "Aucun : noyau partagé"],
+              ["Démarrage", "Dizaines de secondes", "Quelques secondes"],
+              ["Taille", "Plusieurs Go", "Quelques dizaines à centaines de Mo"],
+              ["Isolation", "Forte (matériel virtualisé)", "Plus faible (noyau commun)"]
+            ] },
+            { "type": "p", "text": "L'isolation d'un conteneur repose sur des mécanismes du noyau Linux : espaces de noms (namespaces) pour cloisonner les processus, les réseaux et les systèmes de fichiers, et groupes de contrôle (cgroups) pour limiter le processeur et la mémoire." },
+            { "type": "p", "text": "Un conteneur n'est pas une sandbox de sécurité parfaite : un défaut du noyau ou un conteneur lancé avec trop de privilèges expose l'hôte. D'où les règles : image de confiance, utilisateur non root, capacités minimales." },
+            { "type": "warning", "text": "Un conteneur est **éphémère**. Tout ce qui est écrit dans son système de fichiers disparaît à sa suppression : les données à conserver doivent vivre dans un volume." }
+          ],
+          "exercise": {
+            "title": "Choisir la bonne technologie",
+            "instructions": "Une équipe veut exécuter trois applications qui nécessitent des versions différentes d'une même bibliothèque, sur un seul serveur. Conteneurs ou machines virtuelles ? Justifiez.",
+            "hints": ["Chaque conteneur embarque ses propres dépendances.", "Le coût de trois systèmes complets n'est pas neutre."],
+            "solution": "Des conteneurs : chaque application embarque ses dépendances dans son image, sans conflit de versions, avec un coût bien plus faible que trois systèmes complets."
+          },
+          "quiz": [
+            { "id": "dk-01-q1", "type": "single", "difficulty": 1, "question": "Qu'est-ce qu'un conteneur partage avec la machine hôte ?", "options": ["Le noyau du système", "Son système de fichiers complet", "Sa mémoire vive", "Son compte utilisateur"], "answer": 0, "explanation": "Le conteneur partage le noyau ; c'est ce qui le rend léger, mais aussi moins isolé qu'une machine virtuelle.", "hints": [] },
+            { "id": "dk-01-q2", "type": "truefalse", "difficulty": 1, "question": "Les données écrites dans un conteneur sont conservées après sa suppression.", "answer": false, "explanation": "Le système de fichiers du conteneur est éphémère : il faut un volume pour persister.", "hints": [] }
+          ]
+        },
+        {
+          "id": "dk-02",
+          "title": "Images et conteneurs",
+          "duration": 20,
+          "objectives": [
+            "Télécharger et lancer une image",
+            "Lister et arrêter des conteneurs"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **image** est un modèle en lecture seule, composé de couches. Un **conteneur** est une instance exécutable de cette image. On télécharge une image depuis un registre avec `docker pull`, puis on la lance avec `docker run`." },
+            { "type": "code", "lang": "bash", "code": "docker pull nginx:1.27\ndocker images\ndocker run -d --name web -p 8080:80 nginx:1.27\ndocker ps\ndocker logs web\ndocker stop web\ndocker rm web" },
+            { "type": "table", "headers": ["Commande", "Rôle"], "rows": [
+              ["`docker run`", "Crée et démarre un conteneur"],
+              ["`docker ps -a`", "Liste tous les conteneurs, arrêtés compris"],
+              ["`docker logs`", "Affiche la sortie du conteneur"],
+              ["`docker stop` / `rm`", "Arrête puis supprime"]
+            ] },
+            { "type": "p", "text": "L'étiquette (`:1.27`) fixe la version. Utiliser `latest` rend les déploiements imprévisibles : une mise à jour du registre change l'image sans modification de votre configuration." },
+            { "type": "warning", "text": "`docker run` sans `-d` attache le terminal au conteneur. Utilisez `-d` (détaché) pour récupérer la main, ou `Ctrl + C` pour arrêter un conteneur attaché." }
+          ],
+          "exercise": {
+            "title": "Lancer un serveur web",
+            "instructions": "Écrivez la commande qui lance l'image nginx:1.27 en arrière-plan, nomme le conteneur web et publie le port 8080 de la machine vers le port 80 du conteneur.",
+            "hints": ["Trois options : -d, --name et -p.", "Le format de -p est portHôte:portConteneur."],
+            "solution": "docker run -d --name web -p 8080:80 nginx:1.27"
+          },
+          "quiz": [
+            { "id": "dk-02-q1", "type": "single", "difficulty": 1, "question": "Quelle commande liste aussi les conteneurs arrêtés ?", "options": ["docker ps", "docker ps -a", "docker images", "docker logs"], "answer": 1, "explanation": "-a affiche tous les conteneurs, y compris ceux qui sont arrêtés.", "hints": [] },
+            { "id": "dk-02-q2", "type": "single", "difficulty": 2, "question": "Pourquoi éviter l'étiquette latest en production ?", "options": ["Elle est plus lente", "Elle change sans que votre configuration change", "Elle n'existe pas", "Elle empêche les logs"], "answer": 1, "explanation": "Une image latest peut évoluer dans le registre : le déploiement n'est plus reproductible.", "hints": [] }
+          ]
+        },
+        {
+          "id": "dk-03",
+          "title": "Écrire un Dockerfile",
+          "duration": 22,
+          "objectives": [
+            "Construire une image à partir d'un Dockerfile",
+            "Comprendre les couches et le cache"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **Dockerfile** décrit la construction d'une image, instruction par instruction. Chaque instruction crée une couche, mémorisée par le cache : tant qu'une instruction et ses fichiers sources ne changent pas, la couche est réutilisée." },
+            { "type": "code", "lang": "docker", "title": "Dockerfile", "code": "FROM node:20-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --omit=dev\nCOPY . .\nEXPOSE 3000\nUSER node\nCMD [\"node\", \"server.js\"]" },
+            { "type": "list", "items": [
+              "`FROM` choisit l'image de base ; préférez une variante légère (`alpine`, `slim`).",
+              "Copiez d'abord les fichiers de dépendances, puis installez, puis copiez le code : le cache survit aux modifications de code.",
+              "`USER node` évite d'exécuter l'application en root.",
+              "`CMD` en forme tableau n'invoque pas de shell, ce qui transmet correctement les signaux d'arrêt."
+            ] },
+            { "type": "code", "lang": "bash", "code": "docker build -t mon-app:1.0 .\ndocker run -d -p 3000:3000 mon-app:1.0" },
+            { "type": "warning", "text": "Un `COPY . .` placé trop tôt invalide le cache à chaque modification de fichier et peut copier des secrets. Utilisez un `.dockerignore`." }
+          ],
+          "exercise": {
+            "title": "Ordonner un Dockerfile",
+            "instructions": "Remettez ces instructions dans un ordre qui exploite le cache : COPY . ., FROM, RUN npm ci, COPY package.json, WORKDIR /app.",
+            "hints": ["L'image de base vient d'abord.", "Le code change souvent : il doit être copié en dernier."],
+            "solution": "FROM …\nWORKDIR /app\nCOPY package.json ./\nRUN npm ci\nCOPY . ."
+          },
+          "quiz": [
+            { "id": "dk-03-q1", "type": "single", "difficulty": 1, "question": "Quelle instruction définit l'image de base ?", "options": ["FROM", "BASE", "IMAGE", "RUN"], "answer": 0, "explanation": "FROM désigne l'image de départ ; toutes les autres instructions s'ajoutent par-dessus.", "hints": [] },
+            { "id": "dk-03-q2", "type": "single", "difficulty": 2, "question": "Pourquoi copier package.json avant le reste du code ?", "options": ["Pour aller plus vite", "Pour réutiliser la couche d'installation tant que les dépendances ne changent pas", "Pour éviter les secrets", "Pour réduire l'image"], "answer": 1, "explanation": "L'ordre des instructions détermine l'efficacité du cache de construction.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dk-m2",
+      "title": "Données et orchestration locale",
+      "chapters": [
+        {
+          "id": "dk-04",
+          "title": "Volumes et persistance",
+          "duration": 18,
+          "objectives": [
+            "Choisir entre volume nommé et montage de dossier",
+            "Conserver des données hors du conteneur"
+          ],
+          "content": [
+            { "type": "p", "text": "Le système de fichiers d'un conteneur est éphémère. Pour conserver une base de données ou des fichiers téléversés, on utilise un **volume** : un espace géré par Docker, indépendant du cycle de vie des conteneurs." },
+            { "type": "table", "headers": ["Type", "Usage"], "rows": [
+              ["Volume nommé (`-v donnees:/var/lib/data`)", "Données à conserver, gérées par Docker"],
+              ["Montage de dossier (`-v ./src:/app/src`)", "Développement : refléter les fichiers de l'hôte"],
+              ["`tmpfs`", "Données volatiles, en mémoire"]
+            ] },
+            { "type": "code", "lang": "bash", "code": "docker volume create pgdata\ndocker run -d --name db \\\n  -e POSTGRES_PASSWORD=motdepasse \\\n  -v pgdata:/var/lib/postgresql/data \\\n  postgres:16" },
+            { "type": "warning", "text": "Ne stockez pas de secrets dans le Dockerfile ni dans l'image : ils restent lisibles dans l'historique. Passez-les par des variables d'environnement au démarrage ou par un gestionnaire de secrets." }
+          ],
+          "exercise": {
+            "title": "Persister une base",
+            "instructions": "Écrivez la commande qui lance postgres:16 avec le volume nommé pgdata monté sur /var/lib/postgresql/data et le mot de passe défini par la variable POSTGRES_PASSWORD.",
+            "hints": ["Le volume se déclare avec -v nom:/chemin.", "La variable se passe avec -e."],
+            "solution": "docker run -d --name db -e POSTGRES_PASSWORD=motdepasse -v pgdata:/var/lib/postgresql/data postgres:16"
+          },
+          "quiz": [
+            { "id": "dk-04-q1", "type": "single", "difficulty": 1, "question": "Que se passe-t-il pour un volume nommé quand le conteneur est supprimé ?", "options": ["Le volume est supprimé", "Le volume et son contenu sont conservés", "Le volume devient illisible", "Le volume est copié dans l'image"], "answer": 1, "explanation": "Le volume est indépendant du conteneur ; il faut le supprimer explicitement.", "hints": [] },
+            { "id": "dk-04-q2", "type": "truefalse", "difficulty": 2, "question": "Un montage de dossier de l'hôte est adapté au développement pour refléter les modifications sans reconstruire l'image.", "answer": true, "explanation": "Le dossier de l'hôte est visible dans le conteneur, ce qui accélère les itérations.", "hints": [] }
+          ]
+        },
+        {
+          "id": "dk-05",
+          "title": "Réseaux et Docker Compose",
+          "duration": 22,
+          "objectives": [
+            "Relier deux conteneurs",
+            "Décrire une application multi-conteneurs avec Compose"
+          ],
+          "content": [
+            { "type": "p", "text": "Docker crée un **réseau bridge** par défaut : les conteneurs d'un même réseau se joignent par leur nom plutôt que par une adresse IP. Deux conteneurs peuvent donc communiquer sans publier de port vers l'extérieur." },
+            { "type": "p", "text": "**Docker Compose** décrit plusieurs services dans un fichier YAML, avec leurs images, variables, volumes et dépendances. Une seule commande démarre l'ensemble." },
+            { "type": "code", "lang": "yaml", "title": "compose.yaml", "code": "services:\n  app:\n    build: .\n    ports:\n      - \"3000:3000\"\n    environment:\n      DATABASE_URL: postgres://app:secret@db:5432/app\n    depends_on:\n      - db\n  db:\n    image: postgres:16\n    environment:\n      POSTGRES_USER: app\n      POSTGRES_PASSWORD: secret\n    volumes:\n      - dbdata:/var/lib/postgresql/data\nvolumes:\n  dbdata:" },
+            { "type": "code", "lang": "bash", "code": "docker compose up -d\ndocker compose logs -f app\ndocker compose down" },
+            { "type": "warning", "text": "`depends_on` attend le démarrage du conteneur, pas la disponibilité du service. Une base de données met plusieurs secondes à accepter les connexions : prévoyez une nouvelle tentative dans l'application." }
+          ],
+          "exercise": {
+            "title": "Nom d'hôte ou adresse ?",
+            "instructions": "Dans Compose, l'application doit joindre PostgreSQL. Doit-elle utiliser localhost:5432, le nom du service db:5432, ou une adresse IP fixe ?",
+            "hints": ["Chaque conteneur a sa propre boucle locale.", "Compose crée un réseau où les services se joignent par leur nom."],
+            "solution": "db:5432. localhost désignerait le conteneur de l'application lui-même, et une IP fixe casserait à chaque recréation."
+          },
+          "quiz": [
+            { "id": "dk-05-q1", "type": "single", "difficulty": 2, "question": "Comment deux services Compose se joignent-ils par défaut ?", "options": ["Par leur nom de service", "Par l'adresse 127.0.0.1", "Par une IP fixe déclarée", "Uniquement via Internet"], "answer": 0, "explanation": "Le DNS interne de Docker résout les noms de services du même réseau.", "hints": [] },
+            { "id": "dk-05-q2", "type": "single", "difficulty": 2, "question": "Que fait docker compose down ?", "options": ["Arrête et supprime les conteneurs et réseaux du projet", "Supprime les images de base", "Redémarre les services", "Affiche les logs"], "answer": 0, "explanation": "down arrête et supprime l'infrastructure du projet ; les volumes nommés sont conservés sauf option dédiée.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Conteneuriser une application web",
+    "brief": "Conteneurisez une petite application (ou un serveur statique) et sa base de données avec Docker Compose.",
+    "steps": [
+      "Écrire un Dockerfile multi-étapes ou léger, avec un utilisateur non root et un .dockerignore.",
+      "Construire l'image et vérifier sa taille avec docker images.",
+      "Déclarer l'application et la base dans compose.yaml, avec un volume nommé et des variables d'environnement.",
+      "Vérifier que l'application joint la base par le nom du service, sans publier le port de la base.",
+      "Arrêter puis relancer l'ensemble et vérifier que les données sont toujours présentes."
+    ],
+    "criteria": [
+      "L'image ne contient aucun secret et l'application tourne en utilisateur non root.",
+      "La base n'est pas accessible depuis l'extérieur du réseau Compose.",
+      "Les données survivent à un docker compose down suivi d'un up."
+    ]
+  }
+}

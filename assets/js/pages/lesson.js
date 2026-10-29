@@ -1,6 +1,6 @@
 // Page d'un chapitre : sommaire, contenu, exercice, quiz, notes et navigation entre chapitres.
 
-import { h, icon, emptyState, alertBox } from '../core/dom.js';
+import { h, icon, emptyState, alertBox , setChildren } from '../core/dom.js';
 import { getCourse, getChapter } from '../core/data.js';
 import { get } from '../core/store.js';
 import {
@@ -15,7 +15,7 @@ import { inline, statusBadge } from '../components/widgets.js';
 export function renderLessonPage({ outlet, params }) {
   const entry = getChapter(params.courseId, params.chapterId);
   if (!entry) {
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       emptyState({
         icon: 'alert',
         title: 'Chapitre introuvable',
@@ -31,7 +31,7 @@ export function renderLessonPage({ outlet, params }) {
 
   if (status === 'locked') {
     const missing = missingPrerequisites(course, chapter, state);
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       breadcrumb(course, chapter),
       h('h1', { text: chapter.title, tabindex: '-1' }),
       alertBox('warning', `Ce chapitre est verrouillé. Terminez d'abord : ${missing.map((m) => m.title).join(', ')}.`),
@@ -51,7 +51,7 @@ export function renderLessonPage({ outlet, params }) {
     toggleBtn.setAttribute('aria-pressed', String(isDone));
     toggleBtn.classList.toggle('is-active', isDone);
     toggleBtn.classList.toggle('btn-primary', !isDone);
-    toggleBtn.replaceChildren(icon('check', { size: 16 }), isDone ? ' Terminé (annuler)' : ' Marquer comme terminé');
+    setChildren(toggleBtn, icon('check', { size: 16 }), isDone ? ' Terminé (annuler)' : ' Marquer comme terminé');
   };
   setToggle(done);
   toggleBtn.addEventListener('click', () => {
@@ -113,7 +113,7 @@ export function renderLessonPage({ outlet, params }) {
   const prev = course.chapters[chapter.index - 1];
   const quizCount = chapter.quiz?.length || 0;
 
-  outlet.replaceChildren(h('div', { class: 'page' },
+  setChildren(outlet, h('div', { class: 'page' },
     breadcrumb(course, chapter),
     h('div', { class: 'course-layout' },
       tocEl,

@@ -1,6 +1,6 @@
 // Page quiz : réglages, lancement, relance des questions ratées, historique du chapitre.
 
-import { h, icon, emptyState } from '../core/dom.js';
+import { h, icon, emptyState , setChildren } from '../core/dom.js';
 import { getChapter } from '../core/data.js';
 import { get } from '../core/store.js';
 import { setQuizPrefs } from '../core/progress.js';
@@ -14,7 +14,7 @@ const MAX_ATTEMPTS_LABELS = { 1: '1 tentative', 2: '2 tentatives', 3: '3 tentati
 export function renderQuizPage({ outlet, params }) {
   const entry = getChapter(params.courseId, params.chapterId);
   if (!entry || !entry.chapter.quiz?.length) {
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       emptyState({
         icon: 'alert',
         title: 'Quiz indisponible',
@@ -100,7 +100,7 @@ export function renderQuizPage({ outlet, params }) {
       )
       : null;
 
-    outlet.replaceChildren(h('div', { class: 'page quiz-shell' },
+    setChildren(outlet, h('div', { class: 'page quiz-shell' },
       crumbs,
       h('header', { class: 'page-head' },
         h('h1', { text: `Quiz : ${chapter.title}`, tabindex: '-1' }),
@@ -113,7 +113,7 @@ export function renderQuizPage({ outlet, params }) {
 
   let cleanup = null;
   const startSession = (questions, settings) => {
-    outlet.replaceChildren(h('div', { class: 'page quiz-shell' },
+    setChildren(outlet, h('div', { class: 'page quiz-shell' },
       crumbs,
       h('header', { class: 'page-head' },
         h('h1', { text: `Quiz : ${chapter.title}`, tabindex: '-1' })),

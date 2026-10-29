@@ -1,10 +1,10 @@
 // Page d'un cours : présentation, objectifs, prérequis, arbre de compétences, modules, projet et cours suivants.
 
-import { h, icon, progressBar, emptyState, alertBox } from '../core/dom.js';
+import { h, icon, progressBar, emptyState, alertBox , setChildren } from '../core/dom.js';
 import { getCourse, getCourses, getDomain } from '../core/data.js';
 import { get } from '../core/store.js';
 import {
-  courseProgress, chapterStatus, missingPrerequisites, resumeChapter, isChapterDone
+  courseProgress, chapterStatus, missingPrerequisites, resumeChapter, isChapterDone, prerequisitesOf
 } from '../core/progress.js';
 import { formatDuration } from '../core/utils.js';
 import { levelBadge, typeBadge, statusBadge, tags, favoriteButton, inline } from '../components/widgets.js';
@@ -15,7 +15,7 @@ const STATUS_LABEL = { done: 'Acquise', current: 'En cours', available: 'Disponi
 export function renderCoursePage({ outlet, params }) {
   const course = getCourse(params.id);
   if (!course) {
-    outlet.replaceChildren(
+    setChildren(outlet, 
       h('div', { class: 'page' },
         emptyState({
           icon: 'alert',
@@ -37,7 +37,7 @@ export function renderCoursePage({ outlet, params }) {
   const tree = renderSkillTree(course, detail);
   showSkillDetail(course, course.chapters[0], detail);
 
-  outlet.replaceChildren(
+  setChildren(outlet, 
     h('div', { class: 'page' },
       h('nav', { class: 'breadcrumb', 'aria-label': 'Fil d\'Ariane' },
         h('ol', {},
@@ -108,7 +108,7 @@ export function renderCoursePage({ outlet, params }) {
 /** Liste des chapitres regroupés par module, avec un titre pour chaque module. */
 function moduleList(course, state) {
   const blocks = [];
-  let currentModule = null;
+  let currentModule; // non initialisé : la première leçon crée toujours un bloc
   let list = null;
   course.chapters.forEach((ch) => {
     if ((ch.module || null) !== currentModule) {
@@ -189,14 +189,16 @@ function showSkillDetail(course, chapter, container) {
   const state = get();
   const status = chapterStatus(course, chapter, state);
   const missing = missingPrerequisites(course, chapter, state);
-  const prereqs = chapter.index > 0 ? 'Chapitre précédent' : 'Aucun';
-  container.replaceChildren(
+  const prereqs = prerequisitesOf(course, chapter, state);
+  setChildren(container, 
     h('h3', { text: chapter.title }),
     h('div', { class: 'row', style: 'gap:8px;margin-bottom:var(--space-3)' },
       statusBadge(status), h('span', { class: 'small muted' }, formatDuration(chapter.duration))),
     h('p', { class: 'small', style: 'margin-bottom:var(--space-2)' }, h('strong', {}, 'Objectifs')),
     h('ul', { class: 'small' }, chapter.objectives.map((o) => h('li', {}, inline(o)))),
-    h('p', { class: 'small', style: 'margin:var(--space-3) 0 var(--space-2)' }, h('strong', {}, 'Prérequis : '), prereqs),
+    h('p', { class: 'small', style: 'margin:var(--space-3) 0 var(--space-2)' },
+      h('strong', {}, 'Prérequis : '),
+      prereqs.length ? prereqs.map((p) => p.title).join(', ') : 'aucun'),
     missing.length
       ? h('p', { class: 'small' }, `À valider d'abord : ${missing.map((m) => m.title).join(', ')}.`)
       : null,

@@ -1,0 +1,168 @@
+{
+  "courseId": "projets-pratiques",
+  "modules": [
+    {
+      "id": "prj-m1",
+      "title": "Projets web",
+      "chapters": [
+        {
+          "id": "prj-01",
+          "title": "Projet : page personnelle et portfolio",
+          "duration": 40,
+          "objectives": ["Structurer une page complète", "Mettre en forme et publier"],
+          "content": [
+            { "type": "p", "text": "**Cahier des charges** : créer une page de présentation personnelle et un portfolio de trois réalisations, responsive, accessible et publiée en ligne. Compétences : HTML, CSS, organisation de fichiers, publication statique." },
+            { "type": "list", "items": [
+              "Écrire la structure sémantique : header, nav, main, sections, footer.",
+              "Créer une feuille de style avec variables et mise en page responsive.",
+              "Ajouter trois cartes de projet avec image, description et lien.",
+              "Vérifier le contraste, la navigation au clavier et les textes alternatifs.",
+              "Publier sur un hébergement statique et vérifier le rendu en ligne."
+            ] },
+            { "type": "warning", "text": "Ne publiez aucune information personnelle sensible (adresse, téléphone, date de naissance) sur une page publique." }
+          ],
+          "exercise": {
+            "title": "Point d'étape",
+            "instructions": "Avant publication, quels trois contrôles faites-vous en priorité ?",
+            "hints": ["Structure, accessibilité, rendu réel.", "Testez depuis l'URL publique."],
+            "solution": "Validation HTML, navigation clavier et contraste, puis rendu sur petit écran depuis l'URL publiée."
+          },
+          "quiz": [
+            { "id": "prj-01-q1", "type": "single", "difficulty": 2, "question": "Pourquoi vérifier la page sur petit écran avant publication ?", "options": ["Le rendu peut déborder ou devenir illisible", "Pour réduire la taille du fichier", "Pour accélérer le DNS", "Pour changer le domaine"], "answer": 0, "explanation": "Les tailles d'écran réelles révèlent des problèmes invisibles sur grand écran.", "hints": [] },
+            { "id": "prj-01-q2", "type": "single", "difficulty": 2, "question": "Quel élément ne pas publier sur une page personnelle ?", "options": ["Une adresse postale complète", "Votre prénom", "Un lien vers un projet", "Une capture d'écran floutée"], "answer": 0, "explanation": "Les données personnelles sensibles n'ont pas leur place sur une page publique.", "hints": [] }
+          ]
+        },
+        {
+          "id": "prj-02",
+          "title": "Projet : calculatrice et liste de tâches",
+          "duration": 45,
+          "objectives": ["Manipuler le DOM", "Persister des données locales"],
+          "content": [
+            { "type": "p", "text": "**Cahier des charges** : construire une calculatrice puis une liste de tâches, les deux fonctionnant sans rechargement de page, avec données conservées dans le navigateur. Compétences : JavaScript, DOM, événements, localStorage." },
+            { "type": "list", "items": [
+              "Calculatrice : boutons, opérations, gestion de la division par zéro et remise à zéro.",
+              "Liste de tâches : ajout, coche, suppression, filtre actifs et terminés.",
+              "Insertion de texte avec textContent, jamais innerHTML pour les saisies.",
+              "Sauvegarde JSON, relecture protégée par try et catch.",
+              "Message clair quand la liste est vide."
+            ] },
+            { "type": "warning", "text": "Sans validation, une saisie vide crée des tâches fantômes. Testez les cas limites : chaîne vide, très longue, caractères spéciaux." }
+          ],
+          "exercise": {
+            "title": "Cas limite",
+            "instructions": "Quels trois cas limites testez-vous sur la liste de tâches ?",
+            "hints": ["Pensez aux saisies extrêmes.", "Pensez au stockage corrompu."],
+            "solution": "Saisie vide, texte très long ou avec caractères spéciaux, et données de stockage invalides."
+          },
+          "quiz": [
+            { "id": "prj-02-q1", "type": "single", "difficulty": 2, "question": "Comment insérer un titre de tâche saisi par l'utilisateur ?", "options": ["Avec textContent", "Avec innerHTML", "Avec document.write", "Dans un attribut onClick"], "answer": 0, "explanation": "textContent évite l'injection de HTML.", "hints": [] },
+            { "id": "prj-02-q2", "type": "single", "difficulty": 2, "question": "Que faire si les données locales sont corrompues ?", "options": ["Repartir d'une liste vide sans planter", "Afficher une erreur et bloquer", "Supprimer le navigateur", "Recharger en boucle"], "answer": 0, "explanation": "La page doit rester utilisable : try/catch et valeurs par défaut.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prj-m2",
+      "title": "Projets serveur et déploiement",
+      "chapters": [
+        {
+          "id": "prj-03",
+          "title": "Projet : outil Python de gestion de notes",
+          "duration": 45,
+          "objectives": ["Manipuler fichiers et données", "Gérer les erreurs"],
+          "content": [
+            { "type": "p", "text": "**Cahier des charges** : écrire un outil en ligne de commande qui ajoute, liste, recherche et supprime des notes stockées dans un fichier JSON. Compétences : fonctions, fichiers, JSON, exceptions." },
+            { "type": "list", "items": [
+              "Découper en fonctions : ajouter, lister, rechercher, supprimer, charger, sauvegarder.",
+              "Utiliser des identifiants stables pour chaque note.",
+              "Gérer l'absence de fichier et un JSON invalide sans planter.",
+              "Afficher un message d'usage pour les arguments incorrects.",
+              "Tester avec un fichier vide, une note unique et vingt notes."
+            ] },
+            { "type": "warning", "text": "La suppression doit demander confirmation ou exiger l'identifiant exact. Une commande mal interprétée ne doit pas effacer toutes les notes." }
+          ],
+          "exercise": {
+            "title": "Structure de données",
+            "instructions": "Quelle structure proposez-vous pour stocker les notes dans le fichier JSON ?",
+            "hints": ["Chaque note a besoin d'un identifiant.", "Le format doit rester lisible."],
+            "solution": "Une liste d'objets { id, titre, contenu, cree_le } : simple à lire, à filtrer et à faire évoluer."
+          },
+          "quiz": [
+            { "id": "prj-03-q1", "type": "single", "difficulty": 2, "question": "Pourquoi un identifiant stable par note ?", "options": ["Pour cibler une note sans ambiguïté", "Pour trier par titre", "Pour réduire le fichier", "Pour chiffrer"], "answer": 0, "explanation": "Les titres peuvent être dupliqués ou modifiés.", "hints": [] },
+            { "id": "prj-03-q2", "type": "single", "difficulty": 2, "question": "Que faire si le fichier JSON est invalide ?", "options": ["Signaler l'erreur et proposer une sauvegarde", "Écraser sans prévenir", "Ignorer et continuer", "Supprimer le fichier"], "answer": 0, "explanation": "Les données existantes ne doivent pas être détruites silencieusement.", "hints": [] }
+          ]
+        },
+        {
+          "id": "prj-04",
+          "title": "Projet : API REST et base de données",
+          "duration": 50,
+          "objectives": ["Concevoir une API", "Valider et sécuriser"],
+          "content": [
+            { "type": "p", "text": "**Cahier des charges** : exposer une API REST de tâches avec création, liste paginée, modification et suppression, stockées dans une base. Compétences : HTTP, validation, SQL, gestion des erreurs." },
+            { "type": "list", "items": [
+              "Modéliser la table et les contraintes.",
+              "Définir les routes, les statuts et les formats de réponse.",
+              "Valider les entrées et renvoyer 422 avec les champs invalides.",
+              "Paginer la liste et filtrer par statut.",
+              "Tester chaque cas avec un client HTTP, y compris les erreurs."
+            ] },
+            { "type": "warning", "text": "Aucune trace technique dans les réponses. Les erreurs 500 renvoient un message neutre et un identifiant de corrélation présent dans les journaux." }
+          ],
+          "exercise": {
+            "title": "Statut pour une ressource absente",
+            "instructions": "Une requête GET porte sur un identifiant qui n'existe pas. Quel statut et quel corps ?",
+            "hints": ["La ressource est absente.", "Le corps doit être exploitable."],
+            "solution": "404 avec un corps JSON cohérent, par exemple { \"erreur\": \"introuvable\", \"id\": 42 }."
+          },
+          "quiz": [
+            { "id": "prj-04-q1", "type": "single", "difficulty": 2, "question": "Quel statut pour une validation échouée ?", "options": ["422", "200", "302", "501"], "answer": 0, "explanation": "422 signale une entité non traitable pour cause de validation.", "hints": [] },
+            { "id": "prj-04-q2", "type": "single", "difficulty": 3, "question": "Pourquoi paginer une liste dès le départ ?", "options": ["Pour éviter des réponses énormes et lentes", "Pour compliquer le client", "Pour supprimer les filtres", "Pour éviter les tests"], "answer": 0, "explanation": "La pagination protège le serveur et le client à mesure que les données augmentent.", "hints": [] }
+          ]
+        },
+        {
+          "id": "prj-05",
+          "title": "Projet : conteneuriser et déployer une application",
+          "duration": 50,
+          "objectives": ["Écrire un Dockerfile", "Déployer avec un pipeline"],
+          "content": [
+            { "type": "p", "text": "**Cahier des charges** : conteneuriser une application et sa base, puis déployer automatiquement après les tests. Compétences : Docker, Compose, variables d'environnement, CI/CD." },
+            { "type": "list", "items": [
+              "Écrire un Dockerfile léger, avec utilisateur non root et .dockerignore.",
+              "Décrire l'application et la base dans compose.yaml.",
+              "Externaliser la configuration et les secrets.",
+              "Ajouter un pipeline qui teste puis construit l'image.",
+              "Vérifier la persistance des données et le retour arrière."
+            ] },
+            { "type": "warning", "text": "Ne publiez jamais une image contenant des secrets : ils restent lisibles dans les couches. Passez-les à l'exécution." }
+          ],
+          "exercise": {
+            "title": "Vérification finale",
+            "instructions": "Quels trois contrôles avant de considérer le déploiement réussi ?",
+            "hints": ["L'application répond-elle ?", "Les données survivent-elles ?", "Le pipeline est-il reproductible ?"],
+            "solution": "L'application répond sur son URL, les données persistent après redémarrage, et le pipeline reconstruit la même image depuis le dépôt."
+          },
+          "quiz": [
+            { "id": "prj-05-q1", "type": "single", "difficulty": 2, "question": "Pourquoi un .dockerignore ?", "options": ["Pour exclure des fichiers de l'image et du cache", "Pour compresser l'image", "Pour changer l'utilisateur", "Pour créer un volume"], "answer": 0, "explanation": "Il évite de copier secrets, dépendances locales et fichiers inutiles.", "hints": [] },
+            { "id": "prj-05-q2", "type": "single", "difficulty": 2, "question": "Où doivent se trouver les secrets d'exécution ?", "options": ["Dans le gestionnaire de secrets de la plateforme", "Dans le Dockerfile", "Dans l'image", "Dans le dépôt Git"], "answer": 0, "explanation": "Les secrets sont injectés à l'exécution, jamais figés dans l'image.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Portfolio de projets",
+    "brief": "Choisissez trois projets du cours, terminez-les et documentez-les comme des réalisations professionnelles.",
+    "steps": [
+      "Choisir trois projets couvrant des compétences différentes.",
+      "Définir pour chacun les critères de réussite avant de commencer.",
+      "Réaliser, tester et corriger les cas limites.",
+      "Documenter : objectif, choix techniques, difficultés rencontrées, résultat.",
+      "Publier les projets et rédiger une fiche de présentation de deux paragraphes."
+    ],
+    "criteria": [
+      "Chaque projet fonctionne réellement et a été testé sur ses cas limites.",
+      "La documentation explique les choix, pas seulement les étapes.",
+      "Aucune donnée sensible n'apparaît dans les dépôts publics."
+    ]
+  }
+}

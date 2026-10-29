@@ -1,6 +1,6 @@
 // Accueil : un extrait réel de leçon en guise de présentation, puis des sections à marge.
 
-import { h, emptyState } from '../core/dom.js';
+import { h, emptyState , setChildren } from '../core/dom.js';
 import { getCourses, getDomains, getCoursesByDomain } from '../core/data.js';
 import { get } from '../core/store.js';
 import { courseProgress, resumeChapter } from '../core/progress.js';
@@ -148,7 +148,7 @@ export function renderHomePage({ outlet }) {
       })
   );
 
-  outlet.replaceChildren(h('div', { class: 'container page', style: 'padding-top:0' },
+  setChildren(outlet, h('div', { class: 'container page', style: 'padding-top:0' },
     hero,
     domainsSection,
     tracksSection,

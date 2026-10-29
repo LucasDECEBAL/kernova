@@ -1,0 +1,186 @@
+{
+  "courseId": "backend-api",
+  "modules": [
+    {
+      "id": "api-m1",
+      "title": "HTTP et conception",
+      "chapters": [
+        {
+          "id": "api-01",
+          "title": "Client, serveur et protocole HTTP",
+          "duration": 20,
+          "objectives": [
+            "Décrire un échange HTTP",
+            "Interpréter les codes de statut"
+          ],
+          "content": [
+            { "type": "p", "text": "Le **backend** est le programme qui reçoit des requêtes, applique la logique métier et renvoie des réponses. Il s'appuie sur le modèle **client-serveur** : le client envoie une requête, le serveur répond par un statut, des en-têtes et un corps." },
+            { "type": "code", "lang": "http", "code": "POST /api/clients HTTP/1.1\nHost: example.org\nContent-Type: application/json\nAuthorization: Bearer <jeton>\n\n{\"nom\": \"Ada\", \"ville\": \"Lyon\"}" },
+            { "type": "p", "text": "Le **code de statut** résume le résultat. Les séries ont un sens constant : 2xx succès, 3xx redirection, 4xx erreur du client, 5xx erreur du serveur. Un code mal choisi complique le traitement côté client." },
+            { "type": "table", "headers": ["Code", "Usage"], "rows": [
+              ["200 / 201", "Succès / ressource créée"],
+              ["204", "Succès sans contenu (suppression)"],
+              ["400", "Requête mal formée"],
+              ["401 / 403", "Non authentifié / authentifié mais interdit"],
+              ["404 / 409 / 422", "Absent / conflit / validation échouée"],
+              ["429 / 500 / 503", "Trop de requêtes / erreur interne / indisponible"]
+            ] },
+            { "type": "warning", "text": "401 et 403 ne sont pas interchangeables : 401 signifie « identifiez-vous », 403 « vous êtes identifié mais n'avez pas le droit ». Renvoyer 401 à quelqu'un de connecté provoque des boucles de reconnexion." }
+          ],
+          "exercise": {
+            "title": "Choisir le statut",
+            "instructions": "Un client envoie une création de compte avec un e-mail déjà utilisé. Quel code renvoyez-vous ?",
+            "hints": ["La requête est valide en forme.", "Le problème est un conflit avec une ressource existante."],
+            "solution": "409 Conflict, avec un message explicite dans le corps."
+          },
+          "quiz": [
+            { "id": "api-01-q1", "type": "single", "difficulty": 1, "question": "Que signifie un code 403 ?", "options": ["Identifiants manquants", "Accès interdit malgré l'authentification", "Ressource absente", "Erreur du serveur"], "answer": 1, "explanation": "403 indique un droit insuffisant, pas une absence d'identité.", "hints": [] },
+            { "id": "api-01-q2", "type": "single", "difficulty": 2, "question": "Quel code accompagne une création réussie ?", "options": ["200", "201", "204", "302"], "answer": 1, "explanation": "201 Created précise qu'une ressource a été créée, souvent avec son adresse dans l'en-tête Location.", "hints": [] }
+          ]
+        },
+        {
+          "id": "api-02",
+          "title": "Concevoir une API REST",
+          "duration": 22,
+          "objectives": [
+            "Nommer les ressources et choisir les verbes",
+            "Concevoir des opérations idempotentes"
+          ],
+          "content": [
+            { "type": "p", "text": "Une API **REST** expose des **ressources** (clients, commandes), identifiées par des chemins au pluriel, et utilise les méthodes HTTP pour les opérations. L'URL désigne une chose ; le verbe décrit l'action." },
+            { "type": "code", "lang": "text", "code": "GET    /clients           → liste\nGET    /clients/42        → détail\nPOST   /clients           → création\nPUT    /clients/42        → remplacement\nPATCH  /clients/42        → modification partielle\nDELETE /clients/42        → suppression" },
+            { "type": "p", "text": "`GET`, `PUT`, `DELETE` sont **idempotents** : rejouer la requête donne le même état final. `POST` ne l'est pas : deux envois créent deux ressources. Cette différence compte pour les réessais automatiques." },
+            { "type": "list", "items": [
+              "Évitez les verbes dans les chemins (`/getClients`).",
+              "Imbriquez avec parcimonie : `/clients/42/commandes` est acceptable, trois niveaux deviennent illisibles.",
+              "Versionnez l'API (`/v1/...`) uniquement si vous devez maintenir plusieurs versions.",
+              "Renvoyez des représentations cohérentes, en JSON, avec des noms de champs stables."
+            ] },
+            { "type": "warning", "text": "Un `DELETE` ne doit jamais servir à modifier. Et une suppression doit être confirmée par le statut, pas par une page HTML « succès » qui masque un échec." }
+          ],
+          "exercise": {
+            "title": "Concevoir deux routes",
+            "instructions": "Proposez les routes pour lister les commandes d'un client et marquer une commande comme expédiée.",
+            "hints": ["La liste dépend du client : imbriquez une fois.", "Une expédition est une modification partielle."],
+            "solution": "GET /clients/42/commandes et PATCH /commandes/123 avec un corps { \"statut\": \"expediee\" }."
+          },
+          "quiz": [
+            { "id": "api-02-q1", "type": "single", "difficulty": 2, "question": "Quelle méthode est idempotente ?", "options": ["POST", "PUT", "PATCH (toujours)", "Aucune"], "answer": 1, "explanation": "Rejouer un PUT avec le même corps aboutit au même état. POST crée une nouvelle ressource à chaque appel.", "hints": [] },
+            { "id": "api-02-q2", "type": "truefalse", "difficulty": 2, "question": "Une URL REST doit contenir le verbe de l'action, par exemple /creerClient.", "answer": false, "explanation": "Le verbe HTTP porte l'action ; l'URL désigne la ressource.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "api-m2",
+      "title": "Fiabilité et sécurité",
+      "chapters": [
+        {
+          "id": "api-03",
+          "title": "Valider les entrées et gérer les erreurs",
+          "duration": 22,
+          "objectives": [
+            "Valider une charge utile",
+            "Renvoyer des erreurs exploitables"
+          ],
+          "content": [
+            { "type": "p", "text": "Une API ne doit jamais faire confiance au client. La **validation** vérifie le type, le format, les bornes et la présence des champs obligatoires. Elle s'applique côté serveur, même si le formulaire valide déjà côté navigateur." },
+            { "type": "code", "lang": "json", "title": "Réponse d'erreur cohérente", "code": "{\n  \"erreur\": \"validation\",\n  \"message\": \"Deux champs sont invalides.\",\n  \"champs\": {\n    \"email\": \"format attendu : nom@domaine\",\n    \"age\": \"doit être compris entre 13 et 120\"\n  }\n}" },
+            { "type": "p", "text": "Un message d'erreur doit indiquer **quoi** corriger, sans révéler l'implémentation. Les traces techniques, requêtes SQL et chemins de fichiers restent dans les journaux du serveur, jamais dans la réponse." },
+            { "type": "table", "headers": ["Situation", "Statut", "Contenu"], "rows": [
+              ["Champ manquant ou invalide", "422", "Liste des champs concernés"],
+              ["JSON illisible", "400", "Message générique"],
+              ["Ressource absente", "404", "Identifiant recherché"],
+              ["Conflit d'unicité", "409", "Champ en conflit"],
+              ["Erreur interne", "500", "Message neutre et identifiant de corrélation"]
+            ] },
+            { "type": "warning", "text": "Renvoyer la trace complète d'une exception facilite la vie d'un attaquant : structure de la base, versions, chemins. Journalisez en interne, répondez générique en externe." }
+          ],
+          "exercise": {
+            "title": "Erreur exploitable",
+            "instructions": "Un client envoie un âge de 5 pour une inscription réservée aux 13 ans et plus. Quel statut et quel corps renvoyez-vous ?",
+            "hints": ["La requête est bien formée mais sémantiquement invalide.", "Indiquez le champ et la règle attendue."],
+            "solution": "422 avec { \"erreur\": \"validation\", \"champs\": { \"age\": \"doit être supérieur ou égal à 13\" } }."
+          },
+          "quiz": [
+            { "id": "api-03-q1", "type": "single", "difficulty": 2, "question": "Quel statut pour un corps JSON valide mais un champ hors bornes ?", "options": ["400", "401", "422", "500"], "answer": 2, "explanation": "422 signale une erreur de validation sémantique ; 400 concerne une syntaxe illisible.", "hints": [] },
+            { "id": "api-03-q2", "type": "single", "difficulty": 2, "question": "Que faut-il éviter dans une réponse d'erreur en production ?", "options": ["Le nom du champ invalide", "La trace de la pile et les requêtes SQL", "Un identifiant de corrélation", "Un message en français"], "answer": 1, "explanation": "Les détails techniques internes facilitent l'exploration et doivent rester dans les journaux.", "hints": [] }
+          ]
+        },
+        {
+          "id": "api-04",
+          "title": "Authentification et autorisation",
+          "duration": 24,
+          "objectives": [
+            "Choisir un mécanisme d'authentification",
+            "Appliquer les droits au niveau de chaque ressource"
+          ],
+          "content": [
+            { "type": "p", "text": "Authentifier, c'est établir l'identité ; autoriser, c'est décider de l'accès. Une API peut utiliser une **session** (cookie) pour un site classique, un **jeton** porteur pour une API, ou un protocole délégué comme OAuth 2.0 lorsqu'un tiers doit agir au nom d'un utilisateur." },
+            { "type": "table", "headers": ["Mécanisme", "Usage"], "rows": [
+              ["Session + cookie", "Application web servie par le même domaine"],
+              ["Jeton Bearer (JWT ou opaque)", "API consommée par une application ou un service"],
+              ["OAuth 2.0 / OpenID Connect", "Délégation d'accès et connexion via un fournisseur d'identité"],
+              ["Clé d'API", "Intégration serveur à serveur, avec rotation"]
+            ] },
+            { "type": "p", "text": "L'autorisation ne s'arrête pas au point d'entrée : chaque requête sur une ressource doit vérifier que l'utilisateur y a droit. Un identifiant dans l'URL ne prouve aucun droit." },
+            { "type": "code", "lang": "text", "title": "Contrôle d'accès (pseudo-code)", "code": "commande = charger(id)\nSI commande.absente ALORS 404\nSI commande.client_id ≠ utilisateur.id ET utilisateur.role ≠ \"admin\" ALORS 403" },
+            { "type": "warning", "text": "Un JWT est signé, pas chiffré : son contenu est lisible. N'y mettez aucune donnée sensible, et vérifiez toujours la signature, l'émetteur et l'expiration." }
+          ],
+          "exercise": {
+            "title": "Contrôle d'accès",
+            "instructions": "Un utilisateur connecté demande /commandes/128, qui appartient à un autre client. Quel statut renvoyer, et pourquoi pas 404 ?",
+            "hints": ["L'utilisateur est authentifié.", "Il n'a pas le droit sur cette ressource."],
+            "solution": "403 Forbidden. 404 est réservé à une ressource inexistante ; il peut servir à masquer l'existence d'une ressource, mais le choix doit être cohérent sur toute l'API."
+          },
+          "quiz": [
+            { "id": "api-04-q1", "type": "single", "difficulty": 2, "question": "Que contient un JWT ?", "options": ["Des données lisibles mais signées", "Des données chiffrées illisibles", "Un mot de passe", "Une clé privée"], "answer": 0, "explanation": "Un JWT est encodé en base64 et signé ; il n'est pas chiffré par défaut.", "hints": [] },
+            { "id": "api-04-q2", "type": "truefalse", "difficulty": 2, "question": "Vérifier l'identité de l'utilisateur suffit à autoriser l'accès à toutes ses requêtes.", "answer": false, "explanation": "Chaque ressource doit être contrôlée : être authentifié ne donne pas de droit sur les données d'autrui.", "hints": [] }
+          ]
+        },
+        {
+          "id": "api-05",
+          "title": "Pagination, cache et limites",
+          "duration": 22,
+          "objectives": [
+            "Paginer sans doublon",
+            "Protéger l'API contre les abus"
+          ],
+          "content": [
+            { "type": "p", "text": "Une liste non paginée finit par saturer le serveur et le client. La pagination par **offset** (`?page=2&limit=50`) est simple mais instable quand des lignes sont ajoutées. La pagination par **curseur** (`?after=...`) reste stable pendant le parcours." },
+            { "type": "code", "lang": "json", "title": "Réponse paginée", "code": "{\n  \"donnees\": [ ... ],\n  \"suivant\": \"curseur-abc\",\n  \"total_estime\": 1240\n}" },
+            { "type": "p", "text": "Le **cache** réduit la charge : en-têtes `Cache-Control` et `ETag` permettent au client de réutiliser une réponse ou de poser une requête conditionnelle. Ne mettez jamais en cache une réponse personnalisée sans clé adaptée." },
+            { "type": "p", "text": "La **limitation de débit** protège l'API des abus et des boucles d'erreur : elle renvoie `429 Too Many Requests`, idéalement avec `Retry-After`. Complétez par une journalisation corrélée (identifiant de requête) pour analyser les incidents." },
+            { "type": "warning", "text": "Un cache mal configuré peut servir les données d'un utilisateur à un autre. Vérifiez systématiquement la variation par identité (`Vary`, clé de cache) avant d'activer un cache partagé." }
+          ],
+          "exercise": {
+            "title": "Choisir une pagination",
+            "instructions": "Une API affiche un flux de messages qui reçoit de nouveaux éléments en continu. Quelle pagination choisir, et pourquoi ?",
+            "hints": ["Avec un offset, une insertion décale les pages.", "Un curseur repère une position stable."],
+            "solution": "Une pagination par curseur : elle évite les doublons et les éléments manqués quand de nouvelles lignes s'insèrent."
+          },
+          "quiz": [
+            { "id": "api-05-q1", "type": "single", "difficulty": 2, "question": "Quel statut signale une limitation de débit ?", "options": ["403", "429", "500", "503"], "answer": 1, "explanation": "429 Too Many Requests indique que le client doit ralentir ; Retry-After précise le délai.", "hints": [] },
+            { "id": "api-05-q2", "type": "single", "difficulty": 3, "question": "Pourquoi la pagination par offset est-elle instable sur un flux actif ?", "options": ["Elle est plus lente", "Les insertions décalent les pages et créent doublons ou oublis", "Elle ne fonctionne pas en JSON", "Elle limite la taille des réponses"], "answer": 1, "explanation": "L'offset désigne un rang, qui change quand des lignes s'ajoutent ; un curseur désigne une position.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "API de gestion de tâches",
+    "brief": "Concevez et implémentez une petite API REST de tâches, avec validation, contrôle d'accès, pagination et erreurs cohérentes.",
+    "steps": [
+      "Décrire les ressources, les routes et les codes de statut dans un tableau.",
+      "Implémenter la création et la lecture avec validation des champs obligatoires.",
+      "Ajouter l'authentification et vérifier qu'un utilisateur ne voit que ses tâches.",
+      "Paginer la liste et renvoyer un curseur stable.",
+      "Écrire la documentation des erreurs possibles et tester chaque cas avec un client HTTP."
+    ],
+    "criteria": [
+      "Un accès à la tâche d'un autre utilisateur renvoie 403 (ou 404, de façon cohérente).",
+      "Une charge invalide renvoie 422 avec la liste des champs en cause.",
+      "Aucune trace technique n'apparaît dans les réponses d'erreur."
+    ]
+  }
+}

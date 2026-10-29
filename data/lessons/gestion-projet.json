@@ -1,0 +1,163 @@
+{
+  "courseId": "gestion-projet",
+  "modules": [
+    {
+      "id": "gp-m1",
+      "title": "Cadrer et planifier",
+      "chapters": [
+        {
+          "id": "gp-01",
+          "title": "Cadrer un besoin et rédiger des spécifications",
+          "duration": 20,
+          "objectives": ["Distinguer besoin et solution", "Écrire une spécification utilisable"],
+          "content": [
+            { "type": "p", "text": "Une **spécification** décrit le problème, les utilisateurs concernés, les règles métier et les critères d'acceptation. Elle doit permettre à une personne qui n'a pas participé aux discussions de comprendre quoi construire et comment vérifier que c'est fait." },
+            { "type": "list", "items": [
+              "Contexte et problème, en une ou deux phrases.",
+              "Utilisateurs concernés et leurs contraintes.",
+              "Comportements attendus et cas limites.",
+              "Critères d'acceptation vérifiables, pas des intentions.",
+              "Ce qui est explicitement hors périmètre."
+            ] },
+            { "type": "warning", "text": "Une spécification qui décrit une solution technique sans le problème empêche de remettre en cause la solution. Commencez par le besoin." }
+          ],
+          "exercise": {
+            "title": "Critère d'acceptation",
+            "instructions": "Transformez « l'export doit être rapide » en critère vérifiable.",
+            "hints": ["Un critère se mesure.", "Précisez volume, durée et conditions."],
+            "solution": "Par exemple : « l'export de 10 000 lignes s'exécute en moins de 5 secondes sur l'environnement de recette et produit un fichier conforme au format X »."
+          },
+          "quiz": [
+            { "id": "gp-01-q1", "type": "single", "difficulty": 1, "question": "Que doit contenir une spécification ?", "options": ["Le problème, les règles et des critères vérifiables", "Uniquement des maquettes", "Le code source", "Le planning détaillé"], "answer": 0, "explanation": "La spécification doit être compréhensible et vérifiable.", "hints": [] },
+            { "id": "gp-01-q2", "type": "truefalse", "difficulty": 2, "question": "Un critère d'acceptation flou est acceptable s'il est bien compris par l'équipe.", "answer": false, "explanation": "Sans mesure, chacun interprète différemment et la validation est arbitraire.", "hints": [] }
+          ]
+        },
+        {
+          "id": "gp-02",
+          "title": "Découper, estimer et prioriser",
+          "duration": 20,
+          "objectives": ["Découper en tâches livrables", "Prioriser selon la valeur et le risque"],
+          "content": [
+            { "type": "p", "text": "Un projet se pilote par **incréments livrables** : chaque lot apporte quelque chose d'utilisable. Découper par composant technique (« base », « API », « écran ») retarde la valeur et concentre le risque en fin de projet." },
+            { "type": "table", "headers": ["Approche", "Effet"], "rows": [
+              ["Découpage par couche technique", "Rien d'utilisable avant la fin"],
+              ["Découpage par parcours utilisateur", "Valeur livrée tôt, retours rapides"],
+              ["Estimation en points relatifs", "Comparaison entre tâches, pas une promesse"],
+              ["Priorisation valeur/risque", "Traite d'abord l'incertitude coûteuse"]
+            ] },
+            { "type": "warning", "text": "Une estimation n'est pas un engagement ferme. Confondre les deux conduit à des promesses intenables et à une pression qui dégrade la qualité." }
+          ],
+          "exercise": {
+            "title": "Prioriser",
+            "instructions": "Deux tâches : une fonctionnalité très visible à faible risque, et une vérification d'hypothèse technique qui peut invalider le projet. Laquelle traiter d'abord ?",
+            "hints": ["L'incertitude coûte plus cher tard.", "La valeur visible peut attendre."],
+            "solution": "La vérification de l'hypothèse : elle réduit le risque majeur. La fonctionnalité visible vient ensuite, une fois la faisabilité confirmée."
+          },
+          "quiz": [
+            { "id": "gp-02-q1", "type": "single", "difficulty": 1, "question": "Comment découper pour livrer de la valeur tôt ?", "options": ["Par parcours utilisateur", "Par couche technique", "Par technologie", "Par service de l'entreprise"], "answer": 0, "explanation": "Un incrément par parcours donne un résultat utilisable.", "hints": [] },
+            { "id": "gp-02-q2", "type": "single", "difficulty": 2, "question": "Que fait une estimation en points ?", "options": ["Elle compare la complexité relative", "Elle fixe une date", "Elle calcule un coût", "Elle remplace les tests"], "answer": 0, "explanation": "Les points servent à comparer, pas à promettre une durée.", "hints": [] }
+          ]
+        },
+        {
+          "id": "gp-03",
+          "title": "Agilité : Scrum, Kanban et sprints",
+          "duration": 20,
+          "objectives": ["Distinguer Scrum et Kanban", "Comprendre le rôle des itérations"],
+          "content": [
+            { "type": "p", "text": "**Scrum** organise le travail en itérations courtes (sprints) avec des rôles et des événements définis : planification, mêlée quotidienne, revue, rétrospective. **Kanban** gère un flux continu avec des colonnes et des limites de travail en cours." },
+            { "type": "table", "headers": ["Contexte", "Approche adaptée"], "rows": [
+              ["Besoin qui évolue, équipe produit", "Scrum"],
+              ["Support, maintenance, flux continu", "Kanban"],
+              ["Activité très imprévisible", "Flux avec priorités revues souvent"]
+            ] },
+            { "type": "warning", "text": "Un rituel sans décision devient une réunion. La revue sert à décider de la suite, la rétrospective à changer une pratique concrète." }
+          ],
+          "exercise": {
+            "title": "Choisir une méthode",
+            "instructions": "Une équipe de support traite des demandes variées au fil de la journée. Scrum ou Kanban ?",
+            "hints": ["Le flux est continu, pas planifié en lots.", "Les limites de travail en cours évitent l'engorgement."],
+            "solution": "Kanban : flux continu, colonnes, limites de travail en cours et priorités revues régulièrement."
+          },
+          "quiz": [
+            { "id": "gp-03-q1", "type": "single", "difficulty": 1, "question": "Quel cadre organise le travail en sprints ?", "options": ["Scrum", "Kanban", "Waterfall", "ITIL"], "answer": 0, "explanation": "Scrum fonctionne par itérations courtes.", "hints": [] },
+            { "id": "gp-03-q2", "type": "single", "difficulty": 2, "question": "À quoi sert une limite de travail en cours en Kanban ?", "options": ["À éviter l'engorgement et le multitâche", "À accélérer les réunions", "À supprimer les tests", "À augmenter les livraisons"], "answer": 0, "explanation": "Limiter le travail en cours améliore le débit réel.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gp-m2",
+      "title": "Documenter et durer",
+      "chapters": [
+        {
+          "id": "gp-04",
+          "title": "Documentation et collaboration",
+          "duration": 18,
+          "objectives": ["Documenter l'essentiel", "Organiser la collaboration"],
+          "content": [
+            { "type": "p", "text": "Une documentation utile répond à trois questions : comment installer, comment utiliser, comment diagnostiquer. Le reste est optionnel et se dégrade vite s'il n'est pas maintenu." },
+            { "type": "list", "items": [
+              "README : objectif, installation, lancement, tests.",
+              "Décisions d'architecture : pourquoi, pas seulement quoi.",
+              "Procédures d'exploitation : redémarrage, sauvegarde, incident.",
+              "Revue de code régulière et critères partagés."
+            ] },
+            { "type": "warning", "text": "Une documentation fausse est pire qu'absente : elle fait perdre du temps. Datez les documents et supprimez ceux qui ne sont plus vrais." }
+          ],
+          "exercise": {
+            "title": "Documenter une décision",
+            "instructions": "L'équipe a choisi une base de données plutôt qu'une autre. Que documenter ?",
+            "hints": ["Le choix seul ne suffit pas.", "Les contraintes expliquent la décision."],
+            "solution": "Le contexte, les options envisagées, les contraintes, la décision et ses conséquences, avec la date."
+          },
+          "quiz": [
+            { "id": "gp-04-q1", "type": "single", "difficulty": 1, "question": "Que doit permettre une bonne documentation ?", "options": ["Installer, utiliser et diagnostiquer", "Remplacer les tests", "Cacher les décisions", "Éviter les revues"], "answer": 0, "explanation": "Ces trois usages couvrent l'essentiel du quotidien.", "hints": [] },
+            { "id": "gp-04-q2", "type": "truefalse", "difficulty": 2, "question": "Une documentation obsolète vaut mieux que pas de documentation.", "answer": false, "explanation": "Une information fausse coûte plus cher qu'une absence d'information.", "hints": [] }
+          ]
+        },
+        {
+          "id": "gp-05",
+          "title": "Risques, dette technique et maintenance",
+          "duration": 20,
+          "objectives": ["Identifier un risque projet", "Traiter la dette technique"],
+          "content": [
+            { "type": "p", "text": "Un **risque** se décrit par sa probabilité et son impact, avec une réponse : éviter, réduire, transférer ou accepter. La **dette technique** est un raccourci de conception qui coûte plus tard ; elle se gère consciemment, pas par accumulation silencieuse." },
+            { "type": "list", "items": [
+              "Tenir une liste courte des risques majeurs avec un responsable.",
+              "Réserver du temps régulier pour la dette (refactoring, mises à jour).",
+              "Documenter les raccourcis assumés et leur échéance.",
+              "Surveiller les dépendances obsolètes et les vulnérabilités."
+            ] },
+            { "type": "warning", "text": "Repousser indéfiniment les mises à jour transforme une dette en risque majeur : versions non supportées, failles non corrigées, migration devenue impossible." }
+          ],
+          "exercise": {
+            "title": "Répondre à un risque",
+            "instructions": "La dépendance principale du projet n'est plus maintenue. Quelles réponses possibles ?",
+            "hints": ["Éviter, réduire, transférer, accepter.", "Réduire peut signifier isoler."],
+            "solution": "Réduire le risque en isolant la dépendance derrière une interface et planifier un remplacement ; accepter temporairement avec une échéance et une surveillance."
+          },
+          "quiz": [
+            { "id": "gp-05-q1", "type": "single", "difficulty": 1, "question": "Comment décrire un risque ?", "options": ["Probabilité et impact", "Couleur et logo", "Nom et date", "Coût uniquement"], "answer": 0, "explanation": "Probabilité et impact orientent la réponse à apporter.", "hints": [] },
+            { "id": "gp-05-q2", "type": "single", "difficulty": 2, "question": "Qu'est-ce que la dette technique ?", "options": ["Un raccourci de conception qui coûte plus tard", "Un emprunt bancaire", "Un bug", "Une licence"], "answer": 0, "explanation": "La dette technique est un compromis assumé ou subi, dont le coût augmente.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Cadrage d'un projet en une page",
+    "brief": "Rédigez le cadrage complet d'un petit projet : problème, périmètre, critères, découpage, risques.",
+    "steps": [
+      "Décrire le problème et les utilisateurs concernés.",
+      "Lister les critères d'acceptation vérifiables et le hors-périmètre.",
+      "Découper en trois incréments livrables, du plus risqué au plus visible.",
+      "Identifier trois risques majeurs et la réponse associée.",
+      "Présenter le cadrage à une personne extérieure et corriger les ambiguïtés."
+    ],
+    "criteria": [
+      "Chaque critère est mesurable.",
+      "Chaque incrément apporte quelque chose d'utilisable.",
+      "Chaque risque a une réponse et un responsable."
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 // Vue du moteur de quiz : affiche une session, gère les réponses, indices et résultats.
 // La logique de correction est dans logic.js ; ce fichier ne fait que le rendu et les événements.
 
-import { h, icon, progressBar, alertBox } from '../core/dom.js';
+import { h, icon, progressBar, alertBox , setChildren } from '../core/dom.js';
 import { toast } from '../core/ui.js';
 import { recordQuizResult } from '../core/progress.js';
 import { inline } from '../components/widgets.js';
@@ -42,7 +42,7 @@ export function runQuiz(container, cfg) {
     const total = Math.floor((Date.now() - startedAt) / 1000);
     const mm = String(Math.floor(total / 60)).padStart(2, '0');
     const ss = String(total % 60).padStart(2, '0');
-    timerEl.replaceChildren(icon('clock', { size: 15 }), ` Temps : ${mm}:${ss}`);
+    setChildren(timerEl, icon('clock', { size: 15 }), ` Temps : ${mm}:${ss}`);
   }
   if (timerEl) {
     timerId = setInterval(tick, 1000);
@@ -159,7 +159,7 @@ export function runQuiz(container, cfg) {
   // ---- Rendu -------------------------------------------------------------
 
   function render() {
-    container.replaceChildren(finished ? renderResults() : renderQuestion());
+    setChildren(container, finished ? renderResults() : renderQuestion());
   }
 
   function renderQuestion() {

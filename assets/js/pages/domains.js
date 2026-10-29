@@ -1,12 +1,12 @@
 // Domaines informatiques : liste, puis page dédiée à chaque domaine avec ses cours ou un état vide.
 
-import { h, icon, emptyState } from '../core/dom.js';
+import { h, icon, emptyState , setChildren } from '../core/dom.js';
 import { getDomains, getDomain, getCoursesByDomain } from '../core/data.js';
 import { courseCard } from '../components/widgets.js';
 
 export function renderDomainsIndex({ outlet }) {
   const domains = getDomains();
-  outlet.replaceChildren(h('div', { class: 'page' },
+  setChildren(outlet, h('div', { class: 'page' },
     h('header', { class: 'page-head' },
       h('h1', { text: 'Domaines informatiques', tabindex: '-1' }),
       h('p', { text: 'Chaque domaine rassemble les cours qui s\'y rattachent. Les domaines encore vides sont indiqués : leur contenu n\'est pas encore publié.' })
@@ -26,13 +26,13 @@ export function renderDomainsIndex({ outlet }) {
 export function renderDomainPage({ outlet, params }) {
   const domain = getDomain(params.id);
   if (!domain) {
-    outlet.replaceChildren(h('div', { class: 'page' },
+    setChildren(outlet, h('div', { class: 'page' },
       emptyState({ icon: 'alert', title: 'Domaine introuvable', text: 'Ce domaine n\'existe pas dans le catalogue.', actions: [h('a', { class: 'btn', href: '#/domaines' }, 'Tous les domaines')] })
     ));
     return undefined;
   }
   const courses = getCoursesByDomain(domain.id);
-  outlet.replaceChildren(h('div', { class: 'page' },
+  setChildren(outlet, h('div', { class: 'page' },
     h('nav', { class: 'breadcrumb', 'aria-label': 'Fil d\'Ariane' },
       h('ol', {},
         h('li', {}, h('a', { href: '#/domaines' }, 'Domaines')),

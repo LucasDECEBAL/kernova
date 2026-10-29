@@ -1,0 +1,187 @@
+{
+  "courseId": "bases-donnees-avancees",
+  "modules": [
+    {
+      "id": "sqla-m1",
+      "title": "Performance",
+      "chapters": [
+        {
+          "id": "sqla-01",
+          "title": "Index et coût des écritures",
+          "duration": 22,
+          "objectives": [
+            "Expliquer le rôle d'un index",
+            "Éviter les index inutiles"
+          ],
+          "content": [
+            { "type": "p", "text": "Un **index** est une structure annexe (souvent un arbre B) qui permet de trouver des lignes sans parcourir toute la table. En contrepartie, chaque `INSERT`, `UPDATE` ou `DELETE` doit aussi mettre l'index à jour, et l'index occupe de l'espace." },
+            { "type": "code", "lang": "sql", "code": "CREATE INDEX idx_commandes_client ON commandes (client_id);\nCREATE INDEX idx_clients_ville_nom ON clients (ville, nom);\n\nEXPLAIN\nSELECT nom FROM clients WHERE ville = 'Lyon';" },
+            { "type": "p", "text": "Un **index composite** suit l'ordre des colonnes : `(ville, nom)` sert pour un filtre sur `ville`, ou sur `ville` et `nom`, mais pas pour un filtre sur `nom` seul. L'ordre se choisit donc selon les requêtes réelles." },
+            { "type": "table", "headers": ["Situation", "Index utile ?"], "rows": [
+              ["Colonne filtrée souvent et sélective", "Oui"],
+              ["Table très petite", "Peu d'intérêt"],
+              ["Colonne mise à jour en permanence", "À évaluer avec prudence"],
+              ["Colonne déjà indexée en tête d'un index composite", "Souvent redondant"]
+            ] },
+            { "type": "warning", "text": "Ajouter un index sur chaque colonne « au cas où » dégrade les écritures et gonfle la base. Mesurez avant et après avec des requêtes représentatives." }
+          ],
+          "exercise": {
+            "title": "Choisir un index",
+            "instructions": "La requête principale filtre par ville puis trie par nom. Quel index composite créer, et dans quel ordre ?",
+            "hints": ["L'index composite est ordonné de gauche à droite.", "La colonne du filtre d'égalité vient en premier."],
+            "solution": "CREATE INDEX idx_clients_ville_nom ON clients (ville, nom);"
+          },
+          "quiz": [
+            { "id": "sqla-01-q1", "type": "single", "difficulty": 2, "question": "Quel est le coût principal d'un index ?", "options": ["Un ralentissement des écritures et de l'espace disque", "Une perte de données", "L'impossibilité de faire des jointures", "La suppression des clés étrangères"], "answer": 0, "explanation": "L'index accélère la lecture mais doit être maintenu à chaque écriture.", "hints": [] },
+            { "id": "sqla-01-q2", "type": "single", "difficulty": 3, "question": "Un index (ville, nom) accélère-t-il une requête filtrant uniquement sur nom ?", "options": ["Oui, toujours", "Non, la colonne de tête compte", "Oui, si la table est petite", "Cela dépend du type de base"], "answer": 1, "explanation": "L'ordre des colonnes dans un index composite conditionne son utilisation.", "hints": [] }
+          ]
+        },
+        {
+          "id": "sqla-02",
+          "title": "Plans d'exécution et optimisation",
+          "duration": 24,
+          "objectives": [
+            "Lire un plan d'exécution",
+            "Repérer les requêtes coûteuses"
+          ],
+          "content": [
+            { "type": "p", "text": "`EXPLAIN` montre comment le moteur compte exécuter la requête : parcours complet de table, utilisation d'un index, ordre des jointures, tri. `EXPLAIN ANALYZE` exécute réellement la requête et affiche les temps mesurés." },
+            { "type": "code", "lang": "sql", "code": "EXPLAIN ANALYZE\nSELECT c.nom, COUNT(o.id) AS commandes\nFROM clients c\nLEFT JOIN commandes o ON o.client_id = c.id\nWHERE c.ville = 'Lyon'\nGROUP BY c.nom;", "title": "Analyse d'une requête" },
+            { "type": "p", "text": "Un **Seq Scan** sur une grande table filtrée signale souvent un index manquant. Un **Nested Loop** peut être coûteux si le nombre de lignes estimé est faux : les statistiques doivent être à jour (`ANALYZE` sous PostgreSQL)." },
+            { "type": "list", "items": [
+              "Sélectionnez uniquement les colonnes nécessaires au lieu de `SELECT *`.",
+              "Évitez d'appliquer une fonction sur une colonne filtrée : `WHERE lower(email) = ...` empêche l'usage de l'index simple.",
+              "Corrigez le problème N+1 : une requête par ligne dans une boucle applicative au lieu d'une jointure."
+            ] },
+            { "type": "warning", "text": "Les estimations du plan reposent sur des statistiques. Après un chargement massif, pensez à les recalculer, sinon le moteur choisit de mauvaises stratégies." }
+          ],
+          "exercise": {
+            "title": "Repérer un N+1",
+            "instructions": "Une page affiche 100 commandes en lançant une requête pour chaque client associé. Comment réduire le nombre de requêtes ?",
+            "hints": ["Le problème vient de la répétition en boucle.", "Une jointure ou un chargement groupé remplace la boucle."],
+            "solution": "Remplacer la boucle par une jointure (ou un chargement des clients en une requête avec IN), ce qui ramène 101 requêtes à 1 ou 2."
+          },
+          "quiz": [
+            { "id": "sqla-02-q1", "type": "single", "difficulty": 2, "question": "Que montre EXPLAIN ANALYZE de plus que EXPLAIN ?", "options": ["Le temps réel d'exécution", "Les index existants", "Les droits de l'utilisateur", "Les sauvegardes"], "answer": 0, "explanation": "ANALYZE exécute la requête et fournit les durées mesurées.", "hints": [] },
+            { "id": "sqla-02-q2", "type": "single", "difficulty": 3, "question": "Pourquoi WHERE lower(email) = 'a@b.fr' peut-il empêcher l'usage d'un index sur email ?", "options": ["Parce que lower est interdit", "Parce que l'index porte sur email, pas sur le résultat de la fonction", "Parce que la chaîne est trop courte", "Parce que lower supprime les données"], "answer": 1, "explanation": "La fonction s'applique à chaque ligne ; un index fonctionnel serait nécessaire.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sqla-m2",
+      "title": "Intégrité et exploitation",
+      "chapters": [
+        {
+          "id": "sqla-03",
+          "title": "Transactions et propriétés ACID",
+          "duration": 20,
+          "objectives": [
+            "Écrire une transaction",
+            "Expliquer ACID"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **transaction** regroupe plusieurs opérations en une unité : soit toutes réussissent, soit aucune. C'est indispensable pour un virement, un paiement ou toute opération qui modifie plusieurs tables." },
+            { "type": "code", "lang": "sql", "code": "BEGIN;\nUPDATE comptes SET solde = solde - 100 WHERE id = 1;\nUPDATE comptes SET solde = solde + 100 WHERE id = 2;\nCOMMIT;" },
+            { "type": "table", "headers": ["Propriété", "Signification"], "rows": [
+              ["Atomicité", "Tout ou rien"],
+              ["Cohérence", "Les contraintes restent respectées"],
+              ["Isolation", "Les transactions concurrentes ne se perturbent pas"],
+              ["Durabilité", "Une transaction validée survit à un redémarrage"]
+            ] },
+            { "type": "p", "text": "En cas d'erreur ou de doute, `ROLLBACK` annule les opérations de la transaction. Beaucoup de moteurs proposent aussi `SAVEPOINT` pour annuler une partie seulement du travail." },
+            { "type": "warning", "text": "Une transaction laissée ouverte bloque des lignes et peut figer l'application. Fermez toujours par `COMMIT` ou `ROLLBACK`, y compris dans un gestionnaire d'erreurs." }
+          ],
+          "exercise": {
+            "title": "Virement sûr",
+            "instructions": "Pourquoi un virement entre deux comptes doit-il s'exécuter dans une seule transaction ?",
+            "hints": ["Deux écritures sont nécessaires.", "Que se passe-t-il si la deuxième échoue ?"],
+            "solution": "Sans transaction, un échec après le débit créerait de l'argent perdu. Dans une transaction, l'échec annule aussi le débit."
+          },
+          "quiz": [
+            { "id": "sqla-03-q1", "type": "single", "difficulty": 1, "question": "Quelle propriété garantit qu'une transaction validée survit à un redémarrage ?", "options": ["Atomicité", "Cohérence", "Isolation", "Durabilité"], "answer": 3, "explanation": "La durabilité assure l'écriture persistante sur disque.", "hints": [] },
+            { "id": "sqla-03-q2", "type": "single", "difficulty": 2, "question": "Quelle commande annule les opérations d'une transaction ?", "options": ["COMMIT", "ROLLBACK", "BEGIN", "SAVEPOINT"], "answer": 1, "explanation": "ROLLBACK annule les modifications non validées de la transaction.", "hints": [] }
+          ]
+        },
+        {
+          "id": "sqla-04",
+          "title": "Isolation et verrouillage",
+          "duration": 22,
+          "objectives": [
+            "Comprendre les niveaux d'isolation",
+            "Identifier un interblocage"
+          ],
+          "content": [
+            { "type": "p", "text": "Deux transactions simultanées peuvent se contrarier. Les **niveaux d'isolation** règlent le compromis entre cohérence et concurrence : lecture non validée, lecture validée (souvent par défaut), répétable, sérialisable." },
+            { "type": "table", "headers": ["Anomalie", "Description"], "rows": [
+              ["Lecture sale", "Lire une valeur écrite mais pas encore validée"],
+              ["Lecture non répétable", "Deux lectures de la même ligne donnent des résultats différents"],
+              ["Phénomène fantôme", "Une nouvelle ligne apparaît entre deux lectures d'un ensemble"],
+              ["Mise à jour perdue", "Deux écritures concurrentes s'écrasent"]
+            ] },
+            { "type": "p", "text": "Plus le niveau est élevé, plus les garanties sont fortes, mais plus les blocages et les réessais augmentent. Le niveau **sérialisable** empêche pratiquement toutes les anomalies, au prix d'une concurrence moindre." },
+            { "type": "code", "lang": "sql", "code": "SET TRANSACTION ISOLATION LEVEL READ COMMITTED;\nSET TRANSACTION ISOLATION LEVEL SERIALIZABLE;" },
+            { "type": "warning", "text": "Un **interblocage** (deadlock) survient quand deux transactions attendent chacune une ressource verrouillée par l'autre. Le moteur en annule une : votre code doit prévoir un réessai, et accéder aux ressources dans un ordre stable." }
+          ],
+          "exercise": {
+            "title": "Ordre des verrous",
+            "instructions": "Deux scripts mettent à jour les comptes 1 et 2 dans un ordre opposé, ce qui provoque des interblocages. Quelle règle appliquez-vous ?",
+            "hints": ["Le deadlock vient d'un ordre d'accès différent.", "Un ordre global stable évite le cycle d'attente."],
+            "solution": "Accéder toujours aux ressources dans le même ordre (par exemple par identifiant croissant) et prévoir un réessai en cas d'annulation par le moteur."
+          },
+          "quiz": [
+            { "id": "sqla-04-q1", "type": "single", "difficulty": 2, "question": "Que fait le moteur face à un interblocage ?", "options": ["Il annule une des transactions", "Il redémarre le serveur", "Il ignore le verrou", "Il fusionne les transactions"], "answer": 0, "explanation": "Le moteur choisit une victime et annule sa transaction ; l'application doit réessayer.", "hints": [] },
+            { "id": "sqla-04-q2", "type": "single", "difficulty": 3, "question": "Quel niveau d'isolation offre les garanties les plus fortes ?", "options": ["Read uncommitted", "Read committed", "Repeatable read", "Serializable"], "answer": 3, "explanation": "Serializable se comporte comme si les transactions s'exécutaient l'une après l'autre.", "hints": [] }
+          ]
+        },
+        {
+          "id": "sqla-05",
+          "title": "Sauvegarde, réplication et choix du SGBD",
+          "duration": 22,
+          "objectives": [
+            "Distinguer sauvegarde logique et physique",
+            "Choisir un système adapté au besoin"
+          ],
+          "content": [
+            { "type": "p", "text": "Une **sauvegarde logique** exporte les données et le schéma (`pg_dump`, `mysqldump`) : lisible, portable, adaptée aux petites bases. Une **sauvegarde physique** copie les fichiers du moteur : plus rapide à restaurer sur de gros volumes, mais liée à la version du moteur." },
+            { "type": "code", "lang": "bash", "code": "pg_dump -Fc base > base.dump\npg_restore -d base_restauree base.dump\nmysqldump --single-transaction base > base.sql" },
+            { "type": "p", "text": "La **réplication** maintient une copie à jour en continu pour la reprise après sinistre ou la répartition des lectures. Elle ne remplace pas une sauvegarde : une suppression erronée se réplique aussi." },
+            { "type": "table", "headers": ["Besoin dominant", "Choix fréquent"], "rows": [
+              ["Relationnel avec contraintes et transactions", "PostgreSQL ou MySQL"],
+              ["Application locale sans serveur", "SQLite"],
+              ["Documents flexibles, schéma variable", "MongoDB"],
+              ["Cache, files, données en mémoire", "Redis"]
+            ] },
+            { "type": "warning", "text": "Une sauvegarde non testée n'est pas une sauvegarde. Restaurez-la sur un environnement séparé et vérifiez le nombre de lignes et les contraintes." }
+          ],
+          "exercise": {
+            "title": "Sauvegarde ou réplication ?",
+            "instructions": "Une suppression accidentelle de table s'est répliquée sur le serveur secondaire. Pourquoi la réplication n'a-t-elle pas protégé les données, et que fallait-il avoir ?",
+            "hints": ["La réplication copie les opérations, y compris destructrices.", "Seule une copie antérieure permet de revenir en arrière."],
+            "solution": "La réplication reproduit les ordres reçus, donc la suppression aussi. Il fallait une sauvegarde antérieure testée, avec la procédure de restauration associée."
+          },
+          "quiz": [
+            { "id": "sqla-05-q1", "type": "single", "difficulty": 2, "question": "Que protège réellement une sauvegarde, contrairement à la réplication seule ?", "options": ["Les pannes réseau", "Les suppressions et erreurs humaines", "La latence", "Le chiffrement"], "answer": 1, "explanation": "La réplication propage aussi les erreurs ; la sauvegarde permet un retour dans le temps.", "hints": [] },
+            { "id": "sqla-05-q2", "type": "match", "difficulty": 2, "question": "Associez chaque besoin au système le plus adapté.", "left": ["Cache en mémoire", "Documents à schéma variable", "Relationnel transactionnel"], "right": ["PostgreSQL", "Redis", "MongoDB"], "answer": [1, 2, 0], "explanation": "Redis pour le cache, MongoDB pour les documents, PostgreSQL pour le relationnel.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Optimiser une base lente",
+    "brief": "À partir d'un jeu de données de démonstration, identifiez et corrigez trois problèmes de performance sans modifier les résultats des requêtes.",
+    "steps": [
+      "Charger un jeu de données de test et exécuter trois requêtes représentatives.",
+      "Mesurer avec EXPLAIN ANALYZE et relever les parcours complets de table.",
+      "Ajouter les index utiles, recalculez les statistiques, puis comparer les plans et les durées.",
+      "Corriger une requête en boucle (problème N+1) par une jointure.",
+      "Vérifier que les résultats restent identiques et documenter les gains mesurés."
+    ],
+    "criteria": [
+      "Chaque optimisation s'appuie sur une mesure avant/après, pas sur une intuition.",
+      "Les résultats des requêtes sont strictement identiques.",
+      "Les index ajoutés sont justifiés par une requête réelle, sans index superflu."
+    ]
+  }
+}

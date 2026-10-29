@@ -1,0 +1,143 @@
+{
+  "courseId": "python-intermediaire",
+  "modules": [
+    {
+      "id": "pyi-m1",
+      "title": "Structurer le code",
+      "chapters": [
+        {
+          "id": "pyi-01",
+          "title": "Classes et objets",
+          "duration": 20,
+          "objectives": ["Définir une classe", "Protéger un invariant"],
+          "content": [
+            { "type": "p", "text": "Une **classe** regroupe données et comportements. `__init__` initialise l'instance, `self` la désigne. Une classe bien conçue maintient ses **invariants** : les règles qui doivent toujours rester vraies." },
+            { "type": "code", "lang": "python", "code": "class Compte:\n    def __init__(self, solde=0.0):\n        if solde < 0:\n            raise ValueError(\"solde négatif\")\n        self._solde = solde\n\n    @property\n    def solde(self):\n        return self._solde\n\n    def retirer(self, montant):\n        if montant <= 0 or montant > self._solde:\n            raise ValueError(\"montant invalide\")\n        self._solde -= montant" },
+            { "type": "p", "text": "Le souligné initial (`_solde`) signale un attribut interne : une convention, pas une protection. La protection réelle vient des méthodes qui contrôlent les modifications." },
+            { "type": "warning", "text": "Modifier `_solde` directement depuis l'extérieur contourne la validation. Toute écriture passe par une méthode." }
+          ],
+          "exercise": {
+            "title": "Invariant",
+            "instructions": "Quel invariant doit maintenir la classe Compte du cours ?",
+            "hints": ["Regardez la validation du constructeur et du retrait.", "Le solde peut-il devenir négatif ?"],
+            "solution": "Le solde ne doit jamais être négatif : le constructeur et le retrait refusent les valeurs invalides."
+          },
+          "quiz": [
+            { "id": "pyi-01-q1", "type": "single", "difficulty": 1, "question": "Que reçoit __init__ comme premier paramètre ?", "options": ["self, l'instance", "la classe", "un module", "le solde"], "answer": 0, "explanation": "self désigne l'objet en cours d'initialisation.", "hints": [] },
+            { "id": "pyi-01-q2", "type": "single", "difficulty": 2, "question": "Que signifie un attribut préfixé par _ en Python ?", "options": ["Une convention d'attribut interne", "Une protection absolue", "Un attribut de classe", "Une constante"], "answer": 0, "explanation": "C'est une convention ; l'accès reste techniquement possible.", "hints": [] }
+          ]
+        },
+        {
+          "id": "pyi-02",
+          "title": "Héritage, composition et dataclasses",
+          "duration": 20,
+          "objectives": ["Choisir entre héritage et composition", "Utiliser une dataclass"],
+          "content": [
+            { "type": "p", "text": "L'**héritage** exprime « est un », la **composition** exprime « a un ». En pratique, la composition est plus souple : on assemble des objets plutôt que de figer une hiérarchie. Les **dataclasses** génèrent constructeur, comparaison et affichage pour des données simples." },
+            { "type": "code", "lang": "python", "code": "from dataclasses import dataclass, field\n\n@dataclass(frozen=True)\nclass Article:\n    nom: str\n    prix: float\n\n@dataclass\nclass Panier:\n    articles: list[Article] = field(default_factory=list)\n\n    def total(self) -> float:\n        return sum(a.prix for a in self.articles)" },
+            { "type": "p", "text": "`frozen=True` rend l'objet immuable, utile pour les valeurs qui ne doivent pas changer. `field(default_factory=list)` évite le piège classique de la liste partagée entre instances." },
+            { "type": "warning", "text": "Un attribut mutable en valeur par défaut (`articles=[]`) est partagé par toutes les instances. Utilisez toujours default_factory." }
+          ],
+          "exercise": {
+            "title": "Composition",
+            "instructions": "Un panier contient des articles. Héritage ou composition ?",
+            "hints": ["Un panier n'est pas un article.", "Il en contient."],
+            "solution": "Composition : le panier possède une liste d'articles."
+          },
+          "quiz": [
+            { "id": "pyi-02-q1", "type": "single", "difficulty": 1, "question": "Que génère une dataclass ?", "options": ["Constructeur et comparaison", "Un serveur web", "Une base de données", "Un test"], "answer": 0, "explanation": "La dataclass génère les méthodes usuelles à partir des champs.", "hints": [] },
+            { "id": "pyi-02-q2", "type": "single", "difficulty": 3, "question": "Pourquoi default_factory=list plutôt que articles=[] ?", "options": ["Pour éviter une liste partagée entre instances", "Pour trier la liste", "Pour la rendre immuable", "Pour économiser la mémoire"], "answer": 0, "explanation": "Une valeur mutable par défaut est partagée par toutes les instances.", "hints": [] }
+          ]
+        },
+        {
+          "id": "pyi-03",
+          "title": "Modules, packages et environnements",
+          "duration": 18,
+          "objectives": ["Organiser un package", "Isoler les dépendances"],
+          "content": [
+            { "type": "p", "text": "Un **module** est un fichier `.py`, un **package** un dossier avec `__init__.py`. Un **environnement virtuel** isole les dépendances d'un projet. On déclare les dépendances dans `requirements.txt` ou `pyproject.toml`." },
+            { "type": "code", "lang": "bash", "code": "python -m venv .venv\nsource .venv/bin/activate      # Windows : .venv\\Scripts\\activate\npip install -r requirements.txt\npip freeze > requirements.txt" },
+            { "type": "p", "text": "Les imports absolus (`from monprojet.utils import nettoyer`) restent lisibles dans un projet structuré ; les imports relatifs servent à l'intérieur d'un package." },
+            { "type": "warning", "text": "Ne versionnez pas le dossier `.venv` : il contient des binaires propres à la machine. Versionnez la liste des dépendances." }
+          ],
+          "exercise": {
+            "title": "Créer un environnement",
+            "instructions": "Quelles commandes créent puis activent un environnement virtuel sous Linux ?",
+            "hints": ["Le module s'appelle venv.", "L'activation utilise source."],
+            "solution": "python -m venv .venv puis source .venv/bin/activate"
+          },
+          "quiz": [
+            { "id": "pyi-03-q1", "type": "single", "difficulty": 1, "question": "À quoi sert un environnement virtuel ?", "options": ["À isoler les dépendances d'un projet", "À accélérer Python", "À créer une base", "À compiler du C"], "answer": 0, "explanation": "Chaque projet garde ses versions sans conflit.", "hints": [] },
+            { "id": "pyi-03-q2", "type": "truefalse", "difficulty": 2, "question": "Le dossier .venv doit être versionné dans Git.", "answer": false, "explanation": "Il est propre à la machine : on versionne la liste des dépendances.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pyi-m2",
+      "title": "Données et fiabilité",
+      "chapters": [
+        {
+          "id": "pyi-04",
+          "title": "CSV, JSON et chemins",
+          "duration": 20,
+          "objectives": ["Lire un CSV", "Manipuler des chemins proprement"],
+          "content": [
+            { "type": "p", "text": "Le module `csv` lit les tableaux ligne par ligne ; `json` sérialise des structures. `pathlib` gère les chemins de façon portable, sans concaténer des chaînes avec des barres obliques." },
+            { "type": "code", "lang": "python", "code": "import csv, json\nfrom pathlib import Path\n\ndossier = Path(\"donnees\")\ndossier.mkdir(exist_ok=True)\n\nwith (dossier / \"clients.csv\").open(encoding=\"utf-8\", newline=\"\") as f:\n    for ligne in csv.DictReader(f):\n        print(ligne[\"nom\"])\n\n(dossier / \"config.json\").write_text(json.dumps({\"theme\": \"sombre\"}), encoding=\"utf-8\")" },
+            { "type": "p", "text": "Toujours préciser `encoding=\"utf-8\"` et `newline=\"\"` pour le CSV : sans cela, les accents et les sauts de ligne varient selon la plateforme." },
+            { "type": "warning", "text": "Ne construisez pas un chemin par concaténation : utilisez l'opérateur `/` de Path, qui gère les séparateurs de chaque système." }
+          ],
+          "exercise": {
+            "title": "Chemin portable",
+            "instructions": "Comment construire le chemin donnees/clients.csv avec pathlib ?",
+            "hints": ["Path accepte plusieurs segments.", "L'opérateur / joint les segments."],
+            "solution": "Path(\"donnees\") / \"clients.csv\""
+          },
+          "quiz": [
+            { "id": "pyi-04-q1", "type": "single", "difficulty": 1, "question": "Pourquoi préciser encoding=\"utf-8\" ?", "options": ["Pour un comportement identique sur toutes les plateformes", "Pour compresser le fichier", "Pour chiffrer", "Pour accélérer la lecture"], "answer": 0, "explanation": "L'encodage par défaut varie selon le système.", "hints": [] },
+            { "id": "pyi-04-q2", "type": "single", "difficulty": 2, "question": "Que lit csv.DictReader ?", "options": ["Chaque ligne comme un dictionnaire", "Un fichier JSON", "Un binaire", "Une base SQL"], "answer": 0, "explanation": "La première ligne fournit les noms de colonnes.", "hints": [] }
+          ]
+        },
+        {
+          "id": "pyi-05",
+          "title": "Tests unitaires et erreurs",
+          "duration": 22,
+          "objectives": ["Écrire un test pytest", "Tester un cas d'erreur"],
+          "content": [
+            { "type": "p", "text": "Un test unitaire vérifie un comportement isolé. Avec `pytest`, une fonction dont le nom commence par `test_` est exécutée ; `assert` exprime l'attendu. `pytest.raises` vérifie qu'une erreur est bien levée." },
+            { "type": "code", "lang": "python", "code": "import pytest\nfrom compte import Compte\n\ndef test_retrait_reduit_le_solde():\n    c = Compte(100)\n    c.retirer(30)\n    assert c.solde == 70\n\ndef test_retrait_trop_grand_refuse():\n    c = Compte(100)\n    with pytest.raises(ValueError):\n        c.retirer(150)" },
+            { "type": "p", "text": "Les erreurs doivent être spécifiques : lever `ValueError` plutôt qu'une exception générique. Un `except Exception` trop large masque les défauts." },
+            { "type": "warning", "text": "Un test qui dépend de l'heure, du hasard ou du réseau devient instable. Injectez les valeurs ou simulez la dépendance." }
+          ],
+          "exercise": {
+            "title": "Tester une erreur",
+            "instructions": "Comment vérifier avec pytest qu'un retrait trop grand lève ValueError ?",
+            "hints": ["Le contexte s'écrit with pytest.raises(...).", "L'appel fautif va dans le bloc."],
+            "solution": "with pytest.raises(ValueError):\n    compte.retirer(150)"
+          },
+          "quiz": [
+            { "id": "pyi-05-q1", "type": "single", "difficulty": 1, "question": "Comment pytest reconnaît-il un test ?", "options": ["Le nom commence par test_", "Le fichier finit par .test", "Une annotation spéciale", "Un dossier tests uniquement"], "answer": 0, "explanation": "La convention de nommage suffit à la découverte.", "hints": [] },
+            { "id": "pyi-05-q2", "type": "single", "difficulty": 2, "question": "Pourquoi éviter except Exception ?", "options": ["Il masque des erreurs inattendues", "Il est plus lent", "Il supprime les tests", "Il n'existe pas"], "answer": 0, "explanation": "Attraper tout empêche de voir les défauts réels.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Gestionnaire d'inventaire en Python",
+    "brief": "Écrivez un package Python qui lit un CSV d'articles, le stocke dans une dataclass et produit un rapport JSON, avec tests.",
+    "steps": [
+      "Créer un environnement virtuel et déclarer les dépendances.",
+      "Définir les dataclasses Article et Inventaire avec leurs invariants.",
+      "Lire le CSV avec encoding et newline explicites.",
+      "Écrire le rapport JSON et gérer les fichiers absents.",
+      "Écrire les tests pytest, y compris les cas d'erreur."
+    ],
+    "criteria": [
+      "Les tests couvrent un cas normal et un cas d'erreur.",
+      "Aucune erreur ne fait planter le programme sans message.",
+      "Le rapport est identique sur deux systèmes différents."
+    ]
+  }
+}

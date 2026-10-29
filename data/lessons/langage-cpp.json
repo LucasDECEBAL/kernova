@@ -1,0 +1,143 @@
+{
+  "courseId": "langage-cpp",
+  "modules": [
+    {
+      "id": "cpp-m1",
+      "title": "C++ moderne",
+      "chapters": [
+        {
+          "id": "cpp-01",
+          "title": "Références, surcharge et espaces de noms",
+          "duration": 18,
+          "objectives": ["Utiliser une référence", "Comprendre la surcharge"],
+          "content": [
+            { "type": "p", "text": "Une **référence** (`int&`) est un alias d'une variable existante : elle ne peut pas être nulle et ne se réaffecte pas. Elle évite les copies coûteuses, notamment pour les paramètres de fonctions." },
+            { "type": "code", "lang": "cpp", "code": "#include <iostream>\n#include <string>\n\nvoid saluer(const std::string& nom) {\n    std::cout << \"Bonjour \" << nom << '\\n';\n}\n\nint main() {\n    saluer(\"Ada\");\n}" },
+            { "type": "p", "text": "La **surcharge** permet plusieurs fonctions de même nom, différenciées par leurs paramètres. Les **espaces de noms** évitent les collisions de noms entre bibliothèques." },
+            { "type": "warning", "text": "Évitez `using namespace std;` dans un en-tête : cela pollue l'espace de noms de tous les fichiers qui l'incluent." }
+          ],
+          "exercise": {
+            "title": "Passer par référence constante",
+            "instructions": "Pourquoi écrire const std::string& plutôt que std::string pour un paramètre lu seulement ?",
+            "hints": ["Une copie de chaîne coûte cher.", "const empêche la modification."],
+            "solution": "La référence évite la copie et const garantit que la fonction ne modifie pas l'argument."
+          },
+          "quiz": [
+            { "id": "cpp-01-q1", "type": "single", "difficulty": 1, "question": "Que permet une référence ?", "options": ["Désigner une variable existante sans copie", "Créer une copie", "Allouer de la mémoire", "Lancer un thread"], "answer": 0, "explanation": "La référence est un alias de la variable d'origine.", "hints": [] },
+            { "id": "cpp-01-q2", "type": "truefalse", "difficulty": 2, "question": "using namespace std; dans un en-tête est une bonne pratique.", "answer": false, "explanation": "Cela pollue l'espace de noms des fichiers clients.", "hints": [] }
+          ]
+        },
+        {
+          "id": "cpp-02",
+          "title": "Classes, constructeurs et destructeurs",
+          "duration": 20,
+          "objectives": ["Écrire une classe avec constructeur", "Comprendre RAII"],
+          "content": [
+            { "type": "p", "text": "Une **classe** regroupe des données et des méthodes. Le **constructeur** initialise l'objet, le **destructeur** libère ce qu'il possède. Ce couplage automatique s'appelle **RAII** : une ressource vit aussi longtemps que l'objet qui la détient." },
+            { "type": "code", "lang": "cpp", "code": "class Fichier {\npublic:\n    explicit Fichier(const std::string& chemin)\n        : flux(chemin) {}\n    bool ouvert() const { return flux.is_open(); }\nprivate:\n    std::ifstream flux;\n};" },
+            { "type": "p", "text": "Avec RAII, plus besoin de fermer à la main : le destructeur s'exécute à la sortie de portée, y compris lors d'une exception." },
+            { "type": "warning", "text": "Un constructeur à un argument non marqué `explicit` autorise des conversions implicites et des bugs silencieux." }
+          ],
+          "exercise": {
+            "title": "À quoi sert RAII ?",
+            "instructions": "Expliquez le lien entre la durée de vie d'un objet et la libération d'une ressource en RAII.",
+            "hints": ["Le destructeur est appelé à la sortie de portée.", "Les exceptions déclenchent aussi les destructeurs."],
+            "solution": "La ressource est acquise dans le constructeur et libérée dans le destructeur : elle est donc libérée automatiquement, même en cas d'exception."
+          },
+          "quiz": [
+            { "id": "cpp-02-q1", "type": "single", "difficulty": 2, "question": "Que garantit RAII ?", "options": ["La libération automatique des ressources à la fin de vie de l'objet", "Un programme plus rapide", "L'absence d'exceptions", "La copie des objets"], "answer": 0, "explanation": "Le destructeur libère la ressource à la sortie de portée.", "hints": [] },
+            { "id": "cpp-02-q2", "type": "single", "difficulty": 2, "question": "Que fait le mot-clé explicit ?", "options": ["Il interdit les conversions implicites", "Il rend la classe abstraite", "Il supprime le destructeur", "Il exporte la classe"], "answer": 0, "explanation": "explicit empêche une conversion automatique depuis le type du paramètre.", "hints": [] }
+          ]
+        },
+        {
+          "id": "cpp-03",
+          "title": "Héritage et polymorphisme",
+          "duration": 20,
+          "objectives": ["Écrire une hiérarchie", "Utiliser virtual et override"],
+          "content": [
+            { "type": "p", "text": "L'**héritage** exprime une relation « est un ». Le **polymorphisme** permet d'appeler la méthode adaptée au type réel de l'objet via un pointeur ou une référence de base." },
+            { "type": "code", "lang": "cpp", "code": "class Forme {\npublic:\n    virtual ~Forme() = default;\n    virtual double aire() const = 0;\n};\n\nclass Cercle : public Forme {\npublic:\n    explicit Cercle(double r) : rayon(r) {}\n    double aire() const override { return 3.14159 * rayon * rayon; }\nprivate:\n    double rayon;\n};" },
+            { "type": "p", "text": "Une classe avec une méthode virtuelle pure est **abstraite** : elle ne peut pas être instanciée. Le mot-clé `override` fait vérifier par le compilateur que la méthode redéfinit bien une méthode virtuelle." },
+            { "type": "warning", "text": "Un destructeur de classe de base doit être virtuel. Sinon, supprimer un objet dérivé via un pointeur de base ne détruit pas correctement la partie dérivée." }
+          ],
+          "exercise": {
+            "title": "Destructeur virtuel",
+            "instructions": "Pourquoi le destructeur de Forme doit-il être virtual ?",
+            "hints": ["On supprime parfois via un pointeur de base.", "Sans virtual, seul le destructeur de base est appelé."],
+            "solution": "Pour que la suppression via un pointeur de base appelle le destructeur du type réel et libère correctement les ressources dérivées."
+          },
+          "quiz": [
+            { "id": "cpp-03-q1", "type": "single", "difficulty": 2, "question": "Que permet virtual ?", "options": ["La résolution de la méthode selon le type réel de l'objet", "Une compilation plus rapide", "La copie des objets", "L'accès aux membres privés"], "answer": 0, "explanation": "La méthode virtuelle est choisie à l'exécution selon le type dynamique.", "hints": [] },
+            { "id": "cpp-03-q2", "type": "single", "difficulty": 3, "question": "Que signifie = 0 après une méthode virtuelle ?", "options": ["La méthode est pure, la classe est abstraite", "La méthode est vide", "La méthode est privée", "La méthode est statique"], "answer": 0, "explanation": "Une méthode virtuelle pure rend la classe abstraite.", "hints": [] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cpp-m2",
+      "title": "STL et ressources",
+      "chapters": [
+        {
+          "id": "cpp-04",
+          "title": "Conteneurs et itérateurs",
+          "duration": 20,
+          "objectives": ["Choisir un conteneur", "Parcourir avec un itérateur"],
+          "content": [
+            { "type": "p", "text": "La **STL** fournit des conteneurs prêts à l'emploi : `vector` (tableau dynamique), `map` (dictionnaire ordonné), `set`, `deque`, `unordered_map` (hachage). Choisissez selon les opérations dominantes : accès par indice, recherche, insertion." },
+            { "type": "code", "lang": "cpp", "code": "#include <vector>\n#include <algorithm>\n\nstd::vector<int> notes{12, 15, 9};\nnotes.push_back(18);\nstd::sort(notes.begin(), notes.end());\n\nfor (int n : notes) std::cout << n << ' ';" },
+            { "type": "p", "text": "Les **itérateurs** généralisent les pointeurs : `begin()` et `end()` délimitent une séquence. `end()` désigne la position *après* le dernier élément, jamais un élément valide." },
+            { "type": "warning", "text": "Modifier un conteneur pendant une boucle peut invalider les itérateurs. Utilisez les algorithmes adaptés ou parcourez une copie." }
+          ],
+          "exercise": {
+            "title": "Choisir un conteneur",
+            "instructions": "Vous cherchez souvent une valeur par clé, sans ordre particulier. Quel conteneur choisir ?",
+            "hints": ["L'ordre n'a pas d'importance.", "Le hachage donne une recherche rapide."],
+            "solution": "unordered_map : recherche moyenne en temps constant, sans maintien d'ordre."
+          },
+          "quiz": [
+            { "id": "cpp-04-q1", "type": "single", "difficulty": 1, "question": "Que désigne end() ?", "options": ["La position après le dernier élément", "Le dernier élément", "Le premier élément", "Un élément nul"], "answer": 0, "explanation": "end() est une borne, pas un élément accessible.", "hints": [] },
+            { "id": "cpp-04-q2", "type": "single", "difficulty": 2, "question": "Quel conteneur offre une recherche par clé sans ordre ?", "options": ["unordered_map", "vector", "array", "deque"], "answer": 0, "explanation": "unordered_map repose sur une table de hachage.", "hints": [] }
+          ]
+        },
+        {
+          "id": "cpp-05",
+          "title": "Gestion des ressources et smart pointers",
+          "duration": 20,
+          "objectives": ["Utiliser unique_ptr et shared_ptr", "Éviter les fuites"],
+          "content": [
+            { "type": "p", "text": "Les **pointeurs intelligents** appliquent RAII à la mémoire dynamique. `unique_ptr` possède seul l'objet et le libère à sa destruction ; `shared_ptr` partage la propriété et libère quand le dernier propriétaire disparaît." },
+            { "type": "code", "lang": "cpp", "code": "#include <memory>\n\nauto p = std::make_unique<int>(42);\n// libération automatique à la sortie de portée\n\nauto q = std::make_shared<std::string>(\"texte\");\nauto r = q; // même objet, deux propriétaires" },
+            { "type": "p", "text": "Utilisez `unique_ptr` par défaut : la propriété unique est plus simple à raisonner. Réservez `shared_ptr` aux cas de partage réel." },
+            { "type": "warning", "text": "Deux shared_ptr créés indépendamment sur le même objet brut provoquent une double libération. Utilisez make_shared." }
+          ],
+          "exercise": {
+            "title": "Choisir la propriété",
+            "instructions": "Une ressource n'a qu'un propriétaire logique. unique_ptr ou shared_ptr ?",
+            "hints": ["La propriété unique simplifie la durée de vie.", "shared_ptr ajoute un compteur de références."],
+            "solution": "unique_ptr : un seul propriétaire, libération automatique, pas de compteur inutile."
+          },
+          "quiz": [
+            { "id": "cpp-05-q1", "type": "single", "difficulty": 2, "question": "Quand un shared_ptr libère-t-il l'objet ?", "options": ["Quand le dernier propriétaire disparaît", "Immédiatement", "Jamais", "À la fin du programme uniquement"], "answer": 0, "explanation": "Le compteur de références atteint zéro au départ du dernier propriétaire.", "hints": [] },
+            { "id": "cpp-05-q2", "type": "truefalse", "difficulty": 2, "question": "Deux shared_ptr construits séparément sur le même pointeur brut sont sûrs.", "answer": false, "explanation": "Ils ne partagent pas le même compteur et peuvent provoquer une double libération.", "hints": [] }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Gestionnaire de tâches en C++",
+    "brief": "Écrivez un programme C++ qui gère une liste de tâches en mémoire, avec tri et sauvegarde.",
+    "steps": [
+      "Définir une classe Tache avec un état et une priorité.",
+      "Stocker les tâches dans un vector et écrire les opérations d'ajout et de tri.",
+      "Utiliser des références constantes pour éviter les copies.",
+      "Sauvegarder et recharger les tâches avec un flux de fichier RAII.",
+      "Compiler avec les avertissements activés et vérifier l'absence de fuite."
+    ],
+    "criteria": [
+      "Aucun new ni delete manuel : les ressources utilisent RAII.",
+      "Le programme compile sans avertissement.",
+      "Les tâches sont rechargées correctement au redémarrage."
+    ]
+  }
+}

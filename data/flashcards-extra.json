@@ -1,0 +1,94 @@
+{
+  "packs": [
+    {
+      "id": "html-css",
+      "title": "HTML et CSS",
+      "description": "Structure d'une page, sémantique, boîte et mise en page.",
+      "cards": [
+        { "id": "htmlcss-1", "q": "Combien de titres `h1` une page doit-elle contenir ?", "a": "Un seul, qui décrit le sujet principal. Les sections utilisent `h2`, puis `h3`." },
+        { "id": "htmlcss-2", "q": "À quoi sert l'attribut `alt` d'une image ?", "a": "Il décrit l'image pour les lecteurs d'écran et s'affiche si le fichier ne charge pas." },
+        { "id": "htmlcss-3", "q": "Quel élément structure la navigation principale ?", "a": "`<nav>`." },
+        { "id": "htmlcss-4", "q": "Que contient le modèle de boîte CSS ?", "a": "Le contenu, le padding (espace intérieur), la bordure et la marge (espace extérieur)." },
+        { "id": "htmlcss-5", "q": "Que fait `box-sizing: border-box` ?", "a": "Il inclut le padding et la bordure dans la largeur et la hauteur déclarées." },
+        { "id": "htmlcss-6", "q": "Quel sélecteur a la plus forte spécificité : `.carte`, `#entete` ou `p` ?", "a": "`#entete` (identifiant), puis `.carte` (classe), puis `p` (élément)." },
+        { "id": "htmlcss-7", "q": "Comment centrer horizontalement les enfants d'un conteneur flex ?", "a": "`justify-content: center;` sur le conteneur." },
+        { "id": "htmlcss-8", "q": "Quelle balise est indispensable pour un affichage correct sur mobile ?", "a": "`<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">`." }
+      ]
+    },
+    {
+      "id": "javascript",
+      "title": "JavaScript",
+      "description": "Langage, fonctions, DOM et stockage local.",
+      "cards": [
+        { "id": "js-1", "q": "Quelle différence entre `let` et `const` ?", "a": "`let` autorise la réaffectation ; `const` l'interdit (mais l'objet désigné reste modifiable)." },
+        { "id": "js-2", "q": "Pourquoi préférer `===` à `==` ?", "a": "`===` compare valeur et type, sans conversion implicite." },
+        { "id": "js-3", "q": "Que renvoie `typeof \"texte\"` ?", "a": "`\"string\"`." },
+        { "id": "js-4", "q": "Que fait `array.map(fn)` ?", "a": "Il renvoie un nouveau tableau en appliquant `fn` à chaque élément." },
+        { "id": "js-5", "q": "Que fait `array.filter(fn)` ?", "a": "Il garde les éléments pour lesquels `fn` renvoie vrai." },
+        { "id": "js-6", "q": "Quelle propriété insère du texte sans interpréter le HTML ?", "a": "`textContent`. `innerHTML` interprète le HTML et expose aux XSS." },
+        { "id": "js-7", "q": "Comment convertir un objet en chaîne JSON ?", "a": "`JSON.stringify(objet)`, puis `JSON.parse(texte)` pour le relire." },
+        { "id": "js-8", "q": "Pourquoi placer un script avec `defer` ?", "a": "Pour qu'il s'exécute après l'analyse du document, quand les éléments du DOM existent." }
+      ]
+    },
+    {
+      "id": "algorithmique",
+      "title": "Algorithmique",
+      "description": "Structures de contrôle, fonctions et complexité.",
+      "cards": [
+        { "id": "algo-1", "q": "Quelles sont les trois structures de base d'un algorithme ?", "a": "La séquence, la condition et la boucle." },
+        { "id": "algo-2", "q": "Que donne `17 MOD 5` ?", "a": "2, le reste de la division entière (5 × 3 = 15)." },
+        { "id": "algo-3", "q": "Quand utiliser `while` plutôt que `for` ?", "a": "Quand le nombre d'itérations n'est pas connu à l'avance, mais dépend d'une condition." },
+        { "id": "algo-4", "q": "Quelle est la complexité d'une recherche linéaire dans le pire cas ?", "a": "O(n) : il faut examiner jusqu'à n éléments." },
+        { "id": "algo-5", "q": "Quelle est la complexité d'une recherche dichotomique ?", "a": "O(log n), à condition que les données soient triées." },
+        { "id": "algo-6", "q": "Quel principe suit une pile ?", "a": "LIFO : dernier entré, premier sorti." },
+        { "id": "algo-7", "q": "Quel principe suit une file ?", "a": "FIFO : premier entré, premier sorti." },
+        { "id": "algo-8", "q": "Que doit contenir une fonction récursive pour s'arrêter ?", "a": "Un cas de base testé avant l'appel récursif." }
+      ]
+    },
+    {
+      "id": "cloud",
+      "title": "Cloud computing",
+      "description": "Modèles de service, régions, stockage et sécurité.",
+      "cards": [
+        { "id": "cloud-1", "q": "Que signifie IaaS ?", "a": "Infrastructure as a Service : on loue des ressources brutes (machines, réseaux, stockage)." },
+        { "id": "cloud-2", "q": "Que signifie PaaS ?", "a": "Platform as a Service : la plateforme gère le système et l'exécution, on déploie son application." },
+        { "id": "cloud-3", "q": "Que signifie SaaS ?", "a": "Software as a Service : on utilise un logiciel prêt à l'emploi, géré par le fournisseur." },
+        { "id": "cloud-4", "q": "Quelle différence entre une région et une zone de disponibilité ?", "a": "Une région est une zone géographique ; une zone est un centre de données isolé à l'intérieur d'une région." },
+        { "id": "cloud-5", "q": "Qu'est-ce que le modèle de responsabilité partagée ?", "a": "Le fournisseur protège l'infrastructure ; le client protège ses données, ses accès et sa configuration." },
+        { "id": "cloud-6", "q": "À quoi sert l'autoscaling ?", "a": "À ajuster automatiquement le nombre d'instances selon la charge, pour la performance et le coût." },
+        { "id": "cloud-7", "q": "Qu'est-ce que le stockage objet ?", "a": "Un stockage de fichiers par clé, adapté aux volumes importants, souvent accessible par HTTP." },
+        { "id": "cloud-8", "q": "Que vérifie le principe du moindre privilège dans le cloud ?", "a": "Chaque identité ne dispose que des permissions strictement nécessaires à sa tâche." }
+      ]
+    },
+    {
+      "id": "devops",
+      "title": "DevOps et CI/CD",
+      "description": "Pipelines, infrastructure as code et fiabilité.",
+      "cards": [
+        { "id": "devops-1", "q": "Quelle différence entre intégration continue et livraison continue ?", "a": "L'intégration vérifie chaque modification automatiquement ; la livraison la rend déployable à tout moment, le déploiement restant une décision." },
+        { "id": "devops-2", "q": "Qu'est-ce qu'un pipeline ?", "a": "Une suite d'étapes automatisées : installation, tests, construction, publication, déploiement." },
+        { "id": "devops-3", "q": "Qu'est-ce que l'infrastructure as code ?", "a": "Décrire l'infrastructure dans des fichiers versionnés, appliqués par un outil (Terraform, Ansible)." },
+        { "id": "devops-4", "q": "Qu'est-ce qu'un artefact ?", "a": "Le résultat construit par le pipeline (paquet, image de conteneur), conservé et versionné." },
+        { "id": "devops-5", "q": "Que fait un déploiement blue-green ?", "a": "Il bascule le trafic d'un environnement stable vers un nouvel environnement, ce qui permet un retour arrière rapide." },
+        { "id": "devops-6", "q": "Que sont SLI, SLO et SLA ?", "a": "L'indicateur mesuré (SLI), l'objectif interne (SLO) et l'engagement contractuel (SLA)." },
+        { "id": "devops-7", "q": "Pourquoi ne pas stocker de secrets en clair dans un dépôt ?", "a": "Ils restent lisibles dans l'historique ; il faut utiliser un coffre-fort de secrets et les révoquer en cas de fuite." },
+        { "id": "devops-8", "q": "À quoi sert un déploiement canary ?", "a": "À exposer une nouvelle version à une petite partie du trafic pour détecter les problèmes avant généralisation." }
+      ]
+    },
+    {
+      "id": "ia",
+      "title": "Intelligence artificielle",
+      "description": "Machine learning, réseaux de neurones et modèles de langage.",
+      "cards": [
+        { "id": "ia-1", "q": "Quelle différence entre IA, machine learning et deep learning ?", "a": "L'IA est le domaine général ; le machine learning apprend à partir de données ; le deep learning utilise des réseaux de neurones profonds." },
+        { "id": "ia-2", "q": "Quelle différence entre apprentissage supervisé et non supervisé ?", "a": "Le supervisé apprend sur des données étiquetées ; le non supervisé cherche des structures sans étiquettes." },
+        { "id": "ia-3", "q": "Qu'est-ce que le surapprentissage ?", "a": "Le modèle apprend par cœur les données d'entraînement et généralise mal sur de nouvelles données." },
+        { "id": "ia-4", "q": "Qu'est-ce qu'un embedding ?", "a": "Une représentation vectorielle d'un texte ou d'une image, où la proximité traduit une ressemblance de sens." },
+        { "id": "ia-5", "q": "Que signifie RAG ?", "a": "Retrieval-Augmented Generation : on recherche des documents pertinents, puis on les fournit au modèle pour répondre." },
+        { "id": "ia-6", "q": "Qu'est-ce qu'une hallucination de modèle de langage ?", "a": "Une réponse plausible mais factuellement fausse, produite avec assurance." },
+        { "id": "ia-7", "q": "Qu'est-ce qu'une attaque par injection de prompt ?", "a": "Insérer des instructions dans une entrée pour détourner le comportement du modèle." },
+        { "id": "ia-8", "q": "Qu'est-ce qu'un token dans un modèle de langage ?", "a": "Une unité de texte (mot, partie de mot, ponctuation) que le modèle traite et compte." }
+      ]
+    }
+  ]
+}
