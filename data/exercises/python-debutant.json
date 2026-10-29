@@ -1,0 +1,125 @@
+{
+  "courseId": "python-debutant",
+  "chapters": {
+    "py-01": {
+      "exercise": {
+        "title": "Afficher un message",
+        "instructions": "Écrivez un programme qui affiche « Mon premier programme ».",
+        "hints": ["La fonction d'affichage s'appelle print.", "Le texte doit être entre guillemets."],
+        "solution": "print(\"Mon premier programme\")"
+      },
+      "quiz": [
+        { "id": "py-01-q1", "type": "single", "difficulty": 1, "question": "Quelle fonction affiche du texte dans le terminal ?", "options": ["input", "print", "def", "len"], "answer": 1, "explanation": "print affiche ses arguments. input, en revanche, lit une saisie.", "hints": [] },
+        { "id": "py-01-q2", "type": "text", "difficulty": 1, "question": "Quelle commande lance le fichier bonjour.py avec Python 3 ?", "answer": ["python bonjour.py", "python3 bonjour.py"], "explanation": "Selon le système, la commande est python ou python3.", "hints": ["Le nom du programme vient après la commande de l'interpréteur."] }
+      ]
+    },
+    "py-02": {
+      "exercise": {
+        "title": "Une variable et une f-string",
+        "instructions": "Créez une variable prenom contenant votre prénom, puis affichez « Bonjour » suivi de ce prénom avec une f-string.",
+        "hints": ["Une f-string commence par f devant les guillemets.", "La variable s'insère entre accolades."],
+        "solution": "prenom = \"Ada\"\nprint(f\"Bonjour {prenom}\")"
+      },
+      "quiz": [
+        { "id": "py-02-q1", "type": "single", "difficulty": 1, "question": "Quel est le type de la valeur 3.14 ?", "options": ["int", "float", "str", "bool"], "answer": 1, "explanation": "Un nombre avec une partie décimale est un float.", "hints": [] },
+        { "id": "py-02-q2", "type": "truefalse", "difficulty": 1, "question": "En Python, il faut déclarer le type d'une variable avant de l'utiliser.", "answer": false, "explanation": "Python détermine le type à partir de la valeur affectée.", "hints": [] }
+      ]
+    },
+    "py-03": {
+      "exercise": {
+        "title": "Quotient et reste",
+        "instructions": "Quel est le résultat de 17 // 5 et de 17 % 5 ? Justifiez en une phrase.",
+        "hints": ["// donne la partie entière de la division.", "% donne le reste de la division."],
+        "solution": "17 // 5 vaut 3 (partie entière de 3,4) et 17 % 5 vaut 2 (le reste, car 5 × 3 = 15 et 17 − 15 = 2)."
+      },
+      "quiz": [
+        { "id": "py-03-q1", "type": "single", "difficulty": 1, "question": "Que renvoie input() ?", "options": ["Un entier", "Un nombre décimal", "Une chaîne de caractères", "Rien"], "answer": 2, "explanation": "input() renvoie toujours une chaîne. Il faut la convertir avec int() ou float() pour calculer.", "hints": [] },
+        { "id": "py-03-q2", "type": "single", "difficulty": 2, "question": "Quel est le résultat de \"2\" + \"3\" ?", "options": ["5", "23", "Une erreur"], "answer": 1, "explanation": "Deux chaînes sont concaténées : le résultat est le texte « 23 ».", "hints": ["Les guillemets indiquent des chaînes, pas des nombres."] }
+      ]
+    },
+    "py-04": {
+      "exercise": {
+        "title": "Majeur ou mineur",
+        "instructions": "Écrivez une condition qui affiche « Majeur » si age est supérieur ou égal à 18, et « Mineur » sinon.",
+        "hints": ["Utilisez if et else.", "Supérieur ou égal s'écrit >=."],
+        "solution": "if age >= 18:\n    print(\"Majeur\")\nelse:\n    print(\"Mineur\")"
+      },
+      "quiz": [
+        { "id": "py-04-q1", "type": "single", "difficulty": 1, "question": "Quel opérateur compare deux valeurs pour vérifier qu'elles sont égales ?", "options": ["=", "==", "!=", "<>"], "answer": 1, "explanation": "= affecte une valeur. != teste la différence, pas l'égalité.", "hints": ["Le double signe est celui de la comparaison."] },
+        { "id": "py-04-q2", "type": "multiple", "difficulty": 2, "question": "Quand x vaut 5, quelles expressions sont vraies ?", "options": ["x > 3 and x < 10", "x == 6 or x == 5", "not x == 5", "x >= 5"], "answer": [0, 1, 3], "explanation": "not x == 5 est faux car x vaut bien 5.", "hints": ["Évaluez chaque expression une par une."] }
+      ]
+    },
+    "py-05": {
+      "exercise": {
+        "title": "Compter de 1 à 5",
+        "instructions": "Écrivez une boucle qui affiche les nombres de 1 à 5.",
+        "hints": ["range(1, 6) produit 1, 2, 3, 4, 5.", "La boucle for parcourt la séquence élément par élément."],
+        "solution": "for i in range(1, 6):\n    print(i)"
+      },
+      "quiz": [
+        { "id": "py-05-q1", "type": "text", "difficulty": 1, "question": "Combien de fois la boucle `for i in range(3):` s'exécute-t-elle ?", "answer": ["3"], "explanation": "range(3) produit 0, 1 et 2 : trois tours.", "hints": ["La borne haute n'est jamais incluse."] },
+        { "id": "py-05-q2", "type": "single", "difficulty": 1, "question": "Quel mot-clé interrompt immédiatement une boucle ?", "options": ["continue", "break", "return", "stop"], "answer": 1, "explanation": "break sort de la boucle. continue passe seulement à l'itération suivante.", "hints": [] }
+      ]
+    },
+    "py-06": {
+      "exercise": {
+        "title": "Une fonction doubler",
+        "instructions": "Écrivez une fonction doubler(n) qui renvoie le double de n.",
+        "hints": ["Utilisez return.", "Le double de n s'écrit n * 2."],
+        "solution": "def doubler(n):\n    return n * 2"
+      },
+      "quiz": [
+        { "id": "py-06-q1", "type": "single", "difficulty": 2, "question": "Que renvoie une fonction qui ne contient aucun return ?", "options": ["0", "La chaîne vide", "None", "Une erreur"], "answer": 2, "explanation": "Sans return, Python renvoie None.", "hints": [] },
+        { "id": "py-06-q2", "type": "blank", "difficulty": 1, "question": "Pour définir une fonction, on utilise le mot-clé ___.", "answers": [["def"]], "explanation": "def ouvre la définition de la fonction, suivie de son nom et de ses paramètres.", "hints": ["Le mot-clé est court et vient de l'anglais « define »."] }
+      ]
+    },
+    "py-07": {
+      "exercise": {
+        "title": "Une liste de couleurs",
+        "instructions": "Créez une liste de trois couleurs, ajoutez « violet » à la fin, puis affichez le premier élément.",
+        "hints": ["append ajoute un élément à la fin.", "Le premier élément est à l'indice 0."],
+        "solution": "couleurs = [\"rouge\", \"vert\", \"bleu\"]\ncouleurs.append(\"violet\")\nprint(couleurs[0])"
+      },
+      "quiz": [
+        { "id": "py-07-q1", "type": "single", "difficulty": 1, "question": "Quel est l'indice du premier élément d'une liste ?", "options": ["1", "0", "-1", "Il n'existe pas"], "answer": 1, "explanation": "Les indices commencent à 0 en Python.", "hints": [] },
+        { "id": "py-07-q2", "type": "single", "difficulty": 2, "question": "Que donne l'expression [10, 20, 30, 40][1:3] ?", "options": ["[10, 20]", "[20, 30]", "[20, 30, 40]", "[30, 40]"], "answer": 1, "explanation": "Le découpage prend les indices 1 et 2. L'indice 3 n'est pas inclus.", "hints": ["La borne haute n'est jamais incluse."] }
+      ]
+    },
+    "py-08": {
+      "exercise": {
+        "title": "Un dictionnaire sûr",
+        "instructions": "Créez un dictionnaire personne avec les clés nom et age. Affichez la valeur de la clé ville en utilisant get, avec la valeur par défaut « inconnu ».",
+        "hints": ["Utilisez personne.get(...).", "La valeur par défaut est le second argument de get."],
+        "solution": "personne = {\"nom\": \"Ada\", \"age\": 36}\nprint(personne.get(\"ville\", \"inconnu\"))"
+      },
+      "quiz": [
+        { "id": "py-08-q1", "type": "match", "difficulty": 2, "question": "Associez chaque expression à son comportement.", "left": ["d['cle']", "d.get('cle')", "d.keys()"], "right": ["Renvoie les clés du dictionnaire", "Renvoie None si la clé est absente", "Lève KeyError si la clé est absente"], "answer": [2, 1, 0], "explanation": "Accéder avec des crochets échoue si la clé manque. get évite l'erreur. keys donne les clés.", "hints": [] },
+        { "id": "py-08-q2", "type": "truefalse", "difficulty": 2, "question": "Une liste peut être utilisée comme clé de dictionnaire.", "answer": false, "explanation": "Les clés doivent être immuables. Une liste est modifiable, donc elle est refusée.", "hints": [] }
+      ]
+    },
+    "py-09": {
+      "exercise": {
+        "title": "Ajouter sans effacer",
+        "instructions": "Quel mode faut-il utiliser pour ajouter une ligne à la fin d'un fichier existant sans effacer son contenu ?",
+        "hints": ["Le mode d'ajout est la lettre a.", "Le mode w efface le fichier."],
+        "solution": "Le mode \"a\" (append), par exemple open(\"notes.txt\", \"a\", encoding=\"utf-8\")."
+      },
+      "quiz": [
+        { "id": "py-09-q1", "type": "single", "difficulty": 1, "question": "Que fait le mode \"w\" de open ?", "options": ["Lit le fichier", "Efface le contenu existant puis écrit", "Ajoute à la fin", "Supprime le fichier"], "answer": 1, "explanation": "Le mode w crée le fichier ou l'écrase. C'est la différence avec le mode a.", "hints": [] },
+        { "id": "py-09-q2", "type": "truefalse", "difficulty": 1, "question": "Le bloc with ferme automatiquement le fichier, même en cas d'erreur.", "answer": true, "explanation": "C'est le rôle du gestionnaire de contexte with.", "hints": [] }
+      ]
+    },
+    "py-10": {
+      "exercise": {
+        "title": "Une saisie qui ne plante pas",
+        "instructions": "Écrivez un programme qui demande un entier. S'il ne s'agit pas d'un entier, il affiche « Erreur » au lieu de s'arrêter.",
+        "hints": ["Utilisez try et except ValueError.", "La conversion se fait avec int()."],
+        "solution": "try:\n    n = int(input(\"Nombre : \"))\nexcept ValueError:\n    print(\"Erreur\")"
+      },
+      "quiz": [
+        { "id": "py-10-q1", "type": "single", "difficulty": 1, "question": "Quelle exception est levée par int(\"abc\") ?", "options": ["TypeError", "ValueError", "KeyError", "NameError"], "answer": 1, "explanation": "La chaîne a une forme incompatible avec un entier : c'est une ValueError.", "hints": [] },
+        { "id": "py-10-q2", "type": "single", "difficulty": 1, "question": "Quel bloc s'exécute toujours, même en cas d'erreur ?", "options": ["else", "except", "finally", "raise"], "answer": 2, "explanation": "finally s'exécute dans tous les cas, ce qui le rend utile pour libérer des ressources.", "hints": [] }
+      ]
+    }
+  }
+}

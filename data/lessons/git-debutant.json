@@ -1,0 +1,242 @@
+{
+  "courseId": "git-debutant",
+  "modules": [
+    {
+      "id": "git-m1",
+      "title": "Comprendre Git",
+      "chapters": [
+        {
+          "id": "git-01",
+          "title": "Comprendre le contrôle de version",
+          "duration": 12,
+          "objectives": [
+            "Expliquer ce qu'est un système de contrôle de version",
+            "Distinguer un dépôt local d'un dépôt distant"
+          ],
+          "content": [
+            { "type": "p", "text": "Un projet évolue : on ajoute une fonctionnalité, on corrige une erreur, on change d'avis. Sans méthode, on finit avec des fichiers `rapport-final-v2-VRAI.docx`. Un **système de contrôle de version** garde l'historique complet des modifications, permet de revenir à un état précédent et de comprendre qui a changé quoi, et pourquoi." },
+            { "type": "p", "text": "**Git** est le système le plus répandu. Il fonctionne **localement** : toute l'historique est stocké dans le dossier du projet, sans serveur. Un serveur distant (comme GitHub) sert ensuite à partager et sauvegarder le travail." },
+            { "type": "h", "text": "Vocabulaire de base" },
+            { "type": "list", "items": [
+              "**Dépôt** (repository) : le projet et tout son historique.",
+              "**Commit** : un enregistrement de l'état du projet, accompagné d'un message.",
+              "**Branche** : une ligne de travail indépendante, par exemple pour tester une idée.",
+              "**Dépôt distant** : une copie du dépôt hébergée ailleurs, souvent sur GitHub."
+            ] },
+            { "type": "tip", "text": "Git enregistre des instantanés complets du projet, pas seulement des différences. C'est ce qui rend les retours en arrière rapides." }
+          ]
+        },
+        {
+          "id": "git-02",
+          "title": "Installer et configurer Git",
+          "duration": 15,
+          "objectives": [
+            "Vérifier l'installation de Git",
+            "Renseigner son identité pour les commits"
+          ],
+          "content": [
+            { "type": "p", "text": "Installez Git depuis le site officiel ou le gestionnaire de paquets de votre système. Vérifiez ensuite la version installée." },
+            { "type": "code", "lang": "bash", "code": "git --version" },
+            { "type": "p", "text": "Chaque commit est signé par un nom et une adresse. Ces informations sont enregistrées une fois pour toutes avec `git config --global`." },
+            { "type": "code", "lang": "bash", "code": "git config --global user.name \"Prénom Nom\"\ngit config --global user.email \"adresse@example.com\"\ngit config --global init.defaultBranch main" },
+            { "type": "list", "items": [
+              "`--global` applique le réglage à tous vos dépôts.",
+              "`init.defaultBranch main` nomme la branche principale « main » lors de la création d'un dépôt.",
+              "`git config --list` affiche tous les réglages actifs."
+            ] },
+            { "type": "warning", "text": "Le nom et l'adresse sont visibles publiquement si le dépôt est partagé. N'y mettez rien que vous ne voudriez pas montrer." }
+          ]
+        },
+        {
+          "id": "git-03",
+          "title": "Initialiser un dépôt et suivre les fichiers",
+          "duration": 18,
+          "objectives": [
+            "Créer un dépôt avec git init",
+            "Lire l'état d'un dépôt avec git status",
+            "Préparer des fichiers avec git add"
+          ],
+          "content": [
+            { "type": "p", "text": "Pour commencer un projet, créez un dossier, entrez-y et initialisez le dépôt. Git crée alors un dossier caché `.git` qui contient tout l'historique." },
+            { "type": "code", "lang": "bash", "code": "mkdir journal\ncd journal\ngit init\ngit status" },
+            { "type": "p", "text": "Un fichier passe par plusieurs états :" },
+            { "type": "table", "headers": ["État", "Signification"], "rows": [
+              ["Non suivi", "Git ne connaît pas encore ce fichier"],
+              ["Modifié", "Le fichier suivi a changé depuis le dernier commit"],
+              ["Préparé (indexé)", "Le fichier est sélectionné pour le prochain commit avec git add"],
+              ["Validé", "Les modifications sont enregistrées dans l'historique"]
+            ] },
+            { "type": "code", "lang": "bash", "code": "echo \"# Mon journal\" > README.md\ngit status\ngit add README.md\ngit status" },
+            { "type": "p", "text": "`git add .` prépare tous les changements du dossier courant. Préférez les noms de fichiers explicites : vous contrôlez mieux ce qui entre dans l'historique." },
+            { "type": "tip", "text": "`git status` est la commande à lancer le plus souvent. Elle dit toujours ce qui se passe, sans rien modifier." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "git-m2",
+      "title": "Enregistrer l'historique",
+      "chapters": [
+        {
+          "id": "git-04",
+          "title": "Créer des commits",
+          "duration": 18,
+          "objectives": [
+            "Créer un commit avec un message clair",
+            "Comparer les modifications avant de valider"
+          ],
+          "content": [
+            { "type": "p", "text": "Un commit regroupe les fichiers préparés et les enregistre dans l'historique avec un message. Le message doit décrire ce que fait le changement, pas la façon dont vous l'avez fait." },
+            { "type": "code", "lang": "bash", "code": "git commit -m \"Ajoute le titre au README\"\ngit log --oneline" },
+            { "type": "h", "text": "Vérifier avant de valider" },
+            { "type": "code", "lang": "bash", "code": "git diff            # modifications non préparées\ngit diff --staged   # modifications préparées" },
+            { "type": "list", "items": [
+              "Un bon message est court (environ 50 caractères) et à l'impératif : « Corrige le calcul de la moyenne ».",
+              "Un commit doit correspondre à une seule idée. Si vous hésitez, faites deux commits.",
+              "Un commit ne doit pas contenir de secrets, comme des mots de passe."
+            ] },
+            { "type": "warning", "text": "Un commit déjà partagé ne doit pas être réécrit. Vérifiez votre message avant de valider lorsque le travail est destiné à d'autres personnes." }
+          ]
+        },
+        {
+          "id": "git-05",
+          "title": "Consulter l'historique",
+          "duration": 15,
+          "objectives": [
+            "Lire la sortie de git log",
+            "Afficher le contenu d'un commit"
+          ],
+          "content": [
+            { "type": "p", "text": "L'historique se lit avec `git log`. Chaque commit affiche un identifiant (un hash), l'auteur, la date et le message." },
+            { "type": "code", "lang": "bash", "code": "git log\ngit log --oneline\ngit log --oneline --graph --all\ngit show a1b2c3d" },
+            { "type": "list", "items": [
+              "`--oneline` : un commit par ligne, avec les premiers caractères du hash.",
+              "`--graph --all` : affiche les branches sous forme de graphe.",
+              "`git show <hash>` : détaille un commit et ses modifications."
+            ] },
+            { "type": "tip", "text": "Vous n'avez pas besoin de retenir le hash complet : les sept premiers caractères suffisent dans la plupart des commandes." }
+          ]
+        },
+        {
+          "id": "git-06",
+          "title": "Annuler et corriger",
+          "duration": 20,
+          "objectives": [
+            "Annuler une modification non validée",
+            "Annuler un commit sans réécrire l'historique partagé"
+          ],
+          "content": [
+            { "type": "p", "text": "Il existe plusieurs façons de revenir en arrière, selon l'état du travail." },
+            { "type": "table", "headers": ["Situation", "Commande", "Effet"], "rows": [
+              ["Abandonner une modification non préparée", "`git restore fichier`", "Restaure la version du dernier commit"],
+              ["Retirer un fichier de la zone de préparation", "`git restore --staged fichier`", "Le fichier reste modifié, mais n'est plus préparé"],
+              ["Corriger le dernier commit (non partagé)", "`git commit --amend`", "Remplace le dernier commit"],
+              ["Annuler un commit déjà partagé", "`git revert <hash>`", "Crée un nouveau commit qui annule le précédent"]
+            ] },
+            { "type": "warning", "text": "`git reset --hard` supprime définitivement les modifications non validées. Ne l'utilisez pas sans savoir exactement ce qu'elle efface." },
+            { "type": "tip", "text": "Préférez `git revert` dès qu'un commit est partagé : l'historique reste intact pour toute l'équipe." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "git-m3",
+      "title": "Branches et fusion",
+      "chapters": [
+        {
+          "id": "git-07",
+          "title": "Créer et changer de branche",
+          "duration": 15,
+          "objectives": [
+            "Créer une branche",
+            "Passer d'une branche à une autre"
+          ],
+          "content": [
+            { "type": "p", "text": "Une branche permet de travailler sur une idée sans modifier la version principale. Si l'idée échoue, la branche est abandonnée. Si elle réussit, elle est intégrée." },
+            { "type": "code", "lang": "bash", "code": "git branch                 # liste les branches\ngit switch -c ajout-titre  # crée et ouvre une branche\ngit switch main            # revient sur main" },
+            { "type": "p", "text": "Git indique la branche active grâce à un pointeur appelé `HEAD`. Les commits que vous créez avancent la branche active." },
+            { "type": "tip", "text": "`git checkout -b nom` fait la même chose que `git switch -c nom`. Vous rencontrerez les deux dans la documentation ancienne." }
+          ]
+        },
+        {
+          "id": "git-08",
+          "title": "Fusionner et résoudre un conflit",
+          "duration": 22,
+          "objectives": [
+            "Fusionner une branche dans une autre",
+            "Résoudre un conflit simple"
+          ],
+          "content": [
+            { "type": "p", "text": "Pour intégrer le travail d'une branche, on se place sur la branche de destination puis on fusionne." },
+            { "type": "code", "lang": "bash", "code": "git switch main\ngit merge ajout-titre" },
+            { "type": "p", "text": "Un **conflit** survient lorsque deux branches modifient la même zone d'un fichier. Git ne choisit pas à votre place : il marque le fichier." },
+            { "type": "code", "lang": "text", "title": "Fichier en conflit", "code": "<<<<<<< HEAD\nTitre : Journal de bord\n=======\nTitre : Mon journal\n>>>>>>> ajout-titre" },
+            { "type": "list", "items": [
+              "Modifiez le fichier pour garder le texte voulu et supprimez les marqueurs `<<<<<<<`, `=======` et `>>>>>>>`.",
+              "Préparez le fichier avec `git add`, puis validez avec `git commit`."
+            ] },
+            { "type": "tip", "text": "Un conflit n'est pas une erreur grave. Il signale seulement qu'une décision humaine est nécessaire." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "git-m4",
+      "title": "Dépôts distants et organisation",
+      "chapters": [
+        {
+          "id": "git-09",
+          "title": "Utiliser un dépôt distant",
+          "duration": 22,
+          "objectives": [
+            "Relier un dépôt local à un dépôt distant",
+            "Envoyer, récupérer et télécharger des modifications"
+          ],
+          "content": [
+            { "type": "p", "text": "Un dépôt distant, par exemple sur GitHub, sert de copie partagée. On le relie au dépôt local avec un nom, par convention `origin`." },
+            { "type": "code", "lang": "bash", "code": "git remote add origin https://github.com/votre-nom/journal.git\ngit push -u origin main\ngit pull\ngit clone https://github.com/votre-nom/journal.git" },
+            { "type": "table", "headers": ["Commande", "Rôle"], "rows": [
+              ["`git push`", "Envoie les commits locaux vers le dépôt distant"],
+              ["`git fetch`", "Télécharge les nouveaux commits sans les intégrer"],
+              ["`git pull`", "Télécharge puis intègre les modifications (fetch + merge)"],
+              ["`git clone`", "Copie un dépôt distant complet sur la machine"]
+            ] },
+            { "type": "tip", "text": "Lancez `git fetch` avant `git pull` lorsque vous voulez d'abord voir ce qui a changé." }
+          ]
+        },
+        {
+          "id": "git-10",
+          "title": "Ignorer des fichiers avec .gitignore",
+          "duration": 15,
+          "objectives": [
+            "Écrire un fichier .gitignore",
+            "Retirer du suivi un fichier déjà versionné"
+          ],
+          "content": [
+            { "type": "p", "text": "Certains fichiers ne doivent jamais être versionnés : fichiers générés, journaux, dépendances téléchargées, fichiers de configuration personnels. Le fichier `.gitignore` liste les motifs à ignorer." },
+            { "type": "code", "lang": "text", "title": ".gitignore", "code": "# Fichiers générés\nbuild/\n*.log\n\n# Dépendances\nnode_modules/\n\n# Secrets : ne jamais versionner\n.env" },
+            { "type": "p", "text": "Un fichier déjà suivi reste suivi, même s'il figure dans `.gitignore`. Il faut le retirer de l'index sans le supprimer du disque :" },
+            { "type": "code", "lang": "bash", "code": "git rm --cached .env" },
+            { "type": "warning", "text": "Un mot de passe ou une clé d'accès validé dans l'historique reste lisible même après suppression. Changez-le immédiatement : le retirer ne suffit pas." }
+          ]
+        }
+      ]
+    }
+  ],
+  "project": {
+    "title": "Journal de bord versionné",
+    "brief": "Créez un dépôt Git nommé journal qui contient un README et un fichier de notes. Ajoutez une fonctionnalité sur une branche, fusionnez-la, puis publiez le dépôt sur GitHub.",
+    "steps": [
+      "Initialiser le dépôt, configurer votre identité et faire un premier commit.",
+      "Créer une branche « notes-semaine », ajouter trois notes en trois commits distincts.",
+      "Revenir sur main, fusionner la branche et résoudre un conflit volontaire.",
+      "Ajouter un .gitignore qui exclut un fichier temporaire.",
+      "Publier le dépôt sur GitHub et vérifier l'historique depuis l'interface web."
+    ],
+    "criteria": [
+      "L'historique contient au moins cinq commits aux messages clairs.",
+      "Le .gitignore exclut le fichier temporaire, qui n'apparaît pas dans git status.",
+      "Le dépôt distant contient la même branche principale que le dépôt local."
+    ]
+  }
+}

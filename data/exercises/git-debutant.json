@@ -1,0 +1,125 @@
+{
+  "courseId": "git-debutant",
+  "chapters": {
+    "git-01": {
+      "exercise": {
+        "title": "Deux raisons de versionner",
+        "instructions": "Citez deux situations où un historique de versions vous évite une perte de travail.",
+        "hints": ["Pensez à une modification qui casse le projet.", "Pensez aussi au travail à plusieurs personnes."],
+        "solution": "Revenir à une version antérieure après une erreur. Comprendre qui a modifié quoi et pourquoi, ou travailler en parallèle sans écraser le travail d'un autre."
+      },
+      "quiz": [
+        { "id": "git-01-q1", "type": "single", "difficulty": 1, "question": "Quelle est la différence principale entre un dépôt local et un dépôt distant ?", "options": ["Le local est sur votre machine, le distant est hébergé et partagé", "Le local est plus rapide mais sans historique", "Il n'existe aucune différence", "Le distant ne peut pas recevoir de commits"], "answer": 0, "explanation": "Le dépôt local contient tout l'historique sur votre machine. Le distant sert au partage et à la sauvegarde.", "hints": ["Pensez à l'endroit où le dépôt est stocké."] },
+        { "id": "git-01-q2", "type": "truefalse", "difficulty": 1, "question": "Git a besoin d'un serveur pour enregistrer un commit en local.", "answer": false, "explanation": "Un commit est enregistré dans le dossier .git du projet, sans serveur.", "hints": [] }
+      ]
+    },
+    "git-02": {
+      "exercise": {
+        "title": "Configurer son identité",
+        "instructions": "Écrivez la commande qui définit votre nom pour tous vos dépôts.",
+        "hints": ["La commande commence par git config.", "Une option indique que le réglage est global."],
+        "solution": "git config --global user.name \"Prénom Nom\""
+      },
+      "quiz": [
+        { "id": "git-02-q1", "type": "text", "difficulty": 1, "question": "Quelle commande affiche la version de Git installée ?", "answer": ["git --version"], "explanation": "git --version affiche la version. C'est le moyen le plus simple de vérifier l'installation.", "hints": ["L'option est écrite avec deux tirets."] },
+        { "id": "git-02-q2", "type": "single", "difficulty": 1, "question": "À quoi sert l'option --global de git config ?", "options": ["Appliquer le réglage à tous les dépôts de l'utilisateur", "Supprimer le réglage", "Afficher la configuration", "Créer un dépôt global"], "answer": 0, "explanation": "Sans --global, le réglage ne s'applique qu'au dépôt courant.", "hints": [] }
+      ]
+    },
+    "git-03": {
+      "exercise": {
+        "title": "Préparer un fichier",
+        "instructions": "Dans un dépôt, quelles commandes préparent le fichier notes.txt puis affichent l'état du dépôt ?",
+        "hints": ["La préparation se fait avec git add.", "L'état s'affiche avec git status."],
+        "solution": "git add notes.txt, puis git status : le fichier apparaît dans les modifications préparées."
+      },
+      "quiz": [
+        { "id": "git-03-q1", "type": "order", "difficulty": 2, "question": "Remettez dans l'ordre les états d'un fichier, du premier au dernier.", "items": ["Validé", "Modifié", "Préparé"], "answer": [1, 2, 0], "explanation": "Un fichier est modifié, puis préparé avec git add, puis validé avec git commit.", "hints": ["Le premier état est celui d'un fichier qu'on vient de changer."] },
+        { "id": "git-03-q2", "type": "match", "difficulty": 2, "question": "Associez chaque commande à son rôle.", "left": ["git init", "git status", "git add fichier"], "right": ["Prépare un fichier pour le prochain commit", "Crée un dépôt dans le dossier courant", "Affiche l'état du dépôt"], "answer": [1, 2, 0], "explanation": "git init crée le dépôt, git status décrit son état, git add prépare les fichiers.", "hints": [] }
+      ]
+    },
+    "git-04": {
+      "exercise": {
+        "title": "Un bon message de commit",
+        "instructions": "Le message « blabla modif » ne dit rien. Proposez un message qui décrit l'effet du changement, en suivant les conseils du cours.",
+        "hints": ["Un bon message décrit ce que le changement apporte.", "Utilisez l'impératif et quelques mots précis."],
+        "solution": "Par exemple : « Ajoute la section des notes de la semaine »."
+      },
+      "quiz": [
+        { "id": "git-04-q1", "type": "single", "difficulty": 1, "question": "Quelle commande affiche les modifications préparées avant un commit ?", "options": ["git diff --staged", "git log --oneline", "git init", "git clone"], "answer": 0, "explanation": "git diff --staged compare la zone de préparation avec le dernier commit.", "hints": ["Le mot staged signifie « préparé »."] },
+        { "id": "git-04-q2", "type": "multiple", "difficulty": 2, "question": "Quelles pratiques sont recommandées pour un commit ?", "options": ["Un commit correspond à une seule idée", "Le message décrit l'effet du changement", "Inclure un mot de passe pour le retrouver", "Regrouper des changements sans rapport"], "answer": [0, 1], "explanation": "Les secrets ne doivent jamais être versionnés, et des changements sans rapport doivent être séparés.", "hints": [] }
+      ]
+    },
+    "git-05": {
+      "exercise": {
+        "title": "Lire l'historique",
+        "instructions": "Quelle commande affiche l'historique sur une ligne par commit, avec le graphe de toutes les branches ?",
+        "hints": ["Deux options se combinent : --oneline et --graph.", "L'option --all inclut toutes les branches."],
+        "solution": "git log --oneline --graph --all"
+      },
+      "quiz": [
+        { "id": "git-05-q1", "type": "single", "difficulty": 1, "question": "Que fait `git show <hash>` ?", "options": ["Détaille un commit et ses modifications", "Supprime un commit", "Crée une branche", "Envoie le commit au serveur"], "answer": 0, "explanation": "git show affiche les métadonnées du commit et les modifications qu'il contient.", "hints": [] },
+        { "id": "git-05-q2", "type": "text", "difficulty": 1, "question": "Quelle option de git log affiche un commit par ligne ?", "answer": ["--oneline"], "explanation": "--oneline réduit chaque commit à son hash abrégé et à son message.", "hints": ["Le nom de l'option est explicite."] }
+      ]
+    },
+    "git-06": {
+      "exercise": {
+        "title": "Choisir la bonne annulation",
+        "instructions": "Un commit déjà partagé avec l'équipe contient une erreur. Quelle commande recommandez-vous, et pourquoi ?",
+        "hints": ["Le commit est partagé : il ne faut pas réécrire l'historique.", "Une commande crée un nouveau commit qui annule le précédent."],
+        "solution": "git revert <hash>. Il crée un commit qui inverse les changements sans modifier l'historique partagé."
+      },
+      "quiz": [
+        { "id": "git-06-q1", "type": "truefalse", "difficulty": 1, "question": "git revert crée un nouveau commit qui annule un commit précédent.", "answer": true, "explanation": "C'est pour cela que revert est sûr sur un historique partagé.", "hints": [] },
+        { "id": "git-06-q2", "type": "match", "difficulty": 2, "question": "Associez chaque situation à la commande adaptée.", "left": ["Abandonner une modification non préparée", "Retirer un fichier de la zone de préparation", "Corriger le dernier commit non partagé"], "right": ["git commit --amend", "git restore fichier", "git restore --staged fichier"], "answer": [1, 2, 0], "explanation": "Chaque commande agit sur une étape différente : espace de travail, zone de préparation, dernier commit.", "hints": [] }
+      ]
+    },
+    "git-07": {
+      "exercise": {
+        "title": "Créer une branche",
+        "instructions": "Écrivez la commande qui crée la branche ajout-titre et qui s'y place immédiatement.",
+        "hints": ["L'option -c crée la branche.", "La commande principale est git switch."],
+        "solution": "git switch -c ajout-titre"
+      },
+      "quiz": [
+        { "id": "git-07-q1", "type": "blank", "difficulty": 1, "question": "Pour revenir sur la branche principale, on exécute git ___ main.", "answers": [["switch", "checkout"]], "explanation": "git switch change de branche. git checkout fait la même chose, mais sert aussi à d'autres opérations.", "hints": ["La commande signifie « changer »."] },
+        { "id": "git-07-q2", "type": "single", "difficulty": 2, "question": "Que désigne HEAD dans Git ?", "options": ["La branche ou le commit actuellement actif", "Le dernier fichier modifié", "Le dépôt distant", "La version de Git"], "answer": 0, "explanation": "HEAD pointe vers la branche active. Les nouveaux commits avancent cette branche.", "hints": [] }
+      ]
+    },
+    "git-08": {
+      "exercise": {
+        "title": "Résoudre un conflit",
+        "instructions": "Un fichier contient les marqueurs <<<<<<<, ======= et >>>>>>>. Décrivez les étapes pour résoudre le conflit et terminer la fusion.",
+        "hints": ["Choisissez le texte voulu puis supprimez les marqueurs.", "Préparez le fichier, puis validez."],
+        "solution": "Garder le texte voulu en supprimant les marqueurs, exécuter git add sur le fichier, puis git commit pour terminer la fusion."
+      },
+      "quiz": [
+        { "id": "git-08-q1", "type": "blank", "difficulty": 2, "question": "Après correction, on exécute git ___ fichier.txt pour marquer le fichier comme résolu.", "answers": [["add"]], "explanation": "git add prépare le fichier corrigé, ce qui signale le conflit comme résolu.", "hints": ["C'est la même commande que pour préparer un fichier."] },
+        { "id": "git-08-q2", "type": "single", "difficulty": 2, "question": "Que se passe-t-il lorsque deux branches modifient la même ligne ?", "options": ["Git choisit automatiquement la version la plus récente", "Un conflit est signalé et doit être résolu à la main", "Les deux versions sont supprimées", "La fusion est impossible"], "answer": 1, "explanation": "Git ne peut pas deviner l'intention : la décision revient à la personne qui fusionne.", "hints": [] }
+      ]
+    },
+    "git-09": {
+      "exercise": {
+        "title": "Publier un dépôt",
+        "instructions": "Quelle commande envoie la branche main vers origin et enregistre le lien pour les envois suivants ?",
+        "hints": ["L'envoi s'appelle push.", "L'option -u enregistre le lien de suivi."],
+        "solution": "git push -u origin main"
+      },
+      "quiz": [
+        { "id": "git-09-q1", "type": "single", "difficulty": 1, "question": "Quelle commande télécharge les nouveaux commits sans les fusionner ?", "options": ["git pull", "git fetch", "git push", "git clone"], "answer": 1, "explanation": "git fetch récupère les données distantes. Vous les intégrez ensuite à la main.", "hints": ["Le nom signifie « aller chercher »."] },
+        { "id": "git-09-q2", "type": "text", "difficulty": 1, "question": "Quelle commande copie un dépôt distant complet sur la machine ?", "answer": ["git clone"], "explanation": "git clone télécharge le dépôt avec tout son historique.", "hints": [] }
+      ]
+    },
+    "git-10": {
+      "exercise": {
+        "title": "Écrire un .gitignore",
+        "instructions": "Écrivez le contenu d'un fichier .gitignore qui ignore tous les fichiers .log et le dossier dist/.",
+        "hints": ["Le motif *.log concerne tous les fichiers de ce type.", "Un dossier se termine par une barre oblique."],
+        "solution": "*.log\ndist/"
+      },
+      "quiz": [
+        { "id": "git-10-q1", "type": "truefalse", "difficulty": 2, "question": "Un fichier listé dans .gitignore peut quand même être suivi s'il a déjà été commité.", "answer": true, "explanation": ".gitignore n'agit que sur les fichiers non suivis. Il faut utiliser git rm --cached pour les retirer.", "hints": [] },
+        { "id": "git-10-q2", "type": "single", "difficulty": 2, "question": "Pourquoi ne faut-il jamais versionner un fichier contenant des secrets ?", "options": ["Git le supprimerait", "Le secret reste lisible dans l'historique et doit être changé", "Il ralentit Git", "GitHub l'interdit toujours"], "answer": 1, "explanation": "Un secret validé reste dans l'historique, même après suppression. Il faut le révoquer et le changer.", "hints": [] }
+      ]
+    }
+  }
+}

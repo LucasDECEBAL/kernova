@@ -1,0 +1,142 @@
+// Chargement et validation des contenus JSON locaux (catalogue + leçons).
+
+const cache = {
+  catalog: null,
+  courses: new Map(),   // id -> cours complet (avec chapitres)
+  chapters: new Map(),  // chapterId -> { course, chapter, index }
+  issues: []
+};
+
+async function fetchJson(path) {
+  let res;
+  try {
+    res = await fetch(path, { cache: 'no-cache' });
+  } catch {
+    throw new Error(`Impossible de charger ${path}. Vérifiez que le site est servi par un serveur statique.`);
+  }
+  if (!res.ok) throw new Error(`Fichier introuvable : ${path} (HTTP ${res.status}).`);
+  return res.json();
+}
+
+const isStr = (v) => typeof v === 'string' && v.length > 0;
+
+/** Exercices et quiz d'un cours, indexés par identifiant de chapitre. Absence = pas d'exercices séparés. */
+async function fetchExtra(courseId) {
+  try {
+    const data = await fetchJson(`data/exercises/${courseId}.json`);
+    return data && typeof data.chapters === 'object' ? data.chapters : {};
+  } catch {
+    return {};
+  }
+}
+
+function validateChapter(ch) {
+  return ch && isStr(ch.id) && isStr(ch.title) && Array.isArray(ch.content)
+    && Array.isArray(ch.objectives) && Array.isArray(ch.quiz ?? []);
+}
+
+/** Charge catalogue et leçons. Un cours invalide est ignoré et signalé. */
+export async function loadData() {
+  if (cache.catalog) return cache.catalog;
+  const catalog = await fetchJson('data/catalog.json');
+  if (!Array.isArray(catalog.domains) || !Array.isArray(catalog.courses)) {
+    throw new Error('Le catalogue est mal formé (domains/courses manquants).');
+  }
+
+  for (const meta of catalog.courses) {
+    try {
+      const lessons = await fetchJson(`data/lessons/${meta.file}`);
+      // Format à plat (chapters) ou regroupé par modules (modules[].chapters)
+      // Exercices et quiz peuvent être dans un fichier séparé (data/exercises/<cours>.json)
+      const extra = await fetchExtra(meta.id);
+      const withExtra = (ch) => {
+        const x = extra[ch.id] || {};
+        return { ...ch, exercise: ch.exercise ?? x.exercise, quiz: ch.quiz ?? x.quiz ?? [] };
+      };
+      const raw = Array.isArray(lessons.modules)
+        ? lessons.modules.flatMap((m) => (m.chapters || []).map((ch) => withExtra({ ...ch, module: m.title, moduleId: m.id })))
+        : (lessons.chapters || []).map(withExtra);
+      if (lessons.courseId !== meta.id || !raw.length) {
+        throw new Error('identifiant de cours ou chapitres incohérents');
+      }
+      const chapters = raw.filter((ch) => {
+        const ok = validateChapter(ch);
+        if (!ok) cache.issues.push(`${meta.id} : chapitre ignoré (structure invalide)`);
+        return ok;
+      });
+      const seen = new Set();
+      for (const ch of chapters) {
+        if (seen.has(ch.id) || cache.chapters.has(ch.id)) cache.issues.push(`${meta.id} : identifiant de chapitre en double (${ch.id})`);
+        seen.add(ch.id);
+      }
+      const course = {
+        ...meta,
+        project: lessons.project || null,
+        prerequisiteCourses: meta.prerequisiteCourses || [],
+        nextCourses: meta.nextCourses || [],
+        skills: meta.skills || [],
+        duration: chapters.reduce((sum, ch) => sum + (Number(ch.duration) || 0), 0),
+        chapters: chapters.map((ch, index) => ({ ...ch, index, courseId: meta.id, duration: Number(ch.duration) || 0, module: ch.module || null }))
+      };
+      cache.courses.set(course.id, course);
+      course.chapters.forEach((ch) => cache.chapters.set(ch.id, { course, chapter: ch, index: ch.index }));
+    } catch (err) {
+      cache.issues.push(`${meta.id} : ${err.message}`);
+      console.warn(`kernova : cours ignoré (${meta.id})`, err);
+    }
+  }
+
+  // Paquets de cartes mémo : optionnels, un échec ne bloque pas l'application
+  try {
+    const flash = await fetchJson('data/flashcards.json');
+    cache.flashcards = Array.isArray(flash.packs) ? flash.packs.filter((p) => isStr(p.id) && Array.isArray(p.cards)) : [];
+  } catch (err) {
+    cache.issues.push(`cartes mémo : ${err.message}`);
+    cache.flashcards = [];
+  }
+
+  cache.catalog = catalog;
+  return catalog;
+}
+
+/** Paquets de cartes fournis avec l'application. */
+export function getFlashPacks() {
+  return cache.flashcards || [];
+}
+
+export function getDataIssues() {
+  return cache.issues.slice();
+}
+
+export function getDomains() {
+  return cache.catalog ? cache.catalog.domains : [];
+}
+
+export function getDomain(id) {
+  return getDomains().find((d) => d.id === id) || null;
+}
+
+/** Tous les cours chargés et valides, dans l'ordre du catalogue. */
+export function getCourses() {
+  if (!cache.catalog) return [];
+  return cache.catalog.courses.map((m) => cache.courses.get(m.id)).filter(Boolean);
+}
+
+export function getCourse(id) {
+  return cache.courses.get(id) || null;
+}
+
+export function getChapter(courseId, chapterId) {
+  const entry = cache.chapters.get(chapterId);
+  if (!entry || entry.course.id !== courseId) return null;
+  return entry;
+}
+
+/** Tous les quiz d'un cours, avec référence au chapitre. */
+export function getAllChapters() {
+  return [...cache.chapters.values()];
+}
+
+export function getCoursesByDomain(domainId) {
+  return getCourses().filter((c) => c.domain === domainId);
+}

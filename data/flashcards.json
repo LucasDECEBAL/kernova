@@ -1,0 +1,124 @@
+{
+  "packs": [
+    {
+      "id": "linux",
+      "title": "Linux",
+      "description": "Commandes de navigation, fichiers, droits et processus.",
+      "cards": [
+        { "id": "linux-1", "q": "Que fait la commande `pwd` ?", "a": "Elle affiche le chemin absolu du dossier courant." },
+        { "id": "linux-2", "q": "Quelle option de `ls` affiche les fichiers cachés ?", "a": "L'option `-a`. Les fichiers cachés commencent par un point." },
+        { "id": "linux-3", "q": "Quelle différence entre `>` et `>>` ?", "a": "`>` écrase le contenu du fichier, `>>` ajoute à la fin." },
+        { "id": "linux-4", "q": "Quel code de retour signale une commande réussie ?", "a": "Le code 0. Toute autre valeur signale un échec." },
+        { "id": "linux-5", "q": "Que donne `chmod 644 notes.txt` ?", "a": "Lecture et écriture pour le propriétaire (rw-), lecture seule pour le groupe et les autres (r--)." },
+        { "id": "linux-6", "q": "Quelle commande recherche des fichiers par leur nom ?", "a": "`find`, par exemple `find . -name \"*.txt\"`." },
+        { "id": "linux-7", "q": "Quel signal `kill` envoie-t-il par défaut ?", "a": "SIGTERM (-15), qui demande un arrêt propre au processus." },
+        { "id": "linux-8", "q": "Que représente `$?` après une commande ?", "a": "Le code de retour de la dernière commande exécutée." }
+      ]
+    },
+    {
+      "id": "reseaux",
+      "title": "Réseaux",
+      "description": "Adressage IP, protocoles et services de base.",
+      "cards": [
+        { "id": "reseaux-1", "q": "Combien d'adresses contient un réseau /24 ?", "a": "256 adresses, dont 254 utilisables pour les machines." },
+        { "id": "reseaux-2", "q": "Quel est le rôle du DNS ?", "a": "Il traduit un nom de domaine en adresse IP." },
+        { "id": "reseaux-3", "q": "Quel port est utilisé par défaut pour HTTPS ?", "a": "Le port 443 (TCP)." },
+        { "id": "reseaux-4", "q": "Quelle différence entre TCP et UDP ?", "a": "TCP établit une connexion et garantit la livraison. UDP n'en fait rien : il est plus léger mais sans garantie." },
+        { "id": "reseaux-5", "q": "Quel protocole attribue automatiquement une adresse IP ?", "a": "DHCP." },
+        { "id": "reseaux-6", "q": "Quel est le rôle de la passerelle par défaut ?", "a": "Le routeur qui relie le réseau local aux autres réseaux." },
+        { "id": "reseaux-7", "q": "Que vaut le masque 255.255.255.0 en notation CIDR ?", "a": "/24." },
+        { "id": "reseaux-8", "q": "À quoi sert la commande `ping` ?", "a": "Elle envoie des requêtes ICMP echo pour vérifier qu'une machine répond et mesurer le délai aller-retour." }
+      ]
+    },
+    {
+      "id": "python",
+      "title": "Python",
+      "description": "Types, collections, fonctions et fichiers.",
+      "cards": [
+        { "id": "python-1", "q": "Quelle différence entre une liste et un tuple ?", "a": "La liste est modifiable. Le tuple ne peut pas être modifié après sa création." },
+        { "id": "python-2", "q": "Qu'est-ce qu'un dictionnaire en Python ?", "a": "Une collection de paires clé-valeur. On accède à une valeur par sa clé." },
+        { "id": "python-3", "q": "Que renvoie `len([1, 2, 3])` ?", "a": "3." },
+        { "id": "python-4", "q": "Quel mot-clé définit une fonction ?", "a": "`def`." },
+        { "id": "python-5", "q": "Quel type renvoie `input()` ?", "a": "Une chaîne de caractères (str), même si l'utilisateur tape un nombre." },
+        { "id": "python-6", "q": "Comment lire un fichier en le fermant automatiquement ?", "a": "Avec `with open(\"fichier.txt\", encoding=\"utf-8\") as f:`." },
+        { "id": "python-7", "q": "Quelle exception est levée par `d[\"clé\"]` si la clé est absente ?", "a": "`KeyError`." },
+        { "id": "python-8", "q": "Quelles valeurs produit `range(3)` ?", "a": "0, 1 et 2. La borne haute n'est jamais incluse." }
+      ]
+    },
+    {
+      "id": "cybersecurite",
+      "title": "Cybersécurité",
+      "description": "Notions défensives : mots de passe, chiffrement, hachage et détection.",
+      "cards": [
+        { "id": "cyber-1", "q": "Qu'est-ce qu'un hachage ?", "a": "Une empreinte de taille fixe, calculée à partir d'une donnée. Le calcul est à sens unique." },
+        { "id": "cyber-2", "q": "Pourquoi activer l'authentification à deux facteurs ?", "a": "Un second élément (code, clé physique) protège le compte si le mot de passe a fuité." },
+        { "id": "cyber-3", "q": "Qu'est-ce que le chiffrement symétrique ?", "a": "Une même clé sert à chiffrer et à déchiffrer, comme avec AES." },
+        { "id": "cyber-4", "q": "Que signifie le principe du moindre privilège ?", "a": "N'accorder que les droits strictement nécessaires à une tâche." },
+        { "id": "cyber-5", "q": "Qu'est-ce que le phishing ?", "a": "Un message frauduleux qui imite un tiers de confiance pour obtenir des informations." },
+        { "id": "cyber-6", "q": "À quoi sert un sel dans le hachage d'un mot de passe ?", "a": "Il rend inutiles les tables précalculées, car chaque mot de passe a un hachage différent." },
+        { "id": "cyber-7", "q": "Quel est le rôle d'un pare-feu ?", "a": "Filtrer le trafic réseau selon des règles d'autorisation." },
+        { "id": "cyber-8", "q": "Pourquoi conserver les journaux système ?", "a": "Ils tracent connexions et erreurs, ce qui permet de détecter et d'analyser un incident." }
+      ]
+    },
+    {
+      "id": "git",
+      "title": "Git et GitHub",
+      "description": "Dépôts, commits, branches et collaboration.",
+      "cards": [
+        { "id": "git-1", "q": "Que fait `git init` ?", "a": "Il crée un dépôt Git vide dans le dossier courant." },
+        { "id": "git-2", "q": "Quelle différence entre `git add` et `git commit` ?", "a": "`add` place les modifications dans la zone de préparation. `commit` enregistre un instantané dans l'historique." },
+        { "id": "git-3", "q": "Que fait `git branch nom` ?", "a": "Il crée une branche appelée nom, sans changer de branche." },
+        { "id": "git-4", "q": "Que fait `git merge` ?", "a": "Il intègre l'historique d'une autre branche dans la branche courante." },
+        { "id": "git-5", "q": "Qu'est-ce qu'un conflit de fusion ?", "a": "Deux modifications incompatibles sur la même zone. Il faut choisir le résultat à la main." },
+        { "id": "git-6", "q": "Que montre `git status` ?", "a": "L'état du dépôt : fichiers modifiés, préparés et non suivis." },
+        { "id": "git-7", "q": "Qu'est-ce qu'une pull request ?", "a": "Une demande de fusion d'une branche, relue avant intégration sur GitHub ou GitLab." },
+        { "id": "git-8", "q": "Que fait `git clone URL` ?", "a": "Il copie un dépôt distant sur la machine, avec tout son historique." }
+      ]
+    },
+    {
+      "id": "docker",
+      "title": "Docker",
+      "description": "Images, conteneurs, volumes et Compose.",
+      "cards": [
+        { "id": "docker-1", "q": "Quelle différence entre une image et un conteneur ?", "a": "L'image est un modèle en lecture seule. Le conteneur est une instance en cours d'exécution, créée à partir de l'image." },
+        { "id": "docker-2", "q": "Que fait `docker run -d -p 8080:80 nginx` ?", "a": "Il lance nginx en arrière-plan et relie le port 8080 de la machine au port 80 du conteneur." },
+        { "id": "docker-3", "q": "À quoi sert un Dockerfile ?", "a": "À décrire, étape par étape, comment construire une image." },
+        { "id": "docker-4", "q": "Pourquoi utiliser un volume ?", "a": "Pour conserver des données au-delà de la vie du conteneur." },
+        { "id": "docker-5", "q": "Que fait `docker ps` ?", "a": "Il liste les conteneurs en cours d'exécution. Avec `-a`, il liste aussi les arrêtés." },
+        { "id": "docker-6", "q": "Quelle instruction du Dockerfile choisit l'image de base ?", "a": "`FROM`." },
+        { "id": "docker-7", "q": "Que fait `docker compose up` ?", "a": "Il crée et démarre les services décrits dans le fichier compose." },
+        { "id": "docker-8", "q": "Pourquoi éviter de faire tourner un conteneur en root ?", "a": "Pour limiter les dégâts si l'application est compromise." }
+      ]
+    },
+    {
+      "id": "kubernetes",
+      "title": "Kubernetes",
+      "description": "Pods, déploiements, services et diagnostic.",
+      "cards": [
+        { "id": "k8s-1", "q": "Qu'est-ce qu'un Pod ?", "a": "La plus petite unité déployable. Il contient un ou plusieurs conteneurs qui partagent leur réseau." },
+        { "id": "k8s-2", "q": "Quel est le rôle d'un Deployment ?", "a": "Maintenir un nombre voulu de réplicas de Pods et gérer les mises à jour." },
+        { "id": "k8s-3", "q": "Quel est le rôle d'un Service ?", "a": "Offrir un point d'accès stable vers un ensemble de Pods." },
+        { "id": "k8s-4", "q": "Que fait `kubectl get pods` ?", "a": "Il liste les Pods du namespace courant." },
+        { "id": "k8s-5", "q": "Qu'est-ce qu'un namespace ?", "a": "Un espace logique qui isole des ressources dans un cluster." },
+        { "id": "k8s-6", "q": "Quel est le rôle du plan de contrôle ?", "a": "Prendre les décisions, comme l'ordonnancement, et faire converger le cluster vers l'état désiré." },
+        { "id": "k8s-7", "q": "Quelle différence entre un ConfigMap et un Secret ?", "a": "Le ConfigMap stocke une configuration non sensible. Le Secret stocke des données sensibles, avec un traitement dédié." },
+        { "id": "k8s-8", "q": "Que fait `kubectl describe pod nom` ?", "a": "Il affiche les détails d'un Pod et ses événements, utiles pour diagnostiquer un échec." }
+      ]
+    },
+    {
+      "id": "sql",
+      "title": "SQL",
+      "description": "Requêtes, jointures, regroupements et intégrité.",
+      "cards": [
+        { "id": "sql-1", "q": "Que fait `SELECT` ?", "a": "Il lit des colonnes de une ou plusieurs tables, sans modifier les données." },
+        { "id": "sql-2", "q": "Quelle différence entre `WHERE` et `HAVING` ?", "a": "`WHERE` filtre les lignes avant le regroupement. `HAVING` filtre les groupes après `GROUP BY`." },
+        { "id": "sql-3", "q": "Que garde un `INNER JOIN` ?", "a": "Seulement les lignes qui ont une correspondance dans les deux tables." },
+        { "id": "sql-4", "q": "Quel est le rôle d'une clé primaire ?", "a": "Identifier chaque ligne de façon unique. Elle ne peut pas être nulle." },
+        { "id": "sql-5", "q": "Que compte `COUNT(*)` ?", "a": "Le nombre de lignes, valeurs NULL comprises." },
+        { "id": "sql-6", "q": "Que fait `ORDER BY nom DESC` ?", "a": "Il trie les lignes par nom, dans l'ordre décroissant." },
+        { "id": "sql-7", "q": "Qu'est-ce qu'une clé étrangère ?", "a": "Une colonne qui référence la clé d'une autre table et garantit la cohérence des liens." },
+        { "id": "sql-8", "q": "Que se passe-t-il avec `DELETE FROM t` sans clause WHERE ?", "a": "Toutes les lignes de la table sont supprimées." }
+      ]
+    }
+  ]
+}
