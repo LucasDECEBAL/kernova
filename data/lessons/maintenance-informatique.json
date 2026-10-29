@@ -2,440 +2,515 @@
   "courseId": "maintenance-informatique",
   "modules": [
     {
-      "id": "mnt-m1",
-      "title": "Diagnostiquer",
+      "id": "maintenance-informatique-module",
+      "title": "Identifier et remettre en état",
       "chapters": [
         {
           "id": "mnt-01",
-          "title": "Un ordinateur qui ne démarre pas",
-          "duration": 18,
+          "title": "Identifier les composants d'un ordinateur",
           "objectives": [
-            "Suivre un ordre de diagnostic",
-            "Distinguer panne matérielle et logicielle"
+            "Nommer les composants internes",
+            "Relier chaque composant à son rôle",
+            "Repérer les connecteurs essentiels"
+          ],
+          "exercise": {
+            "title": "Associer composant et rôle",
+            "instructions": "Associez : alimentation, mémoire, stockage, processeur, à : calculer, conserver, alimenter, travailler en cours.",
+            "hints": [
+              "La mémoire ne conserve pas hors tension.",
+              "L'alimentation ne calcule pas."
+            ],
+            "solution": "Processeur : calculer. Mémoire : travailler en cours. Stockage : conserver. Alimentation : fournir le courant.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "processeur",
+                "memoire",
+                "stockage",
+                "alimentation"
+              ],
+              "success": "Correct : les quatre rôles sont associés."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où se fixe la mémoire vive ?",
+              "options": [
+                "Sur la carte mère",
+                "Dans l'alimentation",
+                "Sur le disque",
+                "Dans l'écran"
+              ],
+              "answer": 0,
+              "explanation": "Les barrettes se clipsent dans les emplacements de la carte mère.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-01-q1"
+            },
+            {
+              "question": "Quel composant convertit le courant du secteur ?",
+              "options": [
+                "L'alimentation",
+                "Le processeur",
+                "Le SSD",
+                "La carte réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le bloc d'alimentation fournit les tensions nécessaires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-01-q2"
+            }
+          ],
+          "summary": [
+            "Carte mère, processeur, mémoire, stockage et alimentation forment le cœur du poste.",
+            "Chaque composant a un rôle précis et un connecteur dédié.",
+            "Les détrompeurs empêchent un montage inversé."
           ],
           "content": [
             {
               "type": "p",
-              "text": "Un démarrage raté se diagnostique dans un ordre fixe : alimentation, affichage, réaction du firmware, puis système. Chaque étape élimine une famille de causes avant de passer à la suivante."
+              "text": "Un ordinateur de bureau s'ouvre autour de la carte mère : processeur, mémoire, stockage, alimentation et refroidissement s'y raccordent."
             },
             {
               "type": "list",
               "items": [
-                "Pas de voyant ni de ventilateur : alimentation ou prise.",
-                "Ventilateurs mais aucun affichage : mémoire, carte graphique ou carte mère.",
-                "Logo du firmware puis arrêt : disque ou système corrompu.",
-                "Message d'erreur de démarrage : lire le code exact, il oriente le diagnostic."
+                "Carte mère : support des composants et des bus.",
+                "Processeur : calcul, avec son ventirad.",
+                "Mémoire : barrettes dans des emplacements dédiés.",
+                "Stockage : SSD NVMe ou SATA, disque mécanique.",
+                "Alimentation : convertit le courant secteur."
               ]
-            },
-            {
-              "type": "p",
-              "text": "Les **bips** du firmware et les voyants de la carte mère encodent souvent la cause. Consultez le manuel de la carte : un même nombre de bips n'a pas la même signification selon le fabricant."
-            },
-            {
-              "type": "tip",
-              "text": "Notez ce qui se passe avant de toucher au matériel. Une observation précise évite de démonter une machine pour rien."
-            }
-          ],
-          "exercise": {
-            "title": "Ordre du diagnostic",
-            "instructions": "La machine s'allume, les ventilateurs tournent, aucun affichage. Quelles deux vérifications menez-vous d'abord ?",
-            "hints": [
-              "Le firmware produit-il un signal d'erreur sonore ?",
-              "Un composant mal enfiché empêche l'affichage."
-            ],
-            "solution": "Vérifier les bips ou voyants du firmware, puis le bon enfichage de la mémoire et de la carte graphique, en testant une barrette à la fois.",
-            "check": {
-              "type": "any",
-              "any": [
-                "bip",
-                "voyant",
-                "mémoire",
-                "memoire"
-              ]
-            }
-          },
-          "quiz": [
-            {
-              "id": "mnt-01-q1",
-              "type": "single",
-              "difficulty": 1,
-              "question": "La machine ne s'allume pas du tout. Quelle cause examiner en premier ?",
-              "options": [
-                "Le système d'exploitation",
-                "L'alimentation électrique",
-                "Les logiciels installés",
-                "Le navigateur"
-              ],
-              "answer": 1,
-              "explanation": "Sans alimentation, aucun autre composant ne peut fonctionner.",
-              "hints": []
-            },
-            {
-              "id": "mnt-01-q2",
-              "type": "truefalse",
-              "difficulty": 2,
-              "question": "Un même nombre de bips a la même signification sur toutes les cartes mères.",
-              "answer": false,
-              "explanation": "Les codes dépendent du firmware et du fabricant : consultez la documentation.",
-              "hints": []
-            }
-          ],
-          "nextStep": "Chapitre suivant : « Mémoire et stockage ».",
-          "summary": [
-            "Écouter les bips et lire les voyants du firmware.",
-            "Contrôler l'enfichage de la mémoire et de la carte graphique.",
-            "Tester une barrette à la fois pour isoler la panne."
-          ]
-        },
-        {
-          "id": "mnt-02",
-          "title": "Mémoire et stockage",
-          "duration": 18,
-          "objectives": [
-            "Reconnaître un défaut de mémoire",
-            "Diagnostiquer un disque défaillant"
-          ],
-          "content": [
-            {
-              "type": "p",
-              "text": "Une **mémoire défectueuse** provoque des redémarrages aléatoires, des écrans bleus ou des corruptions de fichiers. Un test mémoire lancé au démarrage isole le problème : testez les barrettes une par une, dans des emplacements différents."
-            },
-            {
-              "type": "p",
-              "text": "Un **disque en fin de vie** se signale par des ralentissements, des erreurs d'écriture et des secteurs réalloués. Les outils d'auto-surveillance (SMART) donnent des indicateurs avant la panne totale."
-            },
-            {
-              "type": "code",
-              "lang": "bash",
-              "code": "smartctl -a /dev/sda        # état SMART sous Linux\ndf -h                       # espace disponible\nsudo dmesg | grep -i error  # erreurs matérielles"
-            },
-            {
-              "type": "warning",
-              "text": "Un disque qui montre des erreurs d'écriture peut lâcher sans prévenir. Sauvegardez immédiatement les données avant tout autre test."
-            }
-          ],
-          "exercise": {
-            "title": "Lire un SMART",
-            "instructions": "SMART indique « secteurs réalloués » en hausse régulière. Que faites-vous en priorité ?",
-            "hints": [
-              "La valeur augmente avec les défauts physiques.",
-              "La priorité est la donnée, pas le test."
-            ],
-            "solution": "Sauvegarder les données immédiatement, puis remplacer le disque : la hausse indique une dégradation physique.",
-            "check": {
-              "type": "any",
-              "any": [
-                "sauvegard",
-                "remplac"
-              ]
-            }
-          },
-          "quiz": [
-            {
-              "id": "mnt-02-q1",
-              "type": "single",
-              "difficulty": 1,
-              "question": "Quel outil surveille l'état d'un disque ?",
-              "options": [
-                "SMART",
-                "DNS",
-                "SSH",
-                "DHCP"
-              ],
-              "answer": 0,
-              "explanation": "SMART expose les indicateurs d'usure et d'erreur du disque.",
-              "hints": []
-            },
-            {
-              "id": "mnt-02-q2",
-              "type": "single",
-              "difficulty": 2,
-              "question": "Des redémarrages aléatoires et des fichiers corrompus orientent vers…",
-              "options": [
-                "Un défaut de mémoire",
-                "Un problème de souris",
-                "Un pare-feu",
-                "Un manque d'espace disque"
-              ],
-              "answer": 0,
-              "explanation": "Une mémoire instable corrompt les données en mémoire et provoque des arrêts.",
-              "hints": []
-            }
-          ],
-          "nextStep": "Chapitre suivant : « Pannes logicielles, pilotes et mises à jour ».",
-          "summary": [
-            "SMART signale une dégradation physique du disque.",
-            "Sauvegarder avant tout autre diagnostic.",
-            "Remplacer le disque plutôt que d'attendre la panne."
-          ]
-        },
-        {
-          "id": "mnt-03",
-          "title": "Pannes logicielles, pilotes et mises à jour",
-          "duration": 18,
-          "objectives": [
-            "Isoler une panne logicielle",
-            "Revenir à un état stable"
-          ],
-          "content": [
-            {
-              "type": "p",
-              "text": "Une panne logicielle apparaît souvent après un changement : mise à jour, pilote, nouvelle extension. Le raisonnement consiste à identifier **ce qui a changé** et à revenir en arrière pour confirmer."
-            },
-            {
-              "type": "list",
-              "items": [
-                "Démarrage sans échec ou session sans extensions pour isoler la cause.",
-                "Restauration d'un point de contrôle ou retour à la version précédente du pilote.",
-                "Consultation des journaux système pour l'erreur exacte.",
-                "Désinstallation propre des logiciels suspects, pas seulement du raccourci."
-              ]
-            },
-            {
-              "type": "tip",
-              "text": "Mettez à jour les pilotes depuis le site du fabricant du composant, pas depuis un site de téléchargement tiers."
-            }
-          ],
-          "exercise": {
-            "title": "Isoler un pilote",
-            "instructions": "Après une mise à jour de pilote graphique, l'écran clignote. Quelle démarche suivez-vous ?",
-            "hints": [
-              "Le changement est identifié et récent.",
-              "Le retour à la version précédente confirme la cause."
-            ],
-            "solution": "Démarrer sans échec si nécessaire, revenir à la version précédente du pilote, vérifier la disparition du symptôme, puis tester une version plus récente ou attendre une correction.",
-            "check": {
-              "type": "any",
-              "any": [
-                "sans échec",
-                "sans-echec",
-                "précédente",
-                "precedente",
-                "revenir"
-              ]
-            }
-          },
-          "quiz": [
-            {
-              "id": "mnt-03-q1",
-              "type": "single",
-              "difficulty": 1,
-              "question": "Que faire en premier face à une panne apparue après une mise à jour ?",
-              "options": [
-                "Réinstaller tout le système",
-                "Identifier le changement récent et revenir en arrière",
-                "Changer le disque",
-                "Désactiver le pare-feu"
-              ],
-              "answer": 1,
-              "explanation": "Le retour arrière confirme la cause et rétablit le service.",
-              "hints": []
-            },
-            {
-              "id": "mnt-03-q2",
-              "type": "truefalse",
-              "difficulty": 2,
-              "question": "Un pilote doit toujours être téléchargé depuis un site de téléchargement tiers.",
-              "answer": false,
-              "explanation": "Privilégiez le site du fabricant du composant ou du système.",
-              "hints": []
-            }
-          ],
-          "nextStep": "Chapitre suivant : « Sauvegarder et restaurer ».",
-          "summary": [
-            "Le mode sans échec isole un pilote fautif.",
-            "Revenir à la version précédente du pilote.",
-            "Tester ensuite une version stable ou plus récente."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "mnt-m2",
-      "title": "Sauvegarder et entretenir",
-      "chapters": [
-        {
-          "id": "mnt-04",
-          "title": "Sauvegarder et restaurer",
-          "duration": 20,
-          "objectives": [
-            "Choisir une stratégie de sauvegarde",
-            "Tester une restauration"
-          ],
-          "content": [
-            {
-              "type": "p",
-              "text": "Une sauvegarde utile répond à trois questions : que protège-t-elle, à quelle fréquence, et combien de temps conserve-t-on les copies ? La règle **3-2-1** sert de base : trois copies, deux supports, une hors site."
             },
             {
               "type": "table",
               "headers": [
-                "Type",
-                "Restauration"
+                "Composant",
+                "Indice visuel",
+                "Risque si mal monté"
               ],
               "rows": [
                 [
-                  "Image complète",
-                  "Rapide, tout le système"
+                  "CPU",
+                  "boîtier carré sous ventirad",
+                  "broches pliées"
                 ],
                 [
-                  "Sauvegarde de fichiers",
-                  "Sélective, pour les documents"
+                  "RAM",
+                  "barrette longue",
+                  "mauvais enclenchement"
                 ],
                 [
-                  "Instantané de machine virtuelle",
-                  "Très rapide mais local"
-                ],
-                [
-                  "Synchronisation cloud",
-                  "Pratique, ne remplace pas un historique"
+                  "Alimentation",
+                  "bloc avec ventilateur",
+                  "surcharge, câble mal clipsé"
                 ]
               ]
             },
             {
-              "type": "p",
-              "text": "Une sauvegarde n'a de valeur que si la **restauration** fonctionne. Testez-la sur un autre support ou une machine de test, en mesurant le temps nécessaire."
-            },
-            {
               "type": "warning",
-              "text": "Une synchronisation supprime aussi ce qui a été supprimé en local. Pour se protéger d'une erreur humaine, il faut un historique avec plusieurs versions."
+              "text": "Ne jamais forcer un connecteur : les détrompeurs n'autorisent qu'un sens. Une force excessive casse la carte mère."
             }
           ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Assembler un ordinateur »."
+        },
+        {
+          "id": "mnt-02",
+          "title": "Assembler un ordinateur",
+          "objectives": [
+            "Préparer un poste de travail sûr",
+            "Suivre un ordre de montage",
+            "Effectuer les vérifications avant démarrage"
+          ],
           "exercise": {
-            "title": "Stratégie 3-2-1",
-            "instructions": "Un utilisateur sauvegarde chaque soir sur un disque externe rangé à côté de l'ordinateur. Quelles faiblesses identifiez-vous ?",
+            "title": "Ordonner le montage",
+            "instructions": "Dans quel ordre monter le processeur, la mémoire et la carte mère dans le boîtier ?",
             "hints": [
-              "Un incendie ou un vol toucherait les deux.",
-              "La règle demande une copie hors site."
+              "Le processeur se monte sur la carte mère, hors boîtier.",
+              "La carte mère se fixe ensuite."
             ],
-            "solution": "Il manque une copie hors site et un second type de support. Un vol ou un sinistre détruirait l'ordinateur et la sauvegarde.",
+            "solution": "Processeur puis mémoire sur la carte mère, ensuite la carte mère dans le boîtier.",
             "check": {
-              "type": "any",
-              "any": [
-                "hors site",
-                "hors-site",
-                "support",
-                "test"
-              ]
+              "type": "keywords",
+              "keywords": [
+                "processeur",
+                "memoire",
+                "carte mere"
+              ],
+              "success": "Correct : CPU, RAM, puis carte mère."
             }
           },
           "quiz": [
             {
-              "id": "mnt-04-q1",
-              "type": "single",
-              "difficulty": 1,
-              "question": "Que signifie 3-2-1 ?",
+              "question": "Pourquoi porter un bracelet antistatique ?",
               "options": [
-                "3 copies, 2 supports, 1 hors site",
-                "3 disques, 2 serveurs, 1 utilisateur",
-                "3 jours, 2 semaines, 1 mois",
-                "3 mots de passe, 2 comptes, 1 clé"
+                "Éviter les décharges sur les composants",
+                "Accélérer le montage",
+                "Refroidir le processeur",
+                "Alimenter la carte mère"
               ],
               "answer": 0,
-              "explanation": "La règle répartit les copies pour survivre à une panne ou un sinistre.",
-              "hints": []
+              "explanation": "L'électricité statique peut endommager les circuits.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-02-q1"
             },
             {
-              "id": "mnt-04-q2",
-              "type": "truefalse",
-              "difficulty": 2,
-              "question": "Une sauvegarde jamais restaurée est une sauvegarde fiable.",
-              "answer": false,
-              "explanation": "Seule une restauration testée prouve que la sauvegarde est exploitable.",
-              "hints": []
+              "question": "Que vérifier avant le premier démarrage ?",
+              "options": [
+                "Tous les câbles et la fixation du ventirad",
+                "La couleur du boîtier",
+                "Le prix des composants",
+                "La marque de l'écran"
+              ],
+              "answer": 0,
+              "explanation": "Un contrôle visuel évite un court-circuit ou une surchauffe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-02-q2"
             }
           ],
-          "nextStep": "Chapitre suivant : « Entretien, températures et bonnes pratiques ».",
           "summary": [
-            "Une copie à côté de la machine ne protège pas d'un sinistre.",
-            "Il faut un support distinct et une copie hors site.",
-            "Une sauvegarde ne vaut que si la restauration est testée."
-          ]
-        },
-        {
-          "id": "mnt-05",
-          "title": "Entretien, températures et bonnes pratiques",
-          "duration": 18,
-          "objectives": [
-            "Prévenir la surchauffe",
-            "Planifier un entretien"
+            "Préparation antistatique et espace dégagé.",
+            "CPU et RAM avant la carte mère dans le boîtier.",
+            "Contrôle visuel avant la mise sous tension."
           ],
           "content": [
             {
               "type": "p",
-              "text": "La poussière bloque les dissipateurs et fait monter les températures : le processeur ralentit (**throttling**) ou s'arrête. Un entretien physique régulier, avec les précautions antistatiques, prolonge la durée de vie du matériel."
+              "text": "Le montage se prépare : espace dégagé, électricité coupée, bracelet antistatique ou contact avec une surface métallique reliée à la terre."
             },
             {
               "type": "list",
               "items": [
-                "Nettoyer les entrées d'air et les ventilateurs, machine éteinte et débranchée.",
-                "Vérifier les températures au repos et en charge.",
-                "Remplacer la pâte thermique seulement si les températures l'exigent.",
-                "Surveiller les journaux de température et les erreurs matérielles."
+                "Monter processeur et mémoire avant d'insérer la carte mère dans le boîtier.",
+                "Fixer la carte mère sur ses entretoises, sans oublier aucune vis.",
+                "Brancher alimentation, ventilateurs, façade et stockage.",
+                "Vérifier une dernière fois avant de mettre sous tension."
               ]
             },
             {
-              "type": "tip",
-              "text": "Notez la température habituelle en charge. Une hausse progressive de dix degrés est un signal d'encrassement avant tout symptôme visible."
+              "type": "code",
+              "lang": "text",
+              "code": "1. CPU + pâte thermique + ventirad\n2. RAM\n3. Carte mère dans le boîtier\n4. Stockage\n5. Alimentation et câbles\n6. Contrôle visuel, puis démarrage",
+              "title": "Ordre de montage"
+            },
+            {
+              "type": "warning",
+              "text": "Un oubli d'entretoise peut court-circuiter la carte mère ; un câble CPU oublié empêche tout démarrage, ventilateurs compris."
             }
           ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Installer un système d'exploitation »."
+        },
+        {
+          "id": "mnt-03",
+          "title": "Installer un système d'exploitation",
+          "objectives": [
+            "Sauvegarder avant installation",
+            "Préparer un support amorçable",
+            "Effectuer l'installation et les réglages de base"
+          ],
           "exercise": {
-            "title": "Surchauffe",
-            "instructions": "Le processeur passe de 70 °C à 95 °C en charge et ralentit. Quelles vérifications menez-vous ?",
+            "title": "Préparer une installation",
+            "instructions": "Citez trois précautions avant d'installer un système sur un poste utilisé.",
             "hints": [
-              "Un refroidissement encrassé est la cause la plus fréquente.",
-              "Le ventilateur tourne-t-il à la bonne vitesse ?"
+              "Les données existantes.",
+              "Le support et l'image.",
+              "Le retour arrière."
             ],
-            "solution": "Contrôler l'encrassement du dissipateur et des entrées d'air, la vitesse du ventilateur, puis la pâte thermique si le problème persiste.",
+            "solution": "Sauvegarder et tester la restauration, vérifier l'image officielle et le support, prévoir le pilote réseau et le retour arrière.",
             "check": {
-              "type": "any",
-              "any": [
-                "ventilateur",
-                "pâte",
-                "pate",
-                "poussière",
-                "poussiere"
-              ]
+              "type": "keywords",
+              "keywords": [
+                "sauvegard",
+                "image",
+                "support"
+              ],
+              "success": "Correct : sauvegarde, image vérifiée, support amorçable."
             }
           },
           "quiz": [
             {
-              "id": "mnt-05-q1",
-              "type": "single",
-              "difficulty": 1,
-              "question": "Que signifie throttling ?",
+              "question": "Que faire en premier avant d'installer ?",
               "options": [
-                "Le processeur ralentit pour se protéger",
-                "Le disque se remplit",
-                "Le réseau sature",
-                "La mémoire se vide"
+                "Sauvegarder les données",
+                "Formater le disque",
+                "Changer la carte graphique",
+                "Installer un antivirus"
               ],
               "answer": 0,
-              "explanation": "La réduction de fréquence protège le processeur en cas de surchauffe.",
-              "hints": []
+              "explanation": "L'installation peut effacer les données.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-03-q1"
             },
             {
-              "id": "mnt-05-q2",
-              "type": "single",
-              "difficulty": 2,
-              "question": "Quand changer la pâte thermique ?",
+              "question": "Pourquoi vérifier l'empreinte de l'image ?",
               "options": [
-                "Chaque mois",
-                "Quand les températures l'exigent après vérification",
-                "À chaque nettoyage",
-                "Jamais"
+                "S'assurer qu'elle n'est pas corrompue ou modifiée",
+                "Connaître sa taille",
+                "Accélérer l'installation",
+                "Choisir la langue"
               ],
-              "answer": 1,
-              "explanation": "On ne remplace pas la pâte sans raison mesurée : c'est une opération délicate.",
-              "hints": []
+              "answer": 0,
+              "explanation": "L'empreinte garantit l'intégrité du fichier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-03-q2"
             }
           ],
-          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
           "summary": [
-            "Vérifier la poussière et le flux d'air.",
-            "Contrôler les ventilateurs et la pâte thermique.",
-            "Une surchauffe provoque ralentissement et pannes."
-          ]
+            "Sauvegarde testée avant toute installation.",
+            "Image officielle et support amorçable vérifiés.",
+            "Compte standard et administrateur séparés."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Installer un système efface potentiellement le disque : sauvegardez d'abord les données, puis vérifiez que la restauration fonctionne."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Télécharger l'image officielle et vérifier son empreinte.",
+                "Créer un support USB amorçable.",
+                "Choisir le mode de démarrage (UEFI) et l'ordre d'amorçage.",
+                "Partitionner, installer, puis créer un compte standard."
+              ]
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "Vérifier l'image : sha256sum image.iso\nCréer la clé : outil officiel de l'éditeur\nDémarrer sur la clé via le menu de démarrage",
+              "title": "Préparation du support"
+            },
+            {
+              "type": "warning",
+              "text": "Un compte administrateur unique sans mot de passe est une porte ouverte : créez un compte standard et un administrateur distinct."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Installer et mettre à jour des pilotes »."
+        },
+        {
+          "id": "mnt-04",
+          "title": "Installer et mettre à jour des pilotes",
+          "objectives": [
+            "Identifier un pilote nécessaire",
+            "Choisir une source fiable",
+            "Revenir à une version précédente"
+          ],
+          "exercise": {
+            "title": "Traiter un écran qui clignote",
+            "instructions": "Après une mise à jour graphique, l'écran clignote. Décrivez la démarche.",
+            "hints": [
+              "Le mode sans échec permet d'agir.",
+              "Un retour arrière est souvent suffisant."
+            ],
+            "solution": "Démarrer en mode sans échec si nécessaire, revenir au pilote précédent, vérifier la disparition du symptôme, puis tester une version stable ou attendre une correction.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sans echec",
+                "precedent",
+                "revenir"
+              ],
+              "success": "Correct : mode sans échec et retour au pilote précédent."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où trouver le pilote le plus fiable ?",
+              "options": [
+                "Chez le fabricant du matériel",
+                "Sur un forum",
+                "Dans un pack inconnu",
+                "Dans un e-mail"
+              ],
+              "answer": 0,
+              "explanation": "Le fabricant fournit la version adaptée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-04-q1"
+            },
+            {
+              "question": "Que faire avant une mise à jour de pilote graphique ?",
+              "options": [
+                "Créer un point de restauration",
+                "Supprimer les fichiers",
+                "Changer d'écran",
+                "Désactiver le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le point de restauration permet un retour arrière.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-04-q2"
+            }
+          ],
+          "summary": [
+            "Un pilote relie système et matériel.",
+            "Source officielle et version notée.",
+            "Retour arrière préparé avant mise à jour."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pilote est un logiciel qui permet au système de communiquer avec un matériel. Windows en fournit souvent, le fabricant propose les versions les plus complètes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Privilégier le site du fabricant ou l'outil officiel du système.",
+                "Noter la version installée avant mise à jour.",
+                "Créer un point de restauration avant un pilote graphique.",
+                "En cas de problème, revenir à la version précédente."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Symptôme",
+                "Piste"
+              ],
+              "rows": [
+                [
+                  "Écran qui clignote",
+                  "pilote graphique"
+                ],
+                [
+                  "Wi-Fi instable",
+                  "pilote réseau"
+                ],
+                [
+                  "Périphérique non reconnu",
+                  "pilote absent ou incompatible"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Les « packs de pilotes » non officiels installent parfois des versions obsolètes ou modifiées : préférez l'éditeur du matériel."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Diagnostiquer les problèmes matériels »."
+        },
+        {
+          "id": "mnt-05",
+          "title": "Diagnostiquer les problèmes matériels",
+          "objectives": [
+            "Exploiter les signaux du firmware",
+            "Isoler un composant défaillant",
+            "Distinguer panne matérielle et logicielle"
+          ],
+          "exercise": {
+            "title": "Première vérification",
+            "instructions": "La machine s'allume, les ventilateurs tournent, aucun affichage. Que vérifiez-vous d'abord ?",
+            "hints": [
+              "Écouter les bips.",
+              "Contrôler la mémoire et la carte graphique."
+            ],
+            "solution": "Lire les bips et voyants, vérifier l'enfichage de la mémoire et de la carte graphique, tester une barrette à la fois.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "bip",
+                "memoire",
+                "carte graphique"
+              ],
+              "success": "Correct : signaux du firmware, mémoire, carte graphique."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifient souvent les bips au démarrage ?",
+              "options": [
+                "Un code d'erreur matérielle",
+                "La fin du démarrage",
+                "Une mise à jour",
+                "Un virus"
+              ],
+              "answer": 0,
+              "explanation": "Le firmware signale un test échoué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-05-q1"
+            },
+            {
+              "question": "Comment isoler une barrette défectueuse ?",
+              "options": [
+                "Tester une barrette à la fois",
+                "Changer le disque",
+                "Réinstaller le système",
+                "Débrancher l'écran"
+              ],
+              "answer": 0,
+              "explanation": "Un test à la fois identifie la barrette fautive.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt-05-q2"
+            }
+          ],
+          "summary": [
+            "Bips et voyants orientent le diagnostic.",
+            "Isoler un composant à la fois.",
+            "Un live USB distingue matériel et logiciel."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Au démarrage, le firmware teste le matériel essentiel. Les bips et voyants indiquent souvent la zone fautive : mémoire, carte graphique, alimentation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier l'alimentation et les câbles avant tout démontage.",
+                "Retirer les périphériques non essentiels.",
+                "Tester une barrette de mémoire à la fois.",
+                "Consulter la documentation des codes de bips du fabricant."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Symptôme",
+                "Hypothèse fréquente"
+              ],
+              "rows": [
+                [
+                  "Aucun affichage, ventilateurs actifs",
+                  "mémoire ou carte graphique"
+                ],
+                [
+                  "Redémarrages aléatoires",
+                  "alimentation ou surchauffe"
+                ],
+                [
+                  "Écran bleu au démarrage",
+                  "mémoire ou pilote"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une panne matérielle se reproduit souvent hors du système : testez avec un live USB pour écarter un problème logiciel."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
         }
       ]
     }

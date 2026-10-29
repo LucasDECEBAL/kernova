@@ -158,5 +158,528 @@
         "content": "# Journal de bord\n\n## Objectif\nDécrire en une phrase ce que contient ce dépôt.\n\n## Installation\nIndiquer les prérequis et les commandes.\n\n## Utilisation\nDécrire le lancement et les vérifications.\n"
       }
     ]
+  },
+  "algorithmique-debutant": {
+    "hints": [
+      "Commencez par écrire les entrées, le traitement et la sortie en français, sans syntaxe.",
+      "Testez à la main avec trois notes, puis avec une liste vide et une note invalide."
+    ],
+    "starters": [
+      {
+        "name": "analyseur.pseudo",
+        "language": "text",
+        "content": "ALGORITHME AnalyserNotes\nENTRÉES\n  notes : liste de nombres\nSORTIES\n  moyenne, minimum, maximum, nombre de notes\nDÉBUT\n  // TODO : refuser une liste vide\n  // TODO : ignorer ou signaler une note hors de 0..20\n  // TODO : calculer moyenne, minimum et maximum\n  // TODO : afficher un rapport lisible\nFIN\n"
+      }
+    ]
+  },
+  "architecture-logicielle": {
+    "hints": [
+      "Dessinez les dépendances avant de déplacer le code : domaine, cas d'usage, adaptateurs.",
+      "Faites passer l'accès aux données par une fonction injectée pour tester sans base."
+    ],
+    "starters": [
+      {
+        "name": "module.js",
+        "language": "js",
+        "content": "// Module couplé : base, règle métier et messagerie au même endroit.\n// Objectif : séparer sans changer le comportement observable.\n\nexport async function exporterCommandes(clientId, deps) {\n  const { base, messagerie } = deps; // TODO : dépendances injectées\n  const lignes = await base.listerCommandes(clientId); // TODO : extraire l'accès aux données\n  const csv = lignes.map((l) => [l.id, l.montant].join(';')).join('\\n'); // TODO : isoler la règle\n  await messagerie.envoyer(clientId, 'Votre export', csv); // TODO : extraire l'envoi\n  return csv;\n}\n"
+      }
+    ]
+  },
+  "automatisation-workflows": {
+    "hints": [
+      "Un déclencheur, un filtre, une action : gardez trois étapes pour démarrer.",
+      "Journalisez l'identifiant de chaque élément traité pour éviter les doublons."
+    ],
+    "starters": [
+      {
+        "name": "workflow.json",
+        "language": "json",
+        "content": "{\n  \"nom\": \"Veille quotidienne\",\n  \"declencheur\": { \"type\": \"planification\", \"frequence\": \"quotidienne\", \"heure\": \"07:00\" },\n  \"etapes\": [\n    { \"type\": \"lecture\", \"source\": \"TODO : URL publique\", \"format\": \"rss\" },\n    { \"type\": \"filtre\", \"condition\": \"TODO : date > derniere execution\" },\n    { \"type\": \"resume\", \"modele\": \"TODO\", \"limite\": \"5 lignes\" },\n    { \"type\": \"envoi\", \"canal\": \"email\", \"destinataire\": \"TODO\" }\n  ],\n  \"erreurs\": { \"reessais\": 2, \"delai\": \"5m\", \"alerte\": \"TODO\" }\n}\n"
+      }
+    ]
+  },
+  "backend-api": {
+    "hints": [
+      "Définissez les routes et les codes de statut avant d'écrire la persistance.",
+      "Validez le corps de chaque requête et renvoyez 422 avec le champ fautif."
+    ],
+    "starters": [
+      {
+        "name": "server.mjs",
+        "language": "js",
+        "content": "import http from 'node:http';\n\nconst taches = [];\n\n// TODO : GET /taches?page=1&taille=20\n// TODO : POST /taches (valider le titre, 422 sinon)\n// TODO : PATCH /taches/:id (propriétaire uniquement, 403 sinon)\n// TODO : DELETE /taches/:id\n\nexport function creerServeur() {\n  return http.createServer((req, res) => {\n    res.writeHead(501, { 'Content-Type': 'application/json; charset=utf-8' });\n    res.end(JSON.stringify({ erreur: 'a implementer' }));\n  });\n}\n"
+      }
+    ]
+  },
+  "bases-donnees-avancees": {
+    "hints": [
+      "Mesurez avant et après avec EXPLAIN ANALYZE et notez le plan obtenu.",
+      "Un index composite (ville, nom) sert le filtre puis le tri ; l'ordre inverse ne convient pas."
+    ],
+    "starters": [
+      {
+        "name": "diagnostic.sql",
+        "language": "sql",
+        "content": "-- 1. Reproduire la lenteur\n-- EXPLAIN ANALYZE SELECT * FROM commandes WHERE client_id = 42 ORDER BY date DESC;\n\n-- 2. Vérifier les index existants\n-- \\d clients            (PostgreSQL)\n-- SHOW INDEX FROM clients;  (MySQL)\n\n-- 3. Corriger un problème à la fois, puis remesurer\n-- CREATE INDEX idx_clients_ville_nom ON clients (ville, nom);\n\n-- 4. Supprimer les index inutilisés : ils ralentissent les écritures\n"
+      }
+    ]
+  },
+  "bash-scripts": {
+    "hints": [
+      "Mettez set -euo pipefail en tête, puis flock -n pour empêcher deux exécutions simultanées.",
+      "Testez le script avec un dossier source vide, puis avec une destination en lecture seule."
+    ],
+    "starters": [
+      {
+        "name": "sauvegarde.sh",
+        "language": "bash",
+        "content": "#!/usr/bin/env bash\nset -euo pipefail\n\nSOURCE=${1:-/srv/app}\nDEST=${2:-/srv/backup}\nHORODATAGE=$(date +%Y%m%d-%H%M%S)\n\n# TODO : verrou exclusif (flock) et sortie propre si déjà pris\n# TODO : créer $DEST si absent\n# TODO : archiver $SOURCE vers $DEST/app-$HORODATAGE.tar.gz\n# TODO : conserver les 7 dernières archives\n# TODO : journaliser et renvoyer un code de sortie explicite\n"
+      }
+    ]
+  },
+  "cloud-debutant": {
+    "hints": [
+      "Placez l'équilibreur en sous-réseau public, l'application et la base en privé.",
+      "Chiffrez une estimation mensuelle : calcul, stockage, trafic sortant, sauvegardes."
+    ],
+    "starters": [
+      {
+        "name": "architecture.md",
+        "language": "md",
+        "content": "# Architecture — site vitrine\n\n## Réseau\n- VPC : 10.0.0.0/16\n- Public : 10.0.1.0/24 (équilibreur uniquement)\n- Privé applicatif : 10.0.2.0/24\n- Privé données : 10.0.3.0/24\n\n## Flux autorisés\n| Source | Destination | Port | Justification |\n| --- | --- | --- | --- |\n| Internet | équilibreur | 443 | HTTPS |\n| Équilibreur | application | 8080 | interne |\n| Application | base | 5432 | interne |\n\n## Coûts (à compléter)\n| Poste | Hypothèse | Mensuel |\n| --- | --- | --- |\n| Calcul | TODO | TODO |\n| Base | TODO | TODO |\n| Sauvegardes | TODO | TODO |\n"
+      }
+    ]
+  },
+  "cybersecurite-avancee": {
+    "hints": [
+      "Chaque mesure doit être vérifiable : commande, sortie attendue, preuve conservée.",
+      "Journalisez les refus de pare-feu : c'est la matière première de la détection."
+    ],
+    "starters": [
+      {
+        "name": "durcissement.md",
+        "language": "md",
+        "content": "# Durcissement — serveur de laboratoire\n\n| Mesure | Vérification | Résultat attendu | Fait |\n| --- | --- | --- | --- |\n| SSH sans mot de passe | sshd -T \\| grep passwordauthentication | no | [ ] |\n| Base non exposée | ss -tulpn | écoute sur 127.0.0.1 | [ ] |\n| Pare-feu actif | ufw status | actif, règles minimales | [ ] |\n| Mises à jour | apt list --upgradable | aucune critique | [ ] |\n\n## Détection minimale\n- Journaux surveillés : TODO\n- Règle d'alerte : TODO\n- Test de déclenchement : TODO\n"
+      }
+    ]
+  },
+  "cybersecurite-debutant": {
+    "hints": [
+      "Distinguez ce qui est activé, ce qui est à jour et ce qui a été vérifié.",
+      "Priorisez par exposition réelle, pas par inquiétude."
+    ],
+    "starters": [
+      {
+        "name": "audit-poste.md",
+        "language": "md",
+        "content": "# Audit défensif — poste de travail\n\n| Élément | État observé | Risque | Action | Priorité |\n| --- | --- | --- | --- | --- |\n| Verrouillage de session | TODO | TODO | TODO | TODO |\n| Chiffrement du disque | TODO | TODO | TODO | TODO |\n| Mises à jour | TODO | TODO | TODO | TODO |\n| Sauvegarde | TODO | TODO | TODO | TODO |\n| Comptes administrateur | TODO | TODO | TODO | TODO |\n\n## Plan d'amélioration\n1. TODO (cette semaine)\n2. TODO (ce mois)\n"
+      }
+    ]
+  },
+  "deploiement-seo": {
+    "hints": [
+      "Rechargez une page profonde depuis l'URL publiée : c'est le piège des sites statiques.",
+      "Indiquez width et height sur chaque image pour éviter les sauts de mise en page."
+    ],
+    "starters": [
+      {
+        "name": "checklist.md",
+        "language": "md",
+        "content": "# Mise en ligne\n\n- [ ] Nom de domaine résolu (A / CNAME)\n- [ ] HTTPS actif et redirection HTTP vers HTTPS\n- [ ] Page profonde rechargée sans 404\n- [ ] title et description uniques par page\n- [ ] Images avec width, height et alt\n- [ ] Test mobile et contraste\n\n## En-têtes de sécurité\nFichier _headers (Netlify) fourni à côté : adaptez-le à votre hébergeur.\n"
+      },
+      {
+        "name": "_headers",
+        "language": "text",
+        "content": "/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  X-Frame-Options: DENY\n"
+      }
+    ]
+  },
+  "devops-debutant": {
+    "hints": [
+      "Construisez l'artefact une seule fois, puis promouvez exactement le même.",
+      "Chaque étape doit échouer clairement : pas de tests ignorés par défaut."
+    ],
+    "starters": [
+      {
+        "name": "pipeline.yml",
+        "language": "yaml",
+        "content": "etapes:\n  - nom: installer\n    commande: npm ci\n  - nom: verifier\n    commande: npm run lint && npm test\n  - nom: construire\n    commande: npm run build\n    artefacts: [dist/]\n  - nom: deployer-recette\n    commande: ./deploy.sh recette\n    depend_de: construire\n  # TODO : promotion de l'artefact, approbation, retour arrière documenté\n"
+      }
+    ]
+  },
+  "ethical-hacking": {
+    "hints": [
+      "Aucune action hors périmètre, même « pour vérifier ».",
+      "Un constat sans reproduction ni recommandation n'est pas exploitable."
+    ],
+    "starters": [
+      {
+        "name": "rapport.md",
+        "language": "md",
+        "content": "# Rapport d'audit — laboratoire autorisé\n\n## Cadre\n- Autorisation : TODO (référence, date)\n- Périmètre : TODO (adresses, domaines, exclusions)\n- Fenêtre : TODO\n- Contacts : TODO\n\n## Synthèse\n| # | Constat | Gravité | Exposition | Recommandation |\n| --- | --- | --- | --- | --- |\n| 1 | TODO | TODO | TODO | TODO |\n\n## Détail d'un constat\n- Requête ou commande :\n- Réponse observée :\n- Impact :\n- Remédiation :\n- Vérification après correction :\n"
+      }
+    ]
+  },
+  "gestion-projet": {
+    "hints": [
+      "Un critère d'acceptation doit être observable par quelqu'un d'autre que vous.",
+      "Identifiez les deux risques qui peuvent tuer le projet avant de planifier les tâches."
+    ],
+    "starters": [
+      {
+        "name": "cadrage.md",
+        "language": "md",
+        "content": "# Cadrage — projet\n\n## Problème\nTODO (qui, quoi, coût actuel)\n\n## Périmètre\n- Inclus : TODO\n- Exclu : TODO\n\n## Critères d'acceptation\n1. TODO (mesurable)\n2. TODO\n\n## Découpage\n| Lot | Objectif | Estimation |\n| --- | --- | --- |\n| 1 | TODO | TODO |\n\n## Risques\n| Risque | Probabilité | Impact | Réponse |\n| --- | --- | --- | --- |\n| TODO | TODO | TODO | TODO |\n"
+      }
+    ]
+  },
+  "ia-debutant": {
+    "hints": [
+      "Figez une vingtaine de questions avec la réponse attendue et sa source.",
+      "Une réponse sans citation vérifiable ne compte pas comme correcte."
+    ],
+    "starters": [
+      {
+        "name": "evaluation.md",
+        "language": "md",
+        "content": "# Évaluation de l'assistant documentaire\n\n## Jeu de test\n| # | Question | Réponse attendue | Source | Réponse obtenue | Correcte |\n| --- | --- | --- | --- | --- | --- |\n| 1 | TODO | TODO | doc#TODO | | |\n| 2 | TODO | TODO | doc#TODO | | |\n\n## Mesures\n- Taux de réponses correctes : TODO\n- Taux de citations valides : TODO\n- Questions refusées à tort : TODO\n\n## Limites\n- Documents non couverts : TODO\n"
+      }
+    ]
+  },
+  "informatique-debutant": {
+    "hints": [
+      "Relevez les modèles exacts avec les outils du système, pas de mémoire.",
+      "Indiquez où sont vos fichiers et comment ils sont sauvegardés."
+    ],
+    "starters": [
+      {
+        "name": "fiche-technique.md",
+        "language": "md",
+        "content": "# Fiche technique — mon poste\n\n## Matériel\n- Modèle : TODO\n- Processeur : TODO (cœurs, fréquence)\n- Mémoire : TODO Go\n- Stockage : TODO (type, capacité, espace libre)\n\n## Système\n- Système d'exploitation : TODO\n- Version : TODO\n- Mises à jour : TODO\n\n## Organisation\n- Dossiers principaux : TODO\n- Sauvegarde : TODO (support, fréquence, test de restauration)\n"
+      }
+    ]
+  },
+  "javascript-avance": {
+    "hints": [
+      "Créez le magasin dans onupgradeneeded, une seule fois par version.",
+      "Affichez un état « hors ligne » explicite quand le réseau échoue."
+    ],
+    "starters": [
+      {
+        "name": "app.js",
+        "language": "js",
+        "content": "const DB_NAME = 'tableau-bord';\nconst STORE = 'mesures';\n\nexport function ouvrirBase() {\n  return new Promise((resolve, reject) => {\n    const requete = indexedDB.open(DB_NAME, 1);\n    requete.onupgradeneeded = () => requete.result.createObjectStore(STORE, { keyPath: 'id' });\n    requete.onsuccess = () => resolve(requete.result);\n    requete.onerror = () => reject(requete.error);\n  });\n}\n\n// TODO : charger les données réseau puis les enregistrer dans IndexedDB\n// TODO : au démarrage, lire le cache et afficher un indicateur hors ligne\n// TODO : en cas d'erreur réseau, ne pas écraser le cache existant\n"
+      }
+    ]
+  },
+  "kubernetes-debutant": {
+    "hints": [
+      "Le selector du Service doit correspondre exactement aux labels des pods.",
+      "Ajoutez une readinessProbe pour ne pas recevoir de trafic trop tôt."
+    ],
+    "starters": [
+      {
+        "name": "deployment.yaml",
+        "language": "yaml",
+        "content": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: api\nspec:\n  replicas: 2\n  selector:\n    matchLabels:\n      app: api\n  template:\n    metadata:\n      labels:\n        app: api\n    spec:\n      containers:\n        - name: api\n          image: mon-api:1.0\n          ports:\n            - containerPort: 8080\n          # TODO : readinessProbe (initialDelaySeconds 30)\n          # TODO : resources.requests et limits\n"
+      },
+      {
+        "name": "service.yaml",
+        "language": "yaml",
+        "content": "apiVersion: v1\nkind: Service\nmetadata:\n  name: api\nspec:\n  type: ClusterIP\n  selector:\n    app: api # TODO : vérifier la correspondance avec les pods\n  ports:\n    - port: 80\n      targetPort: 8080\n"
+      }
+    ]
+  },
+  "langage-c": {
+    "hints": [
+      "Vérifiez chaque malloc et remettez le pointeur à NULL après free.",
+      "Compilez avec -Wall -Wextra -fsanitize=address avant de considérer le projet terminé."
+    ],
+    "starters": [
+      {
+        "name": "carnet.c",
+        "language": "c",
+        "content": "#include <stdio.h>\n#include <stdlib.h>\n#include <string.h>\n\ntypedef struct {\n  char nom[64];\n  char numero[32];\n} Contact;\n\n/* TODO : saisir un contact (nom, numero) */\n/* TODO : afficher la liste */\n/* TODO : enregistrer dans contacts.txt */\n/* TODO : charger au demarrage */\n\nint main(void) {\n  printf(\"Carnet d'adresses - a completer\\n\");\n  return 0;\n}\n"
+      }
+    ]
+  },
+  "langage-cpp": {
+    "hints": [
+      "Séparez la structure de données de l'affichage et de la sauvegarde.",
+      "Utilisez std::sort avec un comparateur explicite plutôt qu'un tri maison."
+    ],
+    "starters": [
+      {
+        "name": "taches.cpp",
+        "language": "cpp",
+        "content": "#include <iostream>\n#include <string>\n#include <vector>\n\nstruct Tache {\n  std::string titre;\n  bool faite = false;\n};\n\n// TODO : ajouter une tache\n// TODO : trier par titre (std::sort)\n// TODO : sauvegarder dans taches.txt et relire au demarrage\n\nint main() {\n  std::vector<Tache> taches;\n  std::cout << \"Gestionnaire de taches - a completer\\n\";\n  return 0;\n}\n"
+      }
+    ]
+  },
+  "langage-go": {
+    "hints": [
+      "Écrivez le handler et son test avec httptest avant d'ajouter la persistance.",
+      "Un handler qui écrit du JSON doit fixer Content-Type avant WriteHeader."
+    ],
+    "starters": [
+      {
+        "name": "main.go",
+        "language": "go",
+        "content": "package main\n\nimport (\n\t\"log\"\n\t\"net/http\"\n)\n\ntype Tache struct {\n\tID    int    `json:\"id\"`\n\tTitre string `json:\"titre\"`\n}\n\nvar taches []Tache\n\nfunc lister(w http.ResponseWriter, r *http.Request) {\n\t// TODO : repondre en JSON avec le bon Content-Type\n}\n\nfunc ajouter(w http.ResponseWriter, r *http.Request) {\n\t// TODO : valider le titre, renvoyer 201 et la tache creee\n}\n\nfunc main() {\n\thttp.HandleFunc(\"/taches\", func(w http.ResponseWriter, r *http.Request) {\n\t\tswitch r.Method {\n\t\tcase http.MethodGet:\n\t\t\tlister(w, r)\n\t\tcase http.MethodPost:\n\t\t\tajouter(w, r)\n\t\tdefault:\n\t\t\thttp.Error(w, \"methode non autorisee\", http.StatusMethodNotAllowed)\n\t\t}\n\t})\n\tlog.Fatal(http.ListenAndServe(\":8080\", nil))\n}\n"
+      }
+    ]
+  },
+  "langage-java": {
+    "hints": [
+      "Modélisez l'emprunt comme un état du livre, pas comme un texte libre.",
+      "Testez d'abord les cas refusés : livre absent, déjà emprunté."
+    ],
+    "starters": [
+      {
+        "name": "Bibliotheque.java",
+        "language": "java",
+        "content": "import java.util.ArrayList;\nimport java.util.List;\n\npublic class Bibliotheque {\n  private final List<Livre> livres = new ArrayList<>();\n\n  public void ajouter(Livre livre) { /* TODO */ }\n\n  public void emprunter(String isbn) { /* TODO : lever une exception si absent ou deja emprunte */ }\n\n  public void rendre(String isbn) { /* TODO */ }\n\n  public static void main(String[] args) {\n    System.out.println(\"Bibliotheque - a completer\");\n  }\n}\n\nrecord Livre(String isbn, String titre, boolean disponible) {}\n"
+      }
+    ]
+  },
+  "langage-php": {
+    "hints": [
+      "Validez et nettoyez les entrées avant tout accès à la base.",
+      "Utilisez une requête préparée avec paramètre nommé, jamais de concaténation."
+    ],
+    "starters": [
+      {
+        "name": "contact.php",
+        "language": "php",
+        "content": "<?php\ndeclare(strict_types=1);\n\n// TODO : valider nom, e-mail et message\n// TODO : enregistrer en base avec PDO et une requete preparee\n// TODO : afficher la liste des messages\n\n$pdo = new PDO('sqlite:' . __DIR__ . '/contact.db');\n$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);\n"
+      },
+      {
+        "name": "schema.sql",
+        "language": "sql",
+        "content": "CREATE TABLE IF NOT EXISTS messages (\n  id INTEGER PRIMARY KEY AUTOINCREMENT,\n  nom TEXT NOT NULL,\n  email TEXT NOT NULL,\n  message TEXT NOT NULL,\n  cree_le TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP\n);\n"
+      }
+    ]
+  },
+  "maintenance-informatique": {
+    "hints": [
+      "Isolez une variable à la fois : c'est la seule façon de conclure.",
+      "Sauvegardez avant toute réparation, même quand cela « semble simple »."
+    ],
+    "starters": [
+      {
+        "name": "diagnostic.md",
+        "language": "md",
+        "content": "# Fiche de diagnostic — poste\n\n## 1. Symptômes\n- Ce qui fonctionne : TODO\n- Ce qui ne fonctionne pas : TODO\n- Depuis quand : TODO\n\n## 2. Vérifications rapides\n| Étape | Résultat | Conclusion |\n| --- | --- | --- |\n| Bips et voyants | TODO | TODO |\n| Alimentation et câbles | TODO | TODO |\n| Mémoire (une barrette à la fois) | TODO | TODO |\n| Mode sans échec | TODO | TODO |\n\n## 3. Décision\n- Cause probable : TODO\n- Action : TODO\n- Sauvegarde préalable : TODO\n"
+      }
+    ]
+  },
+  "mobile": {
+    "hints": [
+      "Dessinez d'abord les états hors ligne et vide : ce sont les plus oubliés.",
+      "Demandez chaque permission au moment de l'usage, avec une explication courte."
+    ],
+    "starters": [
+      {
+        "name": "maquette.md",
+        "language": "md",
+        "content": "# Maquette — application liste et détail\n\n## Écrans\n1. Liste : éléments, recherche, état vide, état hors ligne\n2. Détail : titre, description, action secondaire\n\n## États\n| État | Affichage | Action possible |\n| --- | --- | --- |\n| Chargement | TODO | aucune |\n| Erreur réseau | TODO | réessayer |\n| Hors ligne avec cache | TODO | consulter |\n| Vide | TODO | créer |\n\n## Permissions\n- Demandée : TODO\n- Au moment : TODO\n- Si refus : TODO\n"
+      }
+    ]
+  },
+  "observabilite": {
+    "hints": [
+      "Reliez chaque symptôme à un signal : métrique, journal ou trace.",
+      "Une action de postmortem sans responsable ni date ne se fera pas."
+    ],
+    "starters": [
+      {
+        "name": "postmortem.md",
+        "language": "md",
+        "content": "# Postmortem — incident simulé\n\n## Résumé\n- Début et fin : TODO\n- Impact utilisateur : TODO\n- SLO concerné : 99,5 % sur 30 jours\n\n## Chronologie\n| Heure | Événement | Source |\n| --- | --- | --- |\n| TODO | TODO | TODO |\n\n## Causes contributives\n- TODO (technique, processus, détection)\n\n## Actions\n| Action | Responsable | Échéance |\n| --- | --- | --- |\n| TODO | TODO | TODO |\n"
+      },
+      {
+        "name": "slo.md",
+        "language": "md",
+        "content": "# SLI et SLO\n\n| Service | SLI | Objectif | Fenêtre | Budget d'erreur |\n| --- | --- | --- | --- | --- |\n| API | taux de requêtes réussies | 99,5 % | 30 jours | 3 h 36 |\n| API | latence p95 | < 300 ms | 30 jours | TODO |\n\n## Alertes\n- Seuil : TODO\n- Durée avant alerte : TODO\n- Lien vers les journaux : TODO\n"
+      }
+    ]
+  },
+  "python-donnees-api": {
+    "hints": [
+      "Convertissez les montants en float dès la lecture, sinon l'addition concatène.",
+      "Un outil en ligne de commande renvoie un code non nul en cas d'échec."
+    ],
+    "starters": [
+      {
+        "name": "rapport.py",
+        "language": "python",
+        "content": "import argparse\nimport csv\nimport json\nfrom pathlib import Path\n\n\ndef lire_ventes(chemin: Path) -> list[dict]:\n    with chemin.open(newline=\"\", encoding=\"utf-8\") as fichier:\n        return list(csv.DictReader(fichier))\n\n\ndef construire_rapport(lignes: list[dict]) -> dict:\n    # TODO : convertir montant en float et calculer le total\n    # TODO : regrouper par produit\n    return {}\n\n\ndef main() -> int:\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--entree\", default=\"ventes.csv\")\n    parser.add_argument(\"--sortie\", default=\"resultat.json\")\n    args = parser.parse_args()\n\n    lignes = lire_ventes(Path(args.entree))\n    rapport = construire_rapport(lignes)\n    Path(args.sortie).write_text(\n        json.dumps(rapport, ensure_ascii=False, indent=2), encoding=\"utf-8\"\n    )\n    return 0\n\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())\n"
+      },
+      {
+        "name": "ventes.csv",
+        "language": "text",
+        "content": "date,produit,quantite,montant\n2026-01-05,Clavier,2,49.90\n2026-01-05,Souris,1,19.90\n2026-01-06,Ecran,1,159.00\n"
+      }
+    ]
+  },
+  "react": {
+    "hints": [
+      "Utilisez l'identifiant des éléments comme key, jamais l'index.",
+      "Chaque état doit avoir son rendu : chargement, erreur, vide, liste."
+    ],
+    "starters": [
+      {
+        "name": "App.jsx",
+        "language": "js",
+        "content": "import { useEffect, useState } from 'react';\n\nexport default function App() {\n  const [elements, setElements] = useState([]);\n  const [recherche, setRecherche] = useState('');\n  const [chargement, setChargement] = useState(true);\n  const [erreur, setErreur] = useState(null);\n\n  useEffect(() => {\n    // TODO : charger les donnees, gerer l'erreur, nettoyer l'effet\n  }, []);\n\n  // TODO : filtrer par recherche (nom, casse insensible)\n  // TODO : afficher chargement, erreur, vide et liste avec key={element.id}\n\n  return <main>{/* ... */}</main>;\n}\n"
+      }
+    ]
+  },
+  "reglementation": {
+    "hints": [
+      "Chaque donnée doit répondre à une finalité ; sinon, ne la collectez pas.",
+      "La durée de conservation se décide avant la collecte, pas après."
+    ],
+    "starters": [
+      {
+        "name": "registre.md",
+        "language": "md",
+        "content": "# Registre de traitement (simplifié)\n\n| Traitement | Finalité | Base légale | Données | Personnes | Conservation | Destinataires |\n| --- | --- | --- | --- | --- | --- | --- |\n| Newsletter | TODO | Consentement | e-mail | Abonnés | TODO | TODO |\n| Facturation | TODO | Contrat | TODO | Clients | TODO | TODO |\n\n## Mesures\n- Minimisation : TODO\n- Droits des personnes : TODO\n- Sécurité : TODO\n"
+      }
+    ]
+  },
+  "reseaux-avance": {
+    "hints": [
+      "Un port d'accès porte un seul VLAN ; un trunk en transporte plusieurs.",
+      "Écrivez les règles de filtrage de la plus précise à la plus générale."
+    ],
+    "starters": [
+      {
+        "name": "plan-adressage.md",
+        "language": "md",
+        "content": "# Maquette segmentée — deux VLAN\n\n## VLAN\n| VLAN | Usage | Réseau | Passerelle |\n| --- | --- | --- | --- |\n| 10 | Administration | 192.168.10.0/24 | .1 |\n| 20 | Utilisateurs | 192.168.20.0/24 | .1 |\n\n## Liens\n- Trunk entre commutateurs : TODO (VLAN autorisés)\n- Routage inter-VLAN : TODO (adresse, filtrage)\n\n## Filtrage\n| Source | Destination | Port | Décision |\n| --- | --- | --- | --- |\n| VLAN 20 | VLAN 10 | 22 | refus |\n| VLAN 20 | Internet | 443 | autoriser |\n"
+      },
+      {
+        "name": "config.txt",
+        "language": "text",
+        "content": "# Extrait de configuration à adapter (syntaxe indicative)\nvlan 10\n name ADMIN\nvlan 20\n name USERS\n\ninterface GigabitEthernet0/1\n switchport mode access\n switchport access vlan 20\n\ninterface GigabitEthernet0/24\n switchport mode trunk\n"
+      }
+    ]
+  },
+  "reseaux-debutant": {
+    "hints": [
+      "Réservez les premières adresses à l'infrastructure et excluez-les du DHCP.",
+      "Testez dans l'ordre : lien, adresse, passerelle, puis service."
+    ],
+    "starters": [
+      {
+        "name": "plan-adressage.md",
+        "language": "md",
+        "content": "# Plan d'adressage — association\n\nRéseau privé : 192.168.50.0/24\nPasserelle : 192.168.50.1\nServeur : 192.168.50.10\n\n| Équipement | Adresse | Masque | Passerelle |\n| --- | --- | --- | --- |\n| Routeur | 192.168.50.1 | 255.255.255.0 | — |\n| Serveur | 192.168.50.10 | 255.255.255.0 | 192.168.50.1 |\n| Poste 1 | TODO | TODO | TODO |\n| Poste 2 | TODO | TODO | TODO |\n\n## Vérifications\n- [ ] Aucune adresse dupliquée\n- [ ] Plage DHCP hors infrastructure\n- [ ] ping passerelle puis serveur\n"
+      }
+    ]
+  },
+  "reseaux-services": {
+    "hints": [
+      "Documentez les ports réellement exposés, pas ceux prévus.",
+      "Testez la résolution DNS depuis un client, pas depuis le serveur DNS."
+    ],
+    "starters": [
+      {
+        "name": "services.md",
+        "language": "md",
+        "content": "# Plan de service — laboratoire\n\n| Service | Rôle | Adresse | Port | Supervision | Filtrage |\n| --- | --- | --- | --- | --- | --- |\n| DNS | Résolution interne | TODO | 53 | TODO | TODO |\n| DHCP | Distribution | TODO | 67/68 | TODO | TODO |\n| Web | Application | TODO | 443 | TODO | TODO |\n\n## Enregistrements DNS\n| Nom | Type | Valeur | TTL |\n| --- | --- | --- | --- |\n| TODO | A | TODO | 300 |\n\n## Vérifications\n- [ ] dig ou nslookup répond\n- [ ] bail DHCP obtenu et renouvelé\n- [ ] HTTPS valide\n"
+      }
+    ]
+  },
+  "tests-qualite": {
+    "hints": [
+      "Un test doit échouer pour la bonne raison avant de passer.",
+      "Nettoyez l'état entre les tests : l'ordre d'exécution ne doit rien changer."
+    ],
+    "starters": [
+      {
+        "name": "service.js",
+        "language": "js",
+        "content": "export function prixTTC(prixHT, taux = 0.2) {\n  if (typeof prixHT !== 'number' || Number.isNaN(prixHT)) throw new TypeError('prix invalide');\n  if (prixHT < 0) throw new RangeError('prix negatif');\n  return Math.round(prixHT * (1 + taux) * 100) / 100;\n}\n\nexport function remise(montant) {\n  // TODO : 10 % a partir de 100 euros, sinon 0\n  return 0;\n}\n"
+      },
+      {
+        "name": "service.test.js",
+        "language": "js",
+        "content": "import { test } from 'node:test';\nimport assert from 'node:assert/strict';\nimport { prixTTC, remise } from './service.js';\n\ntest('calcule le prix TTC', () => {\n  assert.equal(prixTTC(100), 120);\n});\n\n// TODO : cas limites (negatif, non numerique)\n// TODO : remise au seuil (100) et juste en dessous (99.99)\n"
+      }
+    ]
+  },
+  "typescript": {
+    "hints": [
+      "unknown impose une vérification ; ne castez pas sans test.",
+      "Activez noUncheckedIndexedAccess et corrigez chaque accès par indice."
+    ],
+    "starters": [
+      {
+        "name": "filtre.ts",
+        "language": "ts",
+        "content": "type Entree = { id: number; nom: string; actif: boolean };\n\nexport function actifs(entrees: unknown[]): Entree[] {\n  // TODO : valider la forme de chaque element avant de le garder\n  return [];\n}\n"
+      },
+      {
+        "name": "tsconfig.json",
+        "language": "json",
+        "content": "{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"noUncheckedIndexedAccess\": true,\n    \"target\": \"ES2022\",\n    \"module\": \"ESNext\",\n    \"moduleResolution\": \"Bundler\",\n    \"noEmit\": true\n  },\n  \"include\": [\"*.ts\"]\n}\n"
+      }
+    ]
+  },
+  "ux-ui": {
+    "hints": [
+      "Un placeholder n'est pas un label : il disparaît à la saisie.",
+      "Testez au clavier seul, puis vérifiez le contraste du texte."
+    ],
+    "starters": [
+      {
+        "name": "formulaire.html",
+        "language": "html",
+        "content": "<!doctype html>\n<html lang=\"fr\">\n<head>\n  <meta charset=\"utf-8\">\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n  <title>Inscription — formulaire à corriger</title>\n</head>\n<body>\n  <!-- Formulaire volontairement perfectible : à auditer puis corriger -->\n  <form>\n    <h2>Inscription</h2>\n    <input placeholder=\"Nom\" style=\"color:#a9a9a9\">\n    <input placeholder=\"E-mail\">\n    <input type=\"password\" placeholder=\"Mot de passe\">\n    <button>Valider</button>\n  </form>\n</body>\n</html>\n"
+      },
+      {
+        "name": "audit.md",
+        "language": "md",
+        "content": "# Audit — formulaire d'inscription\n\n| Problème | Impact utilisateur | Correction |\n| --- | --- | --- |\n| TODO | TODO | TODO |\n\n## Critères\n- [ ] Chaque champ a un label visible et associé\n- [ ] Messages d'erreur explicites, liés au champ\n- [ ] Autocomplete adapté\n- [ ] Navigation clavier complète\n- [ ] Contraste suffisant\n"
+      }
+    ]
+  },
+  "virtualisation": {
+    "hints": [
+      "Un réseau « hôte seul » isole d'Internet tout en gardant les VM entre elles.",
+      "Un snapshot ne remplace pas une sauvegarde : il vit sur le même disque."
+    ],
+    "starters": [
+      {
+        "name": "Vagrantfile",
+        "language": "text",
+        "content": "Vagrant.configure(\"2\") do |config|\n  config.vm.box = \"debian/bookworm64\"\n\n  config.vm.define \"web\" do |web|\n    web.vm.hostname = \"web\"\n    web.vm.network \"private_network\", ip: \"192.168.56.10\"\n    web.vm.provider \"virtualbox\" do |vb|\n      vb.memory = 2048\n      vb.cpus = 2\n    end\n  end\n\n  config.vm.define \"db\" do |db|\n    db.vm.hostname = \"db\"\n    db.vm.network \"private_network\", ip: \"192.168.56.11\"\n    db.vm.provider \"virtualbox\" do |vb|\n      vb.memory = 2048\n      vb.cpus = 1\n    end\n  end\nend\n"
+      },
+      {
+        "name": "labo.md",
+        "language": "md",
+        "content": "# Laboratoire isolé\n\n## Choix réseau\n- Mode : réseau privé hôte seul (pas de NAT)\n- Adresses : 192.168.56.10 et 192.168.56.11\n\n## Procédure\n1. Démarrer les deux machines\n2. Vérifier qu'Internet est inaccessible\n3. Vérifier la communication entre les deux\n4. Créer un snapshot « base propre »\n5. Détruire et recréer depuis le modèle\n\n## Vérifications\n- [ ] ping croisé réussi\n- [ ] accès Internet refusé\n- [ ] snapshot restauré\n"
+      }
+    ]
+  },
+  "windows-server": {
+    "hints": [
+      "Liez la GPO de mot de passe à la racine du domaine, pas à une OU.",
+      "Les groupes globaux contiennent les comptes ; les groupes de domaine local portent les permissions."
+    ],
+    "starters": [
+      {
+        "name": "ad-structure.md",
+        "language": "md",
+        "content": "# Active Directory — PME\n\n## Unités d'organisation\n- OU=Utilisateurs\n  - OU=Comptabilite\n  - OU=Technique\n- OU=Ordinateurs\n  - OU=Postes\n  - OU=Serveurs\n\n## Groupes\n| Groupe | Type | Portée | Membres |\n| --- | --- | --- | --- |\n| GG-Compta | Sécurité | Globale | TODO |\n| GG-Admins | Sécurité | Globale | TODO |\n\n## GPO\n| GPO | Liée à | Contenu | Vérification |\n| --- | --- | --- | --- |\n| Politique mot de passe | domaine | longueur, expiration | gpresult |\n"
+      },
+      {
+        "name": "New-OU.ps1",
+        "language": "powershell",
+        "content": "# Créer la structure d'unités d'organisation (laboratoire uniquement)\nImport-Module ActiveDirectory\n\n$base = \"DC=lab,DC=local\"\nNew-ADOrganizationalUnit -Name \"Utilisateurs\" -Path $base\nNew-ADOrganizationalUnit -Name \"Comptabilite\" -Path \"OU=Utilisateurs,$base\"\n# TODO : OU Ordinateurs, Postes, Serveurs\n# TODO : groupes de securite et membres de test\n"
+      }
+    ]
   }
 }

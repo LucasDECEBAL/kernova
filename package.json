@@ -1,0 +1,14 @@
+{
+  "name": "kernova",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Plateforme d'apprentissage informatique statique, en français.",
+  "scripts": {
+    "start": "node tests/lib/serve.mjs",
+    "test": "node tests/run.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

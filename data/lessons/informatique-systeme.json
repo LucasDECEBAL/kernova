@@ -1,0 +1,518 @@
+{
+  "courseId": "informatique-systeme",
+  "modules": [
+    {
+      "id": "info-systeme",
+      "title": "Données, mémoire, processeur et Internet",
+      "chapters": [
+        {
+          "id": "info3-01",
+          "title": "Représentation des données",
+          "objectives": [
+            "Expliquer le codage du texte",
+            "Décrire une image numérique",
+            "Comprendre l'échantillonnage du son"
+          ],
+          "exercise": {
+            "title": "Choisir un encodage",
+            "instructions": "Un site doit afficher des accents et des caractères japonais. Quel encodage utiliser ?",
+            "hints": [
+              "ASCII ne couvre pas le japonais.",
+              "UTF-8 couvre plusieurs écritures."
+            ],
+            "solution": "UTF-8, qui couvre les accents et la majorité des écritures, et qui est le standard du Web.",
+            "check": {
+              "type": "any",
+              "any": [
+                "utf-8",
+                "utf8"
+              ],
+              "success": "Correct : UTF-8."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info3-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel encodage couvre le plus de caractères ?",
+              "options": [
+                "UTF-8",
+                "ASCII",
+                "BCD",
+                "Morse"
+              ],
+              "answer": 0,
+              "explanation": "UTF-8 couvre la quasi-totalité des écritures.",
+              "hints": []
+            },
+            {
+              "id": "info3-01-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que mesure la résolution d'une image ?",
+              "options": [
+                "Le nombre de pixels",
+                "Le poids en octets",
+                "La luminosité",
+                "Le nombre de couleurs"
+              ],
+              "answer": 0,
+              "explanation": "La résolution décrit largeur × hauteur en pixels.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Texte, image et son se codent en nombres.",
+            "UTF-8 est le standard du Web.",
+            "Un mauvais encodage rend le texte illisible."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un ordinateur ne stocke que des nombres. Un texte est une suite de codes, une image une grille de pixels, un son une suite de mesures."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ASCII code 128 caractères ; UTF-8 étend le jeu à presque toutes les écritures.",
+                "Une image se décrit par sa largeur, sa hauteur, ses couleurs et sa compression.",
+                "Un son se numérise par échantillonnage et quantification ; le débit dépend de la fréquence et de la profondeur."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Unité de base",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Texte",
+                  "caractère",
+                  "UTF-8, 1 à 4 octets"
+                ],
+                [
+                  "Image",
+                  "pixel",
+                  "1920 × 1080"
+                ],
+                [
+                  "Son",
+                  "échantillon",
+                  "44 100 par seconde"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un fichier texte n'est pas « du texte » pour la machine : c'est une suite d'octets interprétée selon un encodage. Un mauvais encodage produit des caractères illisibles."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre le fonctionnement de la mémoire »."
+        },
+        {
+          "id": "info3-02",
+          "title": "Comprendre le fonctionnement de la mémoire",
+          "objectives": [
+            "Décrire la hiérarchie mémoire",
+            "Expliquer la volatilité",
+            "Relier mémoire et performance"
+          ],
+          "exercise": {
+            "title": "Expliquer un ralentissement",
+            "instructions": "Une machine avec 4 Go de RAM ouvre beaucoup d'onglets et devient lente. Que se passe-t-il ?",
+            "hints": [
+              "La RAM est saturée.",
+              "Le système utilise le disque comme mémoire de secours."
+            ],
+            "solution": "La RAM saturée force l'échange sur disque (swap), bien plus lent ; ajouter de la RAM ou fermer des applications corrige le problème.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ram",
+                "swap",
+                "disque"
+              ],
+              "success": "Correct : saturation de la RAM et échange disque."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info3-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel niveau de mémoire est le plus rapide ?",
+              "options": [
+                "Les registres",
+                "La RAM",
+                "Le SSD",
+                "Le disque mécanique"
+              ],
+              "answer": 0,
+              "explanation": "Les registres sont internes au processeur.",
+              "hints": []
+            },
+            {
+              "id": "info3-02-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que se passe-t-il quand la RAM est pleine ?",
+              "options": [
+                "Le système échange avec le disque",
+                "Le processeur s'arrête",
+                "Les fichiers sont supprimés",
+                "La RAM grandit"
+              ],
+              "answer": 0,
+              "explanation": "Le swap utilise le stockage, beaucoup plus lent.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Registres, cache, RAM et disque forment une hiérarchie.",
+            "La RAM est volatile.",
+            "Une RAM insuffisante provoque des échanges disque coûteux."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La mémoire forme une hiérarchie : registres, caches, RAM, puis stockage. Plus la mémoire est rapide, plus elle est petite et chère."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Niveau",
+                "Vitesse",
+                "Conservation"
+              ],
+              "rows": [
+                [
+                  "Registres",
+                  "immédiate",
+                  "aucune"
+                ],
+                [
+                  "Cache",
+                  "très rapide",
+                  "aucune"
+                ],
+                [
+                  "RAM",
+                  "rapide",
+                  "aucune hors tension"
+                ],
+                [
+                  "Disque",
+                  "lent",
+                  "permanente"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Le processeur réutilise les données proches grâce à la localité temporelle et spatiale : un accès récent a de fortes chances d'être répété."
+            },
+            {
+              "type": "tip",
+              "text": "Quand la RAM est pleine, le système échange avec le disque : c'est le fichier d'échange ou swap, beaucoup plus lent."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre le processeur et ses instructions »."
+        },
+        {
+          "id": "info3-03",
+          "title": "Comprendre le processeur et ses instructions",
+          "objectives": [
+            "Décrire le cycle d'exécution",
+            "Expliquer cœurs et parallélisme",
+            "Situer le rôle du jeu d'instructions"
+          ],
+          "exercise": {
+            "title": "Expliquer le cycle",
+            "instructions": "Décrivez en trois étapes ce que fait le processeur pour une instruction.",
+            "hints": [
+              "D'abord lire.",
+              "Puis comprendre et agir."
+            ],
+            "solution": "Charger l'instruction, la décoder, l'exécuter (puis passer à la suivante).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "charger",
+                "decoder",
+                "executer"
+              ],
+              "success": "Correct : charger, décoder, exécuter."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info3-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que fait le processeur après avoir chargé une instruction ?",
+              "options": [
+                "Il la décode",
+                "Il l'efface",
+                "Il l'envoie au disque",
+                "Il redémarre"
+              ],
+              "answer": 0,
+              "explanation": "Le décodage précède l'exécution.",
+              "hints": []
+            },
+            {
+              "id": "info3-03-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Pourquoi plus de cœurs n'accélère pas toujours un programme ?",
+              "options": [
+                "S'il n'est pas parallélisable",
+                "Parce que les cœurs sont factices",
+                "Parce que la RAM diminue",
+                "Parce que le disque ralentit"
+              ],
+              "answer": 0,
+              "explanation": "Le parallélisme doit être exploité par le programme.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Le processeur charge, décode et exécute.",
+            "Les cœurs permettent le parallélisme.",
+            "La fréquence seule ne résume pas la performance."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le processeur répète un cycle : charger une instruction, la décoder, l'exécuter, puis passer à la suivante. Les instructions viennent de la mémoire, pas du hasard."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un cœur exécute un flux d'instructions ; plusieurs cœurs exécutent en parallèle.",
+                "La fréquence indique des cycles par seconde, pas la vitesse réelle de chaque tâche.",
+                "Le jeu d'instructions (x86, ARM) définit les opérations comprises par le processeur."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Un programme compilé est traduit en instructions machine ; un interpréteur les exécute indirectement. Dans les deux cas, le processeur ne voit que des nombres."
+            },
+            {
+              "type": "tip",
+              "text": "Un programme mono-thread n'utilise qu'un cœur : augmenter le nombre de cœurs ne l'accélère pas."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les périphériques »."
+        },
+        {
+          "id": "info3-04",
+          "title": "Comprendre les périphériques",
+          "objectives": [
+            "Classer les périphériques",
+            "Expliquer le rôle d'un pilote",
+            "Comprendre le branchement à chaud"
+          ],
+          "exercise": {
+            "title": "Classer trois périphériques",
+            "instructions": "Classez un scanner, un vidéoprojecteur et une carte Wi-Fi.",
+            "hints": [
+              "Scanner : il numérise.",
+              "Wi-Fi : il émet et reçoit."
+            ],
+            "solution": "Scanner : entrée. Vidéoprojecteur : sortie. Carte Wi-Fi : entrée-sortie.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "entree",
+                "sortie"
+              ],
+              "success": "Correct : entrée, sortie, entrée-sortie."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info3-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel périphérique est uniquement de sortie ?",
+              "options": [
+                "L'écran",
+                "Le clavier",
+                "La souris",
+                "Le scanner"
+              ],
+              "answer": 0,
+              "explanation": "L'écran affiche sans saisir.",
+              "hints": []
+            },
+            {
+              "id": "info3-04-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "À quoi sert un pilote ?",
+              "options": [
+                "Piloter un matériel depuis le système",
+                "Augmenter la RAM",
+                "Créer un réseau",
+                "Compresser les fichiers"
+              ],
+              "answer": 0,
+              "explanation": "Le pilote est l'interface logicielle du matériel.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Entrée, sortie et entrée-sortie classent les périphériques.",
+            "Les pilotes assurent la liaison avec le système.",
+            "L'éjection sécurisée protège les données."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un périphérique échange des données avec l'ordinateur : entrée (clavier, souris), sortie (écran, imprimante) ou les deux (disque externe, carte réseau)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un pilote traduit les échanges entre le système et le périphérique.",
+                "L'USB permet le branchement à chaud et l'alimentation de petits appareils.",
+                "Le Plug and Play détecte et configure automatiquement le matériel."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Périphérique",
+                "Type",
+                "Exemple d'usage"
+              ],
+              "rows": [
+                [
+                  "Clavier",
+                  "entrée",
+                  "saisie"
+                ],
+                [
+                  "Écran",
+                  "sortie",
+                  "affichage"
+                ],
+                [
+                  "Carte réseau",
+                  "entrée-sortie",
+                  "communication"
+                ],
+                [
+                  "Clé USB",
+                  "entrée-sortie",
+                  "transfert"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Débrancher un disque pendant une écriture peut corrompre les données : utilisez toujours l'éjection sécurisée."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Découvrir le fonctionnement d'Internet »."
+        },
+        {
+          "id": "info3-05",
+          "title": "Découvrir le fonctionnement d'Internet",
+          "objectives": [
+            "Distinguer Internet et le Web",
+            "Expliquer IP, DNS et HTTP",
+            "Décrire le modèle client-serveur"
+          ],
+          "exercise": {
+            "title": "Nommer le service",
+            "instructions": "Quel service transforme example.com en adresse IP ?",
+            "hints": [
+              "Ce n'est pas HTTP.",
+              "Il existe un annuaire distribué des noms."
+            ],
+            "solution": "Le DNS (Domain Name System).",
+            "check": {
+              "type": "any",
+              "any": [
+                "dns",
+                "domain name system"
+              ],
+              "success": "Correct : le DNS."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info3-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle est la différence entre Internet et le Web ?",
+              "options": [
+                "Le Web est un service d'Internet",
+                "Ce sont des synonymes",
+                "Internet est plus récent",
+                "Le Web est un câble"
+              ],
+              "answer": 0,
+              "explanation": "Internet est l'infrastructure ; le Web un service.",
+              "hints": []
+            },
+            {
+              "id": "info3-05-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que fait le DNS ?",
+              "options": [
+                "Il traduit un nom en adresse IP",
+                "Il chiffre les pages",
+                "Il stocke les fichiers",
+                "Il attribue les adresses MAC"
+              ],
+              "answer": 0,
+              "explanation": "Le DNS est un annuaire de noms.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Internet transporte des paquets IP ; le Web utilise HTTP.",
+            "DNS traduit les noms, HTTP décrit les échanges.",
+            "Le modèle client-serveur structure les requêtes."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Internet est un réseau de réseaux qui échange des paquets grâce au protocole IP. Le Web est un service parmi d'autres, fondé sur HTTP."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Une adresse IP identifie une interface sur le réseau.",
+                "Le DNS traduit un nom de domaine en adresse IP.",
+                "HTTP décrit la requête et la réponse ; HTTPS ajoute le chiffre TLS.",
+                "Le client demande, le serveur répond."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Ouvrir un site : le navigateur résout le nom, ouvre une connexion, envoie une requête HTTP et reçoit une réponse avec un statut et un contenu."
+            },
+            {
+              "type": "warning",
+              "text": "« Internet ne marche pas » et « ce site ne répond pas » sont deux pannes différentes : la première touche la connexion, la seconde le service."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,483 @@
+{
+  "courseId": "environnements-outils",
+  "modules": [
+    {
+      "id": "environnements-outils-module",
+      "title": "Outils et organisation du poste",
+      "chapters": [
+        {
+          "id": "env2-01",
+          "title": "Installer des logiciels et gérer les dépendances",
+          "objectives": [
+            "Choisir un gestionnaire de paquets",
+            "Comprendre les versions",
+            "Lire un fichier de verrouillage"
+          ],
+          "exercise": {
+            "title": "Choisir la bonne commande",
+            "instructions": "Une équipe veut installer exactement les versions du fichier de verrouillage npm, sans le modifier. Quelle commande ?",
+            "hints": [
+              "npm install peut mettre à jour.",
+              "Il existe une commande dédiée à l'intégration continue."
+            ],
+            "solution": "npm ci",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "npm ci"
+              ],
+              "success": "Correct : npm ci."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'une dépendance ?",
+              "options": [
+                "Une bibliothèque nécessaire au programme",
+                "Un câble réseau",
+                "Un compte utilisateur",
+                "Un pilote graphique"
+              ],
+              "answer": 0,
+              "explanation": "Le programme s'appuie sur du code externe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-01-q1"
+            },
+            {
+              "question": "Pourquoi figer les versions ?",
+              "options": [
+                "Pour des installations reproductibles",
+                "Pour accélérer Internet",
+                "Pour réduire la RAM",
+                "Pour éviter les sauvegardes"
+              ],
+              "answer": 0,
+              "explanation": "Un lockfile garantit le même résultat partout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-01-q2"
+            }
+          ],
+          "summary": [
+            "Un gestionnaire installe logiciels et dépendances.",
+            "Le lockfile fige les versions.",
+            "Une source inconnue est un risque."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les archives et la compression ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "Un gestionnaire de paquets installe, met à jour et supprime des logiciels avec leurs dépendances. Les dépendances sont les bibliothèques dont un programme a besoin."
+            },
+            {
+              "type": "list",
+              "items": [
+                "winget, apt, dnf, brew : gestionnaires système.",
+                "npm, pip, cargo : gestionnaires par langage.",
+                "Un fichier de verrouillage fige les versions exactes.",
+                "Les mises à jour majeures peuvent casser du code : lisez les notes de version."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Commande",
+                "Usage"
+              ],
+              "rows": [
+                [
+                  "npm ci",
+                  "installe depuis le lockfile, sans le modifier"
+                ],
+                [
+                  "pip install -r",
+                  "installe les versions listées"
+                ],
+                [
+                  "apt update",
+                  "met à jour la liste des paquets"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Installer une dépendance depuis une source inconnue revient à exécuter du code arbitraire sur votre machine."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env2-02",
+          "title": "Comprendre les archives et la compression",
+          "objectives": [
+            "Distinguer archive et compression",
+            "Créer et extraire une archive",
+            "Reconnaître les formats"
+          ],
+          "exercise": {
+            "title": "Créer une archive",
+            "instructions": "Quelle commande crée sauvegarde.tar.gz à partir du dossier projets ?",
+            "hints": [
+              "-c crée, -z compresse, -f nomme."
+            ],
+            "solution": "tar -czf sauvegarde.tar.gz projets/",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tar",
+                "-czf"
+              ],
+              "success": "Correct : tar -czf."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait l'option -x de tar ?",
+              "options": [
+                "Elle extrait",
+                "Elle crée",
+                "Elle compresse",
+                "Elle liste"
+              ],
+              "answer": 0,
+              "explanation": "x pour extract.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-02-q1"
+            },
+            {
+              "question": "Quel format combine archive et compression ?",
+              "options": [
+                ".tar.gz",
+                ".txt",
+                ".csv",
+                ".json"
+              ],
+              "answer": 0,
+              "explanation": "tar.gz regroupe puis compresse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-02-q2"
+            }
+          ],
+          "summary": [
+            "Archive et compression sont distinctes.",
+            "tar -czf crée, -xzf extrait.",
+            "Lister avant d'extraire une archive inconnue."
+          ],
+          "nextStep": "Chapitre suivant : « Utiliser efficacement un éditeur de code ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "Une archive regroupe plusieurs fichiers ; la compression réduit leur taille. Les deux opérations sont souvent combinées."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "tar -czf sauvegarde.tar.gz projets/\ntar -xzf sauvegarde.tar.gz\nunzip documents.zip",
+              "title": "Créer et extraire"
+            },
+            {
+              "type": "list",
+              "items": [
+                "tar regroupe, gzip compresse : .tar.gz.",
+                "zip combine les deux, pratique sur Windows.",
+                "La compression sans perte conserve exactement les données.",
+                "Les formats avec perte (JPEG, MP3) réduisent davantage mais modifient le contenu."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Avant d'extraire une archive inconnue, listez son contenu (tar -tzf) : elle peut contenir des chemins dangereux."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env2-03",
+          "title": "Utiliser efficacement un éditeur de code",
+          "objectives": [
+            "Utiliser la recherche globale",
+            "Renommer un symbole",
+            "Configurer l'éditeur"
+          ],
+          "exercise": {
+            "title": "Choisir l'outil",
+            "instructions": "Vous renommez une fonction utilisée dans douze fichiers. Quelle fonction utiliser ?",
+            "hints": [
+              "Le remplacement de texte touche aussi les chaînes."
+            ],
+            "solution": "Le renommage symbolique (F2 dans VS Code), qui ne modifie que les identifiants concernés.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "renommage",
+                "f2"
+              ],
+              "success": "Correct : renommage symbolique."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le renommage symbolique ?",
+              "options": [
+                "Il modifie les identifiants et leurs références",
+                "Il remplace tout le texte",
+                "Il supprime le fichier",
+                "Il compile"
+              ],
+              "answer": 0,
+              "explanation": "Il s'appuie sur l'analyse du langage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-03-q1"
+            },
+            {
+              "question": "À quoi sert un linter ?",
+              "options": [
+                "À signaler des erreurs et des styles",
+                "À installer le système",
+                "À compresser les fichiers",
+                "À gérer le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le linter analyse le code sans l'exécuter.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-03-q2"
+            }
+          ],
+          "summary": [
+            "L'éditeur comprend la structure du code.",
+            "Le renommage symbolique évite les remplacements indésirables.",
+            "Linter et formateur complètent l'éditeur."
+          ],
+          "nextStep": "Chapitre suivant : « Organiser un projet informatique ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "Un éditeur de code n'est pas un traitement de texte : il comprend la structure du langage, colore, signale les erreurs et navigue entre fichiers."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Recherche globale : Ctrl+Maj+F pour chercher dans le projet.",
+                "Renommage symbolique : F2 renomme les références, pas le texte des chaînes.",
+                "Formatage automatique pour un style cohérent.",
+                "Extensions : langages, linters, débogueurs."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un remplacement de texte global peut modifier des chaînes, des commentaires ou des URL : utilisez le renommage symbolique."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env2-04",
+          "title": "Organiser un projet informatique",
+          "objectives": [
+            "Choisir une arborescence",
+            "Rédiger un README utile",
+            "Utiliser les fichiers de configuration"
+          ],
+          "exercise": {
+            "title": "Structurer un projet",
+            "instructions": "Où placer le code source, les tests et la documentation ?",
+            "hints": [
+              "Trois dossiers distincts.",
+              "La documentation n'est pas du code exécutable."
+            ],
+            "solution": "src/ pour le code, tests/ pour les tests, docs/ pour la documentation ; README à la racine.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "src",
+                "tests",
+                "docs"
+              ],
+              "success": "Correct : src, tests, docs."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que doit contenir un README ?",
+              "options": [
+                "Objet, prérequis, installation, lancement",
+                "Le mot de passe de la base",
+                "Uniquement le logo",
+                "Les fichiers générés"
+              ],
+              "answer": 0,
+              "explanation": "Le README permet à un nouveau venu de démarrer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-04-q1"
+            },
+            {
+              "question": "Pourquoi ignorer node_modules ?",
+              "options": [
+                "Il est volumineux et reproductible",
+                "Il contient les tests",
+                "Il est secret",
+                "Il est vide"
+              ],
+              "answer": 0,
+              "explanation": "Les dépendances s'installent depuis le lockfile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-04-q2"
+            }
+          ],
+          "summary": [
+            "Séparer code, tests, documentation.",
+            "README et .gitignore à la racine.",
+            "Des noms explicites valent mieux que des commentaires."
+          ],
+          "nextStep": "Chapitre suivant : « Utiliser la documentation technique ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet lisible sépare le code, les tests, la documentation et les fichiers générés. Les conventions de nommage évitent les ambiguïtés."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "mon-projet/\n├── README.md\n├── .gitignore\n├── src/\n├── tests/\n├── docs/\n└── package.json",
+              "title": "Arborescence type"
+            },
+            {
+              "type": "list",
+              "items": [
+                "README : objet, prérequis, installation, lancement, tests.",
+                ".gitignore : fichiers générés, secrets, dépendances.",
+                "src/ et tests/ séparent le code de sa vérification.",
+                "Des noms explicites évitent les commentaires inutiles."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Committer node_modules ou un fichier .env expose du volume inutile ou des secrets : vérifiez .gitignore avant le premier commit."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env2-05",
+          "title": "Utiliser la documentation technique",
+          "objectives": [
+            "Lire une documentation officielle",
+            "Vérifier version et prérequis",
+            "Écrire une documentation utile"
+          ],
+          "exercise": {
+            "title": "Chercher la bonne information",
+            "instructions": "Vous devez installer une bibliothèque : quelles deux informations vérifier avant de copier une commande ?",
+            "hints": [
+              "La version.",
+              "Les prérequis."
+            ],
+            "solution": "La version de la bibliothèque et du langage, et les prérequis (système, droits, dépendances).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "version",
+                "prerequis"
+              ],
+              "success": "Correct : version et prérequis."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier dans une documentation ?",
+              "options": [
+                "La version correspondant à votre installation",
+                "La plus ancienne",
+                "Un forum sans date",
+                "Les commentaires"
+              ],
+              "answer": 0,
+              "explanation": "Une documentation d'une autre version peut être fausse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-05-q1"
+            },
+            {
+              "question": "Qu'est-ce qu'un ADR ?",
+              "options": [
+                "Un document de décision d'architecture",
+                "Un type de câble",
+                "Un compilateur",
+                "Un format d'image"
+              ],
+              "answer": 0,
+              "explanation": "L'ADR conserve le contexte d'une décision technique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env2-05-q2"
+            }
+          ],
+          "summary": [
+            "Version et prérequis avant de copier une commande.",
+            "Les décisions se documentent.",
+            "Un exemple minimal vaut mieux qu'un long tutoriel."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "content": [
+            {
+              "type": "p",
+              "text": "La documentation est une compétence : il faut identifier la bonne version, vérifier les prérequis, puis reproduire un exemple minimal."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Commencer par la documentation officielle de la version utilisée.",
+                "Repérer les sections installation, exemple minimal, référence.",
+                "Vérifier les notes de version avant une montée de version.",
+                "Pour un projet, documenter les décisions et leurs raisons."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Question",
+                "Où chercher"
+              ],
+              "rows": [
+                [
+                  "Comment installer ?",
+                  "guide d'installation"
+                ],
+                [
+                  "Quelle option existe ?",
+                  "référence"
+                ],
+                [
+                  "Pourquoi ce choix ?",
+                  "document de décision (ADR)"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un exemple minimal qui fonctionne vaut mieux qu'un long tutoriel : il isole ce qui compte pour votre cas."
+            }
+          ],
+          "duration": 20
+        }
+      ]
+    }
+  ]
+}

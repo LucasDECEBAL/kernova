@@ -1,0 +1,524 @@
+{
+  "courseId": "informatique-donnees",
+  "modules": [
+    {
+      "id": "info-donnees",
+      "title": "Fichiers, processus et représentation",
+      "chapters": [
+        {
+          "id": "info2-01",
+          "title": "Comprendre les fichiers et les dossiers",
+          "objectives": [
+            "Lire une arborescence",
+            "Distinguer chemin absolu et relatif",
+            "Reconnaître une extension"
+          ],
+          "exercise": {
+            "title": "Écrire deux chemins",
+            "instructions": "Votre dossier personnel est /home/alice. Donnez le chemin absolu puis relatif de Documents/notes.txt.",
+            "hints": [
+              "L'absolu commence par /.",
+              "Le relatif part du dossier courant."
+            ],
+            "solution": "Absolu : /home/alice/Documents/notes.txt. Relatif depuis /home/alice : Documents/notes.txt.",
+            "check": {
+              "type": "any",
+              "any": [
+                "/home/alice/documents/notes.txt"
+              ],
+              "success": "Correct : le chemin absolu part de la racine."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info2-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que désigne une extension ?",
+              "options": [
+                "Le format attendu du fichier",
+                "La taille du fichier",
+                "Le propriétaire",
+                "Le dossier parent"
+              ],
+              "answer": 0,
+              "explanation": "L'extension suggère le format, sans le garantir.",
+              "hints": []
+            },
+            {
+              "id": "info2-01-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel chemin est absolu ?",
+              "options": [
+                "/var/log/syslog",
+                "logs/syslog",
+                "./syslog",
+                "../syslog"
+              ],
+              "answer": 0,
+              "explanation": "Il commence par la racine /.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Fichiers et dossiers forment une arborescence.",
+            "Absolu part de la racine, relatif du dossier courant.",
+            "L'extension n'est qu'une indication de format."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un fichier contient des données et porte un nom ; un dossier regroupe des fichiers. L'ensemble forme une arborescence qui part d'une racine."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chemin absolu : part de la racine, par exemple /home/alice/Documents/notes.txt.",
+                "Chemin relatif : part du dossier courant, par exemple Documents/notes.txt.",
+                "Extension : indique le format, pas le contenu réel."
+              ]
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "/home/alice/\n├── Documents/\n│   └── notes.txt\n└── Images/\n    └── photo.jpg",
+              "title": "Arborescence"
+            },
+            {
+              "type": "warning",
+              "text": "Renommer l'extension d'un fichier ne change pas son format : un .jpg renommé .png reste un JPEG."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les applications et les processus »."
+        },
+        {
+          "id": "info2-02",
+          "title": "Comprendre les applications et les processus",
+          "objectives": [
+            "Distinguer programme et processus",
+            "Expliquer le multitâche",
+            "Lire un gestionnaire des tâches"
+          ],
+          "exercise": {
+            "title": "Compter programmes et processus",
+            "instructions": "Un navigateur installé est ouvert dans deux fenêtres. Combien de programmes et de processus ?",
+            "hints": [
+              "Le programme installé reste un seul fichier.",
+              "Chaque exécution est un processus."
+            ],
+            "solution": "Un programme installé, au moins deux processus (parfois plus, un par onglet ou module).",
+            "check": {
+              "type": "any",
+              "any": [
+                "2 processus",
+                "deux processus"
+              ],
+              "success": "Correct : un programme, deux processus."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info2-02-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle différence entre programme et processus ?",
+              "options": [
+                "Le programme est un fichier, le processus son exécution",
+                "Aucune",
+                "Le processus est toujours plus gros",
+                "Le programme tourne en mémoire"
+              ],
+              "answer": 0,
+              "explanation": "Le processus est l'instance active du programme.",
+              "hints": []
+            },
+            {
+              "id": "info2-02-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que fait le multitâche ?",
+              "options": [
+                "Alterner l'exécution des processus",
+                "Supprimer les fichiers",
+                "Augmenter la RAM",
+                "Créer des programmes"
+              ],
+              "answer": 0,
+              "explanation": "Le système partage le processeur entre les processus.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Un programme est un fichier, un processus une exécution.",
+            "Le multitâche partage le processeur.",
+            "Un processus peut être arrêté isolément."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un programme est un fichier d'instructions. Un processus est son exécution en mémoire, avec son état, sa mémoire et ses ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ouvrir deux fenêtres du même navigateur crée souvent plusieurs processus.",
+                "Le multitâche alterne rapidement l'exécution des processus.",
+                "Un processus bloqué peut être arrêté sans éteindre la machine."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "État",
+                "Signification"
+              ],
+              "rows": [
+                [
+                  "En cours",
+                  "utilise le processeur"
+                ],
+                [
+                  "En attente",
+                  "attend une ressource ou une entrée"
+                ],
+                [
+                  "Arrêté",
+                  "terminé ou interrompu"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un processus qui consomme beaucoup de mémoire peut être un fuite ou un comportement normal : comparez avec l'usage attendu avant de le tuer."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les architectures 32 bits et 64 bits »."
+        },
+        {
+          "id": "info2-03",
+          "title": "Comprendre les architectures 32 bits et 64 bits",
+          "objectives": [
+            "Expliquer la taille des adresses",
+            "Relier architecture et mémoire adressable",
+            "Comprendre la compatibilité logicielle"
+          ],
+          "exercise": {
+            "title": "Choisir une version",
+            "instructions": "Un poste possède 8 Go de RAM. Faut-il installer un système 32 ou 64 bits ? Pourquoi ?",
+            "hints": [
+              "Un système 32 bits ne verra qu'environ 4 Go.",
+              "Le processeur doit prendre en charge 64 bits."
+            ],
+            "solution": "64 bits, sinon une partie de la RAM resterait inutilisable ; vérifier au préalable que le processeur le prend en charge.",
+            "check": {
+              "type": "any",
+              "any": [
+                "64 bits",
+                "64bits"
+              ],
+              "success": "Correct : 64 bits pour exploiter les 8 Go."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info2-03-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quelle mémoire un système 32 bits peut-il adresser au maximum ?",
+              "options": [
+                "Environ 4 Go",
+                "8 Go",
+                "16 Go",
+                "Illimitée"
+              ],
+              "answer": 0,
+              "explanation": "2^32 octets, soit environ 4 Go.",
+              "hints": []
+            },
+            {
+              "id": "info2-03-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Une application 64 bits peut-elle tourner sur un système 32 bits ?",
+              "options": [
+                "Non",
+                "Oui, toujours",
+                "Seulement avec Internet",
+                "Seulement sous Linux"
+              ],
+              "answer": 0,
+              "explanation": "Le système doit pouvoir charger l'application.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "32/64 bits décrivent la largeur des adresses.",
+            "32 bits limite la mémoire utilisable à environ 4 Go.",
+            "Les pilotes et applications doivent correspondre à l'architecture."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "32 ou 64 bits désignent la taille des registres et des adresses mémoire du processeur. Un processeur 32 bits adresse au plus 4 Go de mémoire ; un processeur 64 bits adresse bien davantage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un système 64 bits peut exécuter des applications 32 bits, souvent via une couche de compatibilité.",
+                "Une application 64 bits ne fonctionne pas sur un système 32 bits.",
+                "Les pilotes doivent correspondre à l'architecture du système."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Architecture",
+                "Mémoire adressable",
+                "Usage actuel"
+              ],
+              "rows": [
+                [
+                  "32 bits",
+                  "4 Go maximum",
+                  "matériel ancien"
+                ],
+                [
+                  "64 bits",
+                  "très large",
+                  "standard"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un système 64 bits avec 4 Go de RAM n'utilise pas plus de mémoire : l'architecture ne crée pas de barrettes."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les unités de stockage »."
+        },
+        {
+          "id": "info2-04",
+          "title": "Comprendre les unités de stockage",
+          "objectives": [
+            "Convertir entre unités",
+            "Distinguer capacité et débit",
+            "Éviter les confusions courantes"
+          ],
+          "exercise": {
+            "title": "Convertir un débit",
+            "instructions": "Une connexion annonce 200 Mb/s. Combien de mégaoctets par seconde au maximum ?",
+            "hints": [
+              "Un octet vaut huit bits.",
+              "Divisez le débit en bits par 8."
+            ],
+            "solution": "200 / 8 = 25 Mo/s au maximum théorique, avant les pertes de protocole.",
+            "check": {
+              "type": "any",
+              "any": [
+                "25 mo",
+                "25mo"
+              ],
+              "success": "Correct : 25 Mo/s."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info2-04-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Combien de bits dans un octet ?",
+              "options": [
+                "8",
+                "10",
+                "16",
+                "32"
+              ],
+              "answer": 0,
+              "explanation": "Un octet regroupe huit bits.",
+              "hints": []
+            },
+            {
+              "id": "info2-04-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "100 Mb/s correspondent à environ…",
+              "options": [
+                "12,5 Mo/s",
+                "100 Mo/s",
+                "1,25 Mo/s",
+                "800 Mo/s"
+              ],
+              "answer": 0,
+              "explanation": "On divise par 8.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Bit et octet : 1 octet = 8 bits.",
+            "Capacité en octets, débit en bits par seconde.",
+            "Diviser un débit en Mb/s par 8 donne des Mo/s."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un bit vaut 0 ou 1 ; un octet regroupe huit bits. Les capacités s'expriment en octets et multiples, les débits en bits par seconde."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Valeur approximative"
+              ],
+              "rows": [
+                [
+                  "1 Ko",
+                  "1 000 ou 1 024 octets selon la convention"
+                ],
+                [
+                  "1 Mo",
+                  "1 000 Ko"
+                ],
+                [
+                  "1 Go",
+                  "1 000 Mo"
+                ],
+                [
+                  "1 To",
+                  "1 000 Go"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Un débit de 100 Mb/s (mégabits) équivaut à environ 12,5 Mo/s (mégaoctets) : diviser par 8. C'est la source d'une déception fréquente lors d'un abonnement fibre."
+            },
+            {
+              "type": "warning",
+              "text": "Les fabricants de disques utilisent 1 000 pour les préfixes ; les systèmes affichent souvent 1 024, d'où un écart apparent de capacité."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Binaire, décimal et hexadécimal »."
+        },
+        {
+          "id": "info2-05",
+          "title": "Binaire, décimal et hexadécimal",
+          "objectives": [
+            "Compter en base 2 et 16",
+            "Convertir de petites valeurs",
+            "Lire les préfixes 0b et 0x"
+          ],
+          "exercise": {
+            "title": "Convertir 10",
+            "instructions": "Écrivez 10 en binaire puis en hexadécimal.",
+            "hints": [
+              "10 = 8 + 2.",
+              "1010 vaut A en hexadécimal."
+            ],
+            "solution": "10 = 1010 en binaire = A en hexadécimal.",
+            "check": {
+              "type": "any",
+              "any": [
+                "1010",
+                "0xa"
+              ],
+              "success": "Correct : 1010 et A."
+            }
+          },
+          "quiz": [
+            {
+              "id": "info2-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Combien de valeurs un octet peut-il coder ?",
+              "options": [
+                "256",
+                "128",
+                "512",
+                "1024"
+              ],
+              "answer": 0,
+              "explanation": "2^8 = 256.",
+              "hints": []
+            },
+            {
+              "id": "info2-05-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que vaut 1111 en hexadécimal ?",
+              "options": [
+                "F",
+                "E",
+                "10",
+                "15F"
+              ],
+              "answer": 0,
+              "explanation": "1111 vaut 15, noté F.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Chaque base utilise des puissances de sa base.",
+            "Un octet code 256 valeurs.",
+            "Un chiffre hexadécimal représente quatre bits."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le décimal utilise dix chiffres, le binaire deux, l'hexadécimal seize. Chaque position vaut une puissance de la base."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Décimal",
+                "Binaire",
+                "Hexadécimal"
+              ],
+              "rows": [
+                [
+                  "0",
+                  "0000",
+                  "0"
+                ],
+                [
+                  "5",
+                  "0101",
+                  "5"
+                ],
+                [
+                  "10",
+                  "1010",
+                  "A"
+                ],
+                [
+                  "15",
+                  "1111",
+                  "F"
+                ],
+                [
+                  "16",
+                  "10000",
+                  "10"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "5 = 4 + 1 = 0101 en binaire. 10 = 8 + 2 = 1010, soit A en hexadécimal. Les préfixes 0b et 0x signalent la base dans de nombreux langages."
+            },
+            {
+              "type": "tip",
+              "text": "L'hexadécimal est compact : un chiffre représente exactement quatre bits, d'où son usage pour les couleurs et les adresses."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

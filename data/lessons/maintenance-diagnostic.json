@@ -1,0 +1,523 @@
+{
+  "courseId": "maintenance-diagnostic",
+  "modules": [
+    {
+      "id": "maintenance-diagnostic-module",
+      "title": "Pannes logicielles et diagnostic",
+      "chapters": [
+        {
+          "id": "mnt2-01",
+          "title": "Diagnostiquer les problèmes logiciels",
+          "objectives": [
+            "Utiliser le mode sans échec",
+            "Lire les journaux d'événements",
+            "Restaurer un point de contrôle"
+          ],
+          "exercise": {
+            "title": "Choisir la première action",
+            "instructions": "Le problème est apparu juste après l'installation d'un logiciel. Que faites-vous en premier ?",
+            "hints": [
+              "La chronologie est un indice fort.",
+              "Il existe une action réversible."
+            ],
+            "solution": "Désinstaller ce logiciel (ou restaurer le point de contrôle créé avant l'installation), puis redémarrer et vérifier.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "desinstaller",
+                "restaurer"
+              ],
+              "success": "Correct : revenir en arrière avant de réinstaller."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert le mode sans échec ?",
+              "options": [
+                "Charger un système minimal",
+                "Accélérer Internet",
+                "Réparer le disque",
+                "Changer le mot de passe"
+              ],
+              "answer": 0,
+              "explanation": "Il isole les pilotes et logiciels non essentiels.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-01-q1"
+            },
+            {
+              "question": "Où lire les erreurs système horodatées ?",
+              "options": [
+                "Dans l'observateur d'événements",
+                "Dans le navigateur",
+                "Sur l'écran de veille",
+                "Dans le BIOS"
+              ],
+              "answer": 0,
+              "explanation": "Les journaux d'événements centralisent les erreurs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-01-q2"
+            }
+          ],
+          "summary": [
+            "La chronologie oriente le diagnostic.",
+            "Mode sans échec et journaux isolent la cause.",
+            "Restaurer avant de réinstaller."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un problème logiciel apparaît souvent après une installation, une mise à jour ou un changement de configuration. Le mode sans échec charge un système minimal pour isoler la cause."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Observateur d'événements : erreurs et avertissements horodatés.",
+                "Désinstaller la dernière application ou mise à jour suspecte.",
+                "Restaurer un point de contrôle antérieur au problème.",
+                "Vérifier l'espace disque et l'heure système."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Symptôme",
+                "Piste logicielle"
+              ],
+              "rows": [
+                [
+                  "Démarrage très lent",
+                  "programme au démarrage"
+                ],
+                [
+                  "Application qui plante",
+                  "version ou profil corrompu"
+                ],
+                [
+                  "Navigateur détourné",
+                  "extension ou logiciel indésirable"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Réinstaller le système doit rester un dernier recours : sauvegardez d'abord, puis documentez ce qui a été tenté."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les températures et les performances »."
+        },
+        {
+          "id": "mnt2-02",
+          "title": "Comprendre les températures et les performances",
+          "objectives": [
+            "Interpréter une température",
+            "Reconnaître le throttling",
+            "Entretenir le refroidissement"
+          ],
+          "exercise": {
+            "title": "Analyser une surchauffe",
+            "instructions": "Le processeur passe de 70 à 95 °C en charge et ralentit. Que vérifiez-vous ?",
+            "hints": [
+              "L'air doit circuler.",
+              "Le contact thermique compte."
+            ],
+            "solution": "Encrassement du dissipateur et des entrées d'air, vitesse du ventilateur, puis pâte thermique et fixation du ventirad.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ventilateur",
+                "poussiere",
+                "pate"
+              ],
+              "success": "Correct : ventilation, poussière, pâte thermique."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce que le throttling ?",
+              "options": [
+                "Une réduction de fréquence pour protéger le processeur",
+                "Une accélération automatique",
+                "Un virus",
+                "Un type de RAM"
+              ],
+              "answer": 0,
+              "explanation": "Le processeur ralentit pour limiter la chaleur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-02-q1"
+            },
+            {
+              "question": "Que faire si le ventirad est encrassé ?",
+              "options": [
+                "Le nettoyer",
+                "Augmenter la résolution",
+                "Changer d'écran",
+                "Désactiver le Wi-Fi"
+              ],
+              "answer": 0,
+              "explanation": "La poussière bloque le flux d'air.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-02-q2"
+            }
+          ],
+          "summary": [
+            "La chaleur provoque une baisse de performance.",
+            "Nettoyage et pâte thermique restaurent le refroidissement.",
+            "Une surchauffe au repos révèle un défaut de montage."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un processeur chauffe en charge ; au-delà d'un seuil, il réduit sa fréquence pour se protéger : c'est le throttling. La performance chute alors brutalement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Surveiller température et fréquence avec un outil fiable.",
+                "Nettoyer dissipateur, ventilateurs et entrées d'air.",
+                "Remplacer la pâte thermique si elle est sèche.",
+                "Vérifier que le flux d'air n'est pas inversé."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Zone",
+                "Température indicative en charge"
+              ],
+              "rows": [
+                [
+                  "Processeur",
+                  "60 à 85 °C selon modèle"
+                ],
+                [
+                  "Carte graphique",
+                  "60 à 85 °C"
+                ],
+                [
+                  "Disque",
+                  "moins de 55 °C"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une température élevée au repos indique souvent un problème de montage ou de ventilation, pas une charge normale."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Diagnostiquer les problèmes de mémoire »."
+        },
+        {
+          "id": "mnt2-03",
+          "title": "Diagnostiquer les problèmes de mémoire",
+          "objectives": [
+            "Reconnaître les symptômes mémoire",
+            "Tester les barrettes",
+            "Écarter les faux positifs"
+          ],
+          "exercise": {
+            "title": "Organiser le test",
+            "instructions": "Deux barrettes sont installées. Comment procédez-vous pour identifier la fautive ?",
+            "hints": [
+              "Le test doit isoler une variable.",
+              "Chaque barrette doit être testée seule."
+            ],
+            "solution": "Retirer une barrette, tester l'autre sur plusieurs passes, puis inverser ; tester aussi chaque emplacement de la carte mère.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "une barrette",
+                "test"
+              ],
+              "success": "Correct : tester une barrette à la fois."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel symptôme évoque une mémoire défaillante ?",
+              "options": [
+                "Écrans bleus aléatoires",
+                "Écran trop lumineux",
+                "Clavier bloqué",
+                "Wi-Fi lent"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs mémoire provoquent des plantages aléatoires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-03-q1"
+            },
+            {
+              "question": "Pourquoi tester chaque barrette séparément ?",
+              "options": [
+                "Pour isoler la fautive",
+                "Pour gagner de la RAM",
+                "Pour changer la fréquence",
+                "Pour formater le disque"
+              ],
+              "answer": 0,
+              "explanation": "Une seule variable à la fois.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-03-q2"
+            }
+          ],
+          "summary": [
+            "Les pannes mémoire imitent des pannes logicielles.",
+            "Tester une barrette et un emplacement à la fois.",
+            "Un test long est plus fiable."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une mémoire défaillante provoque des écrans bleus, des redémarrages ou des applications qui plantent sans raison. Les symptômes sont proches d'un problème de pilote."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tester avec un outil de diagnostic mémoire au démarrage.",
+                "Retirer les barrettes et les tester une par une.",
+                "Nettoyer les contacts avec précaution.",
+                "Vérifier la compatibilité vitesse et tension."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Symptôme",
+                "Indice"
+              ],
+              "rows": [
+                [
+                  "Écrans bleus aléatoires",
+                  "mémoire ou pilote"
+                ],
+                [
+                  "Fichiers corrompus",
+                  "mémoire ou disque"
+                ],
+                [
+                  "Tests mémoire en erreur",
+                  "barrette défectueuse"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un test mémoire long (plusieurs passes) détecte plus d'erreurs qu'un test rapide : lancez-le quand vous pouvez laisser la machine tourner."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Diagnostiquer les problèmes de stockage »."
+        },
+        {
+          "id": "mnt2-04",
+          "title": "Diagnostiquer les problèmes de stockage",
+          "objectives": [
+            "Lire les indicateurs SMART",
+            "Sauvegarder face à un disque mourant",
+            "Choisir le remplacement"
+          ],
+          "exercise": {
+            "title": "Réagir à SMART",
+            "instructions": "Les secteurs réalloués augmentent régulièrement. Que faites-vous en priorité ?",
+            "hints": [
+              "La dégradation est physique.",
+              "Les données d'abord."
+            ],
+            "solution": "Sauvegarder immédiatement les données, puis remplacer le disque ; la hausse régulière indique une dégradation physique.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sauvegard",
+                "remplac"
+              ],
+              "success": "Correct : sauvegarder puis remplacer."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signalent des secteurs réalloués en hausse ?",
+              "options": [
+                "Une dégradation physique du disque",
+                "Un manque de RAM",
+                "Un pilote obsolète",
+                "Un réseau lent"
+              ],
+              "answer": 0,
+              "explanation": "Le disque réaffecte les zones défectueuses.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-04-q1"
+            },
+            {
+              "question": "Que faire en premier devant un disque qui cliquette ?",
+              "options": [
+                "Sauvegarder les données",
+                "Le défragmenter",
+                "Le formater",
+                "Augmenter la RAM"
+              ],
+              "answer": 0,
+              "explanation": "La priorité est de préserver les données.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-04-q2"
+            }
+          ],
+          "summary": [
+            "SMART annonce souvent la panne.",
+            "Sauvegarder avant tout diagnostic.",
+            "Remplacer un support dégradé, pas seulement réparer."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un disque annonce souvent sa panne : secteurs réalloués, erreurs d'écriture, bruits anormaux. Les valeurs SMART donnent ces signaux avant la perte totale."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sauvegarder immédiatement dès qu'un indicateur se dégrade.",
+                "Ne pas défragmenter un SSD.",
+                "Vérifier l'espace libre : un disque plein ralentit et fragilise le système.",
+                "Remplacer un disque mécanique par un SSD si la machine le permet."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Indicateur",
+                "Signification"
+              ],
+              "rows": [
+                [
+                  "Secteurs réalloués",
+                  "zones défectueuses remplacées"
+                ],
+                [
+                  "Erreurs d'écriture",
+                  "support qui faiblit"
+                ],
+                [
+                  "Température",
+                  "refroidissement insuffisant"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un disque qui fait du bruit ou des cliquetis peut lâcher à tout moment : copiez les données avant tout diagnostic approfondi."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les pannes de démarrage »."
+        },
+        {
+          "id": "mnt2-05",
+          "title": "Comprendre les pannes de démarrage",
+          "objectives": [
+            "Décrire la séquence de démarrage",
+            "Distinguer panne matérielle et système",
+            "Utiliser les outils de réparation"
+          ],
+          "exercise": {
+            "title": "Localiser la panne",
+            "instructions": "Le message indique qu'aucun périphérique amorçable n'est trouvé. Quelles vérifications ?",
+            "hints": [
+              "Le disque est-il détecté ?",
+              "L'ordre d'amorçage est-il correct ?"
+            ],
+            "solution": "Vérifier la détection du disque dans le firmware, les câbles, puis l'ordre d'amorçage ; tester le disque sur un autre poste si besoin.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "disque",
+                "amorcage",
+                "firmware"
+              ],
+              "success": "Correct : disque, câbles et ordre d'amorçage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifie « no boot device » ?",
+              "options": [
+                "Aucun support amorçable détecté",
+                "Le processeur est mort",
+                "La RAM est pleine",
+                "Le réseau est coupé"
+              ],
+              "answer": 0,
+              "explanation": "Le firmware ne trouve pas de support de démarrage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-05-q1"
+            },
+            {
+              "question": "Quel outil répare le chargeur d'amorçage sous Windows ?",
+              "options": [
+                "L'environnement de récupération",
+                "Le gestionnaire de tâches",
+                "Le pare-feu",
+                "Le navigateur"
+              ],
+              "answer": 0,
+              "explanation": "Les outils de récupération restaurent le démarrage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt2-05-q2"
+            }
+          ],
+          "summary": [
+            "Chaque étape du démarrage a ses symptômes.",
+            "Vérifier disque et ordre d'amorçage avant de réparer.",
+            "La récupération système corrige le chargeur, pas le matériel."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le démarrage enchaîne firmware, détection du support, chargeur d'amorçage, puis système. Une panne à chaque étape donne un symptôme différent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Aucun affichage : matériel ou firmware.",
+                "Message « no boot device » : ordre d'amorçage ou disque.",
+                "Écran de réparation : chargeur ou système corrompu.",
+                "Mode sans échec accessible : pilote ou logiciel."
+              ]
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "Firmware → POST → support amorçable → chargeur → noyau/système → session",
+              "title": "Séquence de démarrage"
+            },
+            {
+              "type": "tip",
+              "text": "Avant de réparer, vérifiez simplement le câble du disque et l'ordre d'amorçage : deux causes fréquentes et gratuites."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

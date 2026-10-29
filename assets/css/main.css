@@ -24,6 +24,7 @@
   --warn: #8a5a00;
   --focus: #1e4fd0;
   --tint: rgb(23 32 43 / 0.05);
+  --wash: rgb(23 32 43 / 0.04);
 
   /* Typographie : deux familles, rôles distincts */
   --serif: "Literata", Georgia, "Times New Roman", serif;
@@ -81,6 +82,7 @@
   --warn: #f0c46a;
   --focus: #8fa8ff;
   --tint: rgb(228 233 239 / 0.05);
+  --wash: rgb(228 233 239 / 0.06);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -101,6 +103,7 @@
     --warn: #f0c46a;
     --focus: #8fa8ff;
     --tint: rgb(228 233 239 / 0.05);
+    --wash: rgb(228 233 239 / 0.06);
   }
 }
 
@@ -488,7 +491,7 @@ legend { font-size: var(--text-xs); font-weight: 600; color: var(--ink-2); paddi
 }
 .toc-list > li > a:hover { color: var(--ink); }
 .toc-list > li > a[aria-current="page"] { color: var(--ink); border-left-color: var(--ink); font-weight: 600; }
-.toc-list > li > span[aria-disabled="true"] { opacity: 0.6; cursor: not-allowed; }
+.toc-list > li > span[aria-disabled="true"] { color: var(--ink-2); cursor: not-allowed; }
 .status {
   width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
   border: 1.5px solid var(--ink-2); display: inline-block;
@@ -530,7 +533,7 @@ legend { font-size: var(--text-xs); font-weight: 600; color: var(--ink-2); paddi
 .skill-node[data-status="done"] .dot { background: var(--ok); border-color: var(--ok); color: var(--paper); }
 .skill-node[data-status="current"] .dot { border-color: var(--action); color: var(--action); box-shadow: 0 0 0 3px var(--mark); }
 .skill-node[data-status="locked"] .dot { border-style: dashed; }
-.skill-node[data-status="locked"] { opacity: 0.7; }
+.skill-node[data-status="locked"] { color: var(--ink-2); }
 .skill-detail {
   position: sticky; top: calc(var(--header-h) + var(--s5));
   border-left: 1px solid var(--rule); padding-left: var(--s5);
@@ -590,7 +593,7 @@ legend { font-size: var(--text-xs); font-weight: 600; color: var(--ink-2); paddi
   border: 1px solid var(--rule); color: var(--ink-2);
 }
 .badge-card[data-earned="true"] .medal { border-color: var(--ok); color: var(--ok); }
-.badge-card[data-earned="false"] { opacity: 0.65; }
+.badge-card[data-earned="false"] { color: var(--ink-2); }
 .badge-card p { margin: 0; }
 .list-plain { list-style: none; padding: 0; margin: 0; }
 .list-plain li { display: flex; justify-content: space-between; gap: var(--s4); flex-wrap: wrap; padding: 10px 0; border-bottom: 1px solid var(--rule); margin: 0; }
@@ -677,7 +680,7 @@ dialog p { color: var(--ink-2); }
 .path-node h3 { margin: 0; font-size: 1.05rem; }
 .path-node h3 a { color: var(--ink); text-decoration: none; }
 .path-node h3 a:hover { text-decoration: underline; text-underline-offset: 3px; }
-.path-node[data-status="locked"] { opacity: 0.72; }
+.path-node[data-status="locked"] { color: var(--ink-2); }
 .path-node[data-status="done"] { border-color: color-mix(in srgb, var(--success) 45%, var(--rule)); }
 .path-node[data-status="doing"] { border-color: color-mix(in srgb, var(--info) 45%, var(--rule)); }
 .path-prereqs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
@@ -984,7 +987,7 @@ dialog p { color: var(--ink-2); }
 .editor-tab:hover { background: var(--wash); color: var(--ink); }
 .editor-tab[aria-current="page"] { border-color: var(--ink); color: var(--ink); background: var(--paper-2); }
 .editor-chips { display: flex; flex-wrap: wrap; gap: var(--s1); margin: var(--s2) 0 var(--s3); }
-.editor-chip { font-size: var(--text-sm); padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink-2); }
+.editor-chip { background: transparent; font-size: var(--text-sm); padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px; color: var(--ink-2); }
 .editor-chip[aria-pressed="true"] { border-color: var(--action); color: var(--action); background: var(--wash); }
 .editor-panel { margin-top: var(--s2); }
 .editor-actions { display: flex; flex-wrap: wrap; gap: var(--s1); margin: var(--s2) 0; }

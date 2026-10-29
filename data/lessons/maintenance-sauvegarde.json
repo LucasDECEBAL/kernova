@@ -1,0 +1,529 @@
+{
+  "courseId": "maintenance-sauvegarde",
+  "modules": [
+    {
+      "id": "maintenance-sauvegarde-module",
+      "title": "Sauvegarde, entretien et bonnes pratiques",
+      "chapters": [
+        {
+          "id": "mnt3-01",
+          "title": "Effectuer une sauvegarde",
+          "objectives": [
+            "Appliquer la règle 3-2-1",
+            "Choisir la fréquence",
+            "Vérifier une sauvegarde"
+          ],
+          "exercise": {
+            "title": "Critiquer une sauvegarde",
+            "instructions": "Un utilisateur copie chaque soir sur un disque externe posé à côté du PC. Quelles faiblesses ?",
+            "hints": [
+              "Un seul support, sur site.",
+              "Aucun test de restauration."
+            ],
+            "solution": "Il manque un second support et une copie hors site ; un sinistre détruirait l'original et la copie. Ajouter une copie distante et tester la restauration.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "hors site",
+                "support",
+                "test"
+              ],
+              "success": "Correct : hors site, support distinct, restauration testée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifie le « 1 » de la règle 3-2-1 ?",
+              "options": [
+                "Une copie hors site",
+                "Un seul disque",
+                "Une sauvegarde par an",
+                "Un seul utilisateur"
+              ],
+              "answer": 0,
+              "explanation": "Une copie doit être éloignée du site principal.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-01-q1"
+            },
+            {
+              "question": "Quand une sauvegarde est-elle réellement fiable ?",
+              "options": [
+                "Après un test de restauration réussi",
+                "Dès qu'elle est copiée",
+                "Quand elle est volumineuse",
+                "Quand elle est chiffrée"
+              ],
+              "answer": 0,
+              "explanation": "Seule une restauration testée prouve la sauvegarde.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-01-q2"
+            }
+          ],
+          "summary": [
+            "3-2-1 protège contre plusieurs types de sinistres.",
+            "Fréquence selon la valeur des données.",
+            "Une sauvegarde non testée n'est pas une sauvegarde."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une sauvegarde est une copie permettant de restaurer après perte, vol, panne ou erreur. Sans test de restauration, elle n'est qu'une hypothèse."
+            },
+            {
+              "type": "list",
+              "items": [
+                "3-2-1 : trois copies, deux supports différents, une hors site.",
+                "Sauvegarder les données irremplaçables en priorité.",
+                "Chiffrer les sauvegardes contenant des données personnelles.",
+                "Tester une restauration partielle régulièrement."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Avantage",
+                "Limite"
+              ],
+              "rows": [
+                [
+                  "Complète",
+                  "simple à restaurer",
+                  "longue et volumineuse"
+                ],
+                [
+                  "Incrémentale",
+                  "rapide",
+                  "restauration en chaîne"
+                ],
+                [
+                  "Image système",
+                  "restauration complète",
+                  "volumineuse"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une copie rangée à côté de l'ordinateur ne protège ni d'un vol ni d'un incendie : elle doit être déplacée hors site."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Restaurer un système »."
+        },
+        {
+          "id": "mnt3-02",
+          "title": "Restaurer un système",
+          "objectives": [
+            "Choisir le bon niveau de restauration",
+            "Restaurer des fichiers ou une image",
+            "Comprendre RTO et RPO"
+          ],
+          "exercise": {
+            "title": "Choisir RTO et RPO",
+            "instructions": "Une entreprise accepte 4 h d'interruption et 1 h de perte de données. Que signifient RTO et RPO ?",
+            "hints": [
+              "RTO concerne le temps.",
+              "RPO concerne les données."
+            ],
+            "solution": "RTO = 4 h (temps de remise en service), RPO = 1 h (sauvegardes au moins horaires).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rto",
+                "rpo"
+              ],
+              "success": "Correct : RTO 4 h, RPO 1 h."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesure le RPO ?",
+              "options": [
+                "La perte de données acceptable",
+                "Le temps de panne",
+                "Le nombre de disques",
+                "La vitesse du réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le RPO fixe la fréquence minimale des sauvegardes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-02-q1"
+            },
+            {
+              "question": "Pourquoi ne pas restaurer immédiatement sur le disque d'origine ?",
+              "options": [
+                "Pour préserver les données récupérables",
+                "Pour gagner de la place",
+                "Pour accélérer le réseau",
+                "Pour changer le système"
+              ],
+              "answer": 0,
+              "explanation": "La copie préalable évite une perte définitive.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-02-q2"
+            }
+          ],
+          "summary": [
+            "Restaurer des fichiers ou un système sont deux scénarios différents.",
+            "RTO = temps, RPO = données.",
+            "Copier avant d'écraser."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Restaurer consiste à remettre des données ou un système dans un état antérieur. Le choix dépend de ce qui est perdu : quelques fichiers ou tout le système."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fichiers : restauration ciblée depuis une sauvegarde.",
+                "Système : image disque ou réinstallation puis restauration des données.",
+                "RTO : durée maximale d'interruption acceptée.",
+                "RPO : quantité maximale de données qu'on accepte de perdre."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Perte",
+                "Restauration adaptée"
+              ],
+              "rows": [
+                [
+                  "Un fichier",
+                  "copie ciblée"
+                ],
+                [
+                  "Le profil utilisateur",
+                  "sauvegarde de profil"
+                ],
+                [
+                  "Le disque système",
+                  "image ou réinstallation"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Ne restaurez jamais une sauvegarde sur le disque d'origine avant d'avoir copié ce qui reste : vous pourriez écraser des données récupérables."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Entretenir un ordinateur »."
+        },
+        {
+          "id": "mnt3-03",
+          "title": "Entretenir un ordinateur",
+          "objectives": [
+            "Nettoyer sans risque",
+            "Maintenir les mises à jour",
+            "Protéger l'alimentation"
+          ],
+          "exercise": {
+            "title": "Planifier l'entretien",
+            "instructions": "Proposez trois actions d'entretien et leur fréquence.",
+            "hints": [
+              "Une action physique, une logicielle, une de sauvegarde."
+            ],
+            "solution": "Nettoyage physique trimestriel, mises à jour mensuelles, vérification des sauvegardes mensuelle. Adapter selon l'environnement.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "nettoyage",
+                "mise a jour",
+                "sauvegarde"
+              ],
+              "success": "Correct : nettoyage, mises à jour, sauvegardes."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Comment nettoyer un ventilateur ?",
+              "options": [
+                "Hors tension, en le bloquant",
+                "Machine allumée",
+                "Avec un chiffon humide",
+                "Avec un aimant"
+              ],
+              "answer": 0,
+              "explanation": "Le bloquer évite de l'endommager en tournant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-03-q1"
+            },
+            {
+              "question": "À quoi sert un onduleur ?",
+              "options": [
+                "À fournir du courant pendant une coupure",
+                "À accélérer le processeur",
+                "À refroidir la machine",
+                "À sauvegarder les fichiers"
+              ],
+              "answer": 0,
+              "explanation": "Il évite les arrêts brutaux et les surtensions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-03-q2"
+            }
+          ],
+          "summary": [
+            "L'entretien préventif réduit les pannes.",
+            "Poussière et mises à jour sont prioritaires.",
+            "Un onduleur protège les postes critiques."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'entretien préventif évite une grande partie des pannes : poussière, surchauffe, mises à jour oubliées et coupures de courant."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Souffler la poussière hors tension, ventilateurs bloqués à la main.",
+                "Mettre à jour système, pilotes et logiciels.",
+                "Utiliser un onduleur pour les postes critiques.",
+                "Éviter de manger ou boire près du clavier.",
+                "Vérifier les sauvegardes."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Fréquence",
+                "Action"
+              ],
+              "rows": [
+                [
+                  "Mensuelle",
+                  "mises à jour, vérification des sauvegardes"
+                ],
+                [
+                  "Trimestrielle",
+                  "nettoyage physique"
+                ],
+                [
+                  "Annuelle",
+                  "pâte thermique si nécessaire, audit matériel"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Ne vaporisez jamais de produit directement dans la machine : l'humidité et les résidus conducteurs sont dangereux."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Diagnostiquer les problèmes de connectivité »."
+        },
+        {
+          "id": "mnt3-04",
+          "title": "Diagnostiquer les problèmes de connectivité",
+          "objectives": [
+            "Vérifier les couches une par une",
+            "Utiliser ping, DNS et passerelle",
+            "Distinguer panne locale et distante"
+          ],
+          "exercise": {
+            "title": "Ordonner les tests",
+            "instructions": "Un poste n'atteint plus un site. Dans quel ordre testez-vous : DNS, câble, passerelle, service distant ?",
+            "hints": [
+              "Le plus proche d'abord.",
+              "Le DNS intervient après le réseau."
+            ],
+            "solution": "Câble ou Wi-Fi, adresse et passerelle, DNS, puis service distant.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cable",
+                "passerelle",
+                "dns"
+              ],
+              "success": "Correct : lien, passerelle, DNS, service."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel test vérifie la résolution de noms ?",
+              "options": [
+                "nslookup",
+                "ping vers une IP",
+                "ipconfig",
+                "tasklist"
+              ],
+              "answer": 0,
+              "explanation": "nslookup interroge le DNS.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-04-q1"
+            },
+            {
+              "question": "Que teste un ping vers la passerelle ?",
+              "options": [
+                "La connectivité au réseau local",
+                "Le DNS",
+                "Le serveur web",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "La passerelle est le premier saut du réseau local.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-04-q2"
+            }
+          ],
+          "summary": [
+            "Diagnostiquer de bas en haut.",
+            "Passerelle puis DNS puis service.",
+            "Une IP publique teste Internet sans DNS."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une panne réseau se diagnostique de bas en haut : câble ou Wi-Fi, adresse, passerelle, DNS, puis service distant."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier le lien : voyants, câble, Wi-Fi associé.",
+                "Vérifier l'adresse IP, le masque et la passerelle.",
+                "Tester ping vers la passerelle puis vers un nom de domaine.",
+                "Tester le service avec son navigateur ou son port."
+              ]
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "ipconfig / ip addr   -> adresse et passerelle\nping 192.168.1.1     -> réseau local\nping example.com     -> DNS + Internet\nnslookup example.com -> résolution DNS",
+              "title": "Outils de diagnostic"
+            },
+            {
+              "type": "warning",
+              "text": "« Pas d'Internet » peut venir d'un DNS en panne alors que le réseau fonctionne : tester une IP publique aide à distinguer."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Appliquer les bonnes pratiques de maintenance »."
+        },
+        {
+          "id": "mnt3-05",
+          "title": "Appliquer les bonnes pratiques de maintenance",
+          "objectives": [
+            "Documenter une intervention",
+            "Travailler en sécurité",
+            "Savoir escalader"
+          ],
+          "exercise": {
+            "title": "Rédiger une trace",
+            "instructions": "Quelles informations notez-vous après une intervention ?",
+            "hints": [
+              "Symptôme, cause, action, état final."
+            ],
+            "solution": "Date, symptôme, tests réalisés, cause identifiée, action effectuée, sauvegarde préalable, état final et suites éventuelles.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "symptome",
+                "cause",
+                "action"
+              ],
+              "success": "Correct : symptôme, cause, action, état final."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire avant toute intervention risquée ?",
+              "options": [
+                "Sauvegarder",
+                "Éteindre le réseau",
+                "Changer le disque",
+                "Réinstaller"
+              ],
+              "answer": 0,
+              "explanation": "La sauvegarde garantit un retour arrière.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-05-q1"
+            },
+            {
+              "question": "Pourquoi documenter une intervention ?",
+              "options": [
+                "Pour la rendre reproductible et repérer les récurrences",
+                "Pour augmenter la RAM",
+                "Pour accélérer le processeur",
+                "Pour éviter les mises à jour"
+              ],
+              "answer": 0,
+              "explanation": "La trace aide le diagnostic futur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mnt3-05-q2"
+            }
+          ],
+          "summary": [
+            "Sauvegarde, une action à la fois, documentation.",
+            "Hors tension pour le matériel.",
+            "Escalader au-delà du périmètre."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une maintenance reproductible repose sur une procédure écrite, une sauvegarde préalable et une trace des actions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sauvegarder avant toute action risquée.",
+                "Noter symptômes, tests, résultat et heure.",
+                "Travailler hors tension pour le matériel.",
+                "Rendre la machine dans un état propre et à jour.",
+                "Escalader quand le diagnostic dépasse le périmètre."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Règle",
+                "Bénéfice"
+              ],
+              "rows": [
+                [
+                  "Sauvegarde d'abord",
+                  "retour arrière possible"
+                ],
+                [
+                  "Une action à la fois",
+                  "cause identifiée"
+                ],
+                [
+                  "Documentation",
+                  "intervention reproductible"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un historique de maintenance daté vaut mieux qu'un long rapport : il permet de repérer les pannes récurrentes."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

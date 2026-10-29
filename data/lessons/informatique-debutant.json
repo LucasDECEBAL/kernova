@@ -2,97 +2,33 @@
   "courseId": "informatique-debutant",
   "modules": [
     {
-      "id": "info-m1",
-      "title": "De quoi est fait un ordinateur",
+      "id": "info-bases",
+      "title": "Découvrir l'informatique",
       "chapters": [
         {
           "id": "info-01",
-          "title": "Matériel et logiciel",
-          "duration": 15,
+          "title": "Introduction à l'informatique",
           "objectives": [
-            "Distinguer matériel et logiciel",
-            "Nommer le rôle du processeur, de la mémoire et du stockage"
-          ],
-          "content": [
-            {
-              "type": "p",
-              "text": "Un ordinateur exécute des instructions. Tout ce qui le compose se range en deux familles : le **matériel**, que l'on peut toucher, et le **logiciel**, qui est un ensemble d'instructions. Aucune des deux ne sert à grand-chose sans l'autre."
-            },
-            {
-              "type": "h",
-              "text": "Le matériel"
-            },
-            {
-              "type": "table",
-              "headers": [
-                "Composant",
-                "Rôle",
-                "Analogie"
-              ],
-              "rows": [
-                [
-                  "Processeur (CPU)",
-                  "Exécute les instructions, calcule",
-                  "Le cuisinier"
-                ],
-                [
-                  "Mémoire vive (RAM)",
-                  "Garde les données en cours d'utilisation",
-                  "Le plan de travail"
-                ],
-                [
-                  "Stockage (SSD, disque dur)",
-                  "Conserve les fichiers quand la machine est éteinte",
-                  "Le placard"
-                ],
-                [
-                  "Carte mère",
-                  "Relie les composants entre eux",
-                  "Le plan de travail fixe"
-                ],
-                [
-                  "Périphériques",
-                  "Entrée (clavier, souris) et sortie (écran, imprimante)",
-                  "Les outils"
-                ]
-              ]
-            },
-            {
-              "type": "p",
-              "text": "Le processeur et la mémoire vive sont **volatils** au sens où leur contenu disparaît à l'extinction pour la RAM. Seul le stockage conserve les données durablement."
-            },
-            {
-              "type": "h",
-              "text": "Le logiciel"
-            },
-            {
-              "type": "p",
-              "text": "Le matériel ne comprend que des signaux électriques. Le **système d'exploitation** traduit vos actions en opérations compréhensibles par la machine, et les **applications** s'appuient sur lui. Un navigateur, un tableur ou un jeu sont des logiciels."
-            },
-            {
-              "type": "warning",
-              "text": "La RAM est vidée à l'arrêt : un document non enregistré est perdu lors d'une coupure de courant. Enregistrez régulièrement."
-            },
-            {
-              "type": "tip",
-              "text": "Pour connaître votre matériel : gestionnaire des tâches sous Windows, ou `lscpu`, `free -h` et `lsblk` sous Linux."
-            }
+            "Définir l'informatique",
+            "Distinguer donnée et information",
+            "Citer trois usages concrets"
           ],
           "exercise": {
-            "title": "Mémoire ou stockage ?",
-            "instructions": "Vous rédigez un rapport dans un traitement de texte mais vous ne l'avez pas encore enregistré. Où se trouve le contenu à cet instant, et que se passe-t-il si la machine s'éteint brutalement ?",
+            "title": "Classer des activités",
+            "instructions": "Pour chaque activité, indiquez l'étape dominante : calculer une moyenne, enregistrer une photo, afficher un graphique.",
             "hints": [
-              "Pensez au composant qui garde les données « en cours d'utilisation ».",
-              "Le stockage conserve, la mémoire vive non."
+              "Une moyenne est un calcul.",
+              "Enregistrer, c'est conserver ; afficher, c'est restituer."
             ],
-            "solution": "Le contenu se trouve en mémoire vive (RAM). À l'extinction, la RAM est vidée : le rapport non enregistré est perdu.",
+            "solution": "Calculer une moyenne : traitement. Enregistrer une photo : stockage. Afficher un graphique : sortie.",
             "check": {
-              "type": "any",
-              "any": [
-                "ram",
-                "memoire vive"
+              "type": "keywords",
+              "keywords": [
+                "traitement",
+                "stockage",
+                "sortie"
               ],
-              "success": "Oui : le contenu est en mémoire vive, perdue à l'extinction."
+              "success": "Correct : traitement, stockage et sortie."
             }
           },
           "quiz": [
@@ -100,95 +36,112 @@
               "id": "info-01-q1",
               "type": "single",
               "difficulty": 1,
-              "question": "Quel composant conserve les fichiers lorsque l'ordinateur est éteint ?",
+              "question": "Quelle affirmation décrit le mieux l'informatique ?",
               "options": [
-                "La mémoire vive",
-                "Le processeur",
-                "Le stockage (SSD ou disque dur)",
-                "La carte graphique"
+                "Le traitement automatique de l'information",
+                "La réparation des ordinateurs",
+                "La création de sites web uniquement",
+                "L'utilisation d'un tableur"
               ],
-              "answer": 2,
-              "explanation": "La mémoire vive est volatile ; seul le stockage conserve les données sans alimentation.",
-              "hints": [
-                "Pensez au composant qui garde vos photos entre deux démarrages."
-              ]
+              "answer": 0,
+              "explanation": "L'informatique couvre le traitement de l'information ; le reste en sont des applications.",
+              "hints": []
             },
             {
               "id": "info-01-q2",
-              "type": "truefalse",
+              "type": "single",
               "difficulty": 1,
-              "question": "Un logiciel est une partie physique de l'ordinateur.",
-              "answer": false,
-              "explanation": "Le logiciel est un ensemble d'instructions ; le matériel est la partie physique.",
+              "question": "Que produit un traitement ?",
+              "options": [
+                "Une information utilisable",
+                "Toujours une image",
+                "Un nouveau processeur",
+                "Un câble réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le traitement transforme des données en information.",
               "hints": []
             }
           ],
-          "nextStep": "Chapitre suivant : « Le système d'exploitation ».",
           "summary": [
-            "La RAM garde les données en cours d'utilisation ; elle est vidée à l'extinction.",
-            "Le stockage conserve les fichiers sans alimentation.",
-            "Matériel et logiciel sont complémentaires : l'un exécute, l'autre donne les instructions."
-          ]
-        },
-        {
-          "id": "info-02",
-          "title": "Le système d'exploitation",
-          "duration": 18,
-          "objectives": [
-            "Décrire le rôle d'un système d'exploitation",
-            "Distinguer un programme d'un processus"
+            "L'informatique traite des données pour produire de l'information.",
+            "Le matériel exécute, le logiciel décrit.",
+            "Entrée, traitement, sortie et stockage forment le cycle de base."
           ],
           "content": [
             {
               "type": "p",
-              "text": "Le **système d'exploitation** (OS) est le logiciel qui fait le lien entre le matériel et les applications. Il gère les fichiers, la mémoire, les périphériques, les utilisateurs et le réseau. Windows, macOS et Linux sont les plus courants ; Android et iOS en sont des versions pour mobiles."
+              "text": "L'informatique est le traitement automatique de l'information : des données entrent, des instructions les transforment, un résultat utile sort."
             },
             {
-              "type": "h",
-              "text": "Programme et processus"
-            },
-            {
-              "type": "p",
-              "text": "Un **programme** est un fichier sur le disque. Un **processus** est ce programme en cours d'exécution, chargé en mémoire et identifié par un numéro (PID). Le même programme peut tourner en plusieurs processus à la fois."
-            },
-            {
-              "type": "code",
-              "lang": "text",
-              "title": "Lister les processus",
-              "code": "# Windows\ntasklist\n\n# Linux\nps aux\ntop"
+              "type": "list",
+              "items": [
+                "Un capteur relève 21 °C : c'est une donnée.",
+                "Le système compare à un seuil et déclenche une alerte : c'est de l'information.",
+                "Une calculatrice qui additionne applique le même schéma."
+              ]
             },
             {
               "type": "p",
-              "text": "Un processus peut être arrêté, suspendu ou relancé. Quand une application ne répond plus, on ferme son processus plutôt que d'éteindre la machine."
+              "text": "Le matériel exécute, le logiciel décrit quoi exécuter. Un processeur sans programme ne fait rien d'utile ; un programme sans machine ne s'exécute pas."
             },
             {
-              "type": "h",
-              "text": "Les utilisateurs"
-            },
-            {
-              "type": "p",
-              "text": "Un OS multi-utilisateurs sépare les comptes : chacun a son dossier personnel et des droits limités. Le compte administrateur peut tout modifier, ce qui en fait une cible à protéger."
+              "type": "table",
+              "headers": [
+                "Étape",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Entrée",
+                  "saisie, capteur, fichier"
+                ],
+                [
+                  "Traitement",
+                  "calcul, tri, comparaison"
+                ],
+                [
+                  "Sortie",
+                  "affichage, alerte, fichier"
+                ],
+                [
+                  "Stockage",
+                  "disque, base de données"
+                ]
+              ]
             },
             {
               "type": "warning",
-              "text": "Travailler en administrateur au quotidien augmente les risques : une erreur ou un logiciel malveillant dispose alors de tous les droits."
+              "text": "Utiliser un traitement de texte ne signifie pas comprendre un ordinateur : la bureautique est un usage, pas un savoir technique."
             }
           ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre le fonctionnement d'un ordinateur »."
+        },
+        {
+          "id": "info-02",
+          "title": "Comprendre le fonctionnement d'un ordinateur",
+          "objectives": [
+            "Décrire le cycle entrée-traitement-sortie",
+            "Situer le processeur, la mémoire et le stockage",
+            "Expliquer le rôle des bus"
+          ],
           "exercise": {
-            "title": "Programme ou processus ?",
-            "instructions": "Un navigateur est installé sur le disque et vous en ouvrez deux fenêtres. Combien y a-t-il de programmes et de processus ?",
+            "title": "Suivre une ouverture de fichier",
+            "instructions": "Décrivez, dans l'ordre, ce qui se passe quand vous ouvrez une photo depuis le disque.",
             "hints": [
-              "Le programme est le fichier installé.",
-              "Chaque fenêtre s'exécute séparément en mémoire."
+              "Le fichier vient du stockage.",
+              "Le programme qui affiche est déjà en mémoire."
             ],
-            "solution": "Un seul programme installé, mais deux processus en cours d'exécution (parfois davantage : chaque onglet ou module peut avoir le sien).",
+            "solution": "Le disque lit le fichier, la RAM le reçoit, le programme d'affichage le décode, l'écran l'affiche.",
             "check": {
-              "type": "any",
-              "any": [
-                "2 processus",
-                "deux processus"
+              "type": "keywords",
+              "keywords": [
+                "disque",
+                "ram",
+                "ecran"
               ],
-              "success": "Exact : un programme installé, deux processus en cours."
+              "success": "Correct : disque, mémoire vive puis écran."
             }
           },
           "quiz": [
@@ -196,101 +149,113 @@
               "id": "info-02-q1",
               "type": "single",
               "difficulty": 1,
-              "question": "Quel est le rôle principal d'un système d'exploitation ?",
+              "question": "Quel composant conserve les fichiers sans alimentation ?",
               "options": [
-                "Faire le lien entre le matériel et les applications",
-                "Rédiger des documents",
-                "Afficher des publicités",
-                "Compresser les fichiers"
+                "Le disque",
+                "La RAM",
+                "Le processeur",
+                "Le bus"
               ],
               "answer": 0,
-              "explanation": "L'OS gère les ressources matérielles et fournit des services aux applications.",
+              "explanation": "Le stockage est non volatil ; la RAM est volatile.",
               "hints": []
             },
             {
               "id": "info-02-q2",
-              "type": "text",
+              "type": "single",
               "difficulty": 1,
-              "question": "Quelle commande Linux liste les processus en cours d'exécution (réponse courte) ?",
-              "answer": [
-                "ps",
-                "ps aux",
-                "top"
+              "question": "À quoi sert la mémoire vive ?",
+              "options": [
+                "Garder les données en cours d'utilisation",
+                "Stocker définitivement les fichiers",
+                "Refroidir le processeur",
+                "Connecter le réseau"
               ],
-              "explanation": "ps liste les processus ; top les affiche en continu.",
-              "hints": [
-                "Deux lettres, abréviation de « processes »."
-              ]
+              "answer": 0,
+              "explanation": "La RAM sert de zone de travail rapide.",
+              "hints": []
             }
           ],
-          "nextStep": "Chapitre suivant : « Fichiers, dossiers et chemins ».",
           "summary": [
-            "Un programme est un fichier ; un processus est son exécution en mémoire.",
-            "Le système d'exploitation relie le matériel, les fichiers et les applications.",
-            "Plusieurs processus peuvent correspondre à un seul programme installé."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "info-m2",
-      "title": "Données et communication",
-      "chapters": [
-        {
-          "id": "info-03",
-          "title": "Fichiers, dossiers et chemins",
-          "duration": 18,
-          "objectives": [
-            "Se repérer dans une arborescence",
-            "Distinguer chemin absolu et chemin relatif"
+            "Le cycle entrée-traitement-sortie structure tout programme.",
+            "CPU, RAM et stockage ont des rôles distincts.",
+            "Un ralentissement vient souvent du stockage ou de la mémoire, pas seulement du processeur."
           ],
           "content": [
             {
               "type": "p",
-              "text": "Le système d'exploitation range les données dans une **arborescence** : des dossiers qui contiennent des fichiers et d'autres dossiers. Windows part d'un lecteur (`C:\\`), Linux et macOS d'une racine unique (`/`)."
-            },
-            {
-              "type": "code",
-              "lang": "text",
-              "title": "Deux conventions",
-              "code": "Windows : C:\\Users\\alice\\Documents\\rapport.docx\nLinux   : /home/alice/Documents/rapport.txt"
-            },
-            {
-              "type": "p",
-              "text": "L'**extension** (`.docx`, `.txt`, `.jpg`) indique le type de fichier attendu. Elle ne prouve rien sur le contenu : un fichier peut être renommé. Sous Windows, masquer les extensions empêche de repérer les fichiers trompeurs."
-            },
-            {
-              "type": "h",
-              "text": "Chemins absolus et relatifs"
+              "text": "Un ordinateur reçoit des données, les traite selon un programme, puis restitue ou conserve le résultat. Le processeur exécute, la mémoire vive accompagne le travail en cours, le stockage conserve."
             },
             {
               "type": "list",
               "items": [
-                "Un **chemin absolu** part de la racine et désigne toujours le même fichier : `/etc/hosts`.",
-                "Un **chemin relatif** part du dossier courant : `documents/notes.txt`.",
-                "`..` désigne le dossier parent ; `.` le dossier courant ; `~` le dossier personnel sous Linux."
+                "Le processeur (CPU) exécute les instructions.",
+                "La mémoire vive (RAM) garde les données utilisées immédiatement ; elle est vidée à l'extinction.",
+                "Le disque (SSD ou HDD) conserve les fichiers sans alimentation.",
+                "Les bus transportent données, adresses et ordres entre ces composants."
               ]
             },
             {
-              "type": "warning",
-              "text": "Un fichier peut contenir du contenu dangereux quel que soit son nom. N'ouvrez pas une pièce jointe dont l'extension ne correspond pas au contenu annoncé."
+              "type": "p",
+              "text": "Ouvrir un fichier : le disque le lit, la RAM le reçoit, le processeur applique le programme, l'écran affiche le résultat."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Composant",
+                "Rôle",
+                "Perte à l'extinction"
+              ],
+              "rows": [
+                [
+                  "CPU",
+                  "exécuter les instructions",
+                  "aucune"
+                ],
+                [
+                  "RAM",
+                  "travail en cours",
+                  "contenu perdu"
+                ],
+                [
+                  "Disque",
+                  "conserver les fichiers",
+                  "aucune"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un ordinateur lent avec un disque saturé ou une RAM insuffisante passe son temps à attendre : le processeur n'est pas toujours le coupable."
             }
           ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Matériel : processeur, mémoire et stockage »."
+        },
+        {
+          "id": "info-03",
+          "title": "Matériel : processeur, mémoire et stockage",
+          "objectives": [
+            "Identifier les caractéristiques d'un processeur",
+            "Comparer RAM et stockage",
+            "Choisir un matériel adapté à un usage"
+          ],
           "exercise": {
-            "title": "Écrire un chemin",
-            "instructions": "Sous Linux, votre dossier personnel est /home/alice. Écrivez le chemin absolu du fichier notes.txt situé dans le sous-dossier Documents, puis le chemin relatif équivalent depuis votre dossier personnel.",
+            "title": "Dimensionner un poste",
+            "instructions": "Un étudiant en développement utilise un éditeur, un navigateur et une machine virtuelle. Proposez RAM, stockage et processeur, en justifiant.",
             "hints": [
-              "Un chemin absolu commence par la racine /.",
-              "Depuis chez vous, il suffit de commencer par Documents."
+              "La machine virtuelle consomme plusieurs gigaoctets.",
+              "Le SSD réduit les temps de chargement."
             ],
-            "solution": "Absolu : /home/alice/Documents/notes.txt. Relatif depuis /home/alice : Documents/notes.txt (ou ~/Documents/notes.txt).",
+            "solution": "Par exemple 16 Go de RAM, SSD de 512 Go et processeur à 4 cœurs : suffisant pour l'éditeur, le navigateur et une VM légère.",
             "check": {
-              "type": "any",
-              "any": [
-                "/home/alice/documents/notes.txt",
-                "~/documents/notes.txt"
+              "type": "keywords",
+              "keywords": [
+                "16 go",
+                "16go",
+                "ssd"
               ],
-              "success": "Correct : le chemin absolu part de /."
+              "success": "Correct : RAM suffisante et stockage rapide."
             }
           },
           "quiz": [
@@ -298,121 +263,105 @@
               "id": "info-03-q1",
               "type": "single",
               "difficulty": 1,
-              "question": "Lequel de ces chemins est absolu ?",
+              "question": "Quel composant est le plus rapide ?",
               "options": [
-                "documents/notes.txt",
-                "../photos/img.png",
-                "/home/alice/notes.txt",
-                "notes.txt"
+                "La mémoire vive",
+                "Le disque mécanique",
+                "Le SSD SATA",
+                "Une clé USB 2.0"
               ],
-              "answer": 2,
-              "explanation": "Un chemin absolu commence par la racine.",
+              "answer": 0,
+              "explanation": "La RAM est bien plus rapide que tout stockage.",
               "hints": []
             },
             {
               "id": "info-03-q2",
-              "type": "blank",
+              "type": "single",
               "difficulty": 1,
-              "question": "Dans un chemin, le symbole ___ désigne le dossier parent.",
-              "answers": [
-                [
-                  ".."
-                ]
+              "question": "Que mesure la fréquence d'un processeur ?",
+              "options": [
+                "Le nombre de cycles par seconde",
+                "La capacité de stockage",
+                "La taille de l'écran",
+                "Le débit réseau"
               ],
-              "explanation": "Deux points remontent d'un niveau dans l'arborescence.",
-              "hints": [
-                "Deux caractères identiques."
-              ]
+              "answer": 0,
+              "explanation": "La fréquence exprime des cycles par seconde.",
+              "hints": []
             }
           ],
-          "nextStep": "Chapitre suivant : « Binaire, octets et unités ».",
           "summary": [
-            "Un chemin absolu part de la racine / ; un chemin relatif part du dossier courant.",
-            ".. remonte d'un niveau, . désigne le dossier courant, ~ le dossier personnel.",
-            "Les noms sont sensibles à la casse sous Linux."
-          ]
-        },
-        {
-          "id": "info-04",
-          "title": "Binaire, octets et unités",
-          "duration": 18,
-          "objectives": [
-            "Expliquer ce qu'est un bit et un octet",
-            "Convertir entre binaire, décimal et hexadécimal"
+            "Cœurs, fréquence et architecture décrivent le processeur.",
+            "RAM pour le travail, stockage pour la conservation.",
+            "Le bon matériel dépend de l'usage, pas du prix seul."
           ],
           "content": [
             {
               "type": "p",
-              "text": "Un ordinateur distingue deux états électriques, notés 0 et 1. Un **bit** est l'un de ces états. Huit bits forment un **octet** (byte), qui peut représenter 256 valeurs différentes (de 0 à 255)."
+              "text": "Le processeur se décrit par son nombre de cœurs, sa fréquence et son architecture. Plus de cœurs aide aux tâches parallèles ; une fréquence élevée aide les traitements séquentiels."
+            },
+            {
+              "type": "p",
+              "text": "La RAM se mesure en gigaoctets et en vitesse. Le stockage se mesure en capacité et en débit : un SSD est nettement plus rapide qu'un disque mécanique, mais plus coûteux au gigaoctet."
             },
             {
               "type": "table",
               "headers": [
-                "Unité",
-                "Équivalent",
-                "Ordre de grandeur"
+                "Besoin",
+                "Priorité"
               ],
               "rows": [
                 [
-                  "1 octet",
-                  "8 bits",
-                  "Un caractère ASCII"
+                  "Bureautique",
+                  "8 Go de RAM, SSD"
                 ],
                 [
-                  "1 kio",
-                  "1 024 octets",
-                  "Un court texte"
+                  "Développement",
+                  "16 Go de RAM, SSD, 4 cœurs"
                 ],
                 [
-                  "1 Mio",
-                  "1 024 kio",
-                  "Une photo compressée"
+                  "Montage vidéo",
+                  "32 Go, GPU dédié, stockage rapide"
                 ],
                 [
-                  "1 Gio",
-                  "1 024 Mio",
-                  "Une vidéo courte"
-                ],
-                [
-                  "1 Tio",
-                  "1 024 Gio",
-                  "Un disque dur récent"
+                  "Serveur de fichiers",
+                  "capacité et redondance avant vitesse"
                 ]
               ]
             },
             {
-              "type": "h",
-              "text": "Changer de base"
-            },
-            {
-              "type": "code",
-              "lang": "text",
-              "code": "13  en décimal  = 1101 en binaire = D en hexadécimal\n255 en décimal  = 11111111       = FF en hexadécimal"
-            },
-            {
-              "type": "p",
-              "text": "L'**hexadécimal** regroupe quatre bits en un seul chiffre (0-9 puis A-F). Il sert à écrire les couleurs (`#FF8800`), les adresses MAC (`00:1A:2B:...`) et les adresses IPv6."
-            },
-            {
-              "type": "tip",
-              "text": "Les fabricants de disques comptent parfois 1 Go = 1 000 000 000 octets, alors que le système affiche des Gio : un disque « 1 To » apparaît donc un peu plus petit."
+              "type": "warning",
+              "text": "Une fréquence plus élevée ne compense pas un manque de RAM : le système utilisera le disque et deviendra très lent."
             }
           ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Matériel et logiciel »."
+        },
+        {
+          "id": "info-04",
+          "title": "Matériel et logiciel",
+          "objectives": [
+            "Distinguer matériel, firmware, système et application",
+            "Expliquer le rôle d'un pilote",
+            "Reconnaître les couches d'un système"
+          ],
           "exercise": {
-            "title": "Encoder 5",
-            "instructions": "Écrivez 5 en binaire sur un octet, puis en hexadécimal.",
+            "title": "Classer quatre éléments",
+            "instructions": "Classez : un SSD, Windows, un pilote graphique, un navigateur.",
             "hints": [
-              "Sur un octet, les poids sont 128, 64, 32, 16, 8, 4, 2, 1.",
-              "5 = 4 + 1."
+              "Le SSD est physique.",
+              "Windows est le système ; le navigateur est une application."
             ],
-            "solution": "5 = 00000101 en binaire = 05 en hexadécimal.",
+            "solution": "SSD : matériel. Windows : système d'exploitation. Pilote graphique : logiciel de bas niveau. Navigateur : application.",
             "check": {
-              "type": "any",
-              "any": [
-                "00000101",
-                "101"
+              "type": "keywords",
+              "keywords": [
+                "materiel",
+                "systeme",
+                "pilote",
+                "application"
               ],
-              "success": "Correct : 5 s'écrit 00000101 sur un octet."
+              "success": "Correct : les quatre couches sont distinguées."
             }
           },
           "quiz": [
@@ -420,116 +369,87 @@
               "id": "info-04-q1",
               "type": "single",
               "difficulty": 1,
-              "question": "Combien de bits contient un octet ?",
+              "question": "Où se situe un pilote ?",
               "options": [
-                "4",
-                "8",
-                "16",
-                "256"
+                "Entre le système et le matériel",
+                "Dans le processeur",
+                "Dans le routeur",
+                "Dans le clavier"
               ],
-              "answer": 1,
-              "explanation": "Un octet regroupe huit bits et peut donc prendre 256 valeurs.",
+              "answer": 0,
+              "explanation": "Le pilote traduit les ordres du système vers le matériel.",
               "hints": []
             },
             {
               "id": "info-04-q2",
-              "type": "text",
-              "difficulty": 2,
-              "question": "Quelle est l'écriture hexadécimale de 255 ?",
-              "answer": [
-                "FF",
-                "ff",
-                "0xFF"
+              "type": "single",
+              "difficulty": 1,
+              "question": "Qu'est-ce qu'un firmware ?",
+              "options": [
+                "Un logiciel intégré au matériel",
+                "Une application de bureau",
+                "Un type de câble",
+                "Un fichier texte"
               ],
-              "explanation": "255 = 11111111 en binaire, soit deux groupes de 1111, donc FF.",
-              "hints": [
-                "Le chiffre hexadécimal maximum est F."
-              ]
+              "answer": 0,
+              "explanation": "Le firmware est embarqué et démarre le matériel.",
+              "hints": []
             }
           ],
-          "nextStep": "Chapitre suivant : « Comment fonctionne Internet ».",
           "summary": [
-            "Un bit vaut 0 ou 1 ; un octet regroupe huit bits.",
-            "Un octet encode 256 valeurs, de 0 à 255.",
-            "L'hexadécimal regroupe quatre bits par chiffre, pratique pour les couleurs et les adresses."
-          ]
-        },
-        {
-          "id": "info-05",
-          "title": "Comment fonctionne Internet",
-          "duration": 20,
-          "objectives": [
-            "Distinguer Internet et le Web",
-            "Décrire le trajet d'une requête entre client et serveur"
+            "Matériel, firmware, système, pilotes et applications forment des couches.",
+            "Un pilote relie le système au matériel.",
+            "Chaque couche peut être mise à jour séparément."
           ],
           "content": [
             {
               "type": "p",
-              "text": "**Internet** est un réseau de réseaux qui relie des millions de machines. Le **Web** n'en est qu'un service, à côté du courrier électronique, du transfert de fichiers ou des jeux en ligne."
+              "text": "Le matériel est physique ; le logiciel est un ensemble d'instructions. Entre les deux, le firmware est un logiciel stocké dans le matériel, chargé au démarrage."
             },
             {
-              "type": "h",
-              "text": "Client et serveur"
-            },
-            {
-              "type": "p",
-              "text": "Quand vous ouvrez un site, votre navigateur (**client**) demande une page à un autre ordinateur (**serveur**). La requête circule en **paquets** par l'intermédiaire de routeurs. Le protocole **HTTP** définit la forme de l'échange ; **HTTPS** chiffre le transport."
-            },
-            {
-              "type": "table",
-              "headers": [
-                "Étape",
-                "Ce qui se passe"
-              ],
-              "rows": [
-                [
-                  "1",
-                  "Le navigateur cherche l'adresse IP du site (DNS)"
-                ],
-                [
-                  "2",
-                  "Il ouvre une connexion vers le serveur (TCP, port 443)"
-                ],
-                [
-                  "3",
-                  "Il envoie une requête HTTP (GET /page)"
-                ],
-                [
-                  "4",
-                  "Le serveur renvoie une réponse (code de statut, HTML)"
-                ],
-                [
-                  "5",
-                  "Le navigateur affiche la page et charge les ressources"
-                ]
+              "type": "list",
+              "items": [
+                "Firmware (BIOS/UEFI) : initialise le matériel et lance le système.",
+                "Système d'exploitation : gère les ressources et les fichiers.",
+                "Application : rend un service à l'utilisateur.",
+                "Pilote : permet au système de piloter un matériel précis."
               ]
             },
             {
-              "type": "code",
-              "lang": "bash",
-              "title": "Voir les en-têtes d'une réponse",
-              "code": "curl -I https://example.com"
+              "type": "p",
+              "text": "Un smartphone combine les mêmes couches : firmware, système (Android ou iOS), applications, et pilotes pour l'écran, la caméra ou le modem."
             },
             {
-              "type": "warning",
-              "text": "HTTPS protège la confidentialité du transport, mais ne garantit pas l'honnêteté du site : un site frauduleux peut parfaitement être en HTTPS."
+              "type": "tip",
+              "text": "Mettre à jour un pilote revient à remplacer un traducteur entre le système et le matériel : une version inadaptée provoque des dysfonctionnements."
             }
           ],
+          "duration": 20,
+          "nextStep": "Chapitre suivant : « Comprendre les systèmes d'exploitation »."
+        },
+        {
+          "id": "info-05",
+          "title": "Comprendre les systèmes d'exploitation",
+          "objectives": [
+            "Décrire le rôle d'un système d'exploitation",
+            "Citer des exemples et leurs usages",
+            "Expliquer les comptes et permissions"
+          ],
           "exercise": {
-            "title": "Qui traduit les noms ?",
-            "instructions": "Quel service transforme un nom de domaine comme example.com en adresse IP ?",
+            "title": "Identifier le système adapté",
+            "instructions": "Pour un serveur web et pour un poste de bureautique familial, quel système privilégier et pourquoi ?",
             "hints": [
-              "Son nom est l'acronyme de Domain Name System.",
-              "Il dispose d'un cache et d'enregistrements de types A ou AAAA."
+              "Les serveurs privilégient la stabilité et les mises à jour contrôlées.",
+              "La famille utilise surtout des logiciels grand public."
             ],
-            "solution": "Le DNS (Domain Name System).",
+            "solution": "Serveur : une distribution Linux stable. Poste familial : Windows ou macOS selon les logiciels utilisés. Le choix dépend des applications et du support.",
             "check": {
-              "type": "any",
-              "any": [
-                "dns",
-                "domain name system"
+              "type": "keywords",
+              "keywords": [
+                "linux",
+                "windows"
               ],
-              "success": "Exact : le DNS résout les noms en adresses."
+              "success": "Correct : Linux pour le serveur, Windows ou macOS pour le poste."
             }
           },
           "quiz": [
@@ -537,33 +457,63 @@
               "id": "info-05-q1",
               "type": "single",
               "difficulty": 1,
-              "question": "Quel service traduit un nom de domaine en adresse IP ?",
+              "question": "Quel est le rôle principal d'un système d'exploitation ?",
               "options": [
-                "HTTP",
-                "DNS",
-                "FTP",
-                "DHCP"
+                "Gérer les ressources et fournir une interface",
+                "Fabriquer le processeur",
+                "Remplacer le réseau",
+                "Créer les fichiers automatiquement"
               ],
-              "answer": 1,
-              "explanation": "Le DNS est l'annuaire qui associe les noms aux adresses IP.",
+              "answer": 0,
+              "explanation": "Le système arbitre l'accès aux ressources.",
               "hints": []
             },
             {
               "id": "info-05-q2",
-              "type": "truefalse",
+              "type": "single",
               "difficulty": 1,
-              "question": "Le Web et Internet désignent exactement la même chose.",
-              "answer": false,
-              "explanation": "Internet est l'infrastructure ; le Web est l'un des services qui l'utilisent.",
+              "question": "Pourquoi éviter de travailler toujours en administrateur ?",
+              "options": [
+                "Une erreur a des conséquences plus graves",
+                "Cela ralentit le processeur",
+                "Cela supprime les fichiers",
+                "Cela désactive le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège limite l'impact des erreurs.",
               "hints": []
             }
           ],
-          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
           "summary": [
-            "Internet est un réseau de réseaux ; le Web est l'un de ses services.",
-            "Le DNS traduit un nom de domaine en adresse IP.",
-            "Le navigateur envoie une requête HTTP à un serveur, qui répond avec un statut et un contenu."
-          ]
+            "Le système gère ressources, fichiers, utilisateurs et interfaces.",
+            "Windows, Linux, macOS et mobiles répondent à des besoins différents.",
+            "Les comptes et permissions limitent les actions possibles."
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le système d'exploitation gère le processeur, la mémoire, le stockage, les périphériques et les utilisateurs. Il fournit aussi une interface, graphique ou en ligne de commande."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Windows : large compatibilité logicielle et matérielle.",
+                "Linux : personnalisable, dominant sur les serveurs.",
+                "macOS : intégré au matériel Apple.",
+                "Android et iOS : mobiles, avec permissions par application."
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Les comptes séparent les usages : un compte standard ne modifie pas les fichiers système, un compte administrateur le peut. Sous Linux, les droits se lisent et se modifient avec chmod."
+            },
+            {
+              "type": "warning",
+              "text": "Travailler en administrateur en permanence augmente les conséquences d'une erreur ou d'un logiciel malveillant."
+            }
+          ],
+          "duration": 20,
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
         }
       ]
     }

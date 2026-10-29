@@ -13,7 +13,7 @@
     {
       "id": "environnements",
       "name": "Environnements de travail",
-      "description": "Windows, PowerShell, terminaux, éditeurs et organisation d'un projet."
+      "description": "Windows, PowerShell, terminaux, outils et organisation du poste."
     },
     {
       "id": "algorithmique",
@@ -53,7 +53,7 @@
     {
       "id": "autres-langages",
       "name": "Autres langages",
-      "description": "C, C++, Java, PHP, Go, Rust et langages complémentaires."
+      "description": "C, C++, Java, PHP, Go et langages complémentaires."
     },
     {
       "id": "backend-api",
@@ -169,51 +169,9 @@
       "id": "reglementation",
       "name": "Réglementation et bonnes pratiques",
       "description": "RGPD, licences logicielles, gestion des secrets et conformité, à titre pédagogique."
-    },
-    {
-      "id": "projets-pratiques",
-      "name": "Projets pratiques",
-      "description": "Projets guidés qui combinent plusieurs compétences, avec critères de réussite."
     }
   ],
   "courses": [
-    {
-      "id": "informatique-debutant",
-      "title": "Informatique : les fondamentaux",
-      "domain": "informatique-generale",
-      "subdomain": "Fondamentaux",
-      "level": "debutant",
-      "type": "parcours",
-      "technologies": [
-        "Ordinateur",
-        "Système d'exploitation",
-        "Internet"
-      ],
-      "description": "Le point de départ : comprendre de quoi est fait un ordinateur, ce que fait un système d'exploitation, comment sont organisés les fichiers, comment on compte en binaire et comment fonctionne Internet.",
-      "objectives": [
-        "Distinguer matériel et logiciel, et nommer le rôle des composants",
-        "Expliquer le rôle du système d'exploitation et la notion de processus",
-        "Se repérer dans une arborescence de fichiers",
-        "Convertir un nombre en binaire et en hexadécimal",
-        "Décrire le trajet d'une requête entre client et serveur"
-      ],
-      "prerequisites": [
-        "Aucun. Ce cours est le point d'entrée du catalogue."
-      ],
-      "prerequisiteCourses": [],
-      "nextCourses": [
-        "html-debutant",
-        "reseaux-debutant",
-        "sql-debutant",
-        "reglementation"
-      ],
-      "skills": [
-        "Comprendre un ordinateur",
-        "Lire une configuration de base",
-        "Situer les technologies entre elles"
-      ],
-      "file": "informatique-debutant.json"
-    },
     {
       "id": "html-debutant",
       "title": "HTML débutant",
@@ -242,8 +200,7 @@
         "css-debutant",
         "langage-php",
         "ux-ui",
-        "deploiement-seo",
-        "projets-pratiques"
+        "deploiement-seo"
       ],
       "skills": [
         "Écrire du HTML sémantique",
@@ -502,6 +459,231 @@
         "Persister des données locales"
       ],
       "file": "javascript-debutant.json"
+    },
+    {
+      "id": "informatique-debutant",
+      "title": "Informatique : les fondamentaux",
+      "domain": "informatique-generale",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Ordinateur",
+        "Système d'exploitation",
+        "Internet"
+      ],
+      "description": "Découvrir ce qu'est l'informatique, comment fonctionne un ordinateur, à quoi servent processeur, mémoire et stockage, et ce qu'est un système d'exploitation.",
+      "objectives": [
+        "Définir l'informatique et distinguer donnée et information",
+        "Décrire le cycle entrée-traitement-sortie",
+        "Nommer le rôle du processeur, de la mémoire et du stockage",
+        "Distinguer matériel, firmware, système et application",
+        "Expliquer le rôle d'un système d'exploitation"
+      ],
+      "prerequisites": [
+        "Aucun. Ce cours est le point d'entrée du catalogue."
+      ],
+      "prerequisiteCourses": [],
+      "nextCourses": [
+        "informatique-donnees",
+        "informatique-systeme",
+        "maintenance-informatique",
+        "html-debutant",
+        "reseaux-debutant",
+        "sql-debutant",
+        "reglementation"
+      ],
+      "skills": [
+        "Comprendre un ordinateur",
+        "Distinguer les couches logicielles",
+        "Situer les technologies entre elles"
+      ],
+      "file": "informatique-debutant.json"
+    },
+    {
+      "id": "informatique-donnees",
+      "title": "Fichiers, processus et unités",
+      "domain": "informatique-generale",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Fichiers",
+        "Processus",
+        "Binaire"
+      ],
+      "description": "Organiser des fichiers, comprendre la différence entre programme et processus, les architectures 32/64 bits, les unités de stockage et les bases binaire, décimale et hexadécimale.",
+      "objectives": [
+        "Lire un chemin absolu et un chemin relatif",
+        "Distinguer programme et processus",
+        "Expliquer la différence entre 32 et 64 bits",
+        "Convertir capacités et débits",
+        "Convertir de petites valeurs entre binaire, décimal et hexadécimal"
+      ],
+      "prerequisites": [
+        "Savoir ce qu'est un ordinateur (Informatique : les fondamentaux)."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "informatique-systeme"
+      ],
+      "skills": [
+        "Arborescence de fichiers",
+        "Processus",
+        "Conversion de bases"
+      ],
+      "file": "informatique-donnees.json"
+    },
+    {
+      "id": "informatique-systeme",
+      "title": "Données, mémoire et Internet",
+      "domain": "informatique-generale",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Encodage",
+        "Mémoire",
+        "Processeur",
+        "Internet"
+      ],
+      "description": "Comprendre comment texte, image et son sont codés, la hiérarchie mémoire, le cycle du processeur, les périphériques et le fonctionnement d'Internet.",
+      "objectives": [
+        "Expliquer le codage du texte, d'une image et d'un son",
+        "Décrire la hiérarchie mémoire et la volatilité",
+        "Expliquer le cycle charger-décoder-exécuter",
+        "Classer les périphériques et comprendre les pilotes",
+        "Distinguer Internet du Web et décrire une requête HTTP"
+      ],
+      "prerequisites": [
+        "Fichiers, processus et unités."
+      ],
+      "prerequisiteCourses": [
+        "informatique-donnees"
+      ],
+      "nextCourses": [
+        "maintenance-informatique",
+        "environnements-windows",
+        "reseaux-debutant"
+      ],
+      "skills": [
+        "Représentation des données",
+        "Compréhension matérielle",
+        "Bases d'Internet"
+      ],
+      "file": "informatique-systeme.json"
+    },
+    {
+      "id": "maintenance-informatique",
+      "title": "Maintenance : composants et installation",
+      "domain": "maintenance",
+      "subdomain": "Diagnostic et réparation",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Matériel",
+        "Diagnostic",
+        "Sauvegarde"
+      ],
+      "description": "Identifier les composants, assembler une machine, installer un système, gérer les pilotes et diagnostiquer les pannes matérielles.",
+      "objectives": [
+        "Nommer les composants internes et leur rôle",
+        "Assembler un ordinateur dans un ordre sûr",
+        "Installer un système et créer des comptes adaptés",
+        "Choisir et mettre à jour un pilote depuis une source fiable",
+        "Diagnostiquer une panne matérielle avec méthode"
+      ],
+      "prerequisites": [
+        "Savoir ce qu'est un ordinateur et un système d'exploitation (Informatique : les fondamentaux)."
+      ],
+      "prerequisiteCourses": [
+        "informatique-debutant"
+      ],
+      "nextCourses": [
+        "maintenance-diagnostic"
+      ],
+      "skills": [
+        "Montage d'un poste",
+        "Installation système",
+        "Diagnostic matériel"
+      ],
+      "file": "maintenance-informatique.json"
+    },
+    {
+      "id": "maintenance-diagnostic",
+      "title": "Maintenance : diagnostic des pannes",
+      "domain": "maintenance",
+      "subdomain": "Diagnostic",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Diagnostic",
+        "Mémoire",
+        "Stockage",
+        "Démarrage"
+      ],
+      "description": "Traiter les pannes logicielles, les surchauffes, les défauts mémoire et stockage, et les problèmes de démarrage.",
+      "objectives": [
+        "Utiliser le mode sans échec et les journaux",
+        "Analyser une surchauffe et le throttling",
+        "Tester la mémoire méthodiquement",
+        "Lire les indicateurs SMART",
+        "Localiser une panne de démarrage"
+      ],
+      "prerequisites": [
+        "Maintenance : composants et installation."
+      ],
+      "prerequisiteCourses": [
+        "maintenance-informatique"
+      ],
+      "nextCourses": [
+        "maintenance-sauvegarde"
+      ],
+      "skills": [
+        "Diagnostic logiciel",
+        "Diagnostic mémoire",
+        "Diagnostic stockage"
+      ],
+      "file": "maintenance-diagnostic.json"
+    },
+    {
+      "id": "maintenance-sauvegarde",
+      "title": "Maintenance : sauvegarde et entretien",
+      "domain": "maintenance",
+      "subdomain": "Exploitation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Sauvegarde",
+        "Restauration",
+        "Entretien"
+      ],
+      "description": "Appliquer la règle 3-2-1, restaurer un système, entretenir un poste, diagnostiquer la connectivité et documenter les interventions.",
+      "objectives": [
+        "Concevoir une stratégie de sauvegarde 3-2-1",
+        "Choisir entre restauration de fichiers et image système",
+        "Entretenir un poste sans l'endommager",
+        "Diagnostiquer une panne de connectivité",
+        "Documenter une intervention reproductible"
+      ],
+      "prerequisites": [
+        "Maintenance : diagnostic des pannes."
+      ],
+      "prerequisiteCourses": [
+        "maintenance-diagnostic"
+      ],
+      "nextCourses": [
+        "environnements-outils",
+        "reseaux-debutant"
+      ],
+      "skills": [
+        "Sauvegarde",
+        "Restauration",
+        "Entretien préventif"
+      ],
+      "file": "maintenance-sauvegarde.json"
     },
     {
       "id": "algorithmique-debutant",
@@ -1100,6 +1282,84 @@
       "file": "virtualisation.json"
     },
     {
+      "id": "environnements-windows",
+      "title": "Windows, PowerShell et terminaux",
+      "domain": "environnements",
+      "subdomain": "Systèmes",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Windows",
+        "PowerShell",
+        "cmd",
+        "Linux",
+        "Variables"
+      ],
+      "description": "Utiliser Windows au-delà du bureau : gestionnaire de tâches, services, journaux, PowerShell, cmd, terminal Linux et variables d'environnement.",
+      "objectives": [
+        "Gérer services, comptes et journaux sous Windows",
+        "Utiliser le pipeline PowerShell",
+        "Diagnostiquer avec cmd",
+        "Se repérer dans un terminal Linux",
+        "Lire et définir une variable d'environnement"
+      ],
+      "prerequisites": [
+        "Comprendre un système d'exploitation (Informatique : les fondamentaux)."
+      ],
+      "prerequisiteCourses": [
+        "informatique-systeme"
+      ],
+      "nextCourses": [
+        "environnements-outils",
+        "linux-debutant",
+        "bash-scripts"
+      ],
+      "skills": [
+        "Administration Windows de base",
+        "PowerShell",
+        "Terminal"
+      ],
+      "file": "environnements-windows.json"
+    },
+    {
+      "id": "environnements-outils",
+      "title": "Outils et organisation du poste",
+      "domain": "environnements",
+      "subdomain": "Outils",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Dépendances",
+        "Archives",
+        "Éditeur",
+        "Documentation"
+      ],
+      "description": "Installer des logiciels et dépendances, manipuler archives et compression, configurer un éditeur, organiser un projet et lire une documentation technique.",
+      "objectives": [
+        "Choisir un gestionnaire et figer les versions",
+        "Créer et extraire une archive sans risque",
+        "Configurer un éditeur pour un projet",
+        "Structurer un projet lisible",
+        "Lire une documentation officielle et documenter une décision"
+      ],
+      "prerequisites": [
+        "Windows, PowerShell et terminaux."
+      ],
+      "prerequisiteCourses": [
+        "environnements-windows"
+      ],
+      "nextCourses": [
+        "git-debutant",
+        "bash-scripts"
+      ],
+      "skills": [
+        "Gestion des dépendances",
+        "Archives",
+        "Organisation de projet"
+      ],
+      "file": "environnements-outils.json"
+    },
+    {
       "id": "windows-server",
       "title": "Windows Server",
       "domain": "windows",
@@ -1132,76 +1392,6 @@
         "Automatiser avec PowerShell"
       ],
       "file": "windows-server.json"
-    },
-    {
-      "id": "maintenance-informatique",
-      "title": "Maintenance informatique",
-      "domain": "maintenance",
-      "subdomain": "Diagnostic et réparation",
-      "level": "debutant",
-      "type": "parcours",
-      "technologies": [
-        "Matériel",
-        "Diagnostic",
-        "Sauvegarde"
-      ],
-      "description": "Diagnostiquer et entretenir un poste : pannes de démarrage, mémoire et stockage, pannes logicielles et pilotes, sauvegarde et restauration, températures et entretien.",
-      "objectives": [
-        "Suivre un ordre de diagnostic",
-        "Lire les indicateurs SMART",
-        "Revenir à un état système stable",
-        "Mettre en place une sauvegarde testée",
-        "Prévenir la surchauffe"
-      ],
-      "prerequisites": [
-        "Savoir ce qu'est un ordinateur et un système d'exploitation."
-      ],
-      "prerequisiteCourses": [
-        "informatique-debutant"
-      ],
-      "nextCourses": [],
-      "skills": [
-        "Diagnostiquer une panne",
-        "Protéger les données",
-        "Entretenir un poste"
-      ],
-      "file": "maintenance-informatique.json"
-    },
-    {
-      "id": "environnements-travail",
-      "title": "Environnements de travail",
-      "domain": "environnements",
-      "subdomain": "Outils du développeur",
-      "level": "debutant",
-      "type": "parcours",
-      "technologies": [
-        "VS Code",
-        "Dépendances",
-        "Archives"
-      ],
-      "description": "Configurer un poste de développeur : terminal et variables d'environnement, éditeur de code efficace, dépendances et versions, archives et compression, organisation d'un projet et lecture de la documentation.",
-      "objectives": [
-        "Comprendre les variables d'environnement",
-        "Naviguer sans la souris dans un éditeur",
-        "Installer des dépendances de façon reproductible",
-        "Créer et extraire des archives",
-        "Structurer un projet documenté"
-      ],
-      "prerequisites": [
-        "Savoir utiliser un ordinateur."
-      ],
-      "prerequisiteCourses": [
-        "informatique-debutant"
-      ],
-      "nextCourses": [
-        "automatisation-workflows"
-      ],
-      "skills": [
-        "Préparer un environnement",
-        "Gérer les dépendances",
-        "Documenter un projet"
-      ],
-      "file": "environnements-travail.json"
     },
     {
       "id": "ethical-hacking",
@@ -1429,9 +1619,7 @@
       "prerequisites": [
         "Savoir utiliser un environnement de travail et manipuler des fichiers."
       ],
-      "prerequisiteCourses": [
-        "environnements-travail"
-      ],
+      "prerequisiteCourses": [],
       "nextCourses": [],
       "skills": [
         "Concevoir un workflow",
@@ -1642,42 +1830,6 @@
         "Documenter une conformité"
       ],
       "file": "reglementation.json"
-    },
-    {
-      "id": "projets-pratiques",
-      "title": "Projets pratiques guidés",
-      "domain": "projets-pratiques",
-      "subdomain": "Projets guidés",
-      "level": "debutant",
-      "type": "parcours",
-      "technologies": [
-        "Projets",
-        "HTML",
-        "JavaScript",
-        "Python",
-        "Docker"
-      ],
-      "description": "Cinq projets guidés qui combinent plusieurs compétences : page personnelle et portfolio, calculatrice et liste de tâches, outil Python de notes, API REST avec base de données, conteneurisation et déploiement.",
-      "objectives": [
-        "Mener un projet du cahier des charges au résultat",
-        "Tester les cas limites",
-        "Documenter les choix techniques",
-        "Publier un résultat utilisable"
-      ],
-      "prerequisites": [
-        "Avoir suivi les cours HTML/CSS et JavaScript au minimum."
-      ],
-      "prerequisiteCourses": [
-        "html-debutant",
-        "javascript-debutant"
-      ],
-      "nextCourses": [],
-      "skills": [
-        "Conduire un projet",
-        "Vérifier un livrable",
-        "Présenter un travail technique"
-      ],
-      "file": "projets-pratiques.json"
     },
     {
       "id": "reseaux-avance",

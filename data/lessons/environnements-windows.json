@@ -1,0 +1,473 @@
+{
+  "courseId": "environnements-windows",
+  "modules": [
+    {
+      "id": "environnements-windows-module",
+      "title": "Windows, PowerShell et terminaux",
+      "chapters": [
+        {
+          "id": "env-01",
+          "title": "Maîtriser Windows pour les utilisateurs techniques",
+          "objectives": [
+            "Utiliser le gestionnaire de tâches",
+            "Gérer les services et les comptes",
+            "Lire l'observateur d'événements"
+          ],
+          "exercise": {
+            "title": "Choisir l'outil",
+            "instructions": "Un service démarre sans session utilisateur et échoue. Quel outil consulter ?",
+            "hints": [
+              "Ce n'est pas un processus de session.",
+              "Les erreurs y sont journalisées."
+            ],
+            "solution": "Les services (services.msc) pour l'état et le compte du service, puis l'observateur d'événements pour l'erreur.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "services",
+                "evenements"
+              ],
+              "success": "Correct : services puis journaux d'événements."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où gérer un programme lancé sans session utilisateur ?",
+              "options": [
+                "Dans les services",
+                "Dans le navigateur",
+                "Dans la corbeille",
+                "Dans le BIOS"
+              ],
+              "answer": 0,
+              "explanation": "Les services tournent indépendamment des sessions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-01-q1"
+            },
+            {
+              "question": "Que fait l'UAC ?",
+              "options": [
+                "Il demande confirmation pour élever les droits",
+                "Il accélère le disque",
+                "Il sauvegarde les fichiers",
+                "Il coupe le réseau"
+              ],
+              "answer": 0,
+              "explanation": "L'UAC limite les actions administratives silencieuses.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-01-q2"
+            }
+          ],
+          "summary": [
+            "Comptes, services et journaux complètent le bureau.",
+            "L'UAC n'est pas un obstacle mais une barrière.",
+            "Chaque outil répond à une question précise."
+          ],
+          "nextStep": "Chapitre suivant : « Maîtriser PowerShell pour les opérations courantes ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "Un utilisateur technique va au-delà du bureau : il comprend les comptes, les services, les journaux et l'élévation de privilèges."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Gestionnaire de tâches : processus, démarrage, performances.",
+                "Services (services.msc) : programmes lancés sans session.",
+                "Observateur d'événements : erreurs système et applications.",
+                "Contrôle de compte d'utilisateur (UAC) : confirmation d'élévation."
+              ]
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Outil",
+                "Question à laquelle il répond"
+              ],
+              "rows": [
+                [
+                  "Gestionnaire de tâches",
+                  "qui consomme quoi ?"
+                ],
+                [
+                  "Services",
+                  "que lancé au démarrage ?"
+                ],
+                [
+                  "Événements",
+                  "quelle erreur, quand ?"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Désactiver l'UAC « pour aller plus vite » supprime une barrière utile : un programme malveillant hérite alors des droits de l'administrateur."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env-02",
+          "title": "Maîtriser PowerShell pour les opérations courantes",
+          "objectives": [
+            "Comprendre verbe-nom",
+            "Utiliser le pipeline",
+            "Trouver de l'aide"
+          ],
+          "exercise": {
+            "title": "Lister les cinq processus les plus gourmands",
+            "instructions": "Écrivez une commande qui trie les processus par processeur décroissant et garde les cinq premiers.",
+            "hints": [
+              "Commencez par Get-Process.",
+              "Triez puis sélectionnez."
+            ],
+            "solution": "Get-Process | Sort-Object CPU -Descending | Select-Object -First 5",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "get-process",
+                "sort-object",
+                "select-object"
+              ],
+              "success": "Correct : Get-Process, Sort-Object, Select-Object."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que transporte le pipeline PowerShell ?",
+              "options": [
+                "Des objets",
+                "Uniquement du texte",
+                "Des fichiers",
+                "Des images"
+              ],
+              "answer": 0,
+              "explanation": "PowerShell fait circuler des objets entre commandes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-02-q1"
+            },
+            {
+              "question": "Comment obtenir des exemples pour une commande ?",
+              "options": [
+                "Get-Help Commande -Examples",
+                "help.txt",
+                "man -k",
+                "dir /?"
+              ],
+              "answer": 0,
+              "explanation": "Get-Help -Examples affiche des cas d'usage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-02-q2"
+            }
+          ],
+          "summary": [
+            "PowerShell manipule des objets.",
+            "Le pipeline enchaîne les commandes.",
+            "La politique d'exécution n'est pas une sécurité."
+          ],
+          "nextStep": "Chapitre suivant : « Découvrir l'invite de commandes Windows ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "PowerShell manipule des objets, pas seulement du texte. Chaque commande suit le schéma verbe-nom, par exemple Get-Process ou Stop-Service."
+            },
+            {
+              "type": "code",
+              "lang": "powershell",
+              "code": "Get-Process | Sort-Object CPU -Descending | Select-Object -First 5\nGet-Service | Where-Object Status -eq \"Stopped\"\nGet-Help Get-Process -Examples",
+              "title": "Commandes courantes"
+            },
+            {
+              "type": "list",
+              "items": [
+                "Le pipeline | passe la sortie d'une commande à la suivante.",
+                "Get-Help affiche la documentation ; -Examples donne des cas concrets.",
+                "La politique d'exécution limite l'exécution de scripts, ce n'est pas une protection contre un script malveillant."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Exécuter un script trouvé en ligne sans le lire revient à lui donner vos droits : vérifiez son contenu et sa provenance."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env-03",
+          "title": "Découvrir l'invite de commandes Windows",
+          "objectives": [
+            "Utiliser les commandes de base",
+            "Diagnostiquer avec ipconfig et ping",
+            "Comprendre les limites face à PowerShell"
+          ],
+          "exercise": {
+            "title": "Afficher la configuration réseau",
+            "instructions": "Quelle commande cmd montre l'adresse IP, la passerelle et le DNS ?",
+            "hints": [
+              "Une commande réseau classique.",
+              "L'option détaillée existe."
+            ],
+            "solution": "ipconfig /all",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ipconfig"
+              ],
+              "success": "Correct : ipconfig /all."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle commande liste les fichiers dans cmd ?",
+              "options": [
+                "dir",
+                "ls",
+                "Get-ChildItem",
+                "list"
+              ],
+              "answer": 0,
+              "explanation": "dir est la commande native de cmd.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-03-q1"
+            },
+            {
+              "question": "Quelle différence majeure entre cmd et PowerShell ?",
+              "options": [
+                "PowerShell manipule des objets",
+                "cmd est plus récent",
+                "PowerShell n'a pas de pipeline",
+                "cmd gère les services"
+              ],
+              "answer": 0,
+              "explanation": "Le pipeline PowerShell transporte des objets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-03-q2"
+            }
+          ],
+          "summary": [
+            "cmd reste utile pour les diagnostics simples.",
+            "ipconfig /all détaille la configuration.",
+            "PowerShell est préférable pour les traitements complexes."
+          ],
+          "nextStep": "Chapitre suivant : « Découvrir le terminal Linux ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "L'invite de commandes (cmd) reste présente pour des scripts anciens et des diagnostics rapides. Elle produit du texte, là où PowerShell produit des objets."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "dir\ncd C:\\Users\\alice\\Documents\nipconfig /all\nping example.com\ntasklist | findstr chrome",
+              "title": "Commandes cmd"
+            },
+            {
+              "type": "list",
+              "items": [
+                "dir liste, cd change de dossier.",
+                "ipconfig affiche l'adresse, la passerelle et le DNS.",
+                "tasklist liste les processus ; findstr filtre du texte.",
+                "Pour des traitements complexes, préférez PowerShell."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un script cmd existant n'a pas besoin d'être réécrit : conservez-le si le besoin est simple, documentez-le et testez-le."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env-04",
+          "title": "Découvrir le terminal Linux",
+          "objectives": [
+            "Se repérer avec pwd et ls",
+            "Lire l'aide avec man",
+            "Passer d'une commande à l'autre"
+          ],
+          "exercise": {
+            "title": "Se repérer",
+            "instructions": "Vous êtes perdu dans l'arborescence. Quelles deux commandes vous situent et listent le contenu ?",
+            "hints": [
+              "Où suis-je ? Que contient le dossier ?"
+            ],
+            "solution": "pwd pour le dossier courant, ls (ou ls -l) pour le contenu.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pwd",
+                "ls"
+              ],
+              "success": "Correct : pwd puis ls."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle commande affiche le dossier courant ?",
+              "options": [
+                "pwd",
+                "cd",
+                "ls",
+                "cat"
+              ],
+              "answer": 0,
+              "explanation": "pwd signifie print working directory.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-04-q1"
+            },
+            {
+              "question": "Que fait sudo ?",
+              "options": [
+                "Exécute une commande avec des droits élevés",
+                "Sauvegarde le fichier",
+                "Liste les processus",
+                "Change de dossier"
+              ],
+              "answer": 0,
+              "explanation": "sudo délègue une commande à un compte privilégié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-04-q2"
+            }
+          ],
+          "summary": [
+            "pwd, ls, cd et man forment le socle.",
+            "sudo élève les droits ponctuellement.",
+            "Le cours Linux approfondit chaque commande."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les variables d'environnement ».",
+          "content": [
+            {
+              "type": "p",
+              "text": "Sous Linux, le terminal donne accès au système par des commandes. Le shell interprète la ligne et affiche le résultat."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "pwd\nls -l\ncd Documents\nman ls\nsudo apt update",
+              "title": "Premières commandes"
+            },
+            {
+              "type": "list",
+              "items": [
+                "pwd affiche le dossier courant.",
+                "ls -l détaille les droits, le propriétaire et la taille.",
+                "man ouvre le manuel d'une commande.",
+                "sudo élève les droits pour une commande, avec le mot de passe de l'utilisateur."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "sudo ne « répare » pas une erreur : il l'exécute avec plus de droits. Relisez la commande avant de la valider."
+            }
+          ],
+          "duration": 20
+        },
+        {
+          "id": "env-05",
+          "title": "Comprendre les variables d'environnement",
+          "objectives": [
+            "Définir une variable d'environnement",
+            "Lire PATH",
+            "Comprendre la portée"
+          ],
+          "exercise": {
+            "title": "Lire PATH",
+            "instructions": "Quelle commande affiche PATH sous Linux, puis sous PowerShell ?",
+            "hints": [
+              "La syntaxe diffère selon le shell."
+            ],
+            "solution": "Linux : echo $PATH. PowerShell : $env:PATH.",
+            "check": {
+              "type": "any",
+              "any": [
+                "echo $path",
+                "$env:path"
+              ],
+              "success": "Correct : echo $PATH ou $env:PATH."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert PATH ?",
+              "options": [
+                "À indiquer où chercher les exécutables",
+                "À stocker les mots de passe",
+                "À lister les disques",
+                "À configurer le Wi-Fi"
+              ],
+              "answer": 0,
+              "explanation": "Le shell parcourt PATH pour trouver une commande.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-05-q1"
+            },
+            {
+              "question": "Une variable définie avec export dure…",
+              "options": [
+                "le temps de la session",
+                "toujours",
+                "un an",
+                "jusqu'au redémarrage du réseau"
+              ],
+              "answer": 0,
+              "explanation": "export agit sur la session courante.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env-05-q2"
+            }
+          ],
+          "summary": [
+            "PATH localise les exécutables.",
+            "La portée dépend de la méthode de définition.",
+            "Les secrets ne vont pas dans une variable documentée."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis.",
+          "content": [
+            {
+              "type": "p",
+              "text": "Une variable d'environnement est un couple nom/valeur transmis aux programmes. PATH indique où chercher les exécutables."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "Linux/macOS : echo $PATH\nexport APP_ENV=dev\n\nPowerShell : $env:PATH\n$env:APP_ENV = \"dev\"\n\ncmd : echo %PATH%\nset APP_ENV=dev",
+              "title": "Lire et définir"
+            },
+            {
+              "type": "list",
+              "items": [
+                "PATH est une liste de dossiers séparés par : ou ;.",
+                "Les variables définies dans une session disparaissent à sa fermeture.",
+                "Les variables persistantes se règlent dans le système.",
+                "Ne stockez jamais un secret en clair dans une variable de documentation."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une variable temporaire n'existe que dans la session : un service lancé ailleurs ne la verra pas."
+            }
+          ],
+          "duration": 20
+        }
+      ]
+    }
+  ]
+}

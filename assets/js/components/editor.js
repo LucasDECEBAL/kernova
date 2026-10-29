@@ -58,12 +58,6 @@ const RULES = {
     { re: /\b(?:package|import|func|var|const|type|struct|interface|map|chan|go|defer|select|range|return|if|else|for|switch|case|default|break|continue|fallthrough|nil|true|false|string|int|float64|error|bool|byte|rune|any)\b/g, cls: 'tok-key' },
     { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
   ],
-  rust: [
-    { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
-    { re: /"(?:\\.|[^"\\])*"/g, cls: 'tok-str' },
-    { re: /\b(?:fn|let|mut|const|static|struct|enum|impl|trait|pub|use|mod|match|if|else|for|while|loop|return|move|ref|self|Self|Some|None|Ok|Err|true|false|i8|i32|i64|u8|u32|usize|f64|String|Vec|Option|Result)\b/g, cls: 'tok-key' },
-    { re: /\b\d+(?:\.\d+)?\b/g, cls: 'tok-num' }
-  ],
   java: [
     { re: /\/\/[^\n]*|\/\*[\s\S]*?\*\//g, cls: 'tok-com' },
     { re: /"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'/g, cls: 'tok-str' },

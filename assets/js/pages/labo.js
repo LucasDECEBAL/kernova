@@ -37,7 +37,7 @@ const TOOLS = [
     href: '#/editeurs',
     icon: 'code',
     title: 'Éditeurs de code',
-    text: 'C, C++, Go, Rust, Java et PHP : écrire du code et vérifier sa structure, sans compilation ni exécution.'
+    text: 'C, C++, Go, Java et PHP : écrire du code et vérifier sa structure, sans compilation ni exécution.'
   }
 ];
 

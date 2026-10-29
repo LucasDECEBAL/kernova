@@ -1,4 +1,4 @@
-// Atelier de code : C, C++, Go, Rust, Java et PHP.
+// Atelier de code : C, C++, Go, Java et PHP.
 // La vérification est structurelle et locale : aucun code n'est compilé ni exécuté.
 
 import { h, emptyState } from '../core/dom.js';

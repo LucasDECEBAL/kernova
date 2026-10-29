@@ -1,0 +1,123 @@
+import { ROOT, CHROME_PATH } from './lib/env.mjs';
+import { spawn } from 'node:child_process';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+
+const CHROME = CHROME_PATH;
+const PORT = 9358;
+const BASE = 'http://127.0.0.1:8765/';
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const profile = fs.mkdtempSync(path.join(os.tmpdir(), 'kp-sheets-'));
+const chrome = spawn(CHROME, ['--headless=new', '--disable-gpu', '--no-sandbox', `--user-data-dir=${profile}`, `--remote-debugging-port=${PORT}`, 'about:blank'], { stdio: 'ignore' });
+
+let target = null;
+for (let i = 0; i < 80 && !target; i++) {
+  try {
+    const list = await (await fetch(`http://127.0.0.1:${PORT}/json/list`)).json();
+    target = list.find((t) => t.type === 'page');
+  } catch { await sleep(200); }
+}
+const ws = new WebSocket(target.webSocketDebuggerUrl);
+await new Promise((res, rej) => { ws.onopen = res; ws.onerror = rej; });
+let seq = 0;
+const pending = new Map();
+const issues = [];
+ws.onmessage = (ev) => {
+  const m = JSON.parse(ev.data);
+  if (m.id && pending.has(m.id)) {
+    const { res, rej } = pending.get(m.id);
+    pending.delete(m.id);
+    if (m.error) rej(new Error(m.error.message)); else res(m.result);
+  } else if (m.method === 'Runtime.exceptionThrown') {
+    issues.push('EXCEPTION ' + (m.params.exceptionDetails.exception?.description || m.params.exceptionDetails.text));
+  } else if (m.method === 'Runtime.consoleAPICalled' && m.params.type === 'error') {
+    issues.push('ERROR ' + m.params.args.map((a) => a.value ?? a.description ?? '').join(' '));
+  }
+};
+const send = (method, params = {}) => {
+  const id = ++seq;
+  ws.send(JSON.stringify({ id, method, params }));
+  return new Promise((res, rej) => pending.set(id, { res, rej }));
+};
+const evaluate = async (expr) => {
+  const r = await send('Runtime.evaluate', { expression: expr, awaitPromise: true, returnByValue: true });
+  if (r.exceptionDetails) throw new Error(r.exceptionDetails.exception?.description || r.exceptionDetails.text);
+  return r.result.value;
+};
+const waitFor = async (expr, timeout = 9000) => {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    try { if (await evaluate(expr)) return true; } catch { /* réessai */ }
+    await sleep(120);
+  }
+  throw new Error('délai dépassé : ' + expr);
+};
+const results = [];
+const check = (name, ok, detail = '') => {
+  results.push(ok);
+  console.log(`${ok ? 'PASS' : 'FAIL'}  ${name}${!ok && detail ? '  -> ' + detail : ''}`);
+};
+const setVal = (sel, value, evt = 'input') => evaluate(`(() => {
+  const el = document.querySelector(${JSON.stringify(sel)});
+  if (!el) return false;
+  el.value = ${JSON.stringify(value)};
+  el.dispatchEvent(new Event(${JSON.stringify(evt)}, { bubbles: true }));
+  return true;
+})()`);
+
+try {
+  await send('Runtime.enable');
+  await send('Page.navigate', { url: BASE + '#/labo' });
+  await waitFor(`document.querySelector('#main h1')?.textContent === 'Labo'`);
+  check('Labo : six outils', (await evaluate(`document.querySelectorAll('.course-row').length`)) === 6);
+  for (const href of ['#/playground', '#/terminal', '#/reseau', '#/fiches', '#/execution', '#/editeurs']) {
+    check(`Labo : lien ${href}`, await evaluate(`!![...document.querySelectorAll('a')].find((a) => a.getAttribute('href') === ${JSON.stringify(href)})`));
+  }
+
+  await send('Page.navigate', { url: BASE + '#/fiches' });
+  await waitFor(`document.querySelector('#main h1')?.textContent === 'Fiches mémo'`);
+  check('Fiches : 12 sections', (await evaluate(`document.querySelectorAll('.sheet').length`)) === 12);
+  check('Fiches : compteur', (await evaluate(`document.querySelector('#main .muted[role="status"]').textContent`)).includes('12 fiche(s)'));
+
+  await setVal('#sheet-search', 'git push');
+  await waitFor(`document.querySelectorAll('.sheet').length === 1`);
+  check('Recherche : une fiche trouvée', (await evaluate(`document.querySelector('.sheet h2').textContent`)) === 'Git');
+  check('Recherche : entrée filtrée', (await evaluate(`document.querySelector('.sheet-entries').textContent`)).includes('git push'));
+
+  await setVal('#sheet-search', '');
+  await setVal('#sheet-category', 'Docker', 'change');
+  await waitFor(`document.querySelectorAll('.sheet').length === 1`);
+  check('Filtre catégorie', (await evaluate(`document.querySelector('.sheet h2').textContent`)) === 'Docker');
+  await setVal('#sheet-category', '', 'change');
+  await waitFor(`document.querySelectorAll('.sheet').length === 12`);
+
+  await evaluate(`document.querySelector('.sheet-head button[aria-pressed]').click(), true`);
+  await waitFor(`document.querySelector('.sheet-head button[aria-pressed]').getAttribute('aria-pressed') === 'true'`);
+  check('Fiche ajoutée aux favoris', true);
+  await evaluate(`(() => { const c = document.querySelector('#sheet-fav'); c.checked = true; c.dispatchEvent(new Event('change', { bubbles: true })); return true; })()`);
+  await waitFor(`document.querySelectorAll('.sheet').length === 1`);
+  check('Filtre favoris', true);
+
+  await evaluate(`document.querySelector('.sheet-entry .no-print').click(), true`);
+  await waitFor(`!!document.querySelector('.toasts')?.textContent.trim()`);
+  check('Copie : retour utilisateur', true);
+
+  check('Bouton d\'impression', await evaluate(`!![...document.querySelectorAll('button')].find((b) => b.textContent.includes('Imprimer'))`));
+
+  await send('Page.reload');
+  await waitFor(`document.querySelectorAll('.sheet').length === 12`);
+  check('Favori persisté après rechargement', (await evaluate(`document.querySelector('.sheet-head button[aria-pressed]').getAttribute('aria-pressed')`)) === 'true');
+
+  check('Aucune erreur console', issues.length === 0, issues.join(' | '));
+} catch (e) {
+  check('Scénario interrompu', false, e.message);
+} finally {
+  const failed = results.filter((r) => !r).length;
+  console.log(`\n${results.length - failed}/${results.length} vérifications réussies`);
+  for (const i of issues) console.log('  >', i);
+  ws.close();
+  chrome.kill();
+  try { fs.rmSync(profile, { recursive: true, force: true }); } catch {}
+  process.exit(failed || issues.length ? 1 : 0);
+}

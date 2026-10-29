@@ -13,13 +13,35 @@
           "brief": "Écrivez un programme complet qui affiche « Bonjour, C » puis renvoie le code 0.",
           "starter": "#include <stdio.h>\n\nint main(void) {\n  \n  return 0;\n}\n",
           "rules": [
-            { "type": "required", "value": "#include <stdio.h>", "label": "inclut l'en-tête stdio.h" },
-            { "type": "regex", "pattern": "int\\s+main\\s*\\(", "label": "déclare int main(" },
-            { "type": "required", "value": "printf", "label": "utilise printf" },
-            { "type": "required", "value": "return 0", "label": "renvoie 0" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "required",
+              "value": "#include <stdio.h>",
+              "label": "inclut l'en-tête stdio.h"
+            },
+            {
+              "type": "regex",
+              "pattern": "int\\s+main\\s*\\(",
+              "label": "déclare int main("
+            },
+            {
+              "type": "required",
+              "value": "printf",
+              "label": "utilise printf"
+            },
+            {
+              "type": "required",
+              "value": "return 0",
+              "label": "renvoie 0"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["printf prend une chaîne entre guillemets doubles.", "Le retour de main indique au système si tout s'est bien passé."],
+          "hints": [
+            "printf prend une chaîne entre guillemets doubles.",
+            "Le retour de main indique au système si tout s'est bien passé."
+          ],
           "solution": "#include <stdio.h>\n\nint main(void) {\n  printf(\"Bonjour, C\\n\");\n  return 0;\n}\n"
         },
         {
@@ -28,14 +50,40 @@
           "brief": "Lisez deux entiers avec scanf puis affichez leur somme.",
           "starter": "#include <stdio.h>\n\nint main(void) {\n  int a = 0;\n  int b = 0;\n\n  \n  return 0;\n}\n",
           "rules": [
-            { "type": "required", "value": "#include <stdio.h>", "label": "inclut l'en-tête stdio.h" },
-            { "type": "required", "value": "scanf", "label": "lit une saisie avec scanf" },
-            { "type": "regex", "pattern": "%d", "label": "utilise le format %d" },
-            { "type": "required", "value": "printf", "label": "affiche le résultat" },
-            { "type": "forbids", "value": "gets(", "label": "n'utilise pas gets(" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "required",
+              "value": "#include <stdio.h>",
+              "label": "inclut l'en-tête stdio.h"
+            },
+            {
+              "type": "required",
+              "value": "scanf",
+              "label": "lit une saisie avec scanf"
+            },
+            {
+              "type": "regex",
+              "pattern": "%d",
+              "label": "utilise le format %d"
+            },
+            {
+              "type": "required",
+              "value": "printf",
+              "label": "affiche le résultat"
+            },
+            {
+              "type": "forbids",
+              "value": "gets(",
+              "label": "n'utilise pas gets("
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["scanf a besoin de l'adresse de la variable : &a.", "Vérifiez la valeur renvoyée par scanf : elle indique le nombre de conversions réussies."],
+          "hints": [
+            "scanf a besoin de l'adresse de la variable : &a.",
+            "Vérifiez la valeur renvoyée par scanf : elle indique le nombre de conversions réussies."
+          ],
           "solution": "#include <stdio.h>\n\nint main(void) {\n  int a = 0;\n  int b = 0;\n\n  printf(\"Deux entiers : \");\n  if (scanf(\"%d %d\", &a, &b) != 2) return 1;\n  printf(\"Somme : %d\\n\", a + b);\n  return 0;\n}\n"
         }
       ]
@@ -53,12 +101,30 @@
           "brief": "Affichez « Bonjour, C++ » avec std::cout, sans utiliser printf.",
           "starter": "#include <iostream>\n\nint main() {\n  \n  return 0;\n}\n",
           "rules": [
-            { "type": "regex", "pattern": "#include\\s*<iostream>", "label": "inclut iostream" },
-            { "type": "required", "value": "std::cout", "label": "écrit avec std::cout" },
-            { "type": "forbids", "value": "printf", "label": "n'utilise pas printf" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "#include\\s*<iostream>",
+              "label": "inclut iostream"
+            },
+            {
+              "type": "required",
+              "value": "std::cout",
+              "label": "écrit avec std::cout"
+            },
+            {
+              "type": "forbids",
+              "value": "printf",
+              "label": "n'utilise pas printf"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["std::endl ajoute un saut de ligne et vide le tampon.", "using namespace std; permet d'écrire cout, mais le qualifier reste plus explicite."],
+          "hints": [
+            "std::endl ajoute un saut de ligne et vide le tampon.",
+            "using namespace std; permet d'écrire cout, mais le qualifier reste plus explicite."
+          ],
           "solution": "#include <iostream>\n\nint main() {\n  std::cout << \"Bonjour, C++\" << std::endl;\n  return 0;\n}\n"
         },
         {
@@ -67,13 +133,35 @@
           "brief": "Écrivez une classe Rectangle avec deux attributs privés et une méthode publique aire().",
           "starter": "class Rectangle {\n  \n};\n",
           "rules": [
-            { "type": "regex", "pattern": "class\\s+Rectangle", "label": "déclare la classe Rectangle" },
-            { "type": "required", "value": "private", "label": "cache les attributs en private" },
-            { "type": "required", "value": "public", "label": "expose une partie publique" },
-            { "type": "required", "value": "aire", "label": "définit aire()" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "class\\s+Rectangle",
+              "label": "déclare la classe Rectangle"
+            },
+            {
+              "type": "required",
+              "value": "private",
+              "label": "cache les attributs en private"
+            },
+            {
+              "type": "required",
+              "value": "public",
+              "label": "expose une partie publique"
+            },
+            {
+              "type": "required",
+              "value": "aire",
+              "label": "définit aire()"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["Une classe commence par private par défaut, mais l'écrire rend l'intention claire.", "Une méthode qui ne modifie pas l'objet peut être const."],
+          "hints": [
+            "Une classe commence par private par défaut, mais l'écrire rend l'intention claire.",
+            "Une méthode qui ne modifie pas l'objet peut être const."
+          ],
           "solution": "class Rectangle {\nprivate:\n  double largeur;\n  double hauteur;\n\npublic:\n  Rectangle(double l, double h) : largeur(l), hauteur(h) {}\n  double aire() const { return largeur * hauteur; }\n};\n"
         }
       ]
@@ -91,13 +179,36 @@
           "brief": "Écrivez un programme qui affiche « Bonjour, Go » avec fmt.Println.",
           "starter": "package main\n\nfunc main() {\n  \n}\n",
           "rules": [
-            { "type": "regex", "pattern": "^\\s*package\\s+main", "flags": "m", "label": "déclare package main" },
-            { "type": "required", "value": "func main(", "label": "définit func main" },
-            { "type": "required", "value": "fmt.Println", "label": "utilise fmt.Println" },
-            { "type": "required", "value": "\"fmt\"", "label": "importe fmt" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "^\\s*package\\s+main",
+              "flags": "m",
+              "label": "déclare package main"
+            },
+            {
+              "type": "required",
+              "value": "func main(",
+              "label": "définit func main"
+            },
+            {
+              "type": "required",
+              "value": "fmt.Println",
+              "label": "utilise fmt.Println"
+            },
+            {
+              "type": "required",
+              "value": "\"fmt\"",
+              "label": "importe fmt"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["Les imports se placent après la ligne package.", "Chaque fichier exécutable commence par package main."],
+          "hints": [
+            "Les imports se placent après la ligne package.",
+            "Chaque fichier exécutable commence par package main."
+          ],
           "solution": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Bonjour, Go\")\n}\n"
         },
         {
@@ -106,52 +217,39 @@
           "brief": "Écrivez diviser(a, b float64) (float64, error) qui refuse la division par zéro.",
           "starter": "package main\n\nimport \"errors\"\n\nfunc diviser(a, b float64) (float64, error) {\n  \n}\n",
           "rules": [
-            { "type": "regex", "pattern": "func\\s+diviser", "label": "déclare la fonction diviser" },
-            { "type": "required", "value": "error", "label": "renvoie une erreur" },
-            { "type": "anyOf", "values": ["errors.New", "fmt.Errorf"], "label": "construit une erreur explicite" },
-            { "type": "required", "value": "== 0", "label": "teste le diviseur nul" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "func\\s+diviser",
+              "label": "déclare la fonction diviser"
+            },
+            {
+              "type": "required",
+              "value": "error",
+              "label": "renvoie une erreur"
+            },
+            {
+              "type": "anyOf",
+              "values": [
+                "errors.New",
+                "fmt.Errorf"
+              ],
+              "label": "construit une erreur explicite"
+            },
+            {
+              "type": "required",
+              "value": "== 0",
+              "label": "teste le diviseur nul"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["Une fonction Go peut renvoyer plusieurs valeurs.", "Le zéro flottant se compare avec == 0."],
+          "hints": [
+            "Une fonction Go peut renvoyer plusieurs valeurs.",
+            "Le zéro flottant se compare avec == 0."
+          ],
           "solution": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nfunc diviser(a, b float64) (float64, error) {\n  if b == 0 {\n    return 0, errors.New(\"division par zéro\")\n  }\n  return a / b, nil\n}\n\nfunc main() {\n  resultat, err := diviser(10, 2)\n  if err != nil {\n    fmt.Println(\"Erreur :\", err)\n    return\n  }\n  fmt.Println(resultat)\n}\n"
-        }
-      ]
-    },
-    {
-      "id": "rust",
-      "name": "Rust",
-      "tag": "Rust 2021",
-      "editorLanguage": "rust",
-      "intro": "Immuabilité par défaut, erreurs dans le type : Rust rend les intentions explicites.",
-      "exercises": [
-        {
-          "id": "rust-bonjour",
-          "title": "Point d'entrée",
-          "brief": "Affichez « Bonjour, Rust » avec println! et une variable locale.",
-          "starter": "fn main() {\n  \n}\n",
-          "rules": [
-            { "type": "regex", "pattern": "fn\\s+main\\s*\\(", "label": "déclare fn main(" },
-            { "type": "required", "value": "println!", "label": "utilise la macro println!" },
-            { "type": "required", "value": "let", "label": "déclare une variable avec let" },
-            { "type": "balanced", "label": "accolades équilibrées" }
-          ],
-          "hints": ["println! est une macro : le point d'exclamation fait partie du nom.", "Les variables sont immuables sauf si vous ajoutez mut."],
-          "solution": "fn main() {\n    let langue = \"Rust\";\n    println!(\"Bonjour, {}\", langue);\n}\n"
-        },
-        {
-          "id": "rust-somme",
-          "title": "Somme par itérateur",
-          "brief": "Écrivez fn somme(valeurs: &[i32]) -> i32 qui additionne avec iter().sum().",
-          "starter": "fn somme(valeurs: &[i32]) -> i32 {\n  \n}\n",
-          "rules": [
-            { "type": "regex", "pattern": "fn\\s+somme", "label": "déclare la fonction somme" },
-            { "type": "required", "value": "-> i32", "label": "annonce le type de retour i32" },
-            { "type": "required", "value": "iter()", "label": "parcourt avec iter()" },
-            { "type": "required", "value": "sum()", "label": "agrège avec sum()" },
-            { "type": "balanced", "label": "accolades équilibrées" }
-          ],
-          "hints": ["sum() a besoin que le type de sortie soit connu : d'où le -> i32.", "Une tranche &[i32] évite de déplacer le tableau."],
-          "solution": "fn somme(valeurs: &[i32]) -> i32 {\n    valeurs.iter().sum()\n}\n"
         }
       ]
     },
@@ -168,13 +266,35 @@
           "brief": "Écrivez une classe publique Main avec la méthode main qui affiche « Bonjour, Java ».",
           "starter": "public class Main {\n  \n}\n",
           "rules": [
-            { "type": "regex", "pattern": "public\\s+class\\s+Main", "label": "déclare public class Main" },
-            { "type": "required", "value": "public static void main", "label": "définit la méthode main attendue par la JVM" },
-            { "type": "required", "value": "String[] args", "label": "reçoit String[] args" },
-            { "type": "required", "value": "System.out.println", "label": "affiche avec System.out.println" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "public\\s+class\\s+Main",
+              "label": "déclare public class Main"
+            },
+            {
+              "type": "required",
+              "value": "public static void main",
+              "label": "définit la méthode main attendue par la JVM"
+            },
+            {
+              "type": "required",
+              "value": "String[] args",
+              "label": "reçoit String[] args"
+            },
+            {
+              "type": "required",
+              "value": "System.out.println",
+              "label": "affiche avec System.out.println"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["Le nom du fichier doit correspondre à la classe publique.", "args contient les arguments passés au programme."],
+          "hints": [
+            "Le nom du fichier doit correspondre à la classe publique.",
+            "args contient les arguments passés au programme."
+          ],
           "solution": "public class Main {\n  public static void main(String[] args) {\n    System.out.println(\"Bonjour, Java\");\n  }\n}\n"
         },
         {
@@ -183,13 +303,35 @@
           "brief": "Écrivez une classe Compte avec un solde privé, un getter et un dépôt qui refuse les montants négatifs.",
           "starter": "public class Compte {\n  \n}\n",
           "rules": [
-            { "type": "regex", "pattern": "class\\s+Compte", "label": "déclare la classe Compte" },
-            { "type": "required", "value": "private double solde", "label": "rend le solde privé" },
-            { "type": "required", "value": "getSolde", "label": "expose un getter" },
-            { "type": "required", "value": "if", "label": "vérifie le montant avant de modifier" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "class\\s+Compte",
+              "label": "déclare la classe Compte"
+            },
+            {
+              "type": "required",
+              "value": "private double solde",
+              "label": "rend le solde privé"
+            },
+            {
+              "type": "required",
+              "value": "getSolde",
+              "label": "expose un getter"
+            },
+            {
+              "type": "required",
+              "value": "if",
+              "label": "vérifie le montant avant de modifier"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["Un setter public laisserait contourner la règle.", "La validation appartient à la classe qui protège l'invariant."],
+          "hints": [
+            "Un setter public laisserait contourner la règle.",
+            "La validation appartient à la classe qui protège l'invariant."
+          ],
           "solution": "public class Compte {\n  private double solde;\n\n  public Compte(double initial) {\n    this.solde = initial;\n  }\n\n  public double getSolde() {\n    return solde;\n  }\n\n  public void deposer(double montant) {\n    if (montant > 0) {\n      solde += montant;\n    }\n  }\n}\n"
         }
       ]
@@ -207,13 +349,35 @@
           "brief": "Affichez « Bonjour » suivi du contenu de $nom, dans un script PHP complet.",
           "starter": "<?php\n$nom = \"Ada\";\n\n",
           "rules": [
-            { "type": "required", "value": "<?php", "label": "ouvre une balise PHP" },
-            { "type": "regex", "pattern": "\\$nom", "label": "utilise la variable $nom" },
-            { "type": "required", "value": "echo", "label": "affiche avec echo" },
-            { "type": "required", "value": ";", "label": "termine l'instruction par un point-virgule" },
-            { "type": "notEmpty", "label": "le script n'est pas vide" }
+            {
+              "type": "required",
+              "value": "<?php",
+              "label": "ouvre une balise PHP"
+            },
+            {
+              "type": "regex",
+              "pattern": "\\$nom",
+              "label": "utilise la variable $nom"
+            },
+            {
+              "type": "required",
+              "value": "echo",
+              "label": "affiche avec echo"
+            },
+            {
+              "type": "required",
+              "value": ";",
+              "label": "termine l'instruction par un point-virgule"
+            },
+            {
+              "type": "notEmpty",
+              "label": "le script n'est pas vide"
+            }
           ],
-          "hints": ["Les guillemets doubles interpolent les variables, les simples non.", "Une instruction PHP se termine toujours par un point-virgule."],
+          "hints": [
+            "Les guillemets doubles interpolent les variables, les simples non.",
+            "Une instruction PHP se termine toujours par un point-virgule."
+          ],
           "solution": "<?php\n$nom = \"Ada\";\necho \"Bonjour $nom\";\n"
         },
         {
@@ -222,13 +386,35 @@
           "brief": "Déclarez un tableau $notes puis affichez chaque note avec foreach.",
           "starter": "<?php\n$notes = [12, 15, 9];\n\n",
           "rules": [
-            { "type": "regex", "pattern": "\\$notes\\s*=\\s*\\[", "label": "déclare le tableau $notes" },
-            { "type": "required", "value": "foreach", "label": "parcourt avec foreach" },
-            { "type": "required", "value": " as ", "label": "utilise la syntaxe as" },
-            { "type": "required", "value": "echo", "label": "affiche chaque note" },
-            { "type": "balanced", "label": "accolades équilibrées" }
+            {
+              "type": "regex",
+              "pattern": "\\$notes\\s*=\\s*\\[",
+              "label": "déclare le tableau $notes"
+            },
+            {
+              "type": "required",
+              "value": "foreach",
+              "label": "parcourt avec foreach"
+            },
+            {
+              "type": "required",
+              "value": " as ",
+              "label": "utilise la syntaxe as"
+            },
+            {
+              "type": "required",
+              "value": "echo",
+              "label": "affiche chaque note"
+            },
+            {
+              "type": "balanced",
+              "label": "accolades équilibrées"
+            }
           ],
-          "hints": ["foreach ($notes as $note) donne une copie de chaque valeur.", "Le point sépare les chaînes lors de la concaténation."],
+          "hints": [
+            "foreach ($notes as $note) donne une copie de chaque valeur.",
+            "Le point sépare les chaînes lors de la concaténation."
+          ],
           "solution": "<?php\n$notes = [12, 15, 9];\n\nforeach ($notes as $note) {\n  echo $note . \"\\n\";\n}\n"
         }
       ]

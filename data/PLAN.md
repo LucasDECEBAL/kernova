@@ -1,6 +1,6 @@
 # Progression du catalogue kernova
 
-## Contenu : plafond atteint — 47 cours, 250 leçons, 35 domaines sur 35
+## Contenu : plafond atteint — 53 cours, 280 leçons, 35 domaines sur 35
 
 | Bloc | Cours |
 |---|---|
@@ -26,7 +26,7 @@
 | Cadre | Réglementation et bonnes pratiques |
 | Pratique | Projets pratiques guidés |
 
-Totaux : 98 modules, 250 leçons, 250 exercices, 501 questions de quiz, 46 projets.
+Totaux : 98 modules, 280 leçons, 250 exercices, 561 questions de quiz, 46 projets.
 
 ## Cartes mémo : 14 paquets, 112 cartes
 
@@ -193,7 +193,7 @@ virtualisation, Windows Server, maintenance, environnements de travail, hacking 
 - Total : 260/260 résumés, 260/260 vérifications, 260/260 suites logiques.
 - Validation : type et contenu de chaque vérification contrôlés (0 problème), 24 nouveaux cours vérifiés dans le navigateur, 35/35 scénarios, E2E 58/58.
 - Limite assumée : les questions ouvertes utilisent des mots-clés indicatifs, pas une correction sémantique. Le retour reste pédagogique et local.
-## Éditeurs de code (C, C++, Go, Rust, Java, PHP)
+## Éditeurs de code (C, C++, Go, Java, PHP)
 
 - Page #/editeurs et #/editeurs/<langage>, accessible depuis le Labo.
 - Deux exercices par langage, avec fichier de départ, indices et solution copiable.
@@ -207,4 +207,21 @@ virtualisation, Windows Server, maintenance, environnements de travail, hacking 
 
 - La validation est structurelle : elle détecte l'absence des éléments attendus, pas une erreur de logique.
 - Un code peut passer les contrôles sans être correct ; la solution proposée reste la référence.
-- Rust et Go ne sont pas compilés dans le navigateur : voir Python/SQL pour une exécution réelle.
+- Aucun de ces cinq langages n'est compilé dans le navigateur : voir Python/SQL pour une exécution réelle.
+## État final — les six points de finition
+
+1. Projets : 46/46 ont des fichiers de départ téléchargeables et deux indices (36 ajoutés, contenus spécifiques à chaque projet).
+2. Exercices ouverts : le retour annonce une vérification indicative et propose, après deux échecs, « Voir la solution et m'auto-évaluer ».
+3. Tests : 16 suites dans 	ests/, lanceur 
+pm test, serveur statique intégré, README, 404.html, .nojekyll, 
+etlify.toml.
+4. Plafond : 280 leçons, 53 cours, 34 domaines, 46 projets, 561 questions. Deux cours en doublon ont été archivés dans kernova-archives/ (projets pratiques et environnements de travail), avec nettoyage des liens de prérequis.
+5. Accessibilité : axe-core sur 10 pages en trois thèmes, 0 violation sérieuse ou critique ; contrastes corrigés sans opacité sur le texte.
+6. Cohérence : l'éditeur Rust a été retiré ; les cinq langages restants correspondent tous à un cours.
+
+### Vérification
+
+- 
+pm test : 16/16 suites (intégrité, unités, 12 parcours navigateur, accessibilité, mobile).
+- Catalogue cohérent : 280 leçons, 250 exercices, 46 projets.
+- Python et SQL restent les seuls outils à exécuter réellement du code, via CDN ; le reste fonctionne hors ligne.
