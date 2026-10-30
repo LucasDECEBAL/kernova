@@ -1,7 +1,7 @@
 // Catalogue de projets : regroupe les projets pratiques des cours, avec filtres et grille d'évaluation locale.
 
 import { h, icon, progressBar, emptyState } from '../core/dom.js';
-import { getCourses, getCourse, getDomain, getProjectExtras } from '../core/data.js';
+import { getCourses, getCourse, getDomain, getProjectExtras, ensureAllCourses, ensureCourse } from '../core/data.js';
 import { get } from '../core/store.js';
 import { projectChecks, toggleProjectCheck, resetProjectChecks } from '../core/progress.js';
 import { LEVELS, normalize, formatDuration, percent } from '../core/utils.js';
@@ -32,7 +32,8 @@ function downloadText(name, content) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
-export function renderProjectsIndex({ outlet }) {
+export async function renderProjectsIndex({ outlet }) {
+  await ensureAllCourses();
   const projects = allProjects();
   if (!projects.length) {
     outlet.replaceChildren(h('div', { class: 'page' },
@@ -142,7 +143,8 @@ export function renderProjectsIndex({ outlet }) {
   return undefined;
 }
 
-export function renderProjectPage({ outlet, params }) {
+export async function renderProjectPage({ outlet, params }) {
+  await ensureCourse(params.courseId);
   const course = getCourse(params.courseId);
   const project = projectOf(course);
   if (!project) {

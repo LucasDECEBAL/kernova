@@ -6,27 +6,10 @@ import { get, update } from './core/store.js';
 import { loadData, getDataIssues } from './core/data.js';
 import { route, setNotFound, start, navigate } from './core/router.js';
 import { applyTheme, effectiveTheme, toast } from './core/ui.js';
-import { renderHomePage } from './pages/home.js';
-import { renderCatalogPage } from './pages/catalog.js';
-import { renderDomainsIndex, renderDomainPage } from './pages/domains.js';
-import { renderCoursePage } from './pages/course.js';
-import { renderLessonPage } from './pages/lesson.js';
-import { renderQuizPage } from './pages/quiz.js';
-import { renderSearchPage } from './pages/search.js';
-import { renderDashboardPage } from './pages/dashboard.js';
-import { renderDataPage } from './pages/data.js';
-import { renderFlashIndex, renderFlashSession } from './pages/flashcards.js';
-import { renderPlaygroundPage } from './pages/playground.js';
-import { renderTerminalPage } from './pages/terminal.js';
-import { renderNetworkPage } from './pages/network.js';
-import { renderCheatsheetsPage } from './pages/cheatsheets.js';
-import { renderLaboPage } from './pages/labo.js';
-import { renderExecutionPage } from './pages/execution.js';
-import { renderEditorsPage } from './pages/editors.js';
-import { renderFinalPage } from './pages/final.js';
-import { renderProjectsIndex, renderProjectPage } from './pages/projects.js';
-import { renderRecentPage } from './pages/recent.js';
-import { renderParcoursPage } from './pages/parcours.js';
+
+// Les pages sont chargées à la demande : l'accueil ne télécharge pas les outils.
+const page = (modulePath, name) => (ctx) =>
+  import(modulePath).then((mod) => mod[name](ctx));
 
 const main = document.getElementById('main');
 const nav = document.getElementById('site-nav');
@@ -95,32 +78,32 @@ function updateThemeIcon() {
 }
 
 function registerRoutes() {
-  route('/', renderHomePage);
-  route('/catalogue', renderCatalogPage);
-  route('/domaines', renderDomainsIndex);
-  route('/domaines/:id', renderDomainPage);
-  route('/cours/:id', renderCoursePage);
-  route('/cours/:courseId/:chapterId', renderLessonPage);
-  route('/quiz/:courseId/:chapterId', renderQuizPage);
-  route('/recherche', renderSearchPage);
-  route('/tableau-de-bord', renderDashboardPage);
-  route('/donnees', renderDataPage);
-  route('/cartes', renderFlashIndex);
-  route('/cartes/:pack', renderFlashSession);
-  route('/playground', renderPlaygroundPage);
-  route('/playground/:exampleId', renderPlaygroundPage);
-  route('/terminal', renderTerminalPage);
-  route('/reseau', renderNetworkPage);
-  route('/fiches', renderCheatsheetsPage);
-route('/labo', renderLaboPage);
-route('/execution', renderExecutionPage);
-route('/editeurs', renderEditorsPage);
-route('/editeurs/:langId', renderEditorsPage);
-  route('/evaluation/:courseId', renderFinalPage);
-  route('/projets', renderProjectsIndex);
-  route('/projets/:courseId', renderProjectPage);
-  route('/recent', renderRecentPage);
-  route('/parcours', renderParcoursPage);
+  route('/', page('./pages/home.js', 'renderHomePage'));
+  route('/catalogue', page('./pages/catalog.js', 'renderCatalogPage'));
+  route('/domaines', page('./pages/domains.js', 'renderDomainsIndex'));
+  route('/domaines/:id', page('./pages/domains.js', 'renderDomainPage'));
+  route('/cours/:id', page('./pages/course.js', 'renderCoursePage'));
+  route('/cours/:courseId/:chapterId', page('./pages/lesson.js', 'renderLessonPage'));
+  route('/quiz/:courseId/:chapterId', page('./pages/quiz.js', 'renderQuizPage'));
+  route('/recherche', page('./pages/search.js', 'renderSearchPage'));
+  route('/tableau-de-bord', page('./pages/dashboard.js', 'renderDashboardPage'));
+  route('/donnees', page('./pages/data.js', 'renderDataPage'));
+  route('/cartes', page('./pages/flashcards.js', 'renderFlashIndex'));
+  route('/cartes/:pack', page('./pages/flashcards.js', 'renderFlashSession'));
+  route('/playground', page('./pages/playground.js', 'renderPlaygroundPage'));
+  route('/playground/:exampleId', page('./pages/playground.js', 'renderPlaygroundPage'));
+  route('/terminal', page('./pages/terminal.js', 'renderTerminalPage'));
+  route('/reseau', page('./pages/network.js', 'renderNetworkPage'));
+  route('/fiches', page('./pages/cheatsheets.js', 'renderCheatsheetsPage'));
+  route('/labo', page('./pages/labo.js', 'renderLaboPage'));
+  route('/execution', page('./pages/execution.js', 'renderExecutionPage'));
+  route('/editeurs', page('./pages/editors.js', 'renderEditorsPage'));
+  route('/editeurs/:langId', page('./pages/editors.js', 'renderEditorsPage'));
+  route('/evaluation/:courseId', page('./pages/final.js', 'renderFinalPage'));
+  route('/projets', page('./pages/projects.js', 'renderProjectsIndex'));
+  route('/projets/:courseId', page('./pages/projects.js', 'renderProjectPage'));
+  route('/recent', page('./pages/recent.js', 'renderRecentPage'));
+  route('/parcours', page('./pages/parcours.js', 'renderParcoursPage'));
   setNotFound(({ outlet }) => {
     setChildren(outlet, h('div', { class: 'page' },
       emptyState({

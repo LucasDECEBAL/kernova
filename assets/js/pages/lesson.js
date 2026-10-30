@@ -1,7 +1,7 @@
 // Page d'un chapitre : sommaire, contenu, exercice, quiz, notes et navigation entre chapitres.
 
 import { h, icon, emptyState, alertBox , setChildren } from '../core/dom.js';
-import { getCourse, getChapter } from '../core/data.js';
+import { getCourse, getChapter, ensureCourse } from '../core/data.js';
 import { get } from '../core/store.js';
 import {
   chapterStatus, missingPrerequisites, isChapterDone, markViewed, toggleChapterDone,
@@ -12,7 +12,8 @@ import { toast } from '../core/ui.js';
 import { renderBlocks, renderExercise } from '../components/lesson.js';
 import { inline, statusBadge } from '../components/widgets.js';
 
-export function renderLessonPage({ outlet, params }) {
+export async function renderLessonPage({ outlet, params }) {
+  await ensureCourse(params.courseId);
   const entry = getChapter(params.courseId, params.chapterId);
   if (!entry) {
     setChildren(outlet, h('div', { class: 'page' },

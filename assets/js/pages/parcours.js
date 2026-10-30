@@ -1,13 +1,14 @@
 // Parcours multi-cours : étapes calculées à partir des prérequis, avec état de déblocage.
 
 import { h, emptyState, progressBar } from '../core/dom.js';
-import { getCourses, getDomains, getDomain } from '../core/data.js';
+import { getCourses, getDomains, getDomain, ensureAllCourses } from '../core/data.js';
 import { get } from '../core/store.js';
 import { buildParcours } from '../core/paths.js';
 import { levelBadge, statusBadge, tags } from '../components/widgets.js';
 import { percent } from '../core/utils.js';
 
-export function renderParcoursPage({ outlet }) {
+export async function renderParcoursPage({ outlet }) {
+  await ensureAllCourses();
   const courses = getCourses();
   const domains = getDomains().filter((d) => courses.some((c) => c.domain === d.id));
   const state = get();

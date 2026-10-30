@@ -177,6 +177,13 @@ Il n'y a **aucun serveur applicatif** : le navigateur lit des fichiers JSON stat
 progression dans `localStorage`. Le routeur utilise le hash (`#/chemin`), ce qui rend le site
 compatible avec un hébergement statique sans règle de réécriture complexe.
 
+**Chargement différé.** L'accueil et le catalogue ne lisent que `catalog.json` et
+`course-stats.json` (durées et nombre de chapitres) : ils s'affichent sans attendre les leçons.
+Un cours télécharge uniquement son propre fichier à l'ouverture. Le bundle complet n'est chargé
+que pour la recherche globale, le tableau de bord, les parcours et l'index des projets. Les pages
+sont aussi importées à la demande, si bien que l'accueil ne télécharge pas le terminal, le
+réseau ni les éditeurs.
+
 | Couche | Rôle |
 | --- | --- |
 | `assets/js/core/` | Données, stockage, progression, recherche, statistiques, validation |
@@ -186,8 +193,9 @@ compatible avec un hébergement statique sans règle de réécriture complexe.
 | `assets/js/terminal/`, `assets/js/network/` | Moteurs de simulation |
 | `assets/js/runtime/` | Chargement de Pyodide et sql.js |
 | `data/` | Contenu pédagogique, séparé de l'affichage |
-| `data/lessons-bundle.json` | Toutes les leçons en un seul fichier, chargé en une requête |
-| `tools/build-data.mjs` | Régénère le bundle après une modification de contenu |
+| `data/lessons-bundle.json` | Toutes les leçons en un seul fichier, chargé à la demande |
+| `data/course-stats.json` | Durée, nombre de chapitres et de modules de chaque cours |
+| `tools/build-data.mjs` | Régénère le bundle et les statistiques après une modification |
 
 ## Structure du projet
 
@@ -217,7 +225,8 @@ kernova/
 ├── data/
 │   ├── catalog.json            domaines et métadonnées des cours
 │   ├── lessons/                273 fichiers de cours (contenu, quiz, projet)
-│   ├── lessons-bundle.json     toutes les leçons réunies (chargement en une requête)
+│   ├── lessons-bundle.json     toutes les leçons réunies (chargé à la demande)
+│   ├── course-stats.json       durées et nombre de chapitres par cours
 │   ├── exercises/              exercices Git et Python stockés séparément
 │   ├── flashcards.json         paquets fournis
 │   ├── flashcards-extra.json
@@ -262,9 +271,10 @@ python -m http.server 8000
 N'ouvrez pas `index.html` par double-clic : les modules ES et les `fetch` de JSON échouent en
 `file://`. Gardez la même adresse et le même port, car la progression est liée à l'origine.
 
-> Le chargement initial lit `data/lessons-bundle.json` (une seule requête) au lieu de 273
-> fichiers. Après toute modification du contenu, régénérez-le avec `npm run build:data` :
-> le test d'intégrité échoue si le bundle est périmé.
+> Le chargement initial ne lit que le catalogue et ses statistiques ; chaque cours est ensuite
+> chargé à la demande. Après toute modification du contenu, régénérez `lessons-bundle.json` et
+> `course-stats.json` avec `npm run build:data` : le test d'intégrité échoue si le bundle est
+> périmé.
 
 ## Tests
 

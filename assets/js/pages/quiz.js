@@ -1,7 +1,7 @@
 // Page quiz : réglages, lancement, relance des questions ratées, historique du chapitre.
 
 import { h, icon, emptyState , setChildren } from '../core/dom.js';
-import { getChapter } from '../core/data.js';
+import { getChapter, ensureCourse } from '../core/data.js';
 import { get } from '../core/store.js';
 import { setQuizPrefs } from '../core/progress.js';
 import { filterByDifficulty } from '../quiz/logic.js';
@@ -11,7 +11,8 @@ import { toast } from '../core/ui.js';
 
 const MAX_ATTEMPTS_LABELS = { 1: '1 tentative', 2: '2 tentatives', 3: '3 tentatives', 0: 'Illimitées' };
 
-export function renderQuizPage({ outlet, params }) {
+export async function renderQuizPage({ outlet, params }) {
+  await ensureCourse(params.courseId);
   const entry = getChapter(params.courseId, params.chapterId);
   if (!entry || !entry.chapter.quiz?.length) {
     setChildren(outlet, h('div', { class: 'page' },

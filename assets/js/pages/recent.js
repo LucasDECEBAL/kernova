@@ -1,7 +1,7 @@
 // Contenus récents : derniers chapitres ouverts, avec reprise directe.
 
 import { h, icon, emptyState } from '../core/dom.js';
-import { getCourse } from '../core/data.js';
+import { getCourse, ensureAllCourses } from '../core/data.js';
 import { get } from '../core/store.js';
 import { isChapterDone } from '../core/progress.js';
 import { statusBadge } from '../components/widgets.js';
@@ -12,7 +12,8 @@ function formatMoment(iso) {
   return date.toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
 }
 
-export function renderRecentPage({ outlet }) {
+export async function renderRecentPage({ outlet }) {
+  await ensureAllCourses();
   const state = get();
   const rows = (state.recent || [])
     .map((entry) => {

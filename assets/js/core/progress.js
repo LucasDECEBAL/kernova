@@ -31,8 +31,10 @@ export function missingPrerequisites(course, chapter, state = get()) {
 }
 
 export function courseProgress(course, state = get()) {
-  const total = course.chapters.length;
-  const done = course.chapters.filter((c) => isChapterDone(course.id, c.id, state)).length;
+  const total = course.chapters.length || course.chaptersCount || 0;
+  const done = course.chapters.length
+    ? course.chapters.filter((c) => isChapterDone(course.id, c.id, state)).length
+    : Object.keys(state.progress[course.id]?.completed || {}).length;
   const percent = total ? Math.round((done / total) * 100) : 0;
   const started = done > 0 || Boolean(state.progress[course.id]?.lastChapter);
   return { done, total, percent, started, finished: total > 0 && done === total };

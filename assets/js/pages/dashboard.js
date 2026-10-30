@@ -1,7 +1,7 @@
 // Tableau de bord : statistiques calculées uniquement à partir de l'activité locale.
 
 import { h, icon, progressBar, emptyState , setChildren } from '../core/dom.js';
-import { getCourses, getAllChapters } from '../core/data.js';
+import { getCourses, getAllChapters, ensureAllCourses } from '../core/data.js';
 import { get } from '../core/store.js';
 import { setDailyGoal } from '../core/progress.js';
 import { computeStats, PASS_PERCENT } from '../core/stats.js';
@@ -9,7 +9,8 @@ import { formatDuration, localDay } from '../core/utils.js';
 import { toast } from '../core/ui.js';
 import { statusBadge } from '../components/widgets.js';
 
-export function renderDashboardPage({ outlet }) {
+export async function renderDashboardPage({ outlet }) {
+  await ensureAllCourses();
   const courses = getCourses();
   const state = get();
   const findChapter = (chapterId) => getAllChapters().find((e) => e.chapter.id === chapterId) || null;

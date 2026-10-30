@@ -48,7 +48,7 @@ export function renderHomePage({ outlet }) {
   const featured = courses[0] || null;
   const resume = featured ? resumeChapter(featured, state) : null;
   const started = featured ? courseProgress(featured, state).started : false;
-  const primaryHref = resume ? `#/cours/${featured.id}/${resume.id}` : '#/catalogue';
+  const primaryHref = resume ? `#/cours/${featured.id}/${resume.id}` : featured ? `#/cours/${featured.id}` : '#/catalogue';
   const primaryLabel = started ? 'Reprendre le parcours' : 'Commencer le parcours';
 
   const hero = h('section', { class: 'hero', 'aria-labelledby': 'hero-title' },
@@ -99,23 +99,21 @@ export function renderHomePage({ outlet }) {
       if (ch.quiz?.length) exercises.push({ course, ch });
     }
   }
-  const exercisesSection = h('section', { class: 'section', 'aria-labelledby': 'exercises-title' },
+  const exercisesSection = exercises.length ? h('section', { class: 'section', 'aria-labelledby': 'exercises-title' },
     h('div', { class: 'section-head' },
       h('h2', { id: 'exercises-title', text: 'Exercices' }),
       h('p', { text: 'Chaque quiz porte sur un chapitre. Les réponses sont corrigées immédiatement, avec une explication.' })
     ),
-    exercises.length
-      ? h('div', { class: 'grid-cards' }, exercises.slice(0, 6).map(({ course, ch }) => h('article', { class: 'card' },
-        h('h3', {}, h('a', { href: `#/quiz/${course.id}/${ch.id}`, class: 'card-title-link' }, ch.title)),
-        h('div', { class: 'meta' },
-          h('span', { text: course.title }),
-          h('span', { text: `Chapitre ${ch.index + 1}` }),
-          h('span', { text: `${ch.quiz.length} question${ch.quiz.length > 1 ? 's' : ''}` }),
-          h('span', { text: formatDuration(ch.duration) })
-        )
-      )))
-      : emptyState({ icon: 'check', title: 'Pas encore d\'exercices', text: 'Les quiz apparaîtront ici dès qu\'un chapitre en contient.' })
-  );
+    h('div', { class: 'grid-cards' }, exercises.slice(0, 6).map(({ course, ch }) => h('article', { class: 'card' },
+      h('h3', {}, h('a', { href: `#/quiz/${course.id}/${ch.id}`, class: 'card-title-link' }, ch.title)),
+      h('div', { class: 'meta' },
+        h('span', { text: course.title }),
+        h('span', { text: `Chapitre ${ch.index + 1}` }),
+        h('span', { text: `${ch.quiz.length} question${ch.quiz.length > 1 ? 's' : ''}` }),
+        h('span', { text: formatDuration(ch.duration) })
+      )
+    )))
+  ) : null;
 
   const featuresSection = h('section', { class: 'section', 'aria-labelledby': 'features-title' },
     h('div', { class: 'section-head' },

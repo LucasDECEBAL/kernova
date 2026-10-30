@@ -1,7 +1,7 @@
 // Page d'un cours : présentation, objectifs, prérequis, arbre de compétences, modules, projet et cours suivants.
 
 import { h, icon, progressBar, emptyState, alertBox , setChildren } from '../core/dom.js';
-import { getCourse, getCourses, getDomain } from '../core/data.js';
+import { getCourse, getCourses, getDomain, ensureCourse } from '../core/data.js';
 import { get } from '../core/store.js';
 import {
   courseProgress, chapterStatus, missingPrerequisites, resumeChapter, isChapterDone, prerequisitesOf
@@ -12,7 +12,8 @@ import { levelBadge, typeBadge, statusBadge, tags, favoriteButton, inline } from
 const STATUS_MARK = { done: '✓', current: '•', available: '○', locked: '–' };
 const STATUS_LABEL = { done: 'Acquise', current: 'En cours', available: 'Disponible', locked: 'Verrouillée' };
 
-export function renderCoursePage({ outlet, params }) {
+export async function renderCoursePage({ outlet, params }) {
+  await ensureCourse(params.id);
   const course = getCourse(params.id);
   if (!course) {
     setChildren(outlet, 

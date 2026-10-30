@@ -56,7 +56,7 @@ export function courseCard(course) {
       h('p', { text: course.description }),
       h('div', { class: 'meta' },
         h('span', {}, icon('clock', { size: 15 }), formatDuration(course.duration)),
-        h('span', {}, icon('book', { size: 15 }), `${course.chapters.length} chapitres`)
+        h('span', {}, icon('book', { size: 15 }), `${course.chapters.length || course.chaptersCount || 0} chapitres`)
       )
     ),
     h('div', { class: 'course-side' },

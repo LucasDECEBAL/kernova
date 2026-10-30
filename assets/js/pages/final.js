@@ -2,7 +2,7 @@
 // Évaluation d'entraînement : les réponses sont présentes dans les données de la page.
 
 import { h, icon, emptyState, alertBox } from '../core/dom.js';
-import { getCourse } from '../core/data.js';
+import { getCourse, ensureCourse } from '../core/data.js';
 import { get } from '../core/store.js';
 import { courseProgress } from '../core/progress.js';
 import { shuffle, percent } from '../core/utils.js';
@@ -11,7 +11,8 @@ import { PASS_PERCENT } from '../core/stats.js';
 
 const MAX_QUESTIONS = 12;
 
-export function renderFinalPage({ outlet, params }) {
+export async function renderFinalPage({ outlet, params }) {
+  await ensureCourse(params.courseId);
   const course = getCourse(params.courseId);
   if (!course) {
     outlet.replaceChildren(h('div', { class: 'page' },

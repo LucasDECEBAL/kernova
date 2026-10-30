@@ -2,6 +2,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import zlib from 'node:zlib';
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -38,7 +39,14 @@ export function createStaticServer(root) {
         });
         return;
       }
-      res.writeHead(200, { 'Content-Type': MIME[path.extname(file).toLowerCase()] || 'application/octet-stream' });
+      const type = MIME[path.extname(file).toLowerCase()] || 'application/octet-stream';
+      const canGzip = /text|json|javascript|css|svg|xml/.test(type);
+      if (canGzip && String(req.headers['accept-encoding'] || '').includes('gzip')) {
+        res.writeHead(200, { 'Content-Type': type, 'Content-Encoding': 'gzip', Vary: 'Accept-Encoding' });
+        res.end(zlib.gzipSync(data));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': type });
       res.end(data);
     });
   });

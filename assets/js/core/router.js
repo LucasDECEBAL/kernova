@@ -77,6 +77,10 @@ async function render() {
 
   if (!outlet) return;
   outlet.classList.remove('fade-in');
+  // Les pages peuvent charger des données : on retire l'ancien contenu tout de suite
+  // pour éviter qu'une page périmée reste visible (et cliquable) pendant le chargement.
+  outlet.setAttribute('aria-busy', 'true');
+  outlet.textContent = 'Chargement…';
   try {
     if (!matched) {
       if (notFoundHandler) await notFoundHandler({ outlet, path });
@@ -85,6 +89,7 @@ async function render() {
       if (token !== renderToken) return; // une navigation plus récente a pris le relais
       if (typeof result === 'function') cleanup = result;
     }
+    outlet.setAttribute('aria-busy', 'false');
   } catch (err) {
     console.error(err);
     if (token === renderToken) {

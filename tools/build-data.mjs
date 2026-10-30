@@ -37,3 +37,15 @@ fs.writeFileSync(path.join(root, 'lessons-bundle.json'), JSON.stringify(bundle) 
 
 const size = fs.statSync(path.join(root, 'lessons-bundle.json')).size;
 console.log(`lessons-bundle.json : ${catalog.courses.length} cours, ${Object.values(courses).reduce((n, c) => n + c.chapters.length, 0)} chapitres, ${(size / 1024 / 1024).toFixed(2)} Mo`);
+
+// Statistiques légères pour afficher le catalogue sans charger les leçons.
+const stats = {};
+for (const [id, entry] of Object.entries(courses)) {
+  stats[id] = {
+    duration: entry.chapters.reduce((sum, ch) => sum + (Number(ch.duration) || 0), 0),
+    chapters: entry.chapters.length,
+    modules: new Set(entry.chapters.map((ch) => ch.moduleId).filter(Boolean)).size || 1
+  };
+}
+fs.writeFileSync(path.join(root, 'course-stats.json'), JSON.stringify(stats) + '\n', 'utf8');
+console.log(`course-stats.json : ${Object.keys(stats).length} cours`);

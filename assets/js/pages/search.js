@@ -1,7 +1,7 @@
 // Page de résultats de la recherche globale (#/recherche?q=...).
 
 import { h, icon, emptyState } from '../core/dom.js';
-import { getCourses, getDomains, getCheatsheets, getFlashPacks } from '../core/data.js';
+import { getCourses, getDomains, getCheatsheets, getFlashPacks, ensureAllCourses } from '../core/data.js';
 import { search, highlightSegments } from '../core/search.js';
 import { courseCard } from '../components/widgets.js';
 
@@ -15,7 +15,8 @@ function section(id, title, count, children) {
     children);
 }
 
-export function renderSearchPage({ outlet, query }) {
+export async function renderSearchPage({ outlet, query }) {
+  await ensureAllCourses();
   const q = (query.q || '').trim();
   const input = h('input', { type: 'search', id: 'search-page-input', value: q, placeholder: 'Rechercher…', autocomplete: 'off', 'aria-label': 'Rechercher dans kernova' });
 

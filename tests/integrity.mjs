@@ -113,6 +113,17 @@ for (const c of cat.courses) {
 const published = cat.courses.length;
 const domainsWithCourse = new Set(cat.courses.map((c) => c.domain)).size;
 
+// Les statistiques du catalogue doivent correspondre aux leçons.
+try {
+  const stats = read('course-stats.json');
+  const ids = Object.keys(stats || {});
+  if (ids.length !== published) err(`course-stats.json : ${ids.length} cours au lieu de ${published} — lancez npm run build:data`);
+  const totalChapters = ids.reduce((n, id) => n + (Number(stats[id].chapters) || 0), 0);
+  if (totalChapters !== chapters) err(`course-stats.json : ${totalChapters} chapitres au lieu de ${chapters} — lancez npm run build:data`);
+} catch {
+  err('course-stats.json absent (lancez npm run build:data)');
+}
+
 // Le bundle utilisé par l'application doit refléter les fichiers de leçons.
 try {
   const bundle = read('lessons-bundle.json');
