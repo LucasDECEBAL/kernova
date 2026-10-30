@@ -1,0 +1,262 @@
+{
+  "courseId": "gcp-services",
+  "modules": [
+    {
+      "id": "gcp-services-module",
+      "title": "Google Cloud services",
+      "chapters": [
+        {
+          "id": "gcs-01",
+          "title": "Cloud SQL",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Sécuriser",
+            "Sauvegarder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Cloud SQL est une base relationnelle managée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Moteurs.",
+                "Réseau privé.",
+                "Sauvegardes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où placer la base ?",
+            "hints": [
+              "En privé."
+            ],
+            "solution": "En réseau privé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "prive",
+                "privé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui gère les correctifs ?",
+              "options": [
+                "Le fournisseur",
+                "Le client",
+                "Personne",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le service est managé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcs-01-q1"
+            }
+          ],
+          "summary": [
+            "Cloud SQL.",
+            "Privé.",
+            "Sauvegardes."
+          ],
+          "nextStep": "Chapitre suivant : « Cloud Run »."
+        },
+        {
+          "id": "gcs-02",
+          "title": "Cloud Run",
+          "duration": 20,
+          "objectives": [
+            "Déployer un conteneur",
+            "Mettre à l'échelle",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Cloud Run exécute des conteneurs à la demande."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Conteneurs.",
+                "Scaling.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gère Cloud Run ?",
+            "hints": [
+              "La mise à l'échelle."
+            ],
+            "solution": "La mise à l'échelle et l'exécution.",
+            "check": {
+              "type": "any",
+              "any": [
+                "echelle",
+                "échelle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que déploie-t-on ?",
+              "options": [
+                "Un conteneur",
+                "Une VM",
+                "Un CSS",
+                "Un DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'image contient l'app.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcs-02-q1"
+            }
+          ],
+          "summary": [
+            "Conteneurs.",
+            "Scaling.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « Cloud Functions »."
+        },
+        {
+          "id": "gcs-03",
+          "title": "Cloud Functions",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Déclencher",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Cloud Functions exécute du code sur événement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événements.",
+                "Durée.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que déclenche une fonction ?",
+            "hints": [
+              "Un événement."
+            ],
+            "solution": "Un événement (HTTP, message, fichier).",
+            "check": {
+              "type": "any",
+              "any": [
+                "evenement",
+                "événement"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que facture-t-on ?",
+              "options": [
+                "Les exécutions",
+                "Le serveur",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'usage est facturé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcs-03-q1"
+            }
+          ],
+          "summary": [
+            "Événements.",
+            "Usage.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « Cloud Monitoring »."
+        },
+        {
+          "id": "gcs-04",
+          "title": "Cloud Monitoring",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Alarmer",
+            "Visualiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Cloud Monitoring centralise métriques, logs et alertes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Métriques.",
+                "Logs.",
+                "Alertes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une alerte ?",
+            "hints": [
+              "Agir."
+            ],
+            "solution": "Déclencher une action.",
+            "check": {
+              "type": "any",
+              "any": [
+                "action"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et latence",
+                "Le logo",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'expérience compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcs-04-q1"
+            }
+          ],
+          "summary": [
+            "Métriques.",
+            "Alertes.",
+            "Tableaux."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

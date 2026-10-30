@@ -1,0 +1,325 @@
+{
+  "courseId": "obs-fondamentaux",
+  "modules": [
+    {
+      "id": "obs-fondamentaux-module",
+      "title": "Observabilité fondamentaux",
+      "chapters": [
+        {
+          "id": "of-01",
+          "title": "Introduction à la supervision",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La supervision mesure la santé des services."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Métriques.",
+                "Logs.",
+                "Traces."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller ?",
+            "hints": [
+              "La santé réelle."
+            ],
+            "solution": "La santé réelle des services.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sante",
+                "santé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une alerte ?",
+              "options": [
+                "Elle déclenche une action",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Elle est actionnable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "of-01-q1"
+            }
+          ],
+          "summary": [
+            "Supervision.",
+            "Santé.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Métriques »."
+        },
+        {
+          "id": "of-02",
+          "title": "Métriques",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Choisir",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les métriques sont des séries numériques dans le temps."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Latence.",
+                "Erreurs.",
+                "Saturation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Latence et erreurs."
+            ],
+            "solution": "Latence, erreurs et saturation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "latence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une métrique ?",
+              "options": [
+                "Suivre la tendance",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La tendance compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "of-02-q1"
+            }
+          ],
+          "summary": [
+            "Métriques.",
+            "Séries.",
+            "Tendances."
+          ],
+          "nextStep": "Chapitre suivant : « Journaux »."
+        },
+        {
+          "id": "of-03",
+          "title": "Journaux",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Filtrer",
+            "Corréler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les journaux détaillent les événements."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Niveaux.",
+                "Contexte.",
+                "Rétention."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un log ?",
+            "hints": [
+              "Le corréler."
+            ],
+            "solution": "Le corréler avec une requête.",
+            "check": {
+              "type": "any",
+              "any": [
+                "correle",
+                "corrèle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne pas journaliser ?",
+              "options": [
+                "Les secrets",
+                "Les erreurs",
+                "Le statut",
+                "Le chemin"
+              ],
+              "answer": 0,
+              "explanation": "Les secrets fuient.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "of-03-q1"
+            }
+          ],
+          "summary": [
+            "Logs.",
+            "Niveaux.",
+            "Corrélation."
+          ],
+          "nextStep": "Chapitre suivant : « Traces distribuées »."
+        },
+        {
+          "id": "of-04",
+          "title": "Traces distribuées",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Corréler",
+            "Analyser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une trace suit une requête entre services."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Spans.",
+                "Contexte.",
+                "Corrélation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que suit une trace ?",
+            "hints": [
+              "Une requête."
+            ],
+            "solution": "Une requête entre services.",
+            "check": {
+              "type": "any",
+              "any": [
+                "requete",
+                "requête"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que relient les spans ?",
+              "options": [
+                "Les étapes",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le parcours est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "of-04-q1"
+            }
+          ],
+          "summary": [
+            "Traces.",
+            "Spans.",
+            "Parcours."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Prometheus »."
+        },
+        {
+          "id": "of-05",
+          "title": "Introduction à Prometheus",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Interroger",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Prometheus collecte des métriques et évalue des règles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Scrape.",
+                "PromQL.",
+                "Alertes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Prometheus ?",
+            "hints": [
+              "Il collecte des métriques."
+            ],
+            "solution": "Il collecte et interroge les métriques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "metriques",
+                "métriques"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une règle ?",
+              "options": [
+                "Elle alerte",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Le seuil déclenche.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "of-05-q1"
+            }
+          ],
+          "summary": [
+            "Prometheus.",
+            "Métriques.",
+            "Alertes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

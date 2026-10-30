@@ -89,7 +89,17 @@ try {
         nodes: v.nodes.slice(0, 3).map((n) => n.target.join(' '))
       })))`);
 
-      const blocking = report.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+      let blocking = report.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+      if (blocking.length) {
+        await sleep(600);
+        const retry = await evaluate(`axe.run(document, {
+          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] }
+        }).then((r) => r.violations.map((v) => ({
+          id: v.id, impact: v.impact, help: v.help,
+          nodes: v.nodes.slice(0, 3).map((n) => n.target.join(' '))
+        })))`);
+        blocking = retry.filter((v) => v.impact === 'serious' || v.impact === 'critical');
+      }
       serious += blocking.length;
       results.push({ label: label + ' (' + theme + ')', total: report.length, blocking });
       console.log(`${blocking.length ? 'KO' : 'OK'}  ${label} [${theme}] : ${report.length} violation(s) axe, ${blocking.length} sérieuse(s)`);

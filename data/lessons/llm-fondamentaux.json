@@ -1,0 +1,324 @@
+{
+  "courseId": "llm-fondamentaux",
+  "modules": [
+    {
+      "id": "llm-fondamentaux-module",
+      "title": "LLM fondamentaux",
+      "chapters": [
+        {
+          "id": "lf-01",
+          "title": "Comprendre les modèles de langage",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Situer",
+            "Éviter les mythes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un LLM prédit la suite probable d'un texte à partir de motifs appris."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Motifs.",
+                "Probabilités.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un LLM ?",
+            "hints": [
+              "Il prédit du texte."
+            ],
+            "solution": "Il prédit la suite probable d'un texte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "predit",
+                "prédit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un LLM comprend-il ?",
+              "options": [
+                "Il imite des motifs",
+                "Oui parfaitement",
+                "Toujours",
+                "Jamais du tout"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle produit du plausible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lf-01-q1"
+            }
+          ],
+          "summary": [
+            "LLM.",
+            "Prédiction.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Tokens et tokenisation »."
+        },
+        {
+          "id": "lf-02",
+          "title": "Tokens et tokenisation",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Compter",
+            "Anticiper le coût"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un texte est découpé en tokens, unité de calcul et de coût."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tokens.",
+                "Découpage.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que facture-t-on ?",
+            "hints": [
+              "Les tokens."
+            ],
+            "solution": "Les tokens traités.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tokens"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un mot est-il toujours un token ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le découpage varie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lf-02-q1"
+            }
+          ],
+          "summary": [
+            "Tokens.",
+            "Coût.",
+            "Découpage."
+          ],
+          "nextStep": "Chapitre suivant : « Fenêtres de contexte »."
+        },
+        {
+          "id": "lf-03",
+          "title": "Fenêtres de contexte",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Limiter",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La fenêtre de contexte borne ce que le modèle peut lire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contexte.",
+                "Limite.",
+                "Priorité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire si le texte est trop long ?",
+            "hints": [
+              "Résumer/sélectionner."
+            ],
+            "solution": "Résumer ou sélectionner les passages utiles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "resumer",
+                "résumer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que borner ?",
+              "options": [
+                "Le contexte",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle a une limite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lf-03-q1"
+            }
+          ],
+          "summary": [
+            "Contexte.",
+            "Limite.",
+            "Sélection."
+          ],
+          "nextStep": "Chapitre suivant : « Embeddings »."
+        },
+        {
+          "id": "lf-04",
+          "title": "Embeddings",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Utiliser",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un embedding représente un texte par un vecteur proche des textes similaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vecteurs.",
+                "Similarité.",
+                "Recherche."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesure la proximité ?",
+            "hints": [
+              "La similarité."
+            ],
+            "solution": "La similarité sémantique.",
+            "check": {
+              "type": "any",
+              "any": [
+                "similarite",
+                "similarité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert un embedding ?",
+              "options": [
+                "À la recherche sémantique",
+                "Au CSS",
+                "Au DNS",
+                "Au tri"
+              ],
+              "answer": 0,
+              "explanation": "Les textes proches se rapprochent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lf-04-q1"
+            }
+          ],
+          "summary": [
+            "Embeddings.",
+            "Similarité.",
+            "Recherche."
+          ],
+          "nextStep": "Chapitre suivant : « Transformers et attention »."
+        },
+        {
+          "id": "lf-05",
+          "title": "Transformers et attention",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Situer",
+            "Éviter les détails"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'attention pondère les relations entre tokens."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Attention.",
+                "Couches.",
+                "Contexte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait l'attention ?",
+            "hints": [
+              "Elle pondère les relations."
+            ],
+            "solution": "Elle pondère les relations entre tokens.",
+            "check": {
+              "type": "any",
+              "any": [
+                "relations"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet l'attention ?",
+              "options": [
+                "De contextualiser",
+                "De chiffrer",
+                "De trier",
+                "De router"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte est pris en compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lf-05-q1"
+            }
+          ],
+          "summary": [
+            "Transformers.",
+            "Attention.",
+            "Contexte."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

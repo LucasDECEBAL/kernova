@@ -1,0 +1,323 @@
+{
+  "courseId": "devops-fondamentaux",
+  "modules": [
+    {
+      "id": "devops-fondamentaux-module",
+      "title": "DevOps fondamentaux",
+      "chapters": [
+        {
+          "id": "dvf-01",
+          "title": "Introduction au DevOps",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la culture",
+            "Collaborer",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DevOps rapproche développement et exploitation par la collaboration et l'automatisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Culture.",
+                "Automatisation.",
+                "Mesure."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vise DevOps ?",
+            "hints": [
+              "Livrer plus vite et sûrement."
+            ],
+            "solution": "Livrer plus vite et plus sûrement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "livrer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait DevOps ?",
+              "options": [
+                "Il rapproche dev et ops",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La collaboration est centrale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvf-01-q1"
+            }
+          ],
+          "summary": [
+            "Culture.",
+            "Automatisation.",
+            "Mesure."
+          ],
+          "nextStep": "Chapitre suivant : « Culture DevOps »."
+        },
+        {
+          "id": "dvf-02",
+          "title": "Culture DevOps",
+          "duration": 20,
+          "objectives": [
+            "Partager",
+            "Mesurer",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La culture repose sur la confiance, le retour rapide et l'apprentissage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Blameless.",
+                "Feedback.",
+                "Amélioration."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un incident ?",
+            "hints": [
+              "Apprendre sans blâme."
+            ],
+            "solution": "Apprendre sans blâme.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sans blame",
+                "sans blâme"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que favorise la culture ?",
+              "options": [
+                "Le retour rapide",
+                "Le secret",
+                "Le blâme",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les problèmes émergent tôt.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvf-02-q1"
+            }
+          ],
+          "summary": [
+            "Confiance.",
+            "Feedback.",
+            "Amélioration."
+          ],
+          "nextStep": "Chapitre suivant : « Intégration continue »."
+        },
+        {
+          "id": "dvf-03",
+          "title": "Intégration continue",
+          "duration": 20,
+          "objectives": [
+            "Automatiser",
+            "Tester",
+            "Détecter tôt"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La CI intègre et teste chaque changement rapidement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Commits fréquents.",
+                "Tests.",
+                "Feedback."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait la CI ?",
+            "hints": [
+              "Elle teste à chaque changement."
+            ],
+            "solution": "Elle teste chaque changement automatiquement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "teste"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand lancer la CI ?",
+              "options": [
+                "À chaque changement",
+                "Une fois par an",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "Le retour est rapide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvf-03-q1"
+            }
+          ],
+          "summary": [
+            "CI.",
+            "Tests.",
+            "Feedback."
+          ],
+          "nextStep": "Chapitre suivant : « Livraison continue »."
+        },
+        {
+          "id": "dvf-04",
+          "title": "Livraison continue",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Automatiser",
+            "Valider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La livraison continue rend chaque version déployable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Artefact.",
+                "Validation.",
+                "Déploiement manuel possible."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantit la livraison continue ?",
+            "hints": [
+              "Un artefact déployable."
+            ],
+            "solution": "Un artefact toujours déployable.",
+            "check": {
+              "type": "any",
+              "any": [
+                "deployable",
+                "déployable"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que produit la livraison ?",
+              "options": [
+                "Un artefact validé",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Le paquet est prêt.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvf-04-q1"
+            }
+          ],
+          "summary": [
+            "Livraison.",
+            "Artefact.",
+            "Validation."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement continu »."
+        },
+        {
+          "id": "dvf-05",
+          "title": "Déploiement continu",
+          "duration": 20,
+          "objectives": [
+            "Automatiser",
+            "Surveiller",
+            "Revenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le déploiement continu pousse automatiquement en production."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Automatique.",
+                "Surveillance.",
+                "Rollback."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il pour déployer en continu ?",
+            "hints": [
+              "Des tests solides."
+            ],
+            "solution": "Des tests solides et une surveillance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "test"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que prévoir ?",
+              "options": [
+                "Un retour arrière",
+                "Rien",
+                "Un e-mail",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est maîtrisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvf-05-q1"
+            }
+          ],
+          "summary": [
+            "CD.",
+            "Automatique.",
+            "Rollback."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

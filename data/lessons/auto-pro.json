@@ -1,0 +1,321 @@
+{
+  "courseId": "auto-pro",
+  "modules": [
+    {
+      "id": "auto-pro-module",
+      "title": "Automatisation avancée",
+      "chapters": [
+        {
+          "id": "aup-01",
+          "title": "Connecter plusieurs services",
+          "duration": 20,
+          "objectives": [
+            "Cartographier",
+            "Orchestrer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un workflow relie des services avec des contrats clairs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Services.",
+                "Contrats.",
+                "Surveillance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "Les contrats d'API."
+            ],
+            "solution": "Les contrats et limites de chaque service.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contrat"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un service indisponible ?",
+              "options": [
+                "Prévoir un repli",
+                "Bloquer",
+                "Ignorer",
+                "Publier"
+              ],
+              "answer": 0,
+              "explanation": "La résilience augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aup-01-q1"
+            }
+          ],
+          "summary": [
+            "Services.",
+            "Contrats.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Make »."
+        },
+        {
+          "id": "aup-02",
+          "title": "Introduction à Make",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Construire",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Make connecte des applications par scénarios visuels."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Scénarios.",
+                "Modules.",
+                "Exécutions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un scénario ?",
+            "hints": [
+              "Il automatise un flux."
+            ],
+            "solution": "Il automatise un flux entre applications.",
+            "check": {
+              "type": "any",
+              "any": [
+                "flux"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les exécutions",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aup-02-q1"
+            }
+          ],
+          "summary": [
+            "Make.",
+            "Scénarios.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser des feuilles de calcul »."
+        },
+        {
+          "id": "aup-03",
+          "title": "Automatiser des feuilles de calcul",
+          "duration": 20,
+          "objectives": [
+            "Importer",
+            "Transformer",
+            "Exporter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une automatisation de feuille traite des lignes de façon reproductible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Import.",
+                "Règles.",
+                "Export."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "Les types."
+            ],
+            "solution": "Les types des colonnes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "types"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des lignes invalides ?",
+              "options": [
+                "Les signaler",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "La qualité est contrôlée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aup-03-q1"
+            }
+          ],
+          "summary": [
+            "Feuilles.",
+            "Types.",
+            "Export."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser des notifications »."
+        },
+        {
+          "id": "aup-04",
+          "title": "Automatiser des notifications",
+          "duration": 20,
+          "objectives": [
+            "Déclencher",
+            "Filtrer",
+            "Envoyer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les notifications automatiques évitent le bruit inutile."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Seuil.",
+                "Filtre.",
+                "Canal."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que filtrer ?",
+            "hints": [
+              "Les événements utiles."
+            ],
+            "solution": "Les événements réellement utiles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "utiles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque trop de notifications ?",
+              "options": [
+                "La fatigue",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Elles sont ignorées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aup-04-q1"
+            }
+          ],
+          "summary": [
+            "Notifications.",
+            "Filtre.",
+            "Seuil."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser des traitements de fichiers »."
+        },
+        {
+          "id": "aup-05",
+          "title": "Automatiser des traitements de fichiers",
+          "duration": 20,
+          "objectives": [
+            "Surveiller",
+            "Traiter",
+            "Archiver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un flux de fichiers traite, renomme et archive automatiquement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dépôt.",
+                "Traitement.",
+                "Archive."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après traitement ?",
+            "hints": [
+              "Archiver."
+            ],
+            "solution": "Archiver ou supprimer proprement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "archiv"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les formats",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les fichiers sont valides.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aup-05-q1"
+            }
+          ],
+          "summary": [
+            "Fichiers.",
+            "Traitement.",
+            "Archive."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,323 @@
+{
+  "courseId": "auto-securite",
+  "modules": [
+    {
+      "id": "auto-securite-module",
+      "title": "Sécurité des automatisations",
+      "chapters": [
+        {
+          "id": "aus-01",
+          "title": "Sécuriser les workflows",
+          "duration": 20,
+          "objectives": [
+            "Limiter",
+            "Valider",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un workflow limite ses droits et valide ses entrées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Droits.",
+                "Validation.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "Les droits."
+            ],
+            "solution": "Les droits au strict nécessaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "droits"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que valider ?",
+              "options": [
+                "Les entrées",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont sûres.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aus-01-q1"
+            }
+          ],
+          "summary": [
+            "Droits.",
+            "Validation.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les secrets »."
+        },
+        {
+          "id": "aus-02",
+          "title": "Gérer les secrets",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Rotation",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les secrets des workflows vivent dans un coffre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Coffre.",
+                "Rotation.",
+                "Audit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où stocker ?",
+            "hints": [
+              "Dans un coffre."
+            ],
+            "solution": "Dans un coffre de secrets.",
+            "check": {
+              "type": "any",
+              "any": [
+                "coffre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un secret exposé ?",
+              "options": [
+                "Le révoquer",
+                "Le renommer",
+                "Le déplacer",
+                "Le commenter"
+              ],
+              "answer": 0,
+              "explanation": "Il est compromis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aus-02-q1"
+            }
+          ],
+          "summary": [
+            "Secrets.",
+            "Coffre.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Surveiller les automatisations »."
+        },
+        {
+          "id": "aus-03",
+          "title": "Surveiller les automatisations",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Alerter",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une automatisation se surveille comme un service."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Exécutions.",
+                "Erreurs.",
+                "Alertes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Le taux d'échec."
+            ],
+            "solution": "Le taux d'échec et la durée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "echec",
+                "échec"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un échec récurrent ?",
+              "options": [
+                "Corriger",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le flux s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aus-03-q1"
+            }
+          ],
+          "summary": [
+            "Surveillance.",
+            "Erreurs.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Documenter un workflow »."
+        },
+        {
+          "id": "aus-04",
+          "title": "Documenter un workflow",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Illustrer",
+            "Maintenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un workflow documenté décrit déclencheur, étapes et erreurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schéma.",
+                "Étapes.",
+                "Responsable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les étapes et erreurs."
+            ],
+            "solution": "Les étapes, erreurs et responsables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "etapes",
+                "étapes"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi documenter ?",
+              "options": [
+                "Maintenir",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le flux reste compris.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aus-04-q1"
+            }
+          ],
+          "summary": [
+            "Documentation.",
+            "Schéma.",
+            "Maintenance."
+          ],
+          "nextStep": "Chapitre suivant : « Construire un projet complet d'automatisation »."
+        },
+        {
+          "id": "aus-05",
+          "title": "Construire un projet complet d'automatisation",
+          "duration": 20,
+          "objectives": [
+            "Cadrer",
+            "Construire",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet d'automatisation part d'un besoin mesurable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Besoin.",
+                "Mesure.",
+                "Livraison."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Le gain."
+            ],
+            "solution": "Le gain de temps et la fiabilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "gain"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire avant de construire ?",
+              "options": [
+                "Cadrer le besoin",
+                "Coder",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le besoin guide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aus-05-q1"
+            }
+          ],
+          "summary": [
+            "Projet.",
+            "Mesure.",
+            "Livraison."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

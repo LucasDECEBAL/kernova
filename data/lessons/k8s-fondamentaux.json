@@ -1,0 +1,324 @@
+{
+  "courseId": "k8s-fondamentaux",
+  "modules": [
+    {
+      "id": "k8s-fondamentaux-module",
+      "title": "Kubernetes fondamentaux",
+      "chapters": [
+        {
+          "id": "kf-01",
+          "title": "Introduction à Kubernetes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Situer les objets",
+            "Choisir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Kubernetes orchestre des conteneurs sur un cluster."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cluster.",
+                "Objets.",
+                "État désiré."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que maintient Kubernetes ?",
+            "hints": [
+              "L'état désiré."
+            ],
+            "solution": "L'état désiré du cluster.",
+            "check": {
+              "type": "any",
+              "any": [
+                "desire",
+                "désiré"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Kubernetes ?",
+              "options": [
+                "Il orchestre les conteneurs",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'orchestration est centralisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kf-01-q1"
+            }
+          ],
+          "summary": [
+            "Orchestration.",
+            "État désiré.",
+            "Objets."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture d'un cluster »."
+        },
+        {
+          "id": "kf-02",
+          "title": "Architecture d'un cluster",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Situer les composants",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le control plane décide, les nœuds exécutent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "API server.",
+                "Scheduler.",
+                "kubelet."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Qui exécute les pods ?",
+            "hints": [
+              "Les nœuds."
+            ],
+            "solution": "Les nœuds via kubelet.",
+            "check": {
+              "type": "any",
+              "any": [
+                "noeud",
+                "nœud"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le scheduler ?",
+              "options": [
+                "Il choisit un nœud",
+                "Il exécute",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le pod est placé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kf-02-q1"
+            }
+          ],
+          "summary": [
+            "Control plane.",
+            "Nœuds.",
+            "kubelet."
+          ],
+          "nextStep": "Chapitre suivant : « Nodes et control plane »."
+        },
+        {
+          "id": "kf-03",
+          "title": "Nodes et control plane",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Surveiller",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les nœuds portent les pods ; le control plane maintient l'état."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Nœuds.",
+                "API.",
+                "Étcd."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que stocke etcd ?",
+            "hints": [
+              "L'état du cluster."
+            ],
+            "solution": "L'état du cluster.",
+            "check": {
+              "type": "any",
+              "any": [
+                "etat",
+                "état"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait l'API server ?",
+              "options": [
+                "Il expose le cluster",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les clients passent par lui.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kf-03-q1"
+            }
+          ],
+          "summary": [
+            "Nœuds.",
+            "API.",
+            "etcd."
+          ],
+          "nextStep": "Chapitre suivant : « Pods »."
+        },
+        {
+          "id": "kf-04",
+          "title": "Pods",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Comprendre",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pod est la plus petite unité déployable avec un ou plusieurs conteneurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pod.",
+                "Conteneurs.",
+                "Cycle."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Un pod est-il durable ?",
+            "hints": [
+              "Non, il peut être remplacé."
+            ],
+            "solution": "Non : un contrôleur le recrée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "remplac"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient un pod ?",
+              "options": [
+                "Un ou plusieurs conteneurs",
+                "Le CSS",
+                "Le DNS",
+                "Un routeur"
+              ],
+              "answer": 0,
+              "explanation": "Les conteneurs partagent le pod.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kf-04-q1"
+            }
+          ],
+          "summary": [
+            "Pod.",
+            "Unité.",
+            "Remplacement."
+          ],
+          "nextStep": "Chapitre suivant : « Deployments »."
+        },
+        {
+          "id": "kf-05",
+          "title": "Deployments",
+          "duration": 20,
+          "objectives": [
+            "Déclarer",
+            "Mettre à jour",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un Deployment gère un ReplicaSet et des pods."
+            },
+            {
+              "type": "list",
+              "items": [
+                "replicas.",
+                "selector.",
+                "template."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gère un Deployment ?",
+            "hints": [
+              "Les pods et réplicas."
+            ],
+            "solution": "Les pods via un ReplicaSet.",
+            "check": {
+              "type": "any",
+              "any": [
+                "replicaset"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit un Deployment ?",
+              "options": [
+                "Le nombre de réplicas",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "L'état est maintenu.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kf-05-q1"
+            }
+          ],
+          "summary": [
+            "Deployment.",
+            "Réplicas.",
+            "Mise à jour."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

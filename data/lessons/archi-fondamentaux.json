@@ -1,0 +1,323 @@
+{
+  "courseId": "archi-fondamentaux",
+  "modules": [
+    {
+      "id": "archi-fondamentaux-module",
+      "title": "Principes de conception",
+      "chapters": [
+        {
+          "id": "af-01",
+          "title": "Principes fondamentaux de conception",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Séparer",
+            "Simplifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une bonne conception isole les responsabilités et limite les dépendances."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Responsabilité.",
+                "Dépendance.",
+                "Simplicité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que viser ?",
+            "hints": [
+              "Des responsabilités claires."
+            ],
+            "solution": "Des responsabilités claires et peu de dépendances.",
+            "check": {
+              "type": "any",
+              "any": [
+                "responsabilite",
+                "responsabilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "Le couplage",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les modules restent indépendants.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "af-01-q1"
+            }
+          ],
+          "summary": [
+            "Responsabilités.",
+            "Couplage.",
+            "Simplicité."
+          ],
+          "nextStep": "Chapitre suivant : « Couplage et cohésion »."
+        },
+        {
+          "id": "af-02",
+          "title": "Couplage et cohésion",
+          "duration": 20,
+          "objectives": [
+            "Distinguer",
+            "Mesurer",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le couplage mesure les dépendances ; la cohésion la concentration d'une responsabilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Couplage faible.",
+                "Cohésion forte.",
+                "Frontières."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que viser ?",
+            "hints": [
+              "Faible couplage, forte cohésion."
+            ],
+            "solution": "Faible couplage et forte cohésion.",
+            "check": {
+              "type": "any",
+              "any": [
+                "faible",
+                "forte"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une forte cohésion ?",
+              "options": [
+                "Elle regroupe le lié",
+                "Elle disperse",
+                "Elle chiffre",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le module reste focalisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "af-02-q1"
+            }
+          ],
+          "summary": [
+            "Couplage.",
+            "Cohésion.",
+            "Frontières."
+          ],
+          "nextStep": "Chapitre suivant : « SOLID »."
+        },
+        {
+          "id": "af-03",
+          "title": "SOLID",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les principes",
+            "Appliquer",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SOLID guide des modules cohérents et remplaçables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SRP.",
+                "OCP.",
+                "DIP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait DIP ?",
+            "hints": [
+              "Il inverse les dépendances."
+            ],
+            "solution": "Il dépend d'abstractions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "abstraction"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait SRP ?",
+              "options": [
+                "Une responsabilité",
+                "Un serveur",
+                "Un protocole",
+                "Un format"
+              ],
+              "answer": 0,
+              "explanation": "Une raison de changer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "af-03-q1"
+            }
+          ],
+          "summary": [
+            "SOLID.",
+            "SRP.",
+            "DIP."
+          ],
+          "nextStep": "Chapitre suivant : « DRY, KISS et YAGNI »."
+        },
+        {
+          "id": "af-04",
+          "title": "DRY, KISS et YAGNI",
+          "duration": 20,
+          "objectives": [
+            "Éviter la duplication",
+            "Simplifier",
+            "Éviter l'anticipation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DRY évite la duplication, KISS la complexité, YAGNI l'inutile."
+            },
+            {
+              "type": "list",
+              "items": [
+                "DRY.",
+                "KISS.",
+                "YAGNI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait YAGNI ?",
+            "hints": [
+              "Il évite l'inutile."
+            ],
+            "solution": "Il évite de construire l'inutile.",
+            "check": {
+              "type": "any",
+              "any": [
+                "inutile"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait KISS ?",
+              "options": [
+                "Il simplifie",
+                "Il complexifie",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La simplicité prime.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "af-04-q1"
+            }
+          ],
+          "summary": [
+            "DRY.",
+            "KISS.",
+            "YAGNI."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture en couches »."
+        },
+        {
+          "id": "af-05",
+          "title": "Architecture en couches",
+          "duration": 20,
+          "objectives": [
+            "Séparer",
+            "Dépendre",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les couches séparent présentation, application, domaine et infrastructure."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Couches.",
+                "Dépendances.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où vivent les règles ?",
+            "hints": [
+              "Dans le domaine."
+            ],
+            "solution": "Dans le domaine.",
+            "check": {
+              "type": "any",
+              "any": [
+                "domaine"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester sans base ?",
+              "options": [
+                "Le domaine",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le domaine est isolé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "af-05-q1"
+            }
+          ],
+          "summary": [
+            "Couches.",
+            "Domaine.",
+            "Tests."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

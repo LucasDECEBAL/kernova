@@ -1,0 +1,322 @@
+{
+  "courseId": "devops-deploiement",
+  "modules": [
+    {
+      "id": "devops-deploiement-module",
+      "title": "Déploiements",
+      "chapters": [
+        {
+          "id": "dvd-01",
+          "title": "Déploiement automatisé",
+          "duration": 20,
+          "objectives": [
+            "Automatiser",
+            "Versionner",
+            "Revenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un déploiement automatisé est reproductible et réversible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pipeline.",
+                "Version.",
+                "Rollback."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prévoir ?",
+            "hints": [
+              "Un retour arrière."
+            ],
+            "solution": "Un retour arrière.",
+            "check": {
+              "type": "any",
+              "any": [
+                "retour"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que déployer ?",
+              "options": [
+                "Le même artefact testé",
+                "Un nouveau build",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La version testée part en production.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvd-01-q1"
+            }
+          ],
+          "summary": [
+            "Automatisation.",
+            "Version.",
+            "Rollback."
+          ],
+          "nextStep": "Chapitre suivant : « Secrets dans les pipelines »."
+        },
+        {
+          "id": "dvd-02",
+          "title": "Secrets dans les pipelines",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Limiter",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les secrets des pipelines vivent dans un coffre et ne sont pas affichés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Secrets.",
+                "Rôles.",
+                "Audit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un secret dans un log ?",
+            "hints": [
+              "Le révoquer."
+            ],
+            "solution": "Le révoquer et nettoyer les logs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "revoquer",
+                "révoquer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où stocker ?",
+              "options": [
+                "Dans les secrets CI/CD",
+                "Dans le YAML",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les secrets sont chiffrés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvd-02-q1"
+            }
+          ],
+          "summary": [
+            "Coffre.",
+            "Droits.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement progressif »."
+        },
+        {
+          "id": "dvd-03",
+          "title": "Déploiement progressif",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Surveiller",
+            "Revenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le déploiement progressif expose d'abord une petite part du trafic."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Canary.",
+                "Blue-green.",
+                "Surveillance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller ?",
+            "hints": [
+              "Erreurs et latence."
+            ],
+            "solution": "Le taux d'erreur et la latence.",
+            "check": {
+              "type": "any",
+              "any": [
+                "erreur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi progressif ?",
+              "options": [
+                "Limiter l'impact",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Une petite part est exposée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvd-03-q1"
+            }
+          ],
+          "summary": [
+            "Progression.",
+            "Surveillance.",
+            "Retour."
+          ],
+          "nextStep": "Chapitre suivant : « Blue-green deployment »."
+        },
+        {
+          "id": "dvd-04",
+          "title": "Blue-green deployment",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Basculer",
+            "Revenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Blue-green bascule entre deux environnements identiques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Deux environnements.",
+                "Bascule.",
+                "Retour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet la bascule ?",
+            "hints": [
+              "Un retour immédiat."
+            ],
+            "solution": "Un retour immédiat à l'environnement précédent.",
+            "check": {
+              "type": "any",
+              "any": [
+                "retour"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garde l'ancien environnement ?",
+              "options": [
+                "La version stable",
+                "Le CSS",
+                "Le DNS",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Le retour est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvd-04-q1"
+            }
+          ],
+          "summary": [
+            "Blue-green.",
+            "Bascule.",
+            "Retour."
+          ],
+          "nextStep": "Chapitre suivant : « Canary deployment »."
+        },
+        {
+          "id": "dvd-05",
+          "title": "Canary deployment",
+          "duration": 20,
+          "objectives": [
+            "Exposer",
+            "Mesurer",
+            "Généraliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le canary expose une petite fraction et décide selon les métriques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "5 %.",
+                "Métriques.",
+                "Décision."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que décider ?",
+            "hints": [
+              "Généraliser ou revenir."
+            ],
+            "solution": "Généraliser ou revenir selon les métriques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "revenir"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "Erreurs et latence",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "L'expérience guide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvd-05-q1"
+            }
+          ],
+          "summary": [
+            "Canary.",
+            "Mesures.",
+            "Décision."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

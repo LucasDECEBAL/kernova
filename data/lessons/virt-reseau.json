@@ -1,0 +1,324 @@
+{
+  "courseId": "virt-reseau",
+  "modules": [
+    {
+      "id": "virt-reseau-module",
+      "title": "Réseaux et snapshots",
+      "chapters": [
+        {
+          "id": "vr-01",
+          "title": "Réseaux virtuels",
+          "duration": 20,
+          "objectives": [
+            "Choisir un mode",
+            "Isoler",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les réseaux virtuels relient les VM entre elles et à l'hôte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "NAT.",
+                "Hôte seul.",
+                "Interne."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel mode pour isoler d'Internet ?",
+            "hints": [
+              "Hôte seul."
+            ],
+            "solution": "Le mode hôte seul (host-only).",
+            "check": {
+              "type": "any",
+              "any": [
+                "hote",
+                "hôte",
+                "host-only"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le NAT ?",
+              "options": [
+                "Il partage la connexion",
+                "Il isole",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'hôte relaie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vr-01-q1"
+            }
+          ],
+          "summary": [
+            "Modes.",
+            "Isolation.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Snapshots »."
+        },
+        {
+          "id": "vr-02",
+          "title": "Snapshots",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Restaurer",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un snapshot capture un état ; il ne remplace pas une sauvegarde."
+            },
+            {
+              "type": "list",
+              "items": [
+                "État.",
+                "Restauration.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Un snapshot protège-t-il d'une panne ?",
+            "hints": [
+              "Non."
+            ],
+            "solution": "Non : il vit sur le même stockage.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où vit un snapshot ?",
+              "options": [
+                "Sur le même stockage",
+                "Hors site",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La panne l'emporte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vr-02-q1"
+            }
+          ],
+          "summary": [
+            "État.",
+            "Restauration.",
+            "Pas une sauvegarde."
+          ],
+          "nextStep": "Chapitre suivant : « Clonage de machines »."
+        },
+        {
+          "id": "vr-03",
+          "title": "Clonage de machines",
+          "duration": 20,
+          "objectives": [
+            "Cloner",
+            "Personnaliser",
+            "Éviter les conflits"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un clone copie une VM ; il faut changer identité et adresses."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clone complet.",
+                "Liaison.",
+                "Identité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que changer après clonage ?",
+            "hints": [
+              "L'identité réseau."
+            ],
+            "solution": "Le nom, l'adresse et les identifiants.",
+            "check": {
+              "type": "any",
+              "any": [
+                "identite",
+                "identité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un clone non modifié ?",
+              "options": [
+                "Des conflits réseau",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Adresses et identités dupliquées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vr-03-q1"
+            }
+          ],
+          "summary": [
+            "Clone.",
+            "Personnalisation.",
+            "Conflits."
+          ],
+          "nextStep": "Chapitre suivant : « VMware Workstation »."
+        },
+        {
+          "id": "vr-04",
+          "title": "VMware Workstation",
+          "duration": 20,
+          "objectives": [
+            "Créer une VM",
+            "Configurer le réseau",
+            "Utiliser les snapshots"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "VMware Workstation est un hyperviseur de type 2 pour postes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "VM.",
+                "Réseaux.",
+                "Snapshots."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel type d'hyperviseur ?",
+            "hints": [
+              "Type 2."
+            ],
+            "solution": "Type 2.",
+            "check": {
+              "type": "any",
+              "any": [
+                "type 2"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où s'installe-t-il ?",
+              "options": [
+                "Sur un OS hôte",
+                "Sur le matériel",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "C'est une application.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vr-04-q1"
+            }
+          ],
+          "summary": [
+            "Workstation.",
+            "Réseaux.",
+            "Snapshots."
+          ],
+          "nextStep": "Chapitre suivant : « VirtualBox »."
+        },
+        {
+          "id": "vr-05",
+          "title": "VirtualBox",
+          "duration": 20,
+          "objectives": [
+            "Créer une VM",
+            "Choisir le réseau",
+            "Partager des dossiers"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "VirtualBox est un hyperviseur de type 2 gratuit."
+            },
+            {
+              "type": "list",
+              "items": [
+                "VM.",
+                "Réseau.",
+                "Dossiers partagés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel mode réseau pour un labo isolé ?",
+            "hints": [
+              "Réseau interne."
+            ],
+            "solution": "Le réseau interne.",
+            "check": {
+              "type": "any",
+              "any": [
+                "interne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un dossier partagé ?",
+              "options": [
+                "Il échange des fichiers",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'hôte et la VM partagent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vr-05-q1"
+            }
+          ],
+          "summary": [
+            "VirtualBox.",
+            "Réseau interne.",
+            "Partage."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

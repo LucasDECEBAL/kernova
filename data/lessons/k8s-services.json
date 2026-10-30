@@ -1,0 +1,321 @@
+{
+  "courseId": "k8s-services",
+  "modules": [
+    {
+      "id": "k8s-services-module",
+      "title": "Objets Kubernetes",
+      "chapters": [
+        {
+          "id": "ks-01",
+          "title": "ReplicaSets",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Surveiller",
+            "Éviter de le gérer seul"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un ReplicaSet maintient un nombre de pods."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Réplicas.",
+                "Sélecteur.",
+                "Remplacement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un ReplicaSet ?",
+            "hints": [
+              "Il maintient les réplicas."
+            ],
+            "solution": "Il maintient le nombre de pods.",
+            "check": {
+              "type": "any",
+              "any": [
+                "replicas"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui gère le ReplicaSet ?",
+              "options": [
+                "Le Deployment",
+                "Le CSS",
+                "Le DNS",
+                "Le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Le Deployment le contrôle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ks-01-q1"
+            }
+          ],
+          "summary": [
+            "ReplicaSet.",
+            "Réplicas.",
+            "Sélecteur."
+          ],
+          "nextStep": "Chapitre suivant : « Services »."
+        },
+        {
+          "id": "ks-02",
+          "title": "Services",
+          "duration": 20,
+          "objectives": [
+            "Exposer",
+            "Choisir un type",
+            "Relier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un Service expose des pods via un sélecteur et un type."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ClusterIP.",
+                "NodePort.",
+                "LoadBalancer."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel type interne ?",
+            "hints": [
+              "ClusterIP."
+            ],
+            "solution": "ClusterIP.",
+            "check": {
+              "type": "any",
+              "any": [
+                "clusterip"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que relie un Service ?",
+              "options": [
+                "Un sélecteur aux pods",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le trafic est routé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ks-02-q1"
+            }
+          ],
+          "summary": [
+            "Service.",
+            "Types.",
+            "Sélecteur."
+          ],
+          "nextStep": "Chapitre suivant : « ConfigMaps »."
+        },
+        {
+          "id": "ks-03",
+          "title": "ConfigMaps",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Monter",
+            "Éviter les secrets"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un ConfigMap stocke de la configuration non sensible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Variables.",
+                "Montage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que stocker dans un ConfigMap ?",
+            "hints": [
+              "De la config non sensible."
+            ],
+            "solution": "De la configuration non sensible.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non sensible"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un secret va-t-il dans un ConfigMap ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Toujours"
+              ],
+              "answer": 0,
+              "explanation": "Les secrets sont séparés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ks-03-q1"
+            }
+          ],
+          "summary": [
+            "ConfigMap.",
+            "Config.",
+            "Montage."
+          ],
+          "nextStep": "Chapitre suivant : « Secrets »."
+        },
+        {
+          "id": "ks-04",
+          "title": "Secrets",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Monter",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un Secret stocke des données sensibles, encodées et contrôlées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Secret.",
+                "Base64.",
+                "RBAC."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Un Secret est-il chiffré par défaut ?",
+            "hints": [
+              "Pas toujours."
+            ],
+            "solution": "Pas toujours : le stockage doit être chiffré.",
+            "check": {
+              "type": "any",
+              "any": [
+                "chiffr"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les accès aux secrets",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "RBAC contrôle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ks-04-q1"
+            }
+          ],
+          "summary": [
+            "Secrets.",
+            "Accès.",
+            "Chiffrement."
+          ],
+          "nextStep": "Chapitre suivant : « Namespaces »."
+        },
+        {
+          "id": "ks-05",
+          "title": "Namespaces",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Organiser",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les namespaces séparent les ressources et les droits."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Namespaces.",
+                "Quotas.",
+                "RBAC."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un namespace ?",
+            "hints": [
+              "Il isole les ressources."
+            ],
+            "solution": "Il isole et organise les ressources.",
+            "check": {
+              "type": "any",
+              "any": [
+                "isole"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter par namespace ?",
+              "options": [
+                "Les quotas",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les ressources sont bornées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ks-05-q1"
+            }
+          ],
+          "summary": [
+            "Namespaces.",
+            "Isolation.",
+            "Quotas."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

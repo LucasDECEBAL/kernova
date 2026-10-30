@@ -1,0 +1,197 @@
+{
+  "courseId": "llm-ethique",
+  "modules": [
+    {
+      "id": "llm-ethique-module",
+      "title": "IA générative responsable",
+      "chapters": [
+        {
+          "id": "lx-01",
+          "title": "Limites des LLM",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Documenter",
+            "Communiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les limites se documentent et se communiquent aux utilisateurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Limites.",
+                "Humilité.",
+                "Transparence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que dire aux utilisateurs ?",
+            "hints": [
+              "Que le modèle peut se tromper."
+            ],
+            "solution": "Que le modèle peut se tromper.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tromper"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des incertitudes ?",
+              "options": [
+                "Les signaler",
+                "Les cacher",
+                "Les inventer",
+                "Les trier"
+              ],
+              "answer": 0,
+              "explanation": "La confiance est honnête.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx-01-q1"
+            }
+          ],
+          "summary": [
+            "Limites.",
+            "Transparence.",
+            "Communication."
+          ],
+          "nextStep": "Chapitre suivant : « Éthique et biais »."
+        },
+        {
+          "id": "lx-02",
+          "title": "Éthique et biais",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Corriger",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un système IA doit être évalué par sous-groupe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Biais.",
+                "Sous-groupes.",
+                "Documentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Par sous-groupe."
+            ],
+            "solution": "Les performances par sous-groupe.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sous-groupe"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un biais ?",
+              "options": [
+                "Le corriger et documenter",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le système s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx-02-q1"
+            }
+          ],
+          "summary": [
+            "Biais.",
+            "Sous-groupes.",
+            "Éthique."
+          ],
+          "nextStep": "Chapitre suivant : « Protection des données »."
+        },
+        {
+          "id": "lx-03",
+          "title": "Protection des données",
+          "duration": 20,
+          "objectives": [
+            "Classer",
+            "Minimiser",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données se classent et se protègent selon leur sensibilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Classement.",
+                "Sécurité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que minimiser ?",
+            "hints": [
+              "Les données sensibles."
+            ],
+            "solution": "Les données sensibles envoyées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sensibles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des secrets ?",
+              "options": [
+                "Les exclure",
+                "Les envoyer",
+                "Les publier",
+                "Les trier"
+              ],
+              "answer": 0,
+              "explanation": "Le risque baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx-03-q1"
+            }
+          ],
+          "summary": [
+            "Données.",
+            "Classement.",
+            "Sécurité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

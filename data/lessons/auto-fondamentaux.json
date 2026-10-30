@@ -1,0 +1,322 @@
+{
+  "courseId": "auto-fondamentaux",
+  "modules": [
+    {
+      "id": "auto-fondamentaux-module",
+      "title": "Automatisation",
+      "chapters": [
+        {
+          "id": "au-01",
+          "title": "Introduction à l'automatisation",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'automatisation remplace une tâche répétitive par un processus fiable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tâche.",
+                "Gain.",
+                "Risque."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand automatiser ?",
+            "hints": [
+              "Quand la tâche est stable."
+            ],
+            "solution": "Quand la tâche est stable et répétitive.",
+            "check": {
+              "type": "any",
+              "any": [
+                "stable"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "Le temps gagné",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le gain est vérifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "au-01-q1"
+            }
+          ],
+          "summary": [
+            "Automatisation.",
+            "Gain.",
+            "Stabilité."
+          ],
+          "nextStep": "Chapitre suivant : « Identifier les tâches répétitives »."
+        },
+        {
+          "id": "au-02",
+          "title": "Identifier les tâches répétitives",
+          "duration": 20,
+          "objectives": [
+            "Lister",
+            "Prioriser",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tâches candidates sont fréquentes, stables et vérifiables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fréquence.",
+                "Stabilité.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prioriser ?",
+            "hints": [
+              "Les tâches fréquentes et stables."
+            ],
+            "solution": "Fréquentes, stables et faciles à vérifier.",
+            "check": {
+              "type": "any",
+              "any": [
+                "frequentes",
+                "fréquentes"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Les étapes",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le processus est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "au-02-q1"
+            }
+          ],
+          "summary": [
+            "Candidats.",
+            "Priorité.",
+            "Documentation."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser avec des scripts »."
+        },
+        {
+          "id": "au-03",
+          "title": "Automatiser avec des scripts",
+          "duration": 20,
+          "objectives": [
+            "Écrire",
+            "Tester",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script idempotent peut être relancé sans effet de bord."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Idempotence.",
+                "Logs.",
+                "Code de sortie."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantir ?",
+            "hints": [
+              "L'idempotence."
+            ],
+            "solution": "L'idempotence.",
+            "check": {
+              "type": "any",
+              "any": [
+                "idempotence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire en cas d'échec ?",
+              "options": [
+                "Journaliser et sortir en erreur",
+                "Ignorer",
+                "Publier",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le pipeline réagit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "au-03-q1"
+            }
+          ],
+          "summary": [
+            "Scripts.",
+            "Idempotence.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction aux API dans l'automatisation »."
+        },
+        {
+          "id": "au-04",
+          "title": "Introduction aux API dans l'automatisation",
+          "duration": 20,
+          "objectives": [
+            "Appeler",
+            "Valider",
+            "Gérer les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les API permettent de connecter des services sans intervention."
+            },
+            {
+              "type": "list",
+              "items": [
+                "HTTP.",
+                "JSON.",
+                "Erreurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "Le statut HTTP."
+            ],
+            "solution": "Le statut HTTP.",
+            "check": {
+              "type": "any",
+              "any": [
+                "statut"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un 500 ?",
+              "options": [
+                "Réessayer avec prudence",
+                "Boucler",
+                "Ignorer",
+                "Publier"
+              ],
+              "answer": 0,
+              "explanation": "La relance est bornée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "au-04-q1"
+            }
+          ],
+          "summary": [
+            "API.",
+            "JSON.",
+            "Erreurs."
+          ],
+          "nextStep": "Chapitre suivant : « Webhooks »."
+        },
+        {
+          "id": "au-05",
+          "title": "Webhooks",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Sécuriser",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un webhook notifie un service par appel HTTP."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événement.",
+                "Signature.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "La signature."
+            ],
+            "solution": "La signature de l'appel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "signature"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un webhook non signé ?",
+              "options": [
+                "Le refuser",
+                "Le traiter",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "L'origine est vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "au-05-q1"
+            }
+          ],
+          "summary": [
+            "Webhooks.",
+            "Signature.",
+            "Tests."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

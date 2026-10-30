@@ -1,0 +1,323 @@
+{
+  "courseId": "tests-avances",
+  "modules": [
+    {
+      "id": "tests-avances-module",
+      "title": "Tests avancés",
+      "chapters": [
+        {
+          "id": "ta-01",
+          "title": "Tests de régression",
+          "duration": 20,
+          "objectives": [
+            "Protéger",
+            "Automatiser",
+            "Cibler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test de régression empêche de réintroduire un bug."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bug.",
+                "Test.",
+                "CI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que protège-t-il ?",
+            "hints": [
+              "Contre une régression."
+            ],
+            "solution": "Contre la réapparition du bug.",
+            "check": {
+              "type": "any",
+              "any": [
+                "regression",
+                "régression"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand l'ajouter ?",
+              "options": [
+                "Après correction",
+                "Jamais",
+                "Au hasard",
+                "Avant le bug"
+              ],
+              "answer": 0,
+              "explanation": "Le bug ne revient pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ta-01-q1"
+            }
+          ],
+          "summary": [
+            "Régression.",
+            "CI.",
+            "Protection."
+          ],
+          "nextStep": "Chapitre suivant : « Tests de performance »."
+        },
+        {
+          "id": "ta-02",
+          "title": "Tests de performance",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Comparer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests de performance mesurent temps et ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Latence.",
+                "Débit.",
+                "Seuils."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Latence et débit."
+            ],
+            "solution": "La latence et le débit.",
+            "check": {
+              "type": "any",
+              "any": [
+                "latence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi des seuils ?",
+              "options": [
+                "Détecter les régressions",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les écarts sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ta-02-q1"
+            }
+          ],
+          "summary": [
+            "Performance.",
+            "Seuils.",
+            "Mesures."
+          ],
+          "nextStep": "Chapitre suivant : « Tests de charge »."
+        },
+        {
+          "id": "ta-03",
+          "title": "Tests de charge",
+          "duration": 20,
+          "objectives": [
+            "Simuler",
+            "Mesurer",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test de charge simule un trafic important."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Utilisateurs.",
+                "Durée.",
+                "Seuils."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que simule-t-il ?",
+            "hints": [
+              "Une charge élevée."
+            ],
+            "solution": "Une charge élevée réaliste.",
+            "check": {
+              "type": "any",
+              "any": [
+                "charge"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et latence",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La dégradation apparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ta-03-q1"
+            }
+          ],
+          "summary": [
+            "Charge.",
+            "Simulation.",
+            "Seuils."
+          ],
+          "nextStep": "Chapitre suivant : « Tests de sécurité »."
+        },
+        {
+          "id": "ta-04",
+          "title": "Tests de sécurité",
+          "duration": 20,
+          "objectives": [
+            "Vérifier",
+            "Automatiser",
+            "Cadrer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests de sécurité vérifient les protections dans un cadre autorisé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Scans.",
+                "Cadre.",
+                "Rapport."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel cadre ?",
+            "hints": [
+              "Autorisé."
+            ],
+            "solution": "Un cadre autorisé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "autorise",
+                "autorisé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des résultats ?",
+              "options": [
+                "Les prioriser",
+                "Les publier",
+                "Les vendre",
+                "Les ignorer"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est traité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ta-04-q1"
+            }
+          ],
+          "summary": [
+            "Sécurité.",
+            "Cadre.",
+            "Priorisation."
+          ],
+          "nextStep": "Chapitre suivant : « Tests exploratoires »."
+        },
+        {
+          "id": "ta-05",
+          "title": "Tests exploratoires",
+          "duration": 20,
+          "objectives": [
+            "Explorer",
+            "Noter",
+            "Signaler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests exploratoires découvrent des défauts non couverts par les scripts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Exploration.",
+                "Notes.",
+                "Rapport."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que produisent-ils ?",
+            "hints": [
+              "Des constats."
+            ],
+            "solution": "Des constats et des notes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "constat"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des découvertes ?",
+              "options": [
+                "Les documenter",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le rapport est utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ta-05-q1"
+            }
+          ],
+          "summary": [
+            "Exploratoire.",
+            "Notes.",
+            "Constats."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

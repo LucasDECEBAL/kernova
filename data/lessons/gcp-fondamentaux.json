@@ -1,0 +1,322 @@
+{
+  "courseId": "gcp-fondamentaux",
+  "modules": [
+    {
+      "id": "gcp-fondamentaux-module",
+      "title": "Google Cloud",
+      "chapters": [
+        {
+          "id": "gcf-01",
+          "title": "Introduction à Google Cloud",
+          "duration": 20,
+          "objectives": [
+            "Situer GCP",
+            "Comprendre les projets",
+            "Prévoir les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Google Cloud organise les ressources par projets."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Projets.",
+                "Régions.",
+                "Facturation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que regroupe un projet ?",
+            "hints": [
+              "Des ressources."
+            ],
+            "solution": "Les ressources et facturation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ressources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que facture GCP ?",
+              "options": [
+                "L'usage",
+                "Un forfait",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La consommation compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcf-01-q1"
+            }
+          ],
+          "summary": [
+            "Projets.",
+            "Régions.",
+            "Usage."
+          ],
+          "nextStep": "Chapitre suivant : « IAM Google Cloud »."
+        },
+        {
+          "id": "gcf-02",
+          "title": "IAM Google Cloud",
+          "duration": 20,
+          "objectives": [
+            "Gérer les rôles",
+            "Appliquer le moindre privilège",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IAM attribue des rôles aux identités sur des ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Politiques.",
+                "Audit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un rôle ?",
+            "hints": [
+              "Il regroupe des permissions."
+            ],
+            "solution": "Il regroupe des permissions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "permissions"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les privilèges",
+                "Les logs",
+                "Le CSS",
+                "Le DNS",
+                "Le moindre privilège s'applique."
+              ],
+              "answer": 0,
+              "explanation": "Réponse attendue conformément au cours.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcf-02-q1"
+            }
+          ],
+          "summary": [
+            "Rôles.",
+            "Politiques.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Compute Engine »."
+        },
+        {
+          "id": "gcf-03",
+          "title": "Compute Engine",
+          "duration": 20,
+          "objectives": [
+            "Lancer une VM",
+            "Choisir la taille",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Compute Engine fournit des VM configurables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Types.",
+                "Disques.",
+                "Pare-feu."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier avant lancement ?",
+            "hints": [
+              "Le pare-feu."
+            ],
+            "solution": "Les règles de pare-feu.",
+            "check": {
+              "type": "any",
+              "any": [
+                "pare-feu"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une VM inutilisée ?",
+              "options": [
+                "L'arrêter",
+                "La garder",
+                "La publier",
+                "La tripler"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcf-03-q1"
+            }
+          ],
+          "summary": [
+            "VM.",
+            "Pare-feu.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « Cloud Storage »."
+        },
+        {
+          "id": "gcf-04",
+          "title": "Cloud Storage",
+          "duration": 20,
+          "objectives": [
+            "Créer un bucket",
+            "Contrôler l'accès",
+            "Gérer le cycle"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Cloud Storage stocke des objets avec classes et politiques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Buckets.",
+                "Classes.",
+                "Cycle de vie."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier sur un bucket ?",
+            "hints": [
+              "L'accès public."
+            ],
+            "solution": "Que l'accès public est volontaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "public"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une classe de stockage ?",
+              "options": [
+                "Elle adapte le coût",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "L'usage guide la classe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcf-04-q1"
+            }
+          ],
+          "summary": [
+            "Buckets.",
+            "Accès.",
+            "Cycle."
+          ],
+          "nextStep": "Chapitre suivant : « VPC Google Cloud »."
+        },
+        {
+          "id": "gcf-05",
+          "title": "VPC Google Cloud",
+          "duration": 20,
+          "objectives": [
+            "Segmenter",
+            "Filtrer",
+            "Router"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VPC définit des sous-réseaux et des règles de pare-feu."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sous-réseaux.",
+                "Règles.",
+                "Routes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que filtrent les règles ?",
+            "hints": [
+              "Le trafic."
+            ],
+            "solution": "Le trafic entrant et sortant.",
+            "check": {
+              "type": "any",
+              "any": [
+                "trafic"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une route ?",
+              "options": [
+                "Elle dirige le trafic",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle monte"
+              ],
+              "answer": 0,
+              "explanation": "La destination est choisie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gcf-05-q1"
+            }
+          ],
+          "summary": [
+            "VPC.",
+            "Règles.",
+            "Routes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

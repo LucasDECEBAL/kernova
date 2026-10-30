@@ -1,0 +1,322 @@
+{
+  "courseId": "llm-usage",
+  "modules": [
+    {
+      "id": "llm-usage-module",
+      "title": "Utiliser un LLM",
+      "chapters": [
+        {
+          "id": "lu-01",
+          "title": "Génération de texte",
+          "duration": 20,
+          "objectives": [
+            "Guider",
+            "Contrôler",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La génération se guide par le prompt et des paramètres."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Prompt.",
+                "Température.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait la température ?",
+            "hints": [
+              "Elle règle la variabilité."
+            ],
+            "solution": "Elle règle la variabilité de la sortie.",
+            "check": {
+              "type": "any",
+              "any": [
+                "variabilite",
+                "variabilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire de la sortie ?",
+              "options": [
+                "La vérifier",
+                "La publier",
+                "La vendre",
+                "La trier"
+              ],
+              "answer": 0,
+              "explanation": "Le texte peut être faux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lu-01-q1"
+            }
+          ],
+          "summary": [
+            "Génération.",
+            "Paramètres.",
+            "Vérification."
+          ],
+          "nextStep": "Chapitre suivant : « Prompt engineering »."
+        },
+        {
+          "id": "lu-02",
+          "title": "Prompt engineering",
+          "duration": 20,
+          "objectives": [
+            "Structurer",
+            "Donner un contexte",
+            "Demander un format"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un prompt utile précise rôle, contexte, tâche et format attendu."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôle.",
+                "Contexte.",
+                "Format."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que préciser ?",
+            "hints": [
+              "Le format attendu."
+            ],
+            "solution": "Le format attendu.",
+            "check": {
+              "type": "any",
+              "any": [
+                "format"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des instructions ?",
+              "options": [
+                "Les rendre explicites",
+                "Les cacher",
+                "Les publier",
+                "Les trier"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle suit mieux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lu-02-q1"
+            }
+          ],
+          "summary": [
+            "Prompt.",
+            "Contexte.",
+            "Format."
+          ],
+          "nextStep": "Chapitre suivant : « Évaluation des réponses »."
+        },
+        {
+          "id": "lu-03",
+          "title": "Évaluation des réponses",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Tester",
+            "Comparer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "On évalue sur un jeu de cas avec des réponses attendues."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jeu de test.",
+                "Critères.",
+                "Comparaison."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment évaluer ?",
+            "hints": [
+              "Sur un jeu de test."
+            ],
+            "solution": "Sur un jeu de cas avec réponses attendues.",
+            "check": {
+              "type": "any",
+              "any": [
+                "jeu de test"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que comparer ?",
+              "options": [
+                "Attendu et obtenu",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'écart est mesuré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lu-03-q1"
+            }
+          ],
+          "summary": [
+            "Évaluation.",
+            "Jeu de test.",
+            "Critères."
+          ],
+          "nextStep": "Chapitre suivant : « Hallucinations des modèles »."
+        },
+        {
+          "id": "lu-04",
+          "title": "Hallucinations des modèles",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître",
+            "Réduire",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une hallucination est une affirmation plausible mais fausse."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Plausible.",
+                "Fausse.",
+                "Sources."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment réduire ?",
+            "hints": [
+              "Ancrer dans des sources."
+            ],
+            "solution": "Ancrer les réponses dans des sources vérifiables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une réponse fluide est-elle vraie ?",
+              "options": [
+                "Pas forcément",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La fluidité trompe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lu-04-q1"
+            }
+          ],
+          "summary": [
+            "Hallucinations.",
+            "Sources.",
+            "Vérification."
+          ],
+          "nextStep": "Chapitre suivant : « Limites et biais des LLM »."
+        },
+        {
+          "id": "lu-05",
+          "title": "Limites et biais des LLM",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Mesurer",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les LLM héritent des biais et des limites de leurs données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Biais.",
+                "Limites.",
+                "Documentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les limites."
+            ],
+            "solution": "Les limites et usages prévus.",
+            "check": {
+              "type": "any",
+              "any": [
+                "limites"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "Les performances par sous-groupe",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les biais apparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lu-05-q1"
+            }
+          ],
+          "summary": [
+            "Biais.",
+            "Limites.",
+            "Documentation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

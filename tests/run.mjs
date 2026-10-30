@@ -40,6 +40,10 @@ const SUITES = [
   'part13',
   'part14',
   'part15',
+  'part16',
+  'part17',
+  'part18',
+  'part19',
   'a11y'
 ];
 

@@ -1,0 +1,322 @@
+{
+  "courseId": "rgpd-pro",
+  "modules": [
+    {
+      "id": "rgpd-pro-module",
+      "title": "Conformité et droits",
+      "chapters": [
+        {
+          "id": "rp-01",
+          "title": "Conservation des données",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Limiter",
+            "Supprimer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données se conservent pour une durée définie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Durée.",
+                "Archivage.",
+                "Suppression."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que définir ?",
+            "hints": [
+              "La durée."
+            ],
+            "solution": "La durée de conservation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "duree",
+                "durée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire après la durée ?",
+              "options": [
+                "Supprimer/archiver",
+                "Garder",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La conformité est respectée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rp-01-q1"
+            }
+          ],
+          "summary": [
+            "Conservation.",
+            "Durée.",
+            "Suppression."
+          ],
+          "nextStep": "Chapitre suivant : « Propriété intellectuelle logicielle »."
+        },
+        {
+          "id": "rp-02",
+          "title": "Propriété intellectuelle logicielle",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Vérifier",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le code est protégé par le droit d'auteur et les contrats."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Droit d'auteur.",
+                "Contrats.",
+                "Licences."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "Les droits d'usage."
+            ],
+            "solution": "Les droits d'usage du code.",
+            "check": {
+              "type": "any",
+              "any": [
+                "droits"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Les licences",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'usage est encadré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rp-02-q1"
+            }
+          ],
+          "summary": [
+            "PI.",
+            "Droits.",
+            "Licences."
+          ],
+          "nextStep": "Chapitre suivant : « Licences open source »."
+        },
+        {
+          "id": "rp-03",
+          "title": "Licences open source",
+          "duration": 20,
+          "objectives": [
+            "Comparer",
+            "Choisir",
+            "Respecter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les licences définissent réutilisation et obligations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "MIT.",
+                "Apache.",
+                "GPL."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait la GPL ?",
+            "hints": [
+              "Elle impose le partage."
+            ],
+            "solution": "Elle impose de partager les dérivés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "gpl"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que respecter ?",
+              "options": [
+                "Les obligations",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La conformité est assurée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rp-03-q1"
+            }
+          ],
+          "summary": [
+            "Licences.",
+            "Obligations.",
+            "Compatibilité."
+          ],
+          "nextStep": "Chapitre suivant : « Droit d'auteur et logiciels »."
+        },
+        {
+          "id": "rp-04",
+          "title": "Droit d'auteur et logiciels",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Prouver",
+            "Contractualiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'auteur d'un logiciel conserve des droits selon le cadre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Auteur.",
+                "Cession.",
+                "Preuve."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire pour céder ?",
+            "hints": [
+              "Un contrat écrit."
+            ],
+            "solution": "Un contrat écrit de cession.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contrat"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que conserver ?",
+              "options": [
+                "Les preuves",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont traçables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rp-04-q1"
+            }
+          ],
+          "summary": [
+            "Droit d'auteur.",
+            "Cession.",
+            "Preuve."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des secrets et des accès »."
+        },
+        {
+          "id": "rp-05",
+          "title": "Gestion des secrets et des accès",
+          "duration": 20,
+          "objectives": [
+            "Limiter",
+            "Rotation",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les secrets et accès se limitent, tournent et s'auditent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Coffre.",
+                "Rotation.",
+                "Audit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où stocker ?",
+            "hints": [
+              "Dans un coffre."
+            ],
+            "solution": "Dans un coffre de secrets.",
+            "check": {
+              "type": "any",
+              "any": [
+                "coffre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un accès inutile ?",
+              "options": [
+                "Le retirer",
+                "Le garder",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "La surface baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rp-05-q1"
+            }
+          ],
+          "summary": [
+            "Secrets.",
+            "Accès.",
+            "Audit."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,321 @@
+{
+  "courseId": "ia-methodes",
+  "modules": [
+    {
+      "id": "ia-methodes-module",
+      "title": "Méthodes d'apprentissage",
+      "chapters": [
+        {
+          "id": "im-01",
+          "title": "Apprentissage non supervisé",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Regrouper",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le non supervisé cherche des structures sans étiquettes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clusters.",
+                "Réduction.",
+                "Interprétation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que cherche-t-il ?",
+            "hints": [
+              "Des structures."
+            ],
+            "solution": "Des structures dans les données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "structure"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il ?",
+              "options": [
+                "Aucune étiquette",
+                "Des étiquettes",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle découvre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "im-01-q1"
+            }
+          ],
+          "summary": [
+            "Non supervisé.",
+            "Structures.",
+            "Clusters."
+          ],
+          "nextStep": "Chapitre suivant : « Classification »."
+        },
+        {
+          "id": "im-02",
+          "title": "Classification",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La classification prédit une catégorie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Classes.",
+                "Probabilités.",
+                "Seuil."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prédit-elle ?",
+            "hints": [
+              "Une classe."
+            ],
+            "solution": "Une classe parmi plusieurs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "classe"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "Précision/rappel",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont qualifiées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "im-02-q1"
+            }
+          ],
+          "summary": [
+            "Classification.",
+            "Classes.",
+            "Métriques."
+          ],
+          "nextStep": "Chapitre suivant : « Régression »."
+        },
+        {
+          "id": "im-03",
+          "title": "Régression",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La régression prédit une valeur continue."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cible continue.",
+                "Erreur.",
+                "Métriques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prédit-elle ?",
+            "hints": [
+              "Une valeur continue."
+            ],
+            "solution": "Une valeur numérique continue.",
+            "check": {
+              "type": "any",
+              "any": [
+                "continue"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "L'erreur",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'écart est mesuré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "im-03-q1"
+            }
+          ],
+          "summary": [
+            "Régression.",
+            "Valeur.",
+            "Erreur."
+          ],
+          "nextStep": "Chapitre suivant : « Clustering »."
+        },
+        {
+          "id": "im-04",
+          "title": "Clustering",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir k",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le clustering regroupe des points similaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "k-means.",
+                "Distance.",
+                "Interprétation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait k-means ?",
+            "hints": [
+              "Il regroupe par distance."
+            ],
+            "solution": "Il regroupe par proximité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "distance"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que choisir ?",
+              "options": [
+                "Le nombre de clusters",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "k doit être justifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "im-04-q1"
+            }
+          ],
+          "summary": [
+            "Clustering.",
+            "Distance.",
+            "k-means."
+          ],
+          "nextStep": "Chapitre suivant : « Évaluation d'un modèle »."
+        },
+        {
+          "id": "im-05",
+          "title": "Évaluation d'un modèle",
+          "duration": 20,
+          "objectives": [
+            "Choisir les métriques",
+            "Comparer",
+            "Éviter la triche"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'évaluation mesure la performance sur des données non vues."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Train/test.",
+                "Métriques.",
+                "Validation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où évaluer ?",
+            "hints": [
+              "Sur le test."
+            ],
+            "solution": "Sur le jeu de test.",
+            "check": {
+              "type": "any",
+              "any": [
+                "test"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne pas faire ?",
+              "options": [
+                "Évaluer sur l'entraînement",
+                "Tester",
+                "Mesurer",
+                "Comparer"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat serait trompeur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "im-05-q1"
+            }
+          ],
+          "summary": [
+            "Évaluation.",
+            "Test.",
+            "Métriques."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

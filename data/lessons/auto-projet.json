@@ -1,0 +1,137 @@
+{
+  "courseId": "auto-projet",
+  "modules": [
+    {
+      "id": "auto-projet-module",
+      "title": "Projet d'automatisation",
+      "chapters": [
+        {
+          "id": "apj-01",
+          "title": "Documenter un projet d'automatisation",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Illustrer",
+            "Maintenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le projet documente le besoin, le flux et les indicateurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Besoin.",
+                "Flux.",
+                "Indicateurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Le flux et les indicateurs."
+            ],
+            "solution": "Le flux et les indicateurs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "flux"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi documenter ?",
+              "options": [
+                "Maintenir et transmettre",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le projet reste compris.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apj-01-q1"
+            }
+          ],
+          "summary": [
+            "Documentation.",
+            "Flux.",
+            "Indicateurs."
+          ],
+          "nextStep": "Chapitre suivant : « Mesurer le gain »."
+        },
+        {
+          "id": "apj-02",
+          "title": "Mesurer le gain",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Mesurer",
+            "Comparer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le gain se mesure avant et après l'automatisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Temps.",
+                "Erreurs.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que comparer ?",
+            "hints": [
+              "Avant et après."
+            ],
+            "solution": "Avant et après.",
+            "check": {
+              "type": "any",
+              "any": [
+                "avant",
+                "apres",
+                "après"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "Temps et erreurs",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le gain est prouvé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apj-02-q1"
+            }
+          ],
+          "summary": [
+            "Gain.",
+            "Mesure.",
+            "Comparaison."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

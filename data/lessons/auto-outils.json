@@ -1,0 +1,323 @@
+{
+  "courseId": "auto-outils",
+  "modules": [
+    {
+      "id": "auto-outils-module",
+      "title": "Outils d'automatisation",
+      "chapters": [
+        {
+          "id": "ax-01",
+          "title": "Déclencheurs et actions",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Construire",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un workflow combine un déclencheur et des actions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Déclencheur.",
+                "Condition.",
+                "Action."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un déclencheur ?",
+            "hints": [
+              "Il démarre."
+            ],
+            "solution": "Il démarre le workflow.",
+            "check": {
+              "type": "any",
+              "any": [
+                "demarre",
+                "démarre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que suit le déclencheur ?",
+              "options": [
+                "Des actions",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le flux s'exécute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ax-01-q1"
+            }
+          ],
+          "summary": [
+            "Déclencheur.",
+            "Actions.",
+            "Test."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à n8n »."
+        },
+        {
+          "id": "ax-02",
+          "title": "Introduction à n8n",
+          "duration": 20,
+          "objectives": [
+            "Installer",
+            "Construire",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "n8n connecte des services par des nœuds visuels."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Nœuds.",
+                "Workflow.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un nœud ?",
+            "hints": [
+              "Une étape."
+            ],
+            "solution": "Une étape du workflow.",
+            "check": {
+              "type": "any",
+              "any": [
+                "etape",
+                "étape"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les exécutions",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont vues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ax-02-q1"
+            }
+          ],
+          "summary": [
+            "n8n.",
+            "Nœuds.",
+            "Exécutions."
+          ],
+          "nextStep": "Chapitre suivant : « Construire un workflow n8n »."
+        },
+        {
+          "id": "ax-03",
+          "title": "Construire un workflow n8n",
+          "duration": 20,
+          "objectives": [
+            "Déclencher",
+            "Transformer",
+            "Envoyer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un workflow lit, transforme et envoie des données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lecture.",
+                "Transformation.",
+                "Envoi."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des données ?",
+            "hints": [
+              "Les transformer."
+            ],
+            "solution": "Les transformer puis les envoyer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "transformer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester ?",
+              "options": [
+                "Chaque étape",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le flux est fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ax-03-q1"
+            }
+          ],
+          "summary": [
+            "Workflow.",
+            "Transform.",
+            "Envoi."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les erreurs d'un workflow »."
+        },
+        {
+          "id": "ax-04",
+          "title": "Gérer les erreurs d'un workflow",
+          "duration": 20,
+          "objectives": [
+            "Détecter",
+            "Relancer",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les erreurs se détectent, se relancent avec limites et alertent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Erreurs.",
+                "Relance.",
+                "Alerte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une erreur répétée ?",
+            "hints": [
+              "Alerter."
+            ],
+            "solution": "Alerter après plusieurs échecs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "alerte"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les relances",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les boucles infinies sont évitées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ax-04-q1"
+            }
+          ],
+          "summary": [
+            "Erreurs.",
+            "Relance.",
+            "Alerte."
+          ],
+          "nextStep": "Chapitre suivant : « Manipuler des données JSON »."
+        },
+        {
+          "id": "ax-05",
+          "title": "Manipuler des données JSON",
+          "duration": 20,
+          "objectives": [
+            "Lire",
+            "Transformer",
+            "Valider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "JSON transporte des structures entre services."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Objets.",
+                "Tableaux.",
+                "Validation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après réception ?",
+            "hints": [
+              "Valider la forme."
+            ],
+            "solution": "Valider la forme.",
+            "check": {
+              "type": "any",
+              "any": [
+                "valider"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un JSON invalide ?",
+              "options": [
+                "Le rejeter",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "La fiabilité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ax-05-q1"
+            }
+          ],
+          "summary": [
+            "JSON.",
+            "Validation.",
+            "Transformation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

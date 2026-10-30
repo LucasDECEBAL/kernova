@@ -1,0 +1,321 @@
+{
+  "courseId": "seo-structure",
+  "modules": [
+    {
+      "id": "seo-structure-module",
+      "title": "Indexation",
+      "chapters": [
+        {
+          "id": "ss-01",
+          "title": "Sitemap XML",
+          "duration": 20,
+          "objectives": [
+            "Générer",
+            "Publier",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un sitemap liste les pages à explorer."
+            },
+            {
+              "type": "list",
+              "items": [
+                "URLs.",
+                "Dates.",
+                "Publication."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que contient un sitemap ?",
+            "hints": [
+              "Les URL."
+            ],
+            "solution": "Les URL du site.",
+            "check": {
+              "type": "any",
+              "any": [
+                "url"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où le déclarer ?",
+              "options": [
+                "Robots.txt",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le crawler le trouve.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ss-01-q1"
+            }
+          ],
+          "summary": [
+            "Sitemap.",
+            "URLs.",
+            "Publication."
+          ],
+          "nextStep": "Chapitre suivant : « Robots.txt »."
+        },
+        {
+          "id": "ss-02",
+          "title": "Robots.txt",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Limiter",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Robots.txt guide les robots, sans sécurité forte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Autorisations.",
+                "Sitemap.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Robots.txt protège-t-il ?",
+            "hints": [
+              "Non."
+            ],
+            "solution": "Non : il n'empêche pas l'accès.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que déclarer ?",
+              "options": [
+                "Le sitemap",
+                "Le CSS",
+                "Le DNS",
+                "Le mot de passe"
+              ],
+              "answer": 0,
+              "explanation": "Le crawler le trouve.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ss-02-q1"
+            }
+          ],
+          "summary": [
+            "Robots.",
+            "Sitemap.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Données structurées »."
+        },
+        {
+          "id": "ss-03",
+          "title": "Données structurées",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Valider",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données structurées décrivent le contenu aux moteurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "JSON-LD.",
+                "Types.",
+                "Validation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel format ?",
+            "hints": [
+              "JSON-LD."
+            ],
+            "solution": "JSON-LD.",
+            "check": {
+              "type": "any",
+              "any": [
+                "json-ld"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que valider ?",
+              "options": [
+                "Le schéma",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont vues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ss-03-q1"
+            }
+          ],
+          "summary": [
+            "Données structurées.",
+            "JSON-LD.",
+            "Validation."
+          ],
+          "nextStep": "Chapitre suivant : « Accessibilité et référencement »."
+        },
+        {
+          "id": "ss-04",
+          "title": "Accessibilité et référencement",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Améliorer",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une page accessible est souvent mieux comprise et référencée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sémantique.",
+                "Alternatives.",
+                "Clavier."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que partagent SEO et a11y ?",
+            "hints": [
+              "La structure."
+            ],
+            "solution": "Une structure sémantique claire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "structure"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les alternatives",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les contenus sont compris.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ss-04-q1"
+            }
+          ],
+          "summary": [
+            "A11y.",
+            "SEO.",
+            "Structure."
+          ],
+          "nextStep": "Chapitre suivant : « Analyse des erreurs de déploiement »."
+        },
+        {
+          "id": "ss-05",
+          "title": "Analyse des erreurs de déploiement",
+          "duration": 20,
+          "objectives": [
+            "Diagnostiquer",
+            "Corriger",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les erreurs de déploiement se diagnostiquent par logs et tests."
+            },
+            {
+              "type": "list",
+              "items": [
+                "404/500.",
+                "Cache.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Les routes et statuts."
+            ],
+            "solution": "Les routes et statuts HTTP.",
+            "check": {
+              "type": "any",
+              "any": [
+                "statut"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où chercher ?",
+              "options": [
+                "Dans les logs",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Dans le logo"
+              ],
+              "answer": 0,
+              "explanation": "La cause est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ss-05-q1"
+            }
+          ],
+          "summary": [
+            "Erreurs.",
+            "Logs.",
+            "Tests."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

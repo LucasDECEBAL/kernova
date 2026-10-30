@@ -1,0 +1,324 @@
+{
+  "courseId": "gestion-agile",
+  "modules": [
+    {
+      "id": "gestion-agile-module",
+      "title": "Agilité",
+      "chapters": [
+        {
+          "id": "ga-01",
+          "title": "Méthodes agiles",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Itérer",
+            "Livrer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'agilité livre par petites itérations avec retours."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Itérations.",
+                "Retours.",
+                "Priorités."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que livrer ?",
+            "hints": [
+              "Par petites itérations."
+            ],
+            "solution": "Par petites itérations livrables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "iteration",
+                "itération"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier ?",
+              "options": [
+                "La valeur livrée",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le retour est rapide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ga-01-q1"
+            }
+          ],
+          "summary": [
+            "Agilité.",
+            "Itérations.",
+            "Valeur."
+          ],
+          "nextStep": "Chapitre suivant : « Scrum »."
+        },
+        {
+          "id": "ga-02",
+          "title": "Scrum",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Organiser",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Scrum organise des sprints avec rôles et cérémonies."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sprint.",
+                "Rôles.",
+                "Revue."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un sprint ?",
+            "hints": [
+              "Une itération courte."
+            ],
+            "solution": "Une itération courte et livrable.",
+            "check": {
+              "type": "any",
+              "any": [
+                "iteration",
+                "itération"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire en revue ?",
+              "options": [
+                "Montrer l'incrément",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les retours arrivent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ga-02-q1"
+            }
+          ],
+          "summary": [
+            "Scrum.",
+            "Sprint.",
+            "Revue."
+          ],
+          "nextStep": "Chapitre suivant : « Kanban »."
+        },
+        {
+          "id": "ga-03",
+          "title": "Kanban",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Visualiser",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Kanban visualise le flux et limite le travail en cours."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Colonnes.",
+                "WIP.",
+                "Flux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "Le travail en cours."
+            ],
+            "solution": "Le travail en cours (WIP).",
+            "check": {
+              "type": "any",
+              "any": [
+                "wip",
+                "en cours"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que visualiser ?",
+              "options": [
+                "Le flux",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les blocages apparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ga-03-q1"
+            }
+          ],
+          "summary": [
+            "Kanban.",
+            "Flux.",
+            "WIP."
+          ],
+          "nextStep": "Chapitre suivant : « Planification des sprints »."
+        },
+        {
+          "id": "ga-04",
+          "title": "Planification des sprints",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Estimer",
+            "Engager"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La planification choisit un objectif atteignable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Objectif.",
+                "Capacité.",
+                "Engagement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que choisir ?",
+            "hints": [
+              "Un objectif clair."
+            ],
+            "solution": "Un objectif clair et atteignable.",
+            "check": {
+              "type": "any",
+              "any": [
+                "objectif"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que respecter ?",
+              "options": [
+                "La capacité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'engagement est réaliste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ga-04-q1"
+            }
+          ],
+          "summary": [
+            "Sprint.",
+            "Objectif.",
+            "Capacité."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des priorités »."
+        },
+        {
+          "id": "ga-05",
+          "title": "Gestion des priorités",
+          "duration": 20,
+          "objectives": [
+            "Prioriser",
+            "Justifier",
+            "Réviser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La priorité combine valeur, risque et coût."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Valeur.",
+                "Risque.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que combiner ?",
+            "hints": [
+              "Valeur et risque."
+            ],
+            "solution": "Valeur, risque et coût.",
+            "check": {
+              "type": "any",
+              "any": [
+                "valeur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réviser ?",
+              "options": [
+                "Les priorités",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le cap reste juste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ga-05-q1"
+            }
+          ],
+          "summary": [
+            "Priorités.",
+            "Valeur.",
+            "Risque."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

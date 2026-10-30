@@ -1,0 +1,321 @@
+{
+  "courseId": "archi-patterns",
+  "modules": [
+    {
+      "id": "archi-patterns-module",
+      "title": "Patterns applicatifs",
+      "chapters": [
+        {
+          "id": "ap-01",
+          "title": "Observer",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Découpler",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Observer notifie des abonnés lors d'un changement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événement.",
+                "Abonnés.",
+                "Découplage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Observer ?",
+            "hints": [
+              "Il notifie les abonnés."
+            ],
+            "solution": "Il notifie les abonnés sur changement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "notifie"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il retirer ?",
+              "options": [
+                "Les abonnements inutiles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les fuites sont évitées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ap-01-q1"
+            }
+          ],
+          "summary": [
+            "Observer.",
+            "Événements.",
+            "Abonnés."
+          ],
+          "nextStep": "Chapitre suivant : « Adapter »."
+        },
+        {
+          "id": "ap-02",
+          "title": "Adapter",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Isoler",
+            "Remplacer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Adapter traduit une interface vers une autre attendue."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Interface.",
+                "Traduction.",
+                "Isolation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Adapter ?",
+            "hints": [
+              "Il traduit une interface."
+            ],
+            "solution": "Il traduit une interface vers une autre.",
+            "check": {
+              "type": "any",
+              "any": [
+                "traduit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi adapter ?",
+              "options": [
+                "Remplacer une dépendance",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le changement reste local.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ap-02-q1"
+            }
+          ],
+          "summary": [
+            "Adapter.",
+            "Traduction.",
+            "Isolation."
+          ],
+          "nextStep": "Chapitre suivant : « Repository »."
+        },
+        {
+          "id": "ap-03",
+          "title": "Repository",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Abstraire",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Repository abstrait la persistance derrière une interface."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Interface.",
+                "Persistance.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que cache Repository ?",
+            "hints": [
+              "La persistance."
+            ],
+            "solution": "La persistance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "persistance"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet-il ?",
+              "options": [
+                "Tester sans base",
+                "Tout cacher",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le test est isolé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ap-03-q1"
+            }
+          ],
+          "summary": [
+            "Repository.",
+            "Persistance.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Injection de dépendances »."
+        },
+        {
+          "id": "ap-04",
+          "title": "Injection de dépendances",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Injecter",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'injection fournit les dépendances au lieu de les créer en interne."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dépendance.",
+                "Injection.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait l'injection ?",
+            "hints": [
+              "Elle fournit les dépendances."
+            ],
+            "solution": "Elle fournit les dépendances de l'extérieur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "fournit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que facilite-t-elle ?",
+              "options": [
+                "Les tests",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les doubles sont faciles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ap-04-q1"
+            }
+          ],
+          "summary": [
+            "Injection.",
+            "Dépendances.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Monolithe et microservices »."
+        },
+        {
+          "id": "ap-05",
+          "title": "Monolithe et microservices",
+          "duration": 20,
+          "objectives": [
+            "Comparer",
+            "Choisir",
+            "Découper"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le monolithe modulaire reste souvent le bon défaut ; les microservices ajoutent des coûts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Monolithe.",
+                "Microservices.",
+                "Coûts."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que privilégier au départ ?",
+            "hints": [
+              "Le monolithe."
+            ],
+            "solution": "Un monolithe bien modularisé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "monolithe"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que coûtent les microservices ?",
+              "options": [
+                "Plus d'opérations",
+                "Moins de tests",
+                "Moins de réseau",
+                "Moins de supervision"
+              ],
+              "answer": 0,
+              "explanation": "La complexité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ap-05-q1"
+            }
+          ],
+          "summary": [
+            "Monolithe.",
+            "Microservices.",
+            "Coûts."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

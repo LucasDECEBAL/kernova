@@ -1,0 +1,322 @@
+{
+  "courseId": "mobile-fondamentaux",
+  "modules": [
+    {
+      "id": "mobile-fondamentaux-module",
+      "title": "Mobile fondamentaux",
+      "chapters": [
+        {
+          "id": "mf-01",
+          "title": "Introduction au développement mobile",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le mobile a des contraintes d'écran, de réseau et de batterie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Écran.",
+                "Réseau.",
+                "Batterie."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "La consommation."
+            ],
+            "solution": "La consommation et les données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "consommation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que considérer ?",
+              "options": [
+                "Les contraintes mobiles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'usage réel compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mf-01-q1"
+            }
+          ],
+          "summary": [
+            "Mobile.",
+            "Contraintes.",
+            "Choix."
+          ],
+          "nextStep": "Chapitre suivant : « Natif ou multiplateforme »."
+        },
+        {
+          "id": "mf-02",
+          "title": "Natif ou multiplateforme",
+          "duration": 20,
+          "objectives": [
+            "Comparer",
+            "Choisir",
+            "Assumer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le natif donne accès complet ; le multiplateforme réduit le code."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Natif.",
+                "Multiplateforme.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel choix pour une petite équipe ?",
+            "hints": [
+              "Le multiplateforme."
+            ],
+            "solution": "Le multiplateforme.",
+            "check": {
+              "type": "any",
+              "any": [
+                "multiplateforme"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que perd le multiplateforme ?",
+              "options": [
+                "Un peu de contrôle natif",
+                "Tout",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le compromis existe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mf-02-q1"
+            }
+          ],
+          "summary": [
+            "Natif/multi.",
+            "Coût.",
+            "Contrôle."
+          ],
+          "nextStep": "Chapitre suivant : « Cycle de vie d'une application »."
+        },
+        {
+          "id": "mf-03",
+          "title": "Cycle de vie d'une application",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Sauvegarder",
+            "Restaurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une app peut être suspendue : il faut sauver et restaurer l'état."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Arrière-plan.",
+                "État.",
+                "Restauration."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire avant l'arrière-plan ?",
+            "hints": [
+              "Sauvegarder l'état."
+            ],
+            "solution": "Sauvegarder l'état.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sauvegard"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire au retour ?",
+              "options": [
+                "Restaurer",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La saisie est conservée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mf-03-q1"
+            }
+          ],
+          "summary": [
+            "Cycle.",
+            "Sauvegarde.",
+            "Restauration."
+          ],
+          "nextStep": "Chapitre suivant : « Navigation mobile »."
+        },
+        {
+          "id": "mf-04",
+          "title": "Navigation mobile",
+          "duration": 20,
+          "objectives": [
+            "Structurer",
+            "Limiter",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La navigation mobile reste simple et prévisible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Onglets.",
+                "Pile.",
+                "Retour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Combien de destinations ?",
+            "hints": [
+              "Trois à cinq."
+            ],
+            "solution": "Trois à cinq destinations principales.",
+            "check": {
+              "type": "any",
+              "any": [
+                "trois",
+                "cinq"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garder ?",
+              "options": [
+                "Le retour",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La navigation est prévisible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mf-04-q1"
+            }
+          ],
+          "summary": [
+            "Navigation.",
+            "Onglets.",
+            "Retour."
+          ],
+          "nextStep": "Chapitre suivant : « Interfaces adaptatives »."
+        },
+        {
+          "id": "mf-05",
+          "title": "Interfaces adaptatives",
+          "duration": 20,
+          "objectives": [
+            "Adapter",
+            "Tester",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une interface s'adapte aux tailles et orientations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tailles.",
+                "Orientation.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Plusieurs tailles."
+            ],
+            "solution": "Plusieurs tailles et orientations.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tailles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire du texte ?",
+              "options": [
+                "Rester lisible",
+                "Réduire",
+                "Supprimer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La lisibilité prime.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mf-05-q1"
+            }
+          ],
+          "summary": [
+            "Adaptatif.",
+            "Tailles.",
+            "Tests."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

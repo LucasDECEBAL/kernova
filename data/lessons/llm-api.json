@@ -1,0 +1,321 @@
+{
+  "courseId": "llm-api",
+  "modules": [
+    {
+      "id": "llm-api-module",
+      "title": "API et intégration",
+      "chapters": [
+        {
+          "id": "la-01",
+          "title": "Utilisation d'API d'IA",
+          "duration": 20,
+          "objectives": [
+            "Appeler",
+            "Gérer les erreurs",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une API d'IA s'appelle avec un prompt et renvoie un texte structuré."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Requête.",
+                "Réponse.",
+                "Erreurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gérer ?",
+            "hints": [
+              "Les erreurs et limites."
+            ],
+            "solution": "Les erreurs, délais et quotas.",
+            "check": {
+              "type": "any",
+              "any": [
+                "erreurs"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des erreurs ?",
+              "options": [
+                "Les traiter",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le service reste fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "la-01-q1"
+            }
+          ],
+          "summary": [
+            "API.",
+            "Requête.",
+            "Erreurs."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurisation des clés API »."
+        },
+        {
+          "id": "la-02",
+          "title": "Sécurisation des clés API",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Limiter",
+            "Révoquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une clé API vit dans un coffre et ne doit jamais être côté client."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Coffre.",
+                "Serveur.",
+                "Rotation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où mettre la clé ?",
+            "hints": [
+              "Côté serveur."
+            ],
+            "solution": "Côté serveur, dans un coffre.",
+            "check": {
+              "type": "any",
+              "any": [
+                "serveur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une clé exposée ?",
+              "options": [
+                "La révoquer",
+                "La renommer",
+                "La déplacer",
+                "La commenter"
+              ],
+              "answer": 0,
+              "explanation": "Elle est compromise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "la-02-q1"
+            }
+          ],
+          "summary": [
+            "Clés.",
+            "Coffre.",
+            "Rotation."
+          ],
+          "nextStep": "Chapitre suivant : « Structured outputs »."
+        },
+        {
+          "id": "la-03",
+          "title": "Structured outputs",
+          "duration": 20,
+          "objectives": [
+            "Définir un schéma",
+            "Valider",
+            "Gérer les écarts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un schéma impose une sortie structurée et validable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schéma.",
+                "Validation.",
+                "Erreurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une sortie invalide ?",
+            "hints": [
+              "La rejeter/relancer."
+            ],
+            "solution": "La rejeter ou relancer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "valider"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi un schéma ?",
+              "options": [
+                "Une sortie exploitable",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le format est garanti.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "la-03-q1"
+            }
+          ],
+          "summary": [
+            "Schéma.",
+            "Validation.",
+            "Robustesse."
+          ],
+          "nextStep": "Chapitre suivant : « Appels d'outils »."
+        },
+        {
+          "id": "la-04",
+          "title": "Appels d'outils",
+          "duration": 20,
+          "objectives": [
+            "Déclarer",
+            "Exécuter",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le modèle peut demander un outil ; l'application exécute et renvoie le résultat."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Outils.",
+                "Exécution.",
+                "Contrôle."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Qui exécute l'outil ?",
+            "hints": [
+              "L'application."
+            ],
+            "solution": "L'application, pas le modèle.",
+            "check": {
+              "type": "any",
+              "any": [
+                "application"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier avant exécution ?",
+              "options": [
+                "Les droits et paramètres",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'outil est contrôlé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "la-04-q1"
+            }
+          ],
+          "summary": [
+            "Outils.",
+            "Contrôle.",
+            "Exécution."
+          ],
+          "nextStep": "Chapitre suivant : « Coûts et latence »."
+        },
+        {
+          "id": "la-05",
+          "title": "Coûts et latence",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Limiter",
+            "Mettre en cache"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les coûts et la latence dépendent des tokens et des appels."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tokens.",
+                "Cache.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des répétitions ?",
+            "hints": [
+              "Les mettre en cache."
+            ],
+            "solution": "Mettre en cache les réponses stables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cache"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les tokens",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "la-05-q1"
+            }
+          ],
+          "summary": [
+            "Coûts.",
+            "Cache.",
+            "Latence."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

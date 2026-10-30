@@ -1,0 +1,323 @@
+{
+  "courseId": "llm-avance",
+  "modules": [
+    {
+      "id": "llm-avance-module",
+      "title": "LLM avancé",
+      "chapters": [
+        {
+          "id": "lv-01",
+          "title": "Fine-tuning",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le fine-tuning adapte un modèle à des données spécifiques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Coût.",
+                "Évaluation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand l'utiliser ?",
+            "hints": [
+              "Quand le prompt ne suffit pas."
+            ],
+            "solution": "Quand le prompt et le RAG ne suffisent pas.",
+            "check": {
+              "type": "any",
+              "any": [
+                "prompt"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il ?",
+              "options": [
+                "Des données de qualité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle apprend le style.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lv-01-q1"
+            }
+          ],
+          "summary": [
+            "Fine-tuning.",
+            "Données.",
+            "Évaluation."
+          ],
+          "nextStep": "Chapitre suivant : « Quantification »."
+        },
+        {
+          "id": "lv-02",
+          "title": "Quantification",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La quantification réduit la précision des poids pour économiser mémoire et calcul."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Précision.",
+                "Mémoire.",
+                "Qualité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gagne-t-on ?",
+            "hints": [
+              "De la mémoire."
+            ],
+            "solution": "De la mémoire et de la vitesse.",
+            "check": {
+              "type": "any",
+              "any": [
+                "memoire",
+                "mémoire"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "La qualité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le compromis compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lv-02-q1"
+            }
+          ],
+          "summary": [
+            "Quantification.",
+            "Mémoire.",
+            "Qualité."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement de modèles locaux »."
+        },
+        {
+          "id": "lv-03",
+          "title": "Déploiement de modèles locaux",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Exécuter",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un modèle local évite l'envoi de données à un tiers."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Local.",
+                "Ressources.",
+                "Confidentialité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel avantage ?",
+            "hints": [
+              "Les données restent locales."
+            ],
+            "solution": "Les données restent locales.",
+            "check": {
+              "type": "any",
+              "any": [
+                "local"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il ?",
+              "options": [
+                "Des ressources",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le matériel compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lv-03-q1"
+            }
+          ],
+          "summary": [
+            "Local.",
+            "Confidentialité.",
+            "Ressources."
+          ],
+          "nextStep": "Chapitre suivant : « Protection des données »."
+        },
+        {
+          "id": "lv-04",
+          "title": "Protection des données",
+          "duration": 20,
+          "objectives": [
+            "Minimiser",
+            "Anonymiser",
+            "Contrôler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données envoyées à un LLM doivent être minimisées et contrôlées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Minimisation.",
+                "Politique."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que minimiser ?",
+            "hints": [
+              "Les données personnelles."
+            ],
+            "solution": "Les données personnelles envoyées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "personnelles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "La politique du fournisseur",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont cadrées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lv-04-q1"
+            }
+          ],
+          "summary": [
+            "Données.",
+            "Minimisation.",
+            "Contrôle."
+          ],
+          "nextStep": "Chapitre suivant : « Prompt injection »."
+        },
+        {
+          "id": "lv-05",
+          "title": "Prompt injection",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Prévenir",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une injection détourne le modèle via un contenu piégé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Injection.",
+                "Séparation.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment limiter ?",
+            "hints": [
+              "Séparer instructions et données."
+            ],
+            "solution": "Séparer les instructions des données et limiter les outils.",
+            "check": {
+              "type": "any",
+              "any": [
+                "separation",
+                "séparation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des contenus tiers ?",
+              "options": [
+                "Les traiter comme non fiables",
+                "Leur faire confiance",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le risque diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lv-05-q1"
+            }
+          ],
+          "summary": [
+            "Injection.",
+            "Séparation.",
+            "Limites."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

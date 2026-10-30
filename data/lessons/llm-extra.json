@@ -1,0 +1,509 @@
+{
+  "courseId": "llm-extra",
+  "modules": [
+    {
+      "id": "llm-extra-module",
+      "title": "Applications concrètes",
+      "chapters": [
+        {
+          "id": "lx2-01",
+          "title": "Analyser des documents",
+          "duration": 20,
+          "objectives": [
+            "Extraire",
+            "Résumer",
+            "Citer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'analyse documentaire extrait et cite les passages utiles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Extraction.",
+                "Résumé.",
+                "Sources."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que citer ?",
+            "hints": [
+              "Les sources."
+            ],
+            "solution": "Les sources utilisées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un document long ?",
+              "options": [
+                "Le découper",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "Les passages sont ciblés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-01-q1"
+            }
+          ],
+          "summary": [
+            "Documents.",
+            "Extraction.",
+            "Citations."
+          ],
+          "nextStep": "Chapitre suivant : « Classifier des textes »."
+        },
+        {
+          "id": "lx2-02",
+          "title": "Classifier des textes",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Mesurer",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La classification attribue une catégorie à un texte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Catégories.",
+                "Seuil.",
+                "Évaluation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "La précision."
+            ],
+            "solution": "La précision et le rappel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "precision",
+                "précision"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des cas incertains ?",
+              "options": [
+                "Les escalader",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "L'humain décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-02-q1"
+            }
+          ],
+          "summary": [
+            "Classification.",
+            "Mesures.",
+            "Escalade."
+          ],
+          "nextStep": "Chapitre suivant : « Extraire des informations »."
+        },
+        {
+          "id": "lx2-03",
+          "title": "Extraire des informations",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Valider",
+            "Stocker"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'extraction rempli un schéma validé avant stockage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schéma.",
+                "Validation.",
+                "Stockage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que valider ?",
+            "hints": [
+              "Les champs."
+            ],
+            "solution": "Les champs extraits.",
+            "check": {
+              "type": "any",
+              "any": [
+                "champs"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un champ manquant ?",
+              "options": [
+                "Le signaler",
+                "L'inventer",
+                "Le publier",
+                "Le trier"
+              ],
+              "answer": 0,
+              "explanation": "La qualité est contrôlée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-03-q1"
+            }
+          ],
+          "summary": [
+            "Extraction.",
+            "Schéma.",
+            "Stockage."
+          ],
+          "nextStep": "Chapitre suivant : « Créer un assistant de programmation »."
+        },
+        {
+          "id": "lx2-04",
+          "title": "Créer un assistant de programmation",
+          "duration": 20,
+          "objectives": [
+            "Cadrer",
+            "Vérifier",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un assistant de code propose, l'humain vérifie et décide."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Suggestions.",
+                "Tests.",
+                "Revue."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des suggestions ?",
+            "hints": [
+              "Les tester."
+            ],
+            "solution": "Les tester et les relire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tester"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui valide le code ?",
+              "options": [
+                "L'humain",
+                "Le modèle",
+                "Personne",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La responsabilité reste humaine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-04-q1"
+            }
+          ],
+          "summary": [
+            "Assistant.",
+            "Tests.",
+            "Revue."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser une tâche avec un modèle »."
+        },
+        {
+          "id": "lx2-05",
+          "title": "Automatiser une tâche avec un modèle",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Tester",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une automatisation LLM exige des tests et une supervision."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cas.",
+                "Tests.",
+                "Supervision."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garder ?",
+            "hints": [
+              "La validation humaine."
+            ],
+            "solution": "Une validation humaine sur les cas sensibles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "humaine"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des cas incertains ?",
+              "options": [
+                "Les escalader",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "L'humain décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-05-q1"
+            }
+          ],
+          "summary": [
+            "Automatisation.",
+            "Tests.",
+            "Humain."
+          ],
+          "nextStep": "Chapitre suivant : « Évaluer une application IA »."
+        },
+        {
+          "id": "lx2-06",
+          "title": "Évaluer une application IA",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Mesurer",
+            "Itérer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application IA s'évalue sur des cas réels avec critères."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cas.",
+                "Critères.",
+                "Suivi."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que suivre ?",
+            "hints": [
+              "La qualité perçue."
+            ],
+            "solution": "La qualité et la satisfaction.",
+            "check": {
+              "type": "any",
+              "any": [
+                "qualite",
+                "qualité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des échecs ?",
+              "options": [
+                "Les analyser",
+                "Les cacher",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le produit s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-06-q1"
+            }
+          ],
+          "summary": [
+            "Évaluation.",
+            "Critères.",
+            "Itération."
+          ],
+          "nextStep": "Chapitre suivant : « Mettre en production une application IA »."
+        },
+        {
+          "id": "lx2-07",
+          "title": "Mettre en production une application IA",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Surveiller",
+            "Revenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La mise en production prévoit limites, supervision et retour arrière."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Limites.",
+                "Alertes.",
+                "Rollback."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prévoir ?",
+            "hints": [
+              "Un retour arrière."
+            ],
+            "solution": "Un retour arrière.",
+            "check": {
+              "type": "any",
+              "any": [
+                "retour"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et coûts",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La production reste saine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-07-q1"
+            }
+          ],
+          "summary": [
+            "Production.",
+            "Alertes.",
+            "Rollback."
+          ],
+          "nextStep": "Chapitre suivant : « Documenter une application IA »."
+        },
+        {
+          "id": "lx2-08",
+          "title": "Documenter une application IA",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Limiter",
+            "Maintenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La documentation précise usages, limites et évaluations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Usages.",
+                "Limites.",
+                "Évaluations."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les limites."
+            ],
+            "solution": "Les limites et usages prévus.",
+            "check": {
+              "type": "any",
+              "any": [
+                "limites"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi documenter ?",
+              "options": [
+                "Un usage responsable",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les attentes sont claires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lx2-08-q1"
+            }
+          ],
+          "summary": [
+            "Documentation.",
+            "Limites.",
+            "Responsabilité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

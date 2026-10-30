@@ -1,0 +1,323 @@
+{
+  "courseId": "ia-qualite",
+  "modules": [
+    {
+      "id": "ia-qualite-module",
+      "title": "Qualité des modèles",
+      "chapters": [
+        {
+          "id": "iq-01",
+          "title": "Surapprentissage",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître",
+            "Corriger",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le surapprentissage mémorise les données et généralise mal."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Train parfait.",
+                "Test faible.",
+                "Régularisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que révèle-t-il ?",
+            "hints": [
+              "Un écart train/test."
+            ],
+            "solution": "Un écart entre train et test.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ecart",
+                "écart"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire ?",
+              "options": [
+                "Régulariser/simplifier",
+                "Ignorer",
+                "Publier",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle généralise mieux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "iq-01-q1"
+            }
+          ],
+          "summary": [
+            "Overfitting.",
+            "Généralisation.",
+            "Régularisation."
+          ],
+          "nextStep": "Chapitre suivant : « Sous-apprentissage »."
+        },
+        {
+          "id": "iq-02",
+          "title": "Sous-apprentissage",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître",
+            "Corriger",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le sous-apprentissage est trop simple pour les données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Train faible.",
+                "Test faible.",
+                "Complexité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire ?",
+            "hints": [
+              "Un modèle plus adapté."
+            ],
+            "solution": "Un modèle plus adapté ou de meilleures variables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "modele",
+                "modèle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que révèle-t-il ?",
+              "options": [
+                "Une performance faible partout",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle n'apprend pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "iq-02-q1"
+            }
+          ],
+          "summary": [
+            "Underfitting.",
+            "Complexité.",
+            "Modèle."
+          ],
+          "nextStep": "Chapitre suivant : « Validation croisée »."
+        },
+        {
+          "id": "iq-03",
+          "title": "Validation croisée",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Réaliser",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La validation croisée évalue sur plusieurs découpages."
+            },
+            {
+              "type": "list",
+              "items": [
+                "k-fold.",
+                "Moyenne.",
+                "Stabilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait k-fold ?",
+            "hints": [
+              "Il alterne les plis."
+            ],
+            "solution": "Il alterne les jeux d'entraînement et de test.",
+            "check": {
+              "type": "any",
+              "any": [
+                "plis"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gagne-t-on ?",
+              "options": [
+                "Une estimation plus stable",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La variance baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "iq-03-q1"
+            }
+          ],
+          "summary": [
+            "Validation croisée.",
+            "k-fold.",
+            "Stabilité."
+          ],
+          "nextStep": "Chapitre suivant : « Biais des données »."
+        },
+        {
+          "id": "iq-04",
+          "title": "Biais des données",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Mesurer",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Des données non représentatives créent des biais."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Représentativité.",
+                "Sous-groupes.",
+                "Mesures."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Par sous-groupe."
+            ],
+            "solution": "Les performances par sous-groupe.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sous-groupe"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire ?",
+              "options": [
+                "Diversifier et mesurer",
+                "Ignorer",
+                "Publier",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le biais diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "iq-04-q1"
+            }
+          ],
+          "summary": [
+            "Biais.",
+            "Sous-groupes.",
+            "Mesures."
+          ],
+          "nextStep": "Chapitre suivant : « Éthique de l'IA »."
+        },
+        {
+          "id": "iq-05",
+          "title": "Éthique de l'IA",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Encadrer",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'éthique couvre transparence, équité et responsabilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Transparence.",
+                "Équité.",
+                "Responsabilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les limites et usages."
+            ],
+            "solution": "Les limites et les usages prévus.",
+            "check": {
+              "type": "any",
+              "any": [
+                "limites"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui est responsable ?",
+              "options": [
+                "L'organisation",
+                "Personne",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La responsabilité est humaine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "iq-05-q1"
+            }
+          ],
+          "summary": [
+            "Éthique.",
+            "Transparence.",
+            "Limites."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

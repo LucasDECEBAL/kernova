@@ -1,0 +1,322 @@
+{
+  "courseId": "seo-web",
+  "modules": [
+    {
+      "id": "seo-web-module",
+      "title": "Web et hébergement",
+      "chapters": [
+        {
+          "id": "sw-01",
+          "title": "Comprendre le fonctionnement du Web",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Situer",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le Web repose sur requêtes HTTP et résolution DNS."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Client.",
+                "Serveur.",
+                "DNS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le navigateur ?",
+            "hints": [
+              "Il envoie une requête."
+            ],
+            "solution": "Il envoie une requête HTTP au serveur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "requete",
+                "requête"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel service résout les noms ?",
+              "options": [
+                "DNS",
+                "HTTP",
+                "TLS",
+                "TCP"
+              ],
+              "answer": 0,
+              "explanation": "Le DNS traduit les noms.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sw-01-q1"
+            }
+          ],
+          "summary": [
+            "HTTP.",
+            "DNS.",
+            "Client/serveur."
+          ],
+          "nextStep": "Chapitre suivant : « Choisir un nom de domaine »."
+        },
+        {
+          "id": "sw-02",
+          "title": "Choisir un nom de domaine",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Comprendre",
+            "Protéger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le domaine est l'identité en ligne ; il se choisit stable et lisible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Nom.",
+                "Extension.",
+                "Renouvellement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire du domaine ?",
+            "hints": [
+              "Le renouveler."
+            ],
+            "solution": "Le renouveler et le protéger.",
+            "check": {
+              "type": "any",
+              "any": [
+                "renouvel"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "La disponibilité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le nom est disponible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sw-02-q1"
+            }
+          ],
+          "summary": [
+            "Domaine.",
+            "Extension.",
+            "Renouvellement."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre le DNS »."
+        },
+        {
+          "id": "sw-03",
+          "title": "Comprendre le DNS",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Vérifier",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le DNS associe noms et adresses via des enregistrements."
+            },
+            {
+              "type": "list",
+              "items": [
+                "A/AAAA.",
+                "CNAME.",
+                "TTL."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel enregistrement pour IPv4 ?",
+            "hints": [
+              "A."
+            ],
+            "solution": "Un enregistrement A.",
+            "check": {
+              "type": "any",
+              "any": [
+                "a"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait CNAME ?",
+              "options": [
+                "Un alias",
+                "Une IPv6",
+                "Un mail",
+                "Un texte"
+              ],
+              "answer": 0,
+              "explanation": "Le nom pointe un nom.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sw-03-q1"
+            }
+          ],
+          "summary": [
+            "DNS.",
+            "A/CNAME.",
+            "TTL."
+          ],
+          "nextStep": "Chapitre suivant : « Hébergement web »."
+        },
+        {
+          "id": "sw-04",
+          "title": "Hébergement web",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Sécuriser",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'hébergement sert les fichiers et borne les ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Statique.",
+                "Dynamique.",
+                "Support."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel hébergement pour un site vitrine ?",
+            "hints": [
+              "Statique."
+            ],
+            "solution": "Un hébergement statique.",
+            "check": {
+              "type": "any",
+              "any": [
+                "statique"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Le support TLS",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "HTTPS est requis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sw-04-q1"
+            }
+          ],
+          "summary": [
+            "Hébergement.",
+            "HTTPS.",
+            "Support."
+          ],
+          "nextStep": "Chapitre suivant : « Hébergement statique »."
+        },
+        {
+          "id": "sw-05",
+          "title": "Hébergement statique",
+          "duration": 20,
+          "objectives": [
+            "Déployer",
+            "Comprendre les routes",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un hébergement statique sert des fichiers sans serveur applicatif."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CDN.",
+                "Routes.",
+                "404."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des routes profondes ?",
+            "hints": [
+              "Rediriger vers index."
+            ],
+            "solution": "Rediriger vers index.html.",
+            "check": {
+              "type": "any",
+              "any": [
+                "index"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sert un hébergement statique ?",
+              "options": [
+                "Des fichiers",
+                "Une base",
+                "Un serveur applicatif",
+                "Un DNS"
+              ],
+              "answer": 0,
+              "explanation": "Aucune logique serveur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sw-05-q1"
+            }
+          ],
+          "summary": [
+            "Statique.",
+            "Routes.",
+            "CDN."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

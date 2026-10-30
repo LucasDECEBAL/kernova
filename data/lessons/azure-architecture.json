@@ -1,0 +1,323 @@
+{
+  "courseId": "azure-architecture",
+  "modules": [
+    {
+      "id": "azure-architecture-module",
+      "title": "Azure architecture",
+      "chapters": [
+        {
+          "id": "azr-01",
+          "title": "Architecture web Azure",
+          "duration": 20,
+          "objectives": [
+            "Séparer",
+            "Placer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une app web Azure sépare public, app et données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "App Service.",
+                "Base privée.",
+                "Supervision."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où placer la base ?",
+            "hints": [
+              "En privé."
+            ],
+            "solution": "Dans un sous-réseau privé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "prive",
+                "privé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que placer en public ?",
+              "options": [
+                "L'entrée web",
+                "La base",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exposition est minimale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azr-01-q1"
+            }
+          ],
+          "summary": [
+            "Séparation.",
+            "Privé.",
+            "Supervision."
+          ],
+          "nextStep": "Chapitre suivant : « Haute disponibilité »."
+        },
+        {
+          "id": "azr-02",
+          "title": "Haute disponibilité",
+          "duration": 20,
+          "objectives": [
+            "Répartir",
+            "Tester",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La HA répartit sur plusieurs zones et teste les pannes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zones.",
+                "Sondes.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "La perte d'une zone."
+            ],
+            "solution": "La perte d'une zone.",
+            "check": {
+              "type": "any",
+              "any": [
+                "zone"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de zones minimum ?",
+              "options": [
+                "Deux",
+                "Une",
+                "Aucune",
+                "Quatre"
+              ],
+              "answer": 0,
+              "explanation": "La résilience l'exige.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azr-02-q1"
+            }
+          ],
+          "summary": [
+            "Zones.",
+            "Sondes.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture événementielle »."
+        },
+        {
+          "id": "azr-03",
+          "title": "Architecture événementielle",
+          "duration": 20,
+          "objectives": [
+            "Découpler",
+            "Relancer",
+            "Idempotence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les événements découplent producteur et consommateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Files.",
+                "Relances.",
+                "Idempotence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi l'idempotence ?",
+            "hints": [
+              "Éviter les doublons."
+            ],
+            "solution": "Éviter les doublons en cas de relance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "doublon"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une file ?",
+              "options": [
+                "Elle découple",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Les traitements sont indépendants.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azr-03-q1"
+            }
+          ],
+          "summary": [
+            "Événements.",
+            "Files.",
+            "Idempotence."
+          ],
+          "nextStep": "Chapitre suivant : « Serverless Azure »."
+        },
+        {
+          "id": "azr-04",
+          "title": "Serverless Azure",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Limiter",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le serverless exécute du code sans serveur géré."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fonctions.",
+                "Durée.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quelle limite ?",
+            "hints": [
+              "La durée."
+            ],
+            "solution": "La durée maximale d'exécution.",
+            "check": {
+              "type": "any",
+              "any": [
+                "duree",
+                "durée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que facture le serverless ?",
+              "options": [
+                "L'usage",
+                "Un serveur fixe",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exécution est facturée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azr-04-q1"
+            }
+          ],
+          "summary": [
+            "Serverless.",
+            "Usage.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Identités fédérées »."
+        },
+        {
+          "id": "azr-05",
+          "title": "Identités fédérées",
+          "duration": 20,
+          "objectives": [
+            "Fédérer",
+            "MFA",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La fédération relie l'annuaire au cloud via SAML/OIDC."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SSO.",
+                "MFA.",
+                "Rôles."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que conserver ?",
+            "hints": [
+              "MFA."
+            ],
+            "solution": "MFA reste nécessaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "mfa"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet le SSO ?",
+              "options": [
+                "Une connexion unique",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les services partagent l'identité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azr-05-q1"
+            }
+          ],
+          "summary": [
+            "Fédération.",
+            "SSO.",
+            "MFA."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

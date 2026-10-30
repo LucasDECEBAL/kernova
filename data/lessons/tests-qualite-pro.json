@@ -1,0 +1,260 @@
+{
+  "courseId": "tests-qualite-pro",
+  "modules": [
+    {
+      "id": "tests-qualite-pro-module",
+      "title": "Qualité professionnelle",
+      "chapters": [
+        {
+          "id": "tqp-01",
+          "title": "Revue de code",
+          "duration": 20,
+          "objectives": [
+            "Relire",
+            "Commenter",
+            "Approuver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La revue vérifie correction, lisibilité et sécurité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Diff.",
+                "Commentaires.",
+                "Approbation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que commenter ?",
+            "hints": [
+              "Le code et les risques."
+            ],
+            "solution": "Le code et les risques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "risque"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne pas faire ?",
+              "options": [
+                "Commenter la personne",
+                "Relire",
+                "Tester",
+                "Documenter"
+              ],
+              "answer": 0,
+              "explanation": "La revue reste technique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tqp-01-q1"
+            }
+          ],
+          "summary": [
+            "Revue.",
+            "Risques.",
+            "Approbation."
+          ],
+          "nextStep": "Chapitre suivant : « Qualité et maintenabilité »."
+        },
+        {
+          "id": "tqp-02",
+          "title": "Qualité et maintenabilité",
+          "duration": 20,
+          "objectives": [
+            "Simplifier",
+            "Documenter",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La maintenabilité se mesure à la facilité de comprendre et modifier."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lisibilité.",
+                "Tests.",
+                "Documentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que réduire ?",
+            "hints": [
+              "La complexité."
+            ],
+            "solution": "La complexité inutile.",
+            "check": {
+              "type": "any",
+              "any": [
+                "complexite",
+                "complexité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester ?",
+              "options": [
+                "Les changements",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La confiance augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tqp-02-q1"
+            }
+          ],
+          "summary": [
+            "Maintenabilité.",
+            "Simplicité.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Développement piloté par les tests »."
+        },
+        {
+          "id": "tqp-03",
+          "title": "Développement piloté par les tests",
+          "duration": 20,
+          "objectives": [
+            "Écrire le test",
+            "Échouer",
+            "Implémenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le TDD écrit le test avant le code, puis refactorise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rouge.",
+                "Vert.",
+                "Refactor."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire en premier ?",
+            "hints": [
+              "Le test."
+            ],
+            "solution": "Le test qui échoue.",
+            "check": {
+              "type": "any",
+              "any": [
+                "test"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que suit le test ?",
+              "options": [
+                "L'implémentation",
+                "Le CSS",
+                "Le DNS",
+                "Le déploiement"
+              ],
+              "answer": 0,
+              "explanation": "Le code rend le test vert.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tqp-03-q1"
+            }
+          ],
+          "summary": [
+            "TDD.",
+            "Rouge/vert.",
+            "Refactor."
+          ],
+          "nextStep": "Chapitre suivant : « Tests d'accessibilité »."
+        },
+        {
+          "id": "tqp-04",
+          "title": "Tests d'accessibilité",
+          "duration": 20,
+          "objectives": [
+            "Automatiser",
+            "Manuel",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests d'accessibilité combinent outils et vérifications manuelles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Axe.",
+                "Clavier.",
+                "Lecteur d'écran."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que compléter ?",
+            "hints": [
+              "Les tests manuels."
+            ],
+            "solution": "Les tests manuels au clavier et lecteur d'écran.",
+            "check": {
+              "type": "any",
+              "any": [
+                "manuel"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un outil suffit-il ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le manuel reste nécessaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tqp-04-q1"
+            }
+          ],
+          "summary": [
+            "A11y.",
+            "Outils.",
+            "Manuel."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

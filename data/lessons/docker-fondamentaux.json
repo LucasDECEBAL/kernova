@@ -1,0 +1,321 @@
+{
+  "courseId": "docker-fondamentaux",
+  "modules": [
+    {
+      "id": "docker-fondamentaux-module",
+      "title": "Docker fondamentaux",
+      "chapters": [
+        {
+          "id": "dkf-01",
+          "title": "Introduction aux conteneurs",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Distinguer",
+            "Choisir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un conteneur isole un processus et ses dépendances sur un noyau partagé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Isolation.",
+                "Léger.",
+                "Portable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que partage un conteneur ?",
+            "hints": [
+              "Le noyau."
+            ],
+            "solution": "Le noyau de l'hôte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "noyau"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que partage un conteneur ?",
+              "options": [
+                "Le noyau",
+                "Le CSS",
+                "Le DNS",
+                "Le disque entier"
+              ],
+              "answer": 0,
+              "explanation": "Le noyau est partagé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkf-01-q1"
+            }
+          ],
+          "summary": [
+            "Conteneur.",
+            "Noyau.",
+            "Léger."
+          ],
+          "nextStep": "Chapitre suivant : « Conteneurs et machines virtuelles »."
+        },
+        {
+          "id": "dkf-02",
+          "title": "Conteneurs et machines virtuelles",
+          "duration": 20,
+          "objectives": [
+            "Comparer",
+            "Choisir",
+            "Comprendre les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La VM embarque un OS complet ; le conteneur est plus léger."
+            },
+            {
+              "type": "list",
+              "items": [
+                "VM lourde.",
+                "Conteneur léger.",
+                "Démarrage rapide."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Lequel démarre plus vite ?",
+            "hints": [
+              "Le conteneur."
+            ],
+            "solution": "Le conteneur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "conteneur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient une VM en plus ?",
+              "options": [
+                "Un OS complet",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Chaque VM a son système.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkf-02-q1"
+            }
+          ],
+          "summary": [
+            "VM vs conteneur.",
+            "Léger.",
+            "Rapide."
+          ],
+          "nextStep": "Chapitre suivant : « Installation de Docker »."
+        },
+        {
+          "id": "dkf-03",
+          "title": "Installation de Docker",
+          "duration": 20,
+          "objectives": [
+            "Installer",
+            "Vérifier",
+            "Comprendre le démon"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Docker s'installe avec un démon et un client en ligne de commande."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Démon.",
+                "Client.",
+                "Droits."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier après installation ?",
+            "hints": [
+              "La version."
+            ],
+            "solution": "docker --version.",
+            "check": {
+              "type": "any",
+              "any": [
+                "version"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le démon ?",
+              "options": [
+                "Il gère les conteneurs",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Il exécute les conteneurs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkf-03-q1"
+            }
+          ],
+          "summary": [
+            "Démon.",
+            "Client.",
+            "Version."
+          ],
+          "nextStep": "Chapitre suivant : « Images Docker »."
+        },
+        {
+          "id": "dkf-04",
+          "title": "Images Docker",
+          "duration": 20,
+          "objectives": [
+            "Comprendre une image",
+            "Lister",
+            "Choisir une base"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une image est un modèle immuable en couches."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Couches.",
+                "Tags.",
+                "Registre."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Une image est-elle modifiable ?",
+            "hints": [
+              "Non, immuable."
+            ],
+            "solution": "Elle est immuable ; un conteneur en est une instance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "immuable"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que crée une image ?",
+              "options": [
+                "Un conteneur",
+                "Un CSS",
+                "Un DNS",
+                "Un routeur"
+              ],
+              "answer": 0,
+              "explanation": "Le conteneur est l'instance.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkf-04-q1"
+            }
+          ],
+          "summary": [
+            "Image.",
+            "Couches.",
+            "Tags."
+          ],
+          "nextStep": "Chapitre suivant : « Conteneurs »."
+        },
+        {
+          "id": "dkf-05",
+          "title": "Conteneurs",
+          "duration": 20,
+          "objectives": [
+            "Lancer",
+            "Arrêter",
+            "Inspecter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un conteneur exécute une image ; il peut être démarré, arrêté et inspecté."
+            },
+            {
+              "type": "list",
+              "items": [
+                "run.",
+                "ps.",
+                "stop."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait docker run ?",
+            "hints": [
+              "Lance un conteneur."
+            ],
+            "solution": "Lance un conteneur à partir d'une image.",
+            "check": {
+              "type": "any",
+              "any": [
+                "lance"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait docker ps ?",
+              "options": [
+                "Il liste les conteneurs",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les conteneurs actifs sont listés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkf-05-q1"
+            }
+          ],
+          "summary": [
+            "run/ps/stop.",
+            "Instance.",
+            "Inspection."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

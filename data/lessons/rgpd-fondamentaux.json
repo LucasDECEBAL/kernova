@@ -1,0 +1,322 @@
+{
+  "courseId": "rgpd-fondamentaux",
+  "modules": [
+    {
+      "id": "rgpd-fondamentaux-module",
+      "title": "RGPD",
+      "chapters": [
+        {
+          "id": "rf-01",
+          "title": "Introduction au RGPD",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Appliquer",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le RGPD encadre le traitement des données personnelles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Finalités.",
+                "Droits."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que protéger ?",
+            "hints": [
+              "Les données personnelles."
+            ],
+            "solution": "Les données personnelles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "personnelles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que définir ?",
+              "options": [
+                "La finalité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le traitement est justifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rf-01-q1"
+            }
+          ],
+          "summary": [
+            "RGPD.",
+            "Données.",
+            "Finalités."
+          ],
+          "nextStep": "Chapitre suivant : « Principes de minimisation »."
+        },
+        {
+          "id": "rf-02",
+          "title": "Principes de minimisation",
+          "duration": 20,
+          "objectives": [
+            "Minimiser",
+            "Justifier",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "On ne collecte que les données nécessaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Nécessaire.",
+                "Finalité.",
+                "Durée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que collecter ?",
+            "hints": [
+              "Le nécessaire."
+            ],
+            "solution": "Le strict nécessaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "necessaire",
+                "nécessaire"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un champ inutile ?",
+              "options": [
+                "Le retirer",
+                "Le garder",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le risque baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rf-02-q1"
+            }
+          ],
+          "summary": [
+            "Minimisation.",
+            "Nécessité.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des données personnelles »."
+        },
+        {
+          "id": "rf-03",
+          "title": "Gestion des données personnelles",
+          "duration": 20,
+          "objectives": [
+            "Inventorier",
+            "Classer",
+            "Contrôler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un registre liste les traitements et leurs bases légales."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Registre.",
+                "Base légale.",
+                "Accès."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que lister ?",
+            "hints": [
+              "Les traitements."
+            ],
+            "solution": "Les traitements et finalités.",
+            "check": {
+              "type": "any",
+              "any": [
+                "traitements"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui accède ?",
+              "options": [
+                "Un rôle restreint",
+                "Tout le monde",
+                "Personne",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est limité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rf-03-q1"
+            }
+          ],
+          "summary": [
+            "Registre.",
+            "Base légale.",
+            "Accès."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des données »."
+        },
+        {
+          "id": "rf-04",
+          "title": "Sécurité des données",
+          "duration": 20,
+          "objectives": [
+            "Protéger",
+            "Chiffrer",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité des données combine chiffrement et accès restreints."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chiffrement.",
+                "Accès.",
+                "Journalisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des accès ?",
+            "hints": [
+              "Les limiter."
+            ],
+            "solution": "Les limiter et les journaliser.",
+            "check": {
+              "type": "any",
+              "any": [
+                "limiter"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que chiffrer ?",
+              "options": [
+                "Les données sensibles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La confidentialité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rf-04-q1"
+            }
+          ],
+          "summary": [
+            "Sécurité.",
+            "Accès.",
+            "Chiffrement."
+          ],
+          "nextStep": "Chapitre suivant : « Notions de consentement »."
+        },
+        {
+          "id": "rf-05",
+          "title": "Notions de consentement",
+          "duration": 20,
+          "objectives": [
+            "Recueillir",
+            "Prouver",
+            "Retirer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le consentement doit être libre, éclairé et révocable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Explicite.",
+                "Preuve.",
+                "Retrait."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantir ?",
+            "hints": [
+              "Le retrait facile."
+            ],
+            "solution": "Un retrait aussi simple que l'accord.",
+            "check": {
+              "type": "any",
+              "any": [
+                "retrait"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que conserver ?",
+              "options": [
+                "La preuve du consentement",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La conformité est démontrable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rf-05-q1"
+            }
+          ],
+          "summary": [
+            "Consentement.",
+            "Preuve.",
+            "Retrait."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

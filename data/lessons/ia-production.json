@@ -1,0 +1,323 @@
+{
+  "courseId": "ia-production",
+  "modules": [
+    {
+      "id": "ia-production-module",
+      "title": "Modèles en production",
+      "chapters": [
+        {
+          "id": "ipr-01",
+          "title": "Mesures de performance",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Interpréter",
+            "Communiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les métriques dépendent du coût des erreurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Précision.",
+                "Rappel.",
+                "F1."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand privilégier le rappel ?",
+            "hints": [
+              "Quand manquer coûte cher."
+            ],
+            "solution": "Quand manquer un cas coûte cher.",
+            "check": {
+              "type": "any",
+              "any": [
+                "manquer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que choisir ?",
+              "options": [
+                "Selon le coût des erreurs",
+                "Au hasard",
+                "Toujours la précision",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ipr-01-q1"
+            }
+          ],
+          "summary": [
+            "Métriques.",
+            "Coût.",
+            "Interprétation."
+          ],
+          "nextStep": "Chapitre suivant : « Pipelines de machine learning »."
+        },
+        {
+          "id": "ipr-02",
+          "title": "Pipelines de machine learning",
+          "duration": 20,
+          "objectives": [
+            "Automatiser",
+            "Reproduire",
+            "Versionner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pipeline enchaîne préparation, modèle et évaluation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étapes.",
+                "Version.",
+                "Reproductibilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantir ?",
+            "hints": [
+              "La reproductibilité."
+            ],
+            "solution": "La reproductibilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reproduct"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que versionner ?",
+              "options": [
+                "Données et modèle",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est rejouable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ipr-02-q1"
+            }
+          ],
+          "summary": [
+            "Pipeline.",
+            "Version.",
+            "Reproductibilité."
+          ],
+          "nextStep": "Chapitre suivant : « Sauvegarde et chargement de modèles »."
+        },
+        {
+          "id": "ipr-03",
+          "title": "Sauvegarde et chargement de modèles",
+          "duration": 20,
+          "objectives": [
+            "Sauvegarder",
+            "Charger",
+            "Versionner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un modèle sérialisé se recharge pour prédire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sérialisation.",
+                "Version.",
+                "Compatibilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que versionner ?",
+            "hints": [
+              "Le modèle et ses données."
+            ],
+            "solution": "Le modèle et ses dépendances.",
+            "check": {
+              "type": "any",
+              "any": [
+                "version"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier au chargement ?",
+              "options": [
+                "La compatibilité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle fonctionne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ipr-03-q1"
+            }
+          ],
+          "summary": [
+            "Sauvegarde.",
+            "Version.",
+            "Compatibilité."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement d'un modèle simple »."
+        },
+        {
+          "id": "ipr-04",
+          "title": "Déploiement d'un modèle simple",
+          "duration": 20,
+          "objectives": [
+            "Exposer",
+            "Limiter",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un modèle se déploie derrière une API avec limites."
+            },
+            {
+              "type": "list",
+              "items": [
+                "API.",
+                "Limites.",
+                "Surveillance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "Les requêtes."
+            ],
+            "solution": "Les requêtes et la charge.",
+            "check": {
+              "type": "any",
+              "any": [
+                "requetes",
+                "requêtes"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Latence et erreurs",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La production reste saine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ipr-04-q1"
+            }
+          ],
+          "summary": [
+            "Déploiement.",
+            "API.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Surveillance des performances »."
+        },
+        {
+          "id": "ipr-05",
+          "title": "Surveillance des performances",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Détecter",
+            "Réentraîner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La dérive des données dégrade le modèle ; il faut la détecter."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dérive.",
+                "Alertes.",
+                "Réentraînement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand réentraîner ?",
+            "hints": [
+              "Quand la dérive est détectée."
+            ],
+            "solution": "Quand la dérive dégrade les résultats.",
+            "check": {
+              "type": "any",
+              "any": [
+                "derive",
+                "dérive"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "La distribution des entrées",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La dérive est vue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ipr-05-q1"
+            }
+          ],
+          "summary": [
+            "Dérive.",
+            "Alertes.",
+            "Réentraînement."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

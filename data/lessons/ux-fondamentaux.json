@@ -1,0 +1,321 @@
+{
+  "courseId": "ux-fondamentaux",
+  "modules": [
+    {
+      "id": "ux-fondamentaux-module",
+      "title": "UX fondamentaux",
+      "chapters": [
+        {
+          "id": "uf-01",
+          "title": "Introduction à l'UX",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Observer",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'UX vise l'usage réel, pas seulement l'apparence."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Usage.",
+                "Contexte.",
+                "Itération."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vise l'UX ?",
+            "hints": [
+              "L'usage réel."
+            ],
+            "solution": "Un usage réel fluide.",
+            "check": {
+              "type": "any",
+              "any": [
+                "usage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait l'UX ?",
+              "options": [
+                "Elle améliore l'usage",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur est au centre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "uf-01-q1"
+            }
+          ],
+          "summary": [
+            "UX.",
+            "Usage.",
+            "Itération."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à l'UI »."
+        },
+        {
+          "id": "uf-02",
+          "title": "Introduction à l'UI",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Composer",
+            "Hiérarchiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'UI organise visuellement les éléments et les actions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hiérarchie.",
+                "Contraste.",
+                "Espace."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une action principale ?",
+            "hints": [
+              "La rendre visible."
+            ],
+            "solution": "La rendre visible et prioritaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "visible"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que guider ?",
+              "options": [
+                "L'œil",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La lecture est guidée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "uf-02-q1"
+            }
+          ],
+          "summary": [
+            "UI.",
+            "Hiérarchie.",
+            "Actions."
+          ],
+          "nextStep": "Chapitre suivant : « Recherche utilisateur »."
+        },
+        {
+          "id": "uf-03",
+          "title": "Recherche utilisateur",
+          "duration": 20,
+          "objectives": [
+            "Interroger",
+            "Observer",
+            "Reformuler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La recherche comprend les besoins réels derrière les demandes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Entretiens.",
+                "Observation.",
+                "Besoins."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que reformuler ?",
+            "hints": [
+              "Le besoin réel."
+            ],
+            "solution": "Le besoin réel derrière la solution.",
+            "check": {
+              "type": "any",
+              "any": [
+                "besoin"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une demande de fonctionnalité ?",
+              "options": [
+                "Creuser l'usage",
+                "Coder",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le besoin émerge.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "uf-03-q1"
+            }
+          ],
+          "summary": [
+            "Recherche.",
+            "Besoins.",
+            "Observation."
+          ],
+          "nextStep": "Chapitre suivant : « Personas et besoins »."
+        },
+        {
+          "id": "uf-04",
+          "title": "Personas et besoins",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Prioriser",
+            "Valider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un persona résume un profil et ses objectifs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Objectifs.",
+                "Contraintes.",
+                "Contexte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que décrit un persona ?",
+            "hints": [
+              "Un profil et ses objectifs."
+            ],
+            "solution": "Un profil et ses objectifs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "objectifs"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un persona est-il une fiction ?",
+              "options": [
+                "Non, fondé sur des données",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il s'appuie sur la recherche.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "uf-04-q1"
+            }
+          ],
+          "summary": [
+            "Personas.",
+            "Objectifs.",
+            "Données."
+          ],
+          "nextStep": "Chapitre suivant : « Parcours utilisateur »."
+        },
+        {
+          "id": "uf-05",
+          "title": "Parcours utilisateur",
+          "duration": 20,
+          "objectives": [
+            "Cartographier",
+            "Repérer",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le parcours décrit les étapes et points de friction."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étapes.",
+                "Frictions.",
+                "Améliorations."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que repérer ?",
+            "hints": [
+              "Les frictions."
+            ],
+            "solution": "Les points de friction.",
+            "check": {
+              "type": "any",
+              "any": [
+                "friction"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des frictions ?",
+              "options": [
+                "Les réduire",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "L'usage s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "uf-05-q1"
+            }
+          ],
+          "summary": [
+            "Parcours.",
+            "Frictions.",
+            "Amélioration."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

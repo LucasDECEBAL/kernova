@@ -1,0 +1,324 @@
+{
+  "courseId": "ia-fondamentaux",
+  "modules": [
+    {
+      "id": "ia-fondamentaux-module",
+      "title": "IA fondamentaux",
+      "chapters": [
+        {
+          "id": "if-01",
+          "title": "Introduction à l'intelligence artificielle",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Situer",
+            "Éviter les mythes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'IA regroupe des techniques qui imitent des tâches cognitives."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Apprentissage.",
+                "Règles.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un modèle ?",
+            "hints": [
+              "Il apprend des régularités."
+            ],
+            "solution": "Il apprend des régularités dans les données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "regularites",
+                "régularités"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "L'IA comprend-elle comme un humain ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Elle imite des décisions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "if-01-q1"
+            }
+          ],
+          "summary": [
+            "IA.",
+            "Modèles.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « IA, machine learning et deep learning »."
+        },
+        {
+          "id": "if-02",
+          "title": "IA, machine learning et deep learning",
+          "duration": 20,
+          "objectives": [
+            "Distinguer",
+            "Situer",
+            "Choisir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le ML apprend à partir de données ; le DL utilise des réseaux profonds."
+            },
+            {
+              "type": "list",
+              "items": [
+                "IA.",
+                "ML.",
+                "DL."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le ML ?",
+            "hints": [
+              "Il apprend des données."
+            ],
+            "solution": "Il apprend des régularités à partir de données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "apprend"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le DL ?",
+              "options": [
+                "Des réseaux profonds",
+                "Des règles",
+                "Du CSS",
+                "Du DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les couches sont nombreuses.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "if-02-q1"
+            }
+          ],
+          "summary": [
+            "IA/ML/DL.",
+            "Apprentissage.",
+            "Réseaux."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les données »."
+        },
+        {
+          "id": "if-03",
+          "title": "Comprendre les données",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Qualifier",
+            "Nettoyer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La qualité des données conditionne le modèle."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sources.",
+                "Biais.",
+                "Manquants."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "La qualité et les biais."
+            ],
+            "solution": "La qualité, les biais et les manquants.",
+            "check": {
+              "type": "any",
+              "any": [
+                "qualite",
+                "qualité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des manquants ?",
+              "options": [
+                "Les traiter",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle reste fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "if-03-q1"
+            }
+          ],
+          "summary": [
+            "Données.",
+            "Qualité.",
+            "Biais."
+          ],
+          "nextStep": "Chapitre suivant : « Préparation des données »."
+        },
+        {
+          "id": "if-04",
+          "title": "Préparation des données",
+          "duration": 20,
+          "objectives": [
+            "Nettoyer",
+            "Normaliser",
+            "Découper"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La préparation nettoie, normalise et sépare entraînement/test."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Nettoyage.",
+                "Normalisation.",
+                "Split."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi séparer ?",
+            "hints": [
+              "Évaluer sans triche."
+            ],
+            "solution": "Évaluer sur des données jamais vues.",
+            "check": {
+              "type": "any",
+              "any": [
+                "jamais vues"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que normaliser ?",
+              "options": [
+                "Les échelles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les variables sont comparables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "if-04-q1"
+            }
+          ],
+          "summary": [
+            "Préparation.",
+            "Split.",
+            "Normalisation."
+          ],
+          "nextStep": "Chapitre suivant : « Apprentissage supervisé »."
+        },
+        {
+          "id": "if-05",
+          "title": "Apprentissage supervisé",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Étiqueter",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le supervisé apprend à partir d'exemples étiquetés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étiquettes.",
+                "Entraînement.",
+                "Évaluation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il ?",
+            "hints": [
+              "Des données étiquetées."
+            ],
+            "solution": "Des données étiquetées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "etiquet",
+                "étiquet"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que prédit-il ?",
+              "options": [
+                "Une cible connue",
+                "Aucune",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La cible est apprise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "if-05-q1"
+            }
+          ],
+          "summary": [
+            "Supervisé.",
+            "Étiquettes.",
+            "Évaluation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

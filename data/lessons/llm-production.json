@@ -1,0 +1,323 @@
+{
+  "courseId": "llm-production",
+  "modules": [
+    {
+      "id": "llm-production-module",
+      "title": "LLM en production",
+      "chapters": [
+        {
+          "id": "lp-01",
+          "title": "Défendre une application LLM",
+          "duration": 20,
+          "objectives": [
+            "Analyser",
+            "Limiter",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "On teste injections, fuites et abus avant la mise en production."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tests.",
+                "Limites.",
+                "Red team."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Les injections."
+            ],
+            "solution": "Les injections et fuites.",
+            "check": {
+              "type": "any",
+              "any": [
+                "injection"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand tester ?",
+              "options": [
+                "Avant la production",
+                "Après incident",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "Les failles sont trouvées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lp-01-q1"
+            }
+          ],
+          "summary": [
+            "Défense.",
+            "Tests.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Coûts et latence des applications IA »."
+        },
+        {
+          "id": "lp-02",
+          "title": "Coûts et latence des applications IA",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Cacher",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Coût et latence se maîtrisent par cache, limites et choix de modèle."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cache.",
+                "Quotas.",
+                "Modèle."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "Les tokens."
+            ],
+            "solution": "Les tokens par requête.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tokens"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mettre en cache ?",
+              "options": [
+                "Les réponses stables",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lp-02-q1"
+            }
+          ],
+          "summary": [
+            "Coûts.",
+            "Cache.",
+            "Quotas."
+          ],
+          "nextStep": "Chapitre suivant : « Évaluer une application IA »."
+        },
+        {
+          "id": "lp-03",
+          "title": "Évaluer une application IA",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Mesurer",
+            "Itérer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application IA s'évalue sur des cas réels avec critères."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cas.",
+                "Critères.",
+                "Suivi."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que suivre ?",
+            "hints": [
+              "La qualité perçue."
+            ],
+            "solution": "La qualité des réponses et la satisfaction.",
+            "check": {
+              "type": "any",
+              "any": [
+                "qualite",
+                "qualité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des échecs ?",
+              "options": [
+                "Les analyser",
+                "Les cacher",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le produit s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lp-03-q1"
+            }
+          ],
+          "summary": [
+            "Évaluation.",
+            "Critères.",
+            "Itération."
+          ],
+          "nextStep": "Chapitre suivant : « Mettre en production une application IA »."
+        },
+        {
+          "id": "lp-04",
+          "title": "Mettre en production une application IA",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Surveiller",
+            "Revenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La mise en production prévoit limites, supervision et retour arrière."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Limites.",
+                "Alertes.",
+                "Rollback."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prévoir ?",
+            "hints": [
+              "Un retour arrière."
+            ],
+            "solution": "Un retour arrière.",
+            "check": {
+              "type": "any",
+              "any": [
+                "retour"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et coûts",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La production reste saine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lp-04-q1"
+            }
+          ],
+          "summary": [
+            "Production.",
+            "Alertes.",
+            "Rollback."
+          ],
+          "nextStep": "Chapitre suivant : « Confidentialité et conformité »."
+        },
+        {
+          "id": "lp-05",
+          "title": "Confidentialité et conformité",
+          "duration": 20,
+          "objectives": [
+            "Minimiser",
+            "Documenter",
+            "Contrôler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données traitées par un LLM doivent respecter la conformité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Base légale.",
+                "Durée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les finalités et durées."
+            ],
+            "solution": "Les finalités et durées de conservation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "duree",
+                "durée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que minimiser ?",
+              "options": [
+                "Les données personnelles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le risque baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lp-05-q1"
+            }
+          ],
+          "summary": [
+            "Conformité.",
+            "Données.",
+            "Documentation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

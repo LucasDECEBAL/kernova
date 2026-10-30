@@ -1,0 +1,322 @@
+{
+  "courseId": "sre",
+  "modules": [
+    {
+      "id": "sre-module",
+      "title": "SRE et fiabilité",
+      "chapters": [
+        {
+          "id": "sre-01",
+          "title": "SRE : principes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Mesurer",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le SRE applique l'ingénierie logicielle aux opérations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SLO.",
+                "Automatisation.",
+                "Budget d'erreur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que pilote le budget d'erreur ?",
+            "hints": [
+              "Le risque acceptable."
+            ],
+            "solution": "Le risque acceptable.",
+            "check": {
+              "type": "any",
+              "any": [
+                "risque"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le SRE ?",
+              "options": [
+                "Il fiabilise les services",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La fiabilité est mesurée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sre-01-q1"
+            }
+          ],
+          "summary": [
+            "SRE.",
+            "SLO.",
+            "Budget."
+          ],
+          "nextStep": "Chapitre suivant : « SLI, SLO et SLA »."
+        },
+        {
+          "id": "sre-02",
+          "title": "SLI, SLO et SLA",
+          "duration": 20,
+          "objectives": [
+            "Distinguer",
+            "Définir",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SLI mesure, SLO objectif, SLA engagement contractuel."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SLI.",
+                "SLO.",
+                "SLA."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesure un SLI ?",
+            "hints": [
+              "Un indicateur réel."
+            ],
+            "solution": "Un indicateur de service réel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "indicateur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que définit un SLA ?",
+              "options": [
+                "Un engagement",
+                "Un CSS",
+                "Un DNS",
+                "Un tri"
+              ],
+              "answer": 0,
+              "explanation": "Le contrat est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sre-02-q1"
+            }
+          ],
+          "summary": [
+            "SLI/SLO/SLA.",
+            "Mesure.",
+            "Engagement."
+          ],
+          "nextStep": "Chapitre suivant : « Fiabilité des services »."
+        },
+        {
+          "id": "sre-03",
+          "title": "Fiabilité des services",
+          "duration": 20,
+          "objectives": [
+            "Concevoir",
+            "Tester",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La fiabilité se conçoit par redondance et se mesure."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Redondance.",
+                "Tests.",
+                "Mesures."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Les pannes."
+            ],
+            "solution": "Les scénarios de panne.",
+            "check": {
+              "type": "any",
+              "any": [
+                "panne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "La disponibilité",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La fiabilité est suivie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sre-03-q1"
+            }
+          ],
+          "summary": [
+            "Fiabilité.",
+            "Redondance.",
+            "Mesures."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des incidents »."
+        },
+        {
+          "id": "sre-04",
+          "title": "Gestion des incidents",
+          "duration": 20,
+          "objectives": [
+            "Détecter",
+            "Répondre",
+            "Apprendre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'incident se gère par détection, réponse et retour d'expérience."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Détection.",
+                "Réponse.",
+                "Postmortem."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après ?",
+            "hints": [
+              "Un postmortem."
+            ],
+            "solution": "Un postmortem sans blâme.",
+            "check": {
+              "type": "any",
+              "any": [
+                "postmortem"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que préserver ?",
+              "options": [
+                "Les preuves",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'analyse est fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sre-04-q1"
+            }
+          ],
+          "summary": [
+            "Incident.",
+            "Réponse.",
+            "Apprentissage."
+          ],
+          "nextStep": "Chapitre suivant : « Optimisation des pipelines »."
+        },
+        {
+          "id": "sre-05",
+          "title": "Optimisation des pipelines",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Paralléliser",
+            "Cacher"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pipeline s'optimise en mesurant et en parallélisant les étapes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Durée.",
+                "Cache.",
+                "Parallélisme."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "La durée par étape."
+            ],
+            "solution": "La durée de chaque étape.",
+            "check": {
+              "type": "any",
+              "any": [
+                "duree",
+                "durée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que paralléliser ?",
+              "options": [
+                "Les étapes indépendantes",
+                "Tout",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le temps baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sre-05-q1"
+            }
+          ],
+          "summary": [
+            "Mesure.",
+            "Cache.",
+            "Parallélisme."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

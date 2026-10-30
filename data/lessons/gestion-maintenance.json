@@ -1,0 +1,197 @@
+{
+  "courseId": "gestion-maintenance",
+  "modules": [
+    {
+      "id": "gestion-maintenance-module",
+      "title": "Livraison et maintenance",
+      "chapters": [
+        {
+          "id": "gm-01",
+          "title": "Préparation d'une démonstration",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Tester",
+            "Prévoir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une démo se prépare avec un scénario et un plan de secours."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Scénario.",
+                "Données.",
+                "Secours."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prévoir ?",
+            "hints": [
+              "Un plan de secours."
+            ],
+            "solution": "Un plan de secours si la démo échoue.",
+            "check": {
+              "type": "any",
+              "any": [
+                "secours"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester avant ?",
+              "options": [
+                "Le scénario",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La démo est fluide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gm-01-q1"
+            }
+          ],
+          "summary": [
+            "Démo.",
+            "Scénario.",
+            "Secours."
+          ],
+          "nextStep": "Chapitre suivant : « Maintenance et évolution »."
+        },
+        {
+          "id": "gm-02",
+          "title": "Maintenance et évolution",
+          "duration": 20,
+          "objectives": [
+            "Planifier",
+            "Corriger",
+            "Faire évoluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La maintenance couvre corrections, sécurité et évolutions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Correctifs.",
+                "Sécurité.",
+                "Évolutions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que planifier ?",
+            "hints": [
+              "Les correctifs."
+            ],
+            "solution": "Les correctifs et mises à jour.",
+            "check": {
+              "type": "any",
+              "any": [
+                "correctif"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire régulièrement ?",
+              "options": [
+                "Mettre à jour",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le produit reste sain.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gm-02-q1"
+            }
+          ],
+          "summary": [
+            "Maintenance.",
+            "Correctifs.",
+            "Évolution."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion de la dette technique »."
+        },
+        {
+          "id": "gm-03",
+          "title": "Gestion de la dette technique",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Prioriser",
+            "Rembourser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La dette technique se mesure et se rembourse par petites étapes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dette.",
+                "Impact.",
+                "Plan."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prioriser ?",
+            "hints": [
+              "La dette qui bloque."
+            ],
+            "solution": "La dette qui bloque les évolutions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "bloque"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire de la dette ?",
+              "options": [
+                "La planifier",
+                "L'ignorer",
+                "La publier",
+                "La vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le code reste maintenable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gm-03-q1"
+            }
+          ],
+          "summary": [
+            "Dette.",
+            "Impact.",
+            "Plan."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -27,9 +27,9 @@ const ok = async () => (await evaluate(`document.querySelector('.exercise-feedba
 try {
   await send('Runtime.enable');
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('273 r')`);
   check('Catalogue : 173 cours', true);
-  for (const [domain, expected] of [['reseaux', '16 r'], ['cybersecurite', '15 r'], ['ethical-hacking', '2 r']]) {
+  for (const [domain, expected] of [['reseaux', '16 r'], ['cybersecurite', '21 r'], ['ethical-hacking', '5 r']]) {
     await evaluate(`(() => { const el = document.querySelector('#cat-domain'); el.value = ${JSON.stringify(domain)}; el.dispatchEvent(new Event('change', { bubbles: true })); return true; })()`);
     await waitFor(`document.querySelector('#cat-count').textContent.startsWith('${expected}')`);
     check(`Domaine ${domain} : ${expected}`, true);

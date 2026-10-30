@@ -1,0 +1,323 @@
+{
+  "courseId": "k8s-pro",
+  "modules": [
+    {
+      "id": "k8s-pro-module",
+      "title": "Kubernetes avancé",
+      "chapters": [
+        {
+          "id": "kp-01",
+          "title": "RBAC",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Créer un rôle",
+            "Lier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "RBAC associe rôles et liaisons à des identités."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Role.",
+                "Binding.",
+                "Permissions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un RoleBinding ?",
+            "hints": [
+              "Il lie un rôle."
+            ],
+            "solution": "Il lie un rôle à une identité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "lie"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un Role ?",
+              "options": [
+                "Il définit des permissions",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les règles sont décrites.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kp-01-q1"
+            }
+          ],
+          "summary": [
+            "RBAC.",
+            "Rôles.",
+            "Bindings."
+          ],
+          "nextStep": "Chapitre suivant : « Helm »."
+        },
+        {
+          "id": "kp-02",
+          "title": "Helm",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Installer",
+            "Versionner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Helm empaquette des manifestes en charts versionnés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Charts.",
+                "Values.",
+                "Releases."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Helm ?",
+            "hints": [
+              "Il gère des charts."
+            ],
+            "solution": "Il installe et versionne des charts.",
+            "check": {
+              "type": "any",
+              "any": [
+                "chart"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que personnalise values.yaml ?",
+              "options": [
+                "Les paramètres",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs sont injectées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kp-02-q1"
+            }
+          ],
+          "summary": [
+            "Helm.",
+            "Charts.",
+            "Version."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement d'une application »."
+        },
+        {
+          "id": "kp-03",
+          "title": "Déploiement d'une application",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Déployer",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un déploiement combine image, Deployment, Service et Ingress."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Image.",
+                "Deployment.",
+                "Ingress."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier après déploiement ?",
+            "hints": [
+              "La disponibilité."
+            ],
+            "solution": "La disponibilité et les routes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "disponibilite",
+                "disponibilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un Ingress ?",
+              "options": [
+                "Il expose HTTP",
+                "Il chiffre",
+                "Il trie",
+                "Il route IP"
+              ],
+              "answer": 0,
+              "explanation": "Le service est exposé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kp-03-q1"
+            }
+          ],
+          "summary": [
+            "Déploiement.",
+            "Routes.",
+            "Vérification."
+          ],
+          "nextStep": "Chapitre suivant : « Dépannage d'un cluster »."
+        },
+        {
+          "id": "kp-04",
+          "title": "Dépannage d'un cluster",
+          "duration": 20,
+          "objectives": [
+            "Diagnostiquer",
+            "Lire les événements",
+            "Isoler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le dépannage lit les états, événements et logs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "describe.",
+                "events.",
+                "logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un pod Pending ?",
+            "hints": [
+              "Lire les événements."
+            ],
+            "solution": "Lire les événements du pod.",
+            "check": {
+              "type": "any",
+              "any": [
+                "evenements",
+                "événements"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait describe ?",
+              "options": [
+                "Il détaille l'objet",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les causes apparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kp-04-q1"
+            }
+          ],
+          "summary": [
+            "Diagnostic.",
+            "Événements.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « Opérateurs Kubernetes »."
+        },
+        {
+          "id": "kp-05",
+          "title": "Opérateurs Kubernetes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Utiliser",
+            "Éviter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un opérateur automatise la gestion d'une application via des CRD."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CRD.",
+                "Contrôleur.",
+                "Automatisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un opérateur ?",
+            "hints": [
+              "Il automatise la gestion."
+            ],
+            "solution": "Il automatise le cycle de vie.",
+            "check": {
+              "type": "any",
+              "any": [
+                "automatis"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que définit une CRD ?",
+              "options": [
+                "Un type de ressource",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les ressources personnalisées existent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kp-05-q1"
+            }
+          ],
+          "summary": [
+            "Opérateur.",
+            "CRD.",
+            "Automatisation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

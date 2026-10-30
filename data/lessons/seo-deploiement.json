@@ -1,0 +1,321 @@
+{
+  "courseId": "seo-deploiement",
+  "modules": [
+    {
+      "id": "seo-deploiement-module",
+      "title": "Déploiement",
+      "chapters": [
+        {
+          "id": "sd-01",
+          "title": "Hébergement dynamique",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un hébergement dynamique exécute du code serveur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Runtime.",
+                "Base.",
+                "Scaling."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il gérer ?",
+            "hints": [
+              "Le runtime."
+            ],
+            "solution": "Le runtime et les dépendances.",
+            "check": {
+              "type": "any",
+              "any": [
+                "runtime"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet-il ?",
+              "options": [
+                "Du code serveur",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les pages sont générées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sd-01-q1"
+            }
+          ],
+          "summary": [
+            "Dynamique.",
+            "Runtime.",
+            "Scaling."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement sur GitHub Pages »."
+        },
+        {
+          "id": "sd-02",
+          "title": "Déploiement sur GitHub Pages",
+          "duration": 20,
+          "objectives": [
+            "Publier",
+            "Configurer",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GitHub Pages publie un site statique depuis un dépôt."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Build.",
+                "Branche/artefact.",
+                "404."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il pour les routes ?",
+            "hints": [
+              "Une redirection."
+            ],
+            "solution": "Une redirection vers index.html.",
+            "check": {
+              "type": "any",
+              "any": [
+                "redirection"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que publie Pages ?",
+              "options": [
+                "Du statique",
+                "Un serveur Node",
+                "Une base",
+                "Un DNS"
+              ],
+              "answer": 0,
+              "explanation": "Pas de backend.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sd-02-q1"
+            }
+          ],
+          "summary": [
+            "Pages.",
+            "Statique.",
+            "Routes."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement sur Netlify »."
+        },
+        {
+          "id": "sd-03",
+          "title": "Déploiement sur Netlify",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Rediriger",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Netlify gère build, redirections et HTTPS."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Build.",
+                "Redirects.",
+                "HTTPS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que configurer ?",
+            "hints": [
+              "Les redirections."
+            ],
+            "solution": "Les redirections SPA.",
+            "check": {
+              "type": "any",
+              "any": [
+                "redirection"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fournit Netlify ?",
+              "options": [
+                "HTTPS automatique",
+                "Une base",
+                "Un DNS uniquement",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le TLS est géré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sd-03-q1"
+            }
+          ],
+          "summary": [
+            "Netlify.",
+            "Redirects.",
+            "HTTPS."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement sur Cloudflare Pages »."
+        },
+        {
+          "id": "sd-04",
+          "title": "Déploiement sur Cloudflare Pages",
+          "duration": 20,
+          "objectives": [
+            "Publier",
+            "Configurer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Cloudflare Pages distribue un site statique via CDN."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CDN.",
+                "Build.",
+                "Routes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel avantage ?",
+            "hints": [
+              "Le CDN."
+            ],
+            "solution": "La distribution par CDN.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cdn"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sert le CDN ?",
+              "options": [
+                "Les fichiers proches",
+                "La base",
+                "Le DNS",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La latence baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sd-04-q1"
+            }
+          ],
+          "summary": [
+            "Cloudflare.",
+            "CDN.",
+            "Build."
+          ],
+          "nextStep": "Chapitre suivant : « Variables d'environnement en déploiement »."
+        },
+        {
+          "id": "sd-05",
+          "title": "Variables d'environnement en déploiement",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Sécuriser",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les variables séparent configuration et code."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Variables.",
+                "Secrets.",
+                "Documentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que ne pas versionner ?",
+            "hints": [
+              "Les secrets."
+            ],
+            "solution": "Les secrets.",
+            "check": {
+              "type": "any",
+              "any": [
+                "secrets"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où déclarer une variable ?",
+              "options": [
+                "Plateforme de déploiement",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Dans le logo"
+              ],
+              "answer": 0,
+              "explanation": "La configuration est externe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sd-05-q1"
+            }
+          ],
+          "summary": [
+            "Variables.",
+            "Secrets.",
+            "Documentation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "courseId": "ia-modeles",
+  "modules": [
+    {
+      "id": "ia-modeles-module",
+      "title": "Modèles classiques",
+      "chapters": [
+        {
+          "id": "imd-01",
+          "title": "Régression linéaire",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Entraîner",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La régression linéaire modélise une relation linéaire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Coefficients.",
+                "Résidus.",
+                "Hypothèses."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que représentent les coefficients ?",
+            "hints": [
+              "L'effet des variables."
+            ],
+            "solution": "L'effet des variables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "effet"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les résidus",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle reste valide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "imd-01-q1"
+            }
+          ],
+          "summary": [
+            "Linéaire.",
+            "Coefficients.",
+            "Résidus."
+          ],
+          "nextStep": "Chapitre suivant : « Régression logistique »."
+        },
+        {
+          "id": "imd-02",
+          "title": "Régression logistique",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Entraîner",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La régression logistique prédit une probabilité de classe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Probabilité.",
+                "Seuil.",
+                "Odds."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prédit-elle ?",
+            "hints": [
+              "Une probabilité."
+            ],
+            "solution": "Une probabilité d'appartenance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "probabilite",
+                "probabilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que choisir ?",
+              "options": [
+                "Un seuil de décision",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le seuil change la décision.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "imd-02-q1"
+            }
+          ],
+          "summary": [
+            "Logistique.",
+            "Probabilité.",
+            "Seuil."
+          ],
+          "nextStep": "Chapitre suivant : « Arbres de décision »."
+        },
+        {
+          "id": "imd-03",
+          "title": "Arbres de décision",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Entraîner",
+            "Élaguer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un arbre découpe l'espace selon des règles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Nœuds.",
+                "Feuilles.",
+                "Profondeur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que risque un arbre profond ?",
+            "hints": [
+              "Le surapprentissage."
+            ],
+            "solution": "Le surapprentissage.",
+            "check": {
+              "type": "any",
+              "any": [
+                "surapprentissage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "La profondeur",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle généralise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "imd-03-q1"
+            }
+          ],
+          "summary": [
+            "Arbres.",
+            "Règles.",
+            "Profondeur."
+          ],
+          "nextStep": "Chapitre suivant : « Forêts aléatoires »."
+        },
+        {
+          "id": "imd-04",
+          "title": "Forêts aléatoires",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Entraîner",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une forêt combine plusieurs arbres pour réduire la variance."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ensemble.",
+                "Bagging.",
+                "Importance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi plusieurs arbres ?",
+            "hints": [
+              "Réduire la variance."
+            ],
+            "solution": "Combiner pour réduire la variance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "variance"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesure l'importance ?",
+              "options": [
+                "L'utilité des variables",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les variables comptent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "imd-04-q1"
+            }
+          ],
+          "summary": [
+            "Forêts.",
+            "Ensemble.",
+            "Importance."
+          ],
+          "nextStep": "Chapitre suivant : « K-means »."
+        },
+        {
+          "id": "imd-05",
+          "title": "K-means",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir k",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "k-means partitionne en k groupes par distance."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Centroïdes.",
+                "Itérations.",
+                "k."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait k-means ?",
+            "hints": [
+              "Il partitionne."
+            ],
+            "solution": "Il partitionne en k groupes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "partitionne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que choisir ?",
+              "options": [
+                "k",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "k doit être justifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "imd-05-q1"
+            }
+          ],
+          "summary": [
+            "k-means.",
+            "Centroïdes.",
+            "k."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

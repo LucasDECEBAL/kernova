@@ -1,0 +1,326 @@
+{
+  "courseId": "virt-laboratoire",
+  "modules": [
+    {
+      "id": "virt-laboratoire-module",
+      "title": "Laboratoire virtuel",
+      "chapters": [
+        {
+          "id": "vl-01",
+          "title": "Hyper-V",
+          "duration": 20,
+          "objectives": [
+            "Activer",
+            "Créer une VM",
+            "Configurer le réseau"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Hyper-V est l'hyperviseur de type 1 intégré à Windows."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Type 1.",
+                "Switch virtuel.",
+                "VM."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel type d'hyperviseur ?",
+            "hints": [
+              "Type 1."
+            ],
+            "solution": "Type 1, intégré au système.",
+            "check": {
+              "type": "any",
+              "any": [
+                "type 1"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un switch virtuel ?",
+              "options": [
+                "Il relie les VM",
+                "Il chiffre",
+                "Il trie",
+                "Il route le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le réseau est virtuel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vl-01-q1"
+            }
+          ],
+          "summary": [
+            "Hyper-V.",
+            "Switch.",
+            "VM."
+          ],
+          "nextStep": "Chapitre suivant : « Création d'un laboratoire »."
+        },
+        {
+          "id": "vl-02",
+          "title": "Création d'un laboratoire",
+          "duration": 20,
+          "objectives": [
+            "Planifier",
+            "Isoler",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un labo isole les machines et reproduit les scénarios."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Réseau isolé.",
+                "Modèles.",
+                "Procédure."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il isoler ?",
+            "hints": [
+              "Le réseau."
+            ],
+            "solution": "Le réseau du labo.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reseau",
+                "réseau"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi isoler ?",
+              "options": [
+                "Éviter d'impacter la production",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS",
+                "Le labo reste sûr."
+              ],
+              "answer": 0,
+              "explanation": "Réponse attendue conformément au cours.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vl-02-q1"
+            }
+          ],
+          "summary": [
+            "Labo.",
+            "Isolation.",
+            "Documentation."
+          ],
+          "nextStep": "Chapitre suivant : « Réseaux isolés de laboratoire »."
+        },
+        {
+          "id": "vl-03",
+          "title": "Réseaux isolés de laboratoire",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Vérifier",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un réseau isolé empêche l'accès Internet et au réseau domestique."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hôte seul.",
+                "Interne.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "L'absence d'accès Internet."
+            ],
+            "solution": "Que les VM n'atteignent pas Internet.",
+            "check": {
+              "type": "any",
+              "any": [
+                "internet"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que teste-t-on ?",
+              "options": [
+                "L'isolation",
+                "Le CSS",
+                "Le logo",
+                "Le DNS",
+                "Les fuites sont détectées."
+              ],
+              "answer": 0,
+              "explanation": "Réponse attendue conformément au cours.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vl-03-q1"
+            }
+          ],
+          "summary": [
+            "Isolation.",
+            "Tests.",
+            "Pas de fuite."
+          ],
+          "nextStep": "Chapitre suivant : « Modèles de machines »."
+        },
+        {
+          "id": "vl-04",
+          "title": "Modèles de machines",
+          "duration": 20,
+          "objectives": [
+            "Créer un modèle",
+            "Cloner",
+            "Mettre à jour"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un modèle sert de base reproductible aux VM."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Modèle.",
+                "Clone.",
+                "Version."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un modèle ?",
+            "hints": [
+              "Une base reproductible."
+            ],
+            "solution": "Une base de VM reproductible.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reproduct"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire du modèle avant clone ?",
+              "options": [
+                "Le mettre à jour",
+                "Le supprimer",
+                "Le publier",
+                "Le vendre",
+                "La base reste saine."
+              ],
+              "answer": 0,
+              "explanation": "Réponse attendue conformément au cours.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vl-04-q1"
+            }
+          ],
+          "summary": [
+            "Modèle.",
+            "Clone.",
+            "Version."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des ressources »."
+        },
+        {
+          "id": "vl-05",
+          "title": "Gestion des ressources",
+          "duration": 20,
+          "objectives": [
+            "Répartir",
+            "Surveiller",
+            "Ajuster"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les ressources du labo se répartissent selon les besoins des scénarios."
+            },
+            {
+              "type": "list",
+              "items": [
+                "RAM.",
+                "CPU.",
+                "Disque."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller ?",
+            "hints": [
+              "La saturation."
+            ],
+            "solution": "La saturation de l'hôte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "saturation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire si l'hôte sature ?",
+              "options": [
+                "Réduire les VM",
+                "Augmenter le CSS",
+                "Changer le DNS",
+                "Trier",
+                "La charge baisse."
+              ],
+              "answer": 0,
+              "explanation": "Réponse attendue conformément au cours.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vl-05-q1"
+            }
+          ],
+          "summary": [
+            "Répartition.",
+            "Surveillance.",
+            "Ajustement."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

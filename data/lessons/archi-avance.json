@@ -1,0 +1,322 @@
+{
+  "courseId": "archi-avance",
+  "modules": [
+    {
+      "id": "archi-avance-module",
+      "title": "Architectures avancées",
+      "chapters": [
+        {
+          "id": "aa-01",
+          "title": "Architecture événementielle",
+          "duration": 20,
+          "objectives": [
+            "Découpler",
+            "Relancer",
+            "Idempotence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les événements découplent producteurs et consommateurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événements.",
+                "Files.",
+                "Idempotence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi l'idempotence ?",
+            "hints": [
+              "Éviter les doublons."
+            ],
+            "solution": "Éviter les doublons.",
+            "check": {
+              "type": "any",
+              "any": [
+                "doublon"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une file ?",
+              "options": [
+                "Elle découple",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Les traitements sont indépendants.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aa-01-q1"
+            }
+          ],
+          "summary": [
+            "Événements.",
+            "Files.",
+            "Idempotence."
+          ],
+          "nextStep": "Chapitre suivant : « Scalabilité »."
+        },
+        {
+          "id": "aa-02",
+          "title": "Scalabilité",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La scalabilité horizontale ajoute des instances ; verticale augmente les ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Horizontale.",
+                "Verticale.",
+                "Mesures."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait la scalabilité horizontale ?",
+            "hints": [
+              "Elle ajoute des instances."
+            ],
+            "solution": "Elle ajoute des instances.",
+            "check": {
+              "type": "any",
+              "any": [
+                "instances"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "La charge",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La décision est fondée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aa-02-q1"
+            }
+          ],
+          "summary": [
+            "Scalabilité.",
+            "Instances.",
+            "Mesures."
+          ],
+          "nextStep": "Chapitre suivant : « Résilience »."
+        },
+        {
+          "id": "aa-03",
+          "title": "Résilience",
+          "duration": 20,
+          "objectives": [
+            "Prévoir",
+            "Isoler",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La résilience survit aux pannes partielles avec timeouts, retries et circuit breaker."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Timeout.",
+                "Retry.",
+                "Circuit breaker."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un timeout ?",
+            "hints": [
+              "Il borne l'attente."
+            ],
+            "solution": "Il borne l'attente.",
+            "check": {
+              "type": "any",
+              "any": [
+                "attente"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un circuit breaker ?",
+              "options": [
+                "Il coupe les appels",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La panne ne se propage pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aa-03-q1"
+            }
+          ],
+          "summary": [
+            "Résilience.",
+            "Timeout.",
+            "Circuit breaker."
+          ],
+          "nextStep": "Chapitre suivant : « Tolérance aux pannes »."
+        },
+        {
+          "id": "aa-04",
+          "title": "Tolérance aux pannes",
+          "duration": 20,
+          "objectives": [
+            "Concevoir",
+            "Tester",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La tolérance se conçoit par redondance et se prouve par tests."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Redondance.",
+                "Tests.",
+                "Surveillance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Les pannes."
+            ],
+            "solution": "Les scénarios de panne.",
+            "check": {
+              "type": "any",
+              "any": [
+                "panne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les erreurs",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les défaillances sont vues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aa-04-q1"
+            }
+          ],
+          "summary": [
+            "Tolérance.",
+            "Tests.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Documentation d'architecture »."
+        },
+        {
+          "id": "aa-05",
+          "title": "Documentation d'architecture",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Illustrer",
+            "Maintenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La documentation décrit contexte, décisions et conséquences."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contexte.",
+                "Décisions.",
+                "Schémas."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les décisions et leurs raisons."
+            ],
+            "solution": "Les décisions et leurs raisons.",
+            "check": {
+              "type": "any",
+              "any": [
+                "decision",
+                "décision"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel format de décision ?",
+              "options": [
+                "ADR",
+                "CSS",
+                "DNS",
+                "CSV"
+              ],
+              "answer": 0,
+              "explanation": "L'ADR conserve le contexte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aa-05-q1"
+            }
+          ],
+          "summary": [
+            "Documentation.",
+            "ADR.",
+            "Maintenance."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

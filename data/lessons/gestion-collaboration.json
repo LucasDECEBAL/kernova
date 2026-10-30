@@ -1,0 +1,323 @@
+{
+  "courseId": "gestion-collaboration",
+  "modules": [
+    {
+      "id": "gestion-collaboration-module",
+      "title": "Collaboration",
+      "chapters": [
+        {
+          "id": "gc-01",
+          "title": "Documentation technique",
+          "duration": 20,
+          "objectives": [
+            "Écrire",
+            "Maintenir",
+            "Trouver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La documentation utile est courte, datée et accessible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Objet.",
+                "Décisions.",
+                "Mise à jour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les décisions."
+            ],
+            "solution": "Les décisions et leurs raisons.",
+            "check": {
+              "type": "any",
+              "any": [
+                "decision",
+                "décision"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire de la doc ?",
+              "options": [
+                "La maintenir",
+                "L'ignorer",
+                "La publier",
+                "La vendre"
+              ],
+              "answer": 0,
+              "explanation": "Elle reste utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gc-01-q1"
+            }
+          ],
+          "summary": [
+            "Documentation.",
+            "Décisions.",
+            "Maintenance."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des risques »."
+        },
+        {
+          "id": "gc-02",
+          "title": "Gestion des risques",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Évaluer",
+            "Traiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le risque se traite par réduction, transfert, acceptation ou évitement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Risques.",
+                "Probabilité.",
+                "Réponse."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un risque ?",
+            "hints": [
+              "Le traiter."
+            ],
+            "solution": "Le traiter et le suivre.",
+            "check": {
+              "type": "any",
+              "any": [
+                "traiter"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "La réponse",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est suivi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gc-02-q1"
+            }
+          ],
+          "summary": [
+            "Risques.",
+            "Réponse.",
+            "Suivi."
+          ],
+          "nextStep": "Chapitre suivant : « Collaboration entre développeurs »."
+        },
+        {
+          "id": "gc-03",
+          "title": "Collaboration entre développeurs",
+          "duration": 20,
+          "objectives": [
+            "Communiquer",
+            "Partager",
+            "Relire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La collaboration repose sur des conventions et des échanges courts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Conventions.",
+                "Revue.",
+                "Outils."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que partager ?",
+            "hints": [
+              "Les conventions."
+            ],
+            "solution": "Les conventions et le contexte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "conventions"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des désaccords ?",
+              "options": [
+                "Les discuter tôt",
+                "Les cacher",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Les conflits diminuent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gc-03-q1"
+            }
+          ],
+          "summary": [
+            "Collaboration.",
+            "Conventions.",
+            "Revue."
+          ],
+          "nextStep": "Chapitre suivant : « Revue de code »."
+        },
+        {
+          "id": "gc-04",
+          "title": "Revue de code",
+          "duration": 20,
+          "objectives": [
+            "Relire",
+            "Commenter",
+            "Approuver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La revue vérifie correction et lisibilité, pas la personne."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Diff.",
+                "Commentaires.",
+                "Approbation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que commenter ?",
+            "hints": [
+              "Le code et les risques."
+            ],
+            "solution": "Le code et les risques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "risque"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne pas faire ?",
+              "options": [
+                "Blâmer",
+                "Relire",
+                "Tester",
+                "Documenter"
+              ],
+              "answer": 0,
+              "explanation": "La revue reste technique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gc-04-q1"
+            }
+          ],
+          "summary": [
+            "Revue.",
+            "Risques.",
+            "Approbation."
+          ],
+          "nextStep": "Chapitre suivant : « Présentation d'un projet technique »."
+        },
+        {
+          "id": "gc-05",
+          "title": "Présentation d'un projet technique",
+          "duration": 20,
+          "objectives": [
+            "Structurer",
+            "Démontrer",
+            "Convaincre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une présentation part du problème et montre la démonstration."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Problème.",
+                "Démo.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Par quoi commencer ?",
+            "hints": [
+              "Le problème."
+            ],
+            "solution": "Le problème résolu.",
+            "check": {
+              "type": "any",
+              "any": [
+                "probleme",
+                "problème"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que montrer ?",
+              "options": [
+                "Une démo qui marche",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gc-05-q1"
+            }
+          ],
+          "summary": [
+            "Présentation.",
+            "Démo.",
+            "Valeur."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

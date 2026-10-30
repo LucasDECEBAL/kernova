@@ -1,0 +1,507 @@
+{
+  "courseId": "obs-alertes",
+  "modules": [
+    {
+      "id": "obs-alertes-module",
+      "title": "Alertes et incidents",
+      "chapters": [
+        {
+          "id": "oa-01",
+          "title": "Alertes",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Prioriser",
+            "Réduire le bruit"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une alerte doit signaler une action utile."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Seuil.",
+                "Sévérité.",
+                "Action."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand alerter ?",
+            "hints": [
+              "Quand une action est nécessaire."
+            ],
+            "solution": "Quand une action est nécessaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "action"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "Le bruit",
+                "Les logs",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les alertes restent crédibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-01-q1"
+            }
+          ],
+          "summary": [
+            "Alertes.",
+            "Action.",
+            "Bruit."
+          ],
+          "nextStep": "Chapitre suivant : « Définition de seuils »."
+        },
+        {
+          "id": "oa-02",
+          "title": "Définition de seuils",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Mesurer",
+            "Ajuster"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un seuil se fonde sur le comportement normal et l'impact."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Baseline.",
+                "Seuil.",
+                "Durée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que considérer ?",
+            "hints": [
+              "La baseline."
+            ],
+            "solution": "Le comportement normal.",
+            "check": {
+              "type": "any",
+              "any": [
+                "normal"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un seuil bruyant ?",
+              "options": [
+                "L'ajuster",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le bruit baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-02-q1"
+            }
+          ],
+          "summary": [
+            "Seuils.",
+            "Baseline.",
+            "Ajustement."
+          ],
+          "nextStep": "Chapitre suivant : « Analyse des incidents »."
+        },
+        {
+          "id": "oa-03",
+          "title": "Analyse des incidents",
+          "duration": 20,
+          "objectives": [
+            "Qualifier",
+            "Corréler",
+            "Décider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'analyse qualifie l'impact et corrèle les signaux."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Impact.",
+                "Signaux.",
+                "Décision."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que corréler ?",
+            "hints": [
+              "Les signaux."
+            ],
+            "solution": "Logs, métriques et traces.",
+            "check": {
+              "type": "any",
+              "any": [
+                "signaux"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que décider ?",
+              "options": [
+                "Escalader",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La réponse s'organise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-03-q1"
+            }
+          ],
+          "summary": [
+            "Incidents.",
+            "Corrélation.",
+            "Décision."
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux de bord »."
+        },
+        {
+          "id": "oa-04",
+          "title": "Tableaux de bord",
+          "duration": 20,
+          "objectives": [
+            "Concevoir",
+            "Lire",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau de bord répond à une question précise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Indicateurs.",
+                "Contexte.",
+                "Alertes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que montrer ?",
+            "hints": [
+              "Les indicateurs utiles."
+            ],
+            "solution": "Les indicateurs utiles à la décision.",
+            "check": {
+              "type": "any",
+              "any": [
+                "indicateurs"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un tableau inutile ?",
+              "options": [
+                "Le simplifier",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "La lecture est rapide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-04-q1"
+            }
+          ],
+          "summary": [
+            "Dashboards.",
+            "Indicateurs.",
+            "Décision."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des erreurs en production »."
+        },
+        {
+          "id": "oa-05",
+          "title": "Gestion des erreurs en production",
+          "duration": 20,
+          "objectives": [
+            "Détecter",
+            "Corriger",
+            "Prévenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les erreurs de production se détectent et se corrigent sans fuiter."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Logs.",
+                "Alertes.",
+                "Correctifs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que montrer au client ?",
+            "hints": [
+              "Un message sûr."
+            ],
+            "solution": "Un message générique et sûr.",
+            "check": {
+              "type": "any",
+              "any": [
+                "message"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où détailler ?",
+              "options": [
+                "Dans les logs",
+                "Au client",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les détails restent internes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-05-q1"
+            }
+          ],
+          "summary": [
+            "Erreurs.",
+            "Logs.",
+            "Correctifs."
+          ],
+          "nextStep": "Chapitre suivant : « Diagnostic des performances »."
+        },
+        {
+          "id": "oa-06",
+          "title": "Diagnostic des performances",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Isoler",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le diagnostic isole la ressource lente."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Latence.",
+                "Goulot.",
+                "Correctifs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que chercher ?",
+            "hints": [
+              "Le goulot."
+            ],
+            "solution": "Le goulot d'étranglement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "goulot"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire après correction ?",
+              "options": [
+                "Remesurer",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le gain est prouvé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-06-q1"
+            }
+          ],
+          "summary": [
+            "Performance.",
+            "Goulot.",
+            "Mesure."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des astreintes »."
+        },
+        {
+          "id": "oa-07",
+          "title": "Gestion des astreintes",
+          "duration": 20,
+          "objectives": [
+            "Organiser",
+            "Documenter",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'astreinte a des procédures et des limites claires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rotations.",
+                "Runbooks.",
+                "Escalade."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les runbooks."
+            ],
+            "solution": "Les runbooks d'incident.",
+            "check": {
+              "type": "any",
+              "any": [
+                "runbook"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que prévoir ?",
+              "options": [
+                "L'escalade",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La réponse est rapide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-07-q1"
+            }
+          ],
+          "summary": [
+            "Astreinte.",
+            "Runbooks.",
+            "Escalade."
+          ],
+          "nextStep": "Chapitre suivant : « Postmortems et amélioration continue »."
+        },
+        {
+          "id": "oa-08",
+          "title": "Postmortems et amélioration continue",
+          "duration": 20,
+          "objectives": [
+            "Rédiger",
+            "Apprendre",
+            "Agir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un postmortem sans blâme produit des actions concrètes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chronologie.",
+                "Causes.",
+                "Actions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que produire ?",
+            "hints": [
+              "Des actions datées."
+            ],
+            "solution": "Des actions avec responsable et date.",
+            "check": {
+              "type": "any",
+              "any": [
+                "actions"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que blâmer ?",
+              "options": [
+                "Rien, le système",
+                "La personne",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'apprentissage prime.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oa-08-q1"
+            }
+          ],
+          "summary": [
+            "Postmortem.",
+            "Causes.",
+            "Actions."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

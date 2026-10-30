@@ -1,0 +1,323 @@
+{
+  "courseId": "terraform",
+  "modules": [
+    {
+      "id": "terraform-module",
+      "title": "Terraform",
+      "chapters": [
+        {
+          "id": "tf-01",
+          "title": "Infrastructure as Code",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Versionner",
+            "Appliquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'IaC décrit l'infrastructure dans des fichiers versionnés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Déclaratif.",
+                "Versionné.",
+                "Rejouable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantit l'IaC ?",
+            "hints": [
+              "La reproductibilité."
+            ],
+            "solution": "La reproductibilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reproduct"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que versionner ?",
+              "options": [
+                "Les fichiers IaC",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'historique est traçable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tf-01-q1"
+            }
+          ],
+          "summary": [
+            "IaC.",
+            "Version.",
+            "Reproductible."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Terraform »."
+        },
+        {
+          "id": "tf-02",
+          "title": "Introduction à Terraform",
+          "duration": 20,
+          "objectives": [
+            "Installer",
+            "Décrire",
+            "Appliquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Terraform décrit des ressources avec HCL et un provider."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Providers.",
+                "HCL.",
+                "Plan/apply."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait terraform plan ?",
+            "hints": [
+              "Il prévisualise."
+            ],
+            "solution": "Il prévisualise les changements.",
+            "check": {
+              "type": "any",
+              "any": [
+                "previsualise",
+                "prévisualise"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait apply ?",
+              "options": [
+                "Il applique",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les ressources sont créées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tf-02-q1"
+            }
+          ],
+          "summary": [
+            "HCL.",
+            "Plan.",
+            "Apply."
+          ],
+          "nextStep": "Chapitre suivant : « Modules Terraform »."
+        },
+        {
+          "id": "tf-03",
+          "title": "Modules Terraform",
+          "duration": 20,
+          "objectives": [
+            "Réutiliser",
+            "Paramétrer",
+            "Versionner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un module regroupe des ressources réutilisables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Inputs.",
+                "Outputs.",
+                "Version."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que reçoit un module ?",
+            "hints": [
+              "Des variables."
+            ],
+            "solution": "Des variables d'entrée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "variables"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que produit un module ?",
+              "options": [
+                "Des outputs",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs sont exposées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tf-03-q1"
+            }
+          ],
+          "summary": [
+            "Modules.",
+            "Inputs/outputs.",
+            "Version."
+          ],
+          "nextStep": "Chapitre suivant : « State Terraform »."
+        },
+        {
+          "id": "tf-04",
+          "title": "State Terraform",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Sécuriser",
+            "Verrouiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le state suit les ressources réelles ; il doit être partagé et protégé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Backend distant.",
+                "Verrou.",
+                "Secrets."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi un backend distant ?",
+            "hints": [
+              "Partager et verrouiller."
+            ],
+            "solution": "Partager et verrouiller le state.",
+            "check": {
+              "type": "any",
+              "any": [
+                "partager",
+                "verrou"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient le state ?",
+              "options": [
+                "Des données sensibles parfois",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le state doit être protégé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tf-04-q1"
+            }
+          ],
+          "summary": [
+            "State.",
+            "Backend.",
+            "Verrou."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des configurations »."
+        },
+        {
+          "id": "tf-05",
+          "title": "Gestion des configurations",
+          "duration": 20,
+          "objectives": [
+            "Séparer",
+            "Valider",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les configurations se séparent par environnement et se valident."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Workspaces.",
+                "Variables.",
+                "CI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que valider avant apply ?",
+            "hints": [
+              "Le plan."
+            ],
+            "solution": "Le plan Terraform.",
+            "check": {
+              "type": "any",
+              "any": [
+                "plan"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que séparer ?",
+              "options": [
+                "Les environnements",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les états restent isolés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tf-05-q1"
+            }
+          ],
+          "summary": [
+            "Configs.",
+            "Plan.",
+            "CI."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

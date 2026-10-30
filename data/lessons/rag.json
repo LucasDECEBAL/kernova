@@ -1,0 +1,323 @@
+{
+  "courseId": "rag",
+  "modules": [
+    {
+      "id": "rag-module",
+      "title": "RAG",
+      "chapters": [
+        {
+          "id": "rag-01",
+          "title": "Retrieval-Augmented Generation",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Concevoir",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le RAG recherche des passages puis répond à partir d'eux."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Recherche.",
+                "Contexte.",
+                "Citations."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fournit le RAG ?",
+            "hints": [
+              "Des passages pertinents."
+            ],
+            "solution": "Des passages de documents pertinents.",
+            "check": {
+              "type": "any",
+              "any": [
+                "passages"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que citer ?",
+              "options": [
+                "Les sources",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La réponse est vérifiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rag-01-q1"
+            }
+          ],
+          "summary": [
+            "RAG.",
+            "Recherche.",
+            "Citations."
+          ],
+          "nextStep": "Chapitre suivant : « Bases vectorielles »."
+        },
+        {
+          "id": "rag-02",
+          "title": "Bases vectorielles",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Rechercher",
+            "Mettre à jour"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une base vectorielle stocke les embeddings et cherche les plus proches."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vecteurs.",
+                "Index.",
+                "Similarité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que cherche-t-on ?",
+            "hints": [
+              "Les plus proches."
+            ],
+            "solution": "Les vecteurs les plus proches.",
+            "check": {
+              "type": "any",
+              "any": [
+                "proches"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que stocker ?",
+              "options": [
+                "Des embeddings",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La similarité est calculée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rag-02-q1"
+            }
+          ],
+          "summary": [
+            "Vecteurs.",
+            "Index.",
+            "Recherche."
+          ],
+          "nextStep": "Chapitre suivant : « Recherche sémantique »."
+        },
+        {
+          "id": "rag-03",
+          "title": "Recherche sémantique",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Améliorer",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La recherche sémantique retrouve le sens, pas seulement les mots."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sens.",
+                "Hybride.",
+                "Métriques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que complète la recherche sémantique ?",
+            "hints": [
+              "La recherche par mots-clés."
+            ],
+            "solution": "Une recherche hybride avec mots-clés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "mots-cles",
+                "mots-clés"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "La pertinence",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La qualité est suivie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rag-03-q1"
+            }
+          ],
+          "summary": [
+            "Sémantique.",
+            "Hybride.",
+            "Pertinence."
+          ],
+          "nextStep": "Chapitre suivant : « Chunking de documents »."
+        },
+        {
+          "id": "rag-04",
+          "title": "Chunking de documents",
+          "duration": 20,
+          "objectives": [
+            "Découper",
+            "Conserver le contexte",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le découpage conditionne la qualité de la recherche."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Taille.",
+                "Chevauchement.",
+                "Structure."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garder ?",
+            "hints": [
+              "Le contexte autour."
+            ],
+            "solution": "Le contexte autour du passage.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contexte"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un découpage trop fin ?",
+              "options": [
+                "La perte de contexte",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le sens se perd.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rag-04-q1"
+            }
+          ],
+          "summary": [
+            "Chunking.",
+            "Contexte.",
+            "Qualité."
+          ],
+          "nextStep": "Chapitre suivant : « Évaluation d'un système RAG »."
+        },
+        {
+          "id": "rag-05",
+          "title": "Évaluation d'un système RAG",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Comparer",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "On évalue la recherche et la réponse séparément."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pertinence.",
+                "Fidélité.",
+                "Couverture."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Recherche et réponse."
+            ],
+            "solution": "La pertinence des passages et la fidélité de la réponse.",
+            "check": {
+              "type": "any",
+              "any": [
+                "fidelite",
+                "fidélité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des erreurs ?",
+              "options": [
+                "Corriger la recherche/le prompt",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le système s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rag-05-q1"
+            }
+          ],
+          "summary": [
+            "Évaluation.",
+            "Recherche.",
+            "Fidélité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

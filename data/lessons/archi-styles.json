@@ -1,0 +1,324 @@
+{
+  "courseId": "archi-styles",
+  "modules": [
+    {
+      "id": "archi-styles-module",
+      "title": "Styles d'architecture",
+      "chapters": [
+        {
+          "id": "as-01",
+          "title": "Architecture hexagonale",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Définir les ports",
+            "Adapter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le domaine est au centre ; les ports décrivent les besoins, les adaptateurs les implémentent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Domaine.",
+                "Ports.",
+                "Adaptateurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où sont les règles ?",
+            "hints": [
+              "Au centre."
+            ],
+            "solution": "Au centre, dans le domaine.",
+            "check": {
+              "type": "any",
+              "any": [
+                "centre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un adaptateur ?",
+              "options": [
+                "Une implémentation technique",
+                "Une règle métier",
+                "Un test",
+                "Un format"
+              ],
+              "answer": 0,
+              "explanation": "Il relie le domaine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "as-01-q1"
+            }
+          ],
+          "summary": [
+            "Hexagonale.",
+            "Ports.",
+            "Adaptateurs."
+          ],
+          "nextStep": "Chapitre suivant : « Clean Architecture »."
+        },
+        {
+          "id": "as-02",
+          "title": "Clean Architecture",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Dépendre vers l'intérieur",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Clean Architecture organise les dépendances vers le domaine."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Entités.",
+                "Cas d'usage.",
+                "Adaptateurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où pointent les dépendances ?",
+            "hints": [
+              "Vers l'intérieur."
+            ],
+            "solution": "Vers le domaine.",
+            "check": {
+              "type": "any",
+              "any": [
+                "interieur",
+                "intérieur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que teste-t-on sans infrastructure ?",
+              "options": [
+                "Les cas d'usage",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La logique est isolée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "as-02-q1"
+            }
+          ],
+          "summary": [
+            "Clean.",
+            "Dépendances.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Domain-Driven Design »."
+        },
+        {
+          "id": "as-03",
+          "title": "Domain-Driven Design",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Modéliser",
+            "Délimiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DDD modélise le métier avec un langage commun et des contextes délimités."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ubiquitous language.",
+                "Bounded context.",
+                "Agrégats."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Qu'est-ce qu'un contexte délimité ?",
+            "hints": [
+              "Une frontière de modèle."
+            ],
+            "solution": "Une frontière de modèle métier.",
+            "check": {
+              "type": "any",
+              "any": [
+                "frontiere",
+                "frontière"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que partage une équipe ?",
+              "options": [
+                "Un langage commun",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le vocabulaire est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "as-03-q1"
+            }
+          ],
+          "summary": [
+            "DDD.",
+            "Contexte.",
+            "Langage."
+          ],
+          "nextStep": "Chapitre suivant : « Design patterns fondamentaux »."
+        },
+        {
+          "id": "as-04",
+          "title": "Design patterns fondamentaux",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître",
+            "Choisir",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pattern résout un problème récurrent dans un contexte donné."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Problème.",
+                "Solution.",
+                "Contexte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand utiliser un pattern ?",
+            "hints": [
+              "Quand le problème correspond."
+            ],
+            "solution": "Quand le problème correspond réellement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "probleme",
+                "problème"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un pattern mal choisi ?",
+              "options": [
+                "De la complexité",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La simplicité se perd.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "as-04-q1"
+            }
+          ],
+          "summary": [
+            "Patterns.",
+            "Contexte.",
+            "Abus."
+          ],
+          "nextStep": "Chapitre suivant : « Factory et Strategy »."
+        },
+        {
+          "id": "as-05",
+          "title": "Factory et Strategy",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Composer",
+            "Éviter les if"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Factory crée des objets ; Strategy rend des comportements interchangeables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Factory.",
+                "Strategy.",
+                "Composition."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Strategy ?",
+            "hints": [
+              "Il remplace un comportement."
+            ],
+            "solution": "Il rend le comportement interchangeable.",
+            "check": {
+              "type": "any",
+              "any": [
+                "comportement"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que remplace Strategy ?",
+              "options": [
+                "Des if multiples",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La variation est isolée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "as-05-q1"
+            }
+          ],
+          "summary": [
+            "Factory.",
+            "Strategy.",
+            "Composition."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

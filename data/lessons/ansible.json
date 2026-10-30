@@ -1,0 +1,323 @@
+{
+  "courseId": "ansible",
+  "modules": [
+    {
+      "id": "ansible-module",
+      "title": "Ansible",
+      "chapters": [
+        {
+          "id": "an-01",
+          "title": "Introduction à Ansible",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Inventorier",
+            "Idempotence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Ansible configure des serveurs sans agent via SSH."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Inventaire.",
+                "Modules.",
+                "Idempotence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantit l'idempotence ?",
+            "hints": [
+              "Le même résultat."
+            ],
+            "solution": "Le même résultat à chaque exécution.",
+            "check": {
+              "type": "any",
+              "any": [
+                "meme",
+                "même"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il sur la cible ?",
+              "options": [
+                "SSH",
+                "Un agent",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Aucun agent requis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "an-01-q1"
+            }
+          ],
+          "summary": [
+            "SSH.",
+            "Modules.",
+            "Idempotence."
+          ],
+          "nextStep": "Chapitre suivant : « Playbooks Ansible »."
+        },
+        {
+          "id": "an-02",
+          "title": "Playbooks Ansible",
+          "duration": 20,
+          "objectives": [
+            "Écrire",
+            "Ordonner",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un playbook enchaîne des tâches déclaratives."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tâches.",
+                "Handlers.",
+                "Variables."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire avant d'appliquer ?",
+            "hints": [
+              "Un dry-run."
+            ],
+            "solution": "Un --check (dry-run).",
+            "check": {
+              "type": "any",
+              "any": [
+                "check",
+                "dry-run"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait --check ?",
+              "options": [
+                "Il simule",
+                "Il applique",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Aucune modification.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "an-02-q1"
+            }
+          ],
+          "summary": [
+            "Playbook.",
+            "Tâches.",
+            "Dry-run."
+          ],
+          "nextStep": "Chapitre suivant : « Automatisation de serveurs »."
+        },
+        {
+          "id": "an-03",
+          "title": "Automatisation de serveurs",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Déployer",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Ansible installe, configure et déploie de façon reproductible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Templates.",
+                "Handlers."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un handler ?",
+            "hints": [
+              "Il réagit à un changement."
+            ],
+            "solution": "Il s'exécute sur changement (ex. redémarrage).",
+            "check": {
+              "type": "any",
+              "any": [
+                "changement"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réutiliser ?",
+              "options": [
+                "Des rôles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les rôles sont modulaires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "an-03-q1"
+            }
+          ],
+          "summary": [
+            "Rôles.",
+            "Templates.",
+            "Handlers."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des configurations »."
+        },
+        {
+          "id": "an-04",
+          "title": "Gestion des configurations",
+          "duration": 20,
+          "objectives": [
+            "Centraliser",
+            "Sécuriser",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La configuration se versionne et les secrets se chiffrent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Git.",
+                "Vault.",
+                "Audit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où mettre un secret ?",
+            "hints": [
+              "Dans Ansible Vault."
+            ],
+            "solution": "Dans Ansible Vault.",
+            "check": {
+              "type": "any",
+              "any": [
+                "vault"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que versionner ?",
+              "options": [
+                "Les playbooks",
+                "Les secrets en clair",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les secrets restent chiffrés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "an-04-q1"
+            }
+          ],
+          "summary": [
+            "Config.",
+            "Vault.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Observabilité et incidents »."
+        },
+        {
+          "id": "an-05",
+          "title": "Observabilité et incidents",
+          "duration": 20,
+          "objectives": [
+            "Surveiller",
+            "Alerter",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'automatisation inclut la surveillance et les procédures d'incident."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Métriques.",
+                "Alertes.",
+                "Postmortem."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après incident ?",
+            "hints": [
+              "Un postmortem."
+            ],
+            "solution": "Un postmortem sans blâme.",
+            "check": {
+              "type": "any",
+              "any": [
+                "postmortem"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et latence",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'expérience compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "an-05-q1"
+            }
+          ],
+          "summary": [
+            "Surveillance.",
+            "Alertes.",
+            "Postmortem."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

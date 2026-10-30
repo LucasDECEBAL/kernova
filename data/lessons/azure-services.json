@@ -1,0 +1,323 @@
+{
+  "courseId": "azure-services",
+  "modules": [
+    {
+      "id": "azure-services-module",
+      "title": "Azure services",
+      "chapters": [
+        {
+          "id": "azs-01",
+          "title": "Stockage Azure",
+          "duration": 20,
+          "objectives": [
+            "Choisir un type",
+            "Contrôler l'accès",
+            "Gérer le cycle"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure Storage propose objets, fichiers, files et disques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Blob.",
+                "Fichiers.",
+                "Disques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel stockage pour des blobs ?",
+            "hints": [
+              "Blob."
+            ],
+            "solution": "Le stockage Blob.",
+            "check": {
+              "type": "any",
+              "any": [
+                "blob"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que stocke Blob ?",
+              "options": [
+                "Des objets",
+                "Des VM",
+                "Un DNS",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les objets sont adaptés aux fichiers.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azs-01-q1"
+            }
+          ],
+          "summary": [
+            "Blob.",
+            "Accès.",
+            "Cycle."
+          ],
+          "nextStep": "Chapitre suivant : « Réseaux virtuels »."
+        },
+        {
+          "id": "azs-02",
+          "title": "Réseaux virtuels",
+          "duration": 20,
+          "objectives": [
+            "Segmenter",
+            "Filtrer",
+            "Router"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VNet isole des sous-réseaux publics et privés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sous-réseaux.",
+                "NSG.",
+                "Peering."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que filtre un NSG ?",
+            "hints": [
+              "Le trafic."
+            ],
+            "solution": "Le trafic réseau.",
+            "check": {
+              "type": "any",
+              "any": [
+                "trafic"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un NSG ?",
+              "options": [
+                "Il filtre le trafic",
+                "Il chiffre",
+                "Il trie",
+                "Il route le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les règles contrôlent les flux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azs-02-q1"
+            }
+          ],
+          "summary": [
+            "VNet.",
+            "NSG.",
+            "Sous-réseaux."
+          ],
+          "nextStep": "Chapitre suivant : « DNS Azure »."
+        },
+        {
+          "id": "azs-03",
+          "title": "DNS Azure",
+          "duration": 20,
+          "objectives": [
+            "Créer une zone",
+            "Ajouter des enregistrements",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure DNS héberge des zones publiques ou privées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zones.",
+                "A/CNAME.",
+                "Privé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel enregistrement pour un alias ?",
+            "hints": [
+              "CNAME."
+            ],
+            "solution": "Un enregistrement CNAME.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cname"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une zone privée ?",
+              "options": [
+                "Résout en interne",
+                "Publie sur Internet",
+                "Chiffre",
+                "Trie"
+              ],
+              "answer": 0,
+              "explanation": "Elle reste interne au réseau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azs-03-q1"
+            }
+          ],
+          "summary": [
+            "Zones.",
+            "CNAME.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Azure SQL »."
+        },
+        {
+          "id": "azs-04",
+          "title": "Azure SQL",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Sécuriser",
+            "Sauvegarder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure SQL est une base managée avec sauvegardes et haute disponibilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Managé.",
+                "Pare-feu.",
+                "Sauvegardes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gérer le client ?",
+            "hints": [
+              "Les données et accès."
+            ],
+            "solution": "Les données, le schéma et les accès.",
+            "check": {
+              "type": "any",
+              "any": [
+                "donnees",
+                "données"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui gère les correctifs ?",
+              "options": [
+                "Le fournisseur",
+                "Le client",
+                "Personne",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La base est managée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azs-04-q1"
+            }
+          ],
+          "summary": [
+            "Managé.",
+            "Accès.",
+            "Sauvegardes."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité Azure »."
+        },
+        {
+          "id": "azs-05",
+          "title": "Sécurité Azure",
+          "duration": 20,
+          "objectives": [
+            "Appliquer le moindre privilège",
+            "Chiffrer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité Azure combine Entra, RBAC, chiffrement et journaux."
+            },
+            {
+              "type": "list",
+              "items": [
+                "RBAC.",
+                "Chiffrement.",
+                "Defender."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait RBAC ?",
+            "hints": [
+              "Il contrôle les rôles."
+            ],
+            "solution": "Il attribue des rôles et permissions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "role",
+                "rôle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Defender ?",
+              "options": [
+                "Il détecte les menaces",
+                "Il chiffre le CSS",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La détection est centralisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azs-05-q1"
+            }
+          ],
+          "summary": [
+            "RBAC.",
+            "Chiffrement.",
+            "Défense."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

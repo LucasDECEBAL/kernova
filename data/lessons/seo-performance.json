@@ -1,0 +1,322 @@
+{
+  "courseId": "seo-performance",
+  "modules": [
+    {
+      "id": "seo-performance-module",
+      "title": "Performance et SEO",
+      "chapters": [
+        {
+          "id": "sp-01",
+          "title": "Optimisation des performances",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Réduire",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La performance se mesure avant et après optimisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Mesures.",
+                "Poids.",
+                "Priorités."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Les temps réels."
+            ],
+            "solution": "Les temps réels de chargement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "temps"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire en premier ?",
+              "options": [
+                "Le plus lourd",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le gain est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sp-01-q1"
+            }
+          ],
+          "summary": [
+            "Performance.",
+            "Mesure.",
+            "Priorités."
+          ],
+          "nextStep": "Chapitre suivant : « Core Web Vitals »."
+        },
+        {
+          "id": "sp-02",
+          "title": "Core Web Vitals",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Mesurer",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "LCP, INP et CLS mesurent l'expérience de chargement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "LCP.",
+                "INP.",
+                "CLS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesure CLS ?",
+            "hints": [
+              "Les sauts de mise en page."
+            ],
+            "solution": "Les décalages de mise en page.",
+            "check": {
+              "type": "any",
+              "any": [
+                "decalage",
+                "décalage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "Les sauts",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'expérience est stable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sp-02-q1"
+            }
+          ],
+          "summary": [
+            "Web Vitals.",
+            "LCP/INP/CLS.",
+            "Amélioration."
+          ],
+          "nextStep": "Chapitre suivant : « SEO technique »."
+        },
+        {
+          "id": "sp-03",
+          "title": "SEO technique",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Corriger",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le SEO technique rend le site explorable et rapide."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Indexation.",
+                "Liens.",
+                "Performance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "L'indexation."
+            ],
+            "solution": "L'indexation des pages.",
+            "check": {
+              "type": "any",
+              "any": [
+                "indexation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des erreurs ?",
+              "options": [
+                "Les corriger",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le site est propre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sp-03-q1"
+            }
+          ],
+          "summary": [
+            "SEO.",
+            "Indexation.",
+            "Performance."
+          ],
+          "nextStep": "Chapitre suivant : « Structure des titres »."
+        },
+        {
+          "id": "sp-04",
+          "title": "Structure des titres",
+          "duration": 20,
+          "objectives": [
+            "Hiérarchiser",
+            "Décrire",
+            "Éviter les sauts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une hiérarchie de titres claire aide lecteurs et moteurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "h1 unique.",
+                "h2/h3.",
+                "Cohérence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Combien de h1 ?",
+            "hints": [
+              "Un seul."
+            ],
+            "solution": "Un seul h1 par page.",
+            "check": {
+              "type": "any",
+              "any": [
+                "un seul"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des sauts ?",
+              "options": [
+                "Les éviter",
+                "Les multiplier",
+                "Les cacher",
+                "Les publier"
+              ],
+              "answer": 0,
+              "explanation": "La structure reste logique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sp-04-q1"
+            }
+          ],
+          "summary": [
+            "Titres.",
+            "Hiérarchie.",
+            "h1."
+          ],
+          "nextStep": "Chapitre suivant : « Métadonnées »."
+        },
+        {
+          "id": "sp-05",
+          "title": "Métadonnées",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Unicité",
+            "Partage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les métadonnées décrivent la page aux moteurs et au partage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Title.",
+                "Description.",
+                "Open Graph."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que rendre unique ?",
+            "hints": [
+              "Les titres et descriptions."
+            ],
+            "solution": "Titre et description uniques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "unique"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Open Graph ?",
+              "options": [
+                "L'aperçu de partage",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Le partage est soigné.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sp-05-q1"
+            }
+          ],
+          "summary": [
+            "Métadonnées.",
+            "Unicité.",
+            "Partage."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

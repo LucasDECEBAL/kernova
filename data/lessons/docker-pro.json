@@ -1,0 +1,323 @@
+{
+  "courseId": "docker-pro",
+  "modules": [
+    {
+      "id": "docker-pro-module",
+      "title": "Docker avancé",
+      "chapters": [
+        {
+          "id": "dkp-01",
+          "title": "Optimisation des images",
+          "duration": 20,
+          "objectives": [
+            "Réduire les couches",
+            "Choisir une base légère",
+            "Nettoyer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une image légère se construit avec une base minimale et un contexte maîtrisé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Multi-stage.",
+                "Alpine/slim.",
+                ".dockerignore."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait multi-stage ?",
+            "hints": [
+              "Il sépare build et runtime."
+            ],
+            "solution": "Il sépare la construction de l'exécution.",
+            "check": {
+              "type": "any",
+              "any": [
+                "multi-stage",
+                "multi stage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait .dockerignore ?",
+              "options": [
+                "Il réduit le contexte",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte est plus léger.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkp-01-q1"
+            }
+          ],
+          "summary": [
+            "Multi-stage.",
+            "Base légère.",
+            ".dockerignore."
+          ],
+          "nextStep": "Chapitre suivant : « Registres d'images »."
+        },
+        {
+          "id": "dkp-02",
+          "title": "Registres d'images",
+          "duration": 20,
+          "objectives": [
+            "Pousser",
+            "Tirer",
+            "Contrôler l'accès"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un registre stocke et distribue les images."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Push.",
+                "Pull.",
+                "Authentification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait docker push ?",
+            "hints": [
+              "Il publie l'image."
+            ],
+            "solution": "Il publie l'image vers un registre.",
+            "check": {
+              "type": "any",
+              "any": [
+                "publie",
+                "push"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contrôler ?",
+              "options": [
+                "L'accès au registre",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les images sont sensibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkp-02-q1"
+            }
+          ],
+          "summary": [
+            "Registre.",
+            "Push/pull.",
+            "Accès."
+          ],
+          "nextStep": "Chapitre suivant : « Débogage des conteneurs »."
+        },
+        {
+          "id": "dkp-03",
+          "title": "Débogage des conteneurs",
+          "duration": 20,
+          "objectives": [
+            "Inspecter",
+            "Entrer",
+            "Lire les logs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le débogage inspecte l'état, les logs et le système de fichiers."
+            },
+            {
+              "type": "list",
+              "items": [
+                "docker inspect.",
+                "exec.",
+                "logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait docker exec ?",
+            "hints": [
+              "Il exécute dans le conteneur."
+            ],
+            "solution": "Il exécute une commande dans le conteneur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "exec"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait inspect ?",
+              "options": [
+                "Il montre la configuration",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'état est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkp-03-q1"
+            }
+          ],
+          "summary": [
+            "Inspection.",
+            "exec.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « Données persistantes »."
+        },
+        {
+          "id": "dkp-04",
+          "title": "Données persistantes",
+          "duration": 20,
+          "objectives": [
+            "Choisir un volume",
+            "Sauvegarder",
+            "Restaurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données persistantes vivent dans des volumes sauvegardés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Volumes.",
+                "Sauvegarde.",
+                "Restauration."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que sauvegarder ?",
+            "hints": [
+              "Les volumes."
+            ],
+            "solution": "Les volumes et leur contenu.",
+            "check": {
+              "type": "any",
+              "any": [
+                "volume"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un volume survit-il au conteneur ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les données restent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkp-04-q1"
+            }
+          ],
+          "summary": [
+            "Volumes.",
+            "Sauvegarde.",
+            "Restauration."
+          ],
+          "nextStep": "Chapitre suivant : « Bonnes pratiques Docker »."
+        },
+        {
+          "id": "dkp-05",
+          "title": "Bonnes pratiques Docker",
+          "duration": 20,
+          "objectives": [
+            "Une responsabilité",
+            "Étiqueter",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les bonnes pratiques rendent les images reproductibles et sûres."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tag explicite.",
+                "Non-root.",
+                "Documentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que taguer ?",
+            "hints": [
+              "Une version explicite."
+            ],
+            "solution": "Une version explicite, pas latest en production.",
+            "check": {
+              "type": "any",
+              "any": [
+                "version"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi éviter latest ?",
+              "options": [
+                "Version imprévisible",
+                "Trop lourd",
+                "Interdit",
+                "Trop lent"
+              ],
+              "answer": 0,
+              "explanation": "La reproductibilité diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dkp-05-q1"
+            }
+          ],
+          "summary": [
+            "Tags.",
+            "Non-root.",
+            "Documentation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

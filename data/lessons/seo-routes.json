@@ -1,0 +1,321 @@
+{
+  "courseId": "seo-routes",
+  "modules": [
+    {
+      "id": "seo-routes-module",
+      "title": "Routes et sécurité",
+      "chapters": [
+        {
+          "id": "sr-01",
+          "title": "Gestion des routes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Configurer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les routes client exigent un serveur qui renvoie index.html."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SPA.",
+                "Fallback.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Une route profonde."
+            ],
+            "solution": "Le rechargement d'une route profonde.",
+            "check": {
+              "type": "any",
+              "any": [
+                "profonde"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoyer pour une route inconnue ?",
+              "options": [
+                "index.html",
+                "404 brute",
+                "Un CSS",
+                "Un DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le routeur prend la main.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sr-01-q1"
+            }
+          ],
+          "summary": [
+            "Routes.",
+            "Fallback.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Certificats TLS »."
+        },
+        {
+          "id": "sr-02",
+          "title": "Certificats TLS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Renouveler",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un certificat lie une clé à un domaine et expire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Certificat.",
+                "Renouvellement.",
+                "Chaîne."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller ?",
+            "hints": [
+              "L'expiration."
+            ],
+            "solution": "L'expiration.",
+            "check": {
+              "type": "any",
+              "any": [
+                "expiration"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un certificat expiré ?",
+              "options": [
+                "Le renouveler",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le site reste accessible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sr-02-q1"
+            }
+          ],
+          "summary": [
+            "TLS.",
+            "Certificat.",
+            "Expiration."
+          ],
+          "nextStep": "Chapitre suivant : « HTTPS »."
+        },
+        {
+          "id": "sr-03",
+          "title": "HTTPS",
+          "duration": 20,
+          "objectives": [
+            "Activer",
+            "Rediriger",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "HTTPS chiffre le transport et rassure l'utilisateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "TLS.",
+                "Redirection.",
+                "HSTS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire du HTTP ?",
+            "hints": [
+              "Rediriger vers HTTPS."
+            ],
+            "solution": "Rediriger vers HTTPS.",
+            "check": {
+              "type": "any",
+              "any": [
+                "redirig"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que protège HTTPS ?",
+              "options": [
+                "Le transport",
+                "Le serveur",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La connexion est chiffrée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sr-03-q1"
+            }
+          ],
+          "summary": [
+            "HTTPS.",
+            "Redirection.",
+            "HSTS."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les CDN »."
+        },
+        {
+          "id": "sr-04",
+          "title": "Comprendre les CDN",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Configurer",
+            "Invalider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un CDN met en cache les fichiers proches des utilisateurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cache.",
+                "Invalidation.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après mise à jour ?",
+            "hints": [
+              "Invalider le cache."
+            ],
+            "solution": "Invalider le cache.",
+            "check": {
+              "type": "any",
+              "any": [
+                "invalider"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduit un CDN ?",
+              "options": [
+                "La latence",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les fichiers sont proches.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sr-04-q1"
+            }
+          ],
+          "summary": [
+            "CDN.",
+            "Cache.",
+            "Invalidation."
+          ],
+          "nextStep": "Chapitre suivant : « Optimisation des images »."
+        },
+        {
+          "id": "sr-05",
+          "title": "Optimisation des images",
+          "duration": 20,
+          "objectives": [
+            "Compresser",
+            "Formats modernes",
+            "Dimensions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Des images optimisées réduisent le poids et améliorent la vitesse."
+            },
+            {
+              "type": "list",
+              "items": [
+                "WebP/AVIF.",
+                "Compression.",
+                "Dimensions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que préciser ?",
+            "hints": [
+              "Les dimensions."
+            ],
+            "solution": "width et height.",
+            "check": {
+              "type": "any",
+              "any": [
+                "width"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi width/height ?",
+              "options": [
+                "Éviter les sauts",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La place est réservée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sr-05-q1"
+            }
+          ],
+          "summary": [
+            "Images.",
+            "Poids.",
+            "Dimensions."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

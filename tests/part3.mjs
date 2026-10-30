@@ -81,7 +81,7 @@ try {
   await send('Runtime.enable');
 
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('273 r')`);
   check('Catalogue : 60 cours', true);
   await setValue('#cat-domain', 'algorithmique');
   await waitFor(`document.querySelector('#cat-count').textContent.startsWith('8 r')`);

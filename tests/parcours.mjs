@@ -67,7 +67,7 @@ try {
   const levels = await evaluate(`document.querySelectorAll('.path-level').length`);
   const nodes = await evaluate(`document.querySelectorAll('.path-node').length`);
   check('Étapes calculées', levels >= 4, String(levels));
-  check('193 cours placés', nodes === 193, String(nodes));
+  check('273 cours placés', nodes === 273, String(nodes));
   check('Premier niveau nommé', (await evaluate(`document.querySelector('.path-level h2').textContent`)) === 'Points de départ');
 
   const status = (id) => evaluate(`document.querySelector('a[href="#/cours/${id}"]').closest('.path-node').dataset.status`);
@@ -78,7 +78,7 @@ try {
   await evaluate(`(() => { const s = document.querySelector('#path-domain'); s.value = 'linux'; s.dispatchEvent(new Event('change', { bubbles: true })); return true; })()`);
   await sleep(250);
   const linuxNodes = await evaluate(`document.querySelectorAll('.path-node').length`);
-  check('Filtre par domaine', linuxNodes > 0 && linuxNodes < 193, String(linuxNodes));
+  check('Filtre par domaine', linuxNodes > 0 && linuxNodes < 273, String(linuxNodes));
   check('Statistiques affichées', (await evaluate(`document.querySelector('.muted[role="status"]').textContent`)).includes('avancement global'));
 
   await evaluate(`(() => {

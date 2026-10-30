@@ -1,0 +1,323 @@
+{
+  "courseId": "obs-outils",
+  "modules": [
+    {
+      "id": "obs-outils-module",
+      "title": "Outils d'observabilité",
+      "chapters": [
+        {
+          "id": "oo-01",
+          "title": "Introduction à Grafana",
+          "duration": 20,
+          "objectives": [
+            "Visualiser",
+            "Alerter",
+            "Partager"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Grafana affiche tableaux de bord et alertes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dashboards.",
+                "Sources.",
+                "Alertes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Grafana ?",
+            "hints": [
+              "Il visualise."
+            ],
+            "solution": "Il visualise les métriques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "visualise"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que créer ?",
+              "options": [
+                "Des tableaux de bord",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont lisibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oo-01-q1"
+            }
+          ],
+          "summary": [
+            "Grafana.",
+            "Dashboards.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à OpenTelemetry »."
+        },
+        {
+          "id": "oo-02",
+          "title": "Introduction à OpenTelemetry",
+          "duration": 20,
+          "objectives": [
+            "Instrumenter",
+            "Collecter",
+            "Standardiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "OpenTelemetry standardise métriques, logs et traces."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SDK.",
+                "Collector.",
+                "Standards."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que standardise OTel ?",
+            "hints": [
+              "Les signaux."
+            ],
+            "solution": "Métriques, logs et traces.",
+            "check": {
+              "type": "any",
+              "any": [
+                "signaux"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un collector ?",
+              "options": [
+                "Il collecte et exporte",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont routées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oo-02-q1"
+            }
+          ],
+          "summary": [
+            "OTel.",
+            "Collector.",
+            "Standards."
+          ],
+          "nextStep": "Chapitre suivant : « Collecte des métriques système »."
+        },
+        {
+          "id": "oo-03",
+          "title": "Collecte des métriques système",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Surveiller",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les métriques système couvrent CPU, mémoire, disque et réseau."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CPU.",
+                "Mémoire.",
+                "Disque."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller ?",
+            "hints": [
+              "Les ressources."
+            ],
+            "solution": "Les ressources critiques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ressources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une saturation ?",
+              "options": [
+                "Alerter",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La panne est anticipée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oo-03-q1"
+            }
+          ],
+          "summary": [
+            "Système.",
+            "Ressources.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Surveillance des serveurs »."
+        },
+        {
+          "id": "oo-04",
+          "title": "Surveillance des serveurs",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Alerter",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un serveur se surveille sur disponibilité et saturation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sondes.",
+                "Seuils.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "La disponibilité."
+            ],
+            "solution": "La disponibilité et la saturation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "disponibilite",
+                "disponibilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un serveur lent ?",
+              "options": [
+                "Diagnostiquer",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La cause est trouvée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oo-04-q1"
+            }
+          ],
+          "summary": [
+            "Serveurs.",
+            "Seuils.",
+            "Diagnostic."
+          ],
+          "nextStep": "Chapitre suivant : « Surveillance des applications »."
+        },
+        {
+          "id": "oo-05",
+          "title": "Surveillance des applications",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Alerter",
+            "Analyser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application se surveille sur erreurs, latence et parcours."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Erreurs.",
+                "Latence.",
+                "Traces."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller ?",
+            "hints": [
+              "L'expérience utilisateur."
+            ],
+            "solution": "L'expérience vécue par l'utilisateur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "experience",
+                "expérience"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une alerte ?",
+              "options": [
+                "Analyser",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "La cause est comprise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "oo-05-q1"
+            }
+          ],
+          "summary": [
+            "Applications.",
+            "Latence.",
+            "Traces."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

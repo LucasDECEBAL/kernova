@@ -1,0 +1,322 @@
+{
+  "courseId": "mobile-ios",
+  "modules": [
+    {
+      "id": "mobile-ios-module",
+      "title": "iOS et multiplateforme",
+      "chapters": [
+        {
+          "id": "mi-01",
+          "title": "Introduction à Swift",
+          "duration": 20,
+          "objectives": [
+            "Déclarer",
+            "Gérer les optionnels",
+            "Choisir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Swift est le langage d'iOS ; les optionnels forcent à traiter l'absence."
+            },
+            {
+              "type": "list",
+              "items": [
+                "let/var.",
+                "Optionnels.",
+                "Guard."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait let ?",
+            "hints": [
+              "Il déclare une constante."
+            ],
+            "solution": "Une constante.",
+            "check": {
+              "type": "any",
+              "any": [
+                "constante"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que représente Type? ?",
+              "options": [
+                "Un optionnel",
+                "Une erreur",
+                "Un tableau",
+                "Un protocole"
+              ],
+              "answer": 0,
+              "explanation": "L'absence est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mi-01-q1"
+            }
+          ],
+          "summary": [
+            "Swift.",
+            "Optionnels.",
+            "let/var."
+          ],
+          "nextStep": "Chapitre suivant : « Fondamentaux d'iOS »."
+        },
+        {
+          "id": "mi-02",
+          "title": "Fondamentaux d'iOS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Structurer",
+            "Configurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une app iOS se compose de vues, contrôleurs et ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vues.",
+                "Contrôleurs.",
+                "Info.plist."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où déclarer les permissions ?",
+            "hints": [
+              "Dans Info.plist."
+            ],
+            "solution": "Dans Info.plist.",
+            "check": {
+              "type": "any",
+              "any": [
+                "info.plist"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un contrôleur ?",
+              "options": [
+                "Il gère une vue",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La logique d'écran.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mi-02-q1"
+            }
+          ],
+          "summary": [
+            "iOS.",
+            "Vues.",
+            "Info.plist."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à React Native »."
+        },
+        {
+          "id": "mi-03",
+          "title": "Introduction à React Native",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Composer",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "React Native rend des composants natifs avec React."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Composants.",
+                "Bridge.",
+                "Native."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que rend React Native ?",
+            "hints": [
+              "Des composants natifs."
+            ],
+            "solution": "Des composants natifs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "natifs"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel langage ?",
+              "options": [
+                "JavaScript/TypeScript",
+                "Swift uniquement",
+                "Kotlin uniquement",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "React et JS/TS.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mi-03-q1"
+            }
+          ],
+          "summary": [
+            "React Native.",
+            "Composants.",
+            "Natif."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Flutter »."
+        },
+        {
+          "id": "mi-04",
+          "title": "Introduction à Flutter",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Composer",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Flutter rend des interfaces avec Dart et des widgets."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Widgets.",
+                "Dart.",
+                "Rendu."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel langage ?",
+            "hints": [
+              "Dart."
+            ],
+            "solution": "Dart.",
+            "check": {
+              "type": "any",
+              "any": [
+                "dart"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sont les widgets ?",
+              "options": [
+                "Les éléments d'UI",
+                "Des fichiers",
+                "Des threads",
+                "Des DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'UI est composée de widgets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mi-04-q1"
+            }
+          ],
+          "summary": [
+            "Flutter.",
+            "Widgets.",
+            "Dart."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion de l'état mobile »."
+        },
+        {
+          "id": "mi-05",
+          "title": "Gestion de l'état mobile",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Centraliser",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'état mobile se gère localement ou via un store."
+            },
+            {
+              "type": "list",
+              "items": [
+                "État local.",
+                "Store.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand un store ?",
+            "hints": [
+              "Quand plusieurs écrans partagent."
+            ],
+            "solution": "Quand plusieurs écrans le partagent.",
+            "check": {
+              "type": "any",
+              "any": [
+                "partage",
+                "partagé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque la duplication ?",
+              "options": [
+                "Des incohérences",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Une source unique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mi-05-q1"
+            }
+          ],
+          "summary": [
+            "État.",
+            "Store.",
+            "Tests."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

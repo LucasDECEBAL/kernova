@@ -1,0 +1,198 @@
+{
+  "courseId": "ux-tests",
+  "modules": [
+    {
+      "id": "ux-tests-module",
+      "title": "Tests d'utilisabilité",
+      "chapters": [
+        {
+          "id": "ut-01",
+          "title": "Tests d'utilisabilité",
+          "duration": 20,
+          "objectives": [
+            "Observer",
+            "Noter",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test d'utilisabilité observe des tâches réelles sans aider."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tâches.",
+                "Observation.",
+                "Notes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire pendant ?",
+            "hints": [
+              "Observer sans aider."
+            ],
+            "solution": "Observer sans aider.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sans aider"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que noter ?",
+              "options": [
+                "Hésitations et erreurs",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les frictions apparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ut-01-q1"
+            }
+          ],
+          "summary": [
+            "Test.",
+            "Observation.",
+            "Corrections."
+          ],
+          "nextStep": "Chapitre suivant : « Mesure de l'expérience utilisateur »."
+        },
+        {
+          "id": "ut-02",
+          "title": "Mesure de l'expérience utilisateur",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Comparer",
+            "Itérer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Des indicateurs (succès, temps, satisfaction) mesurent l'usage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Succès.",
+                "Temps.",
+                "Satisfaction."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "Le succès de la tâche."
+            ],
+            "solution": "Le taux de réussite et le temps.",
+            "check": {
+              "type": "any",
+              "any": [
+                "succes",
+                "succès"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des mesures ?",
+              "options": [
+                "Itérer",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le produit s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ut-02-q1"
+            }
+          ],
+          "summary": [
+            "Mesures.",
+            "Succès.",
+            "Itération."
+          ],
+          "nextStep": "Chapitre suivant : « Amélioration continue d'une interface »."
+        },
+        {
+          "id": "ut-03",
+          "title": "Amélioration continue d'une interface",
+          "duration": 20,
+          "objectives": [
+            "Prioriser",
+            "Corriger",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les améliorations se priorisent par impact et se vérifient."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Impact.",
+                "Correction.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que prioriser ?",
+            "hints": [
+              "Le plus impactant."
+            ],
+            "solution": "Les frictions les plus impactantes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "impact"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire après correction ?",
+              "options": [
+                "Vérifier",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le gain est prouvé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ut-03-q1"
+            }
+          ],
+          "summary": [
+            "Amélioration.",
+            "Impact.",
+            "Vérification."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

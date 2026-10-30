@@ -1,0 +1,323 @@
+{
+  "courseId": "tests-outils",
+  "modules": [
+    {
+      "id": "tests-outils-module",
+      "title": "Outils de test",
+      "chapters": [
+        {
+          "id": "to-01",
+          "title": "Mocking et stubs",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Choisir",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un stub fournit une réponse, un mock vérifie un appel."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Stub.",
+                "Mock.",
+                "Fake."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un stub ?",
+            "hints": [
+              "Il fournit une réponse."
+            ],
+            "solution": "Il fournit une réponse fixe.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reponse",
+                "réponse"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un mock ?",
+              "options": [
+                "Il vérifie un appel",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'interaction est vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "to-01-q1"
+            }
+          ],
+          "summary": [
+            "Stub.",
+            "Mock.",
+            "Fake."
+          ],
+          "nextStep": "Chapitre suivant : « Couverture de code »."
+        },
+        {
+          "id": "to-02",
+          "title": "Couverture de code",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Interpréter",
+            "Éviter l'illusion"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La couverture indique les lignes exécutées, pas les comportements vérifiés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lignes.",
+                "Branches.",
+                "Assertions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que ne garantit pas la couverture ?",
+            "hints": [
+              "La qualité des assertions."
+            ],
+            "solution": "La qualité des assertions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "assertion"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une couverture élevée suffit-elle ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les assertions comptent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "to-02-q1"
+            }
+          ],
+          "summary": [
+            "Couverture.",
+            "Branches.",
+            "Assertions."
+          ],
+          "nextStep": "Chapitre suivant : « Tests JavaScript »."
+        },
+        {
+          "id": "to-03",
+          "title": "Tests JavaScript",
+          "duration": 20,
+          "objectives": [
+            "Choisir un runner",
+            "Écrire",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Vitest/Jest exécutent des tests JavaScript."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Runner.",
+                "Assertions.",
+                "CI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il ?",
+            "hints": [
+              "Un runner."
+            ],
+            "solution": "Un runner de tests.",
+            "check": {
+              "type": "any",
+              "any": [
+                "runner"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un runner ?",
+              "options": [
+                "Il exécute les tests",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les tests s'exécutent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "to-03-q1"
+            }
+          ],
+          "summary": [
+            "Runner.",
+            "Assertions.",
+            "CI."
+          ],
+          "nextStep": "Chapitre suivant : « Tests React »."
+        },
+        {
+          "id": "to-04",
+          "title": "Tests React",
+          "duration": 20,
+          "objectives": [
+            "Tester le comportement",
+            "Interroger par rôle",
+            "Éviter les détails"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "React Testing Library teste ce que voit l'utilisateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Interactions.",
+                "Assertions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Par quoi interroger ?",
+            "hints": [
+              "Par rôle accessible."
+            ],
+            "solution": "Par rôle accessible.",
+            "check": {
+              "type": "any",
+              "any": [
+                "role",
+                "rôle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester ?",
+              "options": [
+                "Le comportement visible",
+                "Les classes CSS",
+                "Le code source",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur est au centre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "to-04-q1"
+            }
+          ],
+          "summary": [
+            "RTL.",
+            "Rôles.",
+            "Comportement."
+          ],
+          "nextStep": "Chapitre suivant : « Tests Python »."
+        },
+        {
+          "id": "to-05",
+          "title": "Tests Python",
+          "duration": 20,
+          "objectives": [
+            "Choisir pytest",
+            "Écrire",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pytest découvre test_* et vérifie erreurs et résultats."
+            },
+            {
+              "type": "list",
+              "items": [
+                "pytest.",
+                "Raises.",
+                "Fixtures."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel outil ?",
+            "hints": [
+              "pytest."
+            ],
+            "solution": "pytest.",
+            "check": {
+              "type": "any",
+              "any": [
+                "pytest"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait pytest.raises ?",
+              "options": [
+                "Vérifie une exception",
+                "Chiffre",
+                "Trie",
+                "Route"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur est attendue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "to-05-q1"
+            }
+          ],
+          "summary": [
+            "pytest.",
+            "Raises.",
+            "Fixtures."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

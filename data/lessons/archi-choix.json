@@ -1,0 +1,136 @@
+{
+  "courseId": "archi-choix",
+  "modules": [
+    {
+      "id": "archi-choix-module",
+      "title": "Choisir une architecture",
+      "chapters": [
+        {
+          "id": "ac-01",
+          "title": "Choisir une architecture adaptée",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Comparer",
+            "Décider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le choix dépend des contraintes, de l'équipe et du risque."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contraintes.",
+                "Équipe.",
+                "Risque."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que considérer ?",
+            "hints": [
+              "Les contraintes réelles."
+            ],
+            "solution": "Les contraintes réelles et l'équipe.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contraintes"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "La décision et ses raisons",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le choix est justifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ac-01-q1"
+            }
+          ],
+          "summary": [
+            "Contraintes.",
+            "Équipe.",
+            "Décision."
+          ],
+          "nextStep": "Chapitre suivant : « Documenter les décisions »."
+        },
+        {
+          "id": "ac-02",
+          "title": "Documenter les décisions",
+          "duration": 20,
+          "objectives": [
+            "Rédiger",
+            "Dater",
+            "Réviser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un ADR décrit contexte, options, décision et conséquences."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contexte.",
+                "Options.",
+                "Conséquences."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que contient un ADR ?",
+            "hints": [
+              "La décision et ses raisons."
+            ],
+            "solution": "La décision et ses raisons.",
+            "check": {
+              "type": "any",
+              "any": [
+                "decision",
+                "décision"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand le réviser ?",
+              "options": [
+                "À chaque évolution",
+                "Jamais",
+                "Une fois",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "La documentation reste utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ac-02-q1"
+            }
+          ],
+          "summary": [
+            "ADR.",
+            "Contexte.",
+            "Conséquences."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

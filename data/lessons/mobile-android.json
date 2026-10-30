@@ -1,0 +1,322 @@
+{
+  "courseId": "mobile-android",
+  "modules": [
+    {
+      "id": "mobile-android-module",
+      "title": "Android et Kotlin",
+      "chapters": [
+        {
+          "id": "ma-01",
+          "title": "Introduction à Kotlin pour Android",
+          "duration": 20,
+          "objectives": [
+            "Déclarer",
+            "Comprendre",
+            "Choisir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Kotlin est le langage moderne d'Android, avec nullabilité explicite."
+            },
+            {
+              "type": "list",
+              "items": [
+                "val/var.",
+                "Nullabilité.",
+                "Data class."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait val ?",
+            "hints": [
+              "Immuable."
+            ],
+            "solution": "Une valeur immuable.",
+            "check": {
+              "type": "any",
+              "any": [
+                "immuable"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ? sur un type ?",
+              "options": [
+                "Autorise null",
+                "Interdit null",
+                "Copie",
+                "Trie"
+              ],
+              "answer": 0,
+              "explanation": "La nullabilité est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ma-01-q1"
+            }
+          ],
+          "summary": [
+            "Kotlin.",
+            "val/var.",
+            "Nullabilité."
+          ],
+          "nextStep": "Chapitre suivant : « Fondamentaux d'Android »."
+        },
+        {
+          "id": "ma-02",
+          "title": "Fondamentaux d'Android",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Organiser",
+            "Configurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une app Android se compose d'activités, fragments et ressources."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Activités.",
+                "Ressources.",
+                "Manifeste."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que déclare le manifeste ?",
+            "hints": [
+              "Composants et permissions."
+            ],
+            "solution": "Les composants et permissions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "permissions"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où déclarer une permission ?",
+              "options": [
+                "Manifeste",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est déclaré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ma-02-q1"
+            }
+          ],
+          "summary": [
+            "Android.",
+            "Activités.",
+            "Manifeste."
+          ],
+          "nextStep": "Chapitre suivant : « Cycle de vie Android »."
+        },
+        {
+          "id": "ma-03",
+          "title": "Cycle de vie Android",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Sauvegarder",
+            "Libérer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le cycle de vie gère la création, la pause et la destruction."
+            },
+            {
+              "type": "list",
+              "items": [
+                "onCreate.",
+                "onPause.",
+                "onDestroy."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire dans onPause ?",
+            "hints": [
+              "Sauvegarder l'état."
+            ],
+            "solution": "Sauvegarder l'état.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sauvegard"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire dans onDestroy ?",
+              "options": [
+                "Libérer les ressources",
+                "Créer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Les fuites évitées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ma-03-q1"
+            }
+          ],
+          "summary": [
+            "Cycle.",
+            "État.",
+            "Ressources."
+          ],
+          "nextStep": "Chapitre suivant : « Stockage local mobile »."
+        },
+        {
+          "id": "ma-04",
+          "title": "Stockage local mobile",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Sécuriser",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données locales se stockent selon leur nature et sensibilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Préférences.",
+                "Base.",
+                "Fichiers."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où mettre un secret ?",
+            "hints": [
+              "Dans un stockage sécurisé."
+            ],
+            "solution": "Dans un stockage sécurisé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "securise",
+                "sécurisé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les données sensibles",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le risque baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ma-04-q1"
+            }
+          ],
+          "summary": [
+            "Stockage.",
+            "Sécurité.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Requêtes réseau mobiles »."
+        },
+        {
+          "id": "ma-05",
+          "title": "Requêtes réseau mobiles",
+          "duration": 20,
+          "objectives": [
+            "Appeler",
+            "Gérer les pannes",
+            "Mettre en cache"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le réseau mobile est instable : erreurs et cache sont essentiels."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Erreurs.",
+                "Cache.",
+                "Hors ligne."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire hors ligne ?",
+            "hints": [
+              "Afficher le cache."
+            ],
+            "solution": "Afficher le cache et proposer de réessayer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cache"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gérer ?",
+              "options": [
+                "Les erreurs réseau",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'app reste utilisable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ma-05-q1"
+            }
+          ],
+          "summary": [
+            "Réseau.",
+            "Cache.",
+            "Erreurs."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

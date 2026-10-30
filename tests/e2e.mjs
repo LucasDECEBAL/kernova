@@ -118,7 +118,7 @@ try {
   check('Filtre type de contenu + tri', true);
   // Réinitialisation
   await clickText('button', 'Réinitialiser les filtres');
-  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('193 r') && document.querySelector('#cat-type').value === ''`);
+  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('273 r') && document.querySelector('#cat-type').value === ''`);
   check('Réinitialiser les filtres', true);
   // Favori depuis le catalogue
   await setInput('#cat-search', 'Linux débutant');

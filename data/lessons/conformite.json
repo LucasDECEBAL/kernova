@@ -1,0 +1,260 @@
+{
+  "courseId": "conformite",
+  "modules": [
+    {
+      "id": "conformite-module",
+      "title": "Conformité",
+      "chapters": [
+        {
+          "id": "cf2-01",
+          "title": "Documentation de conformité",
+          "duration": 20,
+          "objectives": [
+            "Documenter",
+            "Prouver",
+            "Maintenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La conformité se prouve par des documents à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Politiques.",
+                "Preuves.",
+                "Mise à jour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que conserver ?",
+            "hints": [
+              "Les preuves."
+            ],
+            "solution": "Les preuves et leur date.",
+            "check": {
+              "type": "any",
+              "any": [
+                "preuves"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire de la doc ?",
+              "options": [
+                "La maintenir",
+                "L'ignorer",
+                "La publier",
+                "La vendre"
+              ],
+              "answer": 0,
+              "explanation": "Elle reste valable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf2-01-q1"
+            }
+          ],
+          "summary": [
+            "Conformité.",
+            "Preuves.",
+            "Documentation."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité dès la conception »."
+        },
+        {
+          "id": "cf2-02",
+          "title": "Sécurité dès la conception",
+          "duration": 20,
+          "objectives": [
+            "Concevoir",
+            "Vérifier",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité se conçoit tôt, pas après coup."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Menaces.",
+                "Contrôles.",
+                "Revue."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand concevoir ?",
+            "hints": [
+              "Dès la conception."
+            ],
+            "solution": "Dès la conception.",
+            "check": {
+              "type": "any",
+              "any": [
+                "conception"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire à chaque évolution ?",
+              "options": [
+                "Réévaluer",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle reste juste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf2-02-q1"
+            }
+          ],
+          "summary": [
+            "Sécurité.",
+            "Conception.",
+            "Revue."
+          ],
+          "nextStep": "Chapitre suivant : « Référentiels de sécurité »."
+        },
+        {
+          "id": "cf2-03",
+          "title": "Référentiels de sécurité",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Appliquer",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les référentiels fournissent des mesures vérifiables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ISO 27001.",
+                "CIS.",
+                "ANSSI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fournit un référentiel ?",
+            "hints": [
+              "Des mesures."
+            ],
+            "solution": "Des mesures vérifiables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "mesures"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des écarts ?",
+              "options": [
+                "Les prioriser",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est traité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf2-03-q1"
+            }
+          ],
+          "summary": [
+            "Référentiels.",
+            "Mesures.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des risques informatiques »."
+        },
+        {
+          "id": "cf2-04",
+          "title": "Gestion des risques informatiques",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Évaluer",
+            "Traiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le risque se priorise selon probabilité et impact."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Actifs.",
+                "Menaces.",
+                "Réponses."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que croiser ?",
+            "hints": [
+              "Probabilité et impact."
+            ],
+            "solution": "Probabilité et impact.",
+            "check": {
+              "type": "any",
+              "any": [
+                "probabilite",
+                "probabilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un risque accepté ?",
+              "options": [
+                "Le documenter",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "La décision est tracée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf2-04-q1"
+            }
+          ],
+          "summary": [
+            "Risques.",
+            "Évaluation.",
+            "Traitement."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

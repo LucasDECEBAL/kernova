@@ -1,0 +1,259 @@
+{
+  "courseId": "mobile-multiplateforme",
+  "modules": [
+    {
+      "id": "mobile-multiplateforme-module",
+      "title": "Publication et maintenance",
+      "chapters": [
+        {
+          "id": "mm-01",
+          "title": "Tests d'applications mobiles",
+          "duration": 20,
+          "objectives": [
+            "Tester",
+            "Automatiser",
+            "Couvrir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests mobiles couvrent logique, UI et appareils."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Unitaires.",
+                "UI.",
+                "Appareils."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Les parcours et erreurs."
+            ],
+            "solution": "Les parcours et cas d'erreur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "parcours"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire sur appareil ?",
+              "options": [
+                "Tester réellement",
+                "Ignorer",
+                "Publier",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le rendu réel compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mm-01-q1"
+            }
+          ],
+          "summary": [
+            "Tests.",
+            "UI.",
+            "Appareils."
+          ],
+          "nextStep": "Chapitre suivant : « Permissions mobiles »."
+        },
+        {
+          "id": "mm-02",
+          "title": "Permissions mobiles",
+          "duration": 20,
+          "objectives": [
+            "Demander",
+            "Expliquer",
+            "Prévoir le refus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une permission se demande au moment de l'usage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Moment.",
+                "Explication.",
+                "Refus."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand demander ?",
+            "hints": [
+              "Au moment de l'usage."
+            ],
+            "solution": "Au moment de l'usage.",
+            "check": {
+              "type": "any",
+              "any": [
+                "usage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire si refus ?",
+              "options": [
+                "Proposer une alternative",
+                "Bloquer",
+                "Ignorer",
+                "Publier"
+              ],
+              "answer": 0,
+              "explanation": "L'app reste utilisable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mm-02-q1"
+            }
+          ],
+          "summary": [
+            "Permissions.",
+            "Moment.",
+            "Refus."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité mobile »."
+        },
+        {
+          "id": "mm-03",
+          "title": "Sécurité mobile",
+          "duration": 20,
+          "objectives": [
+            "Protéger",
+            "Limiter",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité mobile protège les données et limite les accès."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Stockage.",
+                "Réseau.",
+                "Permissions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier ?",
+            "hints": [
+              "Les accès et stockage."
+            ],
+            "solution": "Les accès et le stockage.",
+            "check": {
+              "type": "any",
+              "any": [
+                "stockage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les permissions",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La surface baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mm-03-q1"
+            }
+          ],
+          "summary": [
+            "Sécurité.",
+            "Stockage.",
+            "Permissions."
+          ],
+          "nextStep": "Chapitre suivant : « Publication et maintenance »."
+        },
+        {
+          "id": "mm-04",
+          "title": "Publication et maintenance",
+          "duration": 20,
+          "objectives": [
+            "Préparer",
+            "Publier",
+            "Maintenir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La publication exige tests, métadonnées et mises à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Build.",
+                "Store.",
+                "Suivi."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que suivre après publication ?",
+            "hints": [
+              "Les crashs et avis."
+            ],
+            "solution": "Les crashs, avis et métriques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "crash"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que préparer ?",
+              "options": [
+                "Les métadonnées",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La fiche est complète.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "mm-04-q1"
+            }
+          ],
+          "summary": [
+            "Publication.",
+            "Suivi.",
+            "Maintenance."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

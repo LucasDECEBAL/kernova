@@ -1,0 +1,323 @@
+{
+  "courseId": "ux-design",
+  "modules": [
+    {
+      "id": "ux-design-module",
+      "title": "Conception d'interface",
+      "chapters": [
+        {
+          "id": "ud-01",
+          "title": "Architecture de l'information",
+          "duration": 20,
+          "objectives": [
+            "Organiser",
+            "Nommer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'architecture organise contenus et libellés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Catégories.",
+                "Libellés.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "La compréhension."
+            ],
+            "solution": "La compréhension par les utilisateurs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "comprehension",
+                "compréhension"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier ?",
+              "options": [
+                "Le vocabulaire utilisateur",
+                "Le jargon",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les libellés parlent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ud-01-q1"
+            }
+          ],
+          "summary": [
+            "Information.",
+            "Libellés.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Wireframes »."
+        },
+        {
+          "id": "ud-02",
+          "title": "Wireframes",
+          "duration": 20,
+          "objectives": [
+            "Esquisser",
+            "Prioriser",
+            "Itérer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un wireframe montre la structure sans style."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Structure.",
+                "Priorités.",
+                "Itération."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que montre un wireframe ?",
+            "hints": [
+              "La structure."
+            ],
+            "solution": "La structure et les priorités.",
+            "check": {
+              "type": "any",
+              "any": [
+                "structure"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que laisser de côté ?",
+              "options": [
+                "Le style",
+                "La structure",
+                "Les actions",
+                "Le contenu"
+              ],
+              "answer": 0,
+              "explanation": "Le style vient après.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ud-02-q1"
+            }
+          ],
+          "summary": [
+            "Wireframes.",
+            "Structure.",
+            "Itération."
+          ],
+          "nextStep": "Chapitre suivant : « Prototypes »."
+        },
+        {
+          "id": "ud-03",
+          "title": "Prototypes",
+          "duration": 20,
+          "objectives": [
+            "Simuler",
+            "Tester",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un prototype simule un parcours pour le tester tôt."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fidélité.",
+                "Tests.",
+                "Corrections."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel prototype tester ?",
+            "hints": [
+              "Le parcours clé."
+            ],
+            "solution": "Le parcours clé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "parcours"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des retours ?",
+              "options": [
+                "Corriger",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le design s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ud-03-q1"
+            }
+          ],
+          "summary": [
+            "Prototype.",
+            "Tests.",
+            "Corrections."
+          ],
+          "nextStep": "Chapitre suivant : « Hiérarchie visuelle »."
+        },
+        {
+          "id": "ud-04",
+          "title": "Hiérarchie visuelle",
+          "duration": 20,
+          "objectives": [
+            "Guider",
+            "Contraster",
+            "Espacer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La hiérarchie guide l'œil vers l'essentiel."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Taille.",
+                "Contraste.",
+                "Espace."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que guider ?",
+            "hints": [
+              "L'action principale."
+            ],
+            "solution": "L'action principale.",
+            "check": {
+              "type": "any",
+              "any": [
+                "principale"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que créer avec l'espace ?",
+              "options": [
+                "De la respiration",
+                "Du bruit",
+                "Du CSS",
+                "Du DNS"
+              ],
+              "answer": 0,
+              "explanation": "La lecture est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ud-04-q1"
+            }
+          ],
+          "summary": [
+            "Hiérarchie.",
+            "Contraste.",
+            "Espace."
+          ],
+          "nextStep": "Chapitre suivant : « Typographie et couleurs »."
+        },
+        {
+          "id": "ud-05",
+          "title": "Typographie et couleurs",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Contraster",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Typographie et couleurs servent la lisibilité et la marque."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lisibilité.",
+                "Contraste.",
+                "Palette."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel contraste minimal ?",
+            "hints": [
+              "4,5:1."
+            ],
+            "solution": "4,5:1 pour le texte courant.",
+            "check": {
+              "type": "any",
+              "any": [
+                "4,5",
+                "4.5"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "La palette",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La cohérence augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ud-05-q1"
+            }
+          ],
+          "summary": [
+            "Typo.",
+            "Couleurs.",
+            "Contraste."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

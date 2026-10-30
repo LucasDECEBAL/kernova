@@ -21,13 +21,23 @@ Une entrée = une leçon. Les projets (1287-1324) correspondent aux fiches proje
 | 15. Windows et Microsoft | 615-655 | Partiel (30) | 4 cours |
 | 16. Réseaux | 656-730 | **Terminé** | 16 cours |
 | 17. Cybersécurité | 731-846 | **Terminé** | 21 cours |
-| 18. Cloud | 847-924 | Partiel (54) | 12 cours |
-| 19-22. Virtualisation, Docker, Kubernetes, DevOps | 925-1020 | Partiel (20) | 4 cours |
-| 23-24. Tests et architecture | 1021-1066 | Partiel (10) | 2 cours |
-| 25. Intelligence artificielle | 1067-1148 | Partiel (5) | ia-debutant |
-| 26-32. Automatisation à réglementation | 1149-1286 | Partiel (30) | 6 cours |
+| 18. Cloud | 847-924 | **Terminé** | 12 cours |
+| 19. Virtualisation | 925-943 | **Terminé** | 5 cours |
+| 20. Docker | 944-963 | **Terminé** | 5 cours |
+| 21. Kubernetes | 964-988 | **Terminé** | 6 cours |
+| 22. DevOps | 989-1020 | **Terminé** | 8 cours |
+| 23. Tests et qualité | 1021-1044 | **Terminé** | 6 cours |
+| 24. Architecture | 1045-1066 | **Terminé** | 6 cours |
+| 25. Intelligence artificielle | 1067-1148 | **Terminé** | 18 cours |
+| 26. Automatisation | 1149-1170 | **Terminé** | 6 cours |
+| 27. Mobile | 1171-1189 | **Terminé** | 5 cours |
+| 28. UX/UI | 1190-1209 | **Terminé** | 4 cours |
+| 29. SEO et déploiement | 1210-1236 | **Terminé** | 7 cours |
+| 30. Observabilité | 1237-1254 | **Terminé** | 4 cours |
+| 31. Gestion de projet | 1255-1272 | **Terminé** | 5 cours |
+| 32. Réglementation | 1273-1286 | **Terminé** | 4 cours |
 | 33. Projets guidés | 1287-1324 | Couvert | 46 fiches projets |
 
-Total actuel : 193 cours, 976 leçons, 1953 questions.
+Total actuel : 273 cours, 1358 leçons, 2335 questions. Les 1 324 entrées du prompt sont couvertes (certains cours dépassent 5 leçons).
 
-Prochain lot : **901-1000** — fin du cloud (Azure/GCP), virtualisation, Docker, Kubernetes et DevOps.
+Catalogue complet : parties 1 à 33 couvertes, projets inclus.

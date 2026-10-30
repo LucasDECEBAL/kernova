@@ -1,0 +1,323 @@
+{
+  "courseId": "tests-fondamentaux",
+  "modules": [
+    {
+      "id": "tests-fondamentaux-module",
+      "title": "Tests fondamentaux",
+      "chapters": [
+        {
+          "id": "tfond-01",
+          "title": "Introduction aux tests logiciels",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Tester vérifie un comportement attendu."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Comportement.",
+                "Automatisation.",
+                "Feedback."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifie un test ?",
+            "hints": [
+              "Un comportement."
+            ],
+            "solution": "Un comportement attendu.",
+            "check": {
+              "type": "any",
+              "any": [
+                "comportement"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi tester ?",
+              "options": [
+                "Détecter tôt",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs coûtent moins cher.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tfond-01-q1"
+            }
+          ],
+          "summary": [
+            "Comportement.",
+            "Automatisation.",
+            "Feedback."
+          ],
+          "nextStep": "Chapitre suivant : « Tests unitaires »."
+        },
+        {
+          "id": "tfond-02",
+          "title": "Tests unitaires",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Rapide",
+            "Précis"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test unitaire vérifie une petite unité isolée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Isolation.",
+                "Rapide.",
+                "Précis."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que teste-t-on ?",
+            "hints": [
+              "Une unité isolée."
+            ],
+            "solution": "Une petite unité isolée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "unite",
+                "unité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Comment doit être un test unitaire ?",
+              "options": [
+                "Rapide et isolé",
+                "Lent",
+                "Global",
+                "Manuel"
+              ],
+              "answer": 0,
+              "explanation": "Le feedback est immédiat.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tfond-02-q1"
+            }
+          ],
+          "summary": [
+            "Unitaire.",
+            "Isolé.",
+            "Rapide."
+          ],
+          "nextStep": "Chapitre suivant : « Tests d'intégration »."
+        },
+        {
+          "id": "tfond-03",
+          "title": "Tests d'intégration",
+          "duration": 20,
+          "objectives": [
+            "Vérifier les échanges",
+            "Isoler",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test d'intégration vérifie plusieurs composants ensemble."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Base.",
+                "API.",
+                "Échanges."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifie-t-il ?",
+            "hints": [
+              "Les interactions."
+            ],
+            "solution": "Les interactions entre composants.",
+            "check": {
+              "type": "any",
+              "any": [
+                "interaction"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester ?",
+              "options": [
+                "Les échanges entre modules",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'intégration est vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tfond-03-q1"
+            }
+          ],
+          "summary": [
+            "Intégration.",
+            "Échanges.",
+            "Automatisation."
+          ],
+          "nextStep": "Chapitre suivant : « Tests fonctionnels »."
+        },
+        {
+          "id": "tfond-04",
+          "title": "Tests fonctionnels",
+          "duration": 20,
+          "objectives": [
+            "Vérifier une fonction",
+            "Décrire",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test fonctionnel vérifie une fonctionnalité du point de vue utilisateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fonctionnalité.",
+                "Scénario.",
+                "Attendu."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifie-t-il ?",
+            "hints": [
+              "Une fonctionnalité."
+            ],
+            "solution": "Une fonctionnalité complète.",
+            "check": {
+              "type": "any",
+              "any": [
+                "fonctionnalite",
+                "fonctionnalité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel point de vue ?",
+              "options": [
+                "Utilisateur",
+                "Machine",
+                "CSS",
+                "DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le comportement compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tfond-04-q1"
+            }
+          ],
+          "summary": [
+            "Fonctionnel.",
+            "Scénario.",
+            "Attendu."
+          ],
+          "nextStep": "Chapitre suivant : « Tests end-to-end »."
+        },
+        {
+          "id": "tfond-05",
+          "title": "Tests end-to-end",
+          "duration": 20,
+          "objectives": [
+            "Parcourir",
+            "Automatiser",
+            "Stabiliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test E2E parcourt l'application comme un utilisateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Parcours.",
+                "Navigateur.",
+                "Stabilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que teste un E2E ?",
+            "hints": [
+              "Un parcours complet."
+            ],
+            "solution": "Un parcours complet.",
+            "check": {
+              "type": "any",
+              "any": [
+                "parcours"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un E2E ?",
+              "options": [
+                "D'être instable",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les tests sont fragiles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tfond-05-q1"
+            }
+          ],
+          "summary": [
+            "E2E.",
+            "Parcours.",
+            "Stabilité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

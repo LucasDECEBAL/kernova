@@ -71,7 +71,7 @@ const ok = async () => (await evaluate(`document.querySelector('.exercise-feedba
 try {
   await send('Runtime.enable');
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('273 r')`);
   check('Catalogue : 107 cours', true);
   for (const [domain, expected] of [['typescript-frontend', '11 r'], ['python', '11 r']]) {
     await evaluate(`(() => { const el = document.querySelector('#cat-domain'); el.value = ${JSON.stringify(domain)}; el.dispatchEvent(new Event('change', { bubbles: true })); return true; })()`);

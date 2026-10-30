@@ -1,0 +1,324 @@
+{
+  "courseId": "gestion-fondamentaux",
+  "modules": [
+    {
+      "id": "gestion-fondamentaux-module",
+      "title": "Gestion de projet",
+      "chapters": [
+        {
+          "id": "gf-01",
+          "title": "Introduction à la gestion de projet",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Cadrer",
+            "Suivre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet a un objectif, un périmètre et des contraintes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Objectif.",
+                "Périmètre.",
+                "Contraintes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que cadrer ?",
+            "hints": [
+              "Le périmètre."
+            ],
+            "solution": "Le périmètre et les critères.",
+            "check": {
+              "type": "any",
+              "any": [
+                "perimetre",
+                "périmètre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que suivre ?",
+              "options": [
+                "L'avancement",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le projet reste piloté.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gf-01-q1"
+            }
+          ],
+          "summary": [
+            "Projet.",
+            "Périmètre.",
+            "Suivi."
+          ],
+          "nextStep": "Chapitre suivant : « Définir un besoin »."
+        },
+        {
+          "id": "gf-02",
+          "title": "Définir un besoin",
+          "duration": 20,
+          "objectives": [
+            "Interroger",
+            "Reformuler",
+            "Valider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le besoin décrit le problème, pas la solution."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Problème.",
+                "Utilisateur.",
+                "Valeur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que décrire ?",
+            "hints": [
+              "Le problème."
+            ],
+            "solution": "Le problème réel et l'utilisateur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "probleme",
+                "problème"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que valider ?",
+              "options": [
+                "Le besoin",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le projet a un cap.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gf-02-q1"
+            }
+          ],
+          "summary": [
+            "Besoin.",
+            "Problème.",
+            "Valeur."
+          ],
+          "nextStep": "Chapitre suivant : « Rédiger des spécifications »."
+        },
+        {
+          "id": "gf-03",
+          "title": "Rédiger des spécifications",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Mesurer",
+            "Délimiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une spécification a des critères vérifiables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fonctionnel.",
+                "Critères.",
+                "Hors périmètre."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que rendre vérifiable ?",
+            "hints": [
+              "Les critères."
+            ],
+            "solution": "Les critères d'acceptation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "critere",
+                "critère"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que préciser ?",
+              "options": [
+                "Le hors périmètre",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le cadre est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gf-03-q1"
+            }
+          ],
+          "summary": [
+            "Spécifications.",
+            "Critères.",
+            "Périmètre."
+          ],
+          "nextStep": "Chapitre suivant : « Décomposer un projet en tâches »."
+        },
+        {
+          "id": "gf-04",
+          "title": "Décomposer un projet en tâches",
+          "duration": 20,
+          "objectives": [
+            "Découper",
+            "Estimer",
+            "Ordonner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une tâche est assez petite pour être estimée et suivie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tâches.",
+                "Dépendances.",
+                "Ordre."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que découper ?",
+            "hints": [
+              "En tâches petites."
+            ],
+            "solution": "En tâches petites et testables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "petites"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que suivre ?",
+              "options": [
+                "Les dépendances",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'ordre est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gf-04-q1"
+            }
+          ],
+          "summary": [
+            "Découpage.",
+            "Tâches.",
+            "Dépendances."
+          ],
+          "nextStep": "Chapitre suivant : « Estimer la charge de travail »."
+        },
+        {
+          "id": "gf-05",
+          "title": "Estimer la charge de travail",
+          "duration": 20,
+          "objectives": [
+            "Estimer",
+            "Comparer",
+            "Ajuster"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'estimation s'appuie sur l'expérience et se révise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Références.",
+                "Incertitude.",
+                "Ajustement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire de l'incertitude ?",
+            "hints": [
+              "La rendre visible."
+            ],
+            "solution": "La rendre visible dans l'estimation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "incertitude"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire après coup ?",
+              "options": [
+                "Comparer réel/estimé",
+                "Ignorer",
+                "Publier",
+                "Vendre"
+              ],
+              "answer": 0,
+              "explanation": "L'estimation s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "gf-05-q1"
+            }
+          ],
+          "summary": [
+            "Estimation.",
+            "Incertitude.",
+            "Ajustement."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

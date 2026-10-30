@@ -1,0 +1,321 @@
+{
+  "courseId": "k8s-stockage",
+  "modules": [
+    {
+      "id": "k8s-stockage-module",
+      "title": "Stockage et exposition",
+      "chapters": [
+        {
+          "id": "kt-01",
+          "title": "Volumes persistants",
+          "duration": 20,
+          "objectives": [
+            "Comprendre PV/PVC",
+            "Monter",
+            "Réclamer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un PersistentVolume fournit du stockage ; une PVC le réclame."
+            },
+            {
+              "type": "list",
+              "items": [
+                "PV.",
+                "PVC.",
+                "StorageClass."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que réclame une PVC ?",
+            "hints": [
+              "Un volume."
+            ],
+            "solution": "Un volume persistant.",
+            "check": {
+              "type": "any",
+              "any": [
+                "volume"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une StorageClass ?",
+              "options": [
+                "Elle provisonne",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Le volume est créé dynamiquement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kt-01-q1"
+            }
+          ],
+          "summary": [
+            "PV/PVC.",
+            "Stockage.",
+            "Réclamation."
+          ],
+          "nextStep": "Chapitre suivant : « Ingress »."
+        },
+        {
+          "id": "kt-02",
+          "title": "Ingress",
+          "duration": 20,
+          "objectives": [
+            "Exposer",
+            "Router",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Ingress expose des services HTTP avec des règles de routage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Règles.",
+                "TLS.",
+                "Ingress controller."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Ingress ?",
+            "hints": [
+              "Il route HTTP."
+            ],
+            "solution": "Il route le trafic HTTP vers les services.",
+            "check": {
+              "type": "any",
+              "any": [
+                "http"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il installer ?",
+              "options": [
+                "Un contrôleur Ingress",
+                "Le CSS",
+                "Le DNS",
+                "Le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Le contrôleur applique les règles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kt-02-q1"
+            }
+          ],
+          "summary": [
+            "Ingress.",
+            "Routage.",
+            "TLS."
+          ],
+          "nextStep": "Chapitre suivant : « Probes »."
+        },
+        {
+          "id": "kt-03",
+          "title": "Probes",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Distinguer",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Readiness conditionne le trafic ; liveness redémarre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Readiness.",
+                "Liveness.",
+                "Startup."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait readiness ?",
+            "hints": [
+              "Elle conditionne le trafic."
+            ],
+            "solution": "Elle indique si le pod peut recevoir du trafic.",
+            "check": {
+              "type": "any",
+              "any": [
+                "trafic"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait liveness ?",
+              "options": [
+                "Elle redémarre",
+                "Elle route",
+                "Elle chiffre",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le conteneur bloqué est redémarré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kt-03-q1"
+            }
+          ],
+          "summary": [
+            "Probes.",
+            "Trafic.",
+            "Redémarrage."
+          ],
+          "nextStep": "Chapitre suivant : « Ressources CPU et mémoire »."
+        },
+        {
+          "id": "kt-04",
+          "title": "Ressources CPU et mémoire",
+          "duration": 20,
+          "objectives": [
+            "Déclarer requests/limits",
+            "Éviter OOM",
+            "Dimensionner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "requests réservent, limits bornent ; un dépassement mémoire tue le conteneur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Requests.",
+                "Limits.",
+                "OOMKilled."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait limits ?",
+            "hints": [
+              "Elle borne."
+            ],
+            "solution": "Elle borne la consommation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "borne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que provoque un dépassement mémoire ?",
+              "options": [
+                "OOMKilled",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Le conteneur est tué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kt-04-q1"
+            }
+          ],
+          "summary": [
+            "Requests.",
+            "Limits.",
+            "OOM."
+          ],
+          "nextStep": "Chapitre suivant : « Autoscaling »."
+        },
+        {
+          "id": "kt-05",
+          "title": "Autoscaling",
+          "duration": 20,
+          "objectives": [
+            "Configurer le HPA",
+            "Choisir la métrique",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le HPA ajuste les réplicas selon une métrique."
+            },
+            {
+              "type": "list",
+              "items": [
+                "HPA.",
+                "CPU.",
+                "Métriques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le HPA ?",
+            "hints": [
+              "Il ajuste les réplicas."
+            ],
+            "solution": "Il ajuste le nombre de réplicas.",
+            "check": {
+              "type": "any",
+              "any": [
+                "replicas"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il pour mesurer ?",
+              "options": [
+                "Un serveur de métriques",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les métriques sont collectées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "kt-05-q1"
+            }
+          ],
+          "summary": [
+            "HPA.",
+            "Métriques.",
+            "Réplicas."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

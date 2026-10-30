@@ -1,0 +1,322 @@
+{
+  "courseId": "ia-python",
+  "modules": [
+    {
+      "id": "ia-python-module",
+      "title": "Python pour la donnée",
+      "chapters": [
+        {
+          "id": "ip-01",
+          "title": "Introduction à NumPy",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Calculer",
+            "Comprendre les formes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "NumPy fournit des tableaux et des opérations vectorisées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Array.",
+                "Shape.",
+                "Vectorisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait a * 2 ?",
+            "hints": [
+              "Il double chaque élément."
+            ],
+            "solution": "Il double chaque élément.",
+            "check": {
+              "type": "any",
+              "any": [
+                "double"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait shape ?",
+              "options": [
+                "Les dimensions",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La forme est décrite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ip-01-q1"
+            }
+          ],
+          "summary": [
+            "NumPy.",
+            "Vecteurs.",
+            "Shape."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à pandas »."
+        },
+        {
+          "id": "ip-02",
+          "title": "Introduction à pandas",
+          "duration": 20,
+          "objectives": [
+            "Charger",
+            "Filtrer",
+            "Agréger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pandas manipule des DataFrames tabulaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "DataFrame.",
+                "Filtre.",
+                "Groupby."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait read_csv ?",
+            "hints": [
+              "Il charge un CSV."
+            ],
+            "solution": "Il charge un CSV en DataFrame.",
+            "check": {
+              "type": "any",
+              "any": [
+                "read_csv"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait groupby ?",
+              "options": [
+                "Il regroupe",
+                "Il chiffre",
+                "Il trie le CSS",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les agrégats suivent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ip-02-q1"
+            }
+          ],
+          "summary": [
+            "pandas.",
+            "DataFrame.",
+            "Agrégats."
+          ],
+          "nextStep": "Chapitre suivant : « Visualisation avec Matplotlib »."
+        },
+        {
+          "id": "ip-03",
+          "title": "Visualisation avec Matplotlib",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Tracer",
+            "Exporter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le graphique dépend de la question ; les axes doivent être honnêtes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ligne.",
+                "Barres.",
+                "Nuage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel graphique pour une évolution ?",
+            "hints": [
+              "Une ligne."
+            ],
+            "solution": "Une courbe/ligne.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ligne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des axes ?",
+              "options": [
+                "Les garder honnêtes",
+                "Les cacher",
+                "Les tronquer",
+                "Les publier"
+              ],
+              "answer": 0,
+              "explanation": "La lecture reste juste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ip-03-q1"
+            }
+          ],
+          "summary": [
+            "Graphiques.",
+            "Axes.",
+            "Export."
+          ],
+          "nextStep": "Chapitre suivant : « Préparation d'un dataset »."
+        },
+        {
+          "id": "ip-04",
+          "title": "Préparation d'un dataset",
+          "duration": 20,
+          "objectives": [
+            "Nettoyer",
+            "Encoder",
+            "Découper"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La préparation traite manquants, catégories et découpage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Imputation.",
+                "Encodage.",
+                "Split."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des catégories ?",
+            "hints": [
+              "Les encoder."
+            ],
+            "solution": "Les encoder numériquement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "encoder"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi découper ?",
+              "options": [
+                "Évaluer sans triche",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le test reste inédit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ip-04-q1"
+            }
+          ],
+          "summary": [
+            "Dataset.",
+            "Encodage.",
+            "Split."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à scikit-learn »."
+        },
+        {
+          "id": "ip-05",
+          "title": "Introduction à scikit-learn",
+          "duration": 20,
+          "objectives": [
+            "Instancier",
+            "Entraîner",
+            "Prédire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "scikit-learn expose fit, predict et des pipelines."
+            },
+            {
+              "type": "list",
+              "items": [
+                "fit.",
+                "predict.",
+                "Pipeline."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait fit ?",
+            "hints": [
+              "Il entraîne."
+            ],
+            "solution": "Il entraîne le modèle.",
+            "check": {
+              "type": "any",
+              "any": [
+                "entraine",
+                "entraîne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait predict ?",
+              "options": [
+                "Il prédit",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ip-05-q1"
+            }
+          ],
+          "summary": [
+            "sklearn.",
+            "fit/predict.",
+            "Pipeline."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

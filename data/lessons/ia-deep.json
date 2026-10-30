@@ -1,0 +1,262 @@
+{
+  "courseId": "ia-deep",
+  "modules": [
+    {
+      "id": "ia-deep-module",
+      "title": "Deep learning",
+      "chapters": [
+        {
+          "id": "id-01",
+          "title": "Introduction aux réseaux de neurones",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Situer",
+            "Éviter les mythes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un réseau de neurones empile des couches de calculs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Couches.",
+                "Poids.",
+                "Apprentissage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que sont les poids ?",
+            "hints": [
+              "Des paramètres appris."
+            ],
+            "solution": "Des paramètres ajustés à l'entraînement.",
+            "check": {
+              "type": "any",
+              "any": [
+                "parametres",
+                "paramètres"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il pour entraîner ?",
+              "options": [
+                "Des données et une perte",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'objectif guide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "id-01-q1"
+            }
+          ],
+          "summary": [
+            "Réseaux.",
+            "Couches.",
+            "Poids."
+          ],
+          "nextStep": "Chapitre suivant : « Neurones artificiels »."
+        },
+        {
+          "id": "id-02",
+          "title": "Neurones artificiels",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Calculer",
+            "Situer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un neurone combine des entrées pondérées et une activation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Entrées.",
+                "Poids.",
+                "Biais."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le biais ?",
+            "hints": [
+              "Il décale la sortie."
+            ],
+            "solution": "Il décale l'activation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "decale",
+                "décale"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que combine un neurone ?",
+              "options": [
+                "Entrées pondérées",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La somme est activée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "id-02-q1"
+            }
+          ],
+          "summary": [
+            "Neurone.",
+            "Poids.",
+            "Biais."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions d'activation »."
+        },
+        {
+          "id": "id-03",
+          "title": "Fonctions d'activation",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Comprendre",
+            "Éviter la linéarité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'activation introduit la non-linéarité (ReLU, sigmoïde)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ReLU.",
+                "Sigmoïde.",
+                "Non-linéarité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi une activation ?",
+            "hints": [
+              "Introduire la non-linéarité."
+            ],
+            "solution": "Pour introduire la non-linéarité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non-linearite",
+                "non-linéarité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ReLU ?",
+              "options": [
+                "Elle coupe les négatifs",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "La non-linéarité apparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "id-03-q1"
+            }
+          ],
+          "summary": [
+            "Activation.",
+            "ReLU.",
+            "Non-linéarité."
+          ],
+          "nextStep": "Chapitre suivant : « Descente de gradient »."
+        },
+        {
+          "id": "id-04",
+          "title": "Descente de gradient",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir le pas",
+            "Éviter la divergence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La descente de gradient ajuste les poids selon le gradient de la perte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Gradient.",
+                "Pas.",
+                "Convergence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le pas d'apprentissage ?",
+            "hints": [
+              "Il règle l'avancée."
+            ],
+            "solution": "Il règle la taille du pas.",
+            "check": {
+              "type": "any",
+              "any": [
+                "pas"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un pas trop grand ?",
+              "options": [
+                "La divergence",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'entraînement échoue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "id-04-q1"
+            }
+          ],
+          "summary": [
+            "Gradient.",
+            "Pas.",
+            "Convergence."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

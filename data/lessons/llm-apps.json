@@ -1,0 +1,322 @@
+{
+  "courseId": "llm-apps",
+  "modules": [
+    {
+      "id": "llm-apps-module",
+      "title": "Applications LLM",
+      "chapters": [
+        {
+          "id": "le-01",
+          "title": "Créer un assistant documentaire",
+          "duration": 20,
+          "objectives": [
+            "Concevoir",
+            "Citer",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un assistant documentaire répond à partir de sources citées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sources.",
+                "Citations.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que citer ?",
+            "hints": [
+              "Les sources."
+            ],
+            "solution": "Les sources utilisées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire sans source ?",
+              "options": [
+                "Refuser ou signaler",
+                "Inventer",
+                "Publier",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "L'honnêteté prime.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "le-01-q1"
+            }
+          ],
+          "summary": [
+            "Assistant.",
+            "Sources.",
+            "Citations."
+          ],
+          "nextStep": "Chapitre suivant : « Créer un chatbot »."
+        },
+        {
+          "id": "le-02",
+          "title": "Créer un chatbot",
+          "duration": 20,
+          "objectives": [
+            "Cadrer",
+            "Limiter",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un chatbot a un périmètre, des garde-fous et une supervision."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Périmètre.",
+                "Garde-fous.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "Le périmètre."
+            ],
+            "solution": "Le périmètre des réponses.",
+            "check": {
+              "type": "any",
+              "any": [
+                "perimetre",
+                "périmètre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les dérives",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les abus sont vus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "le-02-q1"
+            }
+          ],
+          "summary": [
+            "Chatbot.",
+            "Périmètre.",
+            "Supervision."
+          ],
+          "nextStep": "Chapitre suivant : « Recherche sémantique »."
+        },
+        {
+          "id": "le-03",
+          "title": "Recherche sémantique",
+          "duration": 20,
+          "objectives": [
+            "Indexer",
+            "Chercher",
+            "Évaluer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un moteur sémantique indexe des documents et cherche par sens."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Index.",
+                "Requête.",
+                "Pertinence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que mesurer ?",
+            "hints": [
+              "La pertinence."
+            ],
+            "solution": "La pertinence des résultats.",
+            "check": {
+              "type": "any",
+              "any": [
+                "pertinence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des résultats ?",
+              "options": [
+                "Les trier par score",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le classement compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "le-03-q1"
+            }
+          ],
+          "summary": [
+            "Recherche.",
+            "Index.",
+            "Pertinence."
+          ],
+          "nextStep": "Chapitre suivant : « Extraction d'informations »."
+        },
+        {
+          "id": "le-04",
+          "title": "Extraction d'informations",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Valider",
+            "Corriger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'extraction structurée valide les champs attendus."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schéma.",
+                "Validation.",
+                "Reprise."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que valider ?",
+            "hints": [
+              "Les champs extraits."
+            ],
+            "solution": "Les champs extraits.",
+            "check": {
+              "type": "any",
+              "any": [
+                "champs"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un champ invalide ?",
+              "options": [
+                "Le signaler",
+                "L'inventer",
+                "Le publier",
+                "Le trier"
+              ],
+              "answer": 0,
+              "explanation": "La qualité est contrôlée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "le-04-q1"
+            }
+          ],
+          "summary": [
+            "Extraction.",
+            "Schéma.",
+            "Validation."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser une tâche avec un modèle »."
+        },
+        {
+          "id": "le-05",
+          "title": "Automatiser une tâche avec un modèle",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Tester",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'automatisation par LLM exige tests et supervision humaine."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cas.",
+                "Tests.",
+                "Supervision."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garder ?",
+            "hints": [
+              "Une validation humaine."
+            ],
+            "solution": "Une validation humaine sur les cas sensibles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "humaine"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des cas incertains ?",
+              "options": [
+                "Les escalader",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "L'humain décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "le-05-q1"
+            }
+          ],
+          "summary": [
+            "Automatisation.",
+            "Tests.",
+            "Humain."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

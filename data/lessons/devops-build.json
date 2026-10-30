@@ -1,0 +1,135 @@
+{
+  "courseId": "devops-build",
+  "modules": [
+    {
+      "id": "devops-build-module",
+      "title": "Build et artefacts",
+      "chapters": [
+        {
+          "id": "dvb-01",
+          "title": "Build et packaging",
+          "duration": 20,
+          "objectives": [
+            "Construire",
+            "Versionner",
+            "Reproduire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le build produit un artefact versionné et reproductible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Version.",
+                "Build.",
+                "Reproductibilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que produire ?",
+            "hints": [
+              "Un artefact versionné."
+            ],
+            "solution": "Un artefact versionné.",
+            "check": {
+              "type": "any",
+              "any": [
+                "artefact"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fige la version ?",
+              "options": [
+                "L'artefact",
+                "Le CSS",
+                "Le DNS",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu est identifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvb-01-q1"
+            }
+          ],
+          "summary": [
+            "Build.",
+            "Version.",
+            "Artefact."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des artefacts »."
+        },
+        {
+          "id": "dvb-02",
+          "title": "Gestion des artefacts",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Promouvoir",
+            "Nettoyer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un dépôt d'artefacts conserve les versions livrées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Registre.",
+                "Rétention.",
+                "Promotion."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que conserver ?",
+            "hints": [
+              "Les versions livrées."
+            ],
+            "solution": "Les versions livrées et leurs preuves.",
+            "check": {
+              "type": "any",
+              "any": [
+                "versions"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des anciens artefacts ?",
+              "options": [
+                "Les archiver/nettoyer",
+                "Les garder tous",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le stockage reste maîtrisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvb-02-q1"
+            }
+          ],
+          "summary": [
+            "Artefacts.",
+            "Rétention.",
+            "Promotion."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

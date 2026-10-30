@@ -1,0 +1,135 @@
+{
+  "courseId": "llm-securite",
+  "modules": [
+    {
+      "id": "llm-securite-module",
+      "title": "Sécurité des LLM",
+      "chapters": [
+        {
+          "id": "ls-01",
+          "title": "Sécurité des applications LLM",
+          "duration": 20,
+          "objectives": [
+            "Menacer",
+            "Contrôler",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application LLM expose prompt, outils et données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Entrées.",
+                "Outils.",
+                "Sorties."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que contrôler ?",
+            "hints": [
+              "Les outils et sorties."
+            ],
+            "solution": "Les outils appelés et les sorties.",
+            "check": {
+              "type": "any",
+              "any": [
+                "outils"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des sorties ?",
+              "options": [
+                "Les valider",
+                "Les publier",
+                "Les vendre",
+                "Les trier"
+              ],
+              "answer": 0,
+              "explanation": "Le risque baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ls-01-q1"
+            }
+          ],
+          "summary": [
+            "LLM.",
+            "Contrôle.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Journalisation et audit »."
+        },
+        {
+          "id": "ls-02",
+          "title": "Journalisation et audit",
+          "duration": 20,
+          "objectives": [
+            "Tracer",
+            "Protéger",
+            "Conserver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les appels et décisions se tracent sans données sensibles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Traces.",
+                "Rétention.",
+                "Accès."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que ne pas tracer ?",
+            "hints": [
+              "Les secrets."
+            ],
+            "solution": "Les secrets et données sensibles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "secrets"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "L'accès aux traces",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les preuves restent protégées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ls-02-q1"
+            }
+          ],
+          "summary": [
+            "Traces.",
+            "Audit.",
+            "Rétention."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

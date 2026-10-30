@@ -80,7 +80,7 @@ try {
   await send('Runtime.enable');
 
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('273 r')`);
   check('Catalogue : 53 cours', true);
 
   for (const [domain, expected] of [['informatique-generale', '3 r'], ['maintenance', '3 r'], ['environnements', '3 r']]) {

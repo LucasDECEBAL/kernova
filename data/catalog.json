@@ -1725,6 +1725,142 @@
       "file": "docker-debutant.json"
     },
     {
+      "id": "docker-fondamentaux",
+      "title": "Docker : fondamentaux",
+      "domain": "docker",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Images",
+        "Conteneurs"
+      ],
+      "description": "Conteneurs, images, installation, images et exécution.",
+      "objectives": [
+        "Comprendre",
+        "Comparer VM",
+        "Installer",
+        "Choisir une image",
+        "Lancer"
+      ],
+      "prerequisites": [
+        "Docker débutant"
+      ],
+      "prerequisiteCourses": [
+        "docker-debutant"
+      ],
+      "nextCourses": [
+        "docker-images"
+      ],
+      "skills": [
+        "Images",
+        "Conteneurs"
+      ],
+      "file": "docker-fondamentaux.json"
+    },
+    {
+      "id": "docker-images",
+      "title": "Docker : construire des images",
+      "domain": "docker",
+      "subdomain": "Images",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Dockerfile",
+        "Volumes"
+      ],
+      "description": "Dockerfile, build, volumes, réseaux et variables.",
+      "objectives": [
+        "Écrire un Dockerfile",
+        "Construire",
+        "Monter un volume",
+        "Créer un réseau",
+        "Configurer"
+      ],
+      "prerequisites": [
+        "Docker débutant"
+      ],
+      "prerequisiteCourses": [
+        "docker-debutant"
+      ],
+      "nextCourses": [
+        "docker-exploitation"
+      ],
+      "skills": [
+        "Dockerfile",
+        "Volumes"
+      ],
+      "file": "docker-images.json"
+    },
+    {
+      "id": "docker-exploitation",
+      "title": "Docker : exploitation",
+      "domain": "docker",
+      "subdomain": "Exploitation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Compose",
+        "Sécurité"
+      ],
+      "description": "Logs, Compose, app web, base et sécurité des images.",
+      "objectives": [
+        "Lire les logs",
+        "Décrire Compose",
+        "Conteneuriser une app",
+        "Conteneuriser une base",
+        "Scanner"
+      ],
+      "prerequisites": [
+        "Docker débutant"
+      ],
+      "prerequisiteCourses": [
+        "docker-debutant"
+      ],
+      "nextCourses": [
+        "docker-pro"
+      ],
+      "skills": [
+        "Compose",
+        "Sécurité"
+      ],
+      "file": "docker-exploitation.json"
+    },
+    {
+      "id": "docker-pro",
+      "title": "Docker : avancé",
+      "domain": "docker",
+      "subdomain": "Avancé",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Multi-stage",
+        "Registre"
+      ],
+      "description": "Optimisation, registres, débogage, persistance et bonnes pratiques.",
+      "objectives": [
+        "Optimiser",
+        "Pousser une image",
+        "Déboguer",
+        "Sauvegarder",
+        "Taguer"
+      ],
+      "prerequisites": [
+        "Docker débutant"
+      ],
+      "prerequisiteCourses": [
+        "docker-debutant"
+      ],
+      "nextCourses": [
+        "k8s-fondamentaux"
+      ],
+      "skills": [
+        "Multi-stage",
+        "Registre"
+      ],
+      "file": "docker-pro.json"
+    },
+    {
       "id": "kubernetes-debutant",
       "title": "Kubernetes débutant",
       "domain": "kubernetes",
@@ -1756,6 +1892,178 @@
         "Diagnostiquer un pod"
       ],
       "file": "kubernetes-debutant.json"
+    },
+    {
+      "id": "k8s-fondamentaux",
+      "title": "Kubernetes : fondamentaux",
+      "domain": "kubernetes",
+      "subdomain": "Fondamentaux",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Pods",
+        "Deployments"
+      ],
+      "description": "Introduction, architecture, nodes, pods et deployments.",
+      "objectives": [
+        "Comprendre",
+        "Situer l'architecture",
+        "Diagnostiquer",
+        "Créer un pod",
+        "Déclarer un Deployment"
+      ],
+      "prerequisites": [
+        "Kubernetes débutant"
+      ],
+      "prerequisiteCourses": [
+        "kubernetes-debutant"
+      ],
+      "nextCourses": [
+        "k8s-services"
+      ],
+      "skills": [
+        "Pods",
+        "Deployments"
+      ],
+      "file": "k8s-fondamentaux.json"
+    },
+    {
+      "id": "k8s-services",
+      "title": "Kubernetes : objets",
+      "domain": "kubernetes",
+      "subdomain": "Objets",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Services",
+        "Secrets"
+      ],
+      "description": "ReplicaSets, services, ConfigMaps, secrets et namespaces.",
+      "objectives": [
+        "Comprendre les réplicas",
+        "Choisir un service",
+        "Configurer",
+        "Protéger un secret",
+        "Isoler"
+      ],
+      "prerequisites": [
+        "Kubernetes débutant"
+      ],
+      "prerequisiteCourses": [
+        "kubernetes-debutant"
+      ],
+      "nextCourses": [
+        "k8s-stockage"
+      ],
+      "skills": [
+        "Services",
+        "Secrets"
+      ],
+      "file": "k8s-services.json"
+    },
+    {
+      "id": "k8s-stockage",
+      "title": "Kubernetes : stockage et exposition",
+      "domain": "kubernetes",
+      "subdomain": "Stockage",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "PVC",
+        "Ingress",
+        "HPA"
+      ],
+      "description": "Volumes, Ingress, probes, ressources et autoscaling.",
+      "objectives": [
+        "Réclamer un volume",
+        "Router HTTP",
+        "Configurer les probes",
+        "Déclarer les ressources",
+        "Autoscaler"
+      ],
+      "prerequisites": [
+        "Kubernetes débutant"
+      ],
+      "prerequisiteCourses": [
+        "kubernetes-debutant"
+      ],
+      "nextCourses": [
+        "k8s-exploitation"
+      ],
+      "skills": [
+        "PVC",
+        "Ingress",
+        "HPA"
+      ],
+      "file": "k8s-stockage.json"
+    },
+    {
+      "id": "k8s-exploitation",
+      "title": "Kubernetes : exploitation",
+      "domain": "kubernetes",
+      "subdomain": "Exploitation",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Rolling",
+        "RBAC"
+      ],
+      "description": "Mises à jour, rollbacks, logs, monitoring et sécurité.",
+      "objectives": [
+        "Mettre à jour",
+        "Revenir",
+        "Agréger les logs",
+        "Surveiller",
+        "Sécuriser"
+      ],
+      "prerequisites": [
+        "Kubernetes débutant"
+      ],
+      "prerequisiteCourses": [
+        "kubernetes-debutant"
+      ],
+      "nextCourses": [
+        "k8s-pro"
+      ],
+      "skills": [
+        "Rolling",
+        "RBAC"
+      ],
+      "file": "k8s-exploitation.json"
+    },
+    {
+      "id": "k8s-pro",
+      "title": "Kubernetes : avancé",
+      "domain": "kubernetes",
+      "subdomain": "Avancé",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Helm",
+        "Opérateurs"
+      ],
+      "description": "RBAC, Helm, déploiement, dépannage et opérateurs.",
+      "objectives": [
+        "Créer un rôle",
+        "Installer un chart",
+        "Déployer",
+        "Dépanner",
+        "Comprendre les CRD"
+      ],
+      "prerequisites": [
+        "Kubernetes débutant"
+      ],
+      "prerequisiteCourses": [
+        "kubernetes-debutant"
+      ],
+      "nextCourses": [
+        "devops-fondamentaux"
+      ],
+      "skills": [
+        "Helm",
+        "Opérateurs"
+      ],
+      "file": "k8s-pro.json"
     },
     {
       "id": "cloud-debutant",
@@ -2180,6 +2488,177 @@
       "file": "azure-fondamentaux.json"
     },
     {
+      "id": "azure-services",
+      "title": "Azure : services",
+      "domain": "cloud-computing",
+      "subdomain": "Azure",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Stockage",
+        "VNet",
+        "SQL"
+      ],
+      "description": "Stockage, VNet, DNS, Azure SQL et sécurité.",
+      "objectives": [
+        "Choisir un stockage",
+        "Segmenter",
+        "Gérer le DNS",
+        "Sécuriser SQL",
+        "Appliquer RBAC"
+      ],
+      "prerequisites": [
+        "Azure : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "azure-fondamentaux"
+      ],
+      "nextCourses": [
+        "azure-applications"
+      ],
+      "skills": [
+        "Stockage",
+        "VNet",
+        "SQL"
+      ],
+      "file": "azure-services.json"
+    },
+    {
+      "id": "azure-applications",
+      "title": "Azure : applications",
+      "domain": "cloud-computing",
+      "subdomain": "Azure",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Functions",
+        "Monitor"
+      ],
+      "description": "Functions, Monitor, Backup, sécurité et coûts.",
+      "objectives": [
+        "Déclencher Functions",
+        "Alarmer",
+        "Restaurer",
+        "Durcir",
+        "Optimiser"
+      ],
+      "prerequisites": [
+        "Azure : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "azure-fondamentaux"
+      ],
+      "nextCourses": [
+        "azure-architecture"
+      ],
+      "skills": [
+        "Functions",
+        "Monitor"
+      ],
+      "file": "azure-applications.json"
+    },
+    {
+      "id": "azure-architecture",
+      "title": "Azure : architecture",
+      "domain": "cloud-computing",
+      "subdomain": "Azure",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Multizone",
+        "Serverless"
+      ],
+      "description": "Architecture web, HA, événementiel, serverless et fédération.",
+      "objectives": [
+        "Séparer",
+        "Répartir",
+        "Découpler",
+        "Choisir serverless",
+        "Fédérer"
+      ],
+      "prerequisites": [
+        "Azure : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "azure-fondamentaux"
+      ],
+      "nextCourses": [
+        "gcp-fondamentaux"
+      ],
+      "skills": [
+        "Multizone",
+        "Serverless"
+      ],
+      "file": "azure-architecture.json"
+    },
+    {
+      "id": "gcp-fondamentaux",
+      "title": "Google Cloud : fondamentaux",
+      "domain": "cloud-computing",
+      "subdomain": "GCP",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "IAM",
+        "Compute"
+      ],
+      "description": "Projets, IAM, Compute Engine, Storage et VPC.",
+      "objectives": [
+        "Situer GCP",
+        "Gérer IAM",
+        "Lancer une VM",
+        "Créer un bucket",
+        "Segmenter"
+      ],
+      "prerequisites": [
+        "Azure : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "azure-fondamentaux"
+      ],
+      "nextCourses": [
+        "gcp-services"
+      ],
+      "skills": [
+        "IAM",
+        "Compute"
+      ],
+      "file": "gcp-fondamentaux.json"
+    },
+    {
+      "id": "gcp-services",
+      "title": "Google Cloud : services",
+      "domain": "cloud-computing",
+      "subdomain": "GCP",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Cloud SQL",
+        "Cloud Run"
+      ],
+      "description": "Cloud SQL, Cloud Run, Functions et Monitoring.",
+      "objectives": [
+        "Sécuriser SQL",
+        "Déployer un conteneur",
+        "Déclencher une fonction",
+        "Surveiller"
+      ],
+      "prerequisites": [
+        "Azure : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "azure-fondamentaux"
+      ],
+      "nextCourses": [
+        "virt-fondamentaux"
+      ],
+      "skills": [
+        "Cloud SQL",
+        "Cloud Run"
+      ],
+      "file": "gcp-services.json"
+    },
+    {
       "id": "devops-debutant",
       "title": "DevOps et CI/CD débutant",
       "domain": "devops",
@@ -2215,6 +2694,245 @@
         "Déployer avec retour arrière"
       ],
       "file": "devops-debutant.json"
+    },
+    {
+      "id": "devops-fondamentaux",
+      "title": "DevOps : fondamentaux",
+      "domain": "devops",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "CI",
+        "Culture"
+      ],
+      "description": "Culture, CI, livraison et déploiement continus.",
+      "objectives": [
+        "Comprendre",
+        "Collaborer",
+        "Automatiser les tests",
+        "Préparer un artefact",
+        "Automatiser le déploiement"
+      ],
+      "prerequisites": [
+        "DevOps et CI/CD débutant"
+      ],
+      "prerequisiteCourses": [
+        "devops-debutant"
+      ],
+      "nextCourses": [
+        "devops-pipelines"
+      ],
+      "skills": [
+        "CI",
+        "Culture"
+      ],
+      "file": "devops-fondamentaux.json"
+    },
+    {
+      "id": "devops-pipelines",
+      "title": "DevOps : pipelines",
+      "domain": "devops",
+      "subdomain": "Pipelines",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "GitHub Actions",
+        "GitLab CI"
+      ],
+      "description": "Pipelines, tests, environnements, GitHub Actions et GitLab CI.",
+      "objectives": [
+        "Écrire un pipeline",
+        "Tester",
+        "Promouvoir",
+        "Écrire un workflow",
+        "Décrire GitLab CI"
+      ],
+      "prerequisites": [
+        "DevOps et CI/CD débutant"
+      ],
+      "prerequisiteCourses": [
+        "devops-debutant"
+      ],
+      "nextCourses": [
+        "devops-build"
+      ],
+      "skills": [
+        "GitHub Actions",
+        "GitLab CI"
+      ],
+      "file": "devops-pipelines.json"
+    },
+    {
+      "id": "devops-build",
+      "title": "DevOps : build et artefacts",
+      "domain": "devops",
+      "subdomain": "Build",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Build",
+        "Artefacts"
+      ],
+      "description": "Construire, versionner et gérer les artefacts.",
+      "objectives": [
+        "Construire",
+        "Versionner",
+        "Stocker",
+        "Nettoyer"
+      ],
+      "prerequisites": [
+        "DevOps et CI/CD débutant"
+      ],
+      "prerequisiteCourses": [
+        "devops-debutant"
+      ],
+      "nextCourses": [
+        "observabilite"
+      ],
+      "skills": [
+        "Build",
+        "Artefacts"
+      ],
+      "file": "devops-build.json"
+    },
+    {
+      "id": "devops-deploiement",
+      "title": "DevOps : déploiements",
+      "domain": "devops",
+      "subdomain": "Déploiement",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Blue-green",
+        "Canary"
+      ],
+      "description": "Déploiement automatisé, secrets, progressif, blue-green et canary.",
+      "objectives": [
+        "Automatiser",
+        "Protéger les secrets",
+        "Déployer progressivement",
+        "Basculer",
+        "Décider"
+      ],
+      "prerequisites": [
+        "DevOps : build et artefacts"
+      ],
+      "prerequisiteCourses": [
+        "devops-build"
+      ],
+      "nextCourses": [
+        "terraform"
+      ],
+      "skills": [
+        "Blue-green",
+        "Canary"
+      ],
+      "file": "devops-deploiement.json"
+    },
+    {
+      "id": "terraform",
+      "title": "Terraform",
+      "domain": "devops",
+      "subdomain": "IaC",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "HCL",
+        "State",
+        "Modules"
+      ],
+      "description": "IaC, Terraform, modules, state et configurations.",
+      "objectives": [
+        "Décrire en IaC",
+        "Prévisualiser",
+        "Réutiliser",
+        "Protéger le state",
+        "Séparer"
+      ],
+      "prerequisites": [
+        "DevOps : build et artefacts"
+      ],
+      "prerequisiteCourses": [
+        "devops-build"
+      ],
+      "nextCourses": [
+        "ansible"
+      ],
+      "skills": [
+        "HCL",
+        "State",
+        "Modules"
+      ],
+      "file": "terraform.json"
+    },
+    {
+      "id": "ansible",
+      "title": "Ansible",
+      "domain": "devops",
+      "subdomain": "Configuration",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Playbooks",
+        "Vault"
+      ],
+      "description": "Ansible, playbooks, automatisation, configuration et incidents.",
+      "objectives": [
+        "Inventorier",
+        "Écrire un playbook",
+        "Automatiser",
+        "Chiffrer",
+        "Surveiller"
+      ],
+      "prerequisites": [
+        "DevOps : build et artefacts"
+      ],
+      "prerequisiteCourses": [
+        "devops-build"
+      ],
+      "nextCourses": [
+        "sre"
+      ],
+      "skills": [
+        "Playbooks",
+        "Vault"
+      ],
+      "file": "ansible.json"
+    },
+    {
+      "id": "sre",
+      "title": "SRE et fiabilité",
+      "domain": "devops",
+      "subdomain": "SRE",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "SLO",
+        "Incidents"
+      ],
+      "description": "SRE, SLI/SLO/SLA, fiabilité, incidents et pipelines.",
+      "objectives": [
+        "Appliquer SRE",
+        "Définir SLO",
+        "Fiabiliser",
+        "Gérer un incident",
+        "Optimiser"
+      ],
+      "prerequisites": [
+        "DevOps : build et artefacts"
+      ],
+      "prerequisiteCourses": [
+        "devops-build"
+      ],
+      "nextCourses": [
+        "tests-fondamentaux"
+      ],
+      "skills": [
+        "SLO",
+        "Incidents"
+      ],
+      "file": "sre.json"
     },
     {
       "id": "bases-donnees-avancees",
@@ -2930,6 +3648,576 @@
       "file": "ia-debutant.json"
     },
     {
+      "id": "ia-fondamentaux",
+      "title": "IA : fondamentaux",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "ML",
+        "Données"
+      ],
+      "description": "IA, ML/DL, données, préparation et supervisé.",
+      "objectives": [
+        "Définir",
+        "Distinguer",
+        "Qualifier",
+        "Préparer",
+        "Superviser"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [
+        "ia-methodes"
+      ],
+      "skills": [
+        "ML",
+        "Données"
+      ],
+      "file": "ia-fondamentaux.json"
+    },
+    {
+      "id": "ia-methodes",
+      "title": "IA : méthodes",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Méthodes",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Classification",
+        "Clustering"
+      ],
+      "description": "Non supervisé, classification, régression, clustering et évaluation.",
+      "objectives": [
+        "Regrouper",
+        "Classifier",
+        "Prédire",
+        "Clustériser",
+        "Évaluer"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [
+        "ia-qualite"
+      ],
+      "skills": [
+        "Classification",
+        "Clustering"
+      ],
+      "file": "ia-methodes.json"
+    },
+    {
+      "id": "ia-qualite",
+      "title": "IA : qualité et éthique",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Qualité",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Overfitting",
+        "Biais"
+      ],
+      "description": "Surapprentissage, sous-apprentissage, validation, biais et éthique.",
+      "objectives": [
+        "Détecter",
+        "Corriger",
+        "Valider",
+        "Mesurer le biais",
+        "Encadrer"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [
+        "ia-python"
+      ],
+      "skills": [
+        "Overfitting",
+        "Biais"
+      ],
+      "file": "ia-qualite.json"
+    },
+    {
+      "id": "ia-python",
+      "title": "IA : Python pour la donnée",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Python",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "NumPy",
+        "pandas"
+      ],
+      "description": "NumPy, pandas, Matplotlib, dataset et scikit-learn.",
+      "objectives": [
+        "Calculer",
+        "Manipuler",
+        "Visualiser",
+        "Préparer",
+        "Entraîner"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [
+        "ia-modeles"
+      ],
+      "skills": [
+        "NumPy",
+        "pandas"
+      ],
+      "file": "ia-python.json"
+    },
+    {
+      "id": "ia-modeles",
+      "title": "IA : modèles classiques",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Modèles",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Régression",
+        "Arbres"
+      ],
+      "description": "Régression linéaire/logistique, arbres, forêts et k-means.",
+      "objectives": [
+        "Régression",
+        "Probabilité",
+        "Arbres",
+        "Ensemble",
+        "Partitionner"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [
+        "ia-production"
+      ],
+      "skills": [
+        "Régression",
+        "Arbres"
+      ],
+      "file": "ia-modeles.json"
+    },
+    {
+      "id": "ia-production",
+      "title": "IA : production",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Production",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Pipelines",
+        "Dérive"
+      ],
+      "description": "Métriques, pipelines, sauvegarde, déploiement et surveillance.",
+      "objectives": [
+        "Choisir les métriques",
+        "Automatiser",
+        "Sauvegarder",
+        "Déployer",
+        "Surveiller"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [
+        "ia-deep"
+      ],
+      "skills": [
+        "Pipelines",
+        "Dérive"
+      ],
+      "file": "ia-production.json"
+    },
+    {
+      "id": "ia-deep",
+      "title": "IA : deep learning",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Deep learning",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Réseaux",
+        "Gradient"
+      ],
+      "description": "Réseaux de neurones, neurones, activation et descente de gradient.",
+      "objectives": [
+        "Comprendre",
+        "Calculer",
+        "Choisir l'activation",
+        "Entraîner"
+      ],
+      "prerequisites": [
+        "Intelligence artificielle : fondamentaux"
+      ],
+      "prerequisiteCourses": [
+        "ia-debutant"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "Réseaux",
+        "Gradient"
+      ],
+      "file": "ia-deep.json"
+    },
+    {
+      "id": "llm-fondamentaux",
+      "title": "LLM : fondamentaux",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "LLM",
+        "Tokens"
+      ],
+      "description": "LLM, tokens, contexte, embeddings et attention.",
+      "objectives": [
+        "Comprendre",
+        "Compter",
+        "Limiter",
+        "Représenter",
+        "Contextualiser"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-usage"
+      ],
+      "skills": [
+        "LLM",
+        "Tokens"
+      ],
+      "file": "llm-fondamentaux.json"
+    },
+    {
+      "id": "llm-usage",
+      "title": "LLM : usage",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Prompt",
+        "Évaluation"
+      ],
+      "description": "Génération, prompt engineering, évaluation, hallucinations et limites.",
+      "objectives": [
+        "Guider",
+        "Structurer",
+        "Évaluer",
+        "Réduire",
+        "Documenter"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-api"
+      ],
+      "skills": [
+        "Prompt",
+        "Évaluation"
+      ],
+      "file": "llm-usage.json"
+    },
+    {
+      "id": "llm-api",
+      "title": "LLM : API et intégration",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "API",
+        "Outils"
+      ],
+      "description": "API, clés, structured outputs, outils et coûts.",
+      "objectives": [
+        "Appeler",
+        "Sécuriser",
+        "Structurer",
+        "Contrôler",
+        "Mesurer"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "rag"
+      ],
+      "skills": [
+        "API",
+        "Outils"
+      ],
+      "file": "llm-api.json"
+    },
+    {
+      "id": "rag",
+      "title": "RAG",
+      "domain": "intelligence-artificielle",
+      "subdomain": "RAG",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Embeddings",
+        "Vecteurs"
+      ],
+      "description": "RAG, bases vectorielles, recherche sémantique, chunking et évaluation.",
+      "objectives": [
+        "Rechercher",
+        "Stocker",
+        "Améliorer",
+        "Découper",
+        "Évaluer"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-avance"
+      ],
+      "skills": [
+        "Embeddings",
+        "Vecteurs"
+      ],
+      "file": "rag.json"
+    },
+    {
+      "id": "llm-avance",
+      "title": "LLM : avancé",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Fine-tuning",
+        "Quantification"
+      ],
+      "description": "Fine-tuning, quantification, modèles locaux, données et injection.",
+      "objectives": [
+        "Adapter",
+        "Quantifier",
+        "Héberger",
+        "Protéger",
+        "Prévenir"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-securite"
+      ],
+      "skills": [
+        "Fine-tuning",
+        "Quantification"
+      ],
+      "file": "llm-avance.json"
+    },
+    {
+      "id": "llm-securite",
+      "title": "LLM : sécurité",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Sécurité",
+        "Audit"
+      ],
+      "description": "Sécurité des applications LLM, journalisation et audit.",
+      "objectives": [
+        "Contrôler",
+        "Tracer"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-apps"
+      ],
+      "skills": [
+        "Sécurité",
+        "Audit"
+      ],
+      "file": "llm-securite.json"
+    },
+    {
+      "id": "llm-apps",
+      "title": "LLM : applications",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Assistant",
+        "RAG"
+      ],
+      "description": "Assistant documentaire, chatbot, recherche, extraction et automatisation.",
+      "objectives": [
+        "Concevoir",
+        "Cadrer",
+        "Indexer",
+        "Extraire",
+        "Automatiser"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-production"
+      ],
+      "skills": [
+        "Assistant",
+        "RAG"
+      ],
+      "file": "llm-apps.json"
+    },
+    {
+      "id": "llm-production",
+      "title": "LLM : production",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Évaluation",
+        "Coûts"
+      ],
+      "description": "Défense, coûts, évaluation, mise en production et conformité.",
+      "objectives": [
+        "Défendre",
+        "Maîtriser",
+        "Évaluer",
+        "Déployer",
+        "Documenter"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-ethique"
+      ],
+      "skills": [
+        "Évaluation",
+        "Coûts"
+      ],
+      "file": "llm-production.json"
+    },
+    {
+      "id": "llm-ethique",
+      "title": "LLM : éthique",
+      "domain": "intelligence-artificielle",
+      "subdomain": "Éthique",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Limites",
+        "Biais"
+      ],
+      "description": "Limites, biais, protection des données et usage responsable.",
+      "objectives": [
+        "Documenter",
+        "Mesurer",
+        "Protéger"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "llm-extra"
+      ],
+      "skills": [
+        "Limites",
+        "Biais"
+      ],
+      "file": "llm-ethique.json"
+    },
+    {
+      "id": "llm-extra",
+      "title": "LLM : applications concrètes",
+      "domain": "intelligence-artificielle",
+      "subdomain": "LLM",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Documents",
+        "Assistants"
+      ],
+      "description": "Analyse de documents, classification, extraction, assistant et production.",
+      "objectives": [
+        "Analyser",
+        "Classifier",
+        "Extraire",
+        "Assister",
+        "Évaluer"
+      ],
+      "prerequisites": [
+        "IA : deep learning"
+      ],
+      "prerequisiteCourses": [
+        "ia-deep"
+      ],
+      "nextCourses": [
+        "auto-fondamentaux"
+      ],
+      "skills": [
+        "Documents",
+        "Assistants"
+      ],
+      "file": "llm-extra.json"
+    },
+    {
       "id": "typescript",
       "title": "TypeScript",
       "domain": "typescript-frontend",
@@ -3349,6 +4637,177 @@
       "file": "tests-qualite.json"
     },
     {
+      "id": "tests-fondamentaux",
+      "title": "Tests : fondamentaux",
+      "domain": "tests-qualite",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Unitaire",
+        "E2E"
+      ],
+      "description": "Introduction, unitaire, intégration, fonctionnel et E2E.",
+      "objectives": [
+        "Comprendre",
+        "Isoler",
+        "Intégrer",
+        "Fonctionnel",
+        "Parcourir"
+      ],
+      "prerequisites": [
+        "Tests et qualité logicielle"
+      ],
+      "prerequisiteCourses": [
+        "tests-qualite"
+      ],
+      "nextCourses": [
+        "tests-avances"
+      ],
+      "skills": [
+        "Unitaire",
+        "E2E"
+      ],
+      "file": "tests-fondamentaux.json"
+    },
+    {
+      "id": "tests-avances",
+      "title": "Tests : avancés",
+      "domain": "tests-qualite",
+      "subdomain": "Avancé",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Charge",
+        "Sécurité"
+      ],
+      "description": "Régression, performance, charge, sécurité et exploratoire.",
+      "objectives": [
+        "Protéger",
+        "Mesurer",
+        "Simuler",
+        "Cadrer",
+        "Explorer"
+      ],
+      "prerequisites": [
+        "Tests et qualité logicielle"
+      ],
+      "prerequisiteCourses": [
+        "tests-qualite"
+      ],
+      "nextCourses": [
+        "tests-outils"
+      ],
+      "skills": [
+        "Charge",
+        "Sécurité"
+      ],
+      "file": "tests-avances.json"
+    },
+    {
+      "id": "tests-outils",
+      "title": "Tests : outils",
+      "domain": "tests-qualite",
+      "subdomain": "Outils",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Mock",
+        "pytest"
+      ],
+      "description": "Mocking, couverture, tests JS, React et Python.",
+      "objectives": [
+        "Isoler",
+        "Mesurer",
+        "Tester JS",
+        "Tester React",
+        "Tester Python"
+      ],
+      "prerequisites": [
+        "Tests et qualité logicielle"
+      ],
+      "prerequisiteCourses": [
+        "tests-qualite"
+      ],
+      "nextCourses": [
+        "tests-integration"
+      ],
+      "skills": [
+        "Mock",
+        "pytest"
+      ],
+      "file": "tests-outils.json"
+    },
+    {
+      "id": "tests-integration",
+      "title": "Tests : intégration",
+      "domain": "tests-qualite",
+      "subdomain": "Intégration",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "API",
+        "CI"
+      ],
+      "description": "API, base de données, CI, analyse statique et bugs.",
+      "objectives": [
+        "Tester une API",
+        "Isoler la base",
+        "Automatiser",
+        "Analyser",
+        "Suivre un bug"
+      ],
+      "prerequisites": [
+        "Tests et qualité logicielle"
+      ],
+      "prerequisiteCourses": [
+        "tests-qualite"
+      ],
+      "nextCourses": [
+        "tests-qualite-pro"
+      ],
+      "skills": [
+        "API",
+        "CI"
+      ],
+      "file": "tests-integration.json"
+    },
+    {
+      "id": "tests-qualite-pro",
+      "title": "Tests : qualité professionnelle",
+      "domain": "tests-qualite",
+      "subdomain": "Qualité",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Revue",
+        "TDD",
+        "A11y"
+      ],
+      "description": "Revue, maintenabilité, TDD et accessibilité.",
+      "objectives": [
+        "Relire",
+        "Maintenir",
+        "Pratiquer TDD",
+        "Tester l'accessibilité"
+      ],
+      "prerequisites": [
+        "Tests et qualité logicielle"
+      ],
+      "prerequisiteCourses": [
+        "tests-qualite"
+      ],
+      "nextCourses": [
+        "archi-fondamentaux"
+      ],
+      "skills": [
+        "Revue",
+        "TDD",
+        "A11y"
+      ],
+      "file": "tests-qualite-pro.json"
+    },
+    {
       "id": "architecture-logicielle",
       "title": "Architecture logicielle",
       "domain": "architecture-logicielle",
@@ -3381,6 +4840,171 @@
         "Justifier une architecture"
       ],
       "file": "architecture-logicielle.json"
+    },
+    {
+      "id": "archi-fondamentaux",
+      "title": "Architecture : principes",
+      "domain": "architecture-logicielle",
+      "subdomain": "Principes",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "SOLID",
+        "Couplage"
+      ],
+      "description": "Principes, couplage/cohésion, SOLID, DRY/KISS/YAGNI et couches.",
+      "objectives": [
+        "Concevoir",
+        "Mesurer",
+        "Appliquer SOLID",
+        "Simplifier",
+        "Séparer"
+      ],
+      "prerequisites": [
+        "Architecture logicielle"
+      ],
+      "prerequisiteCourses": [
+        "architecture-logicielle"
+      ],
+      "nextCourses": [
+        "archi-styles"
+      ],
+      "skills": [
+        "SOLID",
+        "Couplage"
+      ],
+      "file": "archi-fondamentaux.json"
+    },
+    {
+      "id": "archi-styles",
+      "title": "Architecture : styles",
+      "domain": "architecture-logicielle",
+      "subdomain": "Styles",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Hexagonale",
+        "DDD"
+      ],
+      "description": "Hexagonale, clean, DDD, patterns et factory/strategy.",
+      "objectives": [
+        "Isoler",
+        "Dépendre vers l'intérieur",
+        "Modéliser",
+        "Choisir un pattern",
+        "Composer"
+      ],
+      "prerequisites": [
+        "Architecture logicielle"
+      ],
+      "prerequisiteCourses": [
+        "architecture-logicielle"
+      ],
+      "nextCourses": [
+        "archi-patterns"
+      ],
+      "skills": [
+        "Hexagonale",
+        "DDD"
+      ],
+      "file": "archi-styles.json"
+    },
+    {
+      "id": "archi-patterns",
+      "title": "Architecture : patterns",
+      "domain": "architecture-logicielle",
+      "subdomain": "Patterns",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Observer",
+        "Repository"
+      ],
+      "description": "Observer, adapter, repository, injection et monolithe/microservices.",
+      "objectives": [
+        "Notifier",
+        "Adapter",
+        "Abstraire",
+        "Injecter",
+        "Choisir"
+      ],
+      "prerequisites": [
+        "Architecture logicielle"
+      ],
+      "prerequisiteCourses": [
+        "architecture-logicielle"
+      ],
+      "nextCourses": [
+        "archi-avance"
+      ],
+      "skills": [
+        "Observer",
+        "Repository"
+      ],
+      "file": "archi-patterns.json"
+    },
+    {
+      "id": "archi-avance",
+      "title": "Architecture : avancé",
+      "domain": "architecture-logicielle",
+      "subdomain": "Avancé",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Résilience",
+        "Scalabilité"
+      ],
+      "description": "Événementiel, scalabilité, résilience, tolérance et documentation.",
+      "objectives": [
+        "Découpler",
+        "Scaler",
+        "Résister",
+        "Tolérer",
+        "Documenter"
+      ],
+      "prerequisites": [
+        "Architecture logicielle"
+      ],
+      "prerequisiteCourses": [
+        "architecture-logicielle"
+      ],
+      "nextCourses": [
+        "archi-choix"
+      ],
+      "skills": [
+        "Résilience",
+        "Scalabilité"
+      ],
+      "file": "archi-avance.json"
+    },
+    {
+      "id": "archi-choix",
+      "title": "Architecture : choisir et documenter",
+      "domain": "architecture-logicielle",
+      "subdomain": "Décision",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "ADR"
+      ],
+      "description": "Choisir une architecture et documenter les décisions.",
+      "objectives": [
+        "Décider",
+        "Documenter"
+      ],
+      "prerequisites": [
+        "Architecture logicielle"
+      ],
+      "prerequisiteCourses": [
+        "architecture-logicielle"
+      ],
+      "nextCourses": [
+        "ia-fondamentaux"
+      ],
+      "skills": [
+        "ADR"
+      ],
+      "file": "archi-choix.json"
     },
     {
       "id": "cybersecurite-avancee",
@@ -3451,6 +5075,141 @@
         "Diagnostiquer un hôte"
       ],
       "file": "virtualisation.json"
+    },
+    {
+      "id": "virt-fondamentaux",
+      "title": "Virtualisation : fondamentaux",
+      "domain": "virtualisation",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Hyperviseur",
+        "VM"
+      ],
+      "description": "Introduction, hyperviseurs, VM, CPU/mémoire et disques.",
+      "objectives": [
+        "Comprendre",
+        "Choisir un type",
+        "Créer une VM",
+        "Dimensionner",
+        "Choisir un disque"
+      ],
+      "prerequisites": [
+        "Virtualisation"
+      ],
+      "prerequisiteCourses": [
+        "virtualisation"
+      ],
+      "nextCourses": [
+        "virt-reseau"
+      ],
+      "skills": [
+        "Hyperviseur",
+        "VM"
+      ],
+      "file": "virt-fondamentaux.json"
+    },
+    {
+      "id": "virt-reseau",
+      "title": "Virtualisation : réseaux et snapshots",
+      "domain": "virtualisation",
+      "subdomain": "Réseaux",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Réseaux",
+        "Snapshots"
+      ],
+      "description": "Réseaux virtuels, snapshots, clonage, VMware et VirtualBox.",
+      "objectives": [
+        "Choisir un mode",
+        "Restaurer",
+        "Cloner",
+        "Utiliser VMware",
+        "Utiliser VirtualBox"
+      ],
+      "prerequisites": [
+        "Virtualisation"
+      ],
+      "prerequisiteCourses": [
+        "virtualisation"
+      ],
+      "nextCourses": [
+        "virt-laboratoire"
+      ],
+      "skills": [
+        "Réseaux",
+        "Snapshots"
+      ],
+      "file": "virt-reseau.json"
+    },
+    {
+      "id": "virt-laboratoire",
+      "title": "Virtualisation : laboratoire",
+      "domain": "virtualisation",
+      "subdomain": "Laboratoire",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Hyper-V",
+        "Labo"
+      ],
+      "description": "Hyper-V, laboratoire, réseaux isolés, modèles et ressources.",
+      "objectives": [
+        "Configurer Hyper-V",
+        "Isoler",
+        "Éviter les fuites",
+        "Utiliser un modèle",
+        "Répartir"
+      ],
+      "prerequisites": [
+        "Virtualisation"
+      ],
+      "prerequisiteCourses": [
+        "virtualisation"
+      ],
+      "nextCourses": [
+        "virt-exploitation"
+      ],
+      "skills": [
+        "Hyper-V",
+        "Labo"
+      ],
+      "file": "virt-laboratoire.json"
+    },
+    {
+      "id": "virt-exploitation",
+      "title": "Virtualisation : exploitation",
+      "domain": "virtualisation",
+      "subdomain": "Exploitation",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Proxmox",
+        "HA"
+      ],
+      "description": "Dépannage, Proxmox, haute disponibilité et sauvegardes.",
+      "objectives": [
+        "Diagnostiquer",
+        "Utiliser Proxmox",
+        "Tester la bascule",
+        "Restaurer"
+      ],
+      "prerequisites": [
+        "Virtualisation"
+      ],
+      "prerequisiteCourses": [
+        "virtualisation"
+      ],
+      "nextCourses": [
+        "docker-fondamentaux"
+      ],
+      "skills": [
+        "Proxmox",
+        "HA"
+      ],
+      "file": "virt-exploitation.json"
     },
     {
       "id": "environnements-windows",
@@ -5264,6 +7023,172 @@
       "file": "automatisation-workflows.json"
     },
     {
+      "id": "auto-fondamentaux",
+      "title": "Automatisation : fondamentaux",
+      "domain": "automatisation-workflows",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Scripts",
+        "API"
+      ],
+      "description": "Introduction, tâches répétitives, scripts, API et webhooks.",
+      "objectives": [
+        "Choisir",
+        "Lister",
+        "Scripts",
+        "Appeler",
+        "Sécuriser"
+      ],
+      "prerequisites": [
+        "Automatisation et workflows"
+      ],
+      "prerequisiteCourses": [
+        "automatisation-workflows"
+      ],
+      "nextCourses": [
+        "auto-outils"
+      ],
+      "skills": [
+        "Scripts",
+        "API"
+      ],
+      "file": "auto-fondamentaux.json"
+    },
+    {
+      "id": "auto-outils",
+      "title": "Automatisation : outils",
+      "domain": "automatisation-workflows",
+      "subdomain": "Outils",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "n8n",
+        "JSON"
+      ],
+      "description": "Déclencheurs, n8n, workflow, erreurs et JSON.",
+      "objectives": [
+        "Déclencher",
+        "Construire",
+        "Gérer",
+        "Valider"
+      ],
+      "prerequisites": [
+        "Automatisation et workflows"
+      ],
+      "prerequisiteCourses": [
+        "automatisation-workflows"
+      ],
+      "nextCourses": [
+        "auto-pro"
+      ],
+      "skills": [
+        "n8n",
+        "JSON"
+      ],
+      "file": "auto-outils.json"
+    },
+    {
+      "id": "auto-pro",
+      "title": "Automatisation : avancé",
+      "domain": "automatisation-workflows",
+      "subdomain": "Avancé",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Make",
+        "Fichiers"
+      ],
+      "description": "Services, Make, feuilles, notifications et fichiers.",
+      "objectives": [
+        "Connecter",
+        "Construire",
+        "Traiter",
+        "Notifier",
+        "Archiver"
+      ],
+      "prerequisites": [
+        "Automatisation et workflows"
+      ],
+      "prerequisiteCourses": [
+        "automatisation-workflows"
+      ],
+      "nextCourses": [
+        "auto-securite"
+      ],
+      "skills": [
+        "Make",
+        "Fichiers"
+      ],
+      "file": "auto-pro.json"
+    },
+    {
+      "id": "auto-securite",
+      "title": "Automatisation : sécurité",
+      "domain": "automatisation-workflows",
+      "subdomain": "Sécurité",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Secrets",
+        "Surveillance"
+      ],
+      "description": "Workflows sécurisés, secrets, surveillance et documentation.",
+      "objectives": [
+        "Limiter",
+        "Stocker",
+        "Surveiller",
+        "Documenter",
+        "Mesurer"
+      ],
+      "prerequisites": [
+        "Automatisation et workflows"
+      ],
+      "prerequisiteCourses": [
+        "automatisation-workflows"
+      ],
+      "nextCourses": [
+        "auto-projet"
+      ],
+      "skills": [
+        "Secrets",
+        "Surveillance"
+      ],
+      "file": "auto-securite.json"
+    },
+    {
+      "id": "auto-projet",
+      "title": "Automatisation : projet",
+      "domain": "automatisation-workflows",
+      "subdomain": "Projet",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Gain",
+        "Mesure"
+      ],
+      "description": "Documenter un projet et mesurer le gain.",
+      "objectives": [
+        "Documenter",
+        "Mesurer"
+      ],
+      "prerequisites": [
+        "Automatisation et workflows"
+      ],
+      "prerequisiteCourses": [
+        "automatisation-workflows"
+      ],
+      "nextCourses": [
+        "mobile-fondamentaux"
+      ],
+      "skills": [
+        "Gain",
+        "Mesure"
+      ],
+      "file": "auto-projet.json"
+    },
+    {
       "id": "mobile",
       "title": "Développement mobile",
       "domain": "mobile",
@@ -5296,6 +7221,141 @@
         "Préparer une publication"
       ],
       "file": "mobile.json"
+    },
+    {
+      "id": "mobile-fondamentaux",
+      "title": "Mobile : fondamentaux",
+      "domain": "mobile",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Cycle de vie",
+        "Navigation"
+      ],
+      "description": "Contraintes, natif/multiplateforme, cycle de vie, navigation et UI.",
+      "objectives": [
+        "Comprendre",
+        "Choisir",
+        "Sauvegarder",
+        "Naviguer",
+        "Adapter"
+      ],
+      "prerequisites": [
+        "Développement mobile"
+      ],
+      "prerequisiteCourses": [
+        "mobile"
+      ],
+      "nextCourses": [
+        "mobile-android"
+      ],
+      "skills": [
+        "Cycle de vie",
+        "Navigation"
+      ],
+      "file": "mobile-fondamentaux.json"
+    },
+    {
+      "id": "mobile-android",
+      "title": "Mobile : Android et Kotlin",
+      "domain": "mobile",
+      "subdomain": "Android",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Kotlin",
+        "Android"
+      ],
+      "description": "Kotlin, fondamentaux Android, cycle de vie, stockage et réseau.",
+      "objectives": [
+        "Déclarer",
+        "Organiser",
+        "Gérer",
+        "Stocker",
+        "Appeler"
+      ],
+      "prerequisites": [
+        "Développement mobile"
+      ],
+      "prerequisiteCourses": [
+        "mobile"
+      ],
+      "nextCourses": [
+        "mobile-ios"
+      ],
+      "skills": [
+        "Kotlin",
+        "Android"
+      ],
+      "file": "mobile-android.json"
+    },
+    {
+      "id": "mobile-ios",
+      "title": "Mobile : iOS et multiplateforme",
+      "domain": "mobile",
+      "subdomain": "iOS",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Swift",
+        "Flutter"
+      ],
+      "description": "Swift, iOS, React Native, Flutter et état.",
+      "objectives": [
+        "Déclarer",
+        "Structurer",
+        "Composer",
+        "Composer",
+        "Centraliser"
+      ],
+      "prerequisites": [
+        "Développement mobile"
+      ],
+      "prerequisiteCourses": [
+        "mobile"
+      ],
+      "nextCourses": [
+        "mobile-multiplateforme"
+      ],
+      "skills": [
+        "Swift",
+        "Flutter"
+      ],
+      "file": "mobile-ios.json"
+    },
+    {
+      "id": "mobile-multiplateforme",
+      "title": "Mobile : publication",
+      "domain": "mobile",
+      "subdomain": "Publication",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Tests",
+        "Stores"
+      ],
+      "description": "Tests, permissions, sécurité, publication et maintenance.",
+      "objectives": [
+        "Tester",
+        "Demander",
+        "Protéger",
+        "Publier"
+      ],
+      "prerequisites": [
+        "Développement mobile"
+      ],
+      "prerequisiteCourses": [
+        "mobile"
+      ],
+      "nextCourses": [
+        "ux-fondamentaux"
+      ],
+      "skills": [
+        "Tests",
+        "Stores"
+      ],
+      "file": "mobile-multiplateforme.json"
     },
     {
       "id": "ux-ui",
@@ -5332,6 +7392,106 @@
       "file": "ux-ui.json"
     },
     {
+      "id": "ux-fondamentaux",
+      "title": "UX : fondamentaux",
+      "domain": "ux-ui",
+      "subdomain": "UX",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Recherche",
+        "Parcours"
+      ],
+      "description": "UX, UI, recherche, personas et parcours.",
+      "objectives": [
+        "Comprendre",
+        "Organiser",
+        "Interroger",
+        "Décrire",
+        "Cartographier"
+      ],
+      "prerequisites": [
+        "UX/UI et accessibilité"
+      ],
+      "prerequisiteCourses": [
+        "ux-ui"
+      ],
+      "nextCourses": [
+        "ux-design"
+      ],
+      "skills": [
+        "Recherche",
+        "Parcours"
+      ],
+      "file": "ux-fondamentaux.json"
+    },
+    {
+      "id": "ux-design",
+      "title": "UX : conception",
+      "domain": "ux-ui",
+      "subdomain": "Design",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Wireframes",
+        "Typographie"
+      ],
+      "description": "Architecture de l'information, wireframes, prototypes, hiérarchie, typo et couleurs.",
+      "objectives": [
+        "Organiser",
+        "Esquisser",
+        "Prototyper",
+        "Hiérarchiser",
+        "Choisir"
+      ],
+      "prerequisites": [
+        "UX/UI et accessibilité"
+      ],
+      "prerequisiteCourses": [
+        "ux-ui"
+      ],
+      "nextCourses": [
+        "ux-tests"
+      ],
+      "skills": [
+        "Wireframes",
+        "Typographie"
+      ],
+      "file": "ux-design.json"
+    },
+    {
+      "id": "ux-tests",
+      "title": "UX : tests et amélioration",
+      "domain": "ux-ui",
+      "subdomain": "Tests",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Utilisabilité",
+        "Mesures"
+      ],
+      "description": "Tests d'utilisabilité, mesure de l'expérience et amélioration continue.",
+      "objectives": [
+        "Observer",
+        "Mesurer",
+        "Améliorer"
+      ],
+      "prerequisites": [
+        "UX/UI et accessibilité"
+      ],
+      "prerequisiteCourses": [
+        "ux-ui"
+      ],
+      "nextCourses": [
+        "deploiement-seo"
+      ],
+      "skills": [
+        "Utilisabilité",
+        "Mesures"
+      ],
+      "file": "ux-tests.json"
+    },
+    {
       "id": "deploiement-seo",
       "title": "Déploiement web et SEO",
       "domain": "deploiement-seo",
@@ -5364,6 +7524,208 @@
         "Rendre un site rapide et explorable"
       ],
       "file": "deploiement-seo.json"
+    },
+    {
+      "id": "seo-web",
+      "title": "SEO : web et hébergement",
+      "domain": "deploiement-seo",
+      "subdomain": "Web",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Domaine",
+        "Hébergement"
+      ],
+      "description": "Web, domaine, DNS, hébergement et statique.",
+      "objectives": [
+        "Comprendre",
+        "Choisir un domaine",
+        "Configurer",
+        "Héberger",
+        "Déployer"
+      ],
+      "prerequisites": [
+        "Déploiement web et SEO"
+      ],
+      "prerequisiteCourses": [
+        "deploiement-seo"
+      ],
+      "nextCourses": [
+        "seo-deploiement"
+      ],
+      "skills": [
+        "Domaine",
+        "Hébergement"
+      ],
+      "file": "seo-web.json"
+    },
+    {
+      "id": "seo-deploiement",
+      "title": "SEO : déploiement",
+      "domain": "deploiement-seo",
+      "subdomain": "Déploiement",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Pages",
+        "Netlify"
+      ],
+      "description": "Hébergement dynamique, Pages, Netlify, Cloudflare et variables.",
+      "objectives": [
+        "Choisir",
+        "Publier",
+        "Rediriger",
+        "Distribuer",
+        "Configurer"
+      ],
+      "prerequisites": [
+        "Déploiement web et SEO"
+      ],
+      "prerequisiteCourses": [
+        "deploiement-seo"
+      ],
+      "nextCourses": [
+        "seo-routes"
+      ],
+      "skills": [
+        "Pages",
+        "Netlify"
+      ],
+      "file": "seo-deploiement.json"
+    },
+    {
+      "id": "seo-routes",
+      "title": "SEO : routes et sécurité",
+      "domain": "deploiement-seo",
+      "subdomain": "Routes",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "TLS",
+        "CDN"
+      ],
+      "description": "Routes, TLS, HTTPS, CDN et images.",
+      "objectives": [
+        "Router",
+        "Renouveler",
+        "Rediriger",
+        "Cacher",
+        "Optimiser"
+      ],
+      "prerequisites": [
+        "Déploiement web et SEO"
+      ],
+      "prerequisiteCourses": [
+        "deploiement-seo"
+      ],
+      "nextCourses": [
+        "seo-performance"
+      ],
+      "skills": [
+        "TLS",
+        "CDN"
+      ],
+      "file": "seo-routes.json"
+    },
+    {
+      "id": "seo-performance",
+      "title": "SEO : performance",
+      "domain": "deploiement-seo",
+      "subdomain": "Performance",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Core Web Vitals"
+      ],
+      "description": "Performance, Core Web Vitals, SEO technique, titres et métadonnées.",
+      "objectives": [
+        "Mesurer",
+        "Optimiser",
+        "Corriger",
+        "Hiérarchiser",
+        "Décrire"
+      ],
+      "prerequisites": [
+        "Déploiement web et SEO"
+      ],
+      "prerequisiteCourses": [
+        "deploiement-seo"
+      ],
+      "nextCourses": [
+        "seo-structure"
+      ],
+      "skills": [
+        "Core Web Vitals"
+      ],
+      "file": "seo-performance.json"
+    },
+    {
+      "id": "seo-structure",
+      "title": "SEO : indexation",
+      "domain": "deploiement-seo",
+      "subdomain": "Indexation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Sitemap",
+        "JSON-LD"
+      ],
+      "description": "Sitemap, robots, données structurées, accessibilité et erreurs.",
+      "objectives": [
+        "Lister",
+        "Guider",
+        "Décrire",
+        "Améliorer",
+        "Diagnostiquer"
+      ],
+      "prerequisites": [
+        "Déploiement web et SEO"
+      ],
+      "prerequisiteCourses": [
+        "deploiement-seo"
+      ],
+      "nextCourses": [
+        "seo-exploitation"
+      ],
+      "skills": [
+        "Sitemap",
+        "JSON-LD"
+      ],
+      "file": "seo-structure.json"
+    },
+    {
+      "id": "seo-exploitation",
+      "title": "SEO : surveillance",
+      "domain": "deploiement-seo",
+      "subdomain": "Exploitation",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Monitoring",
+        "Sauvegarde"
+      ],
+      "description": "Surveillance, sauvegarde, trafic, A/B et migration.",
+      "objectives": [
+        "Surveiller",
+        "Sauvegarder",
+        "Analyser",
+        "Tester",
+        "Migrer"
+      ],
+      "prerequisites": [
+        "Déploiement web et SEO"
+      ],
+      "prerequisiteCourses": [
+        "deploiement-seo"
+      ],
+      "nextCourses": [
+        "obs-fondamentaux"
+      ],
+      "skills": [
+        "Monitoring",
+        "Sauvegarde"
+      ],
+      "file": "seo-exploitation.json"
     },
     {
       "id": "observabilite",
@@ -5400,6 +7762,110 @@
       "file": "observabilite.json"
     },
     {
+      "id": "obs-fondamentaux",
+      "title": "Observabilité : fondamentaux",
+      "domain": "observabilite",
+      "subdomain": "Fondamentaux",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Métriques",
+        "Logs",
+        "Traces"
+      ],
+      "description": "Supervision, métriques, journaux, traces et Prometheus.",
+      "objectives": [
+        "Surveiller",
+        "Mesurer",
+        "Corréler",
+        "Tracer",
+        "Collecter"
+      ],
+      "prerequisites": [
+        "Observabilité et supervision"
+      ],
+      "prerequisiteCourses": [
+        "observabilite"
+      ],
+      "nextCourses": [
+        "obs-outils"
+      ],
+      "skills": [
+        "Métriques",
+        "Logs",
+        "Traces"
+      ],
+      "file": "obs-fondamentaux.json"
+    },
+    {
+      "id": "obs-outils",
+      "title": "Observabilité : outils",
+      "domain": "observabilite",
+      "subdomain": "Outils",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Grafana",
+        "OTel"
+      ],
+      "description": "Grafana, OpenTelemetry, métriques système, serveurs et applications.",
+      "objectives": [
+        "Visualiser",
+        "Instrumenter",
+        "Collecter",
+        "Surveiller",
+        "Analyser"
+      ],
+      "prerequisites": [
+        "Observabilité et supervision"
+      ],
+      "prerequisiteCourses": [
+        "observabilite"
+      ],
+      "nextCourses": [
+        "obs-alertes"
+      ],
+      "skills": [
+        "Grafana",
+        "OTel"
+      ],
+      "file": "obs-outils.json"
+    },
+    {
+      "id": "obs-alertes",
+      "title": "Observabilité : alertes et incidents",
+      "domain": "observabilite",
+      "subdomain": "Alertes",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "SLO",
+        "Postmortem"
+      ],
+      "description": "Alertes, seuils, incidents, dashboards, astreinte et postmortems.",
+      "objectives": [
+        "Alerter",
+        "Seuiller",
+        "Analyser",
+        "Décider",
+        "Apprendre"
+      ],
+      "prerequisites": [
+        "Observabilité et supervision"
+      ],
+      "prerequisiteCourses": [
+        "observabilite"
+      ],
+      "nextCourses": [
+        "gestion-fondamentaux"
+      ],
+      "skills": [
+        "SLO",
+        "Postmortem"
+      ],
+      "file": "obs-alertes.json"
+    },
+    {
       "id": "gestion-projet",
       "title": "Gestion de projet informatique",
       "domain": "gestion-projet",
@@ -5431,6 +7897,140 @@
         "Piloter les risques"
       ],
       "file": "gestion-projet.json"
+    },
+    {
+      "id": "gestion-fondamentaux",
+      "title": "Gestion de projet : fondamentaux",
+      "domain": "gestion-projet",
+      "subdomain": "Fondamentaux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Besoin",
+        "Estimation"
+      ],
+      "description": "Introduction, besoin, spécifications, tâches et estimation.",
+      "objectives": [
+        "Cadrer",
+        "Définir",
+        "Spécifier",
+        "Découper",
+        "Estimer"
+      ],
+      "prerequisites": [
+        "Gestion de projet informatique"
+      ],
+      "prerequisiteCourses": [
+        "gestion-projet"
+      ],
+      "nextCourses": [
+        "gestion-agile"
+      ],
+      "skills": [
+        "Besoin",
+        "Estimation"
+      ],
+      "file": "gestion-fondamentaux.json"
+    },
+    {
+      "id": "gestion-agile",
+      "title": "Gestion de projet : agilité",
+      "domain": "gestion-projet",
+      "subdomain": "Agilité",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Scrum",
+        "Kanban"
+      ],
+      "description": "Agilité, Scrum, Kanban, sprints et priorités.",
+      "objectives": [
+        "Itérer",
+        "Organiser",
+        "Visualiser",
+        "Planifier",
+        "Prioriser"
+      ],
+      "prerequisites": [
+        "Gestion de projet informatique"
+      ],
+      "prerequisiteCourses": [
+        "gestion-projet"
+      ],
+      "nextCourses": [
+        "gestion-collaboration"
+      ],
+      "skills": [
+        "Scrum",
+        "Kanban"
+      ],
+      "file": "gestion-agile.json"
+    },
+    {
+      "id": "gestion-collaboration",
+      "title": "Gestion de projet : collaboration",
+      "domain": "gestion-projet",
+      "subdomain": "Collaboration",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Documentation",
+        "Revue"
+      ],
+      "description": "Documentation, risques, collaboration, revue et présentation.",
+      "objectives": [
+        "Documenter",
+        "Gérer",
+        "Collaborer",
+        "Relire",
+        "Présenter"
+      ],
+      "prerequisites": [
+        "Gestion de projet informatique"
+      ],
+      "prerequisiteCourses": [
+        "gestion-projet"
+      ],
+      "nextCourses": [
+        "gestion-maintenance"
+      ],
+      "skills": [
+        "Documentation",
+        "Revue"
+      ],
+      "file": "gestion-collaboration.json"
+    },
+    {
+      "id": "gestion-maintenance",
+      "title": "Gestion de projet : livraison et maintenance",
+      "domain": "gestion-projet",
+      "subdomain": "Maintenance",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Démo",
+        "Dette"
+      ],
+      "description": "Démonstration, maintenance et dette technique.",
+      "objectives": [
+        "Préparer",
+        "Maintenir",
+        "Gérer la dette"
+      ],
+      "prerequisites": [
+        "Gestion de projet informatique"
+      ],
+      "prerequisiteCourses": [
+        "gestion-projet"
+      ],
+      "nextCourses": [
+        "rgpd-fondamentaux"
+      ],
+      "skills": [
+        "Démo",
+        "Dette"
+      ],
+      "file": "gestion-maintenance.json"
     },
     {
       "id": "reglementation",
@@ -5465,6 +8065,105 @@
         "Documenter une conformité"
       ],
       "file": "reglementation.json"
+    },
+    {
+      "id": "rgpd-fondamentaux",
+      "title": "RGPD : fondamentaux",
+      "domain": "reglementation",
+      "subdomain": "RGPD",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "RGPD",
+        "Minimisation"
+      ],
+      "description": "Introduction, minimisation, données, sécurité et consentement.",
+      "objectives": [
+        "Appliquer",
+        "Minimiser",
+        "Inventorier",
+        "Protéger",
+        "Recueillir"
+      ],
+      "prerequisites": [
+        "Réglementation et bonnes pratiques"
+      ],
+      "prerequisiteCourses": [
+        "reglementation"
+      ],
+      "nextCourses": [
+        "rgpd-pro"
+      ],
+      "skills": [
+        "RGPD",
+        "Minimisation"
+      ],
+      "file": "rgpd-fondamentaux.json"
+    },
+    {
+      "id": "rgpd-pro",
+      "title": "RGPD : conformité et droits",
+      "domain": "reglementation",
+      "subdomain": "RGPD",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Conservation",
+        "Licences"
+      ],
+      "description": "Conservation, propriété intellectuelle, licences, droits et secrets.",
+      "objectives": [
+        "Limiter",
+        "Vérifier",
+        "Respecter",
+        "Contractualiser",
+        "Auditer"
+      ],
+      "prerequisites": [
+        "Réglementation et bonnes pratiques"
+      ],
+      "prerequisiteCourses": [
+        "reglementation"
+      ],
+      "nextCourses": [
+        "conformite"
+      ],
+      "skills": [
+        "Conservation",
+        "Licences"
+      ],
+      "file": "rgpd-pro.json"
+    },
+    {
+      "id": "conformite",
+      "title": "Conformité et référentiels",
+      "domain": "reglementation",
+      "subdomain": "Conformité",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "ISO",
+        "CIS"
+      ],
+      "description": "Documentation, sécurité dès la conception, référentiels et risques.",
+      "objectives": [
+        "Documenter",
+        "Concevoir",
+        "Appliquer",
+        "Traiter"
+      ],
+      "prerequisites": [
+        "Réglementation et bonnes pratiques"
+      ],
+      "prerequisiteCourses": [
+        "reglementation"
+      ],
+      "nextCourses": [],
+      "skills": [
+        "ISO",
+        "CIS"
+      ],
+      "file": "conformite.json"
     },
     {
       "id": "reseaux-avance",

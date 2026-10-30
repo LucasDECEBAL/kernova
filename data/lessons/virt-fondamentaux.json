@@ -1,0 +1,324 @@
+{
+  "courseId": "virt-fondamentaux",
+  "modules": [
+    {
+      "id": "virt-fondamentaux-module",
+      "title": "Virtualisation",
+      "chapters": [
+        {
+          "id": "vf-01",
+          "title": "Introduction à la virtualisation",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Distinguer",
+            "Choisir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La virtualisation exécute plusieurs systèmes sur une machine physique."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hyperviseur.",
+                "VM.",
+                "Isolation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un hyperviseur ?",
+            "hints": [
+              "Il exécute des VM."
+            ],
+            "solution": "Il crée et gère les machines virtuelles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "vm",
+                "machine"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fournit la virtualisation ?",
+              "options": [
+                "Des environnements isolés",
+                "Du CSS",
+                "Un DNS",
+                "Un réseau physique"
+              ],
+              "answer": 0,
+              "explanation": "Les systèmes sont isolés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vf-01-q1"
+            }
+          ],
+          "summary": [
+            "Hyperviseur.",
+            "VM.",
+            "Isolation."
+          ],
+          "nextStep": "Chapitre suivant : « Hyperviseurs de type 1 et 2 »."
+        },
+        {
+          "id": "vf-02",
+          "title": "Hyperviseurs de type 1 et 2",
+          "duration": 20,
+          "objectives": [
+            "Distinguer",
+            "Choisir",
+            "Comprendre les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le type 1 s'installe sur le matériel, le type 2 sur un OS hôte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Type 1.",
+                "Type 2.",
+                "Performance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel type pour un poste ?",
+            "hints": [
+              "Le type 2."
+            ],
+            "solution": "Le type 2, installé comme une application.",
+            "check": {
+              "type": "any",
+              "any": [
+                "type 2"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où s'installe un type 1 ?",
+              "options": [
+                "Sur le matériel",
+                "Sur un OS",
+                "Dans un CSS",
+                "Dans un DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il est natif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vf-02-q1"
+            }
+          ],
+          "summary": [
+            "Type 1/2.",
+            "Poste = type 2.",
+            "Performance."
+          ],
+          "nextStep": "Chapitre suivant : « Machines virtuelles »."
+        },
+        {
+          "id": "vf-03",
+          "title": "Machines virtuelles",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Configurer",
+            "Démarrer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une VM a des ressources virtuelles CPU, mémoire, disque et réseau."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CPU.",
+                "Mémoire.",
+                "Disques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que configurer en premier ?",
+            "hints": [
+              "Les ressources."
+            ],
+            "solution": "CPU, mémoire et disque.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ressources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que partage une VM ?",
+              "options": [
+                "Le matériel physique",
+                "Le CSS",
+                "Le DNS",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "L'hyperviseur répartit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vf-03-q1"
+            }
+          ],
+          "summary": [
+            "VM.",
+            "Ressources.",
+            "Démarrage."
+          ],
+          "nextStep": "Chapitre suivant : « CPU et mémoire virtuels »."
+        },
+        {
+          "id": "vf-04",
+          "title": "CPU et mémoire virtuels",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la surallocation",
+            "Dimensionner",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les vCPU et la mémoire virtuelle se partagent entre VM."
+            },
+            {
+              "type": "list",
+              "items": [
+                "vCPU.",
+                "Ballooning.",
+                "Surallocation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que risque la surallocation ?",
+            "hints": [
+              "Des ralentissements."
+            ],
+            "solution": "Des ralentissements si l'hôte sature.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ralenti",
+                "saturation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait la mémoire ballon ?",
+              "options": [
+                "Elle ajuste la mémoire",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "L'hôte récupère de la mémoire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vf-04-q1"
+            }
+          ],
+          "summary": [
+            "vCPU.",
+            "Surallocation.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Disques virtuels »."
+        },
+        {
+          "id": "vf-05",
+          "title": "Disques virtuels",
+          "duration": 20,
+          "objectives": [
+            "Choisir un format",
+            "Comprendre la croissance",
+            "Sauvegarder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un disque virtuel est un fichier ou un volume ; il peut croître dynamiquement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "VMDK/VHDX.",
+                "Allocation.",
+                "Snapshots."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un disque dynamique ?",
+            "hints": [
+              "Il grandit à l'usage."
+            ],
+            "solution": "Il grandit selon les données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "grandit",
+                "dynamique"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un snapshot est-il une sauvegarde ?",
+              "options": [
+                "Non, il vit sur le même stockage",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Une panne de disque l'emporte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "vf-05-q1"
+            }
+          ],
+          "summary": [
+            "Formats.",
+            "Croissance.",
+            "Snapshots."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

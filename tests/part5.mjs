@@ -24,7 +24,7 @@ const ok = async () => (await evaluate(`document.querySelector('.exercise-feedba
 try {
   await send('Runtime.enable');
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('273 r')`);
   check('Catalogue : 71 cours', true);
   await open('/cours/html-contenu/htm-01');
   await answer('<img src="logo.png" alt="Logo de l\'association">');

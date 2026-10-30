@@ -1,0 +1,322 @@
+{
+  "courseId": "devops-pipelines",
+  "modules": [
+    {
+      "id": "devops-pipelines-module",
+      "title": "Pipelines",
+      "chapters": [
+        {
+          "id": "dvp-01",
+          "title": "Pipelines automatisés",
+          "duration": 20,
+          "objectives": [
+            "Définir les étapes",
+            "Paralléliser",
+            "Échouer vite"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pipeline enchaîne installation, tests, build et déploiement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étapes.",
+                "Cache.",
+                "Échec rapide."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire en cas d'échec ?",
+            "hints": [
+              "Arrêter et alerter."
+            ],
+            "solution": "Arrêter le pipeline et alerter.",
+            "check": {
+              "type": "any",
+              "any": [
+                "arreter",
+                "arrêter"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "La durée",
+                "Les tests",
+                "Les logs",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le feedback est plus rapide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvp-01-q1"
+            }
+          ],
+          "summary": [
+            "Pipeline.",
+            "Étapes.",
+            "Feedback."
+          ],
+          "nextStep": "Chapitre suivant : « Tests automatisés »."
+        },
+        {
+          "id": "dvp-02",
+          "title": "Tests automatisés",
+          "duration": 20,
+          "objectives": [
+            "Tester",
+            "Prioriser",
+            "Stabiliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests automatisés couvrent unitaire, intégration et bout en bout."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Unitaires.",
+                "Intégration.",
+                "E2E."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester en priorité ?",
+            "hints": [
+              "Les chemins critiques."
+            ],
+            "solution": "Les chemins critiques et les cas limites.",
+            "check": {
+              "type": "any",
+              "any": [
+                "critique"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un test instable ?",
+              "options": [
+                "Corriger",
+                "Ignorer",
+                "Relancer",
+                "Supprimer"
+              ],
+              "answer": 0,
+              "explanation": "La confiance est restaurée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvp-02-q1"
+            }
+          ],
+          "summary": [
+            "Tests.",
+            "Priorité.",
+            "Stabilité."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des environnements »."
+        },
+        {
+          "id": "dvp-03",
+          "title": "Gestion des environnements",
+          "duration": 20,
+          "objectives": [
+            "Séparer",
+            "Configurer",
+            "Promouvoir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les environnements se séparent et reçoivent le même artefact."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dev/recette/prod.",
+                "Configuration.",
+                "Promotion."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que promouvoir ?",
+            "hints": [
+              "Le même artefact."
+            ],
+            "solution": "Le même artefact testé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "artefact"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que changer entre environnements ?",
+              "options": [
+                "La configuration",
+                "Le code",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le binaire reste identique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvp-03-q1"
+            }
+          ],
+          "summary": [
+            "Environnements.",
+            "Config.",
+            "Promotion."
+          ],
+          "nextStep": "Chapitre suivant : « GitHub Actions »."
+        },
+        {
+          "id": "dvp-04",
+          "title": "GitHub Actions",
+          "duration": 20,
+          "objectives": [
+            "Écrire un workflow",
+            "Déclencher",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GitHub Actions exécute des workflows YAML sur événements."
+            },
+            {
+              "type": "list",
+              "items": [
+                "on.",
+                "jobs.",
+                "secrets."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que déclenche un workflow ?",
+            "hints": [
+              "La clé on."
+            ],
+            "solution": "Les événements de la clé on.",
+            "check": {
+              "type": "any",
+              "any": [
+                "on"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où stocker un secret ?",
+              "options": [
+                "Secrets GitHub",
+                "Dans le YAML",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les secrets sont chiffrés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvp-04-q1"
+            }
+          ],
+          "summary": [
+            "Actions.",
+            "Workflow.",
+            "Secrets."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à GitLab CI »."
+        },
+        {
+          "id": "dvp-05",
+          "title": "Introduction à GitLab CI",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Configurer",
+            "Exécuter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GitLab CI décrit les jobs dans .gitlab-ci.yml."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jobs.",
+                "Stages.",
+                "Runners."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où décrire le pipeline ?",
+            "hints": [
+              "Dans .gitlab-ci.yml."
+            ],
+            "solution": "Dans .gitlab-ci.yml.",
+            "check": {
+              "type": "any",
+              "any": [
+                ".gitlab-ci.yml"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un runner ?",
+              "options": [
+                "Il exécute les jobs",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le job s'exécute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dvp-05-q1"
+            }
+          ],
+          "summary": [
+            "GitLab CI.",
+            "Jobs.",
+            "Runners."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

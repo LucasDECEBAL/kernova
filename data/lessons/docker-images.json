@@ -1,0 +1,321 @@
+{
+  "courseId": "docker-images",
+  "modules": [
+    {
+      "id": "docker-images-module",
+      "title": "Construire des images",
+      "chapters": [
+        {
+          "id": "dki-01",
+          "title": "Dockerfile",
+          "duration": 20,
+          "objectives": [
+            "Écrire",
+            "Ordonner",
+            "Comprendre le cache"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un Dockerfile décrit les couches de l'image."
+            },
+            {
+              "type": "list",
+              "items": [
+                "FROM.",
+                "COPY.",
+                "RUN."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quelle instruction définit la base ?",
+            "hints": [
+              "FROM."
+            ],
+            "solution": "FROM.",
+            "check": {
+              "type": "any",
+              "any": [
+                "from"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait FROM ?",
+              "options": [
+                "Définit la base",
+                "Copie le code",
+                "Lance",
+                "Expose"
+              ],
+              "answer": 0,
+              "explanation": "La base est choisie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dki-01-q1"
+            }
+          ],
+          "summary": [
+            "Dockerfile.",
+            "Couches.",
+            "Cache."
+          ],
+          "nextStep": "Chapitre suivant : « Construction d'images »."
+        },
+        {
+          "id": "dki-02",
+          "title": "Construction d'images",
+          "duration": 20,
+          "objectives": [
+            "Construire",
+            "Tagger",
+            "Reconstruire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "docker build construit une image depuis un contexte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contexte.",
+                "Tag.",
+                "Cache."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait docker build ?",
+            "hints": [
+              "Construit une image."
+            ],
+            "solution": "Il construit une image.",
+            "check": {
+              "type": "any",
+              "any": [
+                "construit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que définit un tag ?",
+              "options": [
+                "Le nom et la version",
+                "Le CSS",
+                "Le DNS",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le tag identifie l'image.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dki-02-q1"
+            }
+          ],
+          "summary": [
+            "build.",
+            "Tag.",
+            "Cache."
+          ],
+          "nextStep": "Chapitre suivant : « Volumes »."
+        },
+        {
+          "id": "dki-03",
+          "title": "Volumes",
+          "duration": 20,
+          "objectives": [
+            "Créer",
+            "Monter",
+            "Comprendre la persistance"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un volume conserve les données hors du conteneur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Volume nommé.",
+                "Bind mount.",
+                "Persistance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que survit au conteneur ?",
+            "hints": [
+              "Le volume."
+            ],
+            "solution": "Les données du volume.",
+            "check": {
+              "type": "any",
+              "any": [
+                "volume"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -v nom:/chemin ?",
+              "options": [
+                "Il monte un volume",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le volume est monté.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dki-03-q1"
+            }
+          ],
+          "summary": [
+            "Volumes.",
+            "Persistance.",
+            "Montage."
+          ],
+          "nextStep": "Chapitre suivant : « Réseaux Docker »."
+        },
+        {
+          "id": "dki-04",
+          "title": "Réseaux Docker",
+          "duration": 20,
+          "objectives": [
+            "Créer un réseau",
+            "Relier des services",
+            "Résoudre par nom"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un réseau Docker relie les conteneurs qui se joignent par nom."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Bridge.",
+                "Réseau utilisateur.",
+                "DNS interne."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment joindre un conteneur ?",
+            "hints": [
+              "Par son nom."
+            ],
+            "solution": "Par le nom du service sur le réseau.",
+            "check": {
+              "type": "any",
+              "any": [
+                "nom"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un réseau utilisateur ?",
+              "options": [
+                "Il relie et résout les noms",
+                "Il chiffre",
+                "Il trie",
+                "Il route le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les services se trouvent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dki-04-q1"
+            }
+          ],
+          "summary": [
+            "Réseaux.",
+            "Nom.",
+            "Bridge."
+          ],
+          "nextStep": "Chapitre suivant : « Variables d'environnement »."
+        },
+        {
+          "id": "dki-05",
+          "title": "Variables d'environnement",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Lire",
+            "Éviter les secrets"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les variables configurent le conteneur sans reconstruire l'image."
+            },
+            {
+              "type": "list",
+              "items": [
+                "-e.",
+                "env_file.",
+                "Secrets."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où mettre un secret ?",
+            "hints": [
+              "Dans un secret."
+            ],
+            "solution": "Dans un gestionnaire de secrets, pas dans l'image.",
+            "check": {
+              "type": "any",
+              "any": [
+                "secret"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -e ?",
+              "options": [
+                "Il passe une variable",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La config est externe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "dki-05-q1"
+            }
+          ],
+          "summary": [
+            "Variables.",
+            "Config.",
+            "Secrets."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

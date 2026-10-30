@@ -1,0 +1,323 @@
+{
+  "courseId": "azure-applications",
+  "modules": [
+    {
+      "id": "azure-applications-module",
+      "title": "Azure applications",
+      "chapters": [
+        {
+          "id": "aza-01",
+          "title": "Azure Functions",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Déclencher",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure Functions exécute du code à la demande."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Déclencheurs.",
+                "Durée.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que facture Functions ?",
+            "hints": [
+              "L'usage."
+            ],
+            "solution": "Les exécutions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "usage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un déclencheur ?",
+              "options": [
+                "Il lance la fonction",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'événement démarre le code.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aza-01-q1"
+            }
+          ],
+          "summary": [
+            "Serverless.",
+            "Déclencheurs.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « Azure Monitor »."
+        },
+        {
+          "id": "aza-02",
+          "title": "Azure Monitor",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Alarmer",
+            "Visualiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure Monitor centralise métriques, logs et alertes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Métriques.",
+                "Logs.",
+                "Alertes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une alerte ?",
+            "hints": [
+              "Déclencher une action."
+            ],
+            "solution": "Déclencher une action.",
+            "check": {
+              "type": "any",
+              "any": [
+                "action"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que collecte Monitor ?",
+              "options": [
+                "Métriques et logs",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La supervision est centralisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aza-02-q1"
+            }
+          ],
+          "summary": [
+            "Métriques.",
+            "Logs.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Azure Backup »."
+        },
+        {
+          "id": "aza-03",
+          "title": "Azure Backup",
+          "duration": 20,
+          "objectives": [
+            "Sauvegarder",
+            "Restaurer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure Backup sauvegarde VM et données avec restauration testable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Coffre.",
+                "Politiques.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "La restauration."
+            ],
+            "solution": "La restauration réelle.",
+            "check": {
+              "type": "any",
+              "any": [
+                "restauration"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une politique ?",
+              "options": [
+                "Elle planifie les sauvegardes",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "La fréquence est définie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aza-03-q1"
+            }
+          ],
+          "summary": [
+            "Coffre.",
+            "Politiques.",
+            "Restauration."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité Azure »."
+        },
+        {
+          "id": "aza-04",
+          "title": "Sécurité Azure",
+          "duration": 20,
+          "objectives": [
+            "Chiffrer",
+            "Filtrer",
+            "Auditer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité Azure combine chiffrement, réseaux et audit."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chiffrement.",
+                "NSG.",
+                "Journaux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que journaliser ?",
+            "hints": [
+              "Les accès et changements."
+            ],
+            "solution": "Les accès et changements de configuration.",
+            "check": {
+              "type": "any",
+              "any": [
+                "acces",
+                "accès"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait chiffrement au repos ?",
+              "options": [
+                "Protège les données stockées",
+                "Le réseau",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les disques sont chiffrés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aza-04-q1"
+            }
+          ],
+          "summary": [
+            "Chiffrement.",
+            "NSG.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des coûts Azure »."
+        },
+        {
+          "id": "aza-05",
+          "title": "Gestion des coûts Azure",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Taguer",
+            "Optimiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les coûts Azure se suivent par tags, budgets et dimensionnement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tags.",
+                "Budgets.",
+                "Arrêts."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une VM inutilisée ?",
+            "hints": [
+              "L'arrêter."
+            ],
+            "solution": "L'arrêter ou la supprimer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "arreter",
+                "arrêter"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permettent les tags ?",
+              "options": [
+                "La répartition des coûts",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La visibilité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aza-05-q1"
+            }
+          ],
+          "summary": [
+            "Tags.",
+            "Budgets.",
+            "Optimisation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

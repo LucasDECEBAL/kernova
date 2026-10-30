@@ -71,7 +71,7 @@ const ok = async () => (await evaluate(`document.querySelector('.exercise-feedba
 try {
   await send('Runtime.enable');
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('273 r')`);
   check('Catalogue : 122 cours', true);
   await evaluate(`(() => { const el = document.querySelector('#cat-domain'); el.value = 'autres-langages'; el.dispatchEvent(new Event('change', { bubbles: true })); return true; })()`);
   await waitFor(`document.querySelector('#cat-count').textContent.startsWith('20 r')`);

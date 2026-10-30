@@ -1,0 +1,322 @@
+{
+  "courseId": "tests-integration",
+  "modules": [
+    {
+      "id": "tests-integration-module",
+      "title": "Intégration et qualité",
+      "chapters": [
+        {
+          "id": "ti-01",
+          "title": "Tests d'API",
+          "duration": 20,
+          "objectives": [
+            "Tester les contrats",
+            "Tester les erreurs",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests d'API vérifient statuts, corps et effets."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Statuts.",
+                "Erreurs.",
+                "Isolation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Statuts et corps."
+            ],
+            "solution": "Les statuts, corps et effets.",
+            "check": {
+              "type": "any",
+              "any": [
+                "statut"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester en plus ?",
+              "options": [
+                "Les erreurs",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les cas limites comptent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ti-01-q1"
+            }
+          ],
+          "summary": [
+            "API.",
+            "Contrats.",
+            "Erreurs."
+          ],
+          "nextStep": "Chapitre suivant : « Tests de bases de données »."
+        },
+        {
+          "id": "ti-02",
+          "title": "Tests de bases de données",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Nettoyer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests de base utilisent des données isolées et nettoyées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Nettoyage.",
+                "Transactions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire entre tests ?",
+            "hints": [
+              "Nettoyer."
+            ],
+            "solution": "Nettoyer les données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "nettoyer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi isoler ?",
+              "options": [
+                "Éviter les effets entre tests",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les tests sont fiables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ti-02-q1"
+            }
+          ],
+          "summary": [
+            "Base.",
+            "Isolation.",
+            "Nettoyage."
+          ],
+          "nextStep": "Chapitre suivant : « Tests dans une CI »."
+        },
+        {
+          "id": "ti-03",
+          "title": "Tests dans une CI",
+          "duration": 20,
+          "objectives": [
+            "Automatiser",
+            "Bloquer",
+            "Rapporter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La CI exécute les tests et bloque les fusions en cas d'échec."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pipeline.",
+                "Seuils.",
+                "Rapports."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire en cas d'échec ?",
+            "hints": [
+              "Bloquer."
+            ],
+            "solution": "Bloquer la fusion.",
+            "check": {
+              "type": "any",
+              "any": [
+                "bloquer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que produire ?",
+              "options": [
+                "Un rapport",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les résultats sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ti-03-q1"
+            }
+          ],
+          "summary": [
+            "CI.",
+            "Blocage.",
+            "Rapports."
+          ],
+          "nextStep": "Chapitre suivant : « Analyse statique »."
+        },
+        {
+          "id": "ti-04",
+          "title": "Analyse statique",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Corriger",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'analyse statique détecte des erreurs sans exécuter le code."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Linters.",
+                "Règles.",
+                "CI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait l'analyse statique ?",
+            "hints": [
+              "Elle analyse sans exécuter."
+            ],
+            "solution": "Elle analyse le code sans l'exécuter.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sans executer",
+                "sans exécuter"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des alertes ?",
+              "options": [
+                "Les corriger",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "La base reste saine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ti-04-q1"
+            }
+          ],
+          "summary": [
+            "Statique.",
+            "Lint.",
+            "CI."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des bugs »."
+        },
+        {
+          "id": "ti-05",
+          "title": "Gestion des bugs",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Prioriser",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un bug se décrit avec reproduction, attendu, obtenu et priorité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Reproduction.",
+                "Priorité.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que joindre ?",
+            "hints": [
+              "Les étapes de reproduction."
+            ],
+            "solution": "Les étapes de reproduction.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reproduction"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand fermer ?",
+              "options": [
+                "Après vérification",
+                "Avant",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "La correction est prouvée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ti-05-q1"
+            }
+          ],
+          "summary": [
+            "Bug.",
+            "Priorité.",
+            "Vérification."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}
