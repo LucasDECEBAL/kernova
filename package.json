@@ -6,7 +6,8 @@
   "description": "Plateforme d'apprentissage informatique statique, en français.",
   "scripts": {
     "start": "node tests/lib/serve.mjs",
-    "test": "node tests/run.mjs"
+    "test": "node tests/run.mjs",
+    "build:data": "node tools/build-data.mjs"
   },
   "engines": {
     "node": ">=18"

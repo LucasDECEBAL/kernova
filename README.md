@@ -186,6 +186,8 @@ compatible avec un hébergement statique sans règle de réécriture complexe.
 | `assets/js/terminal/`, `assets/js/network/` | Moteurs de simulation |
 | `assets/js/runtime/` | Chargement de Pyodide et sql.js |
 | `data/` | Contenu pédagogique, séparé de l'affichage |
+| `data/lessons-bundle.json` | Toutes les leçons en un seul fichier, chargé en une requête |
+| `tools/build-data.mjs` | Régénère le bundle après une modification de contenu |
 
 ## Structure du projet
 
@@ -215,6 +217,7 @@ kernova/
 ├── data/
 │   ├── catalog.json            domaines et métadonnées des cours
 │   ├── lessons/                273 fichiers de cours (contenu, quiz, projet)
+│   ├── lessons-bundle.json     toutes les leçons réunies (chargement en une requête)
 │   ├── exercises/              exercices Git et Python stockés séparément
 │   ├── flashcards.json         paquets fournis
 │   ├── flashcards-extra.json
@@ -227,6 +230,8 @@ kernova/
 │   ├── projects-extra.json     fichiers de départ et indices
 │   ├── PLAN.md                 décisions et état du projet
 │   └── BACKLOG.md              suivi de la couverture du programme
+├── tools/
+│   └── build-data.mjs          régénère data/lessons-bundle.json
 ├── docs/
 │   └── screenshots/            captures du README
 └── tests/
@@ -256,6 +261,10 @@ python -m http.server 8000
 
 N'ouvrez pas `index.html` par double-clic : les modules ES et les `fetch` de JSON échouent en
 `file://`. Gardez la même adresse et le même port, car la progression est liée à l'origine.
+
+> Le chargement initial lit `data/lessons-bundle.json` (une seule requête) au lieu de 273
+> fichiers. Après toute modification du contenu, régénérez-le avec `npm run build:data` :
+> le test d'intégrité échoue si le bundle est périmé.
 
 ## Tests
 
@@ -365,9 +374,10 @@ Types de vérification : `answers` (réponses acceptées), `keywords` (tous requ
 1. Créer le fichier de leçons.
 2. Ajouter le cours au catalogue avec un identifiant unique.
 3. Relier les prérequis et cours suivants.
-4. Lancer `npm test -- integrity` : identifiants, champs obligatoires, fichiers et liens sont
-   contrôlés.
-5. Vérifier une leçon dans le navigateur.
+4. Régénérer le bundle : `npm run build:data`.
+5. Lancer `npm test -- integrity` : identifiants, champs obligatoires, fichiers, liens et
+   cohérence du bundle sont contrôlés.
+6. Vérifier une leçon dans le navigateur.
 
 ## Sécurité et vie privée
 

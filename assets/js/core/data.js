@@ -10,7 +10,7 @@ const cache = {
 async function fetchJson(path) {
   let res;
   try {
-    res = await fetch(path, { cache: 'no-cache' });
+    res = await fetch(path);
   } catch {
     throw new Error(`Impossible de charger ${path}. Vérifiez que le site est servi par un serveur statique.`);
   }
@@ -19,6 +19,9 @@ async function fetchJson(path) {
 }
 
 const isStr = (v) => typeof v === 'string' && v.length > 0;
+
+// Seuls ces cours ont un fichier d'exercices séparé. Évite des requêtes 404 inutiles.
+const EXERCISE_FILES = new Set(['git-debutant', 'python-debutant']);
 
 /** Exercices et quiz d'un cours, indexés par identifiant de chapitre. Absence = pas d'exercices séparés. */
 async function fetchExtra(courseId) {
@@ -43,47 +46,73 @@ export async function loadData() {
     throw new Error('Le catalogue est mal formé (domains/courses manquants).');
   }
 
-  for (const meta of catalog.courses) {
-    try {
-      const lessons = await fetchJson(`data/lessons/${meta.file}`);
-      // Format à plat (chapters) ou regroupé par modules (modules[].chapters)
-      // Exercices et quiz peuvent être dans un fichier séparé (data/exercises/<cours>.json)
-      const extra = await fetchExtra(meta.id);
-      const withExtra = (ch) => {
-        const x = extra[ch.id] || {};
-        return { ...ch, exercise: ch.exercise ?? x.exercise, quiz: ch.quiz ?? x.quiz ?? [] };
-      };
-      const raw = Array.isArray(lessons.modules)
-        ? lessons.modules.flatMap((m) => (m.chapters || []).map((ch) => withExtra({ ...ch, module: m.title, moduleId: m.id })))
-        : (lessons.chapters || []).map(withExtra);
-      if (lessons.courseId !== meta.id || !raw.length) {
-        throw new Error('identifiant de cours ou chapitres incohérents');
-      }
-      const chapters = raw.filter((ch) => {
-        const ok = validateChapter(ch);
-        if (!ok) cache.issues.push(`${meta.id} : chapitre ignoré (structure invalide)`);
-        return ok;
-      });
-      const seen = new Set();
-      for (const ch of chapters) {
-        if (seen.has(ch.id) || cache.chapters.has(ch.id)) cache.issues.push(`${meta.id} : identifiant de chapitre en double (${ch.id})`);
-        seen.add(ch.id);
-      }
-      const course = {
-        ...meta,
-        project: lessons.project || null,
-        prerequisiteCourses: meta.prerequisiteCourses || [],
-        nextCourses: meta.nextCourses || [],
-        skills: meta.skills || [],
-        duration: chapters.reduce((sum, ch) => sum + (Number(ch.duration) || 0), 0),
-        chapters: chapters.map((ch, index) => ({ ...ch, index, courseId: meta.id, duration: Number(ch.duration) || 0, module: ch.module || null }))
-      };
-      cache.courses.set(course.id, course);
-      course.chapters.forEach((ch) => cache.chapters.set(ch.id, { course, chapter: ch, index: ch.index }));
-    } catch (err) {
-      cache.issues.push(`${meta.id} : ${err.message}`);
-      console.warn(`kernova : cours ignoré (${meta.id})`, err);
+  const addCourse = (meta, rawChapters, project) => {
+    const chapters = rawChapters.filter((ch) => {
+      const ok = validateChapter(ch);
+      if (!ok) cache.issues.push(`${meta.id} : chapitre ignoré (structure invalide)`);
+      return ok;
+    });
+    const seen = new Set();
+    for (const ch of chapters) {
+      if (seen.has(ch.id) || cache.chapters.has(ch.id)) cache.issues.push(`${meta.id} : identifiant de chapitre en double (${ch.id})`);
+      seen.add(ch.id);
     }
+    const course = {
+      ...meta,
+      project: project || null,
+      prerequisiteCourses: meta.prerequisiteCourses || [],
+      nextCourses: meta.nextCourses || [],
+      skills: meta.skills || [],
+      duration: chapters.reduce((sum, ch) => sum + (Number(ch.duration) || 0), 0),
+      chapters: chapters.map((ch, index) => ({ ...ch, index, courseId: meta.id, duration: Number(ch.duration) || 0, module: ch.module || null }))
+    };
+    cache.courses.set(course.id, course);
+    course.chapters.forEach((ch) => cache.chapters.set(ch.id, { course, chapter: ch, index: ch.index }));
+  };
+
+  // Un seul fichier regroupe toutes les leçons : une requête au lieu de 273.
+  // Le repli fichier par fichier reste utile en développement.
+  let bundle = null;
+  try {
+    const data = await fetchJson('data/lessons-bundle.json');
+    if (data && data.courses && typeof data.courses === 'object') bundle = data.courses;
+  } catch {
+    /* pas de bundle : on charge les fichiers individuels */
+  }
+
+  if (bundle) {
+    for (const meta of catalog.courses) {
+      const entry = bundle[meta.id];
+      if (!entry || !Array.isArray(entry.chapters) || !entry.chapters.length) {
+        cache.issues.push(`${meta.id} : cours absent du bundle`);
+        continue;
+      }
+      addCourse(meta, entry.chapters, entry.project);
+    }
+  } else {
+    let next = 0;
+    const worker = async () => {
+      while (next < catalog.courses.length) {
+        const meta = catalog.courses[next++];
+        try {
+          const lessons = await fetchJson(`data/lessons/${meta.file}`);
+          const extra = EXERCISE_FILES.has(meta.id) ? await fetchExtra(meta.id) : {};
+          const withExtra = (ch) => {
+            const x = extra[ch.id] || {};
+            return { ...ch, exercise: ch.exercise ?? x.exercise, quiz: ch.quiz ?? x.quiz ?? [] };
+          };
+          const raw = Array.isArray(lessons.modules)
+            ? lessons.modules.flatMap((m) => (m.chapters || []).map((ch) => withExtra({ ...ch, module: m.title, moduleId: m.id })))
+            : (lessons.chapters || []).map(withExtra);
+          if (lessons.courseId !== meta.id || !raw.length) throw new Error('identifiant de cours ou chapitres incohérents');
+          addCourse(meta, raw, lessons.project);
+        } catch (err) {
+          cache.issues.push(`${meta.id} : ${err.message}`);
+          console.warn(`kernova : cours ignoré (${meta.id})`, err);
+        }
+      }
+    };
+    await Promise.all(Array.from({ length: Math.min(12, catalog.courses.length) }, worker));
   }
 
   // Paquets de cartes mémo : optionnels, un échec ne bloque pas l'application

@@ -112,6 +112,20 @@ for (const c of cat.courses) {
 
 const published = cat.courses.length;
 const domainsWithCourse = new Set(cat.courses.map((c) => c.domain)).size;
+
+// Le bundle utilisé par l'application doit refléter les fichiers de leçons.
+try {
+  const bundle = read('lessons-bundle.json');
+  if (!bundle || typeof bundle.courses !== 'object') {
+    err('lessons-bundle.json : structure invalide (lancez npm run build:data)');
+  } else {
+    const bundledChapters = Object.values(bundle.courses).reduce((n, c) => n + ((c.chapters || []).length), 0);
+    if (Object.keys(bundle.courses).length !== published) err(`lessons-bundle.json : ${Object.keys(bundle.courses).length} cours au lieu de ${published}`);
+    if (bundledChapters !== chapters) err(`lessons-bundle.json : ${bundledChapters} chapitres au lieu de ${chapters} — lancez npm run build:data`);
+  }
+} catch {
+  err('lessons-bundle.json absent (lancez npm run build:data)');
+}
 console.log(`Cours: ${published} | domaines: ${cat.domains.length} (${domainsWithCourse} avec cours) | modules: ${modules} | leçons: ${chapters} | exercices: ${exercises} | questions: ${quizzes} | projets: ${projects}`);
 console.log(errors.length ? 'ERREURS:\n - ' + errors.join('\n - ') : 'Catalogue cohérent : aucune erreur.');
 process.exit(errors.length ? 1 : 0);
