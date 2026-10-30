@@ -1,0 +1,404 @@
+{
+  "courseId": "reseau-securite-acces",
+  "modules": [
+    {
+      "id": "reseau-securite-acces-module",
+      "title": "Accès et sécurité",
+      "chapters": [
+        {
+          "id": "rvp-01",
+          "title": "WPA2 et WPA3",
+          "duration": 20,
+          "objectives": [
+            "Comparer",
+            "Choisir",
+            "Éviter WEP"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "WPA2 et WPA3 chiffrent le Wi-Fi ; WEP est obsolète."
+            },
+            {
+              "type": "list",
+              "items": [
+                "WPA3 plus robuste.",
+                "Mot de passe fort.",
+                "Entreprise avec 802.1X."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel protocole pour un Wi-Fi moderne ?",
+            "hints": [
+              "Le plus récent."
+            ],
+            "solution": "WPA3 (ou WPA2 si le matériel ne le permet pas).",
+            "check": {
+              "type": "any",
+              "any": [
+                "wpa3",
+                "wpa2"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "WEP est-il sûr ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "En entreprise"
+              ],
+              "answer": 0,
+              "explanation": "Il est cassable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-01-q1"
+            },
+            {
+              "question": "Que fait 802.1X ?",
+              "options": [
+                "Il authentifie les clients",
+                "Il route",
+                "Il trie",
+                "Il chiffre le disque"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est contrôlé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-01-q2"
+            }
+          ],
+          "summary": [
+            "WPA3.",
+            "Pas WEP.",
+            "802.1X."
+          ],
+          "nextStep": "Chapitre suivant : « VPN »."
+        },
+        {
+          "id": "rvp-02",
+          "title": "VPN",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un VPN",
+            "Chiffrer le transport",
+            "Choisir le type"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VPN chiffre le trafic entre un client ou un site et un point de terminaison."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Accès distant.",
+                "Site à site.",
+                "Chiffrement + authentification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que protège un VPN ?",
+            "hints": [
+              "Le transport entre les extrémités.",
+              "Pas les extrémités elles-mêmes."
+            ],
+            "solution": "Le trafic entre les extrémités est chiffré.",
+            "check": {
+              "type": "any",
+              "any": [
+                "chiffr",
+                "transport"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un VPN protège-t-il d'un site malveillant ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu reste risqué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-02-q1"
+            },
+            {
+              "question": "Que fait un VPN site à site ?",
+              "options": [
+                "Il relie deux réseaux",
+                "Il trie",
+                "Il affiche",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Les sites sont connectés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-02-q2"
+            }
+          ],
+          "summary": [
+            "VPN = transport chiffré.",
+            "Accès/site.",
+            "Pas une protection magique."
+          ],
+          "nextStep": "Chapitre suivant : « Proxy »."
+        },
+        {
+          "id": "rvp-03",
+          "title": "Proxy",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un proxy",
+            "Filtrer",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un proxy relaie les requêtes et peut filtrer ou journaliser."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sortie contrôlée.",
+                "Cache.",
+                "Journalisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un proxy ?",
+            "hints": [
+              "Il relaie et peut filtrer.",
+              "Il cache parfois."
+            ],
+            "solution": "Il relaie les requêtes, filtre et journalise.",
+            "check": {
+              "type": "any",
+              "any": [
+                "relaie",
+                "filtre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le client parle-t-il directement au serveur ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Toujours"
+              ],
+              "answer": 0,
+              "explanation": "Le proxy est intermédiaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-03-q1"
+            },
+            {
+              "question": "Que peut-on journaliser ?",
+              "options": [
+                "Les accès",
+                "Le CSS",
+                "Le disque",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La trace est utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-03-q2"
+            }
+          ],
+          "summary": [
+            "Proxy.",
+            "Filtrage.",
+            "Journal."
+          ],
+          "nextStep": "Chapitre suivant : « Pare-feu réseau »."
+        },
+        {
+          "id": "rvp-04",
+          "title": "Pare-feu réseau",
+          "duration": 20,
+          "objectives": [
+            "Écrire des règles",
+            "Ordonner",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le pare-feu filtre les flux ; l'ordre et le refus final sont décisifs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Première règle gagnante.",
+                "Refus par défaut.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Que mettre en fin de liste ?",
+            "hints": [
+              "Un refus."
+            ],
+            "solution": "Un refus par défaut.",
+            "check": {
+              "type": "any",
+              "any": [
+                "refus"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une règle d'autorisation large ?",
+              "options": [
+                "Elle ouvre trop",
+                "Rien",
+                "Elle chiffre",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "La surface augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-04-q1"
+            },
+            {
+              "question": "Pourquoi journaliser ?",
+              "options": [
+                "Détecter et diagnostiquer",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les refus sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-04-q2"
+            }
+          ],
+          "summary": [
+            "Règles ordonnées.",
+            "Refus final.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « OSPF »."
+        },
+        {
+          "id": "rvp-05",
+          "title": "OSPF",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un protocole à état de liens",
+            "Former des voisinages",
+            "Choisir les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "OSPF calcule les routes par plus court chemin selon les coûts des liens."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Voisinages.",
+                "Coût.",
+                "Aires pour scaler."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que calcule OSPF ?",
+            "hints": [
+              "Le plus court chemin.",
+              "Selon les coûts."
+            ],
+            "solution": "Les routes par plus court chemin selon les coûts de liens.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cout",
+                "coût",
+                "chemin"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "OSPF est-il à vecteur de distance ?",
+              "options": [
+                "Non, à état de liens",
+                "Oui",
+                "Uniquement Cisco",
+                "Uniquement IPv6"
+              ],
+              "answer": 0,
+              "explanation": "Il connaît la topologie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-05-q1"
+            },
+            {
+              "question": "Que fait une aire ?",
+              "options": [
+                "Elle segmente OSPF",
+                "Elle chiffre",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le domaine est découpé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvp-05-q2"
+            }
+          ],
+          "summary": [
+            "OSPF état de liens.",
+            "Coûts.",
+            "Aires."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

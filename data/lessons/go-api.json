@@ -1,0 +1,166 @@
+{
+  "courseId": "go-api",
+  "modules": [
+    {
+      "id": "go-api-module",
+      "title": "Go : API et tests",
+      "chapters": [
+        {
+          "id": "go3-01",
+          "title": "Création d'une API HTTP",
+          "duration": 20,
+          "objectives": [
+            "Déclarer des routes",
+            "Répondre en JSON",
+            "Gérer les méthodes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "net/http fournit ServeMux et les handlers. Un handler écrit le statut, l'en-tête Content-Type puis le corps."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fixer le Content-Type avant WriteHeader.",
+                "Valider la méthode.",
+                "Décoder le corps avec json.Decoder."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Répondre",
+            "instructions": "Que fixer avant d'écrire du JSON ?",
+            "hints": [
+              "L'en-tête de contenu."
+            ],
+            "solution": "Content-Type: application/json",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "content-type",
+                "json"
+              ],
+              "success": "Correct : Content-Type."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait json.NewEncoder(w).Encode ?",
+              "options": [
+                "Il écrit du JSON",
+                "Il lit",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le corps est encodé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go3-01-q1"
+            },
+            {
+              "question": "Que faire d'une méthode inattendue ?",
+              "options": [
+                "405",
+                "200",
+                "500",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Method Not Allowed.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go3-01-q2"
+            }
+          ],
+          "summary": [
+            "ServeMux et handlers.",
+            "Content-Type.",
+            "Méthodes validées."
+          ],
+          "nextStep": "Chapitre suivant : « Tests en Go »."
+        },
+        {
+          "id": "go3-02",
+          "title": "Tests en Go",
+          "duration": 20,
+          "objectives": [
+            "Écrire un test",
+            "Tester un handler",
+            "Lancer go test"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests vivent dans *_test.go. httptest.NewRequest et NewRecorder testent un handler sans port."
+            },
+            {
+              "type": "list",
+              "items": [
+                "go test ./... lance tout.",
+                "Un test isolé ne dépend pas du réseau.",
+                "Table-driven tests pour les cas multiples."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Quel package fournit NewRecorder ?",
+            "hints": [
+              "Un package de test HTTP."
+            ],
+            "solution": "net/http/httptest",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "httptest"
+              ],
+              "success": "Correct : httptest."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel suffixe pour un fichier de test ?",
+              "options": [
+                "_test.go",
+                ".test",
+                "test_",
+                "_spec"
+              ],
+              "answer": 0,
+              "explanation": "Go le découvre ainsi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go3-02-q1"
+            },
+            {
+              "question": "Que capture NewRecorder ?",
+              "options": [
+                "La réponse HTTP",
+                "La requête",
+                "Le réseau",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le corps et le statut sont inspectables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go3-02-q2"
+            }
+          ],
+          "summary": [
+            "_test.go.",
+            "httptest.",
+            "go test."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

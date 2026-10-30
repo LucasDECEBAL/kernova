@@ -1,0 +1,388 @@
+{
+  "courseId": "sql-jointures",
+  "modules": [
+    {
+      "id": "sql-jointures-module",
+      "title": "Jointures et vues",
+      "chapters": [
+        {
+          "id": "sqlj-01",
+          "title": "HAVING",
+          "duration": 20,
+          "objectives": [
+            "Filtrer après regroupement",
+            "Comparer avec WHERE",
+            "Éviter les confusions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "WHERE filtre les lignes avant le regroupement ; HAVING filtre les groupes après."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT client_id, COUNT(*) AS nb\nFROM commandes\nGROUP BY client_id\nHAVING COUNT(*) > 2;",
+              "title": "HAVING"
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer",
+            "instructions": "Gardez les clients avec plus de 2 commandes.",
+            "hints": [
+              "HAVING."
+            ],
+            "solution": "GROUP BY client_id HAVING COUNT(*) > 2",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "having"
+              ],
+              "success": "Correct : HAVING."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où va une condition sur un agrégat ?",
+              "options": [
+                "HAVING",
+                "WHERE",
+                "ON",
+                "LIMIT"
+              ],
+              "answer": 0,
+              "explanation": "Le groupe est filtré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-01-q1"
+            },
+            {
+              "question": "Où va une condition sur une ligne ?",
+              "options": [
+                "WHERE",
+                "HAVING",
+                "GROUP",
+                "ORDER"
+              ],
+              "answer": 0,
+              "explanation": "Avant le regroupement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-01-q2"
+            }
+          ],
+          "summary": [
+            "WHERE avant, HAVING après.",
+            "Agrégats dans HAVING.",
+            "Lisibilité."
+          ],
+          "nextStep": "Chapitre suivant : « Jointures »."
+        },
+        {
+          "id": "sqlj-02",
+          "title": "Jointures",
+          "duration": 20,
+          "objectives": [
+            "Joindre deux tables",
+            "Choisir INNER ou LEFT",
+            "Éviter les produits cartésiens"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "JOIN relie les tables par une condition ; LEFT JOIN conserve les lignes sans correspondance."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT c.nom, o.id\nFROM clients c\nJOIN commandes o ON o.client_id = c.id;",
+              "title": "Jointure"
+            }
+          ],
+          "exercise": {
+            "title": "Joindre",
+            "instructions": "Joignez clients et commandes par client_id.",
+            "hints": [
+              "JOIN ON."
+            ],
+            "solution": "SELECT * FROM clients JOIN commandes ON commandes.client_id = clients.id",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "join",
+                "on"
+              ],
+              "success": "Correct : JOIN ON."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait LEFT JOIN ?",
+              "options": [
+                "Il garde les lignes de gauche",
+                "Il supprime",
+                "Il trie",
+                "Il agrège"
+              ],
+              "answer": 0,
+              "explanation": "Même sans correspondance.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-02-q1"
+            },
+            {
+              "question": "Que risque une jointure sans condition ?",
+              "options": [
+                "Un produit cartésien",
+                "Une erreur",
+                "Rien",
+                "Un index"
+              ],
+              "answer": 0,
+              "explanation": "Toutes les combinaisons sortent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-02-q2"
+            }
+          ],
+          "summary": [
+            "JOIN ON.",
+            "LEFT pour conserver.",
+            "Pas de produit cartésien."
+          ],
+          "nextStep": "Chapitre suivant : « Sous-requêtes »."
+        },
+        {
+          "id": "sqlj-03",
+          "title": "Sous-requêtes",
+          "duration": 20,
+          "objectives": [
+            "Écrire une sous-requête",
+            "Utiliser IN et EXISTS",
+            "Comparer avec jointure"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une sous-requête renvoie une valeur, une liste ou un booléen ; EXISTS teste la présence."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT nom FROM clients\nWHERE id IN (SELECT client_id FROM commandes WHERE montant > 100);",
+              "title": "IN"
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer",
+            "instructions": "Sélectionnez les clients ayant une commande > 100.",
+            "hints": [
+              "IN ou EXISTS."
+            ],
+            "solution": "SELECT nom FROM clients WHERE id IN (SELECT client_id FROM commandes WHERE montant > 100)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "in (",
+                "exists"
+              ],
+              "success": "Correct : sous-requête."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que teste EXISTS ?",
+              "options": [
+                "La présence d'une ligne",
+                "La valeur",
+                "Le tri",
+                "Le type"
+              ],
+              "answer": 0,
+              "explanation": "Un booléen est renvoyé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-03-q1"
+            },
+            {
+              "question": "Sous-requête ou jointure ?",
+              "options": [
+                "Les deux peuvent convenir",
+                "Jamais",
+                "Toujours la sous-requête",
+                "Aucune"
+              ],
+              "answer": 0,
+              "explanation": "Le plan décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-03-q2"
+            }
+          ],
+          "summary": [
+            "IN/EXISTS.",
+            "Booléen EXISTS.",
+            "Comparer les plans."
+          ],
+          "nextStep": "Chapitre suivant : « Vues »."
+        },
+        {
+          "id": "sqlj-04",
+          "title": "Vues",
+          "duration": 20,
+          "objectives": [
+            "Créer une vue",
+            "Simplifier les requêtes",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une vue est une requête nommée ; elle simplifie l'accès et peut restreindre les colonnes."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "CREATE VIEW commandes_recentes AS\nSELECT * FROM commandes WHERE date >= CURRENT_DATE - INTERVAL '30 days';",
+              "title": "Vue"
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Créez une vue des commandes récentes.",
+            "hints": [
+              "CREATE VIEW."
+            ],
+            "solution": "CREATE VIEW commandes_recentes AS SELECT * FROM commandes WHERE ...",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "create view"
+              ],
+              "success": "Correct : CREATE VIEW."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une vue stocke-t-elle les données ?",
+              "options": [
+                "Non, sauf vue matérialisée",
+                "Oui",
+                "Toujours",
+                "Parfois en CSV"
+              ],
+              "answer": 0,
+              "explanation": "C'est une requête nommée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-04-q1"
+            },
+            {
+              "question": "Que permet une vue ?",
+              "options": [
+                "Restreindre et simplifier",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est cadré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-04-q2"
+            }
+          ],
+          "summary": [
+            "Vue = requête nommée.",
+            "Pas de stockage (sauf matérialisée).",
+            "Restriction d'accès."
+          ],
+          "nextStep": "Chapitre suivant : « Contraintes »."
+        },
+        {
+          "id": "sqlj-05",
+          "title": "Contraintes",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une contrainte",
+            "Protéger l'intégrité",
+            "Nommer les contraintes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les contraintes (NOT NULL, UNIQUE, CHECK, FOREIGN KEY) protègent l'intégrité des données."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "ALTER TABLE clients\nADD CONSTRAINT email_unique UNIQUE (email);",
+              "title": "Contrainte"
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Comment garantir l'unicité d'un e-mail ?",
+            "hints": [
+              "Une contrainte."
+            ],
+            "solution": "Une contrainte UNIQUE sur email.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "unique"
+              ],
+              "success": "Correct : UNIQUE."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait CHECK ?",
+              "options": [
+                "Il impose une condition",
+                "Il trie",
+                "Il joint",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est validée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-05-q1"
+            },
+            {
+              "question": "Que protège une clé étrangère ?",
+              "options": [
+                "La cohérence entre tables",
+                "Le CSS",
+                "Le DNS",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "La référence doit exister.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlj-05-q2"
+            }
+          ],
+          "summary": [
+            "Contraintes = intégrité.",
+            "Nommer.",
+            "CHECK/UNIQUE/FK."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

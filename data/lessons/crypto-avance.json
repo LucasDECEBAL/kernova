@@ -1,0 +1,473 @@
+{
+  "courseId": "crypto-avance",
+  "modules": [
+    {
+      "id": "crypto-avance-module",
+      "title": "Cryptographie avancée",
+      "chapters": [
+        {
+          "id": "cra-01",
+          "title": "Fondamentaux mathématiques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les bases",
+            "Situer les difficultés",
+            "Éviter la mise en œuvre maison"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La cryptographie repose sur des problèmes mathématiques difficiles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Modulo.",
+                "Nombres premiers.",
+                "Complexité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi ne pas implémenter soi-même ?",
+            "hints": [
+              "Le risque d'erreurs."
+            ],
+            "solution": "Les erreurs de mise en œuvre cassent la sécurité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "erreur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que repose la crypto ?",
+              "options": [
+                "Des problèmes difficiles",
+                "Du CSS",
+                "Du DNS",
+                "Du hasard"
+              ],
+              "answer": 0,
+              "explanation": "La difficulté protège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-01-q1"
+            },
+            {
+              "question": "Que faire ?",
+              "options": [
+                "Utiliser des bibliothèques éprouvées",
+                "Coder à la main",
+                "Publier les clés",
+                "Ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La mise en œuvre est critique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-01-q2"
+            }
+          ],
+          "summary": [
+            "Maths.",
+            "Difficulté.",
+            "Bibliothèques."
+          ],
+          "nextStep": "Chapitre suivant : « Chiffres classiques »."
+        },
+        {
+          "id": "cra-02",
+          "title": "Chiffres classiques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Ne pas les utiliser",
+            "Étudier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les chiffres classiques ont une valeur pédagogique, pas une sécurité moderne."
+            },
+            {
+              "type": "list",
+              "items": [
+                "César.",
+                "Vigenère.",
+                "Substitution."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Les chiffres classiques sont-ils sûrs ?",
+            "hints": [
+              "Non."
+            ],
+            "solution": "Non : ils sont cassables.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que valent-ils ?",
+              "options": [
+                "Pédagogiquement",
+                "En production",
+                "Pour le DNS",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Ils illustrent les principes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-02-q1"
+            },
+            {
+              "question": "Que faire en production ?",
+              "options": [
+                "AES/TLS",
+                "César",
+                "Vigenère",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Des algorithmes modernes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-02-q2"
+            }
+          ],
+          "summary": [
+            "Pédagogie.",
+            "Pas de production.",
+            "AES."
+          ],
+          "nextStep": "Chapitre suivant : « AES et chiffrement moderne »."
+        },
+        {
+          "id": "cra-03",
+          "title": "AES et chiffrement moderne",
+          "duration": 20,
+          "objectives": [
+            "Comprendre AES",
+            "Choisir un mode",
+            "Éviter ECB"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "AES est un chiffrement par blocs ; le mode (GCM) assure confidentialité et intégrité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Blocs 128 bits.",
+                "GCM.",
+                "Pas ECB."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel mode éviter ?",
+            "hints": [
+              "ECB."
+            ],
+            "solution": "ECB, car il révèle des motifs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ecb"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait GCM ?",
+              "options": [
+                "Chiffre et authentifie",
+                "Chiffre seulement",
+                "Hache",
+                "Signe"
+              ],
+              "answer": 0,
+              "explanation": "L'intégrité est couverte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-03-q1"
+            },
+            {
+              "question": "Pourquoi éviter ECB ?",
+              "options": [
+                "Il révèle des motifs",
+                "Il est trop lent",
+                "Il est interdit",
+                "Il chiffre mal"
+              ],
+              "answer": 0,
+              "explanation": "Les blocs identiques restent identiques.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-03-q2"
+            }
+          ],
+          "summary": [
+            "AES.",
+            "GCM.",
+            "Pas ECB."
+          ],
+          "nextStep": "Chapitre suivant : « RSA : principes »."
+        },
+        {
+          "id": "cra-04",
+          "title": "RSA : principes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la factorisation",
+            "Situer les tailles",
+            "Éviter les petites clés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "RSA repose sur la difficulté de factoriser de grands nombres."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clé publique/privée.",
+                "Tailles modernes.",
+                "Padding."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Sur quoi repose RSA ?",
+            "hints": [
+              "La factorisation difficile."
+            ],
+            "solution": "La difficulté de factoriser de grands nombres.",
+            "check": {
+              "type": "any",
+              "any": [
+                "factoris"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il éviter ?",
+              "options": [
+                "Les petites clés",
+                "Le padding",
+                "Les maths",
+                "Le hasard"
+              ],
+              "answer": 0,
+              "explanation": "Elles sont cassables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-04-q1"
+            },
+            {
+              "question": "Que fait le padding ?",
+              "options": [
+                "Il sécurise le chiffrement",
+                "Il trie",
+                "Il compresse",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Il évite certaines attaques.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-04-q2"
+            }
+          ],
+          "summary": [
+            "Factorisation.",
+            "Tailles.",
+            "Padding."
+          ],
+          "nextStep": "Chapitre suivant : « Diffie-Hellman »."
+        },
+        {
+          "id": "cra-05",
+          "title": "Diffie-Hellman",
+          "duration": 20,
+          "objectives": [
+            "Comprendre l'échange",
+            "Éviter les paramètres faibles",
+            "S'authentifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Diffie-Hellman échange un secret sur un canal public, sans authentification propre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Échange.",
+                "Paramètres.",
+                "MITM."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que ne fait pas DH seul ?",
+            "hints": [
+              "Authentifier les pairs."
+            ],
+            "solution": "Authentifier les pairs : un MITM reste possible.",
+            "check": {
+              "type": "any",
+              "any": [
+                "authentifier"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet DH ?",
+              "options": [
+                "Un secret partagé",
+                "Une signature",
+                "Un hash",
+                "Un routeur"
+              ],
+              "answer": 0,
+              "explanation": "La clé est négociée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-05-q1"
+            },
+            {
+              "question": "Que risque-t-il seul ?",
+              "options": [
+                "Un homme du milieu",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'authentification manque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-05-q2"
+            }
+          ],
+          "summary": [
+            "DH.",
+            "Secret partagé.",
+            "MITM."
+          ],
+          "nextStep": "Chapitre suivant : « Courbes elliptiques »."
+        },
+        {
+          "id": "cra-06",
+          "title": "Courbes elliptiques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre l'intérêt",
+            "Choisir une courbe",
+            "Éviter les courbes exotiques"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La cryptographie sur courbes elliptiques offre une sécurité équivalente avec des clés plus courtes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clés courtes.",
+                "Courbes standard.",
+                "ECDH/ECDSA."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel avantage ?",
+            "hints": [
+              "Des clés plus courtes."
+            ],
+            "solution": "Une sécurité comparable avec des clés plus courtes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "courtes"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier ?",
+              "options": [
+                "Des courbes standard",
+                "Des courbes maison",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Elles sont analysées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-06-q1"
+            },
+            {
+              "question": "Que fait ECDSA ?",
+              "options": [
+                "Signer",
+                "Chiffrer",
+                "Router",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La signature est elliptique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cra-06-q2"
+            }
+          ],
+          "summary": [
+            "ECC.",
+            "Clés courtes.",
+            "Courbes standard."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

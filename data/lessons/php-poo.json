@@ -1,0 +1,406 @@
+{
+  "courseId": "php-poo",
+  "modules": [
+    {
+      "id": "php-poo-module",
+      "title": "PHP : objets et base de données",
+      "chapters": [
+        {
+          "id": "phpo-01",
+          "title": "Programmation orientée objet",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une classe",
+            "Typer les propriétés",
+            "Définir un constructeur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "PHP moderne type les propriétés et paramètres. __construct initialise l'objet ; les visibilités protègent l'état."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "class Compte {\n    public function __construct(private float $solde = 0.0) {}\n    public function solde(): float { return $this->solde; }\n}",
+              "title": "Classe"
+            },
+            {
+              "type": "p",
+              "text": "Les propriétés typées et readonly rendent les objets prévisibles."
+            }
+          ],
+          "exercise": {
+            "title": "Typer",
+            "instructions": "Comment déclarer un constructeur ?",
+            "hints": [
+              "Une méthode spéciale."
+            ],
+            "solution": "__construct",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "__construct"
+              ],
+              "success": "Correct : __construct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait private sur une propriété ?",
+              "options": [
+                "Il la cache",
+                "Il l'affiche",
+                "Il la trie",
+                "Il la chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est contrôlé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-01-q1"
+            },
+            {
+              "question": "Que fait readonly ?",
+              "options": [
+                "Il interdit la réaffectation",
+                "Il accélère",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est figée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-01-q2"
+            }
+          ],
+          "summary": [
+            "Types et visibilités.",
+            "__construct.",
+            "readonly."
+          ],
+          "nextStep": "Chapitre suivant : « Connexion à une base de données »."
+        },
+        {
+          "id": "phpo-02",
+          "title": "Connexion à une base de données",
+          "duration": 20,
+          "objectives": [
+            "Créer une connexion PDO",
+            "Comprendre le DSN",
+            "Gérer les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "PDO se connecte via un DSN (type de base, hôte, nom). Le mode exception rend les erreurs visibles."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "$pdo = new PDO(\"mysql:host=localhost;dbname=app;charset=utf8mb4\", $user, $pass, [\n    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,\n]);",
+              "title": "Connexion"
+            },
+            {
+              "type": "p",
+              "text": "Ne mettez jamais les identifiants dans le dépôt : utilisez des variables d'environnement."
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Quel mode PDO lève des exceptions ?",
+            "hints": [
+              "Un attribut d'erreur."
+            ],
+            "solution": "PDO::ERRMODE_EXCEPTION",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "errmode_exception"
+              ],
+              "success": "Correct : ERRMODE_EXCEPTION."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient un DSN ?",
+              "options": [
+                "Le type et la cible de la base",
+                "Le mot de passe",
+                "Le CSS",
+                "Le cookie"
+              ],
+              "answer": 0,
+              "explanation": "La connexion est décrite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-02-q1"
+            },
+            {
+              "question": "Où stocker les identifiants ?",
+              "options": [
+                "Variables d'environnement",
+                "Dans le code",
+                "Dans un log",
+                "Dans un cookie"
+              ],
+              "answer": 0,
+              "explanation": "Ils restent hors du dépôt.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-02-q2"
+            }
+          ],
+          "summary": [
+            "PDO + DSN.",
+            "ERRMODE_EXCEPTION.",
+            "Secrets hors du code."
+          ],
+          "nextStep": "Chapitre suivant : « PDO et requêtes préparées »."
+        },
+        {
+          "id": "phpo-03",
+          "title": "PDO et requêtes préparées",
+          "duration": 20,
+          "objectives": [
+            "Préparer une requête",
+            "Lier des paramètres",
+            "Lire les résultats"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "prepare puis execute avec des paramètres nommés empêche l'injection SQL. fetch lit une ligne, fetchAll toutes."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "$stmt = $pdo->prepare(\"SELECT * FROM clients WHERE email = :email\");\n$stmt->execute([\"email\" => $email]);\n$client = $stmt->fetch(PDO::FETCH_ASSOC);",
+              "title": "Requête préparée"
+            },
+            {
+              "type": "p",
+              "text": "Ne concaténez jamais une valeur dans le SQL, même avec addslashes()."
+            }
+          ],
+          "exercise": {
+            "title": "Préparer",
+            "instructions": "Quelle méthode prépare une requête ?",
+            "hints": [
+              "Une méthode PDO."
+            ],
+            "solution": "$pdo->prepare()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "prepare"
+              ],
+              "success": "Correct : prepare."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait execute ?",
+              "options": [
+                "Il exécute avec les paramètres",
+                "Il prépare",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs sont liées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-03-q1"
+            },
+            {
+              "question": "Que fait fetch ?",
+              "options": [
+                "Il lit une ligne",
+                "Il écrit",
+                "Il supprime",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est un tableau ou false.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-03-q2"
+            }
+          ],
+          "summary": [
+            "prepare/execute.",
+            "Paramètres nommés.",
+            "Pas de concaténation SQL."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des erreurs »."
+        },
+        {
+          "id": "phpo-04",
+          "title": "Gestion des erreurs",
+          "duration": 20,
+          "objectives": [
+            "Attraper PDOException",
+            "Journaliser",
+            "Afficher un message sûr"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les erreurs de base doivent être journalisées côté serveur et présenter un message générique à l'utilisateur."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "try {\n    $pdo->beginTransaction();\n    // ...\n    $pdo->commit();\n} catch (PDOException $e) {\n    $pdo->rollBack();\n    error_log($e->getMessage());\n}",
+              "title": "Transaction"
+            },
+            {
+              "type": "p",
+              "text": "Une transaction garantit que plusieurs écritures réussissent ou échouent ensemble."
+            }
+          ],
+          "exercise": {
+            "title": "Annuler",
+            "instructions": "Que faire en cas d'échec dans une transaction ?",
+            "hints": [
+              "Annuler les écritures."
+            ],
+            "solution": "$pdo->rollBack();",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rollback"
+              ],
+              "success": "Correct : rollBack."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait beginTransaction ?",
+              "options": [
+                "Il démarre une transaction",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Les écritures sont groupées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-04-q1"
+            },
+            {
+              "question": "Que montrer à l'utilisateur ?",
+              "options": [
+                "Un message générique",
+                "La trace complète",
+                "Le mot de passe",
+                "Le SQL"
+              ],
+              "answer": 0,
+              "explanation": "Les détails restent dans les journaux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-04-q2"
+            }
+          ],
+          "summary": [
+            "Transactions.",
+            "rollBack.",
+            "Journaliser côté serveur."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des applications PHP »."
+        },
+        {
+          "id": "phpo-05",
+          "title": "Sécurité des applications PHP",
+          "duration": 20,
+          "objectives": [
+            "Éviter XSS et injection",
+            "Hacher les mots de passe",
+            "Limiter les accès"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Échappez à l'affichage, préparez les requêtes, hachez les mots de passe avec password_hash et vérifiez avec password_verify."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "$hash = password_hash($mdp, PASSWORD_DEFAULT);\nif (password_verify($saisie, $hash)) { /* connecté */ }",
+              "title": "Mots de passe"
+            },
+            {
+              "type": "p",
+              "text": "N'utilisez pas md5 ou sha1 pour les mots de passe : ils sont trop rapides et obsolètes."
+            }
+          ],
+          "exercise": {
+            "title": "Hacher",
+            "instructions": "Quelle fonction hache un mot de passe ?",
+            "hints": [
+              "Une fonction dédiée."
+            ],
+            "solution": "password_hash",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "password_hash"
+              ],
+              "success": "Correct : password_hash."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait password_verify ?",
+              "options": [
+                "Il vérifie un hash",
+                "Il hache",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La comparaison est sûre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-05-q1"
+            },
+            {
+              "question": "Pourquoi pas md5 ?",
+              "options": [
+                "Trop rapide et obsolète",
+                "Trop lent",
+                "Trop long",
+                "Interdit"
+              ],
+              "answer": 0,
+              "explanation": "Le hachage doit être lent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpo-05-q2"
+            }
+          ],
+          "summary": [
+            "Échapper et préparer.",
+            "password_hash.",
+            "Pas de md5."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

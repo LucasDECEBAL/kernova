@@ -1,0 +1,401 @@
+{
+  "courseId": "cyber-menaces",
+  "modules": [
+    {
+      "id": "cyber-menaces-module",
+      "title": "Menaces et surface",
+      "chapters": [
+        {
+          "id": "cm-01",
+          "title": "Protection contre les logiciels malveillants",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les vecteurs",
+            "Prévenir",
+            "Détecter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les malwares arrivent par pièces jointes, téléchargements et services exposés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Mises à jour.",
+                "Moindre privilège.",
+                "EDR/antivirus."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel vecteur fréquent ?",
+            "hints": [
+              "Les pièces jointes."
+            ],
+            "solution": "Les pièces jointes et liens de phishing.",
+            "check": {
+              "type": "any",
+              "any": [
+                "piece jointe",
+                "pièce jointe",
+                "phishing"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un EDR ?",
+              "options": [
+                "Il détecte et répond",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le comportement est surveillé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-01-q1"
+            },
+            {
+              "question": "Pourquoi le moindre privilège ?",
+              "options": [
+                "Limiter l'impact",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le malware a moins de droits.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-01-q2"
+            }
+          ],
+          "summary": [
+            "Vecteurs.",
+            "Prévention.",
+            "Détection."
+          ],
+          "nextStep": "Chapitre suivant : « Sauvegardes résilientes »."
+        },
+        {
+          "id": "cm-02",
+          "title": "Sauvegardes résilientes",
+          "duration": 20,
+          "objectives": [
+            "Isoler les copies",
+            "Chiffrer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une sauvegarde résiliente résiste aux rançongiciels : hors ligne, immuable, testée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hors ligne.",
+                "Immuable.",
+                "Testée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi une copie hors ligne ?",
+            "hints": [
+              "Elle survit au rançongiciel."
+            ],
+            "solution": "Pour qu'un rançongiciel ne puisse pas la chiffrer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "hors ligne",
+                "immuable"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une sauvegarde connectée suffit-elle ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le malware peut la chiffrer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-02-q1"
+            },
+            {
+              "question": "Que tester ?",
+              "options": [
+                "La restauration",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La copie est fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-02-q2"
+            }
+          ],
+          "summary": [
+            "Hors ligne.",
+            "Immuable.",
+            "Testée."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des vulnérabilités »."
+        },
+        {
+          "id": "cm-03",
+          "title": "Gestion des vulnérabilités",
+          "duration": 20,
+          "objectives": [
+            "Inventorier",
+            "Scanner",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "On inventorie les actifs, scanne les vulnérabilités et priorise selon gravité et exposition."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Inventaire.",
+                "Scan.",
+                "Priorisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après un scan ?",
+            "hints": [
+              "Prioriser et corriger."
+            ],
+            "solution": "Prioriser selon la gravité et l'exposition, puis corriger.",
+            "check": {
+              "type": "any",
+              "any": [
+                "prioris",
+                "corrig"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi l'inventaire ?",
+              "options": [
+                "On ne protège pas l'inconnu",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les actifs sont connus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-03-q1"
+            },
+            {
+              "question": "Que faire des faux positifs ?",
+              "options": [
+                "Les vérifier",
+                "Les publier",
+                "Les ignorer",
+                "Les dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "La vérification évite le bruit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-03-q2"
+            }
+          ],
+          "summary": [
+            "Inventaire.",
+            "Scan.",
+            "Prioriser."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des correctifs de sécurité »."
+        },
+        {
+          "id": "cm-04",
+          "title": "Gestion des correctifs de sécurité",
+          "duration": 20,
+          "objectives": [
+            "Suivre",
+            "Tester",
+            "Déployer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les correctifs de sécurité suivent un cycle : veille, test, déploiement, vérification."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Veille.",
+                "Test.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après déploiement ?",
+            "hints": [
+              "Vérifier."
+            ],
+            "solution": "Vérifier que la version est bien appliquée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "verifi",
+                "vérifi"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi la veille ?",
+              "options": [
+                "Connaître les failles",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les correctifs sont anticipés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-04-q1"
+            },
+            {
+              "question": "Que prévoir ?",
+              "options": [
+                "Un retour arrière",
+                "Rien",
+                "Un e-mail",
+                "Un logo"
+              ],
+              "answer": 0,
+              "explanation": "Le déploiement peut échouer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-04-q2"
+            }
+          ],
+          "summary": [
+            "Veille.",
+            "Test.",
+            "Vérification."
+          ],
+          "nextStep": "Chapitre suivant : « Réduire la surface d'attaque »."
+        },
+        {
+          "id": "cm-05",
+          "title": "Réduire la surface d'attaque",
+          "duration": 20,
+          "objectives": [
+            "Inventorier",
+            "Supprimer",
+            "Restreindre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La surface d'attaque se réduit en supprimant l'inutile et en restreignant l'accès."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Services.",
+                "Comptes.",
+                "Ports."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Par quoi commencer ?",
+            "hints": [
+              "L'inventaire."
+            ],
+            "solution": "L'inventaire des services, comptes et ports exposés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "inventaire"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que supprimer ?",
+              "options": [
+                "Les services inutiles",
+                "Les logs",
+                "Les mises à jour",
+                "Les comptes actifs"
+              ],
+              "answer": 0,
+              "explanation": "La surface diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-05-q1"
+            },
+            {
+              "question": "Que restreindre ?",
+              "options": [
+                "Les accès",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cm-05-q2"
+            }
+          ],
+          "summary": [
+            "Inventaire.",
+            "Supprimer.",
+            "Restreindre."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

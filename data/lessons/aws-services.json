@@ -1,0 +1,398 @@
+{
+  "courseId": "aws-services",
+  "modules": [
+    {
+      "id": "aws-services-module",
+      "title": "AWS réseau et données",
+      "chapters": [
+        {
+          "id": "aws-01",
+          "title": "VPC",
+          "duration": 20,
+          "objectives": [
+            "Créer un VPC",
+            "Segmenter",
+            "Router"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VPC isole un réseau avec sous-réseaux publics et privés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sous-réseaux.",
+                "Routage.",
+                "Passerelles."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que place-t-on en public ?",
+            "hints": [
+              "L'équilibreur."
+            ],
+            "solution": "Seulement l'équilibreur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "equilibreur",
+                "équilibreur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garder en privé ?",
+              "options": [
+                "La base",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exposition est limitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-01-q1"
+            },
+            {
+              "question": "Que fait une table de routage ?",
+              "options": [
+                "Elle dirige le trafic",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle monte"
+              ],
+              "answer": 0,
+              "explanation": "Les sorties sont contrôlées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-01-q2"
+            }
+          ],
+          "summary": [
+            "VPC.",
+            "Public/privé.",
+            "Routage."
+          ],
+          "nextStep": "Chapitre suivant : « Security Groups »."
+        },
+        {
+          "id": "aws-02",
+          "title": "Security Groups",
+          "duration": 20,
+          "objectives": [
+            "Filtrer",
+            "Limiter les sources",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les groupes de sécurité filtrent le trafic par port et source."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Entrées.",
+                "Sorties.",
+                "Sources."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limiter ?",
+            "hints": [
+              "Les sources autorisées."
+            ],
+            "solution": "Les plages sources et les ports nécessaires.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Sont-ils stateful ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le retour est autorisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-02-q1"
+            },
+            {
+              "question": "Que faire d'un port inutile ?",
+              "options": [
+                "Le fermer",
+                "L'ouvrir",
+                "Le publier",
+                "L'ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La surface diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-02-q2"
+            }
+          ],
+          "summary": [
+            "Groupes.",
+            "Sources.",
+            "Ports."
+          ],
+          "nextStep": "Chapitre suivant : « Route Tables »."
+        },
+        {
+          "id": "aws-03",
+          "title": "Route Tables",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Associer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tables de routage décident où va le trafic d'un sous-réseau."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Routes.",
+                "Association.",
+                "Cible."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait la route par défaut ?",
+            "hints": [
+              "Elle couvre le reste."
+            ],
+            "solution": "Elle envoie le trafic non couvert vers une cible.",
+            "check": {
+              "type": "any",
+              "any": [
+                "defaut",
+                "défaut"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "L'association au sous-réseau",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La route s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-03-q1"
+            },
+            {
+              "question": "Que tester ?",
+              "options": [
+                "La connectivité",
+                "Le thème",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le chemin fonctionne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-03-q2"
+            }
+          ],
+          "summary": [
+            "Tables.",
+            "Association.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Internet Gateway et NAT Gateway »."
+        },
+        {
+          "id": "aws-04",
+          "title": "Internet Gateway et NAT Gateway",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Configurer",
+            "Coût"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'IGW donne un accès Internet public ; le NAT permet aux privés de sortir sans être joignables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "IGW.",
+                "NAT.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le NAT ?",
+            "hints": [
+              "Il permet la sortie"
+            ],
+            "solution": "Il permet la sortie des sous-réseaux privés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sortie"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une instance privée est-elle joignable depuis Internet ?",
+              "options": [
+                "Non par défaut",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le NAT masque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-04-q1"
+            },
+            {
+              "question": "Que coûte le NAT ?",
+              "options": [
+                "Un coût horaire",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La passerelle est facturée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-04-q2"
+            }
+          ],
+          "summary": [
+            "IGW/NAT.",
+            "Sortie.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « RDS »."
+        },
+        {
+          "id": "aws-05",
+          "title": "RDS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "RDS gère des bases relationnelles : sauvegardes, réplique et mises à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Moteurs.",
+                "Sauvegardes.",
+                "Accès privé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gère RDS ?",
+            "hints": [
+              "Les sauvegardes et mises à jour."
+            ],
+            "solution": "Les sauvegardes, correctifs et disponibilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sauvegarde"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où placer la base ?",
+              "options": [
+                "En privé",
+                "En public",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est restreint.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-05-q1"
+            },
+            {
+              "question": "Que tester ?",
+              "options": [
+                "La restauration",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La sauvegarde est fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "aws-05-q2"
+            }
+          ],
+          "summary": [
+            "RDS.",
+            "Sauvegardes.",
+            "Privé."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

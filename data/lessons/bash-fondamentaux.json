@@ -1,0 +1,399 @@
+{
+  "courseId": "bash-fondamentaux",
+  "modules": [
+    {
+      "id": "bash-fondamentaux-module",
+      "title": "Bash : bases",
+      "chapters": [
+        {
+          "id": "bashf-01",
+          "title": "Introduction à Bash",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le shell",
+            "Écrire un script",
+            "Lancer un script"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Bash interprète des commandes ; un script est un fichier exécutable commençant par un shebang."
+            },
+            {
+              "type": "list",
+              "items": [
+                "#!/usr/bin/env bash.",
+                "chmod +x script.sh.",
+                "./script.sh pour lancer."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lancer",
+            "instructions": "Quelle ligne indique l'interpréteur ?",
+            "hints": [
+              "Un shebang.",
+              "Elle commence par #!."
+            ],
+            "solution": "#!/usr/bin/env bash",
+            "check": {
+              "type": "any",
+              "any": [
+                "#!/usr/bin/env bash",
+                "#!/bin/bash"
+              ],
+              "success": "Correct : shebang."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait chmod +x ?",
+              "options": [
+                "Il rend exécutable",
+                "Il supprime",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le script peut être lancé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-01-q1"
+            },
+            {
+              "question": "Que fait Bash ?",
+              "options": [
+                "Il interprète des commandes",
+                "Il compile du C",
+                "Il route",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Le shell exécute les commandes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-01-q2"
+            }
+          ],
+          "summary": [
+            "Shebang.",
+            "chmod +x.",
+            "./script."
+          ],
+          "nextStep": "Chapitre suivant : « Variables et constantes »."
+        },
+        {
+          "id": "bashf-02",
+          "title": "Variables et constantes",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une variable",
+            "Lire une variable",
+            "Éviter les espaces"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une variable Bash s'assigne sans espaces autour du = et se lit avec $."
+            },
+            {
+              "type": "list",
+              "items": [
+                "nom=\"Ada\".",
+                "echo \"$nom\".",
+                "readonly pour une constante."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Comment afficher la variable nom ?",
+            "hints": [
+              "Le dollar."
+            ],
+            "solution": "echo \"$nom\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "$nom"
+              ],
+              "success": "Correct : $nom."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait readonly ?",
+              "options": [
+                "Il rend la variable non modifiable",
+                "Il la supprime",
+                "Il la trie",
+                "Il la chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La constante est protégée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-02-q1"
+            },
+            {
+              "question": "Peut-on écrire nom = \"Ada\" ?",
+              "options": [
+                "Non, Bash l'interprète mal",
+                "Oui",
+                "Toujours",
+                "Avec sudo"
+              ],
+              "answer": 0,
+              "explanation": "Pas d'espaces autour du =.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-02-q2"
+            }
+          ],
+          "summary": [
+            "nom=\"valeur\".",
+            "$nom.",
+            "readonly."
+          ],
+          "nextStep": "Chapitre suivant : « Arguments de scripts »."
+        },
+        {
+          "id": "bashf-03",
+          "title": "Arguments de scripts",
+          "duration": 20,
+          "objectives": [
+            "Lire les arguments",
+            "Compter les arguments",
+            "Gérer l'absence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "$1, $2 sont les arguments ; $# le nombre ; $0 le nom du script."
+            },
+            {
+              "type": "list",
+              "items": [
+                "$# pour compter.",
+                "\"$@\" pour tous.",
+                "Valider avant usage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Compter",
+            "instructions": "Quelle variable donne le nombre d'arguments ?",
+            "hints": [
+              "Un dièse."
+            ],
+            "solution": "$#",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "$#"
+              ],
+              "success": "Correct : $#."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient $0 ?",
+              "options": [
+                "Le nom du script",
+                "Le premier argument",
+                "Le PID",
+                "Le code retour"
+              ],
+              "answer": 0,
+              "explanation": "C'est le script lancé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-03-q1"
+            },
+            {
+              "question": "Que fait \"$@\" ?",
+              "options": [
+                "Il liste les arguments",
+                "Il les supprime",
+                "Il les trie",
+                "Il les chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Chaque argument reste séparé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-03-q2"
+            }
+          ],
+          "summary": [
+            "$1..$n.",
+            "$#.",
+            "\"$@\"."
+          ],
+          "nextStep": "Chapitre suivant : « Conditions »."
+        },
+        {
+          "id": "bashf-04",
+          "title": "Conditions",
+          "duration": 20,
+          "objectives": [
+            "Tester une valeur",
+            "Comparer des nombres",
+            "Tester un fichier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "if teste une commande ; [ ] compare, [[ ]] est plus sûr pour les chaînes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "[ \"$a\" -eq 1 ].",
+                "[ -d dossier ].",
+                "Toujours citer les variables."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Quel test vérifie qu'un dossier existe ?",
+            "hints": [
+              "Un test de fichier."
+            ],
+            "solution": "[ -d /chemin ]",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "-d"
+              ],
+              "success": "Correct : -d."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que teste -f ?",
+              "options": [
+                "Un fichier régulier",
+                "Un dossier",
+                "Une variable",
+                "Un réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le fichier existe et est régulier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-04-q1"
+            },
+            {
+              "question": "Pourquoi citer \"$a\" ?",
+              "options": [
+                "Éviter les erreurs avec les espaces",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La valeur reste un seul mot.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-04-q2"
+            }
+          ],
+          "summary": [
+            "if + [ ].",
+            "-d/-f.",
+            "Citer les variables."
+          ],
+          "nextStep": "Chapitre suivant : « Boucles »."
+        },
+        {
+          "id": "bashf-05",
+          "title": "Boucles",
+          "duration": 20,
+          "objectives": [
+            "Parcourir une liste",
+            "Boucler sur des fichiers",
+            "Éviter les pièges"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "for parcourt des mots ou des fichiers ; while répète tant qu'une condition tient."
+            },
+            {
+              "type": "list",
+              "items": [
+                "for f in *.log.",
+                "while read -r ligne.",
+                "Éviter les noms avec espaces non cités."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Parcourir",
+            "instructions": "Que fait for f in *.log ?",
+            "hints": [
+              "Il parcourt les fichiers .log."
+            ],
+            "solution": "Il exécute la boucle pour chaque fichier .log du dossier.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "fichiers",
+                "log"
+              ],
+              "success": "Correct : parcours des .log."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait while read ?",
+              "options": [
+                "Il lit ligne par ligne",
+                "Il trie",
+                "Il chiffre",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Le flux est consommé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-05-q1"
+            },
+            {
+              "question": "Que faire des motifs sans correspondance ?",
+              "options": [
+                "Vérifier l'existence",
+                "Ignorer",
+                "Supprimer",
+                "Chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Le motif peut rester littéral.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashf-05-q2"
+            }
+          ],
+          "summary": [
+            "for/while.",
+            "Lire par ligne.",
+            "Citer les chemins."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

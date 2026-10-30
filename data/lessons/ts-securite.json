@@ -1,0 +1,402 @@
+{
+  "courseId": "ts-securite",
+  "modules": [
+    {
+      "id": "ts-securite-module",
+      "title": "Narrowing et configuration",
+      "chapters": [
+        {
+          "id": "tss-01",
+          "title": "Narrowing",
+          "duration": 20,
+          "objectives": [
+            "Affiner un type",
+            "Utiliser typeof et in",
+            "Éviter les assertions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le narrowing réduit un type union dans un bloc : typeof, in, instanceof ou un test personnalisé."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "function afficher(valeur: string | number) {\n  if (typeof valeur === \"string\") {\n    return valeur.toUpperCase();\n  }\n  return valeur.toFixed(2);\n}",
+              "title": "typeof"
+            },
+            {
+              "type": "warning",
+              "text": "Une assertion as force le type sans vérification : elle peut masquer un bug réel."
+            }
+          ],
+          "exercise": {
+            "title": "Affiner",
+            "instructions": "Quel opérateur distingue une chaîne d'un nombre ?",
+            "hints": [
+              "Un opérateur de type."
+            ],
+            "solution": "typeof",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "typeof"
+              ],
+              "success": "Correct : typeof."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait in ?",
+              "options": [
+                "Il teste la présence d'une propriété",
+                "Il importe",
+                "Il trie",
+                "Il convertit"
+              ],
+              "answer": 0,
+              "explanation": "Utile pour les unions d'objets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-01-q1"
+            },
+            {
+              "question": "Quel risque avec as ?",
+              "options": [
+                "Masquer une erreur de type",
+                "Ralentir",
+                "Casser le CSS",
+                "Bloquer le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le compilateur ne vérifie plus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-01-q2"
+            }
+          ],
+          "summary": [
+            "Narrowing par tests.",
+            "typeof/in/instanceof.",
+            "Éviter les assertions."
+          ]
+        },
+        {
+          "id": "tss-02",
+          "title": "Gestion des types nullables",
+          "duration": 20,
+          "objectives": [
+            "Activer strictNullChecks",
+            "Vérifier null et undefined",
+            "Utiliser les valeurs par défaut"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Avec strictNullChecks, null et undefined sont distincts des autres types : il faut les traiter explicitement."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "function saluer(nom?: string) {\n  const sur = nom ?? \"inconnu\";\n  return \"Bonjour \" + sur;\n}",
+              "title": "Valeurs par défaut"
+            },
+            {
+              "type": "warning",
+              "text": "L'opérateur ! affirme une non-nullité sans preuve : il déplace l'erreur à l'exécution."
+            }
+          ],
+          "exercise": {
+            "title": "Valeur par défaut",
+            "instructions": "Quel opérateur remplace null ou undefined par une valeur ?",
+            "hints": [
+              "Deux points d'interrogation."
+            ],
+            "solution": "??",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "??"
+              ],
+              "success": "Correct : ??."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ?. ?",
+              "options": [
+                "Il accède sans planter si null/undefined",
+                "Il affiche",
+                "Il trie",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "Accès optionnel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-02-q1"
+            },
+            {
+              "question": "Que fait ! ?",
+              "options": [
+                "Il affirme une non-nullité",
+                "Il inverse",
+                "Il compare",
+                "Il exporte"
+              ],
+              "answer": 0,
+              "explanation": "Assertion non vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-02-q2"
+            }
+          ],
+          "summary": [
+            "strictNullChecks.",
+            "?? et ?.",
+            "Éviter !."
+          ]
+        },
+        {
+          "id": "tss-03",
+          "title": "Modules TypeScript",
+          "duration": 20,
+          "objectives": [
+            "Exporter et importer",
+            "Choisir le format de module",
+            "Éviter les imports circulaires"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "TypeScript suit les modules ES : export et import, avec des types exportés séparément ou avec export type."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "// types.ts\nexport type Tache = { id: number };\n\n// app.ts\nimport type { Tache } from \"./types.js\";",
+              "title": "Modules"
+            },
+            {
+              "type": "tip",
+              "text": "import type garantit que l'import disparaît à la compilation : aucun code inutile n'est chargé."
+            }
+          ],
+          "exercise": {
+            "title": "Importer",
+            "instructions": "Quel import ne charge que des types ?",
+            "hints": [
+              "Une forme explicite."
+            ],
+            "solution": "import type",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "import type"
+              ],
+              "success": "Correct : import type."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait export type ?",
+              "options": [
+                "Il exporte un type",
+                "Il exécute",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Rien n'est émis à l'exécution.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-03-q1"
+            },
+            {
+              "question": "Pourquoi éviter les cycles ?",
+              "options": [
+                "Dépendances fragiles",
+                "Plus de CSS",
+                "Moins de tests",
+                "Réseau lent"
+              ],
+              "answer": 0,
+              "explanation": "L'ordre d'évaluation devient ambigu.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-03-q2"
+            }
+          ],
+          "summary": [
+            "export/import.",
+            "import type.",
+            "Éviter les cycles."
+          ]
+        },
+        {
+          "id": "tss-04",
+          "title": "Configuration du compilateur",
+          "duration": 20,
+          "objectives": [
+            "Activer strict",
+            "Comprendre noUncheckedIndexedAccess",
+            "Choisir la cible"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "tsconfig.json configure la vérification. strict active les contrôles majeurs ; noUncheckedIndexedAccess sécurise les accès par indice."
+            },
+            {
+              "type": "code",
+              "lang": "json",
+              "code": "{\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"noUncheckedIndexedAccess\": true,\n    \"target\": \"ES2022\",\n    \"noEmit\": true\n  }\n}",
+              "title": "tsconfig"
+            },
+            {
+              "type": "warning",
+              "text": "Désactiver strict pour faire taire les erreurs annule l'intérêt du typage."
+            }
+          ],
+          "exercise": {
+            "title": "Activer",
+            "instructions": "Quelle option active les vérifications majeures ?",
+            "hints": [
+              "Une option globale."
+            ],
+            "solution": "strict",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "strict"
+              ],
+              "success": "Correct : strict."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait noEmit ?",
+              "options": [
+                "Il vérifie sans produire de fichiers",
+                "Il supprime le code",
+                "Il minifie",
+                "Il teste"
+              ],
+              "answer": 0,
+              "explanation": "Pratique pour un contrôle de types.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-04-q1"
+            },
+            {
+              "question": "Que sécurise noUncheckedIndexedAccess ?",
+              "options": [
+                "Les accès par indice",
+                "Les imports",
+                "Le CSS",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat peut être undefined.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-04-q2"
+            }
+          ],
+          "summary": [
+            "strict en premier.",
+            "noEmit pour vérifier.",
+            "Cible explicite."
+          ]
+        },
+        {
+          "id": "tss-05",
+          "title": "TypeScript dans un projet web",
+          "duration": 20,
+          "objectives": [
+            "Configurer un build",
+            "Typer les données externes",
+            "Valider à l'exécution"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Dans un projet web, TypeScript se compile via un outil (Vite, tsc). Les données externes restent non fiables : le type ne remplace pas une validation."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "type Reponse = { taches: { id: number; titre: string }[] };\n\nasync function charger(): Promise<Reponse> {\n  const r = await fetch(\"/api/taches\");\n  return (await r.json()) as Reponse; // TODO : valider la forme\n}",
+              "title": "API typée"
+            },
+            {
+              "type": "warning",
+              "text": "Un as Reponse ne vérifie rien à l'exécution : validez le JSON reçu avant de l'utiliser."
+            }
+          ],
+          "exercise": {
+            "title": "Valider",
+            "instructions": "Un type TypeScript garantit-il les données reçues d'une API ?",
+            "hints": [
+              "Non, c'est une promesse de compilation."
+            ],
+            "solution": "Non : il faut valider la forme à l'exécution (schéma, vérifications).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non",
+                "validation"
+              ],
+              "success": "Correct : non, valider à l'exécution."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand le type disparaît-il ?",
+              "options": [
+                "À la compilation",
+                "À l'exécution",
+                "Jamais",
+                "Au chargement CSS"
+              ],
+              "answer": 0,
+              "explanation": "Il n'existe qu'au développement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-05-q1"
+            },
+            {
+              "question": "Que faire du JSON d'une API ?",
+              "options": [
+                "Le valider",
+                "Le caster",
+                "L'ignorer",
+                "Le chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "La confiance n'est pas un type.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tss-05-q2"
+            }
+          ],
+          "summary": [
+            "Build TypeScript.",
+            "Données externes non fiables.",
+            "Validation à l'exécution."
+          ]
+        }
+      ]
+    }
+  ]
+}

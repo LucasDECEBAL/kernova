@@ -1,0 +1,401 @@
+{
+  "courseId": "cyber-web-acces",
+  "modules": [
+    {
+      "id": "cyber-web-acces-module",
+      "title": "Cookies et injections",
+      "chapters": [
+        {
+          "id": "cwa-01",
+          "title": "Sécurité des cookies",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les attributs",
+            "Protéger",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "HttpOnly, Secure et SameSite protègent les cookies sensibles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "HttpOnly.",
+                "Secure.",
+                "SameSite."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait HttpOnly ?",
+            "hints": [
+              "Il cache le cookie à JavaScript."
+            ],
+            "solution": "Il interdit la lecture par JavaScript.",
+            "check": {
+              "type": "any",
+              "any": [
+                "httponly"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Secure ?",
+              "options": [
+                "HTTPS uniquement",
+                "Toujours HTTP",
+                "Chiffre le contenu",
+                "Trie"
+              ],
+              "answer": 0,
+              "explanation": "Le transport est protégé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-01-q1"
+            },
+            {
+              "question": "Que limite SameSite ?",
+              "options": [
+                "Les requêtes cross-site",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Les cookies ne partent pas partout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-01-q2"
+            }
+          ],
+          "summary": [
+            "HttpOnly.",
+            "Secure.",
+            "SameSite."
+          ],
+          "nextStep": "Chapitre suivant : « Contrôle d'accès »."
+        },
+        {
+          "id": "cwa-02",
+          "title": "Contrôle d'accès",
+          "duration": 20,
+          "objectives": [
+            "Vérifier les droits",
+            "Contrôler la propriété",
+            "Refuser par défaut"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Chaque accès vérifie l'identité, les droits et la propriété de la ressource."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Propriété.",
+                "Refus par défaut."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier en plus du rôle ?",
+            "hints": [
+              "La propriété."
+            ],
+            "solution": "La propriété de la ressource.",
+            "check": {
+              "type": "any",
+              "any": [
+                "propriete",
+                "propriété"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire par défaut ?",
+              "options": [
+                "Refuser",
+                "Autoriser",
+                "Ignorer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le refus est sûr.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-02-q1"
+            },
+            {
+              "question": "Que fait un contrôle côté client ?",
+              "options": [
+                "Il ne suffit pas",
+                "Il suffit",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-02-q2"
+            }
+          ],
+          "summary": [
+            "Droits.",
+            "Propriété.",
+            "Refus par défaut."
+          ],
+          "nextStep": "Chapitre suivant : « Validation des entrées »."
+        },
+        {
+          "id": "cwa-03",
+          "title": "Validation des entrées",
+          "duration": 20,
+          "objectives": [
+            "Valider la forme",
+            "Refuser tôt",
+            "Échapper selon le contexte"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une entrée se valide par format et se neutralise selon son contexte d'usage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Format.",
+                "Liste blanche.",
+                "Échappement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une entrée invalide ?",
+            "hints": [
+              "La refuser."
+            ],
+            "solution": "La refuser avec un message clair.",
+            "check": {
+              "type": "any",
+              "any": [
+                "refus"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi échapper ?",
+              "options": [
+                "Selon le contexte",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "HTML/SQL/URL diffèrent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-03-q1"
+            },
+            {
+              "question": "Que valider ?",
+              "options": [
+                "La forme et les règles",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont cadrées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-03-q2"
+            }
+          ],
+          "summary": [
+            "Valider.",
+            "Refuser.",
+            "Échapper."
+          ],
+          "nextStep": "Chapitre suivant : « Injection SQL »."
+        },
+        {
+          "id": "cwa-04",
+          "title": "Injection SQL",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Prévenir",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une injection SQL vient de la concaténation d'entrées dans une requête."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Requêtes préparées.",
+                "Paramètres liés.",
+                "Moindre privilège."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment prévenir ?",
+            "hints": [
+              "Requêtes préparées."
+            ],
+            "solution": "Des requêtes préparées avec paramètres liés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "prepare",
+                "parametre",
+                "paramètre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "La validation suffit-elle ?",
+              "options": [
+                "Non, préparer aussi",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La défense est double.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-04-q1"
+            },
+            {
+              "question": "Que limiter en base ?",
+              "options": [
+                "Les droits",
+                "Les logs",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le compte applicatif est restreint.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-04-q2"
+            }
+          ],
+          "summary": [
+            "Injection SQL.",
+            "Requêtes préparées.",
+            "Droits minimaux."
+          ],
+          "nextStep": "Chapitre suivant : « XSS »."
+        },
+        {
+          "id": "cwa-05",
+          "title": "XSS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Échapper",
+            "Éviter innerHTML"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un XSS exécute du script dans le navigateur via du HTML non échappé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Échappement.",
+                "textContent.",
+                "CSP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment éviter ?",
+            "hints": [
+              "Insérer en texte."
+            ],
+            "solution": "Insérer en texte ou échapper le HTML selon le contexte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "textcontent",
+                "echapp",
+                "échapp"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait innerHTML avec une entrée ?",
+              "options": [
+                "Il peut exécuter du script",
+                "Il sécurise",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le risque XSS augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-05-q1"
+            },
+            {
+              "question": "Que limite une CSP ?",
+              "options": [
+                "Les sources de scripts",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Les scripts non autorisés sont bloqués.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwa-05-q2"
+            }
+          ],
+          "summary": [
+            "XSS.",
+            "Échappement.",
+            "CSP."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

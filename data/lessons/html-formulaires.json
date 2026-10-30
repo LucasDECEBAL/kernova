@@ -1,0 +1,430 @@
+{
+  "courseId": "html-formulaires",
+  "modules": [
+    {
+      "id": "html-formulaires-module",
+      "title": "Formulaires et structure",
+      "chapters": [
+        {
+          "id": "htm2-01",
+          "title": "Boutons",
+          "duration": 20,
+          "objectives": [
+            "Distinguer submit, reset et button",
+            "Éviter les boutons sans type",
+            "Comprendre l'accessibilité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un bouton a un type : submit envoie le formulaire, reset le réinitialise, button n'a pas d'action implicite."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<button type=\"submit\">Envoyer</button>\n<button type=\"button\">Aperçu</button>\n<button type=\"reset\">Effacer</button>",
+              "title": "Trois boutons"
+            },
+            {
+              "type": "warning",
+              "text": "Sans type, un bouton dans un formulaire est submit par défaut : un « aperçu » peut envoyer le formulaire par erreur."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir le type",
+            "instructions": "Quel type pour un bouton qui ne doit rien envoyer ?",
+            "hints": [
+              "Il ne doit pas soumettre."
+            ],
+            "solution": "type=\"button\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "button"
+              ],
+              "success": "Correct : type button."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un bouton submit ?",
+              "options": [
+                "Il envoie le formulaire",
+                "Il efface",
+                "Il ferme la page",
+                "Il recharge le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Il déclenche l'envoi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-01-q1"
+            },
+            {
+              "question": "Que fait type=\"reset\" ?",
+              "options": [
+                "Il réinitialise les champs",
+                "Il envoie",
+                "Il supprime le formulaire",
+                "Il crée un lien"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs reviennent à l'état initial.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-01-q2"
+            }
+          ],
+          "summary": [
+            "Toujours préciser le type.",
+            "submit envoie, reset efface.",
+            "button n'a pas d'action."
+          ],
+          "nextStep": "Chapitre suivant : « Éléments sémantiques »."
+        },
+        {
+          "id": "htm2-02",
+          "title": "Éléments sémantiques",
+          "duration": 20,
+          "objectives": [
+            "Choisir header, nav, main, footer",
+            "Structurer un article",
+            "Éviter les div partout"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les éléments sémantiques décrivent le rôle d'une zone : header, nav, main, aside, article, section, footer. Ils aident les lecteurs d'écran et les moteurs."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<header>...</header>\n<nav>...</nav>\n<main>\n  <article>...</article>\n</main>\n<footer>...</footer>",
+              "title": "Page structurée"
+            },
+            {
+              "type": "tip",
+              "text": "Une seule zone main par page ; nav pour les liens de navigation ; article pour un contenu autonome."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la zone",
+            "instructions": "Quel élément pour le contenu principal unique ?",
+            "hints": [
+              "Il est unique par page."
+            ],
+            "solution": "main",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "main"
+              ],
+              "success": "Correct : main."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait nav ?",
+              "options": [
+                "Il regroupe la navigation",
+                "Il crée un tableau",
+                "Il affiche une image",
+                "Il envoie un formulaire"
+              ],
+              "answer": 0,
+              "explanation": "Il s'agit des liens de navigation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-02-q1"
+            },
+            {
+              "question": "Combien de main par page ?",
+              "options": [
+                "Un seul",
+                "Autant que voulu",
+                "Deux",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu principal est unique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-02-q2"
+            }
+          ],
+          "summary": [
+            "La sémantique décrit les rôles.",
+            "Un seul main.",
+            "article pour un contenu autonome."
+          ],
+          "nextStep": "Chapitre suivant : « Commentaires HTML »."
+        },
+        {
+          "id": "htm2-03",
+          "title": "Commentaires HTML",
+          "duration": 20,
+          "objectives": [
+            "Écrire un commentaire",
+            "Éviter les commentaires inutiles",
+            "Ne pas y mettre de secrets"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un commentaire s'écrit entre <!-- et -->. Il sert à documenter une intention ou à désactiver temporairement du code."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<!-- Navigation principale : généré par le serveur -->\n<nav>...</nav>",
+              "title": "Commentaire utile"
+            },
+            {
+              "type": "warning",
+              "text": "Les commentaires sont visibles dans le code source : n'y placez jamais de clé ou de mot de passe."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire un commentaire",
+            "instructions": "Quelle syntaxe pour un commentaire HTML ?",
+            "hints": [
+              "Deux tirets et des chevrons."
+            ],
+            "solution": "<!-- commentaire -->",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "<!--"
+              ],
+              "success": "Correct : <!-- -->."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un commentaire HTML est-il visible par l'utilisateur ?",
+              "options": [
+                "Dans le code source, oui",
+                "Dans la page, oui",
+                "Nulle part",
+                "Dans la console seulement"
+              ],
+              "answer": 0,
+              "explanation": "Il reste dans le document envoyé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-03-q1"
+            },
+            {
+              "question": "Peut-on y stocker une clé ?",
+              "options": [
+                "Non, jamais",
+                "Oui",
+                "Seulement en base64",
+                "Seulement en production"
+              ],
+              "answer": 0,
+              "explanation": "Le code source est public.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-03-q2"
+            }
+          ],
+          "summary": [
+            "Commentaire = intention.",
+            "Visible dans le code source.",
+            "Aucun secret dedans."
+          ],
+          "nextStep": "Chapitre suivant : « Entités HTML »."
+        },
+        {
+          "id": "htm2-04",
+          "title": "Entités HTML",
+          "duration": 20,
+          "objectives": [
+            "Écrire un caractère réservé",
+            "Connaître les entités courantes",
+            "Éviter les entités inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Certains caractères sont réservés par le HTML : <, >, &, \". Les entités permettent de les afficher en texte."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Caractère",
+                "Entité"
+              ],
+              "rows": [
+                [
+                  "<",
+                  "&lt;"
+                ],
+                [
+                  ">",
+                  "&gt;"
+                ],
+                [
+                  "&",
+                  "&amp;"
+                ],
+                [
+                  "\"",
+                  "&quot;"
+                ],
+                [
+                  "©",
+                  "&copy;"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "En UTF-8, les accents s'écrivent directement ; les entités restent utiles pour les symboles réservés."
+            }
+          ],
+          "exercise": {
+            "title": "Afficher un chevron",
+            "instructions": "Quelle entité affiche le caractère < ?",
+            "hints": [
+              "lt signifie less than."
+            ],
+            "solution": "&lt;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "&lt;"
+              ],
+              "success": "Correct : &lt;."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi échapper & ?",
+              "options": [
+                "Il commence une entité",
+                "Il est interdit",
+                "Il casse le CSS",
+                "Il ferme une balise"
+              ],
+              "answer": 0,
+              "explanation": "Sinon l'analyseur cherche une entité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-04-q1"
+            },
+            {
+              "question": "Que produit &copy; ?",
+              "options": [
+                "©",
+                "®",
+                "™",
+                "€"
+              ],
+              "answer": 0,
+              "explanation": "C'est le symbole du copyright.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-04-q2"
+            }
+          ],
+          "summary": [
+            "Échapper <, >, &, \".",
+            "Entités courantes.",
+            "UTF-8 pour les accents."
+          ],
+          "nextStep": "Chapitre suivant : « Organiser une page web »."
+        },
+        {
+          "id": "htm2-05",
+          "title": "Organiser une page web",
+          "duration": 20,
+          "objectives": [
+            "Ordonner les zones",
+            "Placer les scripts correctement",
+            "Préparer l'évolution"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une page s'organise de haut en bas : en-tête, navigation, contenu principal, compléments, pied de page. Les scripts se chargent selon leur besoin."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<!doctype html>\n<html lang=\"fr\">\n<head><meta charset=\"utf-8\"><title>...</title></head>\n<body>\n  <header>...</header>\n  <nav>...</nav>\n  <main>...</main>\n  <footer>...</footer>\n</body>\n</html>",
+              "title": "Squelette"
+            },
+            {
+              "type": "warning",
+              "text": "Un script bloquant dans le head retarde l'affichage : utilisez defer ou placez-le en fin de body."
+            }
+          ],
+          "exercise": {
+            "title": "Placer un script",
+            "instructions": "Où placer un script qui a besoin du DOM, sans bloquer l'affichage ?",
+            "hints": [
+              "Le DOM doit être prêt."
+            ],
+            "solution": "En fin de body, ou dans le head avec defer.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "defer",
+                "body"
+              ],
+              "success": "Correct : fin de body ou defer."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait defer ?",
+              "options": [
+                "Il exécute après l'analyse du HTML",
+                "Il supprime le script",
+                "Il le rend synchrone",
+                "Il le chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le DOM est prêt à l'exécution.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-05-q1"
+            },
+            {
+              "question": "Où se trouve le contenu visible ?",
+              "options": [
+                "Dans body",
+                "Dans head",
+                "Dans title",
+                "Dans meta"
+              ],
+              "answer": 0,
+              "explanation": "head contient les métadonnées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm2-05-q2"
+            }
+          ],
+          "summary": [
+            "Zones ordonnées.",
+            "Scripts avec defer.",
+            "Un seul main."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

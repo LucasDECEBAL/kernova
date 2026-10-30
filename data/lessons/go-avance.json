@@ -1,0 +1,399 @@
+{
+  "courseId": "go-avance",
+  "modules": [
+    {
+      "id": "go-avance-module",
+      "title": "Go : interfaces et concurrence",
+      "chapters": [
+        {
+          "id": "go2-01",
+          "title": "Interfaces",
+          "duration": 20,
+          "objectives": [
+            "Définir une interface",
+            "Implémenter implicitement",
+            "Utiliser le polymorphisme"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une interface Go décrit des méthodes ; un type l'implémente implicitement en les définissant."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Aucun mot-clé implements.",
+                "Une interface vide any accepte tout.",
+                "Préférez les interfaces petites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Implémenter",
+            "instructions": "Quelle méthode suffit pour l'interface Forme { Aire() float64 } ?",
+            "hints": [
+              "La signature exacte.",
+              "Le type doit définir Aire."
+            ],
+            "solution": "Définir func (t MonType) Aire() float64.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "aire()"
+              ],
+              "success": "Correct : méthode Aire."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Comment un type implémente-t-il une interface ?",
+              "options": [
+                "Implicitement, par ses méthodes",
+                "Avec implements",
+                "Avec extends",
+                "Par héritage"
+              ],
+              "answer": 0,
+              "explanation": "L'implémentation est structurelle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-01-q1"
+            },
+            {
+              "question": "Que vaut une interface vide ?",
+              "options": [
+                "Elle accepte tout type",
+                "Elle n'accepte rien",
+                "Elle est nulle",
+                "Elle est générique"
+              ],
+              "answer": 0,
+              "explanation": "Toute valeur la satisfait.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-01-q2"
+            }
+          ],
+          "summary": [
+            "Interfaces implicites.",
+            "Petites interfaces.",
+            "Polymorphisme."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des erreurs »."
+        },
+        {
+          "id": "go2-02",
+          "title": "Gestion des erreurs",
+          "duration": 20,
+          "objectives": [
+            "Retourner error",
+            "Envelopper avec %w",
+            "Vérifier avec errors.Is"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Go retourne les erreurs comme valeur. fmt.Errorf(\"...: %w\", err) conserve la cause, inspectable avec errors.Is."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ne jamais ignorer une erreur sans raison.",
+                "Une erreur est une valeur.",
+                "Les messages ajoutent du contexte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Envelopper",
+            "instructions": "Comment ajouter du contexte en gardant la cause ?",
+            "hints": [
+              "%w dans fmt.Errorf.",
+              "errors.Is pour vérifier."
+            ],
+            "solution": "fmt.Errorf(\"lecture: %w\", err)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "%w",
+                "fmt.errorf"
+              ],
+              "success": "Correct : %w."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait %w ?",
+              "options": [
+                "Il enveloppe l'erreur",
+                "Il l'ignore",
+                "Il la trie",
+                "Il l'affiche"
+              ],
+              "answer": 0,
+              "explanation": "La chaîne est conservée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-02-q1"
+            },
+            {
+              "question": "Que vérifie errors.Is ?",
+              "options": [
+                "La présence d'une erreur dans la chaîne",
+                "Le type exact",
+                "Le message",
+                "Le code HTTP"
+              ],
+              "answer": 0,
+              "explanation": "La cause est comparée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-02-q2"
+            }
+          ],
+          "summary": [
+            "error = valeur.",
+            "%w pour envelopper.",
+            "errors.Is."
+          ],
+          "nextStep": "Chapitre suivant : « Packages »."
+        },
+        {
+          "id": "go2-03",
+          "title": "Packages",
+          "duration": 20,
+          "objectives": [
+            "Organiser le code",
+            "Exporter avec majuscule",
+            "Éviter les cycles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un package regroupe des fichiers ; un identifiant exporté commence par une majuscule."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un dossier = un package.",
+                "Les noms exportés sont publics.",
+                "Les cycles d'import sont interdits."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Exporter",
+            "instructions": "Comment rendre une fonction visible hors du package ?",
+            "hints": [
+              "La casse compte."
+            ],
+            "solution": "Commencer son nom par une majuscule : Calculer.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "majuscule"
+              ],
+              "success": "Correct : majuscule initiale."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une majuscule initiale ?",
+              "options": [
+                "Elle exporte l'identifiant",
+                "Elle le cache",
+                "Elle le trie",
+                "Elle le chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La visibilité dépend de la casse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-03-q1"
+            },
+            {
+              "question": "Les cycles d'import sont-ils permis ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Avec go mod"
+              ],
+              "answer": 0,
+              "explanation": "Le compilateur refuse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-03-q2"
+            }
+          ],
+          "summary": [
+            "Package par dossier.",
+            "Majuscule = export.",
+            "Pas de cycle."
+          ],
+          "nextStep": "Chapitre suivant : « Goroutines »."
+        },
+        {
+          "id": "go2-04",
+          "title": "Goroutines",
+          "duration": 20,
+          "objectives": [
+            "Lancer une goroutine",
+            "Synchroniser avec WaitGroup",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "go f() lance une goroutine. sync.WaitGroup attend la fin d'un groupe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "La goroutine principale doit attendre.",
+                "Une goroutine sans fin fuit.",
+                "Protégez les accès partagés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Attendre",
+            "instructions": "Quel outil attend un groupe de goroutines ?",
+            "hints": [
+              "Un groupe d'attente."
+            ],
+            "solution": "sync.WaitGroup (Add, Done, Wait)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "waitgroup"
+              ],
+              "success": "Correct : WaitGroup."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait go f() ?",
+              "options": [
+                "Il lance f en goroutine",
+                "Il bloque",
+                "Il attend",
+                "Il copie"
+              ],
+              "answer": 0,
+              "explanation": "L'exécution est concurrente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-04-q1"
+            },
+            {
+              "question": "Que fait Wait ?",
+              "options": [
+                "Il attend la fin",
+                "Il lance",
+                "Il annule",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le groupe se termine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-04-q2"
+            }
+          ],
+          "summary": [
+            "go pour lancer.",
+            "WaitGroup pour attendre.",
+            "Éviter les fuites."
+          ],
+          "nextStep": "Chapitre suivant : « Channels »."
+        },
+        {
+          "id": "go2-05",
+          "title": "Channels",
+          "duration": 20,
+          "objectives": [
+            "Créer un channel",
+            "Envoyer et recevoir",
+            "Fermer proprement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un channel transmet des valeurs entre goroutines avec <-. Un channel non tamponné synchronise l'échange."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fermer un channel signale la fin.",
+                "Ne fermez que l'émetteur.",
+                "Un receive sur channel fermé renvoie zéro."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Recevoir",
+            "instructions": "Comment recevoir une valeur de c ?",
+            "hints": [
+              "L'opérateur flèche."
+            ],
+            "solution": "v := <-c",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "<-c"
+              ],
+              "success": "Correct : <-c."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un channel non tamponné ?",
+              "options": [
+                "Il synchronise émetteur et récepteur",
+                "Il stocke tout",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'échange attend.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-05-q1"
+            },
+            {
+              "question": "Qui doit fermer un channel ?",
+              "options": [
+                "L'émetteur",
+                "Le récepteur",
+                "Les deux",
+                "Personne"
+              ],
+              "answer": 0,
+              "explanation": "Fermer côté émetteur évite les paniques.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "go2-05-q2"
+            }
+          ],
+          "summary": [
+            "<- pour échanger.",
+            "Fermer côté émetteur.",
+            "Synchronisation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

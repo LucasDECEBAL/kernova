@@ -1,0 +1,439 @@
+{
+  "courseId": "github-pro",
+  "modules": [
+    {
+      "id": "github-pro-module",
+      "title": "GitHub : licences et contribution",
+      "chapters": [
+        {
+          "id": "git6-01",
+          "title": "Comprendre les licences logicielles",
+          "duration": 20,
+          "objectives": [
+            "Distinguer MIT, Apache et GPL",
+            "Choisir une licence",
+            "Respecter les obligations"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une licence définit ce que les autres peuvent faire avec le code. MIT est permissive, Apache ajoute une clause de brevets, GPL impose de partager les dérivés."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Licence",
+                "Usage",
+                "Obligation"
+              ],
+              "rows": [
+                [
+                  "MIT",
+                  "très permissive",
+                  "conserver la notice"
+                ],
+                [
+                  "Apache 2.0",
+                  "permissive",
+                  "notice et brevets"
+                ],
+                [
+                  "GPL",
+                  "copyleft",
+                  "partager le dérivé sous GPL"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Sans licence, le code reste sous droit d'auteur : personne ne peut légalement le réutiliser, même s'il est public."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir une licence",
+            "instructions": "Vous voulez que tout le monde puisse réutiliser votre bibliothèque, y compris dans un produit fermé. Quelle famille ?",
+            "hints": [
+              "Il faut une licence permissive."
+            ],
+            "solution": "Une licence permissive, par exemple MIT ou Apache 2.0.",
+            "check": {
+              "type": "any",
+              "any": [
+                "permissive",
+                "mit",
+                "apache"
+              ],
+              "success": "Correct : une licence permissive."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet MIT ?",
+              "options": [
+                "Réutilisation large avec notice",
+                "Interdiction commerciale",
+                "Obligation de GPL",
+                "Aucune utilisation"
+              ],
+              "answer": 0,
+              "explanation": "MIT est permissive.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-01-q1"
+            },
+            {
+              "question": "Que fait le copyleft ?",
+              "options": [
+                "Il impose de partager les dérivés",
+                "Il interdit la modification",
+                "Il supprime la notice",
+                "Il rend le code secret"
+              ],
+              "answer": 0,
+              "explanation": "La GPL en est l'exemple.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-01-q2"
+            }
+          ],
+          "summary": [
+            "La licence définit les droits.",
+            "Permissive ou copyleft.",
+            "Sans licence, pas de réutilisation légale."
+          ],
+          "nextStep": "Chapitre suivant : « Contribuer à un projet open source »."
+        },
+        {
+          "id": "git6-02",
+          "title": "Contribuer à un projet open source",
+          "duration": 20,
+          "objectives": [
+            "Lire les règles de contribution",
+            "Préparer un fork et une branche",
+            "Proposer une PR utile"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Contribuer commence par lire CONTRIBUTING, le code de conduite et les issues ouvertes. Ensuite : fork, branche, tests, PR ciblée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Choisir une issue adaptée à votre niveau.",
+                "Respecter le style et les tests du projet.",
+                "Une PR = un changement.",
+                "Répondre aux retours avec des commits clairs."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une petite correction de documentation bien faite ouvre souvent la porte à des contributions plus importantes."
+            }
+          ],
+          "exercise": {
+            "title": "Première étape",
+            "instructions": "Que lire avant de proposer une contribution ?",
+            "hints": [
+              "Les règles du projet."
+            ],
+            "solution": "CONTRIBUTING, le code de conduite et les consignes de test.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "contributing"
+              ],
+              "success": "Correct : guide de contribution."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un fork ?",
+              "options": [
+                "Une copie personnelle du dépôt",
+                "Une branche locale",
+                "Un tag",
+                "Un secret"
+              ],
+              "answer": 0,
+              "explanation": "On travaille sur sa copie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-02-q1"
+            },
+            {
+              "question": "Comment proposer un changement ?",
+              "options": [
+                "Par une pull request ciblée",
+                "Par un e-mail au serveur",
+                "En poussant sur main",
+                "En supprimant le dépôt"
+              ],
+              "answer": 0,
+              "explanation": "La PR passe par la revue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-02-q2"
+            }
+          ],
+          "summary": [
+            "Lire les règles avant tout.",
+            "Fork, branche, tests, PR.",
+            "Un changement par PR."
+          ],
+          "nextStep": "Chapitre suivant : « Découvrir Visual Studio Code »."
+        },
+        {
+          "id": "git6-03",
+          "title": "Découvrir Visual Studio Code",
+          "duration": 20,
+          "objectives": [
+            "Utiliser la palette de commandes",
+            "Naviguer dans un projet",
+            "Configurer l'espace de travail"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "VS Code combine éditeur, terminal, débogueur et gestion Git. La palette de commandes (Ctrl+Maj+P) donne accès à toutes les actions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ctrl+P : ouvrir un fichier par nom.",
+                "Ctrl+Maj+F : rechercher dans le projet.",
+                "Ctrl+` : terminal intégré.",
+                "F2 : renommer un symbole."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Apprenez trois raccourcis et vous gagnez plus de temps qu'avec dix extensions."
+            }
+          ],
+          "exercise": {
+            "title": "Naviguer",
+            "instructions": "Quel raccourci ouvre un fichier par son nom ?",
+            "hints": [
+              "C'est la recherche rapide de fichiers."
+            ],
+            "solution": "Ctrl+P",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ctrl+p",
+                "ctrl p"
+              ],
+              "success": "Correct : Ctrl+P."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert la palette de commandes ?",
+              "options": [
+                "À exécuter toutes les actions",
+                "À installer le système",
+                "À gérer le réseau",
+                "À compresser"
+              ],
+              "answer": 0,
+              "explanation": "Elle centralise les commandes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-03-q1"
+            },
+            {
+              "question": "Que fait F2 ?",
+              "options": [
+                "Renommer un symbole",
+                "Formater",
+                "Fermer le fichier",
+                "Ouvrir le terminal"
+              ],
+              "answer": 0,
+              "explanation": "Renommage symbolique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-03-q2"
+            }
+          ],
+          "summary": [
+            "Palette pour toutes les actions.",
+            "Ctrl+P pour ouvrir un fichier.",
+            "Raccourcis avant extensions."
+          ],
+          "nextStep": "Chapitre suivant : « Configurer un environnement de développement »."
+        },
+        {
+          "id": "git6-04",
+          "title": "Configurer un environnement de développement",
+          "duration": 20,
+          "objectives": [
+            "Fixer les versions",
+            "Partager la configuration",
+            "Reproduire l'environnement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un environnement reproductible fixe les versions du langage, des outils et des dépendances. Il évite le « ça marche chez moi »."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Indiquer la version du langage (.nvmrc, .python-version).",
+                "Verrouiller les dépendances.",
+                "Documenter les variables d'environnement attendues.",
+                "Automatiser l'installation dans un conteneur ou un devcontainer."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un fichier .env.example documente les variables attendues, mais ne doit jamais contenir de vraie clé."
+            }
+          ],
+          "exercise": {
+            "title": "Reproduire",
+            "instructions": "Quel fichier indique la version de Node attendue ?",
+            "hints": [
+              "Un fichier dédié à la version."
+            ],
+            "solution": ".nvmrc (ou le champ engines de package.json).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "nvmrc",
+                "engines"
+              ],
+              "success": "Correct : .nvmrc ou engines."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi fixer les versions ?",
+              "options": [
+                "Pour reproduire le même environnement",
+                "Pour accélérer le réseau",
+                "Pour supprimer les tests",
+                "Pour éviter Git"
+              ],
+              "answer": 0,
+              "explanation": "Les écarts de version causent des bugs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-04-q1"
+            },
+            {
+              "question": "Que contient .env.example ?",
+              "options": [
+                "Les variables attendues, sans secrets",
+                "Les vraies clés",
+                "Le code source",
+                "Les tests"
+              ],
+              "answer": 0,
+              "explanation": "C'est un modèle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-04-q2"
+            }
+          ],
+          "summary": [
+            "Versions fixées et documentées.",
+            "Dépendances verrouillées.",
+            "Modèle .env sans secrets."
+          ],
+          "nextStep": "Chapitre suivant : « Utiliser un terminal intégré »."
+        },
+        {
+          "id": "git6-05",
+          "title": "Utiliser un terminal intégré",
+          "duration": 20,
+          "objectives": [
+            "Ouvrir et gérer des terminaux",
+            "Lancer des tâches",
+            "Choisir un profil de shell"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le terminal intégré évite de quitter l'éditeur. On peut lancer des tâches, garder plusieurs sessions et choisir le shell."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "# Ouvrir : Ctrl+`\nnpm test\nnpm run lint\n# Tâches : Terminal > Exécuter la tâche",
+              "title": "Terminal intégré"
+            },
+            {
+              "type": "tip",
+              "text": "Une tâche d'éditeur documente les commandes du projet : elle sert aussi de rappel pour les nouveaux arrivants."
+            }
+          ],
+          "exercise": {
+            "title": "Lancer les tests",
+            "instructions": "Quelle commande lancer depuis le terminal intégré ?",
+            "hints": [
+              "La commande de test du projet."
+            ],
+            "solution": "npm test (ou la commande définie dans le projet).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "npm test",
+                "test"
+              ],
+              "success": "Correct : commande de test."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel raccourci ouvre le terminal intégré ?",
+              "options": [
+                "Ctrl+`",
+                "Ctrl+P",
+                "Ctrl+S",
+                "Ctrl+F"
+              ],
+              "answer": 0,
+              "explanation": "Le terminal s'ouvre en bas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-05-q1"
+            },
+            {
+              "question": "À quoi sert une tâche ?",
+              "options": [
+                "À automatiser une commande du projet",
+                "À créer un dépôt",
+                "À signer un commit",
+                "À changer la licence"
+              ],
+              "answer": 0,
+              "explanation": "Elle est réutilisable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git6-05-q2"
+            }
+          ],
+          "summary": [
+            "Terminal intégré et tâches.",
+            "Commandes du projet documentées.",
+            "Plusieurs sessions possibles."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

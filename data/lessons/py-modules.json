@@ -1,0 +1,407 @@
+{
+  "courseId": "py-modules",
+  "modules": [
+    {
+      "id": "py-modules-module",
+      "title": "Erreurs et modules",
+      "chapters": [
+        {
+          "id": "pye-01",
+          "title": "Gestion des exceptions",
+          "duration": 20,
+          "objectives": [
+            "Utiliser try/except",
+            "Attraper des erreurs précises",
+            "Relancer si nécessaire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "try protège un bloc ; except cible une erreur précise. Ne capturez pas Exception sans raison : vous masqueriez des bugs."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "try:\n    n = int(saisie)\nexcept ValueError:\n    print(\"Nombre invalide\")",
+              "title": "ValueError"
+            },
+            {
+              "type": "warning",
+              "text": "Un except: nu attrape aussi les interruptions : précisez le type d'erreur."
+            }
+          ],
+          "exercise": {
+            "title": "Cibler",
+            "instructions": "Quelle exception pour int(\"abc\") ?",
+            "hints": [
+              "Une erreur de valeur."
+            ],
+            "solution": "ValueError",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "valueerror"
+              ],
+              "success": "Correct : ValueError."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait except ValueError ?",
+              "options": [
+                "Il capture cette erreur précise",
+                "Toutes",
+                "Aucune",
+                "Il relance"
+              ],
+              "answer": 0,
+              "explanation": "Le type est ciblé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter except: seul ?",
+              "options": [
+                "Il masque des erreurs inattendues",
+                "Il ralentit",
+                "Il casse le CSS",
+                "Il bloque le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le diagnostic devient difficile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-01-q2"
+            }
+          ],
+          "summary": [
+            "try/except ciblé.",
+            "Pas de except nu.",
+            "Relancer si non géré."
+          ],
+          "nextStep": "Chapitre suivant : « Modules »."
+        },
+        {
+          "id": "pye-02",
+          "title": "Modules",
+          "duration": 20,
+          "objectives": [
+            "Importer un module",
+            "Créer un module",
+            "Éviter les effets de bord"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un module est un fichier .py importable. Le bloc if __name__ == \"__main__\" réserve l'exécution au lancement direct."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "# outils.py\ndef doubler(n):\n    return n * 2\n\n# app.py\nfrom outils import doubler",
+              "title": "Module"
+            },
+            {
+              "type": "tip",
+              "text": "Un module ne doit rien exécuter à l'import en dehors de définitions : les effets de bord surprennent."
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Quelle condition réserve l'exécution au script direct ?",
+            "hints": [
+              "Une comparaison de __name__."
+            ],
+            "solution": "if __name__ == \"__main__\":",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "__name__",
+                "__main__"
+              ],
+              "success": "Correct : __name__ == \"__main__\"."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un module ?",
+              "options": [
+                "Un fichier Python importable",
+                "Un dossier",
+                "Un type",
+                "Une exception"
+              ],
+              "answer": 0,
+              "explanation": "Il expose des noms.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-02-q1"
+            },
+            {
+              "question": "Que fait from x import y ?",
+              "options": [
+                "Il importe un nom précis",
+                "Il exécute tout",
+                "Il crée un fichier",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Seul y est lié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-02-q2"
+            }
+          ],
+          "summary": [
+            "Module = fichier.",
+            "__main__ guard.",
+            "Pas d'effet à l'import."
+          ],
+          "nextStep": "Chapitre suivant : « Utilisation de pip »."
+        },
+        {
+          "id": "pye-03",
+          "title": "Utilisation de pip",
+          "duration": 20,
+          "objectives": [
+            "Installer un paquet",
+            "Voir les dépendances",
+            "Épingler les versions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pip installe des paquets depuis PyPI. pip freeze liste les versions installées ; requirements.txt fige un environnement."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "python -m pip install requests\npython -m pip freeze > requirements.txt\npython -m pip install -r requirements.txt",
+              "title": "pip"
+            },
+            {
+              "type": "warning",
+              "text": "Installer globalement mélange les projets : utilisez un environnement virtuel par projet."
+            }
+          ],
+          "exercise": {
+            "title": "Figer",
+            "instructions": "Quelle commande écrit les versions installées ?",
+            "hints": [
+              "Une commande de gel."
+            ],
+            "solution": "python -m pip freeze > requirements.txt",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "freeze"
+              ],
+              "success": "Correct : pip freeze."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait requirements.txt ?",
+              "options": [
+                "Il liste les dépendances",
+                "Il exécute le code",
+                "Il crée un venv",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'installation est reproductible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-03-q1"
+            },
+            {
+              "question": "Pourquoi un environnement virtuel ?",
+              "options": [
+                "Isoler les dépendances",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Chaque projet reste isolé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-03-q2"
+            }
+          ],
+          "summary": [
+            "pip install.",
+            "freeze/requirements.",
+            "Un venv par projet."
+          ],
+          "nextStep": "Chapitre suivant : « Environnements virtuels »."
+        },
+        {
+          "id": "pye-04",
+          "title": "Environnements virtuels",
+          "duration": 20,
+          "objectives": [
+            "Créer un venv",
+            "L'activer",
+            "Comprendre l'isolation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "python -m venv .venv crée un environnement isolé. L'activation diffère selon le système ; le prompt indique l'environnement actif."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "python -m venv .venv\nsource .venv/bin/activate      # Linux/macOS\n.venv\\Scripts\\activate         # Windows",
+              "title": "venv"
+            },
+            {
+              "type": "warning",
+              "text": "Ne versionnez pas le dossier .venv : il est volumineux et propre à la machine."
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quelle commande crée un environnement .venv ?",
+            "hints": [
+              "Le module venv."
+            ],
+            "solution": "python -m venv .venv",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "venv"
+              ],
+              "success": "Correct : python -m venv."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert un venv ?",
+              "options": [
+                "À isoler les dépendances",
+                "À compiler",
+                "À chiffrer",
+                "À trier"
+              ],
+              "answer": 0,
+              "explanation": "Les versions ne se mélangent pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-04-q1"
+            },
+            {
+              "question": "Faut-il versionner .venv ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en production",
+                "Seulement sous Windows"
+              ],
+              "answer": 0,
+              "explanation": "Il se recrée depuis requirements.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-04-q2"
+            }
+          ],
+          "summary": [
+            "venv par projet.",
+            "Activation selon l'OS.",
+            "Ne pas versionner."
+          ],
+          "nextStep": "Chapitre suivant : « Écriture de scripts »."
+        },
+        {
+          "id": "pye-05",
+          "title": "Écriture de scripts",
+          "duration": 20,
+          "objectives": [
+            "Structurer un script",
+            "Lire les arguments",
+            "Gérer le code de sortie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script lisible a un main(), des fonctions testables et un code de sortie explicite. argparse gère les options."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import argparse\n\ndef main() -> int:\n    parser = argparse.ArgumentParser()\n    parser.add_argument(\"--entree\", required=True)\n    args = parser.parse_args()\n    return 0\n\nif __name__ == \"__main__\":\n    raise SystemExit(main())",
+              "title": "Script"
+            },
+            {
+              "type": "tip",
+              "text": "SystemExit(main()) transmet le code de retour au shell : 0 succès, non nul échec."
+            }
+          ],
+          "exercise": {
+            "title": "Sortir",
+            "instructions": "Quel code renvoyer en cas de succès ?",
+            "hints": [
+              "Zéro."
+            ],
+            "solution": "0",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "0"
+              ],
+              "success": "Correct : 0."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait argparse ?",
+              "options": [
+                "Il analyse les arguments",
+                "Il teste",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les options sont déclarées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-05-q1"
+            },
+            {
+              "question": "Que signifie un code non nul ?",
+              "options": [
+                "Un échec",
+                "Un succès",
+                "Un avertissement",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Le shell peut réagir.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pye-05-q2"
+            }
+          ],
+          "summary": [
+            "main() et sortie explicite.",
+            "argparse.",
+            "0 = succès."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

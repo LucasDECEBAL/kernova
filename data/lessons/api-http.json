@@ -1,0 +1,398 @@
+{
+  "courseId": "api-http",
+  "modules": [
+    {
+      "id": "api-http-module",
+      "title": "HTTP et conception",
+      "chapters": [
+        {
+          "id": "apih-01",
+          "title": "En-têtes HTTP",
+          "duration": 20,
+          "objectives": [
+            "Lire les en-têtes",
+            "Choisir les bons en-têtes",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les en-têtes transportent métadonnées, contenu, authentification et cache."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Content-Type décrit le corps.",
+                "Authorization porte le jeton.",
+                "Cache-Control pilote le cache."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel en-tête décrit le type du corps ?",
+            "hints": [
+              "Il indique le format."
+            ],
+            "solution": "Content-Type",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "content-type"
+              ],
+              "success": "Correct : Content-Type."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que porte Authorization ?",
+              "options": [
+                "Les identifiants ou le jeton",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est authentifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-01-q1"
+            },
+            {
+              "question": "Que fait Cache-Control ?",
+              "options": [
+                "Il pilote la mise en cache",
+                "Il chiffre",
+                "Il trie",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Les réponses sont réutilisées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-01-q2"
+            }
+          ],
+          "summary": [
+            "En-têtes = métadonnées.",
+            "Content-Type.",
+            "Authorization."
+          ],
+          "nextStep": "Chapitre suivant : « Cookies et sessions »."
+        },
+        {
+          "id": "apih-02",
+          "title": "Cookies et sessions",
+          "duration": 20,
+          "objectives": [
+            "Comprendre l'état",
+            "Sécuriser un cookie",
+            "Gérer l'expiration"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "HTTP est sans état : cookies et sessions conservent un contexte, avec des risques de sécurité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "HttpOnly, Secure, SameSite.",
+                "Session côté serveur.",
+                "Expiration et rotation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Sécuriser",
+            "instructions": "Quel attribut cache un cookie à JavaScript ?",
+            "hints": [
+              "Un attribut serveur."
+            ],
+            "solution": "HttpOnly",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "httponly"
+              ],
+              "success": "Correct : HttpOnly."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où vit une session ?",
+              "options": [
+                "Côté serveur",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Dans le disque client"
+              ],
+              "answer": 0,
+              "explanation": "Seul l'identifiant circule.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-02-q1"
+            },
+            {
+              "question": "Que limite SameSite ?",
+              "options": [
+                "Les requêtes cross-site",
+                "La taille",
+                "Le chiffrement",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les cookies ne partent pas partout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-02-q2"
+            }
+          ],
+          "summary": [
+            "Sans état + sessions.",
+            "HttpOnly/Secure.",
+            "SameSite."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction aux API »."
+        },
+        {
+          "id": "apih-03",
+          "title": "Introduction aux API",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un contrat",
+            "Échanger en JSON",
+            "Rester sans état"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une API expose des opérations par un contrat stable : entrées, sorties, erreurs, version."
+            },
+            {
+              "type": "list",
+              "items": [
+                "JSON courant.",
+                "Erreurs normalisées.",
+                "Pas d'état de session obligatoire."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Décrire",
+            "instructions": "Que doit définir un contrat d'API ?",
+            "hints": [
+              "Entrées, sorties, erreurs."
+            ],
+            "solution": "Les entrées, les sorties, les codes d'erreur et la version.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sortie",
+                "erreur"
+              ],
+              "success": "Correct : entrées/sorties/erreurs."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel format courant ?",
+              "options": [
+                "JSON",
+                "PDF",
+                "MP3",
+                "ZIP"
+              ],
+              "answer": 0,
+              "explanation": "Lisible et standard.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-03-q1"
+            },
+            {
+              "question": "Pourquoi versionner ?",
+              "options": [
+                "Faire évoluer sans casser",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les clients restent compatibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-03-q2"
+            }
+          ],
+          "summary": [
+            "API = contrat.",
+            "JSON.",
+            "Versionner."
+          ],
+          "nextStep": "Chapitre suivant : « Concevoir une API REST »."
+        },
+        {
+          "id": "apih-04",
+          "title": "Concevoir une API REST",
+          "duration": 20,
+          "objectives": [
+            "Nommer les ressources",
+            "Choisir les verbes",
+            "Utiliser les statuts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "REST modélise des ressources et utilise les méthodes HTTP et les codes de statut."
+            },
+            {
+              "type": "list",
+              "items": [
+                "GET lire, POST créer, PATCH modifier, DELETE supprimer.",
+                "Ressources au pluriel.",
+                "201 création, 204 suppression."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quel statut après une création ?",
+            "hints": [
+              "Une ressource a été créée."
+            ],
+            "solution": "201 Created",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "201"
+              ],
+              "success": "Correct : 201."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle méthode pour modifier partiellement ?",
+              "options": [
+                "PATCH",
+                "PUT",
+                "GET",
+                "DELETE"
+              ],
+              "answer": 0,
+              "explanation": "Seuls les champs fournis changent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-04-q1"
+            },
+            {
+              "question": "Quel statut pour une suppression sans corps ?",
+              "options": [
+                "204",
+                "200",
+                "201",
+                "404"
+              ],
+              "answer": 0,
+              "explanation": "No Content.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-04-q2"
+            }
+          ],
+          "summary": [
+            "Ressources + verbes.",
+            "Statuts explicites.",
+            "PATCH partiel."
+          ],
+          "nextStep": "Chapitre suivant : « Routage »."
+        },
+        {
+          "id": "apih-05",
+          "title": "Routage",
+          "duration": 20,
+          "objectives": [
+            "Déclarer des routes",
+            "Lire les paramètres",
+            "Éviter les collisions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une route associe méthode et chemin ; les paramètres nommés évitent les chemins rigides."
+            },
+            {
+              "type": "list",
+              "items": [
+                "/taches/:id.",
+                "Ordre des routes.",
+                "Version dans le chemin si nécessaire."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Comment lire l'identifiant dans /taches/42 ?",
+            "hints": [
+              "Un paramètre de route."
+            ],
+            "solution": "Le paramètre id vaut \"42\".",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "id",
+                "param"
+              ],
+              "success": "Correct : paramètre id."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un paramètre de route ?",
+              "options": [
+                "Il capture un segment",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est dynamique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-05-q1"
+            },
+            {
+              "question": "Pourquoi ordonner les routes ?",
+              "options": [
+                "Éviter les collisions",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La première correspondance gagne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "apih-05-q2"
+            }
+          ],
+          "summary": [
+            "Routes et paramètres.",
+            "Ordre.",
+            "Version."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

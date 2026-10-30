@@ -1,0 +1,408 @@
+{
+  "courseId": "css-avance",
+  "modules": [
+    {
+      "id": "css-avance-module",
+      "title": "Animations et thèmes",
+      "chapters": [
+        {
+          "id": "cssav-01",
+          "title": "Transformations avancées",
+          "duration": 20,
+          "objectives": [
+            "Combiner plusieurs transformations",
+            "Animer avec transform",
+            "Éviter les animations coûteuses"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Plusieurs fonctions transform se combinent dans l'ordre écrit : translate puis rotate n'équivaut pas à rotate puis translate."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".carte:hover { transform: translateY(-4px) rotate(-0.5deg); }\n.carte { transition: transform 160ms ease; }",
+              "title": "Combinaison"
+            },
+            {
+              "type": "warning",
+              "text": "Animer top/left déclenche des recalculs de mise en page : préférez transform, composé par le GPU."
+            }
+          ],
+          "exercise": {
+            "title": "Combiner",
+            "instructions": "Quelle propriété combine déplacement et rotation ?",
+            "hints": [
+              "Une seule propriété, plusieurs fonctions."
+            ],
+            "solution": "transform: translateY(-4px) rotate(-0.5deg)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "transform"
+              ],
+              "success": "Correct : transform."
+            }
+          },
+          "quiz": [
+            {
+              "question": "L'ordre des fonctions compte-t-il ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement pour rotate",
+                "Seulement sur mobile"
+              ],
+              "answer": 0,
+              "explanation": "Les transformations se composent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-01-q1"
+            },
+            {
+              "question": "Que préférer pour animer un déplacement ?",
+              "options": [
+                "transform",
+                "top",
+                "margin",
+                "width"
+              ],
+              "answer": 0,
+              "explanation": "Transform est plus performant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-01-q2"
+            }
+          ],
+          "summary": [
+            "Combiner dans l'ordre.",
+            "Transform plutôt que top/left.",
+            "Transition sur transform."
+          ],
+          "nextStep": "Chapitre suivant : « Animations avec keyframes »."
+        },
+        {
+          "id": "cssav-02",
+          "title": "Animations avec keyframes",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une animation",
+            "Contrôler durée et répétition",
+            "Respecter les préférences"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "@keyframes décrit les étapes d'une animation ; animation applique le nom, la durée, la courbe, le délai et la répétition."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": "@keyframes apparition {\n  from { opacity: 0; transform: translateY(6px); }\n  to { opacity: 1; transform: none; }\n}\n.carte { animation: apparition 240ms ease both; }",
+              "title": "Animation d'apparition"
+            },
+            {
+              "type": "warning",
+              "text": "Une animation infinie attire l'œil et fatigue : réservez-la aux indicateurs de chargement."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer une animation",
+            "instructions": "Quelle règle définit les étapes ?",
+            "hints": [
+              "Une règle dédiée."
+            ],
+            "solution": "@keyframes",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "@keyframes",
+                "keyframes"
+              ],
+              "success": "Correct : @keyframes."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contrôle animation-duration ?",
+              "options": [
+                "La durée",
+                "Le nombre de répétitions",
+                "La couleur",
+                "Le délai"
+              ],
+              "answer": 0,
+              "explanation": "La durée totale de l'animation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-02-q1"
+            },
+            {
+              "question": "Que fait animation-iteration-count ?",
+              "options": [
+                "Il fixe le nombre de répétitions",
+                "La durée",
+                "La courbe",
+                "Le délai"
+              ],
+              "answer": 0,
+              "explanation": "Infinite répète sans fin.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-02-q2"
+            }
+          ],
+          "summary": [
+            "@keyframes pour les étapes.",
+            "animation pour l'appliquer.",
+            "Éviter l'infini décoratif."
+          ],
+          "nextStep": "Chapitre suivant : « Personnaliser les thèmes »."
+        },
+        {
+          "id": "cssav-03",
+          "title": "Personnaliser les thèmes",
+          "duration": 20,
+          "objectives": [
+            "Centraliser les couleurs",
+            "Déclarer un thème",
+            "Éviter les valeurs en dur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un thème se définit par des variables regroupées sur :root. Changer une variable suffit à changer tout le site."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ":root {\n  --fond: #edf0ee;\n  --texte: #17202b;\n  --accent: #1e4fd0;\n}\nbody { background: var(--fond); color: var(--texte); }",
+              "title": "Variables de thème"
+            },
+            {
+              "type": "tip",
+              "text": "Nommez les variables par rôle (--texte, --accent), pas par couleur (--bleu) : le thème sombre peut alors réutiliser les mêmes noms."
+            }
+          ],
+          "exercise": {
+            "title": "Thématiser",
+            "instructions": "Où regrouper les variables globales ?",
+            "hints": [
+              "À la racine du document."
+            ],
+            "solution": ":root",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                ":root"
+              ],
+              "success": "Correct : :root."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi nommer par rôle ?",
+              "options": [
+                "Pour réutiliser les noms en thème sombre",
+                "Pour raccourcir le CSS",
+                "Pour éviter les variables",
+                "Pour accélérer"
+              ],
+              "answer": 0,
+              "explanation": "Le rôle reste identique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-03-q1"
+            },
+            {
+              "question": "Que fait var(--texte) ?",
+              "options": [
+                "Il lit la variable",
+                "Il la crée",
+                "Il la supprime",
+                "Il l'anime"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est réutilisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-03-q2"
+            }
+          ],
+          "summary": [
+            "Variables sur :root.",
+            "Nommer par rôle.",
+            "Changer un thème en un point."
+          ],
+          "nextStep": "Chapitre suivant : « Mode sombre et mode clair »."
+        },
+        {
+          "id": "cssav-04",
+          "title": "Mode sombre et mode clair",
+          "duration": 20,
+          "objectives": [
+            "Détecter la préférence",
+            "Forcer un thème",
+            "Vérifier les contrastes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "prefers-color-scheme détecte la préférence système ; un attribut data-theme permet de la forcer. Les deux se combinent avec des variables."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ":root { --fond: #edf0ee; --texte: #17202b; }\n@media (prefers-color-scheme: dark) {\n  :root[data-theme=\"system\"] { --fond: #0e141c; --texte: #e4e9ef; }\n}\n:root[data-theme=\"dark\"] { --fond: #0e141c; --texte: #e4e9ef; }",
+              "title": "Thème système et forcé"
+            },
+            {
+              "type": "warning",
+              "text": "Un thème sombre doit être testé en contraste : inverser les couleurs ne suffit pas à garantir 4,5:1."
+            }
+          ],
+          "exercise": {
+            "title": "Forcer un thème",
+            "instructions": "Quel attribut permet d'imposer un thème indépendamment du système ?",
+            "hints": [
+              "Un attribut sur la racine."
+            ],
+            "solution": "data-theme",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "data-theme"
+              ],
+              "success": "Correct : data-theme."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que détecte prefers-color-scheme ?",
+              "options": [
+                "La préférence clair/sombre",
+                "La taille d'écran",
+                "Le réseau",
+                "La langue"
+              ],
+              "answer": 0,
+              "explanation": "C'est une préférence système.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-04-q1"
+            },
+            {
+              "question": "Que faut-il vérifier en thème sombre ?",
+              "options": [
+                "Les contrastes",
+                "La vitesse",
+                "Le DNS",
+                "Les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Le contraste reste obligatoire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-04-q2"
+            }
+          ],
+          "summary": [
+            "Préférence système + choix explicite.",
+            "Mêmes variables.",
+            "Tester les contrastes."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture CSS »."
+        },
+        {
+          "id": "cssav-05",
+          "title": "Architecture CSS",
+          "duration": 20,
+          "objectives": [
+            "Organiser les fichiers",
+            "Ordre des couches",
+            "Éviter les dépendances implicites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une architecture CSS se découpe en fondations, composants et pages. L'ordre d'import rend la cascade prévisible."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "styles/\n├── fondations.css   (reset, variables, typographie)\n├── composants.css   (boutons, cartes, formulaires)\n├── pages.css\n└── utilitaires.css  (rares, explicites)",
+              "title": "Découpage"
+            },
+            {
+              "type": "tip",
+              "text": "Utilisez @layer pour rendre l'ordre des couches explicite quand le projet grossit."
+            }
+          ],
+          "exercise": {
+            "title": "Organiser",
+            "instructions": "Quel fichier contient les variables et le reset ?",
+            "hints": [
+              "La base commune."
+            ],
+            "solution": "fondations.css",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "fondation",
+                "base"
+              ],
+              "success": "Correct : les fondations."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi ordonner les couches ?",
+              "options": [
+                "Pour rendre la cascade prévisible",
+                "Pour accélérer le réseau",
+                "Pour supprimer le CSS",
+                "Pour éviter les variables"
+              ],
+              "answer": 0,
+              "explanation": "L'ordre détermine les conflits.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-05-q1"
+            },
+            {
+              "question": "Où placer les utilitaires ?",
+              "options": [
+                "Dans une couche explicite et limitée",
+                "Partout",
+                "Dans le HTML",
+                "Dans les images"
+              ],
+              "answer": 0,
+              "explanation": "Les utilitaires restent minoritaires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssav-05-q2"
+            }
+          ],
+          "summary": [
+            "Fondations, composants, pages.",
+            "Ordre explicite.",
+            "Utilitaires limités."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

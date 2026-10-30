@@ -1,0 +1,398 @@
+{
+  "courseId": "cyber-web-avance",
+  "modules": [
+    {
+      "id": "cyber-web-avance-module",
+      "title": "Failles web",
+      "chapters": [
+        {
+          "id": "cwv-01",
+          "title": "CSRF",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Prévenir",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le CSRF force un navigateur authentifié à envoyer une requête non voulue."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jeton CSRF.",
+                "SameSite.",
+                "Vérifier l'origine."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment prévenir ?",
+            "hints": [
+              "Un jeton CSRF."
+            ],
+            "solution": "Un jeton anti-CSRF vérifié côté serveur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "csrf",
+                "jeton"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le CSRF exploite-t-il la session ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur est authentifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-01-q1"
+            },
+            {
+              "question": "Que fait SameSite ?",
+              "options": [
+                "Il limite les cookies cross-site",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La protection augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-01-q2"
+            }
+          ],
+          "summary": [
+            "CSRF.",
+            "Jeton.",
+            "SameSite."
+          ],
+          "nextStep": "Chapitre suivant : « SSRF »."
+        },
+        {
+          "id": "cwv-02",
+          "title": "SSRF",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Restreindre",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le SSRF fait appeler une URL interne par le serveur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Liste blanche.",
+                "Pas d'URL arbitraire.",
+                "Réseau restreint."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment prévenir ?",
+            "hints": [
+              "Une liste blanche."
+            ],
+            "solution": "Restreindre les destinations autorisées (liste blanche).",
+            "check": {
+              "type": "any",
+              "any": [
+                "liste blanche"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vise le SSRF ?",
+              "options": [
+                "Les services internes",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur devient proxy.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-02-q1"
+            },
+            {
+              "question": "Que faire des URL fournies ?",
+              "options": [
+                "Les valider",
+                "Les exécuter",
+                "Les publier",
+                "Les ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La destination est contrôlée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-02-q2"
+            }
+          ],
+          "summary": [
+            "SSRF.",
+            "Liste blanche.",
+            "Réseau restreint."
+          ],
+          "nextStep": "Chapitre suivant : « Traversée de répertoires »."
+        },
+        {
+          "id": "cwv-03",
+          "title": "Traversée de répertoires",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Normaliser",
+            "Restreindre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une entrée de chemin peut sortir du dossier prévu via ../."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Normaliser.",
+                "Liste blanche.",
+                "Pas de chemin utilisateur brut."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment prévenir ?",
+            "hints": [
+              "Normaliser et restreindre."
+            ],
+            "solution": "Normaliser le chemin et vérifier qu'il reste dans la racine autorisée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "normalis",
+                "racine"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet ../ ?",
+              "options": [
+                "Remonter d'un dossier",
+                "Descendre",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le chemin sort du dossier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-03-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Le chemin final",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Il doit rester dans la racine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-03-q2"
+            }
+          ],
+          "summary": [
+            "Traversée.",
+            "Normaliser.",
+            "Racine."
+          ],
+          "nextStep": "Chapitre suivant : « Désérialisation non sécurisée »."
+        },
+        {
+          "id": "cwv-04",
+          "title": "Désérialisation non sécurisée",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Éviter",
+            "Valider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Désérialiser des données non fiables peut exécuter du code ou altérer l'état."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schéma.",
+                "Pas de format exécutable.",
+                "Signature."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire de données non fiables ?",
+            "hints": [
+              "Valider avant usage."
+            ],
+            "solution": "Valider la forme et éviter les formats qui instancient du code.",
+            "check": {
+              "type": "any",
+              "any": [
+                "valider"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le format binaire est-il sûr par défaut ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu doit être validé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-04-q1"
+            },
+            {
+              "question": "Que préférer ?",
+              "options": [
+                "Un format simple validé",
+                "Un format exécutable",
+                "Du texte libre",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Le risque baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-04-q2"
+            }
+          ],
+          "summary": [
+            "Désérialisation.",
+            "Valider.",
+            "Pas de code implicite."
+          ],
+          "nextStep": "Chapitre suivant : « Mauvaises configurations »."
+        },
+        {
+          "id": "cwv-05",
+          "title": "Mauvaises configurations",
+          "duration": 20,
+          "objectives": [
+            "Repérer",
+            "Corriger",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les mauvaises configurations exposent des services, des données ou des messages d'erreur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Services inutiles.",
+                "Erreurs bavardes.",
+                "En-têtes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que masquer en production ?",
+            "hints": [
+              "Les détails d'erreur."
+            ],
+            "solution": "Les traces et détails techniques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "erreur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que désactiver ?",
+              "options": [
+                "Les services inutiles",
+                "Les logs",
+                "Les mises à jour",
+                "Les comptes"
+              ],
+              "answer": 0,
+              "explanation": "La surface diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-05-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les en-têtes de sécurité",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La configuration est durcie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwv-05-q2"
+            }
+          ],
+          "summary": [
+            "Configuration.",
+            "Erreurs masquées.",
+            "En-têtes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

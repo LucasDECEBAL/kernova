@@ -1,0 +1,251 @@
+{
+  "courseId": "react-tests",
+  "modules": [
+    {
+      "id": "react-tests-module",
+      "title": "Tester et déployer React",
+      "chapters": [
+        {
+          "id": "rct4-01",
+          "title": "Tester des composants",
+          "duration": 20,
+          "objectives": [
+            "Tester un comportement",
+            "Interroger par rôle accessible",
+            "Éviter les détails internes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un test de composant simule une interaction et vérifie ce que l'utilisateur voit. Les requêtes par rôle accessible résistent aux refontes."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "render(<Bouton onClick={fn}>Envoyer</Bouton>);\nawait userEvent.click(screen.getByRole(\"button\", { name: \"Envoyer\" }));\nexpect(fn).toHaveBeenCalled();",
+              "title": "Test d'interaction"
+            },
+            {
+              "type": "warning",
+              "text": "Tester les classes CSS internes rend les tests fragiles : vérifiez le comportement visible."
+            }
+          ],
+          "exercise": {
+            "title": "Interroger",
+            "instructions": "Par quoi interroger un bouton dans un test accessible ?",
+            "hints": [
+              "Un rôle et un nom."
+            ],
+            "solution": "getByRole(\"button\", { name: \"...\" })",
+            "check": {
+              "type": "any",
+              "any": [
+                "byrole",
+                "getbyrole",
+                "role"
+              ],
+              "success": "Correct : getByRole."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifie un test de composant ?",
+              "options": [
+                "Le comportement visible",
+                "Les classes CSS",
+                "Le code source",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur est au centre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct4-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter les sélecteurs internes ?",
+              "options": [
+                "Ils cassent à la refonte",
+                "Ils sont trop lents",
+                "Ils chiffrent",
+                "Ils bloquent le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le test doit rester stable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct4-01-q2"
+            }
+          ],
+          "summary": [
+            "Tester le comportement.",
+            "Rôles accessibles.",
+            "Éviter les détails internes."
+          ],
+          "nextStep": "Chapitre suivant : « Accessibilité avec React »."
+        },
+        {
+          "id": "rct4-02",
+          "title": "Accessibilité avec React",
+          "duration": 20,
+          "objectives": [
+            "Utiliser les éléments natifs",
+            "Gérer le focus",
+            "Annoncer les changements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "React n'ajoute pas d'accessibilité : boutons natifs, labels associés, focus géré et messages annoncés restent nécessaires."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "const id = useId();\n<label htmlFor={id}>Adresse e-mail</label>\n<input id={id} type=\"email\" />",
+              "title": "Label React"
+            },
+            {
+              "type": "warning",
+              "text": "Un div onClick sans rôle ni clavier exclut une partie des utilisateurs : utilisez button."
+            }
+          ],
+          "exercise": {
+            "title": "Associer",
+            "instructions": "Quel hook génère un id stable pour label/input ?",
+            "hints": [
+              "Un hook dédié."
+            ],
+            "solution": "useId",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "useid"
+              ],
+              "success": "Correct : useId."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il pour un contrôle cliquable ?",
+              "options": [
+                "Un élément natif",
+                "Un div",
+                "Une classe CSS",
+                "Un contexte"
+              ],
+              "answer": 0,
+              "explanation": "Le clavier et l'ARIA suivent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct4-02-q1"
+            },
+            {
+              "question": "Comment annoncer une erreur ?",
+              "options": [
+                "role=\"alert\"",
+                "Une couleur",
+                "Un log",
+                "Un titre"
+              ],
+              "answer": 0,
+              "explanation": "Le message est annoncé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct4-02-q2"
+            }
+          ],
+          "summary": [
+            "Natif d'abord.",
+            "useId pour les labels.",
+            "Annoncer les erreurs."
+          ],
+          "nextStep": "Chapitre suivant : « Déployer une application React »."
+        },
+        {
+          "id": "rct4-03",
+          "title": "Déployer une application React",
+          "duration": 20,
+          "objectives": [
+            "Construire les fichiers",
+            "Configurer les routes",
+            "Vérifier après publication"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un build React produit des fichiers statiques. Un hébergement statique exige une redirection vers index.html pour les routes côté client."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "npm run build\n# publier dist/ ; rediriger /* vers /index.html",
+              "title": "Build et routes"
+            },
+            {
+              "type": "warning",
+              "text": "Tester uniquement la page d'accueil ne suffit pas : rechargez une route profonde après déploiement."
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Que faire des routes profondes sur un hébergement statique ?",
+            "hints": [
+              "Rediriger vers index.html."
+            ],
+            "solution": "Une redirection de toutes les routes vers index.html (ou un routeur par ancre).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "index.html",
+                "redirection"
+              ],
+              "success": "Correct : redirection vers index.html."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que produit npm run build ?",
+              "options": [
+                "Des fichiers statiques",
+                "Un serveur Node",
+                "Une base de données",
+                "Un certificat"
+              ],
+              "answer": 0,
+              "explanation": "Le dossier dist est publié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct4-03-q1"
+            },
+            {
+              "question": "Que tester après déploiement ?",
+              "options": [
+                "Le rechargement d'une route profonde",
+                "Le code source",
+                "Le CSS seul",
+                "Le DNS uniquement"
+              ],
+              "answer": 0,
+              "explanation": "Les routes client sont sensibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct4-03-q2"
+            }
+          ],
+          "summary": [
+            "Build statique.",
+            "Redirection SPA.",
+            "Tester les routes profondes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

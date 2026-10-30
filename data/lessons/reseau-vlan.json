@@ -1,0 +1,404 @@
+{
+  "courseId": "reseau-vlan",
+  "modules": [
+    {
+      "id": "reseau-vlan-module",
+      "title": "VLAN et commutation",
+      "chapters": [
+        {
+          "id": "rvl-01",
+          "title": "VLAN",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un VLAN",
+            "Segmenter",
+            "Relier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VLAN isole un domaine de diffusion sur un même commutateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un VLAN par usage.",
+                "Isolation logique.",
+                "Routage nécessaire entre VLAN."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un VLAN ?",
+            "hints": [
+              "Il isole un domaine de diffusion.",
+              "Il faut un routeur pour traverser."
+            ],
+            "solution": "Il segmente logiquement le réseau local.",
+            "check": {
+              "type": "any",
+              "any": [
+                "isole",
+                "segmente"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un VLAN traverse-t-il un routeur sans routage ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il faut router.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-01-q1"
+            },
+            {
+              "question": "Pourquoi segmenter ?",
+              "options": [
+                "Sécurité et diffusion",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le domaine de diffusion est réduit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-01-q2"
+            }
+          ],
+          "summary": [
+            "VLAN = segmentation.",
+            "Routage entre VLAN.",
+            "Isolation."
+          ],
+          "nextStep": "Chapitre suivant : « Trunking »."
+        },
+        {
+          "id": "rvl-02",
+          "title": "Trunking",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un trunk",
+            "Transporter plusieurs VLAN",
+            "Éviter les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un lien trunk transporte plusieurs VLAN entre équipements."
+            },
+            {
+              "type": "list",
+              "items": [
+                "802.1Q.",
+                "VLAN natif.",
+                "Un trunk entre commutateurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que transporte un trunk ?",
+            "hints": [
+              "Plusieurs VLAN.",
+              "Un seul port physique."
+            ],
+            "solution": "Plusieurs VLAN étiquetés sur un même lien.",
+            "check": {
+              "type": "any",
+              "any": [
+                "plusieurs",
+                "vlan"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un poste se branche-t-il en trunk ?",
+              "options": [
+                "Non, en accès",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le poste utilise un accès.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-02-q1"
+            },
+            {
+              "question": "Que fait 802.1Q ?",
+              "options": [
+                "Il étiquette les trames",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le VLAN est identifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-02-q2"
+            }
+          ],
+          "summary": [
+            "Trunk = plusieurs VLAN.",
+            "802.1Q.",
+            "Accès côté poste."
+          ],
+          "nextStep": "Chapitre suivant : « STP »."
+        },
+        {
+          "id": "rvl-03",
+          "title": "STP",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les boucles",
+            "Activer STP",
+            "Choisir la racine"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "STP bloque les liens redondants pour éviter les tempêtes de diffusion."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Élection de racine.",
+                "Ports bloqués.",
+                "RSTP plus rapide."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait STP ?",
+            "hints": [
+              "Il évite les boucles.",
+              "Il bloque des liens."
+            ],
+            "solution": "Il bloque les liens redondants pour éviter les boucles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "boucle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque une boucle L2 ?",
+              "options": [
+                "Une tempête de diffusion",
+                "Un DNS lent",
+                "Un CSS cassé",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Les trames tournent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-03-q1"
+            },
+            {
+              "question": "Que fait RSTP ?",
+              "options": [
+                "Il converge plus vite",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La convergence est rapide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-03-q2"
+            }
+          ],
+          "summary": [
+            "STP anti-boucle.",
+            "Racine.",
+            "RSTP."
+          ],
+          "nextStep": "Chapitre suivant : « Agrégation de liens »."
+        },
+        {
+          "id": "rvl-04",
+          "title": "Agrégation de liens",
+          "duration": 20,
+          "objectives": [
+            "Comprendre LACP",
+            "Augmenter le débit",
+            "Éviter les incohérences"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'agrégation combine plusieurs liens en un faisceau logique."
+            },
+            {
+              "type": "list",
+              "items": [
+                "LACP.",
+                "Même vitesse.",
+                "Redondance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet l'agrégation ?",
+            "hints": [
+              "Plus de débit et de redondance.",
+              "Même configuration des deux côtés."
+            ],
+            "solution": "Elle augmente le débit et la résilience entre deux équipements.",
+            "check": {
+              "type": "any",
+              "any": [
+                "debit",
+                "débit",
+                "redondance"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Les liens doivent-ils être identiques ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La configuration doit correspondre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-04-q1"
+            },
+            {
+              "question": "Que fait LACP ?",
+              "options": [
+                "Il négocie le faisceau",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'agrégation est négociée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-04-q2"
+            }
+          ],
+          "summary": [
+            "Agrégation.",
+            "LACP.",
+            "Débit + redondance."
+          ],
+          "nextStep": "Chapitre suivant : « Wi-Fi »."
+        },
+        {
+          "id": "rvl-05",
+          "title": "Wi-Fi",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les bandes",
+            "Choisir un canal",
+            "Éviter les interférences"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le Wi-Fi utilise 2,4 et 5 GHz ; les canaux et la puissance influencent la qualité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "2,4 GHz portée, 5 GHz débit.",
+                "Canaux non chevauchants.",
+                "Bornes et roaming."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quelle bande privilégier pour le débit ?",
+            "hints": [
+              "Plus de canaux et de débit."
+            ],
+            "solution": "5 GHz, si la portée suffit.",
+            "check": {
+              "type": "any",
+              "any": [
+                "5"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le roaming ?",
+              "options": [
+                "Il change de borne",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le client bascule.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-05-q1"
+            },
+            {
+              "question": "Pourquoi éviter les canaux qui se chevauchent ?",
+              "options": [
+                "Interférences",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La qualité chute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rvl-05-q2"
+            }
+          ],
+          "summary": [
+            "2,4/5 GHz.",
+            "Canaux.",
+            "Roaming."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

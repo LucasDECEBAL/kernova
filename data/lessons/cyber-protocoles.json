@@ -1,0 +1,401 @@
+{
+  "courseId": "cyber-protocoles",
+  "modules": [
+    {
+      "id": "cyber-protocoles-module",
+      "title": "Protocoles et web",
+      "chapters": [
+        {
+          "id": "cpr2-01",
+          "title": "Sécurité des protocoles",
+          "duration": 20,
+          "objectives": [
+            "Chiffrer",
+            "Authentifier",
+            "Éviter les protocoles en clair"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les protocoles en clair exposent les données ; TLS et l'authentification corrigent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "TLS.",
+                "Authentification.",
+                "Pas de telnet/FTP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que risque telnet ?",
+            "hints": [
+              "Le mot de passe en clair."
+            ],
+            "solution": "Les identifiants circulent en clair.",
+            "check": {
+              "type": "any",
+              "any": [
+                "clair"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait TLS ?",
+              "options": [
+                "Il chiffre",
+                "Il route",
+                "Il trie",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Le transport est protégé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-01-q1"
+            },
+            {
+              "question": "Quel protocole remplacer ?",
+              "options": [
+                "Telnet par SSH",
+                "SSH par telnet",
+                "TLS par HTTP",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "SSH est chiffré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-01-q2"
+            }
+          ],
+          "summary": [
+            "Chiffrer.",
+            "Authentifier.",
+            "Pas de clair."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture Zero Trust »."
+        },
+        {
+          "id": "cpr2-02",
+          "title": "Architecture Zero Trust",
+          "duration": 20,
+          "objectives": [
+            "Vérifier chaque accès",
+            "Moindre privilège",
+            "Segmenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Zero Trust ne fait confiance à aucun réseau par défaut : chaque accès est vérifié."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérification continue.",
+                "Moindre privilège.",
+                "Segmentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Zero Trust ?",
+            "hints": [
+              "Il vérifie chaque accès."
+            ],
+            "solution": "Il vérifie chaque requête et chaque identité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "verifie",
+                "vérifie",
+                "chaque"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le réseau interne est-il de confiance ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La confiance est vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-02-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les privilèges",
+                "Les logs",
+                "Les mises à jour",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-02-q2"
+            }
+          ],
+          "summary": [
+            "Zero Trust.",
+            "Vérification.",
+            "Segmentation."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à la sécurité web »."
+        },
+        {
+          "id": "cpr2-03",
+          "title": "Introduction à la sécurité web",
+          "duration": 20,
+          "objectives": [
+            "Situer les risques",
+            "Comprendre le modèle",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application web expose des entrées, des sessions et des droits à protéger."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Entrées.",
+                "Sessions.",
+                "Droits."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que protéger en priorité ?",
+            "hints": [
+              "Les entrées et les sessions."
+            ],
+            "solution": "Les entrées non fiables et les sessions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "entrees",
+                "entrées",
+                "session"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une entrée utilisateur est-elle fiable ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Elle doit être validée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-03-q1"
+            },
+            {
+              "question": "Que protège une session ?",
+              "options": [
+                "L'identité connectée",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le cookie/session est sensible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-03-q2"
+            }
+          ],
+          "summary": [
+            "Entrées.",
+            "Sessions.",
+            "Droits."
+          ],
+          "nextStep": "Chapitre suivant : « Cycle de vie d'une requête HTTP »."
+        },
+        {
+          "id": "cpr2-04",
+          "title": "Cycle de vie d'une requête HTTP",
+          "duration": 20,
+          "objectives": [
+            "Suivre la requête",
+            "Situer les contrôles",
+            "Vérifier le statut"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une requête traverse client, réseau, serveur, application et base."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Client.",
+                "Serveur.",
+                "Application/base."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où valider les entrées ?",
+            "hints": [
+              "Côté serveur."
+            ],
+            "solution": "Côté serveur, à chaque couche qui traite la donnée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "serveur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier côté client ?",
+              "options": [
+                "Le confort seulement",
+                "La sécurité",
+                "Les droits",
+                "Le chiffrement"
+              ],
+              "answer": 0,
+              "explanation": "La sécurité reste serveur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-04-q1"
+            },
+            {
+              "question": "Que fait un statut 500 ?",
+              "options": [
+                "Il signale une erreur serveur",
+                "Un succès",
+                "Une création",
+                "Un refus"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur a échoué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-04-q2"
+            }
+          ],
+          "summary": [
+            "Cycle HTTP.",
+            "Validation serveur.",
+            "Statuts."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des sessions »."
+        },
+        {
+          "id": "cpr2-05",
+          "title": "Gestion des sessions",
+          "duration": 20,
+          "objectives": [
+            "Créer une session",
+            "Protéger l'identifiant",
+            "Expirer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une session relie des requêtes à un utilisateur via un identifiant protégé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cookie sécurisé.",
+                "Expiration.",
+                "Rotation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire après connexion ?",
+            "hints": [
+              "Régénérer l'identifiant."
+            ],
+            "solution": "Régénérer l'identifiant de session pour éviter la fixation.",
+            "check": {
+              "type": "any",
+              "any": [
+                "regenere",
+                "régénère"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que protéger ?",
+              "options": [
+                "L'identifiant de session",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il vaut un mot de passe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-05-q1"
+            },
+            {
+              "question": "Que faire à la déconnexion ?",
+              "options": [
+                "Détruire la session",
+                "La garder",
+                "La publier",
+                "La dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est terminé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr2-05-q2"
+            }
+          ],
+          "summary": [
+            "Session.",
+            "Identifiant protégé.",
+            "Expiration."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

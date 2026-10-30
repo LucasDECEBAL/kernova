@@ -1,0 +1,319 @@
+{
+  "courseId": "langages-autres",
+  "modules": [
+    {
+      "id": "langages-autres-module",
+      "title": "Autres langages",
+      "chapters": [
+        {
+          "id": "lg-01",
+          "title": "Introduction à Kotlin",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Kotlin",
+            "Déclarer val/var",
+            "Utiliser les nullables"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Kotlin compile pour la JVM et Android ; val est immuable, var modifiable. Les types nullables sont explicites (?)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Interopérable avec Java.",
+                "Pas de null implicite.",
+                "Les data class génèrent equals/toString."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Quel mot-clé déclare une valeur immuable ?",
+            "hints": [
+              "Une valeur fixe."
+            ],
+            "solution": "val",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "val"
+              ],
+              "success": "Correct : val."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ? sur un type ?",
+              "options": [
+                "Il autorise null",
+                "Il interdit null",
+                "Il copie",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La nullabilité est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-01-q1"
+            },
+            {
+              "question": "Que génère data class ?",
+              "options": [
+                "equals/toString",
+                "Un serveur",
+                "Un CSS",
+                "Un thread"
+              ],
+              "answer": 0,
+              "explanation": "Le code répétitif disparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-01-q2"
+            }
+          ],
+          "summary": [
+            "val/var.",
+            "Nullabilité explicite.",
+            "data class."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Swift »."
+        },
+        {
+          "id": "lg-02",
+          "title": "Introduction à Swift",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Swift",
+            "Déclarer let/var",
+            "Gérer les optionnels"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Swift sert iOS/macOS ; let est constant, var variable. Les optionnels (Type?) forcent à traiter l'absence."
+            },
+            {
+              "type": "list",
+              "items": [
+                "if let / guard let déballent.",
+                "Les protocoles ressemblent aux interfaces.",
+                "Pas de null non contrôlé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Déballer",
+            "instructions": "Quelle construction déballe un optionnel ?",
+            "hints": [
+              "Une condition de déballage."
+            ],
+            "solution": "if let valeur = optionnel { ... }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "if let"
+              ],
+              "success": "Correct : if let."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait let ?",
+              "options": [
+                "Il déclare une constante",
+                "Il modifie",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est fixe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-02-q1"
+            },
+            {
+              "question": "Que représente Type? ?",
+              "options": [
+                "Un optionnel",
+                "Une erreur",
+                "Un tableau",
+                "Un protocole"
+              ],
+              "answer": 0,
+              "explanation": "L'absence est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-02-q2"
+            }
+          ],
+          "summary": [
+            "let/var.",
+            "Optionnels.",
+            "if let."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Ruby »."
+        },
+        {
+          "id": "lg-03",
+          "title": "Introduction à Ruby",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Ruby",
+            "Utiliser les blocs",
+            "Découvrir Rails"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Ruby privilégie la lisibilité : tout est objet, les blocs s'attachent aux méthodes. Rails est son framework web majeur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "each avec bloc.",
+                "Conventions plutôt que configuration (Rails).",
+                "Syntaxe permissive mais lisible."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Bloc",
+            "instructions": "À quoi sert un bloc en Ruby ?",
+            "hints": [
+              "Un morceau de code passé à une méthode."
+            ],
+            "solution": "Un bloc (do...end ou { }) passé à chaque appel de méthode, par exemple each.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "bloc"
+              ],
+              "success": "Correct : un bloc."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Ruby est-il orienté objet ?",
+              "options": [
+                "Oui, tout est objet",
+                "Non",
+                "Seulement Rails",
+                "Seulement les entiers"
+              ],
+              "answer": 0,
+              "explanation": "Tout est objet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-03-q1"
+            },
+            {
+              "question": "Quel framework web ?",
+              "options": [
+                "Rails",
+                "Laravel",
+                "Django",
+                "Spring"
+              ],
+              "answer": 0,
+              "explanation": "Ruby on Rails.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-03-q2"
+            }
+          ],
+          "summary": [
+            "Tout objet.",
+            "Blocs.",
+            "Rails."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à R »."
+        },
+        {
+          "id": "lg-04",
+          "title": "Introduction à R",
+          "duration": 20,
+          "objectives": [
+            "Comprendre R",
+            "Manipuler un vecteur",
+            "Découvrir l'analyse de données"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "R est orienté statistiques : vecteurs, data frames et visualisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Les vecteurs sont la structure de base.",
+                "data.frame pour les tables.",
+                "ggplot2 pour les graphiques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quelle structure pour une table de données ?",
+            "hints": [
+              "Une structure tabulaire."
+            ],
+            "solution": "data.frame",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "data.frame"
+              ],
+              "success": "Correct : data.frame."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert R ?",
+              "options": [
+                "Aux statistiques et données",
+                "Aux serveurs web",
+                "Au CSS",
+                "Aux réseaux"
+              ],
+              "answer": 0,
+              "explanation": "L'analyse est centrale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-04-q1"
+            },
+            {
+              "question": "Que fait ggplot2 ?",
+              "options": [
+                "Des graphiques",
+                "Des tests",
+                "Du réseau",
+                "Du tri"
+              ],
+              "answer": 0,
+              "explanation": "La visualisation est déclarative.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lg-04-q2"
+            }
+          ],
+          "summary": [
+            "R = statistiques.",
+            "Vecteurs et data frames.",
+            "ggplot2."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

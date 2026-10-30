@@ -1,0 +1,170 @@
+{
+  "courseId": "css-animations",
+  "modules": [
+    {
+      "id": "css-animations-module",
+      "title": "Transitions et animations",
+      "chapters": [
+        {
+          "id": "cssa-01",
+          "title": "Transitions",
+          "duration": 20,
+          "objectives": [
+            "Animer une propriété",
+            "Régler la durée et la courbe",
+            "Respecter les préférences"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une transition interpole une propriété entre deux états, par exemple au survol. On précise la propriété, la durée, la courbe et éventuellement un délai."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".lien {\n  color: #17202b;\n  transition: color 160ms ease, text-decoration-color 160ms ease;\n}\n.lien:hover { color: #1e4fd0; }",
+              "title": "Transition au survol"
+            },
+            {
+              "type": "warning",
+              "text": "N'animez pas width ou height si vous pouvez animer transform ou opacity : ces propriétés sont plus performantes."
+            }
+          ],
+          "exercise": {
+            "title": "Animer une couleur",
+            "instructions": "Quelle propriété déclare l'animation d'une couleur au survol ?",
+            "hints": [
+              "Elle décrit l'interpolation."
+            ],
+            "solution": "transition (avec la propriété et la durée)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "transition"
+              ],
+              "success": "Correct : transition."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il préciser ?",
+              "options": [
+                "Propriété, durée, courbe",
+                "Uniquement la couleur",
+                "Le serveur",
+                "Le HTML"
+              ],
+              "answer": 0,
+              "explanation": "La transition décrit l'évolution.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssa-01-q1"
+            },
+            {
+              "question": "Que faire avec prefers-reduced-motion ?",
+              "options": [
+                "Réduire ou supprimer l'animation",
+                "L'accélérer",
+                "L'ignorer",
+                "La doubler"
+              ],
+              "answer": 0,
+              "explanation": "On respecte la préférence.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssa-01-q2"
+            }
+          ],
+          "summary": [
+            "transition = propriété + durée.",
+            "Préférer transform/opacity.",
+            "Respecter reduced-motion."
+          ],
+          "nextStep": "Chapitre suivant : « Transformations »."
+        },
+        {
+          "id": "cssa-02",
+          "title": "Transformations",
+          "duration": 20,
+          "objectives": [
+            "Utiliser translate, scale et rotate",
+            "Comprendre transform-origin",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "transform déplace, redimensionne ou tourne sans modifier le flux. transform-origin définit le point d'application."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".carte:hover {\n  transform: translateY(-2px) scale(1.01);\n}\n.carte {\n  transition: transform 160ms ease;\n  will-change: transform;\n}",
+              "title": "Élévation au survol"
+            },
+            {
+              "type": "warning",
+              "text": "will-change permanent consomme de la mémoire : utilisez-le ponctuellement, pas sur tous les éléments."
+            }
+          ],
+          "exercise": {
+            "title": "Déplacer",
+            "instructions": "Quelle fonction décale verticalement un élément ?",
+            "hints": [
+              "Un déplacement."
+            ],
+            "solution": "translateY()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "translatey",
+                "translate"
+              ],
+              "success": "Correct : translateY()."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait scale(1.01) ?",
+              "options": [
+                "Il agrandit légèrement",
+                "Il tourne",
+                "Il déplace",
+                "Il cache"
+              ],
+              "answer": 0,
+              "explanation": "L'échelle augmente de 1 %.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssa-02-q1"
+            },
+            {
+              "question": "Que fait transform-origin ?",
+              "options": [
+                "Il fixe le point de transformation",
+                "Il change la couleur",
+                "Il anime le texte",
+                "Il crée une grille"
+              ],
+              "answer": 0,
+              "explanation": "La rotation ou l'échelle part de ce point.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssa-02-q2"
+            }
+          ],
+          "summary": [
+            "transform déplace sans flux.",
+            "transform-origin pour le point.",
+            "will-change avec parcimonie."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

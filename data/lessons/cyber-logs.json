@@ -1,0 +1,400 @@
+{
+  "courseId": "cyber-logs",
+  "modules": [
+    {
+      "id": "cyber-logs-module",
+      "title": "Journaux et anomalies",
+      "chapters": [
+        {
+          "id": "cyl-01",
+          "title": "Analyse des journaux réseau",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Corréler",
+            "Chercher"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les journaux réseau révèlent scans, refus et connexions inhabituelles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pare-feu.",
+                "Flux.",
+                "Corrélation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que chercher dans les logs ?",
+            "hints": [
+              "Les anomalies."
+            ],
+            "solution": "Les schémas inhabituels : scans, refus répétés, heures atypiques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "anomalie"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi corréler ?",
+              "options": [
+                "Relier les événements",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte apparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-01-q1"
+            },
+            {
+              "question": "Que conserver ?",
+              "options": [
+                "Les preuves",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'analyse est fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-01-q2"
+            }
+          ],
+          "summary": [
+            "Collecter.",
+            "Corréler.",
+            "Anomalies."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les attaques par déni de service »."
+        },
+        {
+          "id": "cyl-02",
+          "title": "Comprendre les attaques par déni de service",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître",
+            "Mitiger",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un DoS sature une ressource ; la mitigation filtre et absorbe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Volume.",
+                "Filtrage.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vise un DoS ?",
+            "hints": [
+              "La disponibilité."
+            ],
+            "solution": "La disponibilité du service.",
+            "check": {
+              "type": "any",
+              "any": [
+                "disponibilite",
+                "disponibilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire face à un DoS ?",
+              "options": [
+                "Filtrer et limiter",
+                "Rien",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La charge est réduite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-02-q1"
+            },
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les pics anormaux",
+                "Le logo",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'attaque est détectée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-02-q2"
+            }
+          ],
+          "summary": [
+            "DoS = disponibilité.",
+            "Filtrer.",
+            "Surveiller."
+          ],
+          "nextStep": "Chapitre suivant : « Détection d'activités anormales »."
+        },
+        {
+          "id": "cyl-03",
+          "title": "Détection d'activités anormales",
+          "duration": 20,
+          "objectives": [
+            "Établir une base",
+            "Détecter les écarts",
+            "Éviter les faux positifs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La détection compare le comportement à une base normale."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Base.",
+                "Seuils.",
+                "Contexte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment détecter ?",
+            "hints": [
+              "Par écart à la normale."
+            ],
+            "solution": "En comparant au comportement habituel et en tenant compte du contexte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ecart",
+                "écart",
+                "normale"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "Les faux positifs",
+                "Les logs",
+                "Les mises à jour",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La confiance augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-03-q1"
+            },
+            {
+              "question": "Que fournir à l'analyste ?",
+              "options": [
+                "Le contexte",
+                "Un logo",
+                "Un thème",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'alerte est exploitable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-03-q2"
+            }
+          ],
+          "summary": [
+            "Base normale.",
+            "Écarts.",
+            "Contexte."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurisation du Wi-Fi »."
+        },
+        {
+          "id": "cyl-04",
+          "title": "Sécurisation du Wi-Fi",
+          "duration": 20,
+          "objectives": [
+            "Configurer WPA3",
+            "Isoler",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le Wi-Fi se sécurise par WPA3, un réseau invité isolé et une surveillance des accès."
+            },
+            {
+              "type": "list",
+              "items": [
+                "WPA3.",
+                "Invité isolé.",
+                "Journalisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire du réseau invité ?",
+            "hints": [
+              "L'isoler."
+            ],
+            "solution": "L'isoler du réseau interne.",
+            "check": {
+              "type": "any",
+              "any": [
+                "isol"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "WEP est-il acceptable ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "En invité"
+              ],
+              "answer": 0,
+              "explanation": "Il est cassable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-04-q1"
+            },
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les associations",
+                "Le logo",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les accès sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-04-q2"
+            }
+          ],
+          "summary": [
+            "WPA3.",
+            "Invité isolé.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité DNS »."
+        },
+        {
+          "id": "cyl-05",
+          "title": "Sécurité DNS",
+          "duration": 20,
+          "objectives": [
+            "Protéger la résolution",
+            "Filtrer",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le DNS peut être empoisonné ou détourné ; DNSSEC et filtrage aident."
+            },
+            {
+              "type": "list",
+              "items": [
+                "DNSSEC.",
+                "Filtrage.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait DNSSEC ?",
+            "hints": [
+              "Il authentifie les réponses."
+            ],
+            "solution": "Il signe les réponses pour détecter les falsifications.",
+            "check": {
+              "type": "any",
+              "any": [
+                "dnssec",
+                "signe"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que filtre-t-on ?",
+              "options": [
+                "Les domaines malveillants",
+                "Le CSS",
+                "Le logo",
+                "Le thème"
+              ],
+              "answer": 0,
+              "explanation": "La résolution est contrôlée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-05-q1"
+            },
+            {
+              "question": "Que journaliser ?",
+              "options": [
+                "Les requêtes",
+                "Le CSS",
+                "Le logo",
+                "Le DNS inverse"
+              ],
+              "answer": 0,
+              "explanation": "Les anomalies sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cyl-05-q2"
+            }
+          ],
+          "summary": [
+            "DNSSEC.",
+            "Filtrage.",
+            "Logs."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

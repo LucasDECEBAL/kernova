@@ -1,0 +1,498 @@
+{
+  "courseId": "frontend-rendu",
+  "modules": [
+    {
+      "id": "frontend-rendu-module",
+      "title": "Rendu et intégration frontend",
+      "chapters": [
+        {
+          "id": "fe2-01",
+          "title": "Rendu côté serveur",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le SSR",
+            "Hydrater la page",
+            "Gérer les données serveur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "En SSR, le HTML est généré sur le serveur puis hydraté côté client. Le premier affichage est plus rapide, mais le serveur travaille à chaque requête."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "export default async function Page() {\n  const taches = await chargerTaches();\n  return <Liste elements={taches} />;\n}",
+              "title": "Composant serveur"
+            },
+            {
+              "type": "warning",
+              "text": "Le SSR n'exécute pas le code navigateur : les API du DOM doivent rester dans des composants client."
+            }
+          ],
+          "exercise": {
+            "title": "Hydratation",
+            "instructions": "Que fait l'hydratation ?",
+            "hints": [
+              "Elle rend le HTML interactif."
+            ],
+            "solution": "Elle attache les gestionnaires React au HTML rendu par le serveur.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "hydratation",
+                "interactif"
+              ],
+              "success": "Correct : rendre le HTML interactif."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où le HTML est-il généré en SSR ?",
+              "options": [
+                "Sur le serveur",
+                "Dans le navigateur",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur rend la page.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-01-q1"
+            },
+            {
+              "question": "Que coûte le SSR ?",
+              "options": [
+                "Du travail serveur",
+                "Du CSS",
+                "Du DNS",
+                "Des cookies"
+              ],
+              "answer": 0,
+              "explanation": "Chaque requête est rendue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-01-q2"
+            }
+          ],
+          "summary": [
+            "SSR = HTML serveur.",
+            "Hydratation côté client.",
+            "Données serveur."
+          ],
+          "nextStep": "Chapitre suivant : « Génération de sites statiques »."
+        },
+        {
+          "id": "fe2-02",
+          "title": "Génération de sites statiques",
+          "duration": 20,
+          "objectives": [
+            "Prérendre au build",
+            "Choisir quand régénérer",
+            "Comparer avec le SSR"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La génération statique produit les pages au build. Elle est rapide et peu coûteuse, mais le contenu change au redéploiement ou par revalidation."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "export const revalidate = 3600; // régénère au plus toutes les heures\nexport default async function Page() {\n  return <Liste elements={await charger()} />;\n}",
+              "title": "Revalidation"
+            },
+            {
+              "type": "warning",
+              "text": "Un contenu très changeant en statique peut être obsolète : prévoyez une revalidation ou un rendu serveur."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Un blog change peu : SSR à chaque requête ou statique ?",
+            "hints": [
+              "Contenu peu changeant."
+            ],
+            "solution": "Statique, avec régénération au déploiement.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "statique"
+              ],
+              "success": "Correct : statique."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand les pages statiques sont-elles générées ?",
+              "options": [
+                "Au build",
+                "À chaque requête",
+                "Au clic",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est réutilisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-02-q1"
+            },
+            {
+              "question": "Que fait revalidate ?",
+              "options": [
+                "Il fixe la fréquence de régénération",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu est rafraîchi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-02-q2"
+            }
+          ],
+          "summary": [
+            "SSG au build.",
+            "Revalidation.",
+            "Contenu peu changeant."
+          ],
+          "nextStep": "Chapitre suivant : « Routage frontend »."
+        },
+        {
+          "id": "fe2-03",
+          "title": "Routage frontend",
+          "duration": 20,
+          "objectives": [
+            "Déclarer des routes",
+            "Utiliser les paramètres",
+            "Protéger une route"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un routeur associe chemin et vue, gère l'historique et les paramètres. La protection d'une route reste une décision d'autorisation côté serveur."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "router.get(\"/taches/:id\", (req) => afficher(req.params.id));\nrouter.beforeEach((to) => estConnecte() || \"/connexion\");",
+              "title": "Routes"
+            },
+            {
+              "type": "warning",
+              "text": "Masquer un lien ne protège pas une route : l'API doit vérifier les droits."
+            }
+          ],
+          "exercise": {
+            "title": "Paramètre",
+            "instructions": "Comment lire l'identifiant dans /taches/:id ?",
+            "hints": [
+              "Un paramètre de route."
+            ],
+            "solution": "Le paramètre de route id (req.params.id ou useParams).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "param",
+                "id"
+              ],
+              "success": "Correct : le paramètre id."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gère un routeur frontend ?",
+              "options": [
+                "Chemins et historique",
+                "La base de données",
+                "Le DNS",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La navigation côté client.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-03-q1"
+            },
+            {
+              "question": "Où protéger une route ?",
+              "options": [
+                "Côté serveur aussi",
+                "Uniquement en CSS",
+                "Dans un cookie",
+                "Dans le titre"
+              ],
+              "answer": 0,
+              "explanation": "Le client est contournable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-03-q2"
+            }
+          ],
+          "summary": [
+            "Routes et paramètres.",
+            "Historique.",
+            "Autorisation serveur."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des formulaires frontend »."
+        },
+        {
+          "id": "fe2-04",
+          "title": "Gestion des formulaires frontend",
+          "duration": 20,
+          "objectives": [
+            "Contrôler les champs",
+            "Valider avant envoi",
+            "Afficher les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un formulaire frontend gère un état de saisie, valide, affiche les erreurs et envoie les données. La validation serveur reste obligatoire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un état par champ ou un objet global.",
+                "Erreurs près du champ.",
+                "Désactiver le bouton pendant l'envoi.",
+                "Ne jamais afficher de secret."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un formulaire qui perd la saisie en cas d'erreur réseau est perçu comme cassé : conservez les valeurs."
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Que faire pendant l'envoi ?",
+            "hints": [
+              "Empêcher les doubles envois."
+            ],
+            "solution": "Désactiver le bouton et afficher un état d'envoi.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "desactiv",
+                "désactiv"
+              ],
+              "success": "Correct : désactiver pendant l'envoi."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où valider réellement ?",
+              "options": [
+                "Serveur",
+                "Client uniquement",
+                "CSS",
+                "Cookie"
+              ],
+              "answer": 0,
+              "explanation": "Le client est modifiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-04-q1"
+            },
+            {
+              "question": "Où afficher l'erreur ?",
+              "options": [
+                "Près du champ",
+                "En bas de page",
+                "Dans le titre",
+                "Dans un log"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-04-q2"
+            }
+          ],
+          "summary": [
+            "État de saisie.",
+            "Erreurs locales.",
+            "Pas de double envoi."
+          ],
+          "nextStep": "Chapitre suivant : « Bibliothèques de composants »."
+        },
+        {
+          "id": "fe2-05",
+          "title": "Bibliothèques de composants",
+          "duration": 20,
+          "objectives": [
+            "Choisir une bibliothèque",
+            "Éviter les styles contradictoires",
+            "Personnaliser sans casser l'accessibilité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une bibliothèque de composants fournit boutons, dialogues, tableaux. Vérifiez l'accessibilité, le poids et la personnalisation possible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier le support clavier et ARIA.",
+                "Mesurer le poids ajouté.",
+                "Préférer les composants personnalisables.",
+                "Éviter de mélanger trois bibliothèques."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une bibliothèque qui impose ses couleurs peut casser le contraste de votre thème : vérifiez les jetons."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Que vérifier en priorité dans une bibliothèque ?",
+            "hints": [
+              "Accessibilité et poids."
+            ],
+            "solution": "L'accessibilité, le poids et la personnalisation.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "accessibilite",
+                "accessibilité"
+              ],
+              "success": "Correct : accessibilité."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque de mélanger plusieurs bibliothèques ?",
+              "options": [
+                "Des styles incohérents",
+                "Un DNS lent",
+                "Un CSS vide",
+                "Un serveur"
+              ],
+              "answer": 0,
+              "explanation": "Le design devient incohérent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-05-q1"
+            },
+            {
+              "question": "Que peut casser un thème ?",
+              "options": [
+                "Le contraste",
+                "Le réseau",
+                "Le DNS",
+                "Les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Les couleurs imposées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-05-q2"
+            }
+          ],
+          "summary": [
+            "Vérifier accessibilité.",
+            "Mesurer le poids.",
+            "Une seule famille."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des dépendances frontend »."
+        },
+        {
+          "id": "fe2-06",
+          "title": "Gestion des dépendances frontend",
+          "duration": 20,
+          "objectives": [
+            "Verrouiller les versions",
+            "Auditer",
+            "Éviter les doublons"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les dépendances frontend évoluent vite : lockfile, audit et mises à jour maîtrisées évitent les surprises en production."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Committer le lockfile.",
+                "Lancer npm audit régulièrement.",
+                "Lire les notes de version majeures.",
+                "Supprimer les dépendances inutilisées."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une dépendance oubliée ajoute du poids et une surface d'attaque : faites le tri avant chaque version."
+            }
+          ],
+          "exercise": {
+            "title": "Auditer",
+            "instructions": "Quelle commande liste les vulnérabilités npm ?",
+            "hints": [
+              "Une commande dédiée."
+            ],
+            "solution": "npm audit",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "npm audit"
+              ],
+              "success": "Correct : npm audit."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit le lockfile ?",
+              "options": [
+                "Des versions reproductibles",
+                "La sécurité totale",
+                "Le SEO",
+                "Le déploiement"
+              ],
+              "answer": 0,
+              "explanation": "Les versions exactes sont figées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-06-q1"
+            },
+            {
+              "question": "Que faire d'une dépendance inutilisée ?",
+              "options": [
+                "La supprimer",
+                "La dupliquer",
+                "La commenter",
+                "La déplacer"
+              ],
+              "answer": 0,
+              "explanation": "Le poids diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe2-06-q2"
+            }
+          ],
+          "summary": [
+            "Lockfile.",
+            "Audit.",
+            "Nettoyer les dépendances."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

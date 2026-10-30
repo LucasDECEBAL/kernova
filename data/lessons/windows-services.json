@@ -1,0 +1,398 @@
+{
+  "courseId": "windows-services",
+  "modules": [
+    {
+      "id": "windows-services-module",
+      "title": "Services Windows Server",
+      "chapters": [
+        {
+          "id": "wsrv-01",
+          "title": "DNS sous Windows Server",
+          "duration": 20,
+          "objectives": [
+            "Installer le rôle",
+            "Créer une zone",
+            "Vérifier la résolution"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le rôle DNS héberge des zones directes et inverses ; les clients pointent vers ce serveur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zone directe.",
+                "Enregistrements A/AAAA/CNAME.",
+                "Tester avec nslookup."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quel enregistrement associe un nom à une IPv4 ?",
+            "hints": [
+              "Un enregistrement de type A."
+            ],
+            "solution": "Un enregistrement A",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "a"
+              ],
+              "success": "Correct : A."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une zone inverse ?",
+              "options": [
+                "Nom→IP inversé",
+                "IP→nom",
+                "Le routage",
+                "Le DHCP"
+              ],
+              "answer": 0,
+              "explanation": "Elle résout les adresses en noms.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-01-q1"
+            },
+            {
+              "question": "Où tester la résolution ?",
+              "options": [
+                "nslookup",
+                "ping",
+                "ls",
+                "df"
+              ],
+              "answer": 0,
+              "explanation": "La requête DNS est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-01-q2"
+            }
+          ],
+          "summary": [
+            "Rôle DNS.",
+            "Zones.",
+            "nslookup."
+          ],
+          "nextStep": "Chapitre suivant : « DHCP sous Windows Server »."
+        },
+        {
+          "id": "wsrv-02",
+          "title": "DHCP sous Windows Server",
+          "duration": 20,
+          "objectives": [
+            "Installer le rôle",
+            "Créer une étendue",
+            "Exclure l'infrastructure"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DHCP attribue les adresses ; une étendue définit la plage et les exclusions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étendue .100-.200.",
+                "Exclure .1-.20.",
+                "Bail et réservations."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Exclure",
+            "instructions": "Que faut-il exclure d'une étendue ?",
+            "hints": [
+              "L'infrastructure."
+            ],
+            "solution": "Les adresses du routeur, des serveurs et de l'infrastructure.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "routeur",
+                "serveur"
+              ],
+              "success": "Correct : infrastructure."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une réservation ?",
+              "options": [
+                "Elle fixe une adresse à un client",
+                "Elle supprime",
+                "Elle route",
+                "Elle chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le bail est stable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-02-q1"
+            },
+            {
+              "question": "Que fait un bail ?",
+              "options": [
+                "Il limite la durée",
+                "Il supprime",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'adresse est renouvelée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-02-q2"
+            }
+          ],
+          "summary": [
+            "Étendue.",
+            "Exclusions.",
+            "Réservations."
+          ],
+          "nextStep": "Chapitre suivant : « Serveur de fichiers »."
+        },
+        {
+          "id": "wsrv-03",
+          "title": "Serveur de fichiers",
+          "duration": 20,
+          "objectives": [
+            "Créer un partage",
+            "Choisir les permissions",
+            "Comprendre partage vs NTFS"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un partage expose un dossier ; les permissions de partage et NTFS se combinent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Partage large, NTFS précis.",
+                "Le plus restrictif gagne.",
+                "Auditer les accès."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vaut le droit effectif en réseau ?",
+            "hints": [
+              "Le plus restrictif des deux."
+            ],
+            "solution": "L'intersection des permissions de partage et NTFS.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "intersection",
+                "restrictif"
+              ],
+              "success": "Correct : intersection."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où gérer les droits fins ?",
+              "options": [
+                "NTFS",
+                "Le partage",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "NTFS est granulaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-03-q1"
+            },
+            {
+              "question": "Pourquoi auditer ?",
+              "options": [
+                "Repérer les excès",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La sécurité est vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-03-q2"
+            }
+          ],
+          "summary": [
+            "Partage/NTFS.",
+            "Intersection.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Permissions NTFS et partage »."
+        },
+        {
+          "id": "wsrv-04",
+          "title": "Permissions NTFS et partage",
+          "duration": 20,
+          "objectives": [
+            "Lire une ACL",
+            "Appliquer l'héritage",
+            "Éviter les refus explicites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les ACL listent les droits ; l'héritage propage depuis le parent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Héritage.",
+                "Refus prioritaire.",
+                "Groupes plutôt qu'utilisateurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Éviter",
+            "instructions": "Pourquoi éviter les refus explicites ?",
+            "hints": [
+              "Ils compliquent le diagnostic."
+            ],
+            "solution": "Ils sont difficiles à prévoir : préférez retirer l'autorisation.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "refus"
+              ],
+              "success": "Correct : éviter les refus."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait l'héritage ?",
+              "options": [
+                "Il propage les droits",
+                "Il supprime",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les enfants héritent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-04-q1"
+            },
+            {
+              "question": "Pourquoi des groupes ?",
+              "options": [
+                "Simplifier la gestion",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont cohérents.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-04-q2"
+            }
+          ],
+          "summary": [
+            "ACL.",
+            "Héritage.",
+            "Groupes."
+          ],
+          "nextStep": "Chapitre suivant : « Sauvegarde de serveurs »."
+        },
+        {
+          "id": "wsrv-05",
+          "title": "Sauvegarde de serveurs",
+          "duration": 20,
+          "objectives": [
+            "Planifier",
+            "Choisir le type",
+            "Tester la restauration"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sauvegarde serveur couvre système, données et configuration, avec restauration testée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Image + données.",
+                "Hors site.",
+                "Test régulier."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Que valide une sauvegarde serveur ?",
+            "hints": [
+              "Une restauration testée."
+            ],
+            "solution": "Une restauration complète testée dans un environnement isolé.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "restauration"
+              ],
+              "success": "Correct : restauration testée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sauvegarder en plus des fichiers ?",
+              "options": [
+                "La configuration système",
+                "Le CSS",
+                "Le DNS",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur doit redémarrer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-05-q1"
+            },
+            {
+              "question": "Pourquoi hors site ?",
+              "options": [
+                "Sinistre",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La copie locale peut disparaître.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wsrv-05-q2"
+            }
+          ],
+          "summary": [
+            "Sauvegarde testée.",
+            "Système + données.",
+            "Hors site."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

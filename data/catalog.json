@@ -182,7 +182,7 @@
       "technologies": [
         "HTML"
       ],
-      "description": "Construire des pages web valides et accessibles : structure d'un document, titres et listes, liens et images, tableaux de données, éléments sémantiques et formulaires.",
+      "description": "Créer une page : structure, balises, titres, paragraphes, liens et premières images.",
       "objectives": [
         "Écrire un document HTML valide",
         "Hiérarchiser le contenu avec les titres appropriés",
@@ -197,10 +197,7 @@
         "informatique-debutant"
       ],
       "nextCourses": [
-        "css-debutant",
-        "langage-php",
-        "ux-ui",
-        "deploiement-seo"
+        "html-contenu"
       ],
       "skills": [
         "Écrire du HTML sémantique",
@@ -208,6 +205,184 @@
         "Construire un formulaire utilisable"
       ],
       "file": "html-debutant.json"
+    },
+    {
+      "id": "html-contenu",
+      "title": "HTML : images, listes et formulaires",
+      "domain": "html",
+      "subdomain": "Contenu",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Images",
+        "Listes",
+        "Tableaux",
+        "Formulaires"
+      ],
+      "description": "Images accessibles, listes, tableaux, formulaires et champs de saisie.",
+      "objectives": [
+        "Insérer une image avec alt",
+        "Choisir ul ou ol",
+        "Structurer un tableau de données",
+        "Créer un formulaire lié à ses labels",
+        "Choisir le bon type de champ"
+      ],
+      "prerequisites": [
+        "HTML débutant."
+      ],
+      "prerequisiteCourses": [
+        "html-debutant"
+      ],
+      "nextCourses": [
+        "html-formulaires"
+      ],
+      "skills": [
+        "Images",
+        "Listes",
+        "Formulaires"
+      ],
+      "file": "html-contenu.json"
+    },
+    {
+      "id": "html-formulaires",
+      "title": "HTML : formulaires et structure",
+      "domain": "html",
+      "subdomain": "Contenu",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Boutons",
+        "Sémantique",
+        "Entités"
+      ],
+      "description": "Boutons, éléments sémantiques, commentaires, entités et organisation d'une page.",
+      "objectives": [
+        "Choisir le type de bouton",
+        "Structurer avec header, nav, main",
+        "Commenter sans fuite",
+        "Écrire les entités réservées",
+        "Placer les scripts sans bloquer"
+      ],
+      "prerequisites": [
+        "HTML : images, listes et formulaires."
+      ],
+      "prerequisiteCourses": [
+        "html-contenu"
+      ],
+      "nextCourses": [
+        "html-site"
+      ],
+      "skills": [
+        "Sémantique",
+        "Structure de page"
+      ],
+      "file": "html-formulaires.json"
+    },
+    {
+      "id": "html-site",
+      "title": "HTML : site multipage et accessibilité",
+      "domain": "html",
+      "subdomain": "Accessibilité",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Liens",
+        "Accessibilité",
+        "Validation native"
+      ],
+      "description": "Liens relatifs, sémantique avancée, formulaires accessibles, validation native et éléments natifs.",
+      "objectives": [
+        "Organiser un site multipage",
+        "Utiliser figure et figcaption",
+        "Rendre un formulaire accessible",
+        "Utiliser required et pattern",
+        "Préférer les éléments natifs"
+      ],
+      "prerequisites": [
+        "HTML : formulaires et structure."
+      ],
+      "prerequisiteCourses": [
+        "html-formulaires"
+      ],
+      "nextCourses": [
+        "html-medias"
+      ],
+      "skills": [
+        "Liens",
+        "Accessibilité",
+        "Validation"
+      ],
+      "file": "html-site.json"
+    },
+    {
+      "id": "html-medias",
+      "title": "HTML : métadonnées et médias",
+      "domain": "html",
+      "subdomain": "Médias",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Meta",
+        "Images responsives",
+        "Vidéo",
+        "Sécurité"
+      ],
+      "description": "Métadonnées, images responsives, chargement différé, intégrations externes et sécurité des formulaires.",
+      "objectives": [
+        "Décrire la page avec meta",
+        "Utiliser srcset et sizes",
+        "Différer le chargement",
+        "Intégrer une iframe accessible",
+        "Protéger un formulaire"
+      ],
+      "prerequisites": [
+        "HTML : site multipage et accessibilité."
+      ],
+      "prerequisiteCourses": [
+        "html-site"
+      ],
+      "nextCourses": [
+        "html-qualite"
+      ],
+      "skills": [
+        "Métadonnées",
+        "Médias",
+        "Sécurité des formulaires"
+      ],
+      "file": "html-medias.json"
+    },
+    {
+      "id": "html-qualite",
+      "title": "HTML : qualité et validation",
+      "domain": "html",
+      "subdomain": "Qualité",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Validation",
+        "Bonnes pratiques"
+      ],
+      "description": "Bonnes pratiques, séparation des responsabilités et validation du code HTML.",
+      "objectives": [
+        "Écrire un HTML valide",
+        "Séparer structure et style",
+        "Organiser une application web",
+        "Lire les erreurs du validateur"
+      ],
+      "prerequisites": [
+        "HTML : métadonnées et médias."
+      ],
+      "prerequisiteCourses": [
+        "html-medias"
+      ],
+      "nextCourses": [
+        "css-debutant"
+      ],
+      "skills": [
+        "Qualité HTML",
+        "Validation"
+      ],
+      "file": "html-qualite.json"
     },
     {
       "id": "reseaux-debutant",
@@ -329,21 +504,20 @@
         "Git",
         "GitHub"
       ],
-      "description": "Apprenez à versionner un projet : enregistrer l'historique, créer des branches, fusionner, résoudre un conflit et publier votre dépôt sur GitHub. Aucun prérequis technique.",
+      "description": "Installer Git, créer un dépôt, committer, consulter l'historique, créer des branches, fusionner et ignorer des fichiers.",
       "objectives": [
-        "Expliquer ce qu'est un contrôle de version",
-        "Créer des commits clairs et consulter l'historique",
-        "Annuler une modification sans perdre de travail",
-        "Travailler sur des branches et fusionner",
-        "Publier un dépôt sur GitHub"
+        "Initialiser un dépôt et suivre des fichiers",
+        "Créer des commits lisibles",
+        "Créer et fusionner des branches",
+        "Résoudre un conflit simple",
+        "Travailler avec un dépôt distant"
       ],
       "prerequisites": [
         "Aucun. Un compte GitHub gratuit est utile pour la dernière partie."
       ],
       "prerequisiteCourses": [],
       "nextCourses": [
-        "linux-debutant",
-        "gestion-projet"
+        "git-avance"
       ],
       "skills": [
         "Versionner un projet",
@@ -351,6 +525,224 @@
         "Publier sur GitHub"
       ],
       "file": "git-debutant.json"
+    },
+    {
+      "id": "git-avance",
+      "title": "Git avancé",
+      "domain": "git-github",
+      "subdomain": "Git",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Git",
+        "Tags",
+        "Remotes"
+      ],
+      "description": "Tags, dépôts distants, clone, push/pull et stratégies de branches.",
+      "objectives": [
+        "Créer et publier un tag",
+        "Gérer les remotes",
+        "Cloner un dépôt",
+        "Résoudre un push rejeté",
+        "Choisir une stratégie de branches"
+      ],
+      "prerequisites": [
+        "Git et GitHub débutant."
+      ],
+      "prerequisiteCourses": [
+        "git-debutant"
+      ],
+      "nextCourses": [
+        "git-travail-equipe"
+      ],
+      "skills": [
+        "Tags",
+        "Remotes",
+        "Stratégies de branches"
+      ],
+      "file": "git-avance.json"
+    },
+    {
+      "id": "git-travail-equipe",
+      "title": "Git en équipe",
+      "domain": "git-github",
+      "subdomain": "Collaboration",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Git",
+        "Collaboration",
+        "README"
+      ],
+      "description": "Travailler à plusieurs, commits atomiques, dépôts GitHub publics ou privés et README.",
+      "objectives": [
+        "Organiser une branche par tâche",
+        "Écrire des commits atomiques",
+        "Créer un dépôt GitHub",
+        "Choisir la visibilité",
+        "Rédiger un README utile"
+      ],
+      "prerequisites": [
+        "Git avancé."
+      ],
+      "prerequisiteCourses": [
+        "git-avance"
+      ],
+      "nextCourses": [
+        "github-bases"
+      ],
+      "skills": [
+        "Collaboration",
+        "Dépôts GitHub",
+        "Documentation"
+      ],
+      "file": "git-travail-equipe.json"
+    },
+    {
+      "id": "github-bases",
+      "title": "GitHub : issues et pull requests",
+      "domain": "git-github",
+      "subdomain": "Collaboration",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "GitHub",
+        "Issues",
+        "Pull requests"
+      ],
+      "description": "Créer des issues reproductibles, des pull requests claires, revoir du code et organiser un tableau de tâches.",
+      "objectives": [
+        "Décrire une issue reproductible",
+        "Rédiger une pull request",
+        "Faire une revue utile",
+        "Organiser un tableau de tâches",
+        "Lire un workflow Actions"
+      ],
+      "prerequisites": [
+        "Git en équipe."
+      ],
+      "prerequisiteCourses": [
+        "git-travail-equipe"
+      ],
+      "nextCourses": [
+        "github-actions"
+      ],
+      "skills": [
+        "Issues",
+        "Pull requests",
+        "Revue de code"
+      ],
+      "file": "github-bases.json"
+    },
+    {
+      "id": "github-actions",
+      "title": "GitHub Actions et Pages",
+      "domain": "git-github",
+      "subdomain": "Automatisation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "GitHub Actions",
+        "CI",
+        "GitHub Pages"
+      ],
+      "description": "Automatiser lint et tests, filtrer les déclenchements, publier un site statique, construire un portfolio et protéger les secrets.",
+      "objectives": [
+        "Écrire un workflow de vérification",
+        "Filtrer les chemins",
+        "Publier sur GitHub Pages",
+        "Présenter un portfolio",
+        "Utiliser des secrets"
+      ],
+      "prerequisites": [
+        "GitHub : issues et pull requests."
+      ],
+      "prerequisiteCourses": [
+        "github-bases"
+      ],
+      "nextCourses": [
+        "github-pro"
+      ],
+      "skills": [
+        "CI",
+        "GitHub Pages",
+        "Secrets"
+      ],
+      "file": "github-actions.json"
+    },
+    {
+      "id": "github-pro",
+      "title": "GitHub : licences et contribution",
+      "domain": "git-github",
+      "subdomain": "Open source",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Licences",
+        "Open source",
+        "VS Code"
+      ],
+      "description": "Choisir une licence, contribuer à un projet open source et maîtriser VS Code, les environnements reproductibles et le terminal intégré.",
+      "objectives": [
+        "Distinguer MIT, Apache et GPL",
+        "Préparer une contribution",
+        "Utiliser VS Code",
+        "Fixer les versions d'un environnement",
+        "Lancer des tâches depuis le terminal"
+      ],
+      "prerequisites": [
+        "GitHub Actions et Pages."
+      ],
+      "prerequisiteCourses": [
+        "github-actions"
+      ],
+      "nextCourses": [
+        "environnements-dev"
+      ],
+      "skills": [
+        "Licences",
+        "Contribution",
+        "Éditeur"
+      ],
+      "file": "github-pro.json"
+    },
+    {
+      "id": "environnements-dev",
+      "title": "Outils du développeur",
+      "domain": "environnements",
+      "subdomain": "Outils",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "VS Code",
+        "Débogage",
+        "Lint",
+        "DevTools"
+      ],
+      "description": "Extensions, débogage, linters et formateurs, dépendances et outils du navigateur.",
+      "objectives": [
+        "Choisir des extensions utiles",
+        "Déboguer pas à pas",
+        "Configurer lint et formatage",
+        "Auditer les dépendances",
+        "Utiliser les DevTools"
+      ],
+      "prerequisites": [
+        "GitHub : licences et contribution."
+      ],
+      "prerequisiteCourses": [
+        "github-pro"
+      ],
+      "nextCourses": [
+        "html-debutant",
+        "python-debutant"
+      ],
+      "skills": [
+        "Débogage",
+        "Qualité de code",
+        "DevTools"
+      ],
+      "file": "environnements-dev.json"
     },
     {
       "id": "python-debutant",
@@ -398,7 +790,7 @@
       "technologies": [
         "CSS"
       ],
-      "description": "Mettre en forme des pages web : sélecteurs et cascade, couleurs et typographie, modèle de boîte, mise en page avec Flexbox et adaptation aux écrans.",
+      "description": "Règles, sélecteurs, couleurs, typographie, modèle de boîte et premières mises en page.",
       "objectives": [
         "Relier une feuille de style et cibler les bons éléments",
         "Choisir des unités et régler une typographie lisible",
@@ -413,7 +805,7 @@
         "html-debutant"
       ],
       "nextCourses": [
-        "javascript-debutant"
+        "css-layout"
       ],
       "skills": [
         "Mettre en forme une page",
@@ -421,6 +813,292 @@
         "Rendre une page responsive"
       ],
       "file": "css-debutant.json"
+    },
+    {
+      "id": "css-layout",
+      "title": "CSS : dimensions et affichage",
+      "domain": "css",
+      "subdomain": "Mise en page",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Marges",
+        "Bordures",
+        "Fonds",
+        "Display"
+      ],
+      "description": "Marges, bordures, arrière-plans, dimensions et types d'affichage.",
+      "objectives": [
+        "Distinguer margin et padding",
+        "Styler une bordure et un focus",
+        "Poser un fond",
+        "Borner les dimensions",
+        "Choisir display"
+      ],
+      "prerequisites": [
+        "CSS débutant."
+      ],
+      "prerequisiteCourses": [
+        "css-debutant"
+      ],
+      "nextCourses": [
+        "css-position"
+      ],
+      "skills": [
+        "Espacements",
+        "Boîtes",
+        "Affichage"
+      ],
+      "file": "css-layout.json"
+    },
+    {
+      "id": "css-position",
+      "title": "CSS : positionnement et cascade",
+      "domain": "css",
+      "subdomain": "Mise en page",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Position",
+        "Pseudo-classes",
+        "Variables"
+      ],
+      "description": "Positionnement, z-index, pseudo-classes, pseudo-éléments, spécificité et variables CSS.",
+      "objectives": [
+        "Choisir un positionnement",
+        "Utiliser :hover et :focus-visible",
+        "Créer ::before/::after",
+        "Calculer une spécificité",
+        "Thématiser avec des variables"
+      ],
+      "prerequisites": [
+        "CSS : dimensions et affichage."
+      ],
+      "prerequisiteCourses": [
+        "css-layout"
+      ],
+      "nextCourses": [
+        "css-grid"
+      ],
+      "skills": [
+        "Positionnement",
+        "Cascade",
+        "Variables"
+      ],
+      "file": "css-position.json"
+    },
+    {
+      "id": "css-grid",
+      "title": "CSS : Flexbox et Grid",
+      "domain": "css",
+      "subdomain": "Mise en page",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Flexbox",
+        "Grid",
+        "Composants"
+      ],
+      "description": "Flexbox avancé, CSS Grid, positionnement avancé, barre de navigation et cartes.",
+      "objectives": [
+        "Répartir avec flex",
+        "Créer une grille adaptative",
+        "Superposer des éléments",
+        "Construire une navigation",
+        "Aligner des cartes"
+      ],
+      "prerequisites": [
+        "CSS : positionnement et cascade."
+      ],
+      "prerequisiteCourses": [
+        "css-position"
+      ],
+      "nextCourses": [
+        "css-composants"
+      ],
+      "skills": [
+        "Flexbox",
+        "Grilles",
+        "Composants"
+      ],
+      "file": "css-grid.json"
+    },
+    {
+      "id": "css-composants",
+      "title": "CSS : composants d'interface",
+      "domain": "css",
+      "subdomain": "Interfaces",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Formulaires",
+        "Dashboard",
+        "Modales"
+      ],
+      "description": "Formulaires modernes, tableau de bord, menus déroulants, modales et mises en page complexes.",
+      "objectives": [
+        "Styler un formulaire accessible",
+        "Construire un tableau de bord",
+        "Créer un menu natif",
+        "Utiliser dialog",
+        "Combiner Grid et Flexbox"
+      ],
+      "prerequisites": [
+        "CSS : Flexbox et Grid."
+      ],
+      "prerequisiteCourses": [
+        "css-grid"
+      ],
+      "nextCourses": [
+        "css-responsive"
+      ],
+      "skills": [
+        "Formulaires",
+        "Modales",
+        "Mise en page complexe"
+      ],
+      "file": "css-composants.json"
+    },
+    {
+      "id": "css-responsive",
+      "title": "CSS : responsive et fonctions",
+      "domain": "css",
+      "subdomain": "Responsive",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Media queries",
+        "Mobile-first",
+        "clamp"
+      ],
+      "description": "Responsive design, media queries, mobile-first, unités relatives et fonctions CSS modernes.",
+      "objectives": [
+        "Choisir des points de rupture",
+        "Écrire des media queries",
+        "Adopter le mobile-first",
+        "Choisir une unité relative",
+        "Utiliser clamp, min et calc"
+      ],
+      "prerequisites": [
+        "CSS : composants d'interface."
+      ],
+      "prerequisiteCourses": [
+        "css-composants"
+      ],
+      "nextCourses": [
+        "css-animations"
+      ],
+      "skills": [
+        "Responsive",
+        "Unités",
+        "Fonctions CSS"
+      ],
+      "file": "css-responsive.json"
+    },
+    {
+      "id": "css-animations",
+      "title": "CSS : transitions et transformations",
+      "domain": "css",
+      "subdomain": "Animation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Transitions",
+        "Transform"
+      ],
+      "description": "Transitions, courbes, transformations et respect des préférences de mouvement.",
+      "objectives": [
+        "Déclarer une transition",
+        "Régler durée et courbe",
+        "Utiliser transform",
+        "Respecter prefers-reduced-motion"
+      ],
+      "prerequisites": [
+        "CSS : responsive et fonctions."
+      ],
+      "prerequisiteCourses": [
+        "css-responsive"
+      ],
+      "nextCourses": [
+        "javascript-debutant"
+      ],
+      "skills": [
+        "Transitions",
+        "Transformations"
+      ],
+      "file": "css-animations.json"
+    },
+    {
+      "id": "css-avance",
+      "title": "CSS : animations et thèmes",
+      "domain": "css",
+      "subdomain": "Animation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Transform",
+        "Keyframes",
+        "Thèmes"
+      ],
+      "description": "Transformations, animations, thèmes, mode sombre et architecture CSS.",
+      "objectives": [
+        "Combiner des transformations",
+        "Écrire une animation keyframes",
+        "Centraliser un thème",
+        "Forcer un mode sombre",
+        "Organiser le CSS"
+      ],
+      "prerequisites": [
+        "CSS : transitions et transformations."
+      ],
+      "prerequisiteCourses": [
+        "css-animations"
+      ],
+      "nextCourses": [
+        "css-methodo"
+      ],
+      "skills": [
+        "Animations",
+        "Thèmes",
+        "Architecture"
+      ],
+      "file": "css-avance.json"
+    },
+    {
+      "id": "css-methodo",
+      "title": "CSS : méthodes et design system",
+      "domain": "css",
+      "subdomain": "Méthodes",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "BEM",
+        "Performance",
+        "Design system"
+      ],
+      "description": "BEM, performance CSS, accessibilité visuelle, design systems et identité visuelle.",
+      "objectives": [
+        "Nommer en BEM",
+        "Optimiser les animations",
+        "Garantir les contrastes",
+        "Définir des jetons",
+        "Construire une identité cohérente"
+      ],
+      "prerequisites": [
+        "CSS : animations et thèmes."
+      ],
+      "prerequisiteCourses": [
+        "css-avance"
+      ],
+      "nextCourses": [
+        "javascript-debutant"
+      ],
+      "skills": [
+        "BEM",
+        "Accessibilité",
+        "Design system"
+      ],
+      "file": "css-methodo.json"
     },
     {
       "id": "javascript-debutant",
@@ -687,7 +1365,7 @@
     },
     {
       "id": "algorithmique-debutant",
-      "title": "Algorithmique débutant",
+      "title": "Algorithmique : fondamentaux",
       "domain": "algorithmique",
       "subdomain": "Fondamentaux",
       "level": "debutant",
@@ -696,29 +1374,282 @@
         "Algorithmique",
         "Pseudocode"
       ],
-      "description": "Apprendre à raisonner avant de coder : algorithmes et pseudocode, variables et opérateurs, conditions et boucles, décomposition en fonctions, tableaux et première approche de la complexité.",
+      "description": "Écrire des algorithmes : variables, constantes, types, opérateurs, conditions, boucles et fonctions.",
       "objectives": [
-        "Décrire un algorithme en pseudocode",
-        "Utiliser division entière et modulo à bon escient",
-        "Choisir entre boucle for et while",
-        "Décomposer un problème en fonctions testables",
-        "Estimer le coût d'une recherche linéaire"
+        "Définir un algorithme et décrire entrées, traitement, sorties",
+        "Déclarer variables et constantes et suivre leur valeur",
+        "Choisir un type de données adapté",
+        "Utiliser les opérateurs arithmétiques, div et mod",
+        "Écrire et lire du pseudocode"
       ],
       "prerequisites": [
-        "Aucun langage n'est exigé : les exercices sont en pseudocode."
+        "Aucun prérequis technique ; savoir lire une consigne suffit."
       ],
       "prerequisiteCourses": [],
+      "nextCourses": [
+        "algo-controle"
+      ],
+      "skills": [
+        "Logique algorithmique",
+        "Variables et types",
+        "Pseudocode"
+      ],
+      "file": "algorithmique-debutant.json"
+    },
+    {
+      "id": "algo-controle",
+      "title": "Algorithmique : conditions, boucles et fonctions",
+      "domain": "algorithmique",
+      "subdomain": "Contrôle du flux",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Conditions",
+        "Boucles",
+        "Fonctions"
+      ],
+      "description": "Combiner des booléens, écrire des conditions correctes, choisir une boucle, définir des fonctions et comprendre paramètres et retours.",
+      "objectives": [
+        "Utiliser et, ou, non",
+        "Écrire si / sinon sans erreur d'ordre",
+        "Choisir entre pour et tant que",
+        "Définir et appeler une fonction",
+        "Distinguer paramètres et arguments"
+      ],
+      "prerequisites": [
+        "Algorithmique : fondamentaux."
+      ],
+      "prerequisiteCourses": [
+        "algorithmique-debutant"
+      ],
+      "nextCourses": [
+        "algo-donnees"
+      ],
+      "skills": [
+        "Conditions",
+        "Boucles",
+        "Fonctions"
+      ],
+      "file": "algo-controle.json"
+    },
+    {
+      "id": "algo-donnees",
+      "title": "Algorithmique : variables, tableaux et chaînes",
+      "domain": "algorithmique",
+      "subdomain": "Données",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Tableaux",
+        "Chaînes",
+        "Structures"
+      ],
+      "description": "Comprendre la portée, manipuler tableaux et chaînes, choisir une structure de données et écrire un pseudocode lisible.",
+      "objectives": [
+        "Distinguer portée locale et globale",
+        "Parcourir un tableau par indice",
+        "Manipuler des chaînes",
+        "Reconnaître pile, file, liste et dictionnaire",
+        "Écrire un pseudocode non ambigu"
+      ],
+      "prerequisites": [
+        "Algorithmique : conditions, boucles et fonctions."
+      ],
+      "prerequisiteCourses": [
+        "algo-controle"
+      ],
+      "nextCourses": [
+        "algo-conception"
+      ],
+      "skills": [
+        "Tableaux",
+        "Chaînes",
+        "Structures de données"
+      ],
+      "file": "algo-donnees.json"
+    },
+    {
+      "id": "algo-conception",
+      "title": "Algorithmique : concevoir et tester",
+      "domain": "algorithmique",
+      "subdomain": "Méthode",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Organigrammes",
+        "Décomposition",
+        "Tests"
+      ],
+      "description": "Représenter un algorithme, décomposer un problème, écrire un code lisible, gérer les erreurs et construire un jeu de tests.",
+      "objectives": [
+        "Lire un organigramme",
+        "Décomposer en sous-problèmes",
+        "Nommer et structurer le code",
+        "Prévoir les entrées invalides",
+        "Tester cas normaux, limites et invalides"
+      ],
+      "prerequisites": [
+        "Algorithmique : variables, tableaux et chaînes."
+      ],
+      "prerequisiteCourses": [
+        "algo-donnees"
+      ],
+      "nextCourses": [
+        "algo-recherche-tris"
+      ],
+      "skills": [
+        "Conception",
+        "Lisibilité",
+        "Tests"
+      ],
+      "file": "algo-conception.json"
+    },
+    {
+      "id": "algo-recherche-tris",
+      "title": "Algorithmique : recherche et tris",
+      "domain": "algorithmique",
+      "subdomain": "Algorithmes classiques",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Recherche",
+        "Tri"
+      ],
+      "description": "Recherche linéaire et dichotomique, tris par sélection, insertion et fusion, avec leurs coûts.",
+      "objectives": [
+        "Écrire une recherche linéaire",
+        "Écrire une dichotomie correcte",
+        "Comparer trois tris",
+        "Reconnaître un tri stable",
+        "Choisir un tri selon le contexte"
+      ],
+      "prerequisites": [
+        "Algorithmique : concevoir et tester."
+      ],
+      "prerequisiteCourses": [
+        "algo-conception"
+      ],
+      "nextCourses": [
+        "algo-structures"
+      ],
+      "skills": [
+        "Recherche",
+        "Tris",
+        "Complexité"
+      ],
+      "file": "algo-recherche-tris.json"
+    },
+    {
+      "id": "algo-structures",
+      "title": "Algorithmique : récursivité et structures",
+      "domain": "algorithmique",
+      "subdomain": "Structures de données",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Tri rapide",
+        "Récursivité",
+        "Piles",
+        "Listes",
+        "Hachage"
+      ],
+      "description": "Tri rapide, récursivité, piles et files, listes chaînées et tables de hachage.",
+      "objectives": [
+        "Partitionner autour d'un pivot",
+        "Écrire une fonction récursive avec cas de base",
+        "Choisir pile ou file",
+        "Comparer liste et tableau",
+        "Expliquer les collisions de hachage"
+      ],
+      "prerequisites": [
+        "Algorithmique : recherche et tris."
+      ],
+      "prerequisiteCourses": [
+        "algo-recherche-tris"
+      ],
+      "nextCourses": [
+        "algo-graphes"
+      ],
+      "skills": [
+        "Récursivité",
+        "Structures de données",
+        "Hachage"
+      ],
+      "file": "algo-structures.json"
+    },
+    {
+      "id": "algo-graphes",
+      "title": "Algorithmique : arbres, graphes et complexité",
+      "domain": "algorithmique",
+      "subdomain": "Graphes",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Arbres",
+        "Graphes",
+        "Big O"
+      ],
+      "description": "Arbres, graphes, parcours en largeur et en profondeur, notation Big O et complexité temporelle.",
+      "objectives": [
+        "Lire un arbre et ses parcours",
+        "Modéliser un graphe",
+        "Choisir BFS ou DFS",
+        "Simplifier une notation Big O",
+        "Analyser la complexité d'une boucle"
+      ],
+      "prerequisites": [
+        "Algorithmique : récursivité et structures."
+      ],
+      "prerequisiteCourses": [
+        "algo-structures"
+      ],
+      "nextCourses": [
+        "algo-optimisation"
+      ],
+      "skills": [
+        "Arbres",
+        "Graphes",
+        "Complexité"
+      ],
+      "file": "algo-graphes.json"
+    },
+    {
+      "id": "algo-optimisation",
+      "title": "Algorithmique : complexité spatiale et optimisation",
+      "domain": "algorithmique",
+      "subdomain": "Optimisation",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Espace",
+        "Mémoïsation",
+        "Programmation dynamique"
+      ],
+      "description": "Complexité spatiale, mémoïsation, programmation dynamique, algorithmes gloutons et méthode de résolution.",
+      "objectives": [
+        "Mesurer la mémoire auxiliaire",
+        "Mettre en cache un résultat",
+        "Écrire une récurrence et sa table",
+        "Reconnaître les limites du glouton",
+        "Suivre une méthode de résolution"
+      ],
+      "prerequisites": [
+        "Algorithmique : arbres, graphes et complexité."
+      ],
+      "prerequisiteCourses": [
+        "algo-graphes"
+      ],
       "nextCourses": [
         "langage-c",
         "langage-java",
         "langage-go"
       ],
       "skills": [
-        "Structurer un raisonnement",
-        "Écrire des algorithmes lisibles",
-        "Anticiper le coût d'un traitement"
+        "Complexité spatiale",
+        "Programmation dynamique",
+        "Optimisation"
       ],
-      "file": "algorithmique-debutant.json"
+      "file": "algo-optimisation.json"
     },
     {
       "id": "cybersecurite-debutant",
@@ -862,6 +1793,393 @@
       "file": "cloud-debutant.json"
     },
     {
+      "id": "cloud-fondamentaux",
+      "title": "Cloud : fondamentaux",
+      "domain": "cloud-computing",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "IaaS",
+        "PaaS",
+        "SaaS"
+      ],
+      "description": "Modèles, public/privé/hybride, régions, zones et VM.",
+      "objectives": [
+        "Définir",
+        "Choisir un modèle",
+        "Choisir la visibilité",
+        "Placer les zones",
+        "Dimensionner"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "cloud-services"
+      ],
+      "skills": [
+        "IaaS",
+        "PaaS",
+        "SaaS"
+      ],
+      "file": "cloud-fondamentaux.json"
+    },
+    {
+      "id": "cloud-services",
+      "title": "Cloud : services",
+      "domain": "cloud-computing",
+      "subdomain": "Services",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Stockage",
+        "VPC",
+        "IAM"
+      ],
+      "description": "Stockage, réseaux virtuels, identités, HA et élasticité.",
+      "objectives": [
+        "Choisir un stockage",
+        "Segmenter",
+        "Gérer les identités",
+        "Répartir",
+        "Mettre à l'échelle"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "cloud-exploitation"
+      ],
+      "skills": [
+        "Stockage",
+        "VPC",
+        "IAM"
+      ],
+      "file": "cloud-services.json"
+    },
+    {
+      "id": "cloud-exploitation",
+      "title": "Cloud : exploitation",
+      "domain": "cloud-computing",
+      "subdomain": "Exploitation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "DR",
+        "Coûts",
+        "Sécurité"
+      ],
+      "description": "Sauvegarde/DR, sécurité, surveillance, coûts et responsabilité partagée.",
+      "objectives": [
+        "Définir RTO/RPO",
+        "Sécuriser",
+        "Surveiller",
+        "Maîtriser les coûts",
+        "Documenter"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "cloud-architecture"
+      ],
+      "skills": [
+        "DR",
+        "Coûts",
+        "Sécurité"
+      ],
+      "file": "cloud-exploitation.json"
+    },
+    {
+      "id": "cloud-architecture",
+      "title": "Cloud : architecture",
+      "domain": "cloud-computing",
+      "subdomain": "Architecture",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Multizone",
+        "Serverless"
+      ],
+      "description": "Architecture de base, multizone, multi-région, événementiel et serverless.",
+      "objectives": [
+        "Séparer",
+        "Répartir",
+        "Répliquer",
+        "Découpler",
+        "Choisir serverless"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "cloud-gouvernance"
+      ],
+      "skills": [
+        "Multizone",
+        "Serverless"
+      ],
+      "file": "cloud-architecture.json"
+    },
+    {
+      "id": "cloud-gouvernance",
+      "title": "Cloud : gouvernance",
+      "domain": "cloud-computing",
+      "subdomain": "Gouvernance",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Fédération",
+        "Conformité",
+        "FinOps"
+      ],
+      "description": "Identités fédérées, conformité, coûts, observabilité et DR.",
+      "objectives": [
+        "Fédérer",
+        "Vérifier la conformité",
+        "Optimiser",
+        "Observer",
+        "Tester le DR"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "cloud-multicloud"
+      ],
+      "skills": [
+        "Fédération",
+        "Conformité",
+        "FinOps"
+      ],
+      "file": "cloud-gouvernance.json"
+    },
+    {
+      "id": "cloud-multicloud",
+      "title": "Cloud : multicloud et IaC",
+      "domain": "cloud-computing",
+      "subdomain": "Multicloud",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Multicloud",
+        "Terraform",
+        "FinOps"
+      ],
+      "description": "Multicloud, landing zones, gouvernance, IaC et FinOps.",
+      "objectives": [
+        "Comparer",
+        "Structurer",
+        "Gouverner",
+        "Décrire en IaC",
+        "Piloter les coûts"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "aws-fondamentaux"
+      ],
+      "skills": [
+        "Multicloud",
+        "Terraform",
+        "FinOps"
+      ],
+      "file": "cloud-multicloud.json"
+    },
+    {
+      "id": "aws-fondamentaux",
+      "title": "AWS : fondamentaux",
+      "domain": "cloud-computing",
+      "subdomain": "AWS",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "IAM",
+        "EC2",
+        "S3"
+      ],
+      "description": "Régions, IAM, EC2 et S3.",
+      "objectives": [
+        "Choisir une région",
+        "Répartir",
+        "Gérer IAM",
+        "Lancer EC2",
+        "Sécuriser S3"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "aws-services"
+      ],
+      "skills": [
+        "IAM",
+        "EC2",
+        "S3"
+      ],
+      "file": "aws-fondamentaux.json"
+    },
+    {
+      "id": "aws-services",
+      "title": "AWS : réseau et données",
+      "domain": "cloud-computing",
+      "subdomain": "AWS",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "VPC",
+        "RDS"
+      ],
+      "description": "VPC, groupes de sécurité, routes, IGW/NAT et RDS.",
+      "objectives": [
+        "Créer un VPC",
+        "Filtrer",
+        "Router",
+        "Comprendre NAT",
+        "Gérer RDS"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "aws-applications"
+      ],
+      "skills": [
+        "VPC",
+        "RDS"
+      ],
+      "file": "aws-services.json"
+    },
+    {
+      "id": "aws-applications",
+      "title": "AWS : applications",
+      "domain": "cloud-computing",
+      "subdomain": "AWS",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Lambda",
+        "CloudWatch",
+        "Route 53"
+      ],
+      "description": "Lambda, CloudWatch, CloudTrail, Route 53 et équilibrage.",
+      "objectives": [
+        "Déclencher Lambda",
+        "Alarmer",
+        "Auditer",
+        "Gérer le DNS",
+        "Équilibrer"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "aws-exploitation"
+      ],
+      "skills": [
+        "Lambda",
+        "CloudWatch",
+        "Route 53"
+      ],
+      "file": "aws-applications.json"
+    },
+    {
+      "id": "aws-exploitation",
+      "title": "AWS : exploitation",
+      "domain": "cloud-computing",
+      "subdomain": "AWS",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Auto Scaling",
+        "Sécurité"
+      ],
+      "description": "Auto Scaling, sauvegardes, sécurité du compte, architecture et coûts.",
+      "objectives": [
+        "Configurer le scaling",
+        "Tester une sauvegarde",
+        "Protéger la racine",
+        "Placer les services",
+        "Optimiser"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "azure-fondamentaux"
+      ],
+      "skills": [
+        "Auto Scaling",
+        "Sécurité"
+      ],
+      "file": "aws-exploitation.json"
+    },
+    {
+      "id": "azure-fondamentaux",
+      "title": "Azure : fondamentaux",
+      "domain": "cloud-computing",
+      "subdomain": "Azure",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Entra",
+        "VM"
+      ],
+      "description": "Azure, abonnements, groupes de ressources, Entra et VM.",
+      "objectives": [
+        "Situer Azure",
+        "Organiser",
+        "Gérer Entra",
+        "Dimensionner une VM"
+      ],
+      "prerequisites": [
+        "Cloud computing débutant"
+      ],
+      "prerequisiteCourses": [
+        "cloud-debutant"
+      ],
+      "nextCourses": [
+        "virtualisation"
+      ],
+      "skills": [
+        "Entra",
+        "VM"
+      ],
+      "file": "azure-fondamentaux.json"
+    },
+    {
       "id": "devops-debutant",
       "title": "DevOps et CI/CD débutant",
       "domain": "devops",
@@ -931,6 +2249,222 @@
         "Exploiter une base en production"
       ],
       "file": "bases-donnees-avancees.json"
+    },
+    {
+      "id": "sql-pratique",
+      "title": "SQL : écriture et agrégation",
+      "domain": "bases-donnees",
+      "subdomain": "SQL",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "INSERT",
+        "UPDATE",
+        "GROUP BY"
+      ],
+      "description": "INSERT, UPDATE, DELETE, agrégats et GROUP BY.",
+      "objectives": [
+        "Insérer",
+        "Modifier avec WHERE",
+        "Supprimer sans tout vider",
+        "Agréger",
+        "Regrouper"
+      ],
+      "prerequisites": [
+        "SQL débutant"
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "sql-jointures"
+      ],
+      "skills": [
+        "INSERT",
+        "UPDATE",
+        "GROUP BY"
+      ],
+      "file": "sql-pratique.json"
+    },
+    {
+      "id": "sql-jointures",
+      "title": "SQL : jointures et vues",
+      "domain": "bases-donnees",
+      "subdomain": "SQL",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "JOIN",
+        "HAVING",
+        "Vues"
+      ],
+      "description": "HAVING, jointures, sous-requêtes, vues et contraintes.",
+      "objectives": [
+        "Filtrer un groupe",
+        "Joindre deux tables",
+        "Écrire une sous-requête",
+        "Créer une vue",
+        "Protéger l'intégrité"
+      ],
+      "prerequisites": [
+        "SQL débutant"
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "sql-transactions"
+      ],
+      "skills": [
+        "JOIN",
+        "HAVING",
+        "Vues"
+      ],
+      "file": "sql-jointures.json"
+    },
+    {
+      "id": "sql-transactions",
+      "title": "SQL : transactions et concurrence",
+      "domain": "bases-donnees",
+      "subdomain": "Transactions",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "ACID",
+        "Isolation",
+        "Verrous"
+      ],
+      "description": "Transactions, ACID, isolation, verrouillage et savepoints.",
+      "objectives": [
+        "Valider ou annuler",
+        "Expliquer ACID",
+        "Choisir un niveau",
+        "Éviter un interblocage",
+        "Revenir à un savepoint"
+      ],
+      "prerequisites": [
+        "SQL débutant"
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "sql-admin"
+      ],
+      "skills": [
+        "ACID",
+        "Isolation",
+        "Verrous"
+      ],
+      "file": "sql-transactions.json"
+    },
+    {
+      "id": "sql-admin",
+      "title": "SQL : objets et droits",
+      "domain": "bases-donnees",
+      "subdomain": "Administration",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Procédures",
+        "Triggers",
+        "Droits"
+      ],
+      "description": "Procédures, fonctions, déclencheurs, utilisateurs et permissions.",
+      "objectives": [
+        "Créer une procédure",
+        "Créer une fonction",
+        "Déclarer un trigger",
+        "Créer un utilisateur",
+        "Accorder des droits"
+      ],
+      "prerequisites": [
+        "SQL débutant"
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "sql-exploitation"
+      ],
+      "skills": [
+        "Procédures",
+        "Triggers",
+        "Droits"
+      ],
+      "file": "sql-admin.json"
+    },
+    {
+      "id": "sql-exploitation",
+      "title": "SQL : sauvegarde et sécurité",
+      "domain": "bases-donnees",
+      "subdomain": "Exploitation",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Sauvegarde",
+        "Réplication",
+        "Audit"
+      ],
+      "description": "Sauvegarde, réplication, partitionnement, sécurité et audit.",
+      "objectives": [
+        "Tester une restauration",
+        "Surveiller la réplication",
+        "Partitionner",
+        "Restreindre l'accès",
+        "Auditer"
+      ],
+      "prerequisites": [
+        "SQL débutant"
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "sql-sgbd"
+      ],
+      "skills": [
+        "Sauvegarde",
+        "Réplication",
+        "Audit"
+      ],
+      "file": "sql-exploitation.json"
+    },
+    {
+      "id": "sql-sgbd",
+      "title": "SQL : systèmes de bases de données",
+      "domain": "bases-donnees",
+      "subdomain": "SGBD",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite"
+      ],
+      "description": "PostgreSQL, MySQL, SQLite et choix d'une base.",
+      "objectives": [
+        "Utiliser psql",
+        "Administrer PostgreSQL",
+        "Utiliser MySQL",
+        "Choisir SQLite",
+        "Choisir une base"
+      ],
+      "prerequisites": [
+        "SQL débutant"
+      ],
+      "prerequisiteCourses": [
+        "sql-debutant"
+      ],
+      "nextCourses": [
+        "linux-debutant"
+      ],
+      "skills": [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite"
+      ],
+      "file": "sql-sgbd.json"
     },
     {
       "id": "linux-intermediaire",
@@ -1005,6 +2539,112 @@
       "file": "bash-scripts.json"
     },
     {
+      "id": "bash-fondamentaux",
+      "title": "Bash : bases",
+      "domain": "bash-automatisation",
+      "subdomain": "Bash",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Bash",
+        "scripts"
+      ],
+      "description": "Introduction, variables, arguments, conditions et boucles.",
+      "objectives": [
+        "Écrire un script",
+        "Lire une variable",
+        "Lire les arguments",
+        "Tester",
+        "Boucler"
+      ],
+      "prerequisites": [
+        "Scripts Bash"
+      ],
+      "prerequisiteCourses": [
+        "bash-scripts"
+      ],
+      "nextCourses": [
+        "bash-avance"
+      ],
+      "skills": [
+        "Bash",
+        "scripts"
+      ],
+      "file": "bash-fondamentaux.json"
+    },
+    {
+      "id": "bash-avance",
+      "title": "Bash : fonctions et texte",
+      "domain": "bash-automatisation",
+      "subdomain": "Bash",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "grep",
+        "sed",
+        "awk"
+      ],
+      "description": "Fonctions, codes de retour, redirections, pipes, texte et regex.",
+      "objectives": [
+        "Définir une fonction",
+        "Vérifier un code",
+        "Rediriger",
+        "Enchaîner",
+        "Filtrer"
+      ],
+      "prerequisites": [
+        "Scripts Bash"
+      ],
+      "prerequisiteCourses": [
+        "bash-scripts"
+      ],
+      "nextCourses": [
+        "bash-pro"
+      ],
+      "skills": [
+        "grep",
+        "sed",
+        "awk"
+      ],
+      "file": "bash-avance.json"
+    },
+    {
+      "id": "bash-pro",
+      "title": "Bash : scripts robustes",
+      "domain": "bash-automatisation",
+      "subdomain": "Bash",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "shellcheck",
+        "cron",
+        "flock"
+      ],
+      "description": "Erreurs, débogage, sauvegarde, surveillance, automatisation et sécurité.",
+      "objectives": [
+        "Durcir un script",
+        "Tracer",
+        "Sauvegarder",
+        "Surveiller",
+        "Éviter les doublons"
+      ],
+      "prerequisites": [
+        "Scripts Bash"
+      ],
+      "prerequisiteCourses": [
+        "bash-scripts"
+      ],
+      "nextCourses": [
+        "windows-client"
+      ],
+      "skills": [
+        "shellcheck",
+        "cron",
+        "flock"
+      ],
+      "file": "bash-pro.json"
+    },
+    {
       "id": "backend-api",
       "title": "Backend et API REST",
       "domain": "backend-api",
@@ -1040,6 +2680,220 @@
         "Rendre un service exploitable"
       ],
       "file": "backend-api.json"
+    },
+    {
+      "id": "api-http",
+      "title": "API : HTTP et conception",
+      "domain": "backend-api",
+      "subdomain": "HTTP",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "HTTP",
+        "REST"
+      ],
+      "description": "En-têtes, cookies, contrats, REST et routage.",
+      "objectives": [
+        "Lire les en-têtes",
+        "Sécuriser un cookie",
+        "Concevoir des ressources",
+        "Choisir les statuts",
+        "Lire les paramètres"
+      ],
+      "prerequisites": [
+        "Backend et API REST"
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [
+        "api-validation"
+      ],
+      "skills": [
+        "HTTP",
+        "REST"
+      ],
+      "file": "api-http.json"
+    },
+    {
+      "id": "api-validation",
+      "title": "API : validation et accès",
+      "domain": "backend-api",
+      "subdomain": "Validation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Validation",
+        "Pagination",
+        "Auth"
+      ],
+      "description": "Validation, erreurs, pagination, filtres et authentification.",
+      "objectives": [
+        "Valider un schéma",
+        "Normaliser les erreurs",
+        "Paginer",
+        "Filtrer sans injection",
+        "Hacher un mot de passe"
+      ],
+      "prerequisites": [
+        "Backend et API REST"
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [
+        "api-securite"
+      ],
+      "skills": [
+        "Validation",
+        "Pagination",
+        "Auth"
+      ],
+      "file": "api-validation.json"
+    },
+    {
+      "id": "api-securite",
+      "title": "API : autorisation et documentation",
+      "domain": "backend-api",
+      "subdomain": "Sécurité",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "RBAC",
+        "OpenAPI",
+        "Tests"
+      ],
+      "description": "Autorisation, rôles, documentation, OpenAPI et tests d'API.",
+      "objectives": [
+        "Vérifier la propriété",
+        "Appliquer le moindre privilège",
+        "Documenter les erreurs",
+        "Décrire en OpenAPI",
+        "Tester les contrats"
+      ],
+      "prerequisites": [
+        "Backend et API REST"
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [
+        "api-exploitation"
+      ],
+      "skills": [
+        "RBAC",
+        "OpenAPI",
+        "Tests"
+      ],
+      "file": "api-securite.json"
+    },
+    {
+      "id": "api-exploitation",
+      "title": "API : exploitation",
+      "domain": "backend-api",
+      "subdomain": "Exploitation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Quotas",
+        "Logs",
+        "Secrets"
+      ],
+      "description": "Limitation de débit, journalisation, configuration, variables et secrets.",
+      "objectives": [
+        "Renvoyer 429",
+        "Corréler les journaux",
+        "Valider la config",
+        "Documenter .env",
+        "Gérer un coffre"
+      ],
+      "prerequisites": [
+        "Backend et API REST"
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [
+        "api-avance"
+      ],
+      "skills": [
+        "Quotas",
+        "Logs",
+        "Secrets"
+      ],
+      "file": "api-exploitation.json"
+    },
+    {
+      "id": "api-avance",
+      "title": "API : CORS, temps réel et cache",
+      "domain": "backend-api",
+      "subdomain": "Avancé",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "CORS",
+        "WebSocket",
+        "Cache"
+      ],
+      "description": "CORS, WebSockets, tâches asynchrones, files et cache.",
+      "objectives": [
+        "Configurer CORS",
+        "Authentifier un WebSocket",
+        "Renvoyer 202",
+        "Gérer une DLQ",
+        "Invalider un cache"
+      ],
+      "prerequisites": [
+        "Backend et API REST"
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [
+        "api-architecture"
+      ],
+      "skills": [
+        "CORS",
+        "WebSocket",
+        "Cache"
+      ],
+      "file": "api-avance.json"
+    },
+    {
+      "id": "api-architecture",
+      "title": "API : architecture et production",
+      "domain": "backend-api",
+      "subdomain": "Architecture",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Couches",
+        "SOLID",
+        "Production"
+      ],
+      "description": "Couches, SOLID, hexagonale, microservices, erreurs et exploitation.",
+      "objectives": [
+        "Séparer les couches",
+        "Appliquer DIP",
+        "Isoler le domaine",
+        "Choisir monolithe",
+        "Déployer et surveiller"
+      ],
+      "prerequisites": [
+        "Backend et API REST"
+      ],
+      "prerequisiteCourses": [
+        "backend-api"
+      ],
+      "nextCourses": [
+        "sql-pratique"
+      ],
+      "skills": [
+        "Couches",
+        "SOLID",
+        "Production"
+      ],
+      "file": "api-architecture.json"
     },
     {
       "id": "ia-debutant",
@@ -1111,6 +2965,109 @@
       "file": "typescript.json"
     },
     {
+      "type": "parcours",
+      "id": "ts-typage",
+      "title": "TypeScript : typage avancé",
+      "domain": "typescript-frontend",
+      "subdomain": "Typage",
+      "level": "intermediaire",
+      "technologies": [
+        "Littéraux",
+        "Génériques",
+        "Utilitaires"
+      ],
+      "description": "Littéraux, fonctions typées, génériques, classes/interfaces et types utilitaires.",
+      "objectives": [
+        "Restreindre par littéraux",
+        "Typer une fonction",
+        "Écrire un générique",
+        "Implémenter une interface",
+        "Choisir un utilitaire"
+      ],
+      "prerequisites": [
+        "TypeScript (bases)."
+      ],
+      "prerequisiteCourses": [
+        "typescript"
+      ],
+      "nextCourses": [
+        "ts-securite"
+      ],
+      "skills": [
+        "Typage",
+        "Génériques"
+      ],
+      "file": "ts-typage.json"
+    },
+    {
+      "type": "parcours",
+      "id": "ts-securite",
+      "title": "TypeScript : narrowing et configuration",
+      "domain": "typescript-frontend",
+      "subdomain": "Typage",
+      "level": "intermediaire",
+      "technologies": [
+        "Narrowing",
+        "strict",
+        "Modules"
+      ],
+      "description": "Narrowing, nullables, modules, tsconfig et TypeScript dans un projet web.",
+      "objectives": [
+        "Affiner une union",
+        "Gérer null/undefined",
+        "Importer des types",
+        "Configurer strict",
+        "Valider les données externes"
+      ],
+      "prerequisites": [
+        "TypeScript : typage avancé."
+      ],
+      "prerequisiteCourses": [
+        "ts-typage"
+      ],
+      "nextCourses": [
+        "ts-projet"
+      ],
+      "skills": [
+        "Narrowing",
+        "Configuration"
+      ],
+      "file": "ts-securite.json"
+    },
+    {
+      "type": "parcours",
+      "id": "ts-projet",
+      "title": "TypeScript : organisation du projet",
+      "domain": "typescript-frontend",
+      "subdomain": "Projet",
+      "level": "avance",
+      "technologies": [
+        "Architecture",
+        "Revue"
+      ],
+      "description": "Structure d'un projet typé, bonnes pratiques et évolution des types.",
+      "objectives": [
+        "Organiser les dossiers",
+        "Typer les frontières",
+        "Relire les types",
+        "Documenter les choix"
+      ],
+      "prerequisites": [
+        "TypeScript : narrowing et configuration."
+      ],
+      "prerequisiteCourses": [
+        "ts-securite"
+      ],
+      "nextCourses": [
+        "react-etat"
+      ],
+      "skills": [
+        "Organisation",
+        "Revue de types"
+      ],
+      "file": "ts-projet.json"
+    },
+    {
       "id": "react",
       "title": "React",
       "domain": "typescript-frontend",
@@ -1142,6 +3099,220 @@
         "Écrire des composants testables"
       ],
       "file": "react.json"
+    },
+    {
+      "type": "parcours",
+      "id": "react-etat",
+      "title": "React : état et rendu",
+      "domain": "typescript-frontend",
+      "subdomain": "React",
+      "level": "intermediaire",
+      "technologies": [
+        "Événements",
+        "Listes",
+        "useState"
+      ],
+      "description": "Événements, rendu conditionnel, listes, formulaires contrôlés et hooks fondamentaux.",
+      "objectives": [
+        "Passer un gestionnaire",
+        "Rendre selon l'état",
+        "Choisir une key stable",
+        "Contrôler un champ",
+        "Utiliser useState"
+      ],
+      "prerequisites": [
+        "React (introduction)."
+      ],
+      "prerequisiteCourses": [
+        "react"
+      ],
+      "nextCourses": [
+        "react-effets"
+      ],
+      "skills": [
+        "État",
+        "Rendu"
+      ],
+      "file": "react-etat.json"
+    },
+    {
+      "type": "parcours",
+      "id": "react-effets",
+      "title": "React : effets et contexte",
+      "domain": "typescript-frontend",
+      "subdomain": "React",
+      "level": "intermediaire",
+      "technologies": [
+        "useEffect",
+        "Context",
+        "Router"
+      ],
+      "description": "useEffect, hooks personnalisés, contexte, état global et routeur.",
+      "objectives": [
+        "Nettoyer un effet",
+        "Extraire un hook",
+        "Fournir un contexte",
+        "Choisir local ou global",
+        "Lire les paramètres d'URL"
+      ],
+      "prerequisites": [
+        "React : état et rendu."
+      ],
+      "prerequisiteCourses": [
+        "react-etat"
+      ],
+      "nextCourses": [
+        "react-app"
+      ],
+      "skills": [
+        "Effets",
+        "Contexte",
+        "Navigation"
+      ],
+      "file": "react-effets.json"
+    },
+    {
+      "type": "parcours",
+      "id": "react-app",
+      "title": "React : applications et performance",
+      "domain": "typescript-frontend",
+      "subdomain": "React",
+      "level": "avance",
+      "technologies": [
+        "Chargement",
+        "Erreurs",
+        "Memo"
+      ],
+      "description": "Chargement de données, erreurs, composants réutilisables, architecture et mémoïsation.",
+      "objectives": [
+        "Charger sans fuite",
+        "Afficher une erreur actionnable",
+        "Composer des composants",
+        "Organiser par fonctionnalité",
+        "Mémoïser après mesure"
+      ],
+      "prerequisites": [
+        "React : effets et contexte."
+      ],
+      "prerequisiteCourses": [
+        "react-effets"
+      ],
+      "nextCourses": [
+        "tests-qualite"
+      ],
+      "skills": [
+        "Architecture",
+        "Performance"
+      ],
+      "file": "react-app.json"
+    },
+    {
+      "type": "parcours",
+      "id": "react-tests",
+      "title": "React : tests et déploiement",
+      "domain": "typescript-frontend",
+      "subdomain": "React",
+      "level": "intermediaire",
+      "technologies": [
+        "Tests",
+        "Accessibilité",
+        "Build"
+      ],
+      "description": "Tester les composants, gérer l'accessibilité et déployer une application React.",
+      "objectives": [
+        "Tester par rôle accessible",
+        "Associer labels avec useId",
+        "Annoncer les erreurs",
+        "Construire les fichiers",
+        "Tester une route profonde"
+      ],
+      "prerequisites": [
+        "React : applications et performance."
+      ],
+      "prerequisiteCourses": [
+        "react-app"
+      ],
+      "nextCourses": [
+        "frontend-vue"
+      ],
+      "skills": [
+        "Tests",
+        "Accessibilité",
+        "Déploiement"
+      ],
+      "file": "react-tests.json"
+    },
+    {
+      "type": "parcours",
+      "id": "frontend-vue",
+      "title": "Frontend : Vue, Svelte et Next.js",
+      "domain": "typescript-frontend",
+      "subdomain": "Frameworks",
+      "level": "intermediaire",
+      "technologies": [
+        "Vue",
+        "Svelte",
+        "Next.js"
+      ],
+      "description": "Vue, Svelte et Next.js : composants, réactivité et routage par fichiers.",
+      "objectives": [
+        "Créer une app Vue",
+        "Émettre un événement Vue",
+        "Dériver avec computed",
+        "Écrire un composant Svelte",
+        "Créer une route Next"
+      ],
+      "prerequisites": [
+        "React : tests et déploiement."
+      ],
+      "prerequisiteCourses": [
+        "react-tests"
+      ],
+      "nextCourses": [
+        "frontend-rendu"
+      ],
+      "skills": [
+        "Vue",
+        "Svelte",
+        "Next.js"
+      ],
+      "file": "frontend-vue.json"
+    },
+    {
+      "type": "parcours",
+      "id": "frontend-rendu",
+      "title": "Frontend : rendu et intégration",
+      "domain": "typescript-frontend",
+      "subdomain": "Rendu",
+      "level": "intermediaire",
+      "technologies": [
+        "SSR",
+        "SSG",
+        "Routage",
+        "Dépendances"
+      ],
+      "description": "SSR, génération statique, routage, formulaires, bibliothèques et dépendances frontend.",
+      "objectives": [
+        "Comprendre le SSR",
+        "Choisir SSG ou SSR",
+        "Protéger une route côté serveur",
+        "Gérer un formulaire",
+        "Auditer les dépendances"
+      ],
+      "prerequisites": [
+        "Frontend : Vue, Svelte et Next.js."
+      ],
+      "prerequisiteCourses": [
+        "frontend-vue"
+      ],
+      "nextCourses": [
+        "python-intermediaire"
+      ],
+      "skills": [
+        "SSR/SSG",
+        "Intégration"
+      ],
+      "file": "frontend-rendu.json"
     },
     {
       "id": "tests-qualite",
@@ -1394,6 +3565,148 @@
       "file": "windows-server.json"
     },
     {
+      "id": "windows-ad",
+      "title": "Windows Server : Active Directory",
+      "domain": "windows",
+      "subdomain": "Annuaire",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "AD DS",
+        "GPO"
+      ],
+      "description": "AD DS, domaines, comptes, unités d'organisation et stratégies.",
+      "objectives": [
+        "Situer l'annuaire",
+        "Choisir une structure",
+        "Gérer les groupes",
+        "Organiser les OU",
+        "Lier une GPO"
+      ],
+      "prerequisites": [
+        "Windows Server"
+      ],
+      "prerequisiteCourses": [
+        "windows-server"
+      ],
+      "nextCourses": [
+        "windows-services"
+      ],
+      "skills": [
+        "AD DS",
+        "GPO"
+      ],
+      "file": "windows-ad.json"
+    },
+    {
+      "id": "windows-services",
+      "title": "Windows Server : services réseau",
+      "domain": "windows",
+      "subdomain": "Services",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "DNS",
+        "DHCP",
+        "Fichiers"
+      ],
+      "description": "DNS, DHCP, partages, permissions et sauvegarde serveur.",
+      "objectives": [
+        "Créer une zone",
+        "Définir une étendue",
+        "Créer un partage",
+        "Combiner les droits",
+        "Tester la restauration"
+      ],
+      "prerequisites": [
+        "Windows Server"
+      ],
+      "prerequisiteCourses": [
+        "windows-server"
+      ],
+      "nextCourses": [
+        "windows-entra"
+      ],
+      "skills": [
+        "DNS",
+        "DHCP",
+        "Fichiers"
+      ],
+      "file": "windows-services.json"
+    },
+    {
+      "id": "windows-entra",
+      "title": "Identités Microsoft Entra",
+      "domain": "windows",
+      "subdomain": "Cloud",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Entra ID",
+        "M365",
+        "MFA"
+      ],
+      "description": "Entra ID, différences avec AD DS, Microsoft 365, identités et MFA.",
+      "objectives": [
+        "Situer Entra",
+        "Comparer AD/Entra",
+        "Comprendre M365",
+        "Gérer par groupes",
+        "Activer MFA"
+      ],
+      "prerequisites": [
+        "Windows Server"
+      ],
+      "prerequisiteCourses": [
+        "windows-server"
+      ],
+      "nextCourses": [
+        "reseau-fondamentaux"
+      ],
+      "skills": [
+        "Entra ID",
+        "M365",
+        "MFA"
+      ],
+      "file": "windows-entra.json"
+    },
+    {
+      "id": "windows-client",
+      "title": "Windows côté technique",
+      "domain": "windows",
+      "subdomain": "Client",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "NTFS",
+        "PowerShell",
+        "BitLocker"
+      ],
+      "description": "Architecture, comptes, permissions, processus, services, journaux et sauvegarde.",
+      "objectives": [
+        "Situer le registre",
+        "Choisir un compte",
+        "Comprendre NTFS",
+        "Gérer un service",
+        "Restaurer"
+      ],
+      "prerequisites": [
+        "Windows Server"
+      ],
+      "prerequisiteCourses": [
+        "windows-server"
+      ],
+      "nextCourses": [
+        "reseaux-debutant"
+      ],
+      "skills": [
+        "NTFS",
+        "PowerShell",
+        "BitLocker"
+      ],
+      "file": "windows-client.json"
+    },
+    {
       "id": "ethical-hacking",
       "title": "Ethical hacking : cadre et méthode",
       "domain": "ethical-hacking",
@@ -1427,6 +3740,804 @@
         "Recommander une correction"
       ],
       "file": "ethical-hacking.json"
+    },
+    {
+      "id": "cyber-fondamentaux",
+      "title": "Cybersécurité : fondamentaux",
+      "domain": "cybersecurite",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "DIC",
+        "Risque"
+      ],
+      "description": "Introduction, triade DIC, menaces, modélisation et risques.",
+      "objectives": [
+        "Cadrer",
+        "Classer une atteinte",
+        "Distinguer menace/vulnérabilité",
+        "Modéliser",
+        "Traiter un risque"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-identite"
+      ],
+      "skills": [
+        "DIC",
+        "Risque"
+      ],
+      "file": "cyber-fondamentaux.json"
+    },
+    {
+      "id": "cyber-identite",
+      "title": "Cybersécurité : identité et accès",
+      "domain": "cybersecurite",
+      "subdomain": "Identité",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Auth",
+        "MFA"
+      ],
+      "description": "Authentification, autorisation, identités, mots de passe et MFA.",
+      "objectives": [
+        "Choisir un facteur",
+        "Vérifier les droits",
+        "Gérer le cycle de vie",
+        "Hacher",
+        "Activer MFA"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-chiffrement"
+      ],
+      "skills": [
+        "Auth",
+        "MFA"
+      ],
+      "file": "cyber-identite.json"
+    },
+    {
+      "id": "cyber-chiffrement",
+      "title": "Cybersécurité : chiffrement",
+      "domain": "cybersecurite",
+      "subdomain": "Cryptographie",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "AES",
+        "RSA",
+        "TLS"
+      ],
+      "description": "Symétrique, asymétrique, hachage, signatures et certificats.",
+      "objectives": [
+        "Chiffrer",
+        "Comprendre la paire",
+        "Hacher",
+        "Signer",
+        "Vérifier un certificat"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-pki"
+      ],
+      "skills": [
+        "AES",
+        "RSA",
+        "TLS"
+      ],
+      "file": "cyber-chiffrement.json"
+    },
+    {
+      "id": "cyber-pki",
+      "title": "Cybersécurité : PKI et principes",
+      "domain": "cybersecurite",
+      "subdomain": "PKI",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "PKI",
+        "TLS",
+        "Zero Trust"
+      ],
+      "description": "PKI, TLS, secrets, moindre privilège et défense en profondeur.",
+      "objectives": [
+        "Gérer une CA",
+        "Vérifier TLS",
+        "Stocker un secret",
+        "Limiter les droits",
+        "Empiler les mesures"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-systemes"
+      ],
+      "skills": [
+        "PKI",
+        "TLS",
+        "Zero Trust"
+      ],
+      "file": "cyber-pki.json"
+    },
+    {
+      "id": "cyber-systemes",
+      "title": "Cybersécurité : systèmes",
+      "domain": "cybersecurite",
+      "subdomain": "Systèmes",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Windows",
+        "Linux",
+        "Patchs"
+      ],
+      "description": "Windows, Linux, correctifs, durcissement et permissions.",
+      "objectives": [
+        "Sécuriser Windows",
+        "Sécuriser Linux",
+        "Planifier un patch",
+        "Durcir",
+        "Auditer les droits"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-audit"
+      ],
+      "skills": [
+        "Windows",
+        "Linux",
+        "Patchs"
+      ],
+      "file": "cyber-systemes.json"
+    },
+    {
+      "id": "cyber-audit",
+      "title": "Cybersécurité : audit système",
+      "domain": "cybersecurite",
+      "subdomain": "Audit",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Audit",
+        "SSH",
+        "Logs"
+      ],
+      "description": "Audit de configuration, services, SSH, journaux et surveillance.",
+      "objectives": [
+        "Comparer au référentiel",
+        "Désactiver l'inutile",
+        "Durcir SSH",
+        "Centraliser",
+        "Trier les alertes"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-menaces"
+      ],
+      "skills": [
+        "Audit",
+        "SSH",
+        "Logs"
+      ],
+      "file": "cyber-audit.json"
+    },
+    {
+      "id": "cyber-menaces",
+      "title": "Cybersécurité : menaces et surface",
+      "domain": "cybersecurite",
+      "subdomain": "Menaces",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Malware",
+        "Sauvegardes"
+      ],
+      "description": "Malwares, sauvegardes résilientes, vulnérabilités, patchs et surface.",
+      "objectives": [
+        "Prévenir",
+        "Isoler les sauvegardes",
+        "Prioriser",
+        "Vérifier un patch",
+        "Réduire la surface"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-reseau"
+      ],
+      "skills": [
+        "Malware",
+        "Sauvegardes"
+      ],
+      "file": "cyber-menaces.json"
+    },
+    {
+      "id": "cyber-reseau",
+      "title": "Cybersécurité : réseau",
+      "domain": "cybersecurite",
+      "subdomain": "Réseau",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "IDS/IPS",
+        "Segmentation"
+      ],
+      "description": "Défense réseau, pare-feu, segmentation, IDS/IPS et VPN.",
+      "objectives": [
+        "Segmenter",
+        "Filtrer",
+        "Placer un IDS",
+        "Régler les alertes",
+        "Chiffrer le transport"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-logs"
+      ],
+      "skills": [
+        "IDS/IPS",
+        "Segmentation"
+      ],
+      "file": "cyber-reseau.json"
+    },
+    {
+      "id": "cyber-logs",
+      "title": "Cybersécurité : journaux et anomalies",
+      "domain": "cybersecurite",
+      "subdomain": "Détection",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Logs",
+        "DoS",
+        "DNS"
+      ],
+      "description": "Journaux réseau, DoS, anomalies, Wi-Fi et DNS.",
+      "objectives": [
+        "Corréler",
+        "Mitiger un DoS",
+        "Détecter un écart",
+        "Sécuriser le Wi-Fi",
+        "Protéger le DNS"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-protocoles"
+      ],
+      "skills": [
+        "Logs",
+        "DoS",
+        "DNS"
+      ],
+      "file": "cyber-logs.json"
+    },
+    {
+      "id": "cyber-protocoles",
+      "title": "Cybersécurité : protocoles et web",
+      "domain": "cybersecurite",
+      "subdomain": "Web",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "TLS",
+        "Zero Trust",
+        "Sessions"
+      ],
+      "description": "Protocoles, Zero Trust, introduction web, requête HTTP et sessions.",
+      "objectives": [
+        "Chiffrer",
+        "Vérifier chaque accès",
+        "Situer les risques",
+        "Suivre une requête",
+        "Protéger une session"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-web-acces"
+      ],
+      "skills": [
+        "TLS",
+        "Zero Trust",
+        "Sessions"
+      ],
+      "file": "cyber-protocoles.json"
+    },
+    {
+      "id": "cyber-web-acces",
+      "title": "Cybersécurité : cookies et injections",
+      "domain": "cybersecurite",
+      "subdomain": "Web",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "XSS",
+        "SQLi"
+      ],
+      "description": "Cookies, contrôle d'accès, validation, injection SQL et XSS.",
+      "objectives": [
+        "Protéger un cookie",
+        "Contrôler l'accès",
+        "Valider",
+        "Prévenir SQLi",
+        "Prévenir XSS"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-web-avance"
+      ],
+      "skills": [
+        "XSS",
+        "SQLi"
+      ],
+      "file": "cyber-web-acces.json"
+    },
+    {
+      "id": "cyber-web-avance",
+      "title": "Cybersécurité : failles web",
+      "domain": "cybersecurite",
+      "subdomain": "Web",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "CSRF",
+        "SSRF"
+      ],
+      "description": "CSRF, SSRF, traversée, désérialisation et mauvaises configurations.",
+      "objectives": [
+        "Prévenir CSRF",
+        "Restreindre SSRF",
+        "Normaliser un chemin",
+        "Valider une désérialisation",
+        "Durcir la config"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-web-pro"
+      ],
+      "skills": [
+        "CSRF",
+        "SSRF"
+      ],
+      "file": "cyber-web-avance.json"
+    },
+    {
+      "id": "cyber-web-pro",
+      "title": "Cybersécurité : API et dépendances",
+      "domain": "cybersecurite",
+      "subdomain": "API",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "OAuth",
+        "OIDC"
+      ],
+      "description": "Fichiers téléversés, API, OAuth, OIDC et dépendances.",
+      "objectives": [
+        "Valider un fichier",
+        "Sécuriser une API",
+        "Comprendre OAuth",
+        "Vérifier OIDC",
+        "Auditer les dépendances"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cyber-pentest"
+      ],
+      "skills": [
+        "OAuth",
+        "OIDC"
+      ],
+      "file": "cyber-web-pro.json"
+    },
+    {
+      "id": "cyber-pentest",
+      "title": "Cybersécurité : tests autorisés",
+      "domain": "ethical-hacking",
+      "subdomain": "Pentest",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "OWASP",
+        "ASVS"
+      ],
+      "description": "Modèle de menace, cadre autorisé, OWASP Top 10/ASVS et périmètre.",
+      "objectives": [
+        "Modéliser",
+        "Cadrer un test",
+        "Prioriser OWASP",
+        "Utiliser ASVS",
+        "Définir un périmètre"
+      ],
+      "prerequisites": [
+        "Ethical hacking : cadre et méthode"
+      ],
+      "prerequisiteCourses": [
+        "ethical-hacking"
+      ],
+      "nextCourses": [
+        "cybersecurite-avancee"
+      ],
+      "skills": [
+        "OWASP",
+        "ASVS"
+      ],
+      "file": "cyber-pentest.json"
+    },
+    {
+      "id": "pentest-methode",
+      "title": "Pentest : reconnaissance",
+      "domain": "ethical-hacking",
+      "subdomain": "Reconnaissance",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Recon",
+        "Scanners"
+      ],
+      "description": "Reconnaissance passive, inventaire, découverte de services, ports et scanners.",
+      "objectives": [
+        "Collecter sans contact",
+        "Confirmer le périmètre",
+        "Découvrir",
+        "Évaluer les ports",
+        "Lire un scanner"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "pentest-web"
+      ],
+      "skills": [
+        "Recon",
+        "Scanners"
+      ],
+      "file": "pentest-methode.json"
+    },
+    {
+      "id": "pentest-web",
+      "title": "Pentest : constats web",
+      "domain": "ethical-hacking",
+      "subdomain": "Constats",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "PoC",
+        "Risque"
+      ],
+      "description": "Configurations vulnérables, tests web, démonstration, PoC et risque.",
+      "objectives": [
+        "Reproduire",
+        "Tester une app",
+        "Démontrer",
+        "Documenter une PoC",
+        "Évaluer le risque"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "pentest-rapport"
+      ],
+      "skills": [
+        "PoC",
+        "Risque"
+      ],
+      "file": "pentest-web.json"
+    },
+    {
+      "id": "pentest-rapport",
+      "title": "Pentest : rapport et remédiation",
+      "domain": "ethical-hacking",
+      "subdomain": "Rapport",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Rapport",
+        "Red/Blue"
+      ],
+      "description": "Rapport, corrections, vérification, red/blue et plateformes.",
+      "objectives": [
+        "Rédiger",
+        "Recommander",
+        "Vérifier",
+        "Comprendre red/blue",
+        "Choisir une plateforme"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "soc"
+      ],
+      "skills": [
+        "Rapport",
+        "Red/Blue"
+      ],
+      "file": "pentest-rapport.json"
+    },
+    {
+      "id": "soc",
+      "title": "SOC et détection",
+      "domain": "cybersecurite",
+      "subdomain": "SOC",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "SIEM",
+        "Détection"
+      ],
+      "description": "SOC, collecte, SIEM, corrélation et anomalies.",
+      "objectives": [
+        "Situer le SOC",
+        "Collecter",
+        "Corréler",
+        "Détecter",
+        "Qualifier"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "incident"
+      ],
+      "skills": [
+        "SIEM",
+        "Détection"
+      ],
+      "file": "soc.json"
+    },
+    {
+      "id": "incident",
+      "title": "Réponse aux incidents",
+      "domain": "cybersecurite",
+      "subdomain": "Incident",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Forensics",
+        "Containment"
+      ],
+      "description": "Alerte, triage, investigation, preuves, réponse et containment.",
+      "objectives": [
+        "Qualifier",
+        "Trier",
+        "Investiguer",
+        "Préserver",
+        "Contenir"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "threat"
+      ],
+      "skills": [
+        "Forensics",
+        "Containment"
+      ],
+      "file": "incident.json"
+    },
+    {
+      "id": "threat",
+      "title": "Renseignement et playbooks",
+      "domain": "cybersecurite",
+      "subdomain": "Threat intel",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "MITRE",
+        "IoC"
+      ],
+      "description": "Journaux système, threat intelligence, IoC, MITRE, playbooks et incidents.",
+      "objectives": [
+        "Analyser",
+        "Qualifier un flux",
+        "Corréler un IoC",
+        "Cartographier",
+        "Tester un playbook"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "crypto-avance"
+      ],
+      "skills": [
+        "MITRE",
+        "IoC"
+      ],
+      "file": "threat.json"
+    },
+    {
+      "id": "crypto-avance",
+      "title": "Cryptographie avancée",
+      "domain": "cybersecurite",
+      "subdomain": "Cryptographie",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "AES",
+        "RSA",
+        "ECC"
+      ],
+      "description": "Maths, chiffres classiques, AES, RSA, Diffie-Hellman et courbes.",
+      "objectives": [
+        "Comprendre les bases",
+        "Éviter les classiques",
+        "Choisir AES",
+        "Comprendre RSA",
+        "Situer DH"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "crypto-pro"
+      ],
+      "skills": [
+        "AES",
+        "RSA",
+        "ECC"
+      ],
+      "file": "crypto-avance.json"
+    },
+    {
+      "id": "crypto-pro",
+      "title": "Cryptographie appliquée",
+      "domain": "cybersecurite",
+      "subdomain": "Cryptographie",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "KDF",
+        "Certificats",
+        "SBOM"
+      ],
+      "description": "Dérivation, stockage des mots de passe, protocoles, certificats et chaîne.",
+      "objectives": [
+        "Dériver",
+        "Stocker",
+        "Choisir un protocole",
+        "Gérer un certificat",
+        "Signer un artefact"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "securite-avancee"
+      ],
+      "skills": [
+        "KDF",
+        "Certificats",
+        "SBOM"
+      ],
+      "file": "crypto-pro.json"
+    },
+    {
+      "id": "securite-avancee",
+      "title": "Sécurité avancée",
+      "domain": "cybersecurite",
+      "subdomain": "Avancé",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Menaces",
+        "Matériel",
+        "Conteneurs"
+      ],
+      "description": "Modélisation avancée, sécurité matérielle et conteneurs.",
+      "objectives": [
+        "Modéliser",
+        "Sécuriser le firmware",
+        "Isoler un conteneur"
+      ],
+      "prerequisites": [
+        "Cybersécurité : tests autorisés"
+      ],
+      "prerequisiteCourses": [
+        "cyber-pentest"
+      ],
+      "nextCourses": [
+        "cloud-fondamentaux"
+      ],
+      "skills": [
+        "Menaces",
+        "Matériel",
+        "Conteneurs"
+      ],
+      "file": "securite-avancee.json"
     },
     {
       "id": "langage-c",
@@ -1464,6 +4575,77 @@
       "file": "langage-c.json"
     },
     {
+      "id": "c-avance",
+      "title": "C : pointeurs et structures",
+      "domain": "autres-langages",
+      "subdomain": "C",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Pointeurs",
+        "malloc",
+        "struct"
+      ],
+      "description": "Tableaux, chaînes, pointeurs, allocation et structures.",
+      "objectives": [
+        "Parcourir un tableau",
+        "Manipuler les chaînes C",
+        "Déréférencer un pointeur",
+        "Allouer et libérer",
+        "Définir une structure"
+      ],
+      "prerequisites": [
+        "Langage C"
+      ],
+      "prerequisiteCourses": [
+        "langage-c"
+      ],
+      "nextCourses": [
+        "c-projet"
+      ],
+      "skills": [
+        "Pointeurs",
+        "malloc",
+        "struct"
+      ],
+      "file": "c-avance.json"
+    },
+    {
+      "id": "c-projet",
+      "title": "C : compilation et projet",
+      "domain": "autres-langages",
+      "subdomain": "C",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "gcc",
+        "Makefile",
+        "ASan"
+      ],
+      "description": "Fichiers, compilation, gestion mémoire et organisation d'un projet C.",
+      "objectives": [
+        "Lire un fichier",
+        "Compiler avec avertissements",
+        "Détecter les fuites",
+        "Organiser .h/.c"
+      ],
+      "prerequisites": [
+        "Langage C"
+      ],
+      "prerequisiteCourses": [
+        "langage-c"
+      ],
+      "nextCourses": [
+        "cpp-poo"
+      ],
+      "skills": [
+        "gcc",
+        "Makefile",
+        "ASan"
+      ],
+      "file": "c-projet.json"
+    },
+    {
       "id": "langage-cpp",
       "title": "Langage C++",
       "domain": "autres-langages",
@@ -1495,6 +4677,76 @@
         "Utiliser la STL"
       ],
       "file": "langage-cpp.json"
+    },
+    {
+      "id": "cpp-poo",
+      "title": "C++ : polymorphisme et STL",
+      "domain": "autres-langages",
+      "subdomain": "C++",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Héritage",
+        "STL",
+        "RAII"
+      ],
+      "description": "Héritage, polymorphisme, conteneurs, itérateurs et RAII.",
+      "objectives": [
+        "Utiliser virtual",
+        "Choisir un conteneur",
+        "Parcourir avec itérateurs",
+        "Appliquer RAII"
+      ],
+      "prerequisites": [
+        "Langage C++"
+      ],
+      "prerequisiteCourses": [
+        "langage-cpp"
+      ],
+      "nextCourses": [
+        "cpp-avance"
+      ],
+      "skills": [
+        "Héritage",
+        "STL",
+        "RAII"
+      ],
+      "file": "cpp-poo.json"
+    },
+    {
+      "id": "cpp-avance",
+      "title": "C++ : templates et exceptions",
+      "domain": "autres-langages",
+      "subdomain": "C++",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Smart pointers",
+        "Templates",
+        "Exceptions"
+      ],
+      "description": "Smart pointers, templates, exceptions, compilation et projet.",
+      "objectives": [
+        "Choisir un smart pointer",
+        "Écrire un template",
+        "Attraper par référence",
+        "Compiler avec sanitizers"
+      ],
+      "prerequisites": [
+        "Langage C++"
+      ],
+      "prerequisiteCourses": [
+        "langage-cpp"
+      ],
+      "nextCourses": [
+        "java-poo"
+      ],
+      "skills": [
+        "Smart pointers",
+        "Templates",
+        "Exceptions"
+      ],
+      "file": "cpp-avance.json"
     },
     {
       "id": "langage-java",
@@ -1531,6 +4783,78 @@
       "file": "langage-java.json"
     },
     {
+      "id": "java-poo",
+      "title": "Java : conception objet",
+      "domain": "autres-langages",
+      "subdomain": "Java",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Encapsulation",
+        "Héritage",
+        "Collections"
+      ],
+      "description": "Encapsulation, héritage, interfaces, collections et exceptions.",
+      "objectives": [
+        "Protéger un invariant",
+        "Redéfinir avec override",
+        "Implémenter une interface",
+        "Choisir une collection"
+      ],
+      "prerequisites": [
+        "Langage Java"
+      ],
+      "prerequisiteCourses": [
+        "langage-java"
+      ],
+      "nextCourses": [
+        "java-avance"
+      ],
+      "skills": [
+        "Encapsulation",
+        "Héritage",
+        "Collections"
+      ],
+      "file": "java-poo.json"
+    },
+    {
+      "id": "java-avance",
+      "title": "Java : génériques et tests",
+      "domain": "autres-langages",
+      "subdomain": "Java",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Génériques",
+        "Streams",
+        "JUnit",
+        "Spring"
+      ],
+      "description": "Génériques, streams, E/S, concurrence, tests et Spring Boot.",
+      "objectives": [
+        "Écrire un générique",
+        "Utiliser un stream",
+        "Fermer un flux",
+        "Tester avec JUnit"
+      ],
+      "prerequisites": [
+        "Langage Java"
+      ],
+      "prerequisiteCourses": [
+        "langage-java"
+      ],
+      "nextCourses": [
+        "php-web"
+      ],
+      "skills": [
+        "Génériques",
+        "Streams",
+        "JUnit",
+        "Spring"
+      ],
+      "file": "java-avance.json"
+    },
+    {
       "id": "langage-php",
       "title": "Langage PHP",
       "domain": "autres-langages",
@@ -1564,6 +4888,76 @@
       "file": "langage-php.json"
     },
     {
+      "id": "php-web",
+      "title": "PHP : formulaires et données",
+      "domain": "autres-langages",
+      "subdomain": "PHP",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Formulaires",
+        "Sessions",
+        "Laravel"
+      ],
+      "description": "Tableaux, formulaires, sessions, fichiers et Laravel.",
+      "objectives": [
+        "Valider une saisie",
+        "Utiliser une session",
+        "Lire un fichier",
+        "Déclarer une route Laravel"
+      ],
+      "prerequisites": [
+        "Langage PHP"
+      ],
+      "prerequisiteCourses": [
+        "langage-php"
+      ],
+      "nextCourses": [
+        "php-poo"
+      ],
+      "skills": [
+        "Formulaires",
+        "Sessions",
+        "Laravel"
+      ],
+      "file": "php-web.json"
+    },
+    {
+      "id": "php-poo",
+      "title": "PHP : objets et base de données",
+      "domain": "autres-langages",
+      "subdomain": "PHP",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "POO",
+        "PDO",
+        "Sécurité"
+      ],
+      "description": "POO, PDO, requêtes préparées, erreurs et sécurité.",
+      "objectives": [
+        "Typer une classe",
+        "Se connecter avec PDO",
+        "Préparer une requête",
+        "Hacher un mot de passe"
+      ],
+      "prerequisites": [
+        "Langage PHP"
+      ],
+      "prerequisiteCourses": [
+        "langage-php"
+      ],
+      "nextCourses": [
+        "go-avance"
+      ],
+      "skills": [
+        "POO",
+        "PDO",
+        "Sécurité"
+      ],
+      "file": "php-poo.json"
+    },
+    {
       "id": "langage-go",
       "title": "Langage Go",
       "domain": "autres-langages",
@@ -1595,6 +4989,247 @@
         "Tester une API"
       ],
       "file": "langage-go.json"
+    },
+    {
+      "id": "go-avance",
+      "title": "Go : interfaces et concurrence",
+      "domain": "autres-langages",
+      "subdomain": "Go",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Interfaces",
+        "Goroutines",
+        "Channels"
+      ],
+      "description": "Interfaces, erreurs, packages, goroutines et channels.",
+      "objectives": [
+        "Implémenter une interface",
+        "Envelopper une erreur",
+        "Lancer une goroutine",
+        "Échanger par channel"
+      ],
+      "prerequisites": [
+        "Langage Go"
+      ],
+      "prerequisiteCourses": [
+        "langage-go"
+      ],
+      "nextCourses": [
+        "go-api"
+      ],
+      "skills": [
+        "Interfaces",
+        "Goroutines",
+        "Channels"
+      ],
+      "file": "go-avance.json"
+    },
+    {
+      "id": "go-api",
+      "title": "Go : API et tests",
+      "domain": "autres-langages",
+      "subdomain": "Go",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "HTTP",
+        "httptest"
+      ],
+      "description": "Créer une API HTTP et la tester avec httptest.",
+      "objectives": [
+        "Déclarer une route",
+        "Répondre en JSON",
+        "Tester un handler"
+      ],
+      "prerequisites": [
+        "Langage Go"
+      ],
+      "prerequisiteCourses": [
+        "langage-go"
+      ],
+      "nextCourses": [
+        "rust-bases"
+      ],
+      "skills": [
+        "HTTP",
+        "httptest"
+      ],
+      "file": "go-api.json"
+    },
+    {
+      "id": "rust-bases",
+      "title": "Rust : bases et propriété",
+      "domain": "autres-langages",
+      "subdomain": "Rust",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Ownership",
+        "Borrowing"
+      ],
+      "description": "Introduction, variables, ownership, borrowing et lifetimes.",
+      "objectives": [
+        "Compiler avec cargo",
+        "Comprendre la propriété",
+        "Emprunter sans copier",
+        "Lire une lifetime"
+      ],
+      "prerequisites": [
+        "Langage Go"
+      ],
+      "prerequisiteCourses": [
+        "langage-go"
+      ],
+      "nextCourses": [
+        "rust-avance"
+      ],
+      "skills": [
+        "Ownership",
+        "Borrowing"
+      ],
+      "file": "rust-bases.json"
+    },
+    {
+      "id": "rust-avance",
+      "title": "Rust : structures et traits",
+      "domain": "autres-langages",
+      "subdomain": "Rust",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Structs",
+        "Enums",
+        "Traits"
+      ],
+      "description": "Structures, enums, pattern matching, erreurs, collections et traits.",
+      "objectives": [
+        "Dériver Debug",
+        "Utiliser match",
+        "Propager avec ?",
+        "Implémenter un trait"
+      ],
+      "prerequisites": [
+        "Langage Go"
+      ],
+      "prerequisiteCourses": [
+        "langage-go"
+      ],
+      "nextCourses": [
+        "rust-projet"
+      ],
+      "skills": [
+        "Structs",
+        "Enums",
+        "Traits"
+      ],
+      "file": "rust-avance.json"
+    },
+    {
+      "id": "rust-projet",
+      "title": "Rust : concurrence et projet",
+      "domain": "autres-langages",
+      "subdomain": "Rust",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Threads",
+        "Cargo"
+      ],
+      "description": "Threads, Arc/Mutex et organisation d'un projet Rust.",
+      "objectives": [
+        "Partager un état",
+        "Protéger avec Mutex",
+        "Organiser avec Cargo"
+      ],
+      "prerequisites": [
+        "Langage Go"
+      ],
+      "prerequisiteCourses": [
+        "langage-go"
+      ],
+      "nextCourses": [
+        "langages-autres"
+      ],
+      "skills": [
+        "Threads",
+        "Cargo"
+      ],
+      "file": "rust-projet.json"
+    },
+    {
+      "id": "langages-autres",
+      "title": "Kotlin, Swift, Ruby et R",
+      "domain": "autres-langages",
+      "subdomain": "Complémentaires",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "R"
+      ],
+      "description": "Découvrir quatre langages et leurs usages.",
+      "objectives": [
+        "Comprendre Kotlin",
+        "Gérer un optionnel Swift",
+        "Utiliser un bloc Ruby",
+        "Créer un data frame R"
+      ],
+      "prerequisites": [
+        "Langage C"
+      ],
+      "prerequisiteCourses": [
+        "langage-c"
+      ],
+      "nextCourses": [
+        "langages-script"
+      ],
+      "skills": [
+        "Kotlin",
+        "Swift",
+        "Ruby",
+        "R"
+      ],
+      "file": "langages-autres.json"
+    },
+    {
+      "id": "langages-script",
+      "title": "Dart, PowerShell, Bash et Lua",
+      "domain": "autres-langages",
+      "subdomain": "Complémentaires",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "Dart",
+        "PowerShell",
+        "Bash",
+        "Lua"
+      ],
+      "description": "Découvrir quatre langages de script et d'outillage.",
+      "objectives": [
+        "Déclarer en Dart",
+        "Filtrer en PowerShell",
+        "Durcir un script Bash",
+        "Utiliser une table Lua"
+      ],
+      "prerequisites": [
+        "Langage C"
+      ],
+      "prerequisiteCourses": [
+        "langage-c"
+      ],
+      "nextCourses": [
+        "backend-api"
+      ],
+      "skills": [
+        "Dart",
+        "PowerShell",
+        "Bash",
+        "Lua"
+      ],
+      "file": "langages-script.json"
     },
     {
       "id": "automatisation-workflows",
@@ -1934,6 +5569,186 @@
       "file": "linux-administration.json"
     },
     {
+      "id": "linux-processus",
+      "title": "Linux : processus et services",
+      "domain": "linux",
+      "subdomain": "Système",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "systemd",
+        "cron",
+        "logs"
+      ],
+      "description": "Processus, signaux, systemd, journalisation, cron et diagnostic.",
+      "objectives": [
+        "Envoyer un signal",
+        "Gérer un service",
+        "Filtrer les journaux",
+        "Planifier",
+        "Diagnostiquer"
+      ],
+      "prerequisites": [
+        "Linux intermédiaire"
+      ],
+      "prerequisiteCourses": [
+        "linux-intermediaire"
+      ],
+      "nextCourses": [
+        "linux-stockage"
+      ],
+      "skills": [
+        "systemd",
+        "cron",
+        "logs"
+      ],
+      "file": "linux-processus.json"
+    },
+    {
+      "id": "linux-stockage",
+      "title": "Linux : stockage et montage",
+      "domain": "linux",
+      "subdomain": "Stockage",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "LVM",
+        "fstab",
+        "ext4"
+      ],
+      "description": "Liens, disques, systèmes de fichiers, montage, mémoire et CPU.",
+      "objectives": [
+        "Créer un lien",
+        "Lister les disques",
+        "Formater",
+        "Monter avec fstab",
+        "Lire la mémoire"
+      ],
+      "prerequisites": [
+        "Linux intermédiaire"
+      ],
+      "prerequisiteCourses": [
+        "linux-intermediaire"
+      ],
+      "nextCourses": [
+        "linux-reseau"
+      ],
+      "skills": [
+        "LVM",
+        "fstab",
+        "ext4"
+      ],
+      "file": "linux-stockage.json"
+    },
+    {
+      "id": "linux-reseau",
+      "title": "Linux : réseau et sauvegardes",
+      "domain": "linux",
+      "subdomain": "Réseau",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "SSH",
+        "rsync",
+        "tar"
+      ],
+      "description": "Configuration réseau, SSH, transfert, sauvegardes et archives.",
+      "objectives": [
+        "Configurer ip",
+        "Se connecter en SSH",
+        "Synchroniser",
+        "Restaurer",
+        "Archiver"
+      ],
+      "prerequisites": [
+        "Linux intermédiaire"
+      ],
+      "prerequisiteCourses": [
+        "linux-intermediaire"
+      ],
+      "nextCourses": [
+        "linux-securite"
+      ],
+      "skills": [
+        "SSH",
+        "rsync",
+        "tar"
+      ],
+      "file": "linux-reseau.json"
+    },
+    {
+      "id": "linux-securite",
+      "title": "Linux : démarrage et comptes",
+      "domain": "linux",
+      "subdomain": "Administration",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "GRUB",
+        "systemd",
+        "LVM"
+      ],
+      "description": "Démarrage, unités avancées, disques, quotas et comptes à grande échelle.",
+      "objectives": [
+        "Intervenir sur GRUB",
+        "Créer une unité",
+        "Étendre un volume",
+        "Poser un quota",
+        "Automatiser les comptes"
+      ],
+      "prerequisites": [
+        "Linux intermédiaire"
+      ],
+      "prerequisiteCourses": [
+        "linux-intermediaire"
+      ],
+      "nextCourses": [
+        "linux-durcissement"
+      ],
+      "skills": [
+        "GRUB",
+        "systemd",
+        "LVM"
+      ],
+      "file": "linux-securite.json"
+    },
+    {
+      "id": "linux-durcissement",
+      "title": "Linux : pare-feu et audit",
+      "domain": "linux",
+      "subdomain": "Sécurité",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "ufw",
+        "auditd",
+        "CIS"
+      ],
+      "description": "Pare-feu, journaux, audit système, sécurisation et durcissement.",
+      "objectives": [
+        "Ouvrir un port",
+        "Centraliser les journaux",
+        "Auditer",
+        "Réduire la surface",
+        "Prouver une mesure"
+      ],
+      "prerequisites": [
+        "Linux intermédiaire"
+      ],
+      "prerequisiteCourses": [
+        "linux-intermediaire"
+      ],
+      "nextCourses": [
+        "bash-fondamentaux"
+      ],
+      "skills": [
+        "ufw",
+        "auditd",
+        "CIS"
+      ],
+      "file": "linux-durcissement.json"
+    },
+    {
       "id": "javascript-avance",
       "title": "JavaScript avancé",
       "domain": "javascript",
@@ -1966,6 +5781,392 @@
         "Préserver la réactivité"
       ],
       "file": "javascript-avance.json"
+    },
+    {
+      "id": "js-fondamentaux",
+      "title": "JavaScript : bases du langage",
+      "domain": "javascript",
+      "subdomain": "Langage",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "JavaScript"
+      ],
+      "description": "Introduction, variables, types primitifs, opérateurs et conditions.",
+      "objectives": [
+        "Exécuter un script",
+        "Choisir let ou const",
+        "Reconnaître les types",
+        "Comparer avec ===",
+        "Écrire une condition"
+      ],
+      "prerequisites": [
+        "Aucun prérequis ; HTML aide pour la suite."
+      ],
+      "prerequisiteCourses": [],
+      "nextCourses": [
+        "js-boucles-fonctions"
+      ],
+      "skills": [
+        "Syntaxe",
+        "Types",
+        "Conditions"
+      ],
+      "file": "js-fondamentaux.json"
+    },
+    {
+      "id": "js-boucles-fonctions",
+      "title": "JavaScript : boucles et fonctions",
+      "domain": "javascript",
+      "subdomain": "Langage",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Boucles",
+        "Fonctions",
+        "Objets"
+      ],
+      "description": "Boucles, fonctions, fonctions fléchées, tableaux et objets.",
+      "objectives": [
+        "Choisir une boucle",
+        "Écrire une fonction",
+        "Utiliser les fléchées",
+        "Manipuler un tableau",
+        "Créer un objet"
+      ],
+      "prerequisites": [
+        "JavaScript : bases du langage."
+      ],
+      "prerequisiteCourses": [
+        "js-fondamentaux"
+      ],
+      "nextCourses": [
+        "js-donnees"
+      ],
+      "skills": [
+        "Boucles",
+        "Fonctions",
+        "Structures"
+      ],
+      "file": "js-boucles-fonctions.json"
+    },
+    {
+      "id": "js-donnees",
+      "title": "JavaScript : tableaux, chaînes et portée",
+      "domain": "javascript",
+      "subdomain": "Langage",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "map/filter",
+        "Chaînes",
+        "Closures"
+      ],
+      "description": "Méthodes de tableaux, chaînes, dates, conversions et closures.",
+      "objectives": [
+        "Utiliser map/filter/reduce",
+        "Manipuler les chaînes",
+        "Calculer avec les dates",
+        "Convertir explicitement",
+        "Expliquer une closure"
+      ],
+      "prerequisites": [
+        "JavaScript : boucles et fonctions."
+      ],
+      "prerequisiteCourses": [
+        "js-boucles-fonctions"
+      ],
+      "nextCourses": [
+        "js-navigateur"
+      ],
+      "skills": [
+        "Tableaux",
+        "Chaînes",
+        "Portée"
+      ],
+      "file": "js-donnees.json"
+    },
+    {
+      "id": "js-navigateur",
+      "title": "JavaScript : erreurs, modules et DOM",
+      "domain": "javascript",
+      "subdomain": "Navigateur",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "Erreurs",
+        "Modules",
+        "DOM"
+      ],
+      "description": "try/catch, modules ES, débogage, DOM et sélection d'éléments.",
+      "objectives": [
+        "Intercepter une erreur",
+        "Organiser des modules",
+        "Déboguer pas à pas",
+        "Décrire le DOM",
+        "Sélectionner des éléments"
+      ],
+      "prerequisites": [
+        "JavaScript : tableaux, chaînes et portée."
+      ],
+      "prerequisiteCourses": [
+        "js-donnees"
+      ],
+      "nextCourses": [
+        "js-dom"
+      ],
+      "skills": [
+        "Erreurs",
+        "Modules",
+        "DOM"
+      ],
+      "file": "js-navigateur.json"
+    },
+    {
+      "id": "js-dom",
+      "title": "JavaScript : manipuler la page",
+      "domain": "javascript",
+      "subdomain": "Navigateur",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "DOM",
+        "Événements",
+        "Formulaires"
+      ],
+      "description": "Contenu, styles, événements, formulaires et validation côté client.",
+      "objectives": [
+        "Utiliser textContent",
+        "Basculer des classes",
+        "Déléguer les événements",
+        "Lire un formulaire",
+        "Valider sans masquer"
+      ],
+      "prerequisites": [
+        "JavaScript : erreurs, modules et DOM."
+      ],
+      "prerequisiteCourses": [
+        "js-navigateur"
+      ],
+      "nextCourses": [
+        "js-interfaces"
+      ],
+      "skills": [
+        "DOM",
+        "Événements",
+        "Formulaires"
+      ],
+      "file": "js-dom.json"
+    },
+    {
+      "id": "js-interfaces",
+      "title": "JavaScript : interfaces et stockage",
+      "domain": "javascript",
+      "subdomain": "Navigateur",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "UI",
+        "localStorage",
+        "sessionStorage"
+      ],
+      "description": "Interfaces interactives, classes, composants, localStorage et sessionStorage.",
+      "objectives": [
+        "Relier action et rendu",
+        "Synchroniser ARIA et classes",
+        "Isoler un composant",
+        "Sérialiser dans localStorage",
+        "Choisir le bon stockage"
+      ],
+      "prerequisites": [
+        "JavaScript : manipuler la page."
+      ],
+      "prerequisiteCourses": [
+        "js-dom"
+      ],
+      "nextCourses": [
+        "js-cookies-async"
+      ],
+      "skills": [
+        "Interfaces",
+        "Stockage local"
+      ],
+      "file": "js-interfaces.json"
+    },
+    {
+      "id": "js-cookies-async",
+      "title": "JavaScript : cookies et asynchrone",
+      "domain": "javascript",
+      "subdomain": "Asynchrone",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Cookies",
+        "Callbacks",
+        "Promesses"
+      ],
+      "description": "Cookies, erreurs d'interface, asynchrone, callbacks et promesses.",
+      "objectives": [
+        "Sécuriser un cookie",
+        "Afficher une erreur actionnable",
+        "Ordonner l'asynchrone",
+        "Utiliser un callback",
+        "Chaîner des promesses"
+      ],
+      "prerequisites": [
+        "JavaScript : interfaces et stockage."
+      ],
+      "prerequisiteCourses": [
+        "js-interfaces"
+      ],
+      "nextCourses": [
+        "js-async"
+      ],
+      "skills": [
+        "Cookies",
+        "Asynchrone",
+        "Promesses"
+      ],
+      "file": "js-cookies-async.json"
+    },
+    {
+      "id": "js-async",
+      "title": "JavaScript : requêtes réseau",
+      "domain": "javascript",
+      "subdomain": "Asynchrone",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "async/await",
+        "fetch",
+        "JSON"
+      ],
+      "description": "async/await, fetch, JSON, méthodes HTTP et erreurs réseau.",
+      "objectives": [
+        "Attendre une promesse",
+        "Vérifier response.ok",
+        "Sérialiser du JSON",
+        "Choisir une méthode HTTP",
+        "Distinguer réseau et statut"
+      ],
+      "prerequisites": [
+        "JavaScript : cookies et asynchrone."
+      ],
+      "prerequisiteCourses": [
+        "js-cookies-async"
+      ],
+      "nextCourses": [
+        "javascript-avance"
+      ],
+      "skills": [
+        "fetch",
+        "HTTP",
+        "Erreurs réseau"
+      ],
+      "file": "js-async.json"
+    },
+    {
+      "type": "parcours",
+      "id": "js-objets",
+      "title": "JavaScript : objets et structures",
+      "domain": "javascript",
+      "subdomain": "Langage",
+      "level": "intermediaire",
+      "technologies": [
+        "Classes",
+        "Prototypes",
+        "Map/Set",
+        "Regex"
+      ],
+      "description": "Classes, prototypes, itérateurs, Map/Set et expressions régulières.",
+      "objectives": [
+        "Écrire une classe",
+        "Comprendre les prototypes",
+        "Utiliser un générateur",
+        "Choisir Map ou Set",
+        "Écrire une regex lisible"
+      ],
+      "prerequisites": [
+        "JavaScript : requêtes réseau."
+      ],
+      "prerequisiteCourses": [
+        "js-async"
+      ],
+      "nextCourses": [
+        "js-avance-2"
+      ],
+      "skills": [
+        "Classes",
+        "Structures",
+        "Regex"
+      ],
+      "file": "js-objets.json"
+    },
+    {
+      "type": "parcours",
+      "id": "js-avance-2",
+      "title": "JavaScript : navigateur avancé",
+      "domain": "javascript",
+      "subdomain": "Navigateur",
+      "level": "avance",
+      "technologies": [
+        "Workers",
+        "IndexedDB",
+        "Service Workers"
+      ],
+      "description": "Web Workers, IndexedDB, Service Workers, event loop et sécurité navigateur.",
+      "objectives": [
+        "Déplacer un calcul en Worker",
+        "Stocker dans IndexedDB",
+        "Mettre en cache hors ligne",
+        "Prédire l'ordre de l'event loop",
+        "Prévenir XSS"
+      ],
+      "prerequisites": [
+        "JavaScript : objets et structures."
+      ],
+      "prerequisiteCourses": [
+        "js-objets"
+      ],
+      "nextCourses": [
+        "js-perf"
+      ],
+      "skills": [
+        "Workers",
+        "Stockage",
+        "Sécurité"
+      ],
+      "file": "js-avance-2.json"
+    },
+    {
+      "type": "parcours",
+      "id": "js-perf",
+      "title": "JavaScript : performance",
+      "domain": "javascript",
+      "subdomain": "Performance",
+      "level": "avance",
+      "technologies": [
+        "Profiling"
+      ],
+      "description": "Mesurer, réduire le travail du thread principal et nettoyer les ressources.",
+      "objectives": [
+        "Profiler",
+        "Éviter les tâches longues",
+        "Nettoyer les écouteurs"
+      ],
+      "prerequisites": [
+        "JavaScript : navigateur avancé."
+      ],
+      "prerequisiteCourses": [
+        "js-avance-2"
+      ],
+      "nextCourses": [
+        "typescript"
+      ],
+      "skills": [
+        "Performance"
+      ],
+      "file": "js-perf.json"
     },
     {
       "id": "reseaux-services",
@@ -2002,6 +6203,474 @@
       "file": "reseaux-services.json"
     },
     {
+      "id": "reseau-fondamentaux",
+      "title": "Réseaux : fondamentaux",
+      "domain": "reseaux",
+      "subdomain": "Fondamentaux",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "LAN",
+        "OSI",
+        "Ethernet"
+      ],
+      "description": "LAN/WAN, topologies, OSI, TCP/IP et Ethernet.",
+      "objectives": [
+        "Distinguer les échelles",
+        "Choisir une topologie",
+        "Situer une couche",
+        "Comparer OSI/TCP-IP",
+        "Lire une trame"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseau-adressage"
+      ],
+      "skills": [
+        "LAN",
+        "OSI",
+        "Ethernet"
+      ],
+      "file": "reseau-fondamentaux.json"
+    },
+    {
+      "id": "reseau-adressage",
+      "title": "Réseaux : adressage IP",
+      "domain": "reseaux",
+      "subdomain": "Adressage",
+      "level": "debutant",
+      "type": "parcours",
+      "technologies": [
+        "IPv4",
+        "IPv6",
+        "CIDR"
+      ],
+      "description": "MAC, IPv4, IPv6, masques et CIDR.",
+      "objectives": [
+        "Lire une MAC",
+        "Lire une IPv4",
+        "Lire une IPv6",
+        "Lire un masque",
+        "Calculer un /26"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseau-sousreseaux"
+      ],
+      "skills": [
+        "IPv4",
+        "IPv6",
+        "CIDR"
+      ],
+      "file": "reseau-adressage.json"
+    },
+    {
+      "id": "reseau-sousreseaux",
+      "title": "Réseaux : sous-réseaux",
+      "domain": "reseaux",
+      "subdomain": "Adressage",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "Sous-réseaux",
+        "ARP",
+        "ICMP"
+      ],
+      "description": "Calcul de sous-réseaux, adresses privées, passerelles, ARP et ICMP.",
+      "objectives": [
+        "Découper une plage",
+        "Reconnaître le privé",
+        "Configurer une passerelle",
+        "Expliquer ARP",
+        "Utiliser ping"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseau-transport"
+      ],
+      "skills": [
+        "Sous-réseaux",
+        "ARP",
+        "ICMP"
+      ],
+      "file": "reseau-sousreseaux.json"
+    },
+    {
+      "id": "reseau-transport",
+      "title": "Réseaux : transport et noms",
+      "domain": "reseaux",
+      "subdomain": "Transport",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "TCP",
+        "UDP",
+        "DNS",
+        "DHCP"
+      ],
+      "description": "TCP, UDP, ports, DNS et DHCP.",
+      "objectives": [
+        "Choisir TCP/UDP",
+        "Lire un port",
+        "Lire un enregistrement",
+        "Expliquer DHCP",
+        "Tester la résolution"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseau-services"
+      ],
+      "skills": [
+        "TCP",
+        "UDP",
+        "DNS",
+        "DHCP"
+      ],
+      "file": "reseau-transport.json"
+    },
+    {
+      "id": "reseau-services",
+      "title": "Réseaux : services",
+      "domain": "reseaux",
+      "subdomain": "Services",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "NAT",
+        "HTTP",
+        "Routage"
+      ],
+      "description": "NAT, HTTP/HTTPS, routage, commutation et pare-feu réseau.",
+      "objectives": [
+        "Comprendre le NAT",
+        "Lire un statut HTTP",
+        "Lire une table",
+        "Expliquer STP",
+        "Écrire une règle"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseau-config"
+      ],
+      "skills": [
+        "NAT",
+        "HTTP",
+        "Routage"
+      ],
+      "file": "reseau-services.json"
+    },
+    {
+      "id": "reseau-config",
+      "title": "Réseaux : configuration et diagnostic",
+      "domain": "reseaux",
+      "subdomain": "Diagnostic",
+      "level": "debutant-avance",
+      "type": "parcours",
+      "technologies": [
+        "ipconfig",
+        "ip",
+        "traceroute"
+      ],
+      "description": "Configurer sous Windows/Linux et diagnostiquer avec ping/traceroute.",
+      "objectives": [
+        "Lire ipconfig",
+        "Configurer avec ip",
+        "Tester au ping",
+        "Analyser une route",
+        "Choisir l'outil"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseau-outils"
+      ],
+      "skills": [
+        "ipconfig",
+        "ip",
+        "traceroute"
+      ],
+      "file": "reseau-config.json"
+    },
+    {
+      "id": "reseau-outils",
+      "title": "Réseaux : services et outils",
+      "domain": "reseaux",
+      "subdomain": "Outils",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "ss",
+        "dig",
+        "DHCP"
+      ],
+      "description": "Ports en écoute, diagnostic DNS, LAN, serveur DHCP et DNS.",
+      "objectives": [
+        "Lister les ports",
+        "Diagnostiquer le DNS",
+        "Configurer un LAN",
+        "Définir une étendue",
+        "Créer une zone"
+      ],
+      "prerequisites": [
+        "Réseaux débutant"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-debutant"
+      ],
+      "nextCourses": [
+        "reseaux-avance"
+      ],
+      "skills": [
+        "ss",
+        "dig",
+        "DHCP"
+      ],
+      "file": "reseau-outils.json"
+    },
+    {
+      "id": "reseau-vlan",
+      "title": "Réseaux : VLAN et commutation",
+      "domain": "reseaux",
+      "subdomain": "Commutation",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "VLAN",
+        "STP",
+        "Wi-Fi"
+      ],
+      "description": "VLAN, trunking, STP, agrégation et Wi-Fi.",
+      "objectives": [
+        "Segmenter",
+        "Configurer un trunk",
+        "Éviter les boucles",
+        "Agréger",
+        "Choisir une bande"
+      ],
+      "prerequisites": [
+        "Réseaux avancé"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-avance"
+      ],
+      "nextCourses": [
+        "reseau-securite-acces"
+      ],
+      "skills": [
+        "VLAN",
+        "STP",
+        "Wi-Fi"
+      ],
+      "file": "reseau-vlan.json"
+    },
+    {
+      "id": "reseau-securite-acces",
+      "title": "Réseaux : accès et sécurité",
+      "domain": "reseaux",
+      "subdomain": "Sécurité",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "WPA3",
+        "VPN",
+        "OSPF"
+      ],
+      "description": "WPA2/3, VPN, proxy, pare-feu et OSPF.",
+      "objectives": [
+        "Choisir WPA3",
+        "Comprendre un VPN",
+        "Filtrer avec un proxy",
+        "Écrire une règle",
+        "Comprendre OSPF"
+      ],
+      "prerequisites": [
+        "Réseaux avancé"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-avance"
+      ],
+      "nextCourses": [
+        "reseau-routage"
+      ],
+      "skills": [
+        "WPA3",
+        "VPN",
+        "OSPF"
+      ],
+      "file": "reseau-securite-acces.json"
+    },
+    {
+      "id": "reseau-routage",
+      "title": "Réseaux : routage et disponibilité",
+      "domain": "reseaux",
+      "subdomain": "Routage",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "BGP",
+        "VRRP",
+        "QoS"
+      ],
+      "description": "BGP, inter-VLAN, haute disponibilité, redondance et QoS.",
+      "objectives": [
+        "Situer BGP",
+        "Router entre VLAN",
+        "Tester le basculement",
+        "Comprendre VRRP",
+        "Prioriser"
+      ],
+      "prerequisites": [
+        "Réseaux avancé"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-avance"
+      ],
+      "nextCourses": [
+        "reseau-multicast"
+      ],
+      "skills": [
+        "BGP",
+        "VRRP",
+        "QoS"
+      ],
+      "file": "reseau-routage.json"
+    },
+    {
+      "id": "reseau-multicast",
+      "title": "Réseaux : multicast et VPN",
+      "domain": "reseaux",
+      "subdomain": "Multicast",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "Multicast",
+        "IPv6",
+        "VPN"
+      ],
+      "description": "Multicast, IPv6 avancé, VPN site à site et distant, segmentation.",
+      "objectives": [
+        "Comprendre IGMP",
+        "Configurer SLAAC",
+        "Monter un tunnel",
+        "Authentifier un accès",
+        "Segmenter"
+      ],
+      "prerequisites": [
+        "Réseaux avancé"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-avance"
+      ],
+      "nextCourses": [
+        "reseau-supervision"
+      ],
+      "skills": [
+        "Multicast",
+        "IPv6",
+        "VPN"
+      ],
+      "file": "reseau-multicast.json"
+    },
+    {
+      "id": "reseau-supervision",
+      "title": "Réseaux : supervision et entreprise",
+      "domain": "reseaux",
+      "subdomain": "Supervision",
+      "level": "avance",
+      "type": "parcours",
+      "technologies": [
+        "SNMP",
+        "SDN"
+      ],
+      "description": "Supervision, analyse de trafic, dépannage, SDN et architecture.",
+      "objectives": [
+        "Choisir des seuils",
+        "Borner une capture",
+        "Isoler une couche",
+        "Situer le contrôleur",
+        "Structurer les zones"
+      ],
+      "prerequisites": [
+        "Réseaux avancé"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-avance"
+      ],
+      "nextCourses": [
+        "reseau-cisco"
+      ],
+      "skills": [
+        "SNMP",
+        "SDN"
+      ],
+      "file": "reseau-supervision.json"
+    },
+    {
+      "id": "reseau-cisco",
+      "title": "Réseaux : Cisco IOS",
+      "domain": "reseaux",
+      "subdomain": "Cisco",
+      "level": "intermediaire",
+      "type": "parcours",
+      "technologies": [
+        "IOS",
+        "VLAN",
+        "ACL"
+      ],
+      "description": "Modes IOS, configuration initiale, VLAN/trunks et diagnostic.",
+      "objectives": [
+        "Utiliser les modes",
+        "Configurer un switch",
+        "Configurer un routeur",
+        "Configurer un trunk",
+        "Diagnostiquer"
+      ],
+      "prerequisites": [
+        "Réseaux avancé"
+      ],
+      "prerequisiteCourses": [
+        "reseaux-avance"
+      ],
+      "nextCourses": [
+        "cyber-fondamentaux"
+      ],
+      "skills": [
+        "IOS",
+        "VLAN",
+        "ACL"
+      ],
+      "file": "reseau-cisco.json"
+    },
+    {
       "id": "python-donnees-api",
       "title": "Python : données et API",
       "domain": "python",
@@ -2034,6 +6703,294 @@
         "Écrire un outil fiable"
       ],
       "file": "python-donnees-api.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-structures",
+      "title": "Python : structures et compréhensions",
+      "domain": "python",
+      "subdomain": "Langage",
+      "level": "debutant-avance",
+      "technologies": [
+        "Tuples",
+        "Sets",
+        "Fichiers"
+      ],
+      "description": "Tuples, ensembles, chaînes, compréhensions et fichiers.",
+      "objectives": [
+        "Utiliser un tuple",
+        "Dédupliquer avec un set",
+        "Manipuler les chaînes",
+        "Écrire une compréhension",
+        "Ouvrir un fichier proprement"
+      ],
+      "prerequisites": [
+        "Python débutant."
+      ],
+      "prerequisiteCourses": [
+        "python-debutant"
+      ],
+      "nextCourses": [
+        "py-modules"
+      ],
+      "skills": [
+        "Structures",
+        "Fichiers"
+      ],
+      "file": "py-structures.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-modules",
+      "title": "Python : erreurs et modules",
+      "domain": "python",
+      "subdomain": "Langage",
+      "level": "debutant-avance",
+      "technologies": [
+        "Exceptions",
+        "pip",
+        "venv"
+      ],
+      "description": "Exceptions, modules, pip, environnements virtuels et scripts.",
+      "objectives": [
+        "Cibler une exception",
+        "Créer un module",
+        "Installer avec pip",
+        "Créer un venv",
+        "Structurer un script"
+      ],
+      "prerequisites": [
+        "Python : structures et compréhensions."
+      ],
+      "prerequisiteCourses": [
+        "py-structures"
+      ],
+      "nextCourses": [
+        "py-poo-avance"
+      ],
+      "skills": [
+        "Erreurs",
+        "Modules",
+        "venv"
+      ],
+      "file": "py-modules.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-poo-avance",
+      "title": "Python : décorateurs et itérateurs",
+      "domain": "python",
+      "subdomain": "Avancé",
+      "level": "intermediaire",
+      "technologies": [
+        "Décorateurs",
+        "Générateurs",
+        "Context managers"
+      ],
+      "description": "Décorateurs, générateurs, itérateurs, gestionnaires de contexte et annotations.",
+      "objectives": [
+        "Écrire un décorateur",
+        "Produire avec yield",
+        "Comprendre le protocole d'itération",
+        "Garantir un nettoyage",
+        "Annoter une fonction"
+      ],
+      "prerequisites": [
+        "Python intermédiaire."
+      ],
+      "prerequisiteCourses": [
+        "python-intermediaire"
+      ],
+      "nextCourses": [
+        "py-dataclasses"
+      ],
+      "skills": [
+        "Décorateurs",
+        "Itérateurs",
+        "Typage"
+      ],
+      "file": "py-poo-avance.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-dataclasses",
+      "title": "Python : données et journaux",
+      "domain": "python",
+      "subdomain": "Données",
+      "level": "intermediaire",
+      "technologies": [
+        "Dataclasses",
+        "CSV",
+        "JSON",
+        "logging"
+      ],
+      "description": "Dataclasses, expressions régulières, CSV, JSON et journalisation.",
+      "objectives": [
+        "Déclarer une dataclass",
+        "Écrire une regex",
+        "Lire un CSV",
+        "Manipuler du JSON",
+        "Configurer logging"
+      ],
+      "prerequisites": [
+        "Python : décorateurs et itérateurs."
+      ],
+      "prerequisiteCourses": [
+        "py-poo-avance"
+      ],
+      "nextCourses": [
+        "py-tests"
+      ],
+      "skills": [
+        "Données",
+        "Journaux"
+      ],
+      "file": "py-dataclasses.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-tests",
+      "title": "Python : tests et exécution",
+      "domain": "python",
+      "subdomain": "Qualité",
+      "level": "intermediaire",
+      "technologies": [
+        "pytest",
+        "pdb",
+        "asyncio",
+        "Threads"
+      ],
+      "description": "Tests unitaires, débogage, packaging, asynchrone et concurrence.",
+      "objectives": [
+        "Écrire un test pytest",
+        "Déboguer avec pdb",
+        "Organiser un package",
+        "Écrire une coroutine",
+        "Choisir threads ou processus"
+      ],
+      "prerequisites": [
+        "Python : données et journaux."
+      ],
+      "prerequisiteCourses": [
+        "py-dataclasses"
+      ],
+      "nextCourses": [
+        "py-perf"
+      ],
+      "skills": [
+        "Tests",
+        "Asynchrone",
+        "Concurrence"
+      ],
+      "file": "py-tests.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-perf",
+      "title": "Python : performance et intégrations",
+      "domain": "python",
+      "subdomain": "Performance",
+      "level": "intermediaire",
+      "technologies": [
+        "timeit",
+        "cProfile",
+        "requests"
+      ],
+      "description": "Mesure, profilage, appels d'API, automatisation et traitement de données.",
+      "objectives": [
+        "Mesurer avec timeit",
+        "Profiler avec cProfile",
+        "Appeler une API avec timeout",
+        "Écrire un script idempotent",
+        "Traiter un CSV volumineux"
+      ],
+      "prerequisites": [
+        "Python : tests et exécution."
+      ],
+      "prerequisiteCourses": [
+        "py-tests"
+      ],
+      "nextCourses": [
+        "py-data"
+      ],
+      "skills": [
+        "Performance",
+        "API",
+        "Automatisation"
+      ],
+      "file": "py-perf.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-data",
+      "title": "Python : données et visualisation",
+      "domain": "python",
+      "subdomain": "Données",
+      "level": "avance",
+      "technologies": [
+        "NumPy",
+        "pandas",
+        "Matplotlib"
+      ],
+      "description": "Scraping responsable, scripts d'administration, NumPy, pandas et visualisation.",
+      "objectives": [
+        "Respecter robots.txt",
+        "Écrire un script d'admin sûr",
+        "Calculer avec NumPy",
+        "Filtrer avec pandas",
+        "Choisir un graphique honnête"
+      ],
+      "prerequisites": [
+        "Python : performance et intégrations."
+      ],
+      "prerequisiteCourses": [
+        "py-perf"
+      ],
+      "nextCourses": [
+        "py-frameworks"
+      ],
+      "skills": [
+        "NumPy",
+        "pandas",
+        "Visualisation"
+      ],
+      "file": "py-data.json"
+    },
+    {
+      "type": "parcours",
+      "id": "py-frameworks",
+      "title": "Python : frameworks et distribution",
+      "domain": "python",
+      "subdomain": "Frameworks",
+      "level": "avance",
+      "technologies": [
+        "FastAPI",
+        "Django",
+        "Flask"
+      ],
+      "description": "FastAPI, Django, Flask, outils CLI, packaging et sécurité.",
+      "objectives": [
+        "Créer une route FastAPI",
+        "Créer une app Django",
+        "Créer une route Flask",
+        "Écrire un outil CLI",
+        "Construire et publier un package"
+      ],
+      "prerequisites": [
+        "Python : données et visualisation."
+      ],
+      "prerequisiteCourses": [
+        "py-data"
+      ],
+      "nextCourses": [
+        "backend-api"
+      ],
+      "skills": [
+        "FastAPI",
+        "Django",
+        "Packaging"
+      ],
+      "file": "py-frameworks.json"
     }
   ]
 }

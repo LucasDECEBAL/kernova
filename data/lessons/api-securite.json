@@ -1,0 +1,399 @@
+{
+  "courseId": "api-securite",
+  "modules": [
+    {
+      "id": "api-securite-module",
+      "title": "Autorisation et documentation",
+      "chapters": [
+        {
+          "id": "api3-01",
+          "title": "Autorisation",
+          "duration": 20,
+          "objectives": [
+            "Vérifier les droits",
+            "Distinguer 401 et 403",
+            "Contrôler la propriété"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'autorisation décide ce qu'un utilisateur authentifié peut faire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "401 : non authentifié.",
+                "403 : authentifié sans droit.",
+                "Vérifier la propriété de la ressource."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Statut pour une ressource appartenant à un autre ?",
+            "hints": [
+              "Authentifié mais interdit."
+            ],
+            "solution": "403 Forbidden",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "403"
+              ],
+              "success": "Correct : 403."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier avant un accès ?",
+              "options": [
+                "La propriété et le rôle",
+                "La couleur",
+                "Le DNS",
+                "Le cache"
+              ],
+              "answer": 0,
+              "explanation": "Le droit dépend de la ressource.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-01-q1"
+            },
+            {
+              "question": "401 ou 403 pour un jeton absent ?",
+              "options": [
+                "401",
+                "403",
+                "404",
+                "500"
+              ],
+              "answer": 0,
+              "explanation": "L'identité manque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-01-q2"
+            }
+          ],
+          "summary": [
+            "Authz = droits.",
+            "401 vs 403.",
+            "Propriété vérifiée."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des rôles »."
+        },
+        {
+          "id": "api3-02",
+          "title": "Gestion des rôles",
+          "duration": 20,
+          "objectives": [
+            "Définir des rôles",
+            "Appliquer le moindre privilège",
+            "Éviter les rôles fourre-tout"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les rôles regroupent des permissions ; le moindre privilège limite les dégâts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "RBAC simple.",
+                "Permissions explicites.",
+                "Audit des attributions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Limiter",
+            "instructions": "Quel principe pour les droits ?",
+            "hints": [
+              "Le minimum nécessaire."
+            ],
+            "solution": "Le moindre privilège",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "moindre privilege"
+              ],
+              "success": "Correct : moindre privilège."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que regroupe un rôle ?",
+              "options": [
+                "Des permissions",
+                "Des fichiers",
+                "Des serveurs",
+                "Des CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'attribution est simplifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-02-q1"
+            },
+            {
+              "question": "Pourquoi auditer ?",
+              "options": [
+                "Repérer les excès de droits",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les dérives sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-02-q2"
+            }
+          ],
+          "summary": [
+            "Rôles = permissions.",
+            "Moindre privilège.",
+            "Auditer."
+          ],
+          "nextStep": "Chapitre suivant : « Documenter une API »."
+        },
+        {
+          "id": "api3-03",
+          "title": "Documenter une API",
+          "duration": 20,
+          "objectives": [
+            "Décrire les routes",
+            "Documenter les erreurs",
+            "Donner des exemples"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une documentation utile décrit routes, paramètres, réponses, erreurs et exemples copiables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Exemple de requête.",
+                "Exemple de réponse.",
+                "Limites et authentification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Documenter",
+            "instructions": "Que doit contenir un exemple d'API ?",
+            "hints": [
+              "Requête et réponse."
+            ],
+            "solution": "Une requête complète et la réponse attendue, y compris les erreurs.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "requete",
+                "reponse"
+              ],
+              "success": "Correct : requête/réponse."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi documenter les erreurs ?",
+              "options": [
+                "Le client peut les traiter",
+                "Pour le CSS",
+                "Pour le réseau",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le contrat est complet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-03-q1"
+            },
+            {
+              "question": "Que documenter en plus ?",
+              "options": [
+                "Authentification et limites",
+                "Le logo",
+                "Le thème",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'usage réel est couvert.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-03-q2"
+            }
+          ],
+          "summary": [
+            "Routes et erreurs.",
+            "Exemples.",
+            "Limites."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à OpenAPI »."
+        },
+        {
+          "id": "api3-04",
+          "title": "Introduction à OpenAPI",
+          "duration": 20,
+          "objectives": [
+            "Décrire un schéma",
+            "Générer la doc",
+            "Valider les réponses"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "OpenAPI décrit l'API en YAML/JSON : chemins, schémas, sécurité. Des outils génèrent doc et clients."
+            },
+            {
+              "type": "list",
+              "items": [
+                "openapi: 3.x.",
+                "schemas réutilisables.",
+                "Documentation générée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Décrire",
+            "instructions": "Quel format pour un schéma OpenAPI ?",
+            "hints": [
+              "Deux formats possibles."
+            ],
+            "solution": "YAML ou JSON",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "yaml",
+                "json"
+              ],
+              "success": "Correct : YAML/JSON."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que génère OpenAPI ?",
+              "options": [
+                "Documentation et clients",
+                "Un serveur DNS",
+                "Du CSS",
+                "Des images"
+              ],
+              "answer": 0,
+              "explanation": "Les outils s'appuient sur le schéma.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-04-q1"
+            },
+            {
+              "question": "Pourquoi des schémas réutilisables ?",
+              "options": [
+                "Éviter les duplications",
+                "Chiffrer",
+                "Trier",
+                "Déployer"
+              ],
+              "answer": 0,
+              "explanation": "La cohérence est maintenue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-04-q2"
+            }
+          ],
+          "summary": [
+            "OpenAPI = schéma.",
+            "YAML/JSON.",
+            "Génération."
+          ],
+          "nextStep": "Chapitre suivant : « Tester une API »."
+        },
+        {
+          "id": "api3-05",
+          "title": "Tester une API",
+          "duration": 20,
+          "objectives": [
+            "Tester les contrats",
+            "Tester les erreurs",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tests d'API vérifient statuts, corps et effets de bord ; les tests de contrat vérifient la compatibilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cas nominal, limites, erreurs.",
+                "Base de test isolée.",
+                "CI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Que tester en plus du cas nominal ?",
+            "hints": [
+              "Les cas limites et les erreurs."
+            ],
+            "solution": "Les limites (pagination, champs vides) et les erreurs (401, 403, 422).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "limite",
+                "erreur"
+              ],
+              "success": "Correct : limites et erreurs."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi isoler la base de test ?",
+              "options": [
+                "Éviter les effets entre tests",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les tests restent fiables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-05-q1"
+            },
+            {
+              "question": "Que fait un test de contrat ?",
+              "options": [
+                "Il vérifie la compatibilité",
+                "Il stylise",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les clients restent compatibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api3-05-q2"
+            }
+          ],
+          "summary": [
+            "Cas nominal + limites.",
+            "Isolation.",
+            "CI."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

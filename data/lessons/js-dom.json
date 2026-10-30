@@ -1,0 +1,409 @@
+{
+  "courseId": "js-dom",
+  "modules": [
+    {
+      "id": "js-dom-module",
+      "title": "Manipuler la page",
+      "chapters": [
+        {
+          "id": "jsd2-01",
+          "title": "Modifier le contenu d'une page",
+          "duration": 20,
+          "objectives": [
+            "Utiliser textContent",
+            "Éviter innerHTML non maîtrisé",
+            "Créer des éléments"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "textContent remplace le texte sans interpréter le HTML ; createElement et append construisent des nœuds sûrs."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const titre = document.querySelector(\"h1\");\ntitre.textContent = \"Nouveau titre\";\nconst p = document.createElement(\"p\");\np.textContent = \"Ajouté\";\ndocument.querySelector(\"main\").append(p);",
+              "title": "Contenu sûr"
+            },
+            {
+              "type": "warning",
+              "text": "innerHTML avec une entrée utilisateur ouvre une faille XSS : préférez textContent et createElement."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quelle propriété insère du texte sans interpréter le HTML ?",
+            "hints": [
+              "Une propriété textuelle."
+            ],
+            "solution": "textContent",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "textcontent"
+              ],
+              "success": "Correct : textContent."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque innerHTML avec une saisie ?",
+              "options": [
+                "Une injection XSS",
+                "Une perte de CSS",
+                "Un conflit DNS",
+                "Une erreur de type"
+              ],
+              "answer": 0,
+              "explanation": "Le HTML est interprété.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-01-q1"
+            },
+            {
+              "question": "Que fait createElement ?",
+              "options": [
+                "Il crée un nœud",
+                "Il sélectionne",
+                "Il supprime",
+                "Il style"
+              ],
+              "answer": 0,
+              "explanation": "Le nœud est ensuite inséré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-01-q2"
+            }
+          ],
+          "summary": [
+            "textContent pour le texte.",
+            "createElement + append.",
+            "innerHTML avec prudence."
+          ],
+          "nextStep": "Chapitre suivant : « Modifier les styles »."
+        },
+        {
+          "id": "jsd2-02",
+          "title": "Modifier les styles",
+          "duration": 20,
+          "objectives": [
+            "Utiliser classList",
+            "Éviter style inline",
+            "Gérer les thèmes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "classList.add, remove et toggle changent l'apparence via des classes CSS ; style ne sert qu'aux valeurs dynamiques ponctuelles."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const carte = document.querySelector(\".carte\");\ncarte.classList.toggle(\"carte--active\");\ncarte.style.setProperty(\"--teinte\", \"#1e4fd0\");",
+              "title": "Classes et propriété CSS"
+            },
+            {
+              "type": "tip",
+              "text": "Préférez les classes : elles centralisent le style et gardent le CSS testable."
+            }
+          ],
+          "exercise": {
+            "title": "Basculer une classe",
+            "instructions": "Comment ajouter ou retirer la classe active ?",
+            "hints": [
+              "Une méthode qui alterne."
+            ],
+            "solution": "element.classList.toggle(\"active\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "classlist",
+                "toggle"
+              ],
+              "success": "Correct : classList.toggle."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait classList.toggle ?",
+              "options": [
+                "Il ajoute ou retire selon l'état",
+                "Il supprime tout",
+                "Il lit le texte",
+                "Il crée un élément"
+              ],
+              "answer": 0,
+              "explanation": "Il alterne la classe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-02-q1"
+            },
+            {
+              "question": "Quand utiliser style ?",
+              "options": [
+                "Pour une valeur dynamique ponctuelle",
+                "Pour toute la mise en page",
+                "Pour le HTML",
+                "Pour les tests"
+              ],
+              "answer": 0,
+              "explanation": "Le style reste exceptionnel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-02-q2"
+            }
+          ],
+          "summary": [
+            "Classes plutôt que style.",
+            "toggle pour un état.",
+            "Variables CSS dynamiques."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les événements »."
+        },
+        {
+          "id": "jsd2-03",
+          "title": "Gérer les événements",
+          "duration": 20,
+          "objectives": [
+            "Ajouter un écouteur",
+            "Comprendre la délégation",
+            "Nettoyer les écouteurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "addEventListener relie un événement à une fonction. La délégation attache un écouteur à un parent et filtre la cible, utile pour les listes dynamiques."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "document.querySelector(\"ul\").addEventListener(\"click\", (e) => {\n  const item = e.target.closest(\"li\");\n  if (item) item.classList.toggle(\"fait\");\n});",
+              "title": "Délégation"
+            },
+            {
+              "type": "warning",
+              "text": "Un écouteur sur un élément retiré du DOM garde des références : retirez-le avec removeEventListener si nécessaire."
+            }
+          ],
+          "exercise": {
+            "title": "Déléguer",
+            "instructions": "Un écouteur sur le parent plutôt que sur chaque enfant : quel nom ?",
+            "hints": [
+              "Un seul écouteur filtré."
+            ],
+            "solution": "La délégation d'événements.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "delegation",
+                "délégation"
+              ],
+              "success": "Correct : délégation."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait closest ?",
+              "options": [
+                "Il remonte au parent correspondant",
+                "Il descend",
+                "Il supprime",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "On cible l'élément utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-03-q1"
+            },
+            {
+              "question": "Pourquoi retirer un écouteur ?",
+              "options": [
+                "Pour éviter les fuites et doublons",
+                "Pour accélérer le CSS",
+                "Pour changer le HTML",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La fonction est encore référencée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-03-q2"
+            }
+          ],
+          "summary": [
+            "addEventListener.",
+            "Délégation pour les listes.",
+            "Nettoyer les écouteurs."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les formulaires »."
+        },
+        {
+          "id": "jsd2-04",
+          "title": "Gérer les formulaires",
+          "duration": 20,
+          "objectives": [
+            "Écouter la soumission",
+            "Empêcher le rechargement",
+            "Lire les valeurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'événement submit permet de valider avant envoi. preventDefault empêche le rechargement ; FormData lit les champs nommés."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "form.addEventListener(\"submit\", (e) => {\n  e.preventDefault();\n  const donnees = new FormData(form);\n  console.log(donnees.get(\"email\"));\n});",
+              "title": "Soumission"
+            },
+            {
+              "type": "warning",
+              "text": "Empêcher l'envoi sans traiter les données laisse l'utilisateur sans retour : affichez un état ou un message."
+            }
+          ],
+          "exercise": {
+            "title": "Lire un champ",
+            "instructions": "Comment lire la valeur du champ nommé email ?",
+            "hints": [
+              "FormData."
+            ],
+            "solution": "new FormData(form).get(\"email\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "formdata",
+                "get"
+              ],
+              "success": "Correct : FormData.get."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait preventDefault ?",
+              "options": [
+                "Il empêche l'action par défaut",
+                "Il envoie",
+                "Il efface",
+                "Il recharge"
+              ],
+              "answer": 0,
+              "explanation": "Le rechargement est bloqué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-04-q1"
+            },
+            {
+              "question": "Que faut-il pour qu'un champ soit dans FormData ?",
+              "options": [
+                "Un attribut name",
+                "Un id",
+                "Une classe",
+                "Un placeholder"
+              ],
+              "answer": 0,
+              "explanation": "Le nom identifie la donnée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-04-q2"
+            }
+          ],
+          "summary": [
+            "submit et preventDefault.",
+            "FormData.get.",
+            "Toujours donner un retour."
+          ],
+          "nextStep": "Chapitre suivant : « Valider les saisies »."
+        },
+        {
+          "id": "jsd2-05",
+          "title": "Valider les saisies",
+          "duration": 20,
+          "objectives": [
+            "Vérifier côté client",
+            "Afficher les erreurs",
+            "Revalider côté serveur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La validation côté client guide l'utilisateur ; elle se double toujours d'une validation serveur, car le client est contournable."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "if (!email.includes(\"@\")) {\n  erreur.textContent = \"Adresse invalide\";\n  return;\n}\nform.reset();",
+              "title": "Validation simple"
+            },
+            {
+              "type": "warning",
+              "text": "Une validation uniquement en JavaScript n'est pas une sécurité : un script peut être désactivé ou modifié."
+            }
+          ],
+          "exercise": {
+            "title": "Valider",
+            "instructions": "Où doit-on revalider les données ?",
+            "hints": [
+              "Là où l'utilisateur ne peut pas agir."
+            ],
+            "solution": "Côté serveur, toujours.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "serveur"
+              ],
+              "success": "Correct : côté serveur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "La validation client suffit-elle ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Oui avec HTTPS",
+                "Oui avec CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le client est modifiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-05-q1"
+            },
+            {
+              "question": "Que doit afficher une erreur ?",
+              "options": [
+                "Un message clair près du champ",
+                "Rien",
+                "Une couleur seule",
+                "Un log"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur doit comprendre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd2-05-q2"
+            }
+          ],
+          "summary": [
+            "Client pour guider.",
+            "Serveur pour garantir.",
+            "Erreur explicite."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

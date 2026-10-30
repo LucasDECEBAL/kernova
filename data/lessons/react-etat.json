@@ -1,0 +1,405 @@
+{
+  "courseId": "react-etat",
+  "modules": [
+    {
+      "id": "react-etat-module",
+      "title": "État et rendu",
+      "chapters": [
+        {
+          "id": "rct-01",
+          "title": "Gestion des événements",
+          "duration": 20,
+          "objectives": [
+            "Passer un gestionnaire",
+            "Utiliser l'événement",
+            "Éviter les recréations inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "En React, un gestionnaire est passé en prop onClick et reçoit l'événement. Il ne faut pas appeler la fonction au rendu."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "<button onClick={() => setOuvert(true)}>Ouvrir</button>\n<button onClick={fermer}>Fermer</button>",
+              "title": "Gestionnaires"
+            },
+            {
+              "type": "warning",
+              "text": "onClick={setOuvert(true)} exécute l'appel au rendu : passez une fonction, pas son résultat."
+            }
+          ],
+          "exercise": {
+            "title": "Corriger",
+            "instructions": "Écrivez un bouton qui appelle ouvrir au clic.",
+            "hints": [
+              "Passez une fonction."
+            ],
+            "solution": "<button onClick={() => ouvrir()}>Ouvrir</button>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "onclick",
+                "=>"
+              ],
+              "success": "Correct : gestionnaire en fonction."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que reçoit un gestionnaire ?",
+              "options": [
+                "L'événement",
+                "Rien",
+                "Le state",
+                "Une promesse"
+              ],
+              "answer": 0,
+              "explanation": "Il peut lire la cible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-01-q1"
+            },
+            {
+              "question": "Pourquoi ne pas appeler au rendu ?",
+              "options": [
+                "Effet de bord à chaque rendu",
+                "Erreur de type",
+                "Le CSS casse",
+                "Le réseau tombe"
+              ],
+              "answer": 0,
+              "explanation": "Le rendu doit rester pur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-01-q2"
+            }
+          ],
+          "summary": [
+            "onClick avec fonction.",
+            "Pas d'appel au rendu.",
+            "Événement en paramètre."
+          ]
+        },
+        {
+          "id": "rct-02",
+          "title": "Rendu conditionnel",
+          "duration": 20,
+          "objectives": [
+            "Utiliser && et ternaire",
+            "Éviter les rendus incohérents",
+            "Gérer les états vides"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le rendu conditionnel choisit quoi afficher : condition && élément, ou ternaire pour deux branches."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "{chargement ? <p>Chargement…</p> : null}\n{erreur && <p role=\"alert\">{erreur}</p>}\n{elements.length === 0 && <p>Aucun élément</p>}",
+              "title": "Conditions"
+            },
+            {
+              "type": "warning",
+              "text": "Un état vide, une erreur et un chargement doivent chacun avoir un rendu : sinon l'écran reste ambigu."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Affichez « Aucun élément » si la liste est vide.",
+            "hints": [
+              "Une condition explicite."
+            ],
+            "solution": "{elements.length === 0 && <p>Aucun élément</p>}",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "length",
+                "&&"
+              ],
+              "success": "Correct : condition &&."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait condition && element ?",
+              "options": [
+                "Affiche si vrai",
+                "Affiche si faux",
+                "Lance une erreur",
+                "Boucle"
+              ],
+              "answer": 0,
+              "explanation": "Le booléen décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-02-q1"
+            },
+            {
+              "question": "Pourquoi gérer l'état vide ?",
+              "options": [
+                "Pour éviter une zone muette",
+                "Pour le CSS",
+                "Pour le réseau",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur doit comprendre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-02-q2"
+            }
+          ],
+          "summary": [
+            "&& et ternaire.",
+            "Un rendu par état.",
+            "État vide explicite."
+          ]
+        },
+        {
+          "id": "rct-03",
+          "title": "Affichage de listes et clés",
+          "duration": 20,
+          "objectives": [
+            "Mapper une liste",
+            "Choisir une clé stable",
+            "Éviter l'index comme clé"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une liste se rend avec map et une prop key stable, idéalement l'identifiant de l'élément."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "messages.map((m) => (\n  <li key={m.id}>{m.texte}</li>\n))",
+              "title": "Liste"
+            },
+            {
+              "type": "warning",
+              "text": "Utiliser l'index comme key casse l'état local quand la liste est filtrée ou réordonnée."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la clé",
+            "instructions": "Quelle clé pour une liste de messages ?",
+            "hints": [
+              "Un identifiant stable."
+            ],
+            "solution": "message.id",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "message.id",
+                "id"
+              ],
+              "success": "Correct : l'identifiant."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi une key ?",
+              "options": [
+                "Pour identifier les éléments entre rendus",
+                "Pour styler",
+                "Pour trier",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "React réconcilie les éléments.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-03-q1"
+            },
+            {
+              "question": "Que risque l'index comme key ?",
+              "options": [
+                "Un état attaché au mauvais élément",
+                "Une erreur de type",
+                "Un CSS cassé",
+                "Un réseau lent"
+              ],
+              "answer": 0,
+              "explanation": "L'identité change au réordonnancement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-03-q2"
+            }
+          ],
+          "summary": [
+            "map + key stable.",
+            "Pas d'index.",
+            "L'état suit l'élément."
+          ]
+        },
+        {
+          "id": "rct-04",
+          "title": "Formulaires contrôlés",
+          "duration": 20,
+          "objectives": [
+            "Relier valeur et état",
+            "Gérer la soumission",
+            "Afficher les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un champ contrôlé reçoit value depuis l'état et le met à jour via onChange : l'état est la source de vérité."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "const [email, setEmail] = useState(\"\");\n<input value={email} onChange={(e) => setEmail(e.target.value)} />",
+              "title": "Champ contrôlé"
+            },
+            {
+              "type": "warning",
+              "text": "Un value sans onChange rend le champ en lecture seule : React avertit et la saisie ne change rien."
+            }
+          ],
+          "exercise": {
+            "title": "Relier",
+            "instructions": "Quelle prop relie la valeur d'un champ à l'état ?",
+            "hints": [
+              "Une valeur contrôlée."
+            ],
+            "solution": "value",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "value"
+              ],
+              "success": "Correct : value."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait onChange ?",
+              "options": [
+                "Il met à jour l'état",
+                "Il envoie",
+                "Il réinitialise",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La saisie remonte à l'état.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-04-q1"
+            },
+            {
+              "question": "Que manque-t-il si value est seule ?",
+              "options": [
+                "onChange",
+                "Une classe",
+                "Un placeholder",
+                "Un name"
+              ],
+              "answer": 0,
+              "explanation": "Le champ serait figé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-04-q2"
+            }
+          ],
+          "summary": [
+            "Champ contrôlé = value + onChange.",
+            "État source de vérité.",
+            "Erreurs liées au champ."
+          ]
+        },
+        {
+          "id": "rct-05",
+          "title": "Hooks fondamentaux",
+          "duration": 20,
+          "objectives": [
+            "Utiliser useState",
+            "Comprendre les règles des hooks",
+            "Éviter les états dérivés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "useState déclare un état local. Les hooks s'appellent au sommet du composant, jamais dans une condition ou une boucle."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "const [compteur, setCompteur] = useState(0);\nconst [elements, setElements] = useState([]);",
+              "title": "useState"
+            },
+            {
+              "type": "warning",
+              "text": "Un état dérivé recalculé à la main se désynchronise : calculez-le au rendu à partir de la source."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Déclarez un état compteur initialisé à 0.",
+            "hints": [
+              "useState."
+            ],
+            "solution": "const [compteur, setCompteur] = useState(0);",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "usestate",
+                "0"
+              ],
+              "success": "Correct : useState(0)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où appeler un hook ?",
+              "options": [
+                "Au sommet du composant",
+                "Dans une condition",
+                "Dans une boucle",
+                "Dans un événement"
+              ],
+              "answer": 0,
+              "explanation": "L'ordre doit être stable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-05-q1"
+            },
+            {
+              "question": "Que fait setCompteur ?",
+              "options": [
+                "Il demande un nouveau rendu",
+                "Il modifie le DOM",
+                "Il recharge",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'état déclenche le rendu.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct-05-q2"
+            }
+          ],
+          "summary": [
+            "useState pour l'état.",
+            "Hooks en haut niveau.",
+            "Éviter l'état dérivé."
+          ]
+        }
+      ]
+    }
+  ]
+}

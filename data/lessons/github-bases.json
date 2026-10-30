@@ -1,0 +1,424 @@
+{
+  "courseId": "github-bases",
+  "modules": [
+    {
+      "id": "github-bases-module",
+      "title": "GitHub : issues et pull requests",
+      "chapters": [
+        {
+          "id": "git4-01",
+          "title": "Créer une issue utile",
+          "duration": 20,
+          "objectives": [
+            "Décrire un problème reproductible",
+            "Distinguer attendu et obtenu",
+            "Utiliser les labels"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une issue utile permet à quelqu'un d'autre de reproduire le problème : contexte, étapes, résultat attendu, résultat obtenu, environnement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Titre précis : « Export CSV vide au-delà de 1 000 lignes ».",
+                "Étapes numérotées.",
+                "Attendu / obtenu.",
+                "Version et système.",
+                "Labels : bug, priorité, domaine."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "« Ça ne marche pas » n'est pas une issue : sans reproduction, personne ne peut corriger."
+            }
+          ],
+          "exercise": {
+            "title": "Améliorer un titre",
+            "instructions": "Proposez un meilleur titre que « bug export ».",
+            "hints": [
+              "Préciser le symptôme et la condition."
+            ],
+            "solution": "Export CSV vide au-delà de 1 000 lignes.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "export",
+                "lignes"
+              ],
+              "success": "Correct : symptôme et condition."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que doit contenir une issue ?",
+              "options": [
+                "Des étapes de reproduction",
+                "Un mot de passe",
+                "Le code source complet",
+                "Une capture seulement"
+              ],
+              "answer": 0,
+              "explanation": "Sans reproduction, pas de correction fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-01-q1"
+            },
+            {
+              "question": "À quoi servent les labels ?",
+              "options": [
+                "À filtrer et prioriser",
+                "À exécuter les tests",
+                "À fusionner",
+                "À créer une branche"
+              ],
+              "answer": 0,
+              "explanation": "Ils organisent le suivi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-01-q2"
+            }
+          ],
+          "summary": [
+            "Issue = reproduction + attendu/obtenu.",
+            "Titre précis.",
+            "Labels pour trier."
+          ],
+          "nextStep": "Chapitre suivant : « Créer une pull request »."
+        },
+        {
+          "id": "git4-02",
+          "title": "Créer une pull request",
+          "duration": 20,
+          "objectives": [
+            "Préparer une branche propre",
+            "Rédiger une description",
+            "Demander une revue"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une pull request propose d'intégrer une branche. Elle contient le diff, la description, les tests et les relecteurs."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git switch -c fix/export-vide\ngit commit -am \"Corrige l'export vide\"\ngit push -u origin fix/export-vide\n# ouvrir la PR, décrire, demander une revue",
+              "title": "Préparer une PR"
+            },
+            {
+              "type": "tip",
+              "text": "Une PR courte se relit mieux : visez un objectif unique et un diff limité."
+            }
+          ],
+          "exercise": {
+            "title": "Décrire une PR",
+            "instructions": "Que doit contenir la description d'une PR ?",
+            "hints": [
+              "Le problème, la solution, les tests."
+            ],
+            "solution": "Contexte et problème, changement proposé, comment tester, risques éventuels.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "probleme",
+                "solution",
+                "test"
+              ],
+              "success": "Correct : problème, solution, tests."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que propose une pull request ?",
+              "options": [
+                "D'intégrer une branche",
+                "De supprimer le dépôt",
+                "De créer un serveur",
+                "De changer la licence"
+              ],
+              "answer": 0,
+              "explanation": "C'est une demande de fusion.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-02-q1"
+            },
+            {
+              "question": "Pourquoi une PR courte ?",
+              "options": [
+                "Elle se relit plus facilement",
+                "Elle coûte moins cher",
+                "Elle évite les tests",
+                "Elle supprime les conflits"
+              ],
+              "answer": 0,
+              "explanation": "La revue reste efficace.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-02-q2"
+            }
+          ],
+          "summary": [
+            "PR = proposition de fusion.",
+            "Description : problème, solution, tests.",
+            "Diff limité."
+          ],
+          "nextStep": "Chapitre suivant : « Réaliser une revue de code »."
+        },
+        {
+          "id": "git4-03",
+          "title": "Réaliser une revue de code",
+          "duration": 20,
+          "objectives": [
+            "Relire un diff",
+            "Formuler des remarques utiles",
+            "Distinguer bloquant et suggestion"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La revue vérifie correction, lisibilité, sécurité et tests. Elle commente le code, pas la personne, et distingue ce qui bloque de ce qui est une suggestion."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier le comportement et les cas limites.",
+                "Signaler les risques de sécurité.",
+                "Proposer une alternative concrète.",
+                "Approuver quand c'est prêt."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une revue qui réécrit tout sans expliquer décourage : expliquez le pourquoi et proposez."
+            }
+          ],
+          "exercise": {
+            "title": "Formuler une remarque",
+            "instructions": "Reformulez « c'est nul » en remarque utile.",
+            "hints": [
+              "Décrivez le risque et proposez."
+            ],
+            "solution": "Cette requête concatène l'entrée dans le SQL : risque d'injection. Utiliser une requête préparée avec un paramètre.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "injection",
+                "prepare"
+              ],
+              "success": "Correct : risque et solution."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que commente une revue ?",
+              "options": [
+                "Le code et ses risques",
+                "La personne",
+                "Le salaire",
+                "Le matériel"
+              ],
+              "answer": 0,
+              "explanation": "La revue est technique et respectueuse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-03-q1"
+            },
+            {
+              "question": "Que faire d'une suggestion non bloquante ?",
+              "options": [
+                "La distinguer clairement",
+                "La supprimer",
+                "Bloquer la fusion",
+                "Ignorer la PR"
+              ],
+              "answer": 0,
+              "explanation": "Tout ne bloque pas la fusion.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-03-q2"
+            }
+          ],
+          "summary": [
+            "Revue : correction, lisibilité, sécurité.",
+            "Commenter le code.",
+            "Distinguer bloquant et suggestion."
+          ],
+          "nextStep": "Chapitre suivant : « Organiser un projet avec un tableau de tâches »."
+        },
+        {
+          "id": "git4-04",
+          "title": "Organiser un projet avec un tableau de tâches",
+          "duration": 20,
+          "objectives": [
+            "Créer des colonnes utiles",
+            "Relier issues et tableau",
+            "Automatiser les déplacements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau de tâches visualise le flux : à faire, en cours, en revue, terminé. Les issues deviennent des cartes, et les automatisations réduisent la maintenance."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Limiter le travail en cours.",
+                "Une carte = une tâche assez petite.",
+                "Déplacement automatique à la création de la PR.",
+                "Archiver les cartes terminées."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un tableau avec 40 cartes « en cours » indique un problème de priorisation, pas de productivité."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir les colonnes",
+            "instructions": "Quelles quatre colonnes pour un flux simple ?",
+            "hints": [
+              "Du travail à faire au travail terminé."
+            ],
+            "solution": "À faire, en cours, en revue, terminé.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "a faire",
+                "en cours",
+                "termine"
+              ],
+              "success": "Correct : à faire, en cours, revue, terminé."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que représente une carte ?",
+              "options": [
+                "Une tâche ou une issue",
+                "Un commit",
+                "Un serveur",
+                "Une licence"
+              ],
+              "answer": 0,
+              "explanation": "Le tableau suit le travail.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-04-q1"
+            },
+            {
+              "question": "Pourquoi limiter le travail en cours ?",
+              "options": [
+                "Pour finir avant de commencer",
+                "Pour accélérer le réseau",
+                "Pour réduire les tests",
+                "Pour éviter les PR"
+              ],
+              "answer": 0,
+              "explanation": "Le flux reste maîtrisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-04-q2"
+            }
+          ],
+          "summary": [
+            "Colonnes = étapes du flux.",
+            "Une carte par tâche.",
+            "Limiter le travail en cours."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre GitHub Actions »."
+        },
+        {
+          "id": "git4-05",
+          "title": "Comprendre GitHub Actions",
+          "duration": 20,
+          "objectives": [
+            "Lire un workflow YAML",
+            "Comprendre on, jobs et steps",
+            "Consulter les journaux"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GitHub Actions exécute des workflows sur des événements (push, pull request). Un workflow contient des jobs, composés d'étapes exécutées sur un runner."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "code": "on: [push, pull_request]\njobs:\n  tests:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n      - run: npm ci\n      - run: npm test",
+              "title": "Workflow minimal"
+            },
+            {
+              "type": "warning",
+              "text": "Un workflow peut exécuter du code arbitraire : ne déclenchez pas sur des entrées non fiables et protégez les secrets."
+            }
+          ],
+          "exercise": {
+            "title": "Identifier les éléments",
+            "instructions": "Dans un workflow, que déclenche l'exécution ?",
+            "hints": [
+              "La clé on décrit les événements."
+            ],
+            "solution": "La section on (par exemple push et pull_request).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "on",
+                "push",
+                "pull_request"
+              ],
+              "success": "Correct : la clé on."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un runner ?",
+              "options": [
+                "La machine qui exécute le job",
+                "Un secret",
+                "Une branche",
+                "Un tag"
+              ],
+              "answer": 0,
+              "explanation": "Le job tourne sur un runner.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-05-q1"
+            },
+            {
+              "question": "Que contient un job ?",
+              "options": [
+                "Des étapes",
+                "Des dépôts",
+                "Des licences",
+                "Des forks"
+              ],
+              "answer": 0,
+              "explanation": "Les steps s'enchaînent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git4-05-q2"
+            }
+          ],
+          "summary": [
+            "Workflow déclenché par on.",
+            "Jobs sur runners, steps.",
+            "Protéger les secrets."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

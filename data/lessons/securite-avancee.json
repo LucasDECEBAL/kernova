@@ -1,0 +1,246 @@
+{
+  "courseId": "securite-avancee",
+  "modules": [
+    {
+      "id": "securite-avancee-module",
+      "title": "Sécurité avancée",
+      "chapters": [
+        {
+          "id": "sa-01",
+          "title": "Modélisation des menaces avancée",
+          "duration": 20,
+          "objectives": [
+            "Décomposer",
+            "Prioriser",
+            "Itérer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La modélisation avancée couvre flux, privilèges et scénarios multi-étapes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Flux.",
+                "Privilèges.",
+                "Scénarios."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que couvrir en plus ?",
+            "hints": [
+              "Les flux et privilèges."
+            ],
+            "solution": "Les flux de données et les privilèges.",
+            "check": {
+              "type": "any",
+              "any": [
+                "flux",
+                "privileges",
+                "privilèges"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand réévaluer ?",
+              "options": [
+                "À chaque évolution",
+                "Jamais",
+                "Une fois",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle suit le produit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sa-01-q1"
+            },
+            {
+              "question": "Que prioriser ?",
+              "options": [
+                "Les scénarios réalistes",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est concret.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sa-01-q2"
+            }
+          ],
+          "summary": [
+            "Flux.",
+            "Privilèges.",
+            "Itération."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité matérielle »."
+        },
+        {
+          "id": "sa-02",
+          "title": "Sécurité matérielle",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Limiter",
+            "Mettre à jour"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité matérielle couvre firmware, démarrage sécurisé et accès physique."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Firmware.",
+                "Secure Boot.",
+                "Accès physique."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier au démarrage ?",
+            "hints": [
+              "L'intégrité du firmware."
+            ],
+            "solution": "L'intégrité du firmware et le démarrage sécurisé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "firmware",
+                "demarrage",
+                "démarrage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "L'accès physique compte-t-il ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Jamais",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il permet des attaques directes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sa-02-q1"
+            },
+            {
+              "question": "Que mettre à jour ?",
+              "options": [
+                "Le firmware",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les failles sont corrigées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sa-02-q2"
+            }
+          ],
+          "summary": [
+            "Firmware.",
+            "Secure Boot.",
+            "Physique."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des conteneurs »."
+        },
+        {
+          "id": "sa-03",
+          "title": "Sécurité des conteneurs",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Limiter",
+            "Scanner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les conteneurs partagent le noyau : isolation, droits et images comptent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Images de confiance.",
+                "Pas de root.",
+                "Scan."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que partagent les conteneurs ?",
+            "hints": [
+              "Le noyau."
+            ],
+            "solution": "Le noyau de l'hôte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "noyau"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Faut-il tourner en root ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sa-03-q1"
+            },
+            {
+              "question": "Que scanner ?",
+              "options": [
+                "Les images",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les vulnérabilités sont détectées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sa-03-q2"
+            }
+          ],
+          "summary": [
+            "Noyau partagé.",
+            "Pas de root.",
+            "Scan."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

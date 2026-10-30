@@ -1,0 +1,433 @@
+{
+  "courseId": "algo-donnees",
+  "modules": [
+    {
+      "id": "algo-donnees-module",
+      "title": "Variables, tableaux et chaînes",
+      "chapters": [
+        {
+          "id": "algd-01",
+          "title": "Portée des variables",
+          "duration": 20,
+          "objectives": [
+            "Distinguer variable locale et globale",
+            "Limiter la portée",
+            "Éviter les effets de bord"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La portée est la zone où une variable est visible. Une variable locale existe dans sa fonction ; une globale est visible partout."
+            },
+            {
+              "type": "p",
+              "text": "Les globales modifiables rendent le comportement difficile à suivre : préférez passer les valeurs en paramètres et renvoyer un résultat."
+            },
+            {
+              "type": "warning",
+              "text": "Deux fonctions qui modifient la même globale peuvent se contredire sans qu'aucune ne mentionne l'autre."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la portée",
+            "instructions": "Une fonction a besoin d'un compteur temporaire. Locale ou globale ?",
+            "hints": [
+              "Le compteur n'a pas besoin d'exister ailleurs."
+            ],
+            "solution": "Locale, pour éviter toute interférence avec le reste du programme.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "locale"
+              ],
+              "success": "Correct : variable locale."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'une variable locale ?",
+              "options": [
+                "Une variable visible dans sa fonction",
+                "Une variable accessible partout",
+                "Une constante",
+                "Un tableau"
+              ],
+              "answer": 0,
+              "explanation": "Sa portée est limitée au bloc.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter les globales modifiables ?",
+              "options": [
+                "Elles créent des effets de bord",
+                "Elles prennent trop de place",
+                "Elles empêchent les boucles",
+                "Elles changent de type"
+              ],
+              "answer": 0,
+              "explanation": "Leur état est modifié à distance.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-01-q2"
+            }
+          ],
+          "summary": [
+            "La portée limite la visibilité.",
+            "Les globales modifiables créent des effets de bord.",
+            "Préférer paramètres et retours."
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux »."
+        },
+        {
+          "id": "algd-02",
+          "title": "Tableaux",
+          "duration": 20,
+          "objectives": [
+            "Déclarer un tableau",
+            "Accéder à un indice",
+            "Parcourir un tableau"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau regroupe des valeurs de même type, accessibles par indice. En algorithmique et dans la plupart des langages, le premier indice vaut 0."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "notes ← [8, 12, 17]\nAFFICHER notes[0]      // 8\nnotes[1] ← 14\n\nPOUR i DE 0 À longueur(notes) - 1 FAIRE\n  AFFICHER notes[i]\nFIN POUR",
+              "title": "Accès et parcours"
+            },
+            {
+              "type": "warning",
+              "text": "Un indice hors bornes (négatif ou ≥ longueur) provoque une erreur ou une valeur indéfinie selon le langage."
+            }
+          ],
+          "exercise": {
+            "title": "Trouver un indice",
+            "instructions": "Dans [4, 8, 15, 16, 23, 42], à quel indice se trouve 23 ?",
+            "hints": [
+              "Le premier élément est à l'indice 0.",
+              "Comptez : 4, 8, 15, 16, 23."
+            ],
+            "solution": "23 se trouve à l'indice 4.",
+            "check": {
+              "type": "any",
+              "any": [
+                "4",
+                "indice 4"
+              ],
+              "success": "Correct : indice 4."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel est l'indice du premier élément ?",
+              "options": [
+                "0",
+                "1",
+                "-1",
+                "La longueur"
+              ],
+              "answer": 0,
+              "explanation": "La convention usuelle commence à 0.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-02-q1"
+            },
+            {
+              "question": "Que se passe-t-il avec un indice hors bornes ?",
+              "options": [
+                "Erreur ou valeur indéfinie",
+                "Le tableau grandit",
+                "L'indice est ignoré",
+                "Le tableau est trié"
+              ],
+              "answer": 0,
+              "explanation": "L'accès sort du domaine valide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-02-q2"
+            }
+          ],
+          "summary": [
+            "Un tableau indexe des valeurs de même type.",
+            "Le premier indice vaut 0.",
+            "Parcourir avec une boucle bornée."
+          ],
+          "nextStep": "Chapitre suivant : « Chaînes de caractères »."
+        },
+        {
+          "id": "algd-03",
+          "title": "Chaînes de caractères",
+          "duration": 20,
+          "objectives": [
+            "Concaténer des chaînes",
+            "Mesurer et découper",
+            "Comparer des chaînes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une chaîne est une suite de caractères. On peut la concaténer, la mesurer, en extraire une partie et la comparer."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "nom ← \"Ada\"\nAFFICHER \"Bonjour \" + nom      // Bonjour Ada\nAFFICHER longueur(nom)           // 3\nAFFICHER sousChaine(nom, 0, 2)   // Ad",
+              "title": "Opérations courantes"
+            },
+            {
+              "type": "warning",
+              "text": "La comparaison de chaînes dépend de la casse et de la locale : « Ada » et « ada » ne sont pas identiques dans la plupart des langages."
+            }
+          ],
+          "exercise": {
+            "title": "Mesurer une chaîne",
+            "instructions": "Que vaut longueur(\"Linus\") ?",
+            "hints": [
+              "Comptez chaque caractère."
+            ],
+            "solution": "5",
+            "check": {
+              "type": "any",
+              "any": [
+                "5"
+              ],
+              "success": "Correct : 5 caractères."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait la concaténation ?",
+              "options": [
+                "Elle met deux chaînes bout à bout",
+                "Elle additionne des nombres",
+                "Elle compare",
+                "Elle découpe"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est une nouvelle chaîne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-03-q1"
+            },
+            {
+              "question": "La casse compte-t-elle dans une comparaison stricte ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement en Python",
+                "Seulement pour les nombres"
+              ],
+              "answer": 0,
+              "explanation": "« A » et « a » sont des caractères différents.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-03-q2"
+            }
+          ],
+          "summary": [
+            "Une chaîne est une suite de caractères.",
+            "Concaténer, mesurer, découper.",
+            "La casse compte dans les comparaisons."
+          ],
+          "nextStep": "Chapitre suivant : « Structures de données fondamentales »."
+        },
+        {
+          "id": "algd-04",
+          "title": "Structures de données fondamentales",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître pile, file, liste et dictionnaire",
+            "Choisir selon l'usage",
+            "Comprendre les opérations"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une structure de données organise les valeurs pour rendre certaines opérations efficaces. Le choix dépend de l'usage, pas du hasard."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Structure",
+                "Principe",
+                "Usage typique"
+              ],
+              "rows": [
+                [
+                  "Pile",
+                  "dernier entré, premier sorti",
+                  "annuler, appels"
+                ],
+                [
+                  "File",
+                  "premier entré, premier sorti",
+                  "impression, tâches"
+                ],
+                [
+                  "Liste",
+                  "éléments chaînés",
+                  "insertions fréquentes"
+                ],
+                [
+                  "Dictionnaire",
+                  "clé → valeur",
+                  "recherche par identifiant"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un dictionnaire répond à « quelle valeur pour cette clé ? » en temps constant moyen ; un tableau ordonné, non."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir une structure",
+            "instructions": "Quelle structure pour une file d'attente de tâches dans l'ordre d'arrivée ?",
+            "hints": [
+              "Premier arrivé, premier traité."
+            ],
+            "solution": "Une file (FIFO).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "file"
+              ],
+              "success": "Correct : une file."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel principe suit une pile ?",
+              "options": [
+                "Dernier entré, premier sorti",
+                "Premier entré, premier sorti",
+                "Ordre aléatoire",
+                "Tri automatique"
+              ],
+              "answer": 0,
+              "explanation": "LIFO.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-04-q1"
+            },
+            {
+              "question": "À quoi sert un dictionnaire ?",
+              "options": [
+                "Associer des clés à des valeurs",
+                "Trier des nombres",
+                "Stocker un seul booléen",
+                "Compresser des fichiers"
+              ],
+              "answer": 0,
+              "explanation": "L'accès se fait par clé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-04-q2"
+            }
+          ],
+          "summary": [
+            "La structure dépend de l'usage.",
+            "Pile LIFO, file FIFO.",
+            "Le dictionnaire associe clé et valeur."
+          ],
+          "nextStep": "Chapitre suivant : « Pseudocode »."
+        },
+        {
+          "id": "algd-05",
+          "title": "Pseudocode",
+          "duration": 20,
+          "objectives": [
+            "Écrire un pseudocode lisible",
+            "Choisir des conventions stables",
+            "Passer du pseudocode au code"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le pseudocode décrit la logique sans syntaxe imposée. Il doit rester non ambigu et lisible par une autre personne."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "ALGORITHME CompterPairs\nENTRÉE nombres : tableau d'entiers\nSORTIE compte : entier\nDÉBUT\n  compte ← 0\n  POUR n DANS nombres FAIRE\n    SI n mod 2 = 0 ALORS compte ← compte + 1\n  FIN POUR\n  RETOURNER compte\nFIN",
+              "title": "Pseudocode structuré"
+            },
+            {
+              "type": "warning",
+              "text": "Un pseudocode trop proche d'un langage ou trop vague (« faire le calcul ») ne permet ni relecture ni traduction fiable."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire un pseudocode",
+            "instructions": "Écrivez le pseudocode qui compte les nombres pairs d'un tableau.",
+            "hints": [
+              "Parcourez le tableau.",
+              "Testez le modulo 2."
+            ],
+            "solution": "compte ← 0 ; POUR n DANS tableau FAIRE SI n mod 2 = 0 ALORS compte ← compte + 1 ; RETOURNER compte",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pour",
+                "mod",
+                "compte"
+              ],
+              "success": "Correct : parcours, test de parité, compteur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel est l'objectif du pseudocode ?",
+              "options": [
+                "Décrire la logique sans syntaxe imposée",
+                "Exécuter le programme",
+                "Remplacer les tests",
+                "Créer un fichier"
+              ],
+              "answer": 0,
+              "explanation": "Il sert à concevoir et relire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-05-q1"
+            },
+            {
+              "question": "Quand un pseudocode est-il mauvais ?",
+              "options": [
+                "Quand il est ambigu",
+                "Quand il utilise des mots-clés",
+                "Quand il est court",
+                "Quand il contient des boucles"
+              ],
+              "answer": 0,
+              "explanation": "L'ambiguïté empêche la traduction.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algd-05-q2"
+            }
+          ],
+          "summary": [
+            "Le pseudocode décrit la logique.",
+            "Des conventions stables le rendent lisible.",
+            "Il se traduit ensuite dans un langage."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

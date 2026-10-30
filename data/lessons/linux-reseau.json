@@ -1,0 +1,397 @@
+{
+  "courseId": "linux-reseau",
+  "modules": [
+    {
+      "id": "linux-reseau-module",
+      "title": "Réseau et sauvegardes",
+      "chapters": [
+        {
+          "id": "lin5-01",
+          "title": "Configuration réseau",
+          "duration": 20,
+          "objectives": [
+            "Voir les interfaces",
+            "Configurer une adresse",
+            "Comprendre les routes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ip addr et ip route remplacent ifconfig ; les changements peuvent être temporaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ip addr show.",
+                "ip route add.",
+                "Persistance selon la distribution."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Voir",
+            "instructions": "Quelle commande montre les adresses IP ?",
+            "hints": [
+              "La commande ip."
+            ],
+            "solution": "ip addr show",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ip addr"
+              ],
+              "success": "Correct : ip addr."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ip route ?",
+              "options": [
+                "Il gère les routes",
+                "Il monte",
+                "Il formate",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "La table de routage est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-01-q1"
+            },
+            {
+              "question": "Un changement ip est-il toujours persistant ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours avec sudo",
+                "Au redémarrage"
+              ],
+              "answer": 0,
+              "explanation": "La configuration système décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-01-q2"
+            }
+          ],
+          "summary": [
+            "ip addr/route.",
+            "Persistance à prévoir.",
+            "Vérifier les routes."
+          ],
+          "nextStep": "Chapitre suivant : « SSH »."
+        },
+        {
+          "id": "lin5-02",
+          "title": "SSH",
+          "duration": 20,
+          "objectives": [
+            "Se connecter",
+            "Utiliser des clés",
+            "Durcir le service"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SSH chiffre les connexions ; les clés évitent les mots de passe et sshd_config contrôle le service."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ssh user@hôte.",
+                "clé dans ~/.ssh/authorized_keys.",
+                "Désactiver l'authentification par mot de passe si possible."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Clés",
+            "instructions": "Où placer la clé publique pour se connecter ?",
+            "hints": [
+              "Un fichier standard."
+            ],
+            "solution": "~/.ssh/authorized_keys",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "authorized_keys"
+              ],
+              "success": "Correct : authorized_keys."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ssh-keygen ?",
+              "options": [
+                "Il génère une paire de clés",
+                "Il se connecte",
+                "Il chiffre un disque",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "La clé publique est partagée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-02-q1"
+            },
+            {
+              "question": "Pourquoi désactiver les mots de passe ?",
+              "options": [
+                "Réduire les attaques",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les clés sont plus sûres.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-02-q2"
+            }
+          ],
+          "summary": [
+            "SSH par clés.",
+            "authorized_keys.",
+            "Durcir sshd."
+          ],
+          "nextStep": "Chapitre suivant : « Transfert de fichiers »."
+        },
+        {
+          "id": "lin5-03",
+          "title": "Transfert de fichiers",
+          "duration": 20,
+          "objectives": [
+            "Copier à distance",
+            "Synchroniser",
+            "Limiter la bande passante"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "scp copie simplement ; rsync synchronise et reprend les transferts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "scp fichier user@hôte:/chemin.",
+                "rsync -av source/ dest/.",
+                "--dry-run pour simuler."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Synchroniser",
+            "instructions": "Quel outil synchronise efficacement ?",
+            "hints": [
+              "Un outil de synchronisation."
+            ],
+            "solution": "rsync",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rsync"
+              ],
+              "success": "Correct : rsync."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait scp ?",
+              "options": [
+                "Il copie à distance",
+                "Il monte",
+                "Il tue",
+                "Il formate"
+              ],
+              "answer": 0,
+              "explanation": "La copie utilise SSH.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-03-q1"
+            },
+            {
+              "question": "Que fait --dry-run ?",
+              "options": [
+                "Il simule",
+                "Il exécute",
+                "Il supprime",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Aucune modification.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-03-q2"
+            }
+          ],
+          "summary": [
+            "scp simple.",
+            "rsync synchronise.",
+            "dry-run."
+          ],
+          "nextStep": "Chapitre suivant : « Sauvegardes »."
+        },
+        {
+          "id": "lin5-04",
+          "title": "Sauvegardes",
+          "duration": 20,
+          "objectives": [
+            "Choisir une stratégie",
+            "Utiliser rsync",
+            "Restaurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une sauvegarde fiable est testée, décalée et versionnée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "3-2-1.",
+                "rsync --delete avec prudence.",
+                "Tester la restauration."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Restaurer",
+            "instructions": "Quelle étape valide une sauvegarde ?",
+            "hints": [
+              "La restauration testée."
+            ],
+            "solution": "Une restauration complète dans un environnement de test.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "restauration"
+              ],
+              "success": "Correct : restauration."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi --delete est-il risqué ?",
+              "options": [
+                "Il supprime la destination",
+                "Il chiffre",
+                "Il monte",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "La cible est alignée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-04-q1"
+            },
+            {
+              "question": "Que fait 3-2-1 ?",
+              "options": [
+                "Trois copies, deux supports, une hors site",
+                "Trois disques",
+                "Trois serveurs",
+                "Trois utilisateurs"
+              ],
+              "answer": 0,
+              "explanation": "La stratégie est robuste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-04-q2"
+            }
+          ],
+          "summary": [
+            "Sauvegarde testée.",
+            "rsync prudent.",
+            "Hors site."
+          ],
+          "nextStep": "Chapitre suivant : « Archivage et compression »."
+        },
+        {
+          "id": "lin5-05",
+          "title": "Archivage et compression",
+          "duration": 20,
+          "objectives": [
+            "Créer une archive",
+            "Compresser",
+            "Extraire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "tar regroupe, gzip compresse ; tar -czf crée, -xzf extrait."
+            },
+            {
+              "type": "list",
+              "items": [
+                "tar -czf archive.tar.gz dossier/.",
+                "tar -tzf pour lister.",
+                "zstd pour un gain moderne."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quelle commande crée une archive tar.gz ?",
+            "hints": [
+              "c, z et f."
+            ],
+            "solution": "tar -czf sauvegarde.tar.gz dossier/",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tar",
+                "-czf"
+              ],
+              "success": "Correct : tar -czf."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -x ?",
+              "options": [
+                "Il extrait",
+                "Il crée",
+                "Il liste",
+                "Il compresse"
+              ],
+              "answer": 0,
+              "explanation": "L'extraction est lancée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-05-q1"
+            },
+            {
+              "question": "Que fait -t ?",
+              "options": [
+                "Il liste",
+                "Il extrait",
+                "Il crée",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu est affiché.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin5-05-q2"
+            }
+          ],
+          "summary": [
+            "tar -czf.",
+            "-xzf extrait.",
+            "-tzf liste."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

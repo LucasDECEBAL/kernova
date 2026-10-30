@@ -1,0 +1,408 @@
+{
+  "courseId": "c-avance",
+  "modules": [
+    {
+      "id": "c-avance-module",
+      "title": "C : pointeurs et structures",
+      "chapters": [
+        {
+          "id": "cav-01",
+          "title": "Tableaux en C",
+          "duration": 20,
+          "objectives": [
+            "Déclarer un tableau",
+            "Parcourir par indice",
+            "Éviter les débordements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau C de taille n a des indices de 0 à n-1 ; aucune vérification de borne n'est faite à l'exécution."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "int notes[3] = {8, 12, 17};\nfor (int i = 0; i < 3; i++) {\n  printf(\"%d\\n\", notes[i]);\n}",
+              "title": "Tableau"
+            },
+            {
+              "type": "warning",
+              "text": "Écrire au-delà de la taille provoque un comportement indéfini : validez toujours l'indice."
+            }
+          ],
+          "exercise": {
+            "title": "Parcourir",
+            "instructions": "Écrivez une boucle qui affiche chaque élément de notes (3 éléments).",
+            "hints": [
+              "Borne stricte."
+            ],
+            "solution": "for (int i = 0; i < 3; i++) printf(\"%d\\n\", notes[i]);",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "for",
+                "notes["
+              ],
+              "success": "Correct : boucle bornée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Indice du dernier élément de notes[3] ?",
+              "options": [
+                "2",
+                "3",
+                "-1",
+                "4"
+              ],
+              "answer": 0,
+              "explanation": "Les indices vont de 0 à 2.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-01-q1"
+            },
+            {
+              "question": "Que se passe-t-il hors bornes ?",
+              "options": [
+                "Comportement indéfini",
+                "Une exception",
+                "Rien",
+                "Une valeur nulle"
+              ],
+              "answer": 0,
+              "explanation": "Aucun contrôle n'est fait.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-01-q2"
+            }
+          ],
+          "summary": [
+            "Indices 0..n-1.",
+            "Boucle bornée.",
+            "Pas de contrôle de borne."
+          ],
+          "nextStep": "Chapitre suivant : « Chaînes de caractères en C »."
+        },
+        {
+          "id": "cav-02",
+          "title": "Chaînes de caractères en C",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le zéro terminal",
+            "Mesurer avec strlen",
+            "Copier sans déborder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une chaîne C est un tableau de char terminé par '\\0'. strlen compte jusqu'au terminateur ; strcpy ne vérifie pas la taille."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "char nom[16] = \"Ada\";\nprintf(\"%zu\\n\", strlen(nom));\nstrncpy(dest, src, sizeof(dest) - 1);\ndest[sizeof(dest) - 1] = '\\0';",
+              "title": "Chaînes"
+            },
+            {
+              "type": "warning",
+              "text": "Préférez strncpy, snprintf ou une bibliothèque sûre : strcpy déborde si la source est trop longue."
+            }
+          ],
+          "exercise": {
+            "title": "Mesurer",
+            "instructions": "Quelle fonction donne la longueur d'une chaîne C ?",
+            "hints": [
+              "Une fonction de string.h."
+            ],
+            "solution": "strlen",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "strlen"
+              ],
+              "success": "Correct : strlen."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que termine une chaîne C ?",
+              "options": [
+                "\\0",
+                "\\n",
+                "EOF",
+                "NULL"
+              ],
+              "answer": 0,
+              "explanation": "Le zéro terminal marque la fin.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-02-q1"
+            },
+            {
+              "question": "Que risque strcpy ?",
+              "options": [
+                "Un débordement",
+                "Une erreur de type",
+                "Rien",
+                "Un arrêt propre"
+              ],
+              "answer": 0,
+              "explanation": "La taille n'est pas contrôlée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-02-q2"
+            }
+          ],
+          "summary": [
+            "Chaîne = char + \\0.",
+            "strlen compte.",
+            "Copie bornée."
+          ],
+          "nextStep": "Chapitre suivant : « Pointeurs »."
+        },
+        {
+          "id": "cav-03",
+          "title": "Pointeurs",
+          "duration": 20,
+          "objectives": [
+            "Déclarer un pointeur",
+            "Déréférencer",
+            "Comprendre l'arithmétique"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pointeur contient une adresse. *lit ou écrit la valeur pointée ; &donne l'adresse d'une variable."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "int n = 5;\nint *p = &n;\nprintf(\"%d\\n\", *p); // 5\n*p = 7;\nprintf(\"%d\\n\", n); // 7",
+              "title": "Pointeur"
+            },
+            {
+              "type": "warning",
+              "text": "Un pointeur non initialisé (dangling) ne doit jamais être déréférencé : initialisez-le à NULL."
+            }
+          ],
+          "exercise": {
+            "title": "Déréférencer",
+            "instructions": "Que vaut n après int *p = &n; *p = 9; ?",
+            "hints": [
+              "La valeur pointée change."
+            ],
+            "solution": "9",
+            "check": {
+              "type": "any",
+              "any": [
+                "9"
+              ],
+              "success": "Correct : 9."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait &n ?",
+              "options": [
+                "Il donne l'adresse de n",
+                "Il lit n",
+                "Il copie n",
+                "Il libère n"
+              ],
+              "answer": 0,
+              "explanation": "L'adresse est obtenue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-03-q1"
+            },
+            {
+              "question": "Que fait *p ?",
+              "options": [
+                "Il accède à la valeur pointée",
+                "Il donne l'adresse",
+                "Il incrémente",
+                "Il libère"
+              ],
+              "answer": 0,
+              "explanation": "Le déréférencement lit/écrit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-03-q2"
+            }
+          ],
+          "summary": [
+            "Pointeur = adresse.",
+            "* valeur, & adresse.",
+            "Initialiser à NULL."
+          ],
+          "nextStep": "Chapitre suivant : « Allocation dynamique »."
+        },
+        {
+          "id": "cav-04",
+          "title": "Allocation dynamique",
+          "duration": 20,
+          "objectives": [
+            "Allouer avec malloc",
+            "Vérifier le retour",
+            "Libérer avec free"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "malloc réserve de la mémoire sur le tas ; free la libère. La taille s'exprime en octets, souvent avec sizeof."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "int *t = malloc(10 * sizeof *t);\nif (!t) return 1;\n/* usage */\nfree(t);\nt = NULL;",
+              "title": "Tableau dynamique"
+            },
+            {
+              "type": "warning",
+              "text": "Chaque malloc doit avoir un free correspondant ; remettre le pointeur à NULL après libération évite le double free."
+            }
+          ],
+          "exercise": {
+            "title": "Allouer",
+            "instructions": "Allouez un tableau dynamique de 10 int.",
+            "hints": [
+              "malloc et sizeof."
+            ],
+            "solution": "int *t = malloc(10 * sizeof *t);",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "malloc",
+                "sizeof"
+              ],
+              "success": "Correct : malloc."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait malloc ?",
+              "options": [
+                "Il réserve sur le tas",
+                "Il libère",
+                "Il copie",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La mémoire est allouée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-04-q1"
+            },
+            {
+              "question": "Que faire après free ?",
+              "options": [
+                "Mettre le pointeur à NULL",
+                "Réutiliser",
+                "Doubler free",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Le pointeur devient inutilisable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-04-q2"
+            }
+          ],
+          "summary": [
+            "malloc/free en paire.",
+            "Vérifier le retour.",
+            "NULL après free."
+          ],
+          "nextStep": "Chapitre suivant : « Structures »."
+        },
+        {
+          "id": "cav-05",
+          "title": "Structures",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une struct",
+            "Accéder aux champs",
+            "Utiliser typedef"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une struct regroupe des champs nommés. On accède avec point, ou flèche via un pointeur."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "typedef struct {\n  char nom[32];\n  int age;\n} Personne;\n\nPersonne p = {\"Ada\", 36};\nprintf(\"%s\\n\", p.nom);",
+              "title": "Structure"
+            },
+            {
+              "type": "tip",
+              "text": "Passez les structures par pointeur const pour éviter les copies coûteuses."
+            }
+          ],
+          "exercise": {
+            "title": "Accéder",
+            "instructions": "Comment lire le champ age d'une struct pointée par p ?",
+            "hints": [
+              "Une flèche."
+            ],
+            "solution": "p->age",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "->"
+              ],
+              "success": "Correct : p->age."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait typedef ?",
+              "options": [
+                "Il crée un alias de type",
+                "Il alloue",
+                "Il libère",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le nom devient plus simple.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-05-q1"
+            },
+            {
+              "question": "Accès par pointeur ?",
+              "options": [
+                "->",
+                ".",
+                "::",
+                "&"
+              ],
+              "answer": 0,
+              "explanation": "La flèche déréférence et accède.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cav-05-q2"
+            }
+          ],
+          "summary": [
+            "struct = champs nommés.",
+            ". et ->.",
+            "typedef pour l'alias."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

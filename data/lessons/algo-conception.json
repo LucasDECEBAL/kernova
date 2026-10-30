@@ -1,0 +1,450 @@
+{
+  "courseId": "algo-conception",
+  "modules": [
+    {
+      "id": "algo-conception-module",
+      "title": "Concevoir et tester un algorithme",
+      "chapters": [
+        {
+          "id": "alge-01",
+          "title": "Organigrammes",
+          "duration": 20,
+          "objectives": [
+            "Lire les symboles d'un organigramme",
+            "Représenter une condition",
+            "Représenter une boucle"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un organigramme montre le flux d'exécution : entrée/sortie, traitement, décision, début et fin."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Symbole",
+                "Sens"
+              ],
+              "rows": [
+                [
+                  "Ovale",
+                  "début ou fin"
+                ],
+                [
+                  "Rectangle",
+                  "traitement"
+                ],
+                [
+                  "Losange",
+                  "décision"
+                ],
+                [
+                  "Parallélogramme",
+                  "entrée ou sortie"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Une décision a deux sorties (vrai/faux) ; une boucle revient vers un point antérieur."
+            },
+            {
+              "type": "tip",
+              "text": "Dessinez d'abord les cas principaux, puis les cas d'erreur : le schéma révèle les oublis."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir le symbole",
+            "instructions": "Quel symbole pour « si note ≥ 10 » ?",
+            "hints": [
+              "C'est une décision."
+            ],
+            "solution": "Le losange.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "losange"
+              ],
+              "success": "Correct : losange."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel symbole représente une décision ?",
+              "options": [
+                "Le losange",
+                "Le rectangle",
+                "L'ovale",
+                "Le parallélogramme"
+              ],
+              "answer": 0,
+              "explanation": "Deux sorties vrai/faux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-01-q1"
+            },
+            {
+              "question": "Que représente un parallélogramme ?",
+              "options": [
+                "Une entrée ou une sortie",
+                "Un calcul",
+                "Une décision",
+                "Le début"
+              ],
+              "answer": 0,
+              "explanation": "Il symbolise les échanges avec l'extérieur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-01-q2"
+            }
+          ],
+          "summary": [
+            "Chaque forme a un sens conventionnel.",
+            "Une décision a deux sorties.",
+            "Dessiner aide à repérer les oublis."
+          ],
+          "nextStep": "Chapitre suivant : « Décomposer un problème »."
+        },
+        {
+          "id": "alge-02",
+          "title": "Décomposer un problème",
+          "duration": 20,
+          "objectives": [
+            "Découper en sous-problèmes",
+            "Définir des fonctions",
+            "Ordonner les dépendances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Décomposer consiste à transformer un problème en sous-problèmes plus petits, chacun avec une entrée, une sortie et une responsabilité."
+            },
+            {
+              "type": "p",
+              "text": "Un calcul de facture se découpe : total des lignes, application de la taxe, arrondi, affichage. Chaque partie se teste séparément."
+            },
+            {
+              "type": "tip",
+              "text": "Si un sous-problème ne peut pas se décrire en une phrase, il est probablement encore trop gros."
+            }
+          ],
+          "exercise": {
+            "title": "Découper un calcul",
+            "instructions": "Un programme calcule le prix TTC d'une liste d'articles. Citez deux fonctions utiles.",
+            "hints": [
+              "Une pour additionner.",
+              "Une pour appliquer la taxe."
+            ],
+            "solution": "total(articles) et ajouterTaxe(montant, taux), puis leur enchaînement.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "total",
+                "taxe"
+              ],
+              "success": "Correct : total puis taxe."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi décomposer ?",
+              "options": [
+                "Pour réduire la complexité et tester séparément",
+                "Pour ralentir",
+                "Pour éviter les fonctions",
+                "Pour supprimer les entrées"
+              ],
+              "answer": 0,
+              "explanation": "Chaque partie devient vérifiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-02-q1"
+            },
+            {
+              "question": "Qu'est-ce qu'un bon sous-problème ?",
+              "options": [
+                "Une responsabilité claire en une phrase",
+                "Un fichier",
+                "Un langage",
+                "Un type de boucle"
+              ],
+              "answer": 0,
+              "explanation": "La responsabilité doit être nette.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-02-q2"
+            }
+          ],
+          "summary": [
+            "Décomposer en sous-problèmes testables.",
+            "Une responsabilité par fonction.",
+            "Enchaîner les résultats."
+          ],
+          "nextStep": "Chapitre suivant : « Écrire des algorithmes lisibles »."
+        },
+        {
+          "id": "alge-03",
+          "title": "Écrire des algorithmes lisibles",
+          "duration": 20,
+          "objectives": [
+            "Nommer les variables clairement",
+            "Limiter la taille des fonctions",
+            "Commenter l'intention, pas la ligne"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La lisibilité est une exigence technique : un algorithme se relit, se corrige et évolue. Des noms explicites valent mieux que des commentaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "n, i, tmp : acceptables pour un compteur local court.",
+                "totalTTC, nombreClients : explicites.",
+                "Une fonction fait une chose.",
+                "Un commentaire explique pourquoi, pas ce que la ligne fait."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un commentaire faux est pire que pas de commentaire : il trompe le prochain lecteur."
+            }
+          ],
+          "exercise": {
+            "title": "Renommer",
+            "instructions": "Que proposez-vous pour une variable nommée x qui contient le nombre de tentatives restantes ?",
+            "hints": [
+              "Le nom doit décrire la valeur."
+            ],
+            "solution": "essaisRestants (ou tentativesRestantes), en camelCase ou snake_case selon la convention du projet.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tentatives",
+                "essais"
+              ],
+              "success": "Correct : un nom explicite."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que doit expliquer un commentaire ?",
+              "options": [
+                "Le pourquoi d'un choix",
+                "Chaque ligne",
+                "Le nom du fichier",
+                "La météo"
+              ],
+              "answer": 0,
+              "explanation": "Le code dit comment ; le commentaire dit pourquoi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-03-q1"
+            },
+            {
+              "question": "Pourquoi limiter la taille d'une fonction ?",
+              "options": [
+                "Pour faciliter la relecture et les tests",
+                "Pour consommer moins de RAM",
+                "Pour éviter les paramètres",
+                "Pour accélérer Internet"
+              ],
+              "answer": 0,
+              "explanation": "Une fonction courte se comprend et se teste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-03-q2"
+            }
+          ],
+          "summary": [
+            "Des noms explicites documentent le code.",
+            "Une responsabilité par fonction.",
+            "Commenter l'intention."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les erreurs »."
+        },
+        {
+          "id": "alge-04",
+          "title": "Gérer les erreurs",
+          "duration": 20,
+          "objectives": [
+            "Prévoir les entrées invalides",
+            "Éviter les divisions par zéro",
+            "Renvoyer un état clair"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un algorithme robuste prévoit les cas qui ne devraient pas arriver : entrée vide, valeur hors bornes, division par zéro, fichier absent."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "SI diviseur = 0 ALORS\n  RETOURNER erreur(\"division par zéro\")\nFIN SI\nRETOURNER dividende / diviseur",
+              "title": "Contrôle avant calcul"
+            },
+            {
+              "type": "warning",
+              "text": "Ignorer une erreur ne la fait pas disparaître : elle apparaîtra plus loin, avec moins de contexte."
+            }
+          ],
+          "exercise": {
+            "title": "Prévoir un cas",
+            "instructions": "Que faut-il vérifier avant une division ?",
+            "hints": [
+              "Le diviseur peut être nul."
+            ],
+            "solution": "Que le diviseur est différent de 0.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "diviseur",
+                "zero"
+              ],
+              "success": "Correct : diviseur nul."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire face à une entrée invalide ?",
+              "options": [
+                "La signaler et arrêter proprement",
+                "Continuer sans rien dire",
+                "La corriger au hasard",
+                "La supprimer"
+              ],
+              "answer": 0,
+              "explanation": "Un état d'erreur explicite évite la propagation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-04-q1"
+            },
+            {
+              "question": "Pourquoi contrôler avant de diviser ?",
+              "options": [
+                "La division par zéro est indéfinie",
+                "Pour accélérer",
+                "Pour changer le type",
+                "Pour éviter les boucles"
+              ],
+              "answer": 0,
+              "explanation": "Le diviseur nul doit être refusé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-04-q2"
+            }
+          ],
+          "summary": [
+            "Prévoir les cas limites.",
+            "Signaler l'erreur au bon niveau.",
+            "Ne pas masquer un échec."
+          ],
+          "nextStep": "Chapitre suivant : « Tester un algorithme »."
+        },
+        {
+          "id": "alge-05",
+          "title": "Tester un algorithme",
+          "duration": 20,
+          "objectives": [
+            "Construire un jeu de tests",
+            "Couvrir les cas limites",
+            "Comparer résultat attendu et obtenu"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Tester consiste à comparer le résultat obtenu au résultat attendu, sur des cas choisis : normal, limite, invalide."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Cas",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Normal",
+                  "moyenne [10, 12] → 11"
+                ],
+                [
+                  "Limite",
+                  "tableau vide, un seul élément"
+                ],
+                [
+                  "Invalide",
+                  "note négative ou texte"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un test qui échoue est une information : il révèle un comportement non prévu, pas un échec personnel."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir des tests",
+            "instructions": "Quels trois cas tester pour une fonction qui calcule une moyenne ?",
+            "hints": [
+              "Un cas normal, un cas limite, un cas invalide."
+            ],
+            "solution": "Liste de plusieurs notes, liste vide, valeurs invalides.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "vide",
+                "invalide"
+              ],
+              "success": "Correct : normal, vide, invalide."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que compare un test ?",
+              "options": [
+                "Résultat attendu et résultat obtenu",
+                "Deux fichiers",
+                "Deux langages",
+                "Deux processeurs"
+              ],
+              "answer": 0,
+              "explanation": "Le test vérifie un comportement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-05-q1"
+            },
+            {
+              "question": "Pourquoi tester un tableau vide ?",
+              "options": [
+                "C'est un cas limite qui révèle les oublis",
+                "Pour aller plus vite",
+                "Pour changer le type",
+                "Pour supprimer les erreurs"
+              ],
+              "answer": 0,
+              "explanation": "Les cas limites cassent souvent le code.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alge-05-q2"
+            }
+          ],
+          "summary": [
+            "Tester normal, limite et invalide.",
+            "Comparer attendu et obtenu.",
+            "Un échec révèle un cas non prévu."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

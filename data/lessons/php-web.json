@@ -1,0 +1,413 @@
+{
+  "courseId": "php-web",
+  "modules": [
+    {
+      "id": "php-web-module",
+      "title": "PHP : formulaires et données",
+      "chapters": [
+        {
+          "id": "phpw-01",
+          "title": "Tableaux",
+          "duration": 20,
+          "objectives": [
+            "Créer un tableau",
+            "Parcourir",
+            "Utiliser les fonctions utiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les tableaux PHP sont ordonnés et associent clés et valeurs. array_map, array_filter et array_sum couvrent l'essentiel."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "$notes = [\"ada\" => 15, \"linus\" => 12];\nforeach ($notes as $nom => $note) {\n    echo \"$nom : $note\";\n}",
+              "title": "Tableau associatif"
+            },
+            {
+              "type": "p",
+              "text": "Un tableau non déclaré vaut null : initialisez-le avant d'ajouter des éléments."
+            }
+          ],
+          "exercise": {
+            "title": "Parcourir",
+            "instructions": "Parcourez $notes en affichant clé et valeur.",
+            "hints": [
+              "foreach avec clé."
+            ],
+            "solution": "foreach ($notes as $nom => $note) { echo \"$nom : $note\"; }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "foreach",
+                "=>"
+              ],
+              "success": "Correct : foreach clé/valeur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait array_filter ?",
+              "options": [
+                "Il garde les éléments selon un test",
+                "Il trie",
+                "Il additionne",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Un nouveau tableau est renvoyé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-01-q1"
+            },
+            {
+              "question": "Que fait array_sum ?",
+              "options": [
+                "Il additionne",
+                "Il trie",
+                "Il filtre",
+                "Il compte"
+              ],
+              "answer": 0,
+              "explanation": "La somme des valeurs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-01-q2"
+            }
+          ],
+          "summary": [
+            "Tableaux clé/valeur.",
+            "foreach.",
+            "array_* utiles."
+          ],
+          "nextStep": "Chapitre suivant : « Formulaires »."
+        },
+        {
+          "id": "phpw-02",
+          "title": "Formulaires",
+          "duration": 20,
+          "objectives": [
+            "Lire une saisie",
+            "Valider le format",
+            "Échapper à l'affichage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les données arrivent dans $_POST ou $_GET. filter_input valide le format ; htmlspecialchars protège l'affichage."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "$email = filter_input(INPUT_POST, \"email\", FILTER_VALIDATE_EMAIL);\nif (!$email) { $erreur = \"Adresse invalide\"; }\necho htmlspecialchars($email ?? \"\", ENT_QUOTES, \"UTF-8\");",
+              "title": "Validation"
+            },
+            {
+              "type": "p",
+              "text": "Ne faites jamais confiance à $_POST : validez, puis échappez selon le contexte (HTML, SQL, URL)."
+            }
+          ],
+          "exercise": {
+            "title": "Valider",
+            "instructions": "Quelle fonction valide un e-mail POST ?",
+            "hints": [
+              "Une fonction de filtre."
+            ],
+            "solution": "filter_input(INPUT_POST, \"email\", FILTER_VALIDATE_EMAIL)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "filter_input",
+                "validate_email"
+              ],
+              "success": "Correct : filter_input."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait htmlspecialchars ?",
+              "options": [
+                "Il échappe pour le HTML",
+                "Il valide",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'injection HTML est évitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-02-q1"
+            },
+            {
+              "question": "Faut-il faire confiance à $_POST ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en HTTPS",
+                "Seulement en POST"
+              ],
+              "answer": 0,
+              "explanation": "Le client est modifiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-02-q2"
+            }
+          ],
+          "summary": [
+            "filter_input.",
+            "htmlspecialchars.",
+            "Valider puis échapper."
+          ],
+          "nextStep": "Chapitre suivant : « Sessions et cookies »."
+        },
+        {
+          "id": "phpw-03",
+          "title": "Sessions et cookies",
+          "duration": 20,
+          "objectives": [
+            "Démarrer une session",
+            "Stocker un panier",
+            "Sécuriser les cookies"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "session_start ouvre une session côté serveur ; l'identifiant voyage dans un cookie. Un cookie côté client est falsifiable."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "session_start();\n$_SESSION[\"panier\"][] = $produitId;\nsetcookie(\"theme\", \"sombre\", [\"httponly\" => true, \"samesite\" => \"Lax\"]);",
+              "title": "Session"
+            },
+            {
+              "type": "p",
+              "text": "Régénérez l'identifiant après connexion pour limiter la fixation de session."
+            }
+          ],
+          "exercise": {
+            "title": "Stocker",
+            "instructions": "Où stocker un panier non falsifiable ?",
+            "hints": [
+              "Côté serveur."
+            ],
+            "solution": "Dans $_SESSION.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "session"
+              ],
+              "success": "Correct : session."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un cookie est-il falsifiable ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement en HTTPS",
+                "Seulement en session"
+              ],
+              "answer": 0,
+              "explanation": "Le client peut le modifier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-03-q1"
+            },
+            {
+              "question": "Que fait session_start ?",
+              "options": [
+                "Il ouvre la session",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "La session est active.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-03-q2"
+            }
+          ],
+          "summary": [
+            "Session côté serveur.",
+            "Cookies sécurisés.",
+            "Régénérer l'ID."
+          ],
+          "nextStep": "Chapitre suivant : « Manipulation de fichiers »."
+        },
+        {
+          "id": "phpw-04",
+          "title": "Manipulation de fichiers",
+          "duration": 20,
+          "objectives": [
+            "Lire un fichier",
+            "Écrire",
+            "Contrôler les permissions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "file_get_contents et file_put_contents simplifient la lecture/écriture ; fopen donne plus de contrôle."
+            },
+            {
+              "type": "code",
+              "lang": "php",
+              "code": "$contenu = file_get_contents(\"notes.txt\");\nfile_put_contents(\"notes.txt\", $contenu . \"ligne\\n\", FILE_APPEND);",
+              "title": "Fichiers"
+            },
+            {
+              "type": "p",
+              "text": "N'écrivez jamais dans un chemin construit depuis une saisie sans validation : risque de traversée de répertoire."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter",
+            "instructions": "Quel drapeau ajoute à la fin d'un fichier ?",
+            "hints": [
+              "Un drapeau de fichier."
+            ],
+            "solution": "FILE_APPEND",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "file_append"
+              ],
+              "success": "Correct : FILE_APPEND."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait file_get_contents ?",
+              "options": [
+                "Il lit tout le fichier",
+                "Il écrit",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu est renvoyé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-04-q1"
+            },
+            {
+              "question": "Pourquoi valider un chemin ?",
+              "options": [
+                "Éviter la traversée de répertoire",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Un chemin malveillant sort du dossier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "phpw-04-q2"
+            }
+          ],
+          "summary": [
+            "file_get_contents.",
+            "FILE_APPEND.",
+            "Valider les chemins."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Laravel »."
+        },
+        {
+          "id": "phpw-05",
+          "title": "Introduction à Laravel",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Laravel",
+            "Déclarer une route",
+            "Utiliser un contrôleur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Laravel fournit routage, ORM Eloquent, migrations et templates Blade. Une route pointe vers un contrôleur ou une closure."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Routes dans routes/web.php.",
+                "Contrôleurs dans app/Http/Controllers.",
+                "Migrations pour le schéma.",
+                "Blade pour les vues."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Les commandes artisan génèrent le squelette : php artisan make:controller."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer une route",
+            "instructions": "Dans quel fichier déclare-t-on les routes web de Laravel ?",
+            "hints": [
+              "Un dossier routes.",
+              "Le fichier concerne le web."
+            ],
+            "solution": "routes/web.php",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "routes",
+                "web.php"
+              ],
+              "success": "Correct : routes/web.php."
+            }
+          },
+          "quiz": [
+            {
+              "id": "phpw-05-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel ORM utilise Laravel ?",
+              "options": [
+                "Eloquent",
+                "Doctrine",
+                "Hibernate",
+                "Sequelize"
+              ],
+              "answer": 0,
+              "explanation": "Eloquent est l'ORM intégré.",
+              "hints": []
+            },
+            {
+              "id": "phpw-05-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Quel moteur de templates ?",
+              "options": [
+                "Blade",
+                "Twig",
+                "Smarty",
+                "Jinja"
+              ],
+              "answer": 0,
+              "explanation": "Blade est intégré à Laravel.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Routage, Eloquent, Blade.",
+            "artisan.",
+            "Controllers."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

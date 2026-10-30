@@ -1,0 +1,253 @@
+{
+  "courseId": "ts-projet",
+  "modules": [
+    {
+      "id": "ts-projet-module",
+      "title": "Organiser un projet TypeScript",
+      "chapters": [
+        {
+          "id": "tsp-01",
+          "title": "Organiser un projet TypeScript",
+          "duration": 20,
+          "objectives": [
+            "Structurer les dossiers",
+            "Séparer types et logique",
+            "Relier tsconfig et build"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet TypeScript sépare le code source, les types partagés et la configuration. Le build produit le JavaScript exécutable."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "src/\n├── types/\n├── domain/\n├── ui/\n└── main.ts\ntsconfig.json",
+              "title": "Arborescence"
+            },
+            {
+              "type": "tip",
+              "text": "Les types partagés vont dans un dossier dédié : ils ne doivent pas dépendre de l'interface."
+            }
+          ],
+          "exercise": {
+            "title": "Organiser",
+            "instructions": "Où placer les types partagés ?",
+            "hints": [
+              "Un dossier dédié."
+            ],
+            "solution": "src/types/",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "types"
+              ],
+              "success": "Correct : un dossier de types."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que produit le build ?",
+              "options": [
+                "Du JavaScript",
+                "Du CSS",
+                "Du HTML uniquement",
+                "Un serveur"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur n'exécute pas TypeScript.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tsp-01-q1"
+            },
+            {
+              "question": "Pourquoi séparer types et UI ?",
+              "options": [
+                "Pour éviter les dépendances inverses",
+                "Pour accélérer le réseau",
+                "Pour le SEO",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Le domaine reste indépendant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tsp-01-q2"
+            }
+          ],
+          "summary": [
+            "Dossiers par responsabilité.",
+            "Types partagés.",
+            "Build vers JavaScript."
+          ]
+        },
+        {
+          "id": "tsp-02",
+          "title": "Bonnes pratiques TypeScript",
+          "duration": 20,
+          "objectives": [
+            "Préférer les types précis",
+            "Éviter any et les casts",
+            "Typer les frontières"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un bon typage décrit les frontières (entrées, sorties, API) et laisse l'inférence faire le reste dans le corps des fonctions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "unknown plutôt que any.",
+                "Types explicites aux frontières.",
+                "Pas de cast sans validation.",
+                "Noms de types descriptifs."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un type trop large (any, object) n'apporte aucune garantie tout en donnant une fausse impression de sécurité."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel type pour une valeur non fiable à vérifier ?",
+            "hints": [
+              "Pas any."
+            ],
+            "solution": "unknown",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "unknown"
+              ],
+              "success": "Correct : unknown."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où typer explicitement ?",
+              "options": [
+                "Aux frontières",
+                "Partout",
+                "Nulle part",
+                "Dans le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les entrées/sorties sont décisives.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tsp-02-q1"
+            },
+            {
+              "question": "Que fait un cast ?",
+              "options": [
+                "Il affirme un type",
+                "Il vérifie",
+                "Il convertit les données",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Aucun contrôle à l'exécution.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tsp-02-q2"
+            }
+          ],
+          "summary": [
+            "unknown plutôt que any.",
+            "Typer les frontières.",
+            "Pas de cast sans validation."
+          ]
+        },
+        {
+          "id": "tsp-03",
+          "title": "Revue et évolution d'un projet typé",
+          "duration": 20,
+          "objectives": [
+            "Relire les types",
+            "Faire évoluer sans casser",
+            "Documenter les décisions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les types évoluent avec le code : une revue vérifie qu'ils restent précis, cohérents et alignés sur les données réelles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier les unions exhaustives.",
+                "Mettre à jour les tests de types.",
+                "Documenter les choix de modélisation.",
+                "Supprimer les types morts."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un type qui ment est plus dangereux qu'un type absent : il donne une fausse confiance."
+            }
+          ],
+          "exercise": {
+            "title": "Relire",
+            "instructions": "Que vérifier sur une union d'états ?",
+            "hints": [
+              "Tous les cas sont traités."
+            ],
+            "solution": "L'exhaustivité : chaque état est géré, avec une erreur de compilation si un cas manque.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "exhaust",
+                "etat",
+                "état"
+              ],
+              "success": "Correct : exhaustivité des états."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un type inutilisé ?",
+              "options": [
+                "Le supprimer",
+                "Le garder",
+                "Le commenter",
+                "Le dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le code mort trompe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tsp-03-q1"
+            },
+            {
+              "question": "Pourquoi documenter la modélisation ?",
+              "options": [
+                "Pour conserver le contexte",
+                "Pour accélérer",
+                "Pour le CSS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les décisions s'expliquent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tsp-03-q2"
+            }
+          ],
+          "summary": [
+            "Revue des types.",
+            "Exhaustivité.",
+            "Documenter les choix."
+          ]
+        }
+      ]
+    }
+  ]
+}

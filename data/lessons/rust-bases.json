@@ -1,0 +1,397 @@
+{
+  "courseId": "rust-bases",
+  "modules": [
+    {
+      "id": "rust-bases-module",
+      "title": "Rust : bases et propriété",
+      "chapters": [
+        {
+          "id": "rs-01",
+          "title": "Introduction à Rust",
+          "duration": 20,
+          "objectives": [
+            "Compiler avec cargo",
+            "Comprendre la sûreté mémoire",
+            "Écrire un main"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Rust compile en binaire natif et garantit la sûreté mémoire sans ramasse-miettes, grâce à la propriété."
+            },
+            {
+              "type": "list",
+              "items": [
+                "cargo new / cargo run.",
+                "Pas de null : Option.",
+                "Les erreurs sont des valeurs Result."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lancer",
+            "instructions": "Quelle commande exécute un projet Rust ?",
+            "hints": [
+              "Cargo."
+            ],
+            "solution": "cargo run",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cargo run"
+              ],
+              "success": "Correct : cargo run."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit Rust ?",
+              "options": [
+                "La sûreté mémoire à la compilation",
+                "La vitesse réseau",
+                "Le CSS",
+                "Le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le vérificateur d'emprunts analyse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-01-q1"
+            },
+            {
+              "question": "Comment représenter une absence ?",
+              "options": [
+                "Option",
+                "null",
+                "undefined",
+                "NaN"
+              ],
+              "answer": 0,
+              "explanation": "Option<T> vaut Some ou None.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-01-q2"
+            }
+          ],
+          "summary": [
+            "cargo.",
+            "Sûreté mémoire.",
+            "Option/Result."
+          ],
+          "nextStep": "Chapitre suivant : « Variables et types »."
+        },
+        {
+          "id": "rs-02",
+          "title": "Variables et types",
+          "duration": 20,
+          "objectives": [
+            "Déclarer avec let",
+            "Comprendre l'immuabilité par défaut",
+            "Annoter les types"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "let déclare une variable immuable ; mut la rend modifiable. Les types sont souvent inférés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pas de mut par défaut.",
+                "Les types numériques sont explicites (i32, f64).",
+                "let shadowing remplace la liaison."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Modifier",
+            "instructions": "Quel mot-clé rend une variable modifiable ?",
+            "hints": [
+              "Un mot-clé après let."
+            ],
+            "solution": "mut",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "mut"
+              ],
+              "success": "Correct : mut."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une variable let est-elle modifiable ?",
+              "options": [
+                "Non, sauf mut",
+                "Oui",
+                "Seulement entière",
+                "Seulement en debug"
+              ],
+              "answer": 0,
+              "explanation": "L'immuabilité est le défaut.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-02-q1"
+            },
+            {
+              "question": "Que fait let x = x + 1 ?",
+              "options": [
+                "Il masque l'ancienne liaison",
+                "Il modifie",
+                "Il erreur",
+                "Il copie"
+              ],
+              "answer": 0,
+              "explanation": "Le shadowing crée une nouvelle variable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-02-q2"
+            }
+          ],
+          "summary": [
+            "let immuable.",
+            "mut si besoin.",
+            "Shadowing."
+          ],
+          "nextStep": "Chapitre suivant : « Ownership »."
+        },
+        {
+          "id": "rs-03",
+          "title": "Ownership",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la propriété",
+            "Déplacer une valeur",
+            "Cloner explicitement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Chaque valeur a un propriétaire unique. Une affectation déplace la propriété ; la valeur d'origine n'est plus utilisable."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un déplacement évite les doubles libérations.",
+                "Clone copie explicitement.",
+                "Les types Copy se copient."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Déplacer",
+            "instructions": "Après let b = a; que devient a (String) ?",
+            "hints": [
+              "La propriété a changé."
+            ],
+            "solution": "a n'est plus utilisable : la valeur a été déplacée vers b.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "deplac",
+                "déplac"
+              ],
+              "success": "Correct : la valeur est déplacée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de propriétaires ?",
+              "options": [
+                "Un seul",
+                "Deux",
+                "Autant que voulu",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "La propriété est unique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-03-q1"
+            },
+            {
+              "question": "Que fait clone ?",
+              "options": [
+                "Il copie explicitement",
+                "Il déplace",
+                "Il libère",
+                "Il emprunte"
+              ],
+              "answer": 0,
+              "explanation": "La copie est visible dans le code.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-03-q2"
+            }
+          ],
+          "summary": [
+            "Propriétaire unique.",
+            "Déplacement.",
+            "clone explicite."
+          ],
+          "nextStep": "Chapitre suivant : « Borrowing »."
+        },
+        {
+          "id": "rs-04",
+          "title": "Borrowing",
+          "duration": 20,
+          "objectives": [
+            "Emprunter par référence",
+            "Distinguer & et &mut",
+            "Éviter les conflits"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "&T emprunte en lecture, &mut T en écriture. On ne peut pas avoir une référence mutable et d'autres références simultanément."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Les emprunts évitent les copies.",
+                "Le vérificateur refuse les conflits.",
+                "Une référence ne doit pas survivre à sa valeur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Emprunter",
+            "instructions": "Quelle référence permet de modifier ?",
+            "hints": [
+              "Une référence mutable."
+            ],
+            "solution": "&mut T",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "&mut"
+              ],
+              "success": "Correct : &mut."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait &T ?",
+              "options": [
+                "Il emprunte en lecture",
+                "Il copie",
+                "Il déplace",
+                "Il libère"
+              ],
+              "answer": 0,
+              "explanation": "La valeur reste au propriétaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-04-q1"
+            },
+            {
+              "question": "Peut-on avoir &mut et & en même temps ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Avec unsafe"
+              ],
+              "answer": 0,
+              "explanation": "Les règles d'emprunt l'interdisent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-04-q2"
+            }
+          ],
+          "summary": [
+            "& lecture, &mut écriture.",
+            "Conflits refusés.",
+            "Pas de copie."
+          ],
+          "nextStep": "Chapitre suivant : « Lifetimes »."
+        },
+        {
+          "id": "rs-05",
+          "title": "Lifetimes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les durées de vie",
+            "Annoter une référence",
+            "Éviter les références pendantes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une lifetime indique combien de temps une référence est valide. Le compilateur l'infère souvent ; sinon 'a l'explicite."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Une référence ne peut pas dépasser sa valeur.",
+                "Les lifetimes ne changent pas l'exécution.",
+                "Préférez les signatures simples."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Annoter",
+            "instructions": "Quelle syntaxe déclare une durée de vie nommée ?",
+            "hints": [
+              "Une apostrophe."
+            ],
+            "solution": "'a",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "'a"
+              ],
+              "success": "Correct : 'a."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit une lifetime ?",
+              "options": [
+                "La validité des références",
+                "La vitesse",
+                "Le tri",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le compilateur vérifie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-05-q1"
+            },
+            {
+              "question": "Change-t-elle l'exécution ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "En release"
+              ],
+              "answer": 0,
+              "explanation": "C'est une information de compilation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs-05-q2"
+            }
+          ],
+          "summary": [
+            "Lifetimes = validité.",
+            "'a explicite.",
+            "Pas de référence pendante."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

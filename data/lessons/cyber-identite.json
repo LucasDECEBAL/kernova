@@ -1,0 +1,401 @@
+{
+  "courseId": "cyber-identite",
+  "modules": [
+    {
+      "id": "cyber-identite-module",
+      "title": "Identité et accès",
+      "chapters": [
+        {
+          "id": "ci-01",
+          "title": "Authentification",
+          "duration": 20,
+          "objectives": [
+            "Distinguer les preuves",
+            "Choisir",
+            "Éviter les facteurs faibles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'authentification vérifie une identité par une ou plusieurs preuves."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Quelque chose que l'on sait.",
+                "Que l'on possède.",
+                "Que l'on est."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Un mot de passe est…",
+            "hints": [
+              "une preuve de connaissance."
+            ],
+            "solution": "Quelque chose que l'on sait.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sait",
+                "connaissance"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait l'authentification ?",
+              "options": [
+                "Elle vérifie l'identité",
+                "Elle autorise",
+                "Elle chiffre",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "L'identité est établie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-01-q1"
+            },
+            {
+              "question": "Un seul facteur suffit-il pour un compte sensible ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "MFA est préférable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-01-q2"
+            }
+          ],
+          "summary": [
+            "Preuves.",
+            "Identité.",
+            "MFA si sensible."
+          ],
+          "nextStep": "Chapitre suivant : « Autorisation »."
+        },
+        {
+          "id": "ci-02",
+          "title": "Autorisation",
+          "duration": 20,
+          "objectives": [
+            "Vérifier les droits",
+            "Distinguer 401/403",
+            "Contrôler la propriété"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'autorisation décide des actions permises après authentification."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Propriété.",
+                "Moindre privilège."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifie l'autorisation ?",
+            "hints": [
+              "Les droits."
+            ],
+            "solution": "Les droits d'accès à une ressource.",
+            "check": {
+              "type": "any",
+              "any": [
+                "droit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "401 signifie…",
+              "options": [
+                "non authentifié",
+                "interdit",
+                "introuvable",
+                "créé"
+              ],
+              "answer": 0,
+              "explanation": "L'identité manque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-02-q1"
+            },
+            {
+              "question": "403 signifie…",
+              "options": [
+                "authentifié sans droit",
+                "non authentifié",
+                "ok",
+                "créé"
+              ],
+              "answer": 0,
+              "explanation": "Le droit manque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-02-q2"
+            }
+          ],
+          "summary": [
+            "Droits.",
+            "401/403.",
+            "Propriété."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des identités »."
+        },
+        {
+          "id": "ci-03",
+          "title": "Gestion des identités",
+          "duration": 20,
+          "objectives": [
+            "Gérer le cycle de vie",
+            "Utiliser des groupes",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le cycle de vie couvre arrivée, mutation et départ."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Création.",
+                "Droits par groupe.",
+                "Désactivation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire au départ d'un collaborateur ?",
+            "hints": [
+              "Désactiver et archiver."
+            ],
+            "solution": "Désactiver le compte et archiver ses données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "desactiv",
+                "désactiv",
+                "archiv"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi des groupes ?",
+              "options": [
+                "Simplifier les droits",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'attribution est cohérente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-03-q1"
+            },
+            {
+              "question": "Que faire d'un compte inutilisé ?",
+              "options": [
+                "Le désactiver",
+                "Le partager",
+                "Le publier",
+                "L'ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La surface diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-03-q2"
+            }
+          ],
+          "summary": [
+            "Cycle de vie.",
+            "Groupes.",
+            "Désactivation."
+          ],
+          "nextStep": "Chapitre suivant : « Mots de passe et gestionnaires »."
+        },
+        {
+          "id": "ci-04",
+          "title": "Mots de passe et gestionnaires",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le stockage",
+            "Choisir un gestionnaire",
+            "Éviter la réutilisation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les mots de passe se stockent hachés et salés ; un gestionnaire évite la réutilisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hachage lent.",
+                "Sel unique.",
+                "Gestionnaire."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment stocker un mot de passe ?",
+            "hints": [
+              "Haché et salé."
+            ],
+            "solution": "Haché avec un algorithme lent et un sel unique.",
+            "check": {
+              "type": "any",
+              "any": [
+                "hach",
+                "sel"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "La réutilisation est-elle sûre ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Une fuite compromet tout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-04-q1"
+            },
+            {
+              "question": "Que fait un sel ?",
+              "options": [
+                "Il rend le hachage unique",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les tables précalculées échouent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-04-q2"
+            }
+          ],
+          "summary": [
+            "Hachage salé.",
+            "Gestionnaire.",
+            "Pas de réutilisation."
+          ],
+          "nextStep": "Chapitre suivant : « Authentification multifacteur »."
+        },
+        {
+          "id": "ci-05",
+          "title": "Authentification multifacteur",
+          "duration": 20,
+          "objectives": [
+            "Activer MFA",
+            "Choisir les facteurs",
+            "Gérer les exceptions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "MFA combine plusieurs preuves et réduit l'impact d'un mot de passe volé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Application.",
+                "Clé matérielle.",
+                "Exceptions limitées."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que réduit MFA ?",
+            "hints": [
+              "Le risque de compromission."
+            ],
+            "solution": "Le risque lié à un mot de passe volé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "risque",
+                "compromission"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "MFA remplace-t-il les mots de passe ?",
+              "options": [
+                "Non, il les complète",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le facteur s'ajoute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-05-q1"
+            },
+            {
+              "question": "Pourquoi limiter les exceptions ?",
+              "options": [
+                "Éviter les comptes faibles",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les exceptions deviennent des portes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ci-05-q2"
+            }
+          ],
+          "summary": [
+            "MFA.",
+            "Facteurs.",
+            "Exceptions limitées."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

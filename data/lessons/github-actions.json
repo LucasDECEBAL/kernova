@@ -1,0 +1,415 @@
+{
+  "courseId": "github-actions",
+  "modules": [
+    {
+      "id": "github-actions-module",
+      "title": "GitHub Actions et Pages",
+      "chapters": [
+        {
+          "id": "git5-01",
+          "title": "Automatiser des vérifications simples",
+          "duration": 20,
+          "objectives": [
+            "Ajouter lint et tests à la CI",
+            "Utiliser une matrice",
+            "Lire un échec de workflow"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une vérification automatique exécute lint et tests à chaque push ou pull request : le problème est détecté avant la fusion."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "code": "jobs:\n  verifier:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with: { node-version: 20, cache: npm }\n      - run: npm ci\n      - run: npm run lint\n      - run: npm test",
+              "title": "Lint et tests"
+            },
+            {
+              "type": "tip",
+              "text": "Une matrice teste plusieurs versions de langage en parallèle : utile pour une bibliothèque, superflu pour une application unique."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter un test",
+            "instructions": "Quelle étape exécute la suite de tests après l'installation ?",
+            "hints": [
+              "npm ci installe.",
+              "npm test exécute."
+            ],
+            "solution": "Une étape run: npm test après npm ci.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "run",
+                "npm test"
+              ],
+              "success": "Correct : étape npm test."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert la CI ?",
+              "options": [
+                "Détecter les erreurs avant la fusion",
+                "Déployer automatiquement",
+                "Supprimer les branches",
+                "Créer des secrets"
+              ],
+              "answer": 0,
+              "explanation": "Les vérifications s'exécutent automatiquement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-01-q1"
+            },
+            {
+              "question": "Quand un workflow échoue-t-il ?",
+              "options": [
+                "Quand une étape renvoie un code non nul",
+                "Quand il est vert",
+                "Quand il est ignoré",
+                "Quand il n'y a pas de secret"
+              ],
+              "answer": 0,
+              "explanation": "Un code non nul arrête le job.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-01-q2"
+            }
+          ],
+          "summary": [
+            "CI = lint + tests automatiques.",
+            "Les étapes s'arrêtent au premier échec.",
+            "La matrice teste plusieurs versions."
+          ],
+          "nextStep": "Chapitre suivant : « Automatiser des vérifications simples (2) »."
+        },
+        {
+          "id": "git5-02",
+          "title": "Automatiser des vérifications simples (2)",
+          "duration": 20,
+          "objectives": [
+            "Déclencher sur pull request",
+            "Éviter les exécutions inutiles",
+            "Consulter les journaux"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un déclenchement sur pull_request vérifie le code avant fusion ; des filtres de chemins évitent de relancer la CI pour une modification de documentation."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "code": "on:\n  pull_request:\n    paths:\n      - \"src/**\"\n      - \"tests/**\"",
+              "title": "Filtrer les chemins"
+            },
+            {
+              "type": "warning",
+              "text": "Une CI trop large coûte du temps et de l'argent : filtrez les chemins et annulez les exécutions obsolètes."
+            }
+          ],
+          "exercise": {
+            "title": "Limiter les déclenchements",
+            "instructions": "Comment ne lancer la CI que si src/ change ?",
+            "hints": [
+              "La clé paths filtre les fichiers."
+            ],
+            "solution": "on: pull_request: paths: [\"src/**\"]",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "paths",
+                "src"
+              ],
+              "success": "Correct : filtre paths."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que filtre paths ?",
+              "options": [
+                "Les fichiers qui déclenchent le workflow",
+                "Les secrets",
+                "Les branches",
+                "Les runners"
+              ],
+              "answer": 0,
+              "explanation": "Le workflow ne part que si un chemin correspond.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-02-q1"
+            },
+            {
+              "question": "Où lire la cause d'un échec ?",
+              "options": [
+                "Dans les journaux du job",
+                "Dans le README",
+                "Dans le .gitignore",
+                "Dans la licence"
+              ],
+              "answer": 0,
+              "explanation": "Les logs détaillent chaque étape.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-02-q2"
+            }
+          ],
+          "summary": [
+            "Déclencher sur pull_request.",
+            "Filtrer par chemins.",
+            "Lire les journaux du job."
+          ],
+          "nextStep": "Chapitre suivant : « Publier un site statique »."
+        },
+        {
+          "id": "git5-03",
+          "title": "Publier un site statique",
+          "duration": 20,
+          "objectives": [
+            "Configurer GitHub Pages",
+            "Construire un artefact",
+            "Comprendre les permissions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GitHub Pages publie un site statique depuis une branche ou un artefact de workflow. Il faut un dossier de sortie et des permissions explicites."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "code": "permissions:\n  contents: read\n  pages: write\n  id-token: write\nsteps:\n  - run: npm run build\n  - uses: actions/upload-pages-artifact@v3\n    with: { path: dist }",
+              "title": "Publier Pages"
+            },
+            {
+              "type": "warning",
+              "text": "Un site statique ne peut pas stocker de secret : tout ce qui est publié est public."
+            }
+          ],
+          "exercise": {
+            "title": "Publier",
+            "instructions": "Quel dossier contient le site à publier ?",
+            "hints": [
+              "Le dossier généré par le build."
+            ],
+            "solution": "Le dossier de sortie du build (par exemple dist), indiqué à upload-pages-artifact.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "dist",
+                "build"
+              ],
+              "success": "Correct : dossier de build."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que peut-on publier avec Pages ?",
+              "options": [
+                "Des fichiers statiques",
+                "Une base de données",
+                "Un serveur Node actif",
+                "Des secrets"
+              ],
+              "answer": 0,
+              "explanation": "Pages sert du statique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-03-q1"
+            },
+            {
+              "question": "Que doit contenir un site déployé ?",
+              "options": [
+                "Aucun secret",
+                "Les clés API",
+                "Le .env",
+                "Les mots de passe"
+              ],
+              "answer": 0,
+              "explanation": "Tout est public.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-03-q2"
+            }
+          ],
+          "summary": [
+            "Pages publie du statique.",
+            "Construire puis téléverser l'artefact.",
+            "Aucun secret dans le site."
+          ],
+          "nextStep": "Chapitre suivant : « Organiser un portfolio technique »."
+        },
+        {
+          "id": "git5-04",
+          "title": "Organiser un portfolio technique",
+          "duration": 20,
+          "objectives": [
+            "Choisir les dépôts à montrer",
+            "Rédiger des README convaincants",
+            "Publier des démos"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un portfolio montre quelques projets finis, documentés et exécutables. Mieux vaut trois projets solides que vingt dépôts vides."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Épingler les dépôts représentatifs.",
+                "README avec problème, solution, captures et démo.",
+                "Indiquer les technologies réellement utilisées.",
+                "Fournir des instructions de lancement."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un recruteur doit comprendre un projet en deux minutes : le README et la démo font l'essentiel du travail."
+            }
+          ],
+          "exercise": {
+            "title": "Sélectionner",
+            "instructions": "Combien de projets montrer en priorité ?",
+            "hints": [
+              "La qualité prime."
+            ],
+            "solution": "Quelques projets terminés et documentés, plutôt qu'un grand nombre inachevé.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "termine",
+                "documente"
+              ],
+              "success": "Correct : peu de projets finis et documentés."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier ?",
+              "options": [
+                "Des projets finis et documentés",
+                "Le nombre de dépôts",
+                "Les forks",
+                "Les étoiles"
+              ],
+              "answer": 0,
+              "explanation": "La qualité se voit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-04-q1"
+            },
+            {
+              "question": "Que doit contenir la démo ?",
+              "options": [
+                "Une URL ou des instructions qui fonctionnent",
+                "Un mot de passe",
+                "Un secret",
+                "Un dump de base"
+              ],
+              "answer": 0,
+              "explanation": "Le projet doit être essayable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-04-q2"
+            }
+          ],
+          "summary": [
+            "Peu de projets, mais finis.",
+            "README clair et démo.",
+            "Instructions vérifiées."
+          ],
+          "nextStep": "Chapitre suivant : « Protéger les secrets et les clés API »."
+        },
+        {
+          "id": "git5-05",
+          "title": "Protéger les secrets et les clés API",
+          "duration": 20,
+          "objectives": [
+            "Stocker un secret dans GitHub",
+            "Éviter les fuites",
+            "Révoquer une clé exposée"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un secret ne doit jamais être commité. GitHub Actions fournit des secrets chiffrés, exposés seulement aux workflows autorisés."
+            },
+            {
+              "type": "code",
+              "lang": "yaml",
+              "code": "env:\n  API_KEY: ${{ secrets.API_KEY }}\nsteps:\n  - run: ./script.sh",
+              "title": "Utiliser un secret"
+            },
+            {
+              "type": "warning",
+              "text": "Une clé poussée dans un dépôt public est compromise : la révoquer immédiatement, puis nettoyer l'historique ne suffit pas."
+            }
+          ],
+          "exercise": {
+            "title": "Utiliser un secret",
+            "instructions": "Où stocker une clé API utilisée par un workflow ?",
+            "hints": [
+              "Pas dans le code."
+            ],
+            "solution": "Dans les secrets du dépôt ou de l'organisation, référencés par secrets.NOM.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "secrets",
+                "secret"
+              ],
+              "success": "Correct : secrets GitHub."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une clé exposée ?",
+              "options": [
+                "La révoquer immédiatement",
+                "La renommer",
+                "La déplacer",
+                "Ajouter un commentaire"
+              ],
+              "answer": 0,
+              "explanation": "Elle est déjà compromise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-05-q1"
+            },
+            {
+              "question": "Les secrets sont-ils lisibles dans les logs ?",
+              "options": [
+                "Non, ils sont masqués",
+                "Oui",
+                "Seulement en clair",
+                "Seulement par les forks"
+              ],
+              "answer": 0,
+              "explanation": "GitHub masque les valeurs connues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git5-05-q2"
+            }
+          ],
+          "summary": [
+            "Jamais de secret commité.",
+            "Secrets chiffrés pour les workflows.",
+            "Révoquer une clé exposée."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

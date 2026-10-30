@@ -1,0 +1,257 @@
+{
+  "courseId": "html-qualite",
+  "modules": [
+    {
+      "id": "html-qualite-module",
+      "title": "Qualité du HTML",
+      "chapters": [
+        {
+          "id": "htm5-01",
+          "title": "Bonnes pratiques HTML",
+          "duration": 20,
+          "objectives": [
+            "Écrire un HTML valide",
+            "Nommer les classes",
+            "Séparer structure et style"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un HTML de qualité est valide, sémantique et sans style en ligne. Les classes décrivent un rôle, pas une apparence."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Indenter régulièrement.",
+                "Guillemets autour des attributs.",
+                "Pas de div inutile.",
+                "Pas de style=\"...\" pour la mise en page."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Validez le document après chaque gros changement : une balise non fermée peut casser toute la page."
+            }
+          ],
+          "exercise": {
+            "title": "Corriger une pratique",
+            "instructions": "Pourquoi éviter style=\"color:red\" dans le HTML ?",
+            "hints": [
+              "La présentation relève du CSS."
+            ],
+            "solution": "Cela mélange structure et présentation et empêche la réutilisation ; utilisez une classe CSS.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "css",
+                "classe"
+              ],
+              "success": "Correct : déplacer le style en CSS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que décrit une classe ?",
+              "options": [
+                "Un rôle ou un composant",
+                "Une couleur uniquement",
+                "Un fichier",
+                "Un serveur"
+              ],
+              "answer": 0,
+              "explanation": "Le style vient ensuite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm5-01-q1"
+            },
+            {
+              "question": "Que faire d'une balise non fermée ?",
+              "options": [
+                "La corriger",
+                "La supprimer",
+                "Ajouter du CSS",
+                "Changer de navigateur"
+              ],
+              "answer": 0,
+              "explanation": "La structure devient imprévisible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm5-01-q2"
+            }
+          ],
+          "summary": [
+            "HTML valide et sémantique.",
+            "Classes par rôle.",
+            "Pas de style inline."
+          ],
+          "nextStep": "Chapitre suivant : « Structure d'une application web »."
+        },
+        {
+          "id": "htm5-02",
+          "title": "Structure d'une application web",
+          "duration": 20,
+          "objectives": [
+            "Séparer les responsabilités",
+            "Organiser les ressources",
+            "Préparer le rendu dynamique"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application web sépare structure (HTML), présentation (CSS) et comportement (JavaScript), avec des ressources organisées."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "app/\n├── index.html\n├── css/\n├── js/\n├── data/\n└── assets/",
+              "title": "Organisation"
+            },
+            {
+              "type": "warning",
+              "text": "Charger tout le JavaScript dans le head sans defer bloque l'affichage : la page semble vide plus longtemps."
+            }
+          ],
+          "exercise": {
+            "title": "Séparer",
+            "instructions": "Où placer les styles et le comportement ?",
+            "hints": [
+              "Trois responsabilités distinctes."
+            ],
+            "solution": "CSS dans des feuilles séparées, JavaScript dans des modules, HTML pour la structure.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "css",
+                "javascript"
+              ],
+              "success": "Correct : séparation structure/style/comportement."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi séparer les responsabilités ?",
+              "options": [
+                "Pour maintenir et tester plus facilement",
+                "Pour accélérer le CPU",
+                "Pour supprimer le HTML",
+                "Pour éviter les images"
+              ],
+              "answer": 0,
+              "explanation": "Chaque partie évolue indépendamment.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm5-02-q1"
+            },
+            {
+              "question": "Où charger un script qui manipule le DOM ?",
+              "options": [
+                "Avec defer ou en fin de body",
+                "Dans le title",
+                "Dans une meta",
+                "Dans un commentaire"
+              ],
+              "answer": 0,
+              "explanation": "Le DOM doit être prêt.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm5-02-q2"
+            }
+          ],
+          "summary": [
+            "Structure, style, comportement.",
+            "Ressources organisées.",
+            "Scripts non bloquants."
+          ],
+          "nextStep": "Chapitre suivant : « Valider le code HTML »."
+        },
+        {
+          "id": "htm5-03",
+          "title": "Valider le code HTML",
+          "duration": 20,
+          "objectives": [
+            "Utiliser un validateur",
+            "Lire les erreurs",
+            "Corriger sans casser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le validateur W3C signale les balises mal fermées, les attributs inconnus et les imbrications invalides."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Valider après chaque modification structurante.",
+                "Une erreur peut en cacher plusieurs.",
+                "Les avertissements ne sont pas tous bloquants.",
+                "Valider aussi en local avant publication."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un HTML valide ne garantit pas l'accessibilité ni le rendu, mais il élimine une classe entière de bugs."
+            }
+          ],
+          "exercise": {
+            "title": "Lire une erreur",
+            "instructions": "Le validateur signale « unclosed tag ». Que faire ?",
+            "hints": [
+              "Une balise n'est pas fermée."
+            ],
+            "solution": "Repérer la balise ouvrée sans fermeture et la fermer au bon endroit.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "balise",
+                "ferm"
+              ],
+              "success": "Correct : fermer la balise."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que valide le W3C ?",
+              "options": [
+                "La conformité du HTML",
+                "La sécurité du serveur",
+                "La vitesse du réseau",
+                "Le référencement"
+              ],
+              "answer": 0,
+              "explanation": "Le validateur vérifie la syntaxe et la structure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm5-03-q1"
+            },
+            {
+              "question": "Un HTML valide garantit-il l'accessibilité ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement avec CSS",
+                "Seulement avec JS"
+              ],
+              "answer": 0,
+              "explanation": "La validité est nécessaire, pas suffisante.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm5-03-q2"
+            }
+          ],
+          "summary": [
+            "Valider le HTML.",
+            "Lire et corriger les erreurs.",
+            "La validité ne suffit pas à l'accessibilité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

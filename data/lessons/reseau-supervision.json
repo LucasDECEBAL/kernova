@@ -1,0 +1,405 @@
+{
+  "courseId": "reseau-supervision",
+  "modules": [
+    {
+      "id": "reseau-supervision-module",
+      "title": "Supervision et entreprise",
+      "chapters": [
+        {
+          "id": "rsu-01",
+          "title": "Supervision réseau",
+          "duration": 20,
+          "objectives": [
+            "Choisir des indicateurs",
+            "Surveiller",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La supervision collecte disponibilité, latence, erreurs et bande passante."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SNMP.",
+                "Seuils.",
+                "Alertes actionnables."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que surveiller en priorité ?",
+            "hints": [
+              "La disponibilité et la latence."
+            ],
+            "solution": "La disponibilité, la latence et les erreurs des liens critiques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "disponibilite",
+                "disponibilité",
+                "latence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une alerte doit être…",
+              "options": [
+                "actionnable",
+                "nombreuse",
+                "secrète",
+                "inutile"
+              ],
+              "answer": 0,
+              "explanation": "Elle déclenche une action.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-01-q1"
+            },
+            {
+              "question": "Que fait SNMP ?",
+              "options": [
+                "Il collecte des métriques",
+                "Il route",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'équipement est interrogé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-01-q2"
+            }
+          ],
+          "summary": [
+            "Supervision.",
+            "Seuils.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Analyse de trafic »."
+        },
+        {
+          "id": "rsu-02",
+          "title": "Analyse de trafic",
+          "duration": 20,
+          "objectives": [
+            "Capturer",
+            "Filtrer",
+            "Protéger les données"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La capture de trafic diagnostique ; elle doit être filtrée, bornée et supprimée après usage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Filtre hôte/port.",
+                "Durée limitée.",
+                "Données sensibles."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment limiter une capture ?",
+            "hints": [
+              "Par filtre et durée."
+            ],
+            "solution": "Un filtre précis (hôte, port) et une durée courte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "filtre",
+                "durée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire de la capture après analyse ?",
+              "options": [
+                "La supprimer",
+                "La publier",
+                "La garder",
+                "La vendre"
+              ],
+              "answer": 0,
+              "explanation": "Les données sensibles restent limitées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-02-q1"
+            },
+            {
+              "question": "Pourquoi filtrer ?",
+              "options": [
+                "Réduire le volume",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le fichier reste exploitable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-02-q2"
+            }
+          ],
+          "summary": [
+            "Capture bornée.",
+            "Filtres.",
+            "Suppression."
+          ],
+          "nextStep": "Chapitre suivant : « Dépannage avancé »."
+        },
+        {
+          "id": "rsu-03",
+          "title": "Dépannage avancé",
+          "duration": 20,
+          "objectives": [
+            "Isoler par couche",
+            "Comparer",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le dépannage avancé isole la couche fautive et compare avec un cas qui fonctionne."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Par couche.",
+                "Comparaison.",
+                "Trace."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire en premier ?",
+            "hints": [
+              "Isoler la couche."
+            ],
+            "solution": "Isoler la couche fautive (lien, IP, transport, application).",
+            "check": {
+              "type": "any",
+              "any": [
+                "couche"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi comparer ?",
+              "options": [
+                "Avec un cas fonctionnel",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La différence révèle la cause.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-03-q1"
+            },
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Tests et résultat",
+                "Le logo",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'intervention est reproductible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-03-q2"
+            }
+          ],
+          "summary": [
+            "Isoler.",
+            "Comparer.",
+            "Documenter."
+          ],
+          "nextStep": "Chapitre suivant : « SDN »."
+        },
+        {
+          "id": "rsu-04",
+          "title": "SDN",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la séparation",
+            "Situer le contrôleur",
+            "Éviter la complexité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le SDN sépare le plan de contrôle du plan de données ; un contrôleur centralise les politiques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contrôleur.",
+                "API.",
+                "Automatisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que sépare le SDN ?",
+            "hints": [
+              "Contrôle et données."
+            ],
+            "solution": "Le plan de contrôle et le plan de données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "controle",
+                "contrôle",
+                "donnees",
+                "données"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le contrôleur ?",
+              "options": [
+                "Il centralise les politiques",
+                "Il route les paquets",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La décision est centralisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-04-q1"
+            },
+            {
+              "question": "Que permet l'API ?",
+              "options": [
+                "L'automatisation",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Les politiques sont programmables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-04-q2"
+            }
+          ],
+          "summary": [
+            "SDN.",
+            "Contrôleur.",
+            "Automatisation."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture réseau d'entreprise »."
+        },
+        {
+          "id": "rsu-05",
+          "title": "Architecture réseau d'entreprise",
+          "duration": 20,
+          "objectives": [
+            "Organiser les zones",
+            "Documenter",
+            "Prévoir la croissance"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une architecture d'entreprise sépare accès, distribution et cœur, avec des zones de sécurité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Trois niveaux.",
+                "Zones.",
+                "Documentation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que sépare l'architecture en trois niveaux ?",
+            "hints": [
+              "Accès, distribution, cœur."
+            ],
+            "solution": "Les couches accès, distribution et cœur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "acces",
+                "accès",
+                "coeur",
+                "cœur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où placer les serveurs sensibles ?",
+              "options": [
+                "Dans une zone dédiée",
+                "Partout",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La segmentation isole.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-05-q1"
+            },
+            {
+              "question": "Pourquoi documenter ?",
+              "options": [
+                "Maintenir et dépanner",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'architecture reste comprise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsu-05-q2"
+            }
+          ],
+          "summary": [
+            "Accès/distribution/cœur.",
+            "Zones.",
+            "Documentation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,330 @@
+{
+  "courseId": "c-projet",
+  "modules": [
+    {
+      "id": "c-projet-module",
+      "title": "C : compilation et projet",
+      "chapters": [
+        {
+          "id": "cpr-01",
+          "title": "Gestion des fichiers en C",
+          "duration": 20,
+          "objectives": [
+            "Ouvrir un fichier",
+            "Lire et écrire",
+            "Fermer et gérer l'erreur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "fopen renvoie NULL en cas d'échec. Les modes r, w, a définissent l'usage ; fclose libère la ressource."
+            },
+            {
+              "type": "code",
+              "lang": "c",
+              "code": "FILE *f = fopen(\"notes.txt\", \"a\");\nif (!f) { perror(\"fopen\"); return 1; }\nfprintf(f, \"ligne\\n\");\nfclose(f);",
+              "title": "Écriture"
+            },
+            {
+              "type": "warning",
+              "text": "Toujours tester le retour de fopen : écrire dans un fichier NULL plante le programme."
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Que renvoie fopen en cas d'échec ?",
+            "hints": [
+              "Un pointeur nul."
+            ],
+            "solution": "NULL",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "null"
+              ],
+              "success": "Correct : NULL."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait fclose ?",
+              "options": [
+                "Il libère la ressource",
+                "Il écrit",
+                "Il lit",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le fichier est fermé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-01-q1"
+            },
+            {
+              "question": "Que signifie le mode a ?",
+              "options": [
+                "Ajout en fin",
+                "Écrasement",
+                "Lecture",
+                "Binaire"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu existant est conservé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-01-q2"
+            }
+          ],
+          "summary": [
+            "Tester fopen.",
+            "r/w/a.",
+            "fclose toujours."
+          ],
+          "nextStep": "Chapitre suivant : « Compilation et débogage »."
+        },
+        {
+          "id": "cpr-02",
+          "title": "Compilation et débogage",
+          "duration": 20,
+          "objectives": [
+            "Compiler avec avertissements",
+            "Lire une erreur",
+            "Déboguer avec gdb"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "gcc -Wall -Wextra -g produit des avertissements utiles et des informations de débogage. gdb permet d'exécuter pas à pas."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "gcc -Wall -Wextra -g -o app main.c\ngdb ./app",
+              "title": "Compilation"
+            },
+            {
+              "type": "warning",
+              "text": "Un programme qui compile avec des avertissements n'est pas terminé : corrigez-les avant de livrer."
+            }
+          ],
+          "exercise": {
+            "title": "Compiler",
+            "instructions": "Quelle commande compile main.c avec les avertissements standards ?",
+            "hints": [
+              "gcc et les options."
+            ],
+            "solution": "gcc -Wall -Wextra -o app main.c",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "gcc",
+                "-wall"
+              ],
+              "success": "Correct : gcc -Wall."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -g ?",
+              "options": [
+                "Il ajoute les informations de débogage",
+                "Il optimise",
+                "Il supprime",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "gdb peut s'y appuyer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-02-q1"
+            },
+            {
+              "question": "Que fait -Wall ?",
+              "options": [
+                "Il active les avertissements",
+                "Il alloue",
+                "Il libère",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs fréquentes sont signalées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-02-q2"
+            }
+          ],
+          "summary": [
+            "-Wall -Wextra.",
+            "-g pour gdb.",
+            "Corriger les avertissements."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion de la mémoire »."
+        },
+        {
+          "id": "cpr-03",
+          "title": "Gestion de la mémoire",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître une fuite",
+            "Utiliser un sanitizer",
+            "Corriger un double free"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fuite survient quand une allocation n'est jamais libérée ; un double free libère deux fois. Les sanitizers détectent ces erreurs."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "gcc -fsanitize=address,undefined -g -o app main.c\n./app",
+              "title": "ASan"
+            },
+            {
+              "type": "warning",
+              "text": "Un accès après free est un comportement indéfini : le pointeur ne doit plus être utilisé."
+            }
+          ],
+          "exercise": {
+            "title": "Détecter",
+            "instructions": "Quelle option gcc détecte les fuites et accès invalides ?",
+            "hints": [
+              "Un sanitizer."
+            ],
+            "solution": "-fsanitize=address",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sanitize"
+              ],
+              "success": "Correct : sanitize."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'une fuite ?",
+              "options": [
+                "Une allocation jamais libérée",
+                "Un fichier vide",
+                "Une erreur de type",
+                "Un pointeur nul"
+              ],
+              "answer": 0,
+              "explanation": "La mémoire reste occupée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-03-q1"
+            },
+            {
+              "question": "Que fait un double free ?",
+              "options": [
+                "Un comportement indéfini",
+                "Rien",
+                "Une optimisation",
+                "Une copie"
+              ],
+              "answer": 0,
+              "explanation": "La mémoire est libérée deux fois.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-03-q2"
+            }
+          ],
+          "summary": [
+            "Fuites et double free.",
+            "ASan.",
+            "Pas d'usage après free."
+          ],
+          "nextStep": "Chapitre suivant : « Organiser un projet C »."
+        },
+        {
+          "id": "cpr-04",
+          "title": "Organiser un projet C",
+          "duration": 20,
+          "objectives": [
+            "Séparer .h et .c",
+            "Déclarer les prototypes",
+            "Automatiser avec make"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet C sépare les déclarations (.h) et les définitions (.c). Un Makefile reconstruit les fichiers modifiés."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "src/\n├── main.c\n├── carnet.c\n└── carnet.h\nMakefile",
+              "title": "Arborescence"
+            },
+            {
+              "type": "tip",
+              "text": "Un en-tête ne définit pas de variables globales : il déclare avec extern pour éviter les doublons de symbole."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Où placer le prototype d'une fonction partagée ?",
+            "hints": [
+              "Dans l'en-tête."
+            ],
+            "solution": "Dans le fichier .h correspondant.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "h",
+                "en-tete",
+                "en-tête"
+              ],
+              "success": "Correct : l'en-tête."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient un .h ?",
+              "options": [
+                "Des déclarations",
+                "Le main",
+                "Les tests",
+                "Les données"
+              ],
+              "answer": 0,
+              "explanation": "Les définitions sont dans .c.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-04-q1"
+            },
+            {
+              "question": "À quoi sert make ?",
+              "options": [
+                "À reconstruire ce qui a changé",
+                "À tester",
+                "À chiffrer",
+                "À déployer"
+              ],
+              "answer": 0,
+              "explanation": "Les dépendances sont suivies.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cpr-04-q2"
+            }
+          ],
+          "summary": [
+            ".h déclarations, .c définitions.",
+            "Prototypes partagés.",
+            "Makefile."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

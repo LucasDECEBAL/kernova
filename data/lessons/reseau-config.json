@@ -1,0 +1,396 @@
+{
+  "courseId": "reseau-config",
+  "modules": [
+    {
+      "id": "reseau-config-module",
+      "title": "Configuration et diagnostic",
+      "chapters": [
+        {
+          "id": "rcf-01",
+          "title": "Configuration IP sous Windows",
+          "duration": 20,
+          "objectives": [
+            "Lire la configuration",
+            "Configurer",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ipconfig lit la configuration ; les paramètres se règlent en interface graphique ou PowerShell."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ipconfig /all.",
+                "DHCP ou statique.",
+                "Tester la passerelle."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Quelle commande détaille la configuration ?",
+            "hints": [
+              "Une option détaillée."
+            ],
+            "solution": "ipconfig /all",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ipconfig"
+              ],
+              "success": "Correct : ipconfig /all."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ipconfig /all ?",
+              "options": [
+                "Il détaille tout",
+                "Il renouvelle",
+                "Il route",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "DNS, passerelle et bail.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-01-q1"
+            },
+            {
+              "question": "Que fait ipconfig /release ?",
+              "options": [
+                "Il libère le bail",
+                "Il renouvelle",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'adresse est rendue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-01-q2"
+            }
+          ],
+          "summary": [
+            "ipconfig.",
+            "/all.",
+            "Bail DHCP."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration IP sous Linux »."
+        },
+        {
+          "id": "rcf-02",
+          "title": "Configuration IP sous Linux",
+          "duration": 20,
+          "objectives": [
+            "Lire les interfaces",
+            "Configurer",
+            "Rendre persistant"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ip addr et ip route configurent temporairement ; NetworkManager/systemd-networkd rendent persistant."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ip addr add.",
+                "ip route add.",
+                "Persistance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Quelle commande ajoute une adresse à eth0 ?",
+            "hints": [
+              "La commande ip."
+            ],
+            "solution": "ip addr add 192.168.1.10/24 dev eth0",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ip addr add"
+              ],
+              "success": "Correct : ip addr add."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un changement ip est-il persistant ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Au redémarrage"
+              ],
+              "answer": 0,
+              "explanation": "La config système décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-02-q1"
+            },
+            {
+              "question": "Que fait ip route add ?",
+              "options": [
+                "Il ajoute une route",
+                "Il monte",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La table est modifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-02-q2"
+            }
+          ],
+          "summary": [
+            "ip addr/route.",
+            "Temporaire.",
+            "Persistance."
+          ],
+          "nextStep": "Chapitre suivant : « Diagnostic avec ping »."
+        },
+        {
+          "id": "rcf-03",
+          "title": "Diagnostic avec ping",
+          "duration": 20,
+          "objectives": [
+            "Tester la joignabilité",
+            "Interpréter",
+            "Éviter les conclusions hâtives"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ping envoie des échos ICMP ; l'absence de réponse ne prouve pas l'extinction."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ping passerelle.",
+                "Ping IP publique.",
+                "Ping nom."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Interpréter",
+            "instructions": "Un ping sans réponse signifie-t-il que l'hôte est éteint ?",
+            "hints": [
+              "Pas forcément."
+            ],
+            "solution": "Non : ICMP peut être filtré ou bloqué.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non"
+              ],
+              "success": "Correct : pas forcément."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que teste ping ?",
+              "options": [
+                "La joignabilité",
+                "Le DNS",
+                "Le disque",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'écho vérifie le chemin.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-03-q1"
+            },
+            {
+              "question": "Que tester après la passerelle ?",
+              "options": [
+                "Une IP publique",
+                "Le CSS",
+                "Le disque",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Internet sans DNS.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-03-q2"
+            }
+          ],
+          "summary": [
+            "ping.",
+            "ICMP.",
+            "Pas de conclusion hâtive."
+          ],
+          "nextStep": "Chapitre suivant : « Analyse avec traceroute »."
+        },
+        {
+          "id": "rcf-04",
+          "title": "Analyse avec traceroute",
+          "duration": 20,
+          "objectives": [
+            "Voir le chemin",
+            "Identifier le saut fautif",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "traceroute/tracert montre les routeurs traversés et les temps par saut."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sauts.",
+                "Timeouts possibles.",
+                "Chemin variable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer",
+            "instructions": "Que montre traceroute ?",
+            "hints": [
+              "Le chemin par saut."
+            ],
+            "solution": "Les routeurs traversés et le temps de réponse par saut.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "saut"
+              ],
+              "success": "Correct : les sauts."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un saut qui ne répond pas ?",
+              "options": [
+                "Ne pas conclure trop vite",
+                "Abandonner",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Certains routeurs filtrent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-04-q1"
+            },
+            {
+              "question": "Le chemin est-il fixe ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Au redémarrage"
+              ],
+              "answer": 0,
+              "explanation": "Le routage peut varier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-04-q2"
+            }
+          ],
+          "summary": [
+            "Chemin par saut.",
+            "Timeouts.",
+            "Interpréter."
+          ],
+          "nextStep": "Chapitre suivant : « ipconfig et ip »."
+        },
+        {
+          "id": "rcf-05",
+          "title": "ipconfig et ip",
+          "duration": 20,
+          "objectives": [
+            "Choisir l'outil",
+            "Lire les sorties",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ipconfig (Windows) et ip (Linux) sont les outils de base ; leurs sorties se lisent différemment."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ipconfig /all.",
+                "ip addr.",
+                "Scripts de diagnostic."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel outil sous Linux ?",
+            "hints": [
+              "La commande ip."
+            ],
+            "solution": "ip addr (et ip route)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ip addr"
+              ],
+              "success": "Correct : ip addr."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ipconfig /flushdns ?",
+              "options": [
+                "Il vide le cache DNS",
+                "Il route",
+                "Il monte",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le cache est réinitialisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-05-q1"
+            },
+            {
+              "question": "Que fait ip -br addr ?",
+              "options": [
+                "Une sortie brève",
+                "Il route",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La lecture est compacte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcf-05-q2"
+            }
+          ],
+          "summary": [
+            "ipconfig/ip.",
+            "Sorties.",
+            "Diagnostic."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "courseId": "py-poo-avance",
+  "modules": [
+    {
+      "id": "py-poo-avance-module",
+      "title": "Python avancé",
+      "chapters": [
+        {
+          "id": "pyp-01",
+          "title": "Décorateurs",
+          "duration": 20,
+          "objectives": [
+            "Écrire un décorateur",
+            "Préserver les métadonnées",
+            "Comprendre l'usage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un décorateur est une fonction qui enveloppe une autre fonction. functools.wraps conserve le nom et la docstring."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from functools import wraps\n\ndef chronometre(fn):\n    @wraps(fn)\n    def enveloppe(*args, **kwargs):\n        return fn(*args, **kwargs)\n    return enveloppe",
+              "title": "Décorateur"
+            },
+            {
+              "type": "warning",
+              "text": "Sans functools.wraps, le nom de la fonction devient \"enveloppe\" et le débogage se complique."
+            }
+          ],
+          "exercise": {
+            "title": "Préserver",
+            "instructions": "Quel outil conserve les métadonnées ?",
+            "hints": [
+              "Un décorateur de functools."
+            ],
+            "solution": "functools.wraps",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "wraps"
+              ],
+              "success": "Correct : functools.wraps."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un décorateur ?",
+              "options": [
+                "Il enveloppe une fonction",
+                "Il crée une classe",
+                "Il importe",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Il ajoute un comportement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-01-q1"
+            },
+            {
+              "question": "À quoi sert wraps ?",
+              "options": [
+                "À conserver nom et docstring",
+                "À accélérer",
+                "À chiffrer",
+                "À trier"
+              ],
+              "answer": 0,
+              "explanation": "Les métadonnées restent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-01-q2"
+            }
+          ],
+          "summary": [
+            "Décorateur = enveloppe.",
+            "wraps pour les métadonnées.",
+            "Usage explicite."
+          ],
+          "nextStep": "Chapitre suivant : « Générateurs »."
+        },
+        {
+          "id": "pyp-02",
+          "title": "Générateurs",
+          "duration": 20,
+          "objectives": [
+            "Écrire un générateur",
+            "Économiser la mémoire",
+            "Comprendre yield"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un générateur produit des valeurs à la demande avec yield. Il ne stocke pas toute la séquence en mémoire."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "def carres(n):\n    for i in range(n):\n        yield i * i\n\nfor c in carres(5):\n    print(c)",
+              "title": "Générateur"
+            },
+            {
+              "type": "warning",
+              "text": "Un générateur ne peut être parcouru qu'une fois : pour le réutiliser, créez-en un nouveau."
+            }
+          ],
+          "exercise": {
+            "title": "Produire",
+            "instructions": "Quel mot-clé produit une valeur dans un générateur ?",
+            "hints": [
+              "Il suspend la fonction."
+            ],
+            "solution": "yield",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "yield"
+              ],
+              "success": "Correct : yield."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait yield ?",
+              "options": [
+                "Il produit et suspend",
+                "Il termine",
+                "Il trie",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "La reprise se fait au prochain appel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-02-q1"
+            },
+            {
+              "question": "Quel avantage ?",
+              "options": [
+                "La mémoire",
+                "La vitesse réseau",
+                "Le CSS",
+                "Le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs sont calculées à la demande.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-02-q2"
+            }
+          ],
+          "summary": [
+            "yield pour produire.",
+            "Économe en mémoire.",
+            "Usage unique."
+          ],
+          "nextStep": "Chapitre suivant : « Itérateurs »."
+        },
+        {
+          "id": "pyp-03",
+          "title": "Itérateurs",
+          "duration": 20,
+          "objectives": [
+            "Comprendre __iter__ et __next__",
+            "Utiliser iter et next",
+            "Reconnaître un itérable"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un itérable fournit __iter__ ; un itérateur fournit __next__ et lève StopIteration à la fin."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "it = iter([1, 2])\nnext(it)  # 1\nnext(it)  # 2\nnext(it)  # StopIteration",
+              "title": "Itérateur"
+            },
+            {
+              "type": "tip",
+              "text": "for appelle iter() puis next() jusqu'à StopIteration : c'est le protocole d'itération."
+            }
+          ],
+          "exercise": {
+            "title": "Avancer",
+            "instructions": "Quelle fonction avance un itérateur ?",
+            "hints": [
+              "Une fonction globale."
+            ],
+            "solution": "next()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "next"
+              ],
+              "success": "Correct : next()."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que lève un itérateur épuisé ?",
+              "options": [
+                "StopIteration",
+                "ValueError",
+                "TypeError",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "La fin est signalée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-03-q1"
+            },
+            {
+              "question": "Que fait iter() ?",
+              "options": [
+                "Il renvoie un itérateur",
+                "Il trie",
+                "Il compte",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "L'objet devient parcourable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-03-q2"
+            }
+          ],
+          "summary": [
+            "__iter__/__next__.",
+            "StopIteration.",
+            "for utilise le protocole."
+          ],
+          "nextStep": "Chapitre suivant : « Gestionnaires de contexte »."
+        },
+        {
+          "id": "pyp-04",
+          "title": "Gestionnaires de contexte",
+          "duration": 20,
+          "objectives": [
+            "Utiliser with",
+            "Écrire un context manager",
+            "Garantir le nettoyage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un gestionnaire de contexte exécute un nettoyage garanti. On l'écrit avec __enter__/__exit__ ou contextlib.contextmanager."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from contextlib import contextmanager\n\n@contextmanager\ndef temporaire(chemin):\n    try:\n        yield chemin\n    finally:\n        print(\"nettoyage\")",
+              "title": "Context manager"
+            },
+            {
+              "type": "warning",
+              "text": "Le nettoyage doit se trouver dans finally, sinon une exception le contourne."
+            }
+          ],
+          "exercise": {
+            "title": "Garantir",
+            "instructions": "Quel bloc garantit le nettoyage même en cas d'erreur ?",
+            "hints": [
+              "Une clause de nettoyage."
+            ],
+            "solution": "finally",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "finally"
+              ],
+              "success": "Correct : finally."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait with ?",
+              "options": [
+                "Il garantit la sortie du contexte",
+                "Il trie",
+                "Il importe",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le nettoyage est exécuté.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-04-q1"
+            },
+            {
+              "question": "Quel décorateur simplifie un context manager ?",
+              "options": [
+                "contextmanager",
+                "wraps",
+                "dataclass",
+                "staticmethod"
+              ],
+              "answer": 0,
+              "explanation": "Il transforme un générateur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-04-q2"
+            }
+          ],
+          "summary": [
+            "with garantit le nettoyage.",
+            "__enter__/__exit__.",
+            "finally."
+          ],
+          "nextStep": "Chapitre suivant : « Typage avec annotations »."
+        },
+        {
+          "id": "pyp-05",
+          "title": "Typage avec annotations",
+          "duration": 20,
+          "objectives": [
+            "Annoter les paramètres",
+            "Annoter les retours",
+            "Vérifier avec mypy"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les annotations documentent les types et permettent une vérification statique. Elles ne changent pas l'exécution."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "def moyenne(notes: list[float]) -> float:\n    if not notes:\n        raise ValueError(\"liste vide\")\n    return sum(notes) / len(notes)",
+              "title": "Annotations"
+            },
+            {
+              "type": "warning",
+              "text": "Une annotation n'est pas une validation : une liste vide reste possible à l'exécution."
+            }
+          ],
+          "exercise": {
+            "title": "Annoter",
+            "instructions": "Annotez une fonction somme(a: int, b: int) renvoyant un int.",
+            "hints": [
+              "Types après les deux points."
+            ],
+            "solution": "def somme(a: int, b: int) -> int:",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "int",
+                "->"
+              ],
+              "success": "Correct : annotations."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Les annotations s'exécutent-elles ?",
+              "options": [
+                "Non, elles documentent",
+                "Oui",
+                "Toujours",
+                "Jamais en Python 3"
+              ],
+              "answer": 0,
+              "explanation": "Elles servent aux outils.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-05-q1"
+            },
+            {
+              "question": "Quel outil vérifie les types ?",
+              "options": [
+                "mypy",
+                "pip",
+                "venv",
+                "logging"
+              ],
+              "answer": 0,
+              "explanation": "La vérification est statique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyp-05-q2"
+            }
+          ],
+          "summary": [
+            "Annotations documentaires.",
+            "-> pour le retour.",
+            "mypy pour vérifier."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "courseId": "cloud-fondamentaux",
+  "modules": [
+    {
+      "id": "cloud-fondamentaux-module",
+      "title": "Fondamentaux cloud",
+      "chapters": [
+        {
+          "id": "clf-01",
+          "title": "Introduction au cloud computing",
+          "duration": 20,
+          "objectives": [
+            "Définir",
+            "Situer les modèles",
+            "Comprendre le paiement à l'usage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le cloud fournit des ressources informatiques à la demande, facturées à l'usage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "À la demande.",
+                "Mutualisé.",
+                "Facturé à l'usage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que caractérise le cloud ?",
+            "hints": [
+              "Des ressources à la demande."
+            ],
+            "solution": "Des ressources provisionnées à la demande.",
+            "check": {
+              "type": "any",
+              "any": [
+                "demande"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le cloud est-il gratuit ?",
+              "options": [
+                "Non, facturé à l'usage",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le coût suit la consommation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-01-q1"
+            },
+            {
+              "question": "Que mutualise le cloud ?",
+              "options": [
+                "Les ressources",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les clients partagent l'infrastructure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-01-q2"
+            }
+          ],
+          "summary": [
+            "À la demande.",
+            "Mutualisé.",
+            "À l'usage."
+          ],
+          "nextStep": "Chapitre suivant : « IaaS, PaaS et SaaS »."
+        },
+        {
+          "id": "clf-02",
+          "title": "IaaS, PaaS et SaaS",
+          "duration": 20,
+          "objectives": [
+            "Distinguer les modèles",
+            "Choisir",
+            "Situer les responsabilités"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IaaS fournit des machines, PaaS une plateforme, SaaS un service applicatif."
+            },
+            {
+              "type": "list",
+              "items": [
+                "IaaS.",
+                "PaaS.",
+                "SaaS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Qui gère le système en PaaS ?",
+            "hints": [
+              "Le fournisseur."
+            ],
+            "solution": "Le fournisseur gère le système et le runtime.",
+            "check": {
+              "type": "any",
+              "any": [
+                "fournisseur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fournit IaaS ?",
+              "options": [
+                "Des machines virtuelles",
+                "Une application",
+                "Un DNS",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'infrastructure est fournie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-02-q1"
+            },
+            {
+              "question": "Que fournit SaaS ?",
+              "options": [
+                "Une application prête",
+                "Des machines",
+                "Un réseau nu",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le service est complet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-02-q2"
+            }
+          ],
+          "summary": [
+            "IaaS/PaaS/SaaS.",
+            "Responsabilités.",
+            "Choix."
+          ],
+          "nextStep": "Chapitre suivant : « Cloud public, privé et hybride »."
+        },
+        {
+          "id": "clf-03",
+          "title": "Cloud public, privé et hybride",
+          "duration": 20,
+          "objectives": [
+            "Distinguer",
+            "Choisir",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le cloud public est mutualisé, privé dédié, hybride combine les deux."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Public.",
+                "Privé.",
+                "Hybride."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que combine l'hybride ?",
+            "hints": [
+              "Public et privé."
+            ],
+            "solution": "Des ressources publiques et privées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "public",
+                "prive",
+                "privé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le cloud privé est-il mutualisé ?",
+              "options": [
+                "Non, dédié",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il est dédié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-03-q1"
+            },
+            {
+              "question": "Que choisir selon les besoins ?",
+              "options": [
+                "Sécurité et coûts",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le compromis compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-03-q2"
+            }
+          ],
+          "summary": [
+            "Public/privé/hybride.",
+            "Dédié/partagé.",
+            "Compromis."
+          ],
+          "nextStep": "Chapitre suivant : « Régions et zones de disponibilité »."
+        },
+        {
+          "id": "clf-04",
+          "title": "Régions et zones de disponibilité",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Placer",
+            "Éviter le point unique"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une région regroupe des zones ; deux zones minimum protègent d'une panne locale."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Région.",
+                "Zones.",
+                "Latence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Combien de zones minimum ?",
+            "hints": [
+              "Deux."
+            ],
+            "solution": "Au moins deux zones.",
+            "check": {
+              "type": "any",
+              "any": [
+                "deux",
+                "2"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que protège une zone ?",
+              "options": [
+                "Une panne locale",
+                "Le CSS",
+                "Le DNS",
+                "Le coût"
+              ],
+              "answer": 0,
+              "explanation": "Les zones sont isolées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-04-q1"
+            },
+            {
+              "question": "Que coûte le trafic entre zones ?",
+              "options": [
+                "Il est facturé",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le transfert a un prix.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-04-q2"
+            }
+          ],
+          "summary": [
+            "Région/zones.",
+            "Deux minimum.",
+            "Coût inter-zones."
+          ],
+          "nextStep": "Chapitre suivant : « Machines virtuelles »."
+        },
+        {
+          "id": "clf-05",
+          "title": "Machines virtuelles",
+          "duration": 20,
+          "objectives": [
+            "Choisir une taille",
+            "Comprendre le coût",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une VM cloud se choisit selon CPU, mémoire, stockage et réseau."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Taille.",
+                "Coût horaire.",
+                "Images."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que choisir en premier ?",
+            "hints": [
+              "La taille adaptée."
+            ],
+            "solution": "La taille adaptée à la charge.",
+            "check": {
+              "type": "any",
+              "any": [
+                "taille"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une VM trop grosse coûte-t-elle ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Rien",
+                "Moins"
+              ],
+              "answer": 0,
+              "explanation": "Le coût augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-05-q1"
+            },
+            {
+              "question": "Que faire des VMs inutilisées ?",
+              "options": [
+                "Les arrêter",
+                "Les garder",
+                "Les publier",
+                "Les dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clf-05-q2"
+            }
+          ],
+          "summary": [
+            "Taille.",
+            "Coût.",
+            "Arrêt des inutiles."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

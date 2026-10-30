@@ -1,0 +1,408 @@
+{
+  "courseId": "css-grid",
+  "modules": [
+    {
+      "id": "css-grid-module",
+      "title": "Flexbox et Grid",
+      "chapters": [
+        {
+          "id": "cssg-01",
+          "title": "Flexbox avancé",
+          "duration": 20,
+          "objectives": [
+            "Utiliser flex-wrap",
+            "Contrôler grow, shrink et basis",
+            "Aligner plusieurs lignes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Flexbox aligne sur un axe. flex-wrap autorise le retour à la ligne ; flex-grow répartit l'espace libre, flex-shrink compresse, flex-basis fixe la taille de départ."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".outils {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 12px;\n}\n.outil { flex: 1 1 240px; }",
+              "title": "Flexbox qui se replie"
+            },
+            {
+              "type": "tip",
+              "text": "flex: 1 1 240px crée des colonnes souples de 240 px minimum : un motif courant pour des cartes."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir une valeur",
+            "instructions": "Vous voulez des enfants qui se replient et partagent l'espace. Quelle propriété ?",
+            "hints": [
+              "Partage de l'espace et repli."
+            ],
+            "solution": "flex: 1 1 240px (avec flex-wrap: wrap)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "flex",
+                "wrap"
+              ],
+              "success": "Correct : flex et wrap."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait flex-wrap ?",
+              "options": [
+                "Il autorise le retour à la ligne",
+                "Il centre",
+                "Il espace",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "Les enfants passent à la ligne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-01-q1"
+            },
+            {
+              "question": "Que fait flex-grow ?",
+              "options": [
+                "Il répartit l'espace libre",
+                "Il fixe la couleur",
+                "Il réduit la police",
+                "Il ajoute une bordure"
+              ],
+              "answer": 0,
+              "explanation": "La croissance remplit l'espace.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-01-q2"
+            }
+          ],
+          "summary": [
+            "Flexbox sur un axe.",
+            "wrap pour replier.",
+            "flex: grow shrink basis."
+          ],
+          "nextStep": "Chapitre suivant : « CSS Grid »."
+        },
+        {
+          "id": "cssg-02",
+          "title": "CSS Grid",
+          "duration": 20,
+          "objectives": [
+            "Créer une grille",
+            "Utiliser repeat et minmax",
+            "Nommer des zones"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Grid place des éléments en lignes et colonnes. repeat, minmax et auto-fit créent des grilles adaptatives ; grid-template-areas nomme les zones."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".grille {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n  gap: 16px;\n}",
+              "title": "Grille adaptative"
+            },
+            {
+              "type": "warning",
+              "text": "minmax(240px, 1fr) sans auto-fit garde une colonne de plus vide : associez-les pour un remplissage automatique."
+            }
+          ],
+          "exercise": {
+            "title": "Créer une grille",
+            "instructions": "Quelle propriété définit les colonnes ?",
+            "hints": [
+              "Les colonnes du modèle."
+            ],
+            "solution": "grid-template-columns",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "grid-template-columns"
+              ],
+              "success": "Correct : grid-template-columns."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait auto-fit ?",
+              "options": [
+                "Il ajuste le nombre de colonnes à la largeur",
+                "Il centre le texte",
+                "Il anime",
+                "Il ajoute une bordure"
+              ],
+              "answer": 0,
+              "explanation": "La grille se remplit automatiquement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-02-q1"
+            },
+            {
+              "question": "Que fait gap ?",
+              "options": [
+                "Il espace lignes et colonnes",
+                "Il change la police",
+                "Il crée une ombre",
+                "Il arrondit"
+              ],
+              "answer": 0,
+              "explanation": "L'espacement est régulier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-02-q2"
+            }
+          ],
+          "summary": [
+            "Grid en deux dimensions.",
+            "repeat/minmax/auto-fit.",
+            "gap pour l'espacement."
+          ],
+          "nextStep": "Chapitre suivant : « Positionnement avancé »."
+        },
+        {
+          "id": "cssg-03",
+          "title": "Positionnement avancé",
+          "duration": 20,
+          "objectives": [
+            "Superposer des éléments",
+            "Créer un en-tête fixe",
+            "Éviter les débordements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Pour superposer, combinez position (relative/absolute), inset et z-index. Un conteneur relative sert d'ancrage à ses enfants absolus."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".carte { position: relative; }\n.badge {\n  position: absolute;\n  top: 8px;\n  right: 8px;\n  inset-inline-end: 8px;\n}",
+              "title": "Superposition"
+            },
+            {
+              "type": "warning",
+              "text": "Un élément absolu sort du flux : s'il contient du texte essentiel, prévoyez l'espace nécessaire pour éviter le chevauchement."
+            }
+          ],
+          "exercise": {
+            "title": "Ancrer",
+            "instructions": "Quel positionnement sur le parent pour que l'enfant absolu s'y rattache ?",
+            "hints": [
+              "Le parent doit être positionné."
+            ],
+            "solution": "position: relative sur le parent.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "relative"
+              ],
+              "success": "Correct : relative."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait inset: 0 ?",
+              "options": [
+                "Il colle aux quatre bords",
+                "Il centre le texte",
+                "Il anime",
+                "Il arrondit"
+              ],
+              "answer": 0,
+              "explanation": "C'est un raccourci top/right/bottom/left.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-03-q1"
+            },
+            {
+              "question": "Que fait z-index ?",
+              "options": [
+                "Il ordonne les plans",
+                "Il ajoute une marge",
+                "Il change la police",
+                "Il crée une grille"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs élevées passent devant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-03-q2"
+            }
+          ],
+          "summary": [
+            "Parent relative, enfant absolute.",
+            "inset pour les bords.",
+            "z-index pour l'ordre."
+          ],
+          "nextStep": "Chapitre suivant : « Créer une barre de navigation »."
+        },
+        {
+          "id": "cssg-04",
+          "title": "Créer une barre de navigation",
+          "duration": 20,
+          "objectives": [
+            "Aligner logo et liens",
+            "Gérer le repli mobile",
+            "Soigner le focus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une barre de navigation combine flexbox, espacement et un menu replié sur petit écran. Le focus clavier doit rester visible."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".nav {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  gap: 16px;\n}\n.nav a[aria-current=\"page\"] { font-weight: 600; }",
+              "title": "Barre de navigation"
+            },
+            {
+              "type": "tip",
+              "text": "Sur mobile, un bouton de menu doit avoir un nom accessible et un état ouvert/fermé annoncé (aria-expanded)."
+            }
+          ],
+          "exercise": {
+            "title": "Aligner",
+            "instructions": "Quelle propriété répartit logo à gauche et liens à droite ?",
+            "hints": [
+              "Répartition sur l'axe principal."
+            ],
+            "solution": "justify-content: space-between",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "space-between"
+              ],
+              "success": "Correct : space-between."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait align-items: center ?",
+              "options": [
+                "Il centre verticalement",
+                "Il espace",
+                "Il anime",
+                "Il arrondit"
+              ],
+              "answer": 0,
+              "explanation": "L'alignement suit l'axe secondaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-04-q1"
+            },
+            {
+              "question": "Que doit annoncer un bouton de menu ?",
+              "options": [
+                "Son état ouvert/fermé",
+                "La couleur",
+                "Le logo",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "aria-expanded informe l'utilisateur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-04-q2"
+            }
+          ],
+          "summary": [
+            "Flexbox pour la barre.",
+            "Repli mobile accessible.",
+            "Focus visible."
+          ],
+          "nextStep": "Chapitre suivant : « Créer des cartes »."
+        },
+        {
+          "id": "cssg-05",
+          "title": "Créer des cartes",
+          "duration": 20,
+          "objectives": [
+            "Structurer une carte",
+            "Aligner des cartes de même hauteur",
+            "Soigner les états"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une carte regroupe un titre, un contenu et une action. Dans une grille, les cartes s'alignent et prennent la même hauteur par défaut."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".cartes {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));\n  gap: 16px;\n}\n.carte { display: flex; flex-direction: column; }\n.carte .actions { margin-top: auto; }",
+              "title": "Cartes alignées"
+            },
+            {
+              "type": "warning",
+              "text": "Une carte entièrement cliquable doit rester un lien ou un bouton : un div cliquable n'est ni focusable ni annoncé."
+            }
+          ],
+          "exercise": {
+            "title": "Aligner les actions",
+            "instructions": "Comment pousser l'action en bas de chaque carte ?",
+            "hints": [
+              "Le contenu peut grandir ; l'action se cale en bas."
+            ],
+            "solution": "margin-top: auto sur l'action, dans une carte flex column.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "margin-top: auto",
+                "auto"
+              ],
+              "success": "Correct : margin-top: auto."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi une carte doit-elle rester un lien ?",
+              "options": [
+                "Pour être focusable et annoncée",
+                "Pour être plus jolie",
+                "Pour charger plus vite",
+                "Pour éviter CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'accessibilité exige un contrôle natif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-05-q1"
+            },
+            {
+              "question": "Que fait auto-fit avec minmax ?",
+              "options": [
+                "Il adapte le nombre de colonnes",
+                "Il centre le texte",
+                "Il anime",
+                "Il ajoute une ombre"
+              ],
+              "answer": 0,
+              "explanation": "La grille reste fluide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssg-05-q2"
+            }
+          ],
+          "summary": [
+            "Carte = titre, contenu, action.",
+            "grid pour aligner.",
+            "Contrôle natif si cliquable."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

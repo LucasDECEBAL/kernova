@@ -1,0 +1,400 @@
+{
+  "courseId": "reseau-fondamentaux",
+  "modules": [
+    {
+      "id": "reseau-fondamentaux-module",
+      "title": "Fondamentaux réseau",
+      "chapters": [
+        {
+          "id": "rfd-01",
+          "title": "LAN, WAN, WLAN et MAN",
+          "duration": 20,
+          "objectives": [
+            "Distinguer les échelles",
+            "Choisir un type",
+            "Situer les équipements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "LAN local, WAN étendu, WLAN sans fil, MAN métropolitain ; chaque échelle a ses équipements."
+            },
+            {
+              "type": "list",
+              "items": [
+                "LAN : un site.",
+                "WAN : plusieurs sites.",
+                "WLAN : sans fil."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Classer",
+            "instructions": "Un réseau reliant deux bâtiments distants est plutôt…",
+            "hints": [
+              "Étendu."
+            ],
+            "solution": "Un WAN (ou MAN selon la distance).",
+            "check": {
+              "type": "any",
+              "any": [
+                "wan",
+                "man"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que couvre un LAN ?",
+              "options": [
+                "Un site local",
+                "Un pays",
+                "Un continent",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "La portée est locale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-01-q1"
+            },
+            {
+              "question": "Que signifie WLAN ?",
+              "options": [
+                "LAN sans fil",
+                "WAN local",
+                "Réseau mondial",
+                "Câble"
+              ],
+              "answer": 0,
+              "explanation": "Le Wi-Fi en est un exemple.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-01-q2"
+            }
+          ],
+          "summary": [
+            "LAN/WAN/WLAN/MAN.",
+            "Échelles.",
+            "Équipements adaptés."
+          ],
+          "nextStep": "Chapitre suivant : « Topologies réseau »."
+        },
+        {
+          "id": "rfd-02",
+          "title": "Topologies réseau",
+          "duration": 20,
+          "objectives": [
+            "Décrire les topologies",
+            "Reconnaître les avantages",
+            "Éviter les points uniques"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Étoile, maillage, bus : la topologie décrit les liens et la résilience."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étoile : commutateur central.",
+                "Maillage : chemins multiples.",
+                "Bus : historique."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quelle topologie évite un point unique de défaillance ?",
+            "hints": [
+              "Plusieurs chemins."
+            ],
+            "solution": "Le maillage (ou une étoile redondante).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "maillage",
+                "redond"
+              ],
+              "success": "Correct : maillage/redondance."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une topologie en étoile ?",
+              "options": [
+                "Elle relie tout à un central",
+                "Elle relie en chaîne",
+                "Elle supprime les liens",
+                "Elle chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le centre est critique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-02-q1"
+            },
+            {
+              "question": "Que fait le maillage ?",
+              "options": [
+                "Il multiplie les chemins",
+                "Il supprime les liens",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La résilience augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-02-q2"
+            }
+          ],
+          "summary": [
+            "Topologies.",
+            "Résilience.",
+            "Éviter le point unique."
+          ],
+          "nextStep": "Chapitre suivant : « Modèle OSI »."
+        },
+        {
+          "id": "rfd-03",
+          "title": "Modèle OSI",
+          "duration": 20,
+          "objectives": [
+            "Citer les couches",
+            "Situer un protocole",
+            "Comprendre l'encapsulation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "OSI décrit sept couches, de la physique à l'application ; chaque couche encapsule les données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "7 couches.",
+                "Encapsulation.",
+                "Chaque couche a son rôle."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Situer",
+            "instructions": "À quelle couche appartient IP ?",
+            "hints": [
+              "La couche réseau."
+            ],
+            "solution": "Couche 3 (réseau).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "3",
+                "reseau",
+                "réseau"
+              ],
+              "success": "Correct : couche 3."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de couches OSI ?",
+              "options": [
+                "7",
+                "4",
+                "5",
+                "3"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle est en sept couches.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-03-q1"
+            },
+            {
+              "question": "Que fait l'encapsulation ?",
+              "options": [
+                "Ajoute les en-têtes",
+                "Supprime les données",
+                "Chiffre",
+                "Trie"
+              ],
+              "answer": 0,
+              "explanation": "Chaque couche ajoute sa part.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-03-q2"
+            }
+          ],
+          "summary": [
+            "OSI 7 couches.",
+            "IP = couche 3.",
+            "Encapsulation."
+          ],
+          "nextStep": "Chapitre suivant : « Modèle TCP/IP »."
+        },
+        {
+          "id": "rfd-04",
+          "title": "Modèle TCP/IP",
+          "duration": 20,
+          "objectives": [
+            "Comparer avec OSI",
+            "Situer les protocoles",
+            "Comprendre le modèle pratique"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "TCP/IP regroupe quatre couches : accès réseau, Internet, transport, application."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Modèle pratique.",
+                "IP, TCP/UDP, HTTP.",
+                "Correspondance avec OSI."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Situer",
+            "instructions": "À quelle couche TCP/IP appartient TCP ?",
+            "hints": [
+              "La couche transport."
+            ],
+            "solution": "Couche transport.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "transport"
+              ],
+              "success": "Correct : transport."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de couches TCP/IP ?",
+              "options": [
+                "4",
+                "7",
+                "3",
+                "5"
+              ],
+              "answer": 0,
+              "explanation": "Le modèle est plus compact.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-04-q1"
+            },
+            {
+              "question": "Que fait IP ?",
+              "options": [
+                "Il adresse et route",
+                "Il chiffre",
+                "Il trie",
+                "Il affiche"
+              ],
+              "answer": 0,
+              "explanation": "Le paquet est acheminé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-04-q2"
+            }
+          ],
+          "summary": [
+            "TCP/IP 4 couches.",
+            "Transport = TCP/UDP.",
+            "Modèle pratique."
+          ],
+          "nextStep": "Chapitre suivant : « Ethernet »."
+        },
+        {
+          "id": "rfd-05",
+          "title": "Ethernet",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la trame",
+            "Situer MAC",
+            "Comprendre le commutateur"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Ethernet transporte des trames sur le réseau local ; l'adresse MAC identifie l'interface."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Trame Ethernet.",
+                "MAC.",
+                "Commutateur par table MAC."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Situer",
+            "instructions": "Quelle adresse identifie une interface locale ?",
+            "hints": [
+              "L'adresse MAC."
+            ],
+            "solution": "L'adresse MAC",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "mac"
+              ],
+              "success": "Correct : MAC."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un commutateur ?",
+              "options": [
+                "Il commute par MAC",
+                "Il route par IP",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La table MAC guide les trames.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-05-q1"
+            },
+            {
+              "question": "Que transporte Ethernet ?",
+              "options": [
+                "Des trames",
+                "Des pages HTML",
+                "Des fichiers",
+                "Des lignes SQL"
+              ],
+              "answer": 0,
+              "explanation": "La trame est l'unité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rfd-05-q2"
+            }
+          ],
+          "summary": [
+            "Ethernet = trames.",
+            "MAC.",
+            "Commutateur."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

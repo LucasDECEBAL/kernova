@@ -1,0 +1,489 @@
+{
+  "courseId": "algo-structures",
+  "modules": [
+    {
+      "id": "algo-structures-module",
+      "title": "Récursivité et structures",
+      "chapters": [
+        {
+          "id": "alg6-01",
+          "title": "Tri rapide",
+          "duration": 20,
+          "objectives": [
+            "Choisir un pivot",
+            "Partitionner",
+            "Comprendre le pire cas"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le tri rapide choisit un pivot, place les plus petits avant et les plus grands après, puis trie chaque côté récursivement."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION triRapide(t, bas, haut)\n  SI bas < haut ALORS\n    p ← partition(t, bas, haut)\n    triRapide(t, bas, p - 1)\n    triRapide(t, p + 1, haut)\nFIN FONCTION",
+              "title": "Structure du tri rapide"
+            },
+            {
+              "type": "p",
+              "text": "En moyenne O(n log n) ; si le pivot est toujours le plus petit ou le plus grand, la partition est déséquilibrée et le coût devient O(n²)."
+            },
+            {
+              "type": "tip",
+              "text": "Un pivot aléatoire ou médian réduit fortement le risque de pire cas sur des données déjà triées."
+            }
+          ],
+          "exercise": {
+            "title": "Pire cas",
+            "instructions": "Quand le tri rapide atteint-il O(n²) ?",
+            "hints": [
+              "Pivot extrême à chaque étape."
+            ],
+            "solution": "Quand chaque partition est déséquilibrée, par exemple pivot toujours minimal sur un tableau trié.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pivot",
+                "deséquilibr",
+                "desequilibr"
+              ],
+              "success": "Correct : pivot extrême, partitions déséquilibrées."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait la partition ?",
+              "options": [
+                "Elle range autour du pivot",
+                "Elle trie définitivement",
+                "Elle fusionne",
+                "Elle cherche un élément"
+              ],
+              "answer": 0,
+              "explanation": "Plus petits d'un côté, plus grands de l'autre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-01-q1"
+            },
+            {
+              "question": "Quelle est sa complexité moyenne ?",
+              "options": [
+                "O(n log n)",
+                "O(n)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "answer": 0,
+              "explanation": "La moyenne est bonne, le pire cas mauvais.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-01-q2"
+            }
+          ],
+          "summary": [
+            "Pivot, partition, récursion.",
+            "Moyenne O(n log n).",
+            "Pire cas O(n²)."
+          ],
+          "nextStep": "Chapitre suivant : « Récursivité »."
+        },
+        {
+          "id": "alg6-02",
+          "title": "Récursivité",
+          "duration": 20,
+          "objectives": [
+            "Écrire un cas de base",
+            "Faire un appel plus petit",
+            "Comprendre la pile d'appels"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction récursive s'appelle elle-même sur un problème plus petit, jusqu'à un cas de base qui arrête la descente."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION factorielle(n)\n  SI n ≤ 1 ALORS RETOURNER 1\n  RETOURNER n × factorielle(n - 1)\nFIN FONCTION",
+              "title": "Factorielle"
+            },
+            {
+              "type": "p",
+              "text": "Chaque appel empile un contexte ; une récursion sans cas de base atteint la limite de pile et provoque un débordement."
+            },
+            {
+              "type": "warning",
+              "text": "La récursivité profonde consomme de la pile : pour de grands n, une version itérative est souvent plus sûre."
+            }
+          ],
+          "exercise": {
+            "title": "Trouver le cas de base",
+            "instructions": "Quel est le cas de base de factorielle(n) ?",
+            "hints": [
+              "Le plus petit n acceptable."
+            ],
+            "solution": "n ≤ 1, qui renvoie 1.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "n ≤ 1",
+                "n <= 1",
+                "0",
+                "1"
+              ],
+              "success": "Correct : n ≤ 1."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un cas de base ?",
+              "options": [
+                "La condition qui arrête la récursion",
+                "Le plus grand n",
+                "Un type de boucle",
+                "Une erreur"
+              ],
+              "answer": 0,
+              "explanation": "Sans lui, la récursion ne s'arrête pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-02-q1"
+            },
+            {
+              "question": "Que se passe-t-il si le cas de base manque ?",
+              "options": [
+                "Débordement de pile",
+                "Le programme accélère",
+                "Le résultat est 0",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Les appels s'empilent indéfiniment.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-02-q2"
+            }
+          ],
+          "summary": [
+            "Cas de base + appel plus petit.",
+            "La pile d'appels se souvient des retours.",
+            "Attention à la profondeur."
+          ],
+          "nextStep": "Chapitre suivant : « Piles et files »."
+        },
+        {
+          "id": "alg6-03",
+          "title": "Piles et files",
+          "duration": 20,
+          "objectives": [
+            "Distinguer LIFO et FIFO",
+            "Connaître les opérations",
+            "Choisir la structure adaptée"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une pile ajoute et retire par le même bout (LIFO) ; une file ajoute d'un côté et retire de l'autre (FIFO)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Structure",
+                "Ajouter",
+                "Retirer",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "Pile",
+                  "empiler",
+                  "dépiler",
+                  "historique, annuler"
+                ],
+                [
+                  "File",
+                  "enfiler",
+                  "défiler",
+                  "impression, messages"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Les deux se réalisent avec un tableau ou une liste chaînée ; la file doit éviter les décalages coûteux."
+            },
+            {
+              "type": "tip",
+              "text": "Un « undo » est une pile : la dernière action annulée est la dernière effectuée."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la structure",
+            "instructions": "Quelle structure pour traiter des commandes dans l'ordre d'arrivée ?",
+            "hints": [
+              "Premier arrivé, premier servi."
+            ],
+            "solution": "Une file.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "file"
+              ],
+              "success": "Correct : une file."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel ordre suit une pile ?",
+              "options": [
+                "LIFO",
+                "FIFO",
+                "Aléatoire",
+                "Trié"
+              ],
+              "answer": 0,
+              "explanation": "Dernier entré, premier sorti.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-03-q1"
+            },
+            {
+              "question": "Quel ordre suit une file ?",
+              "options": [
+                "FIFO",
+                "LIFO",
+                "Aléatoire",
+                "Trié"
+              ],
+              "answer": 0,
+              "explanation": "Premier entré, premier sorti.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-03-q2"
+            }
+          ],
+          "summary": [
+            "Pile LIFO, file FIFO.",
+            "Opérations symétriques aux extrémités.",
+            "Choisir selon l'ordre de traitement."
+          ],
+          "nextStep": "Chapitre suivant : « Listes chaînées »."
+        },
+        {
+          "id": "alg6-04",
+          "title": "Listes chaînées",
+          "duration": 20,
+          "objectives": [
+            "Décrire un nœud",
+            "Insérer et supprimer",
+            "Comparer avec un tableau"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une liste chaînée stocke chaque valeur dans un nœud qui pointe vers le suivant. L'insertion en tête est immédiate ; l'accès au k-ième élément exige un parcours."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "NŒUD = { valeur, suivant }\n\ntête ← NŒUD(3, NŒUD(7, NUL))\n// insérer 5 en tête : tête ← NŒUD(5, tête)",
+              "title": "Nœuds et insertion"
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Opération",
+                "Tableau",
+                "Liste chaînée"
+              ],
+              "rows": [
+                [
+                  "Accès par indice",
+                  "O(1)",
+                  "O(n)"
+                ],
+                [
+                  "Insertion en tête",
+                  "O(n)",
+                  "O(1)"
+                ],
+                [
+                  "Mémoire",
+                  "contiguë",
+                  "répartie"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une liste chaînée mal manipulée peut perdre le reste de la liste si vous écrasez le lien suivant avant de le sauvegarder."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la structure",
+            "instructions": "Vous insérez souvent en tête et parcourez rarement. Tableau ou liste chaînée ?",
+            "hints": [
+              "L'insertion en tête est immédiate dans une liste."
+            ],
+            "solution": "Une liste chaînée, si l'insertion en tête domine.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "liste chainee",
+                "liste chaînée"
+              ],
+              "success": "Correct : liste chaînée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient un nœud ?",
+              "options": [
+                "Une valeur et un lien vers le suivant",
+                "Un tableau complet",
+                "Un fichier",
+                "Un index"
+              ],
+              "answer": 0,
+              "explanation": "Le lien permet le chaînage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-04-q1"
+            },
+            {
+              "question": "Quel est le coût d'accès au k-ième élément ?",
+              "options": [
+                "O(n)",
+                "O(1)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "answer": 0,
+              "explanation": "Il faut parcourir les nœuds.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-04-q2"
+            }
+          ],
+          "summary": [
+            "Nœud = valeur + suivant.",
+            "Insertion en tête O(1), accès O(n).",
+            "Sauvegarder le lien avant de le modifier."
+          ],
+          "nextStep": "Chapitre suivant : « Tables de hachage »."
+        },
+        {
+          "id": "alg6-05",
+          "title": "Tables de hachage",
+          "duration": 20,
+          "objectives": [
+            "Comprendre une fonction de hachage",
+            "Gérer les collisions",
+            "Connaître les coûts moyens"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une table de hachage range les valeurs dans des seaux calculés par une fonction de hachage. L'accès par clé est constant en moyenne."
+            },
+            {
+              "type": "p",
+              "text": "Deux clés peuvent tomber dans le même seau : c'est une collision, résolue par chaînage ou adressage ouvert."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Opération",
+                "Moyenne",
+                "Pire cas"
+              ],
+              "rows": [
+                [
+                  "Recherche",
+                  "O(1)",
+                  "O(n)"
+                ],
+                [
+                  "Insertion",
+                  "O(1)",
+                  "O(n)"
+                ],
+                [
+                  "Suppression",
+                  "O(1)",
+                  "O(n)"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une mauvaise fonction de hachage crée de nombreuses collisions et dégrade la table vers une liste."
+            }
+          ],
+          "exercise": {
+            "title": "Expliquer une collision",
+            "instructions": "Deux clés donnent le même indice. Que se passe-t-il ?",
+            "hints": [
+              "Les deux valeurs veulent le même seau."
+            ],
+            "solution": "Une collision : on stocke les deux dans le même seau (chaînage) ou on cherche un autre emplacement (adressage ouvert).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "collision"
+              ],
+              "success": "Correct : collision."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel est le coût moyen d'une recherche ?",
+              "options": [
+                "O(1)",
+                "O(n)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "answer": 0,
+              "explanation": "Le hachage vise un accès direct.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-05-q1"
+            },
+            {
+              "question": "Qu'est-ce qu'une collision ?",
+              "options": [
+                "Deux clés au même emplacement",
+                "Une clé vide",
+                "Un tableau trié",
+                "Une erreur de type"
+              ],
+              "answer": 0,
+              "explanation": "La fonction renvoie le même indice.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg6-05-q2"
+            }
+          ],
+          "summary": [
+            "Hachage : clé → seau.",
+            "Collisions inévitables, à gérer.",
+            "O(1) moyen, O(n) au pire."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

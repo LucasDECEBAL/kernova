@@ -1,0 +1,783 @@
+{
+  "courseId": "windows-client",
+  "modules": [
+    {
+      "id": "windows-client-module",
+      "title": "Windows côté technique",
+      "chapters": [
+        {
+          "id": "winc-01",
+          "title": "Architecture de Windows",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les couches",
+            "Situer le registre",
+            "Comprendre les services"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Windows combine noyau, services, registre et interfaces ; le registre centralise la configuration."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Noyau et pilotes.",
+                "Registre.",
+                "Services en arrière-plan."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Situer",
+            "instructions": "Où Windows stocke-t-il sa configuration ?",
+            "hints": [
+              "Une base hiérarchique."
+            ],
+            "solution": "Dans le registre.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "registre"
+              ],
+              "success": "Correct : registre."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le registre ?",
+              "options": [
+                "Il stocke la configuration",
+                "Il affiche",
+                "Il route",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les paramètres sont centralisés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-01-q1"
+            },
+            {
+              "question": "Où tournent les services ?",
+              "options": [
+                "En arrière-plan",
+                "Dans le navigateur",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Sans session utilisateur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-01-q2"
+            }
+          ],
+          "summary": [
+            "Noyau, services, registre.",
+            "Configuration centralisée.",
+            "Prudence avec le registre."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des comptes »."
+        },
+        {
+          "id": "winc-02",
+          "title": "Gestion des comptes",
+          "duration": 20,
+          "objectives": [
+            "Créer un compte",
+            "Choisir le type",
+            "Comprendre les profils"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un compte standard limite les changements système ; l'administrateur les autorise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Compte standard par défaut.",
+                "Élévation ponctuelle.",
+                "Profil utilisateur séparé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel type de compte pour un usage quotidien ?",
+            "hints": [
+              "Le moins privilégié."
+            ],
+            "solution": "Un compte standard, avec un administrateur distinct.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "standard"
+              ],
+              "success": "Correct : compte standard."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet un administrateur ?",
+              "options": [
+                "Modifier le système",
+                "Rien de plus",
+                "Accéder au CSS",
+                "Router"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont élevés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-02-q1"
+            },
+            {
+              "question": "Où sont les fichiers du profil ?",
+              "options": [
+                "Dans C:\\Users",
+                "Dans C:\\Windows",
+                "Dans le BIOS",
+                "Dans le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Chaque utilisateur a son dossier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-02-q2"
+            }
+          ],
+          "summary": [
+            "Standard par défaut.",
+            "Admin séparé.",
+            "Profil par utilisateur."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des permissions »."
+        },
+        {
+          "id": "winc-03",
+          "title": "Gestion des permissions",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les ACL",
+            "Accorder un droit",
+            "Éviter les refus explicites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les permissions NTFS s'appliquent aux fichiers et dossiers ; le refus l'emporte sur l'autorisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ACL.",
+                "Héritage.",
+                "Refus explicite prioritaire."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que se passe-t-il en cas de conflit autorisation/refus ?",
+            "hints": [
+              "Le refus gagne."
+            ],
+            "solution": "Le refus explicite l'emporte.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "refus"
+              ],
+              "success": "Correct : le refus."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait l'héritage ?",
+              "options": [
+                "Il propage les droits",
+                "Il supprime",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les enfants héritent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-03-q1"
+            },
+            {
+              "question": "Que vaut le droit effectif en partage + NTFS ?",
+              "options": [
+                "Le plus restrictif",
+                "Le plus permissif",
+                "La somme",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "L'intersection s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-03-q2"
+            }
+          ],
+          "summary": [
+            "ACL NTFS.",
+            "Refus prioritaire.",
+            "Héritage."
+          ],
+          "nextStep": "Chapitre suivant : « Système de fichiers NTFS »."
+        },
+        {
+          "id": "winc-04",
+          "title": "Système de fichiers NTFS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre NTFS",
+            "Utiliser les attributs",
+            "Gérer le chiffrement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "NTFS gère permissions, journalisation et chiffrement (EFS/BitLocker selon le contexte)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Journalisation.",
+                "Compression.",
+                "Chiffrement du volume."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet NTFS en plus de FAT32 ?",
+            "hints": [
+              "Permissions et journalisation."
+            ],
+            "solution": "Des permissions fines, la journalisation et le chiffrement.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "permission"
+              ],
+              "success": "Correct : permissions."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi BitLocker ?",
+              "options": [
+                "Chiffrer le disque",
+                "Accélérer",
+                "Router",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont protégées au repos.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-04-q1"
+            },
+            {
+              "question": "Que fait la compression NTFS ?",
+              "options": [
+                "Elle réduit l'espace",
+                "Elle chiffre",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le CPU travaille un peu plus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-04-q2"
+            }
+          ],
+          "summary": [
+            "NTFS riche.",
+            "BitLocker.",
+            "Compression."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des processus »."
+        },
+        {
+          "id": "winc-05",
+          "title": "Gestion des processus",
+          "duration": 20,
+          "objectives": [
+            "Lister les processus",
+            "Arrêter un processus",
+            "Comprendre les dépendances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le gestionnaire de tâches et PowerShell listent et arrêtent les processus."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Get-Process.",
+                "Stop-Process.",
+                "Vérifier avant de tuer."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Arrêter",
+            "instructions": "Quelle cmdlet arrête un processus ?",
+            "hints": [
+              "Un verbe Stop."
+            ],
+            "solution": "Stop-Process -Id PID",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "stop-process"
+              ],
+              "success": "Correct : Stop-Process."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Get-Process ?",
+              "options": [
+                "Il liste",
+                "Il arrête",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les processus sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-05-q1"
+            },
+            {
+              "question": "Que vérifier avant d'arrêter ?",
+              "options": [
+                "L'impact et l'identité",
+                "La couleur",
+                "Le DNS",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Éviter d'arrêter un service critique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-05-q2"
+            }
+          ],
+          "summary": [
+            "Get-Process.",
+            "Stop-Process.",
+            "Prudence."
+          ],
+          "nextStep": "Chapitre suivant : « Services Windows »."
+        },
+        {
+          "id": "winc-06",
+          "title": "Services Windows",
+          "duration": 20,
+          "objectives": [
+            "Lister les services",
+            "Démarrer/arrêter",
+            "Comprendre le démarrage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les services tournent sans session ; leur mode de démarrage contrôle le lancement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Get-Service.",
+                "Start-Service/Stop-Service.",
+                "Automatique/manuel/désactivé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Gérer",
+            "instructions": "Quelle cmdlet liste les services ?",
+            "hints": [
+              "Un verbe Get."
+            ],
+            "solution": "Get-Service",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "get-service"
+              ],
+              "success": "Correct : Get-Service."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Start-Service ?",
+              "options": [
+                "Il démarre",
+                "Il arrête",
+                "Il liste",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "Le service est lancé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-06-q1"
+            },
+            {
+              "question": "Que signifie Automatique ?",
+              "options": [
+                "Démarrage au boot",
+                "Démarrage manuel",
+                "Désactivé",
+                "Au clic"
+              ],
+              "answer": 0,
+              "explanation": "Le service part avec Windows.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-06-q2"
+            }
+          ],
+          "summary": [
+            "Get/Start/Stop-Service.",
+            "Modes de démarrage.",
+            "Sans session."
+          ],
+          "nextStep": "Chapitre suivant : « Observateur d'événements »."
+        },
+        {
+          "id": "winc-07",
+          "title": "Observateur d'événements",
+          "duration": 20,
+          "objectives": [
+            "Ouvrir les journaux",
+            "Filtrer",
+            "Exporter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'observateur d'événements centralise les journaux système, application et sécurité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "eventvwr.msc.",
+                "Filtrer par niveau/source.",
+                "Exporter en .evtx."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer",
+            "instructions": "Où chercher une erreur système ?",
+            "hints": [
+              "Dans le journal système."
+            ],
+            "solution": "Journal Système de l'observateur d'événements.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "systeme",
+                "système"
+              ],
+              "success": "Correct : journal système."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient le journal Application ?",
+              "options": [
+                "Les événements applicatifs",
+                "Le CSS",
+                "Le DNS",
+                "Le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Les applis y écrivent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-07-q1"
+            },
+            {
+              "question": "Que fait un filtre ?",
+              "options": [
+                "Il cible les événements",
+                "Il chiffre",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le bruit diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-07-q2"
+            }
+          ],
+          "summary": [
+            "eventvwr.",
+            "Journaux.",
+            "Filtrer/exporter."
+          ],
+          "nextStep": "Chapitre suivant : « Gestionnaire de tâches »."
+        },
+        {
+          "id": "winc-08",
+          "title": "Gestionnaire de tâches",
+          "duration": 20,
+          "objectives": [
+            "Lire les performances",
+            "Gérer le démarrage",
+            "Voir les utilisateurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le gestionnaire de tâches montre processus, performances, démarrage et sessions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Onglet Performances.",
+                "Programmes au démarrage.",
+                "Utilisateurs connectés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Où voir l'impact des programmes au démarrage ?",
+            "hints": [
+              "Un onglet dédié."
+            ],
+            "solution": "Onglet Démarrage du gestionnaire de tâches.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "demarrage",
+                "démarrage"
+              ],
+              "success": "Correct : onglet Démarrage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que montre Performances ?",
+              "options": [
+                "CPU/RAM/disque",
+                "Le CSS",
+                "Le DNS",
+                "Le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Les ressources sont suivies.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-08-q1"
+            },
+            {
+              "question": "Que fait Désactiver au démarrage ?",
+              "options": [
+                "Il empêche le lancement auto",
+                "Il supprime",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le démarrage accélère.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-08-q2"
+            }
+          ],
+          "summary": [
+            "Processus/Performances.",
+            "Démarrage.",
+            "Sessions."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des disques »."
+        },
+        {
+          "id": "winc-09",
+          "title": "Gestion des disques",
+          "duration": 20,
+          "objectives": [
+            "Voir les volumes",
+            "Étendre une partition",
+            "Vérifier la santé"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La gestion des disques crée, formate et étend les volumes ; SMART signale l'usure."
+            },
+            {
+              "type": "list",
+              "items": [
+                "diskmgmt.msc.",
+                "Étendre si espace contigu.",
+                "Surveiller la santé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Où voir la santé d'un disque ?",
+            "hints": [
+              "Dans les outils de disque."
+            ],
+            "solution": "Dans la gestion des disques ou l'outil SMART du fabricant.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "smart"
+              ],
+              "success": "Correct : SMART."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait diskmgmt.msc ?",
+              "options": [
+                "Il gère les disques",
+                "Il route",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les volumes sont administrés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-09-q1"
+            },
+            {
+              "question": "Peut-on étendre sans espace contigu ?",
+              "options": [
+                "Non, il faut déplacer",
+                "Oui, toujours",
+                "Avec le CSS",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'espace doit suivre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-09-q2"
+            }
+          ],
+          "summary": [
+            "diskmgmt.",
+            "Étendre.",
+            "SMART."
+          ],
+          "nextStep": "Chapitre suivant : « Sauvegarde et restauration »."
+        },
+        {
+          "id": "winc-10",
+          "title": "Sauvegarde et restauration",
+          "duration": 20,
+          "objectives": [
+            "Choisir une sauvegarde",
+            "Restaurer",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une sauvegarde Windows doit être testée et conservée hors site."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Historique des fichiers.",
+                "Image système.",
+                "Test de restauration."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Que valide une sauvegarde ?",
+            "hints": [
+              "Une restauration réussie."
+            ],
+            "solution": "Une restauration testée dans un environnement de test.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "restauration"
+              ],
+              "success": "Correct : restauration."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une image système ?",
+              "options": [
+                "Elle sauvegarde le système",
+                "Elle chiffre",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le système est restaurable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-10-q1"
+            },
+            {
+              "question": "Pourquoi hors site ?",
+              "options": [
+                "Sinistre",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La copie locale peut disparaître.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "winc-10-q2"
+            }
+          ],
+          "summary": [
+            "Sauvegarde testée.",
+            "Image système.",
+            "Hors site."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

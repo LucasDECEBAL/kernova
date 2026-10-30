@@ -1,0 +1,428 @@
+{
+  "courseId": "algo-recherche-tris",
+  "modules": [
+    {
+      "id": "algo-recherche-tris-module",
+      "title": "Recherche et tris",
+      "chapters": [
+        {
+          "id": "alg5-01",
+          "title": "Recherche linéaire",
+          "duration": 20,
+          "objectives": [
+            "Parcourir un tableau",
+            "Renvooyer un indice ou une absence",
+            "Connaître sa complexité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La recherche linéaire examine les éléments un par un jusqu'à trouver la valeur ou atteindre la fin. Elle fonctionne sur un tableau non trié."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION chercher(t, cible)\n  POUR i DE 0 À longueur(t) - 1 FAIRE\n    SI t[i] = cible ALORS RETOURNER i\n  FIN POUR\n  RETOURNER -1",
+              "title": "Recherche linéaire"
+            },
+            {
+              "type": "p",
+              "text": "Dans le pire cas, elle lit n éléments : complexité O(n). Sur un grand tableau, chaque recherche coûte cher."
+            },
+            {
+              "type": "tip",
+              "text": "Retourner -1 est une convention pour « absent » : documentez-la, car l'indice 0 est une position valide."
+            }
+          ],
+          "exercise": {
+            "title": "Chercher une valeur",
+            "instructions": "Dans [7, 3, 9, 3], quel indice renvoie une recherche linéaire de 9 ?",
+            "hints": [
+              "Parcourez dans l'ordre.",
+              "Le premier élément est à l'indice 0."
+            ],
+            "solution": "Indice 2.",
+            "check": {
+              "type": "any",
+              "any": [
+                "2"
+              ],
+              "success": "Correct : indice 2."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Sur quel tableau la recherche linéaire fonctionne-t-elle ?",
+              "options": [
+                "Non trié",
+                "Trié uniquement",
+                "De nombres uniquement",
+                "De taille fixe"
+              ],
+              "answer": 0,
+              "explanation": "Elle ne suppose aucun ordre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-01-q1"
+            },
+            {
+              "question": "Quelle est sa complexité dans le pire cas ?",
+              "options": [
+                "O(n)",
+                "O(1)",
+                "O(log n)",
+                "O(n²)"
+              ],
+              "answer": 0,
+              "explanation": "Elle peut parcourir tout le tableau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-01-q2"
+            }
+          ],
+          "summary": [
+            "Recherche linéaire : élément par élément.",
+            "Fonctionne sans tri.",
+            "O(n) dans le pire cas."
+          ],
+          "nextStep": "Chapitre suivant : « Recherche dichotomique »."
+        },
+        {
+          "id": "alg5-02",
+          "title": "Recherche dichotomique",
+          "duration": 20,
+          "objectives": [
+            "Exiger un tableau trié",
+            "Diviser l'intervalle",
+            "Écrire la boucle sans erreur de borne"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La recherche dichotomique coupe l'intervalle en deux à chaque étape : elle compare la cible au milieu, puis garde la moitié pertinente. Le tableau doit être trié."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "gauche ← 0 ; droite ← longueur(t) - 1\nTANT QUE gauche ≤ droite FAIRE\n  milieu ← (gauche + droite) div 2\n  SI t[milieu] = cible ALORS RETOURNER milieu\n  SINON SI t[milieu] < cible ALORS gauche ← milieu + 1\n  SINON droite ← milieu - 1\nRETOURNER -1",
+              "title": "Dichotomie"
+            },
+            {
+              "type": "warning",
+              "text": "Oublier +1 ou -1 fausse la progression et peut provoquer une boucle infinie quand gauche et droite se rejoignent."
+            }
+          ],
+          "exercise": {
+            "title": "Compter les étapes",
+            "instructions": "Dans un tableau trié de 1 000 éléments, combien de comparaisons au plus avec la dichotomie ?",
+            "hints": [
+              "Chaque étape divise par 2.",
+              "2^10 = 1024."
+            ],
+            "solution": "Environ 10 comparaisons (log₂ 1 000 ≈ 10).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "10"
+              ],
+              "success": "Correct : environ 10."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle condition impose la dichotomie ?",
+              "options": [
+                "Un tableau trié",
+                "Un tableau vide",
+                "Des chaînes",
+                "Une taille paire"
+              ],
+              "answer": 0,
+              "explanation": "Le tri est indispensable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-02-q1"
+            },
+            {
+              "question": "Quelle est sa complexité ?",
+              "options": [
+                "O(log n)",
+                "O(n)",
+                "O(n²)",
+                "O(1)"
+              ],
+              "answer": 0,
+              "explanation": "Chaque étape divise l'espace de recherche.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-02-q2"
+            }
+          ],
+          "summary": [
+            "Dichotomie : tableau trié obligatoire.",
+            "Diviser par deux à chaque étape.",
+            "O(log n)."
+          ],
+          "nextStep": "Chapitre suivant : « Tri par sélection »."
+        },
+        {
+          "id": "alg5-03",
+          "title": "Tri par sélection",
+          "duration": 20,
+          "objectives": [
+            "Trouver le minimum d'une zone",
+            "Échanger deux éléments",
+            "Reconnaître sa complexité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le tri par sélection cherche le plus petit élément de la zone non triée et l'échange avec la première position de cette zone."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "POUR i DE 0 À n - 2 FAIRE\n  min ← i\n  POUR j DE i + 1 À n - 1 FAIRE\n    SI t[j] < t[min] ALORS min ← j\n  ÉCHANGER t[i], t[min]\nFIN POUR",
+              "title": "Tri par sélection"
+            },
+            {
+              "type": "p",
+              "text": "Le nombre de comparaisons reste de l'ordre de n²/2 quel que soit l'ordre initial : la complexité est O(n²)."
+            },
+            {
+              "type": "tip",
+              "text": "Le tri par sélection effectue peu d'échanges : utile quand écrire en mémoire coûte cher, rare en pratique."
+            }
+          ],
+          "exercise": {
+            "title": "Décrire une étape",
+            "instructions": "Sur [5, 1, 4], que fait la première passe du tri par sélection ?",
+            "hints": [
+              "Cherchez le minimum.",
+              "Échangez-le avec la première position."
+            ],
+            "solution": "Le minimum 1 est échangé avec 5 : [1, 5, 4].",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "1",
+                "5"
+              ],
+              "success": "Correct : minimum 1 placé en tête."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le tri par sélection à chaque passe ?",
+              "options": [
+                "Il place le minimum restant",
+                "Il place le maximum",
+                "Il fusionne deux moitiés",
+                "Il choisit un pivot"
+              ],
+              "answer": 0,
+              "explanation": "La zone triée grandit par le début.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-03-q1"
+            },
+            {
+              "question": "Quelle est sa complexité ?",
+              "options": [
+                "O(n²)",
+                "O(n log n)",
+                "O(n)",
+                "O(log n)"
+              ],
+              "answer": 0,
+              "explanation": "Deux boucles imbriquées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-03-q2"
+            }
+          ],
+          "summary": [
+            "Sélection : minimum puis échange.",
+            "Toujours O(n²) en comparaisons.",
+            "Peu d'échanges."
+          ],
+          "nextStep": "Chapitre suivant : « Tri par insertion »."
+        },
+        {
+          "id": "alg5-04",
+          "title": "Tri par insertion",
+          "duration": 20,
+          "objectives": [
+            "Insérer un élément à sa place",
+            "Comprendre le cas presque trié",
+            "Comparer avec la sélection"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le tri par insertion prend chaque élément et l'insère à sa place dans la partie déjà triée, en décalant les plus grands."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "POUR i DE 1 À n - 1 FAIRE\n  valeur ← t[i]\n  j ← i - 1\n  TANT QUE j ≥ 0 ET t[j] > valeur FAIRE\n    t[j + 1] ← t[j]\n    j ← j - 1\n  t[j + 1] ← valeur\nFIN POUR",
+              "title": "Tri par insertion"
+            },
+            {
+              "type": "p",
+              "text": "Sur un tableau presque trié, il effectue peu de décalages et devient rapide ; dans le pire cas, il reste O(n²)."
+            },
+            {
+              "type": "tip",
+              "text": "C'est la méthode utilisée par certaines bibliothèques pour les petits tableaux, car le coût constant est faible."
+            }
+          ],
+          "exercise": {
+            "title": "Simuler une insertion",
+            "instructions": "Sur [2, 5, 1], que devient le tableau après insertion de 1 ?",
+            "hints": [
+              "1 remonte devant 5 et 2."
+            ],
+            "solution": "[1, 2, 5]",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "1",
+                "2",
+                "5"
+              ],
+              "success": "Correct : [1, 2, 5]."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand le tri par insertion est-il rapide ?",
+              "options": [
+                "Sur un tableau presque trié",
+                "Sur un tableau inversé",
+                "Sur un tableau vide seulement",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "Peu de décalages sont nécessaires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-04-q1"
+            },
+            {
+              "question": "Quel est son pire cas ?",
+              "options": [
+                "O(n²)",
+                "O(log n)",
+                "O(n)",
+                "O(1)"
+              ],
+              "answer": 0,
+              "explanation": "Chaque élément peut remonter toute la zone triée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-04-q2"
+            }
+          ],
+          "summary": [
+            "Insertion : décaler puis insérer.",
+            "Rapide sur presque trié.",
+            "O(n²) dans le pire cas."
+          ],
+          "nextStep": "Chapitre suivant : « Tri fusion »."
+        },
+        {
+          "id": "alg5-05",
+          "title": "Tri fusion",
+          "duration": 20,
+          "objectives": [
+            "Diviser le tableau",
+            "Fusionner deux listes triées",
+            "Reconnaître sa stabilité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le tri fusion divise le tableau jusqu'à des sous-listes d'un élément, puis fusionne les listes triées deux à deux."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION fusion(a, b)\n  résultat ← []\n  TANT QUE a et b non vides FAIRE\n    SI tête(a) ≤ tête(b) ALORS ajouter résultat, retirer tête(a)\n    SINON ajouter résultat, retirer tête(b)\n  RETOURNER résultat + a + b",
+              "title": "Fusion"
+            },
+            {
+              "type": "p",
+              "text": "Chaque niveau de division coûte O(n) et il y a log n niveaux : la complexité est O(n log n). Le tri est stable si la fusion garde l'ordre des égaux."
+            },
+            {
+              "type": "warning",
+              "text": "Le tri fusion utilise un tableau auxiliaire : il échange de la vitesse contre de la mémoire."
+            }
+          ],
+          "exercise": {
+            "title": "Complexité",
+            "instructions": "Quelle est la complexité du tri fusion ?",
+            "hints": [
+              "log n niveaux de fusion."
+            ],
+            "solution": "O(n log n).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "n log n"
+              ],
+              "success": "Correct : O(n log n)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le tri fusion ?",
+              "options": [
+                "Il divise puis fusionne",
+                "Il sélectionne le minimum",
+                "Il choisit un pivot",
+                "Il compte les inversions"
+              ],
+              "answer": 0,
+              "explanation": "Diviser pour régner.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-05-q1"
+            },
+            {
+              "question": "Que signifie « stable » pour un tri ?",
+              "options": [
+                "Les égaux gardent leur ordre relatif",
+                "Il ne plante jamais",
+                "Il utilise peu de mémoire",
+                "Il est toujours O(n)"
+              ],
+              "answer": 0,
+              "explanation": "La stabilité préserve l'ordre des clés égales.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg5-05-q2"
+            }
+          ],
+          "summary": [
+            "Fusion : diviser puis fusionner.",
+            "O(n log n).",
+            "Stable mais coûteux en mémoire."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

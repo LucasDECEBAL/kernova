@@ -1,0 +1,406 @@
+{
+  "courseId": "js-navigateur",
+  "modules": [
+    {
+      "id": "js-navigateur-module",
+      "title": "Erreurs, modules et DOM",
+      "chapters": [
+        {
+          "id": "jsn-01",
+          "title": "Gestion des erreurs",
+          "duration": 20,
+          "objectives": [
+            "Utiliser try/catch",
+            "Créer une erreur",
+            "Ne pas masquer les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "try exécute un bloc risqué ; catch intercepte l'erreur ; finally s'exécute toujours. throw lève une erreur explicite."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "try {\n  const data = JSON.parse(texte);\n} catch (erreur) {\n  console.error(\"JSON invalide\", erreur);\n} finally {\n  charger = false;\n}",
+              "title": "try/catch"
+            },
+            {
+              "type": "warning",
+              "text": "Un catch vide masque le bug : journalisez ou transformez l'erreur, ne l'ignorez pas."
+            }
+          ],
+          "exercise": {
+            "title": "Intercepter",
+            "instructions": "Quel bloc intercepte une exception ?",
+            "hints": [
+              "Il suit try."
+            ],
+            "solution": "catch",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "catch"
+              ],
+              "success": "Correct : catch."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand finally s'exécute-t-il ?",
+              "options": [
+                "Toujours",
+                "Seulement en cas d'erreur",
+                "Jamais",
+                "Seulement sans erreur"
+              ],
+              "answer": 0,
+              "explanation": "Il nettoie dans tous les cas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-01-q1"
+            },
+            {
+              "question": "Que fait throw ?",
+              "options": [
+                "Il lève une erreur",
+                "Il affiche",
+                "Il boucle",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur remonte à l'appelant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-01-q2"
+            }
+          ],
+          "summary": [
+            "try/catch/finally.",
+            "throw pour signaler.",
+            "Ne pas avaler les erreurs."
+          ],
+          "nextStep": "Chapitre suivant : « Modules JavaScript »."
+        },
+        {
+          "id": "jsn-02",
+          "title": "Modules JavaScript",
+          "duration": 20,
+          "objectives": [
+            "Utiliser import/export",
+            "Organiser un projet",
+            "Éviter les cycles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les modules ES exportent des valeurs et les importent ailleurs. Chaque fichier a sa portée et n'est évalué qu'une fois."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "// maths.js\nexport function somme(a, b) { return a + b; }\n\n// app.js\nimport { somme } from \"./maths.js\";",
+              "title": "Export et import"
+            },
+            {
+              "type": "warning",
+              "text": "Les modules exigent un serveur HTTP : en file://, les imports échouent pour des raisons de sécurité."
+            }
+          ],
+          "exercise": {
+            "title": "Exporter",
+            "instructions": "Comment exporter une fonction somme ?",
+            "hints": [
+              "Un mot-clé avant la déclaration."
+            ],
+            "solution": "export function somme(a, b) { ... }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "export"
+              ],
+              "success": "Correct : export."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de fois un module est-il évalué ?",
+              "options": [
+                "Une fois",
+                "À chaque import",
+                "Jamais",
+                "Une fois par fonction"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est mis en cache.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-02-q1"
+            },
+            {
+              "question": "Que provoque un cycle d'imports ?",
+              "options": [
+                "Des dépendances fragiles",
+                "Un bug CSS",
+                "Un fichier vide",
+                "Un routeur"
+              ],
+              "answer": 0,
+              "explanation": "La résolution devient ambiguë.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-02-q2"
+            }
+          ],
+          "summary": [
+            "export/import.",
+            "Une évaluation par module.",
+            "Éviter les cycles."
+          ],
+          "nextStep": "Chapitre suivant : « Débogage »."
+        },
+        {
+          "id": "jsn-03",
+          "title": "Débogage",
+          "duration": 20,
+          "objectives": [
+            "Utiliser breakpoints",
+            "Lire la pile d'appels",
+            "Journaliser utilement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le débogueur suspend l'exécution, montre les variables et la pile d'appels. console.log reste utile pour un premier repérage."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "function diviser(a, b) {\n  console.log({ a, b });\n  return a / b;\n}\ndebugger; // point d'arrêt explicite",
+              "title": "Débogage"
+            },
+            {
+              "type": "tip",
+              "text": "Nommez la source dans les journaux : console.log(\"[panier]\", panier) se retrouve plus vite qu'une valeur seule."
+            }
+          ],
+          "exercise": {
+            "title": "Suspendre",
+            "instructions": "Quelle instruction suspend l'exécution dans les DevTools ?",
+            "hints": [
+              "Une instruction explicite."
+            ],
+            "solution": "debugger;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "debugger"
+              ],
+              "success": "Correct : debugger."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que montre la pile d'appels ?",
+              "options": [
+                "Le chemin des appels",
+                "Les fichiers ignorés",
+                "Le réseau",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "On remonte à l'origine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-03-q1"
+            },
+            {
+              "question": "Pourquoi nommer la source d'un log ?",
+              "options": [
+                "Pour le retrouver",
+                "Pour l'accélérer",
+                "Pour l'effacer",
+                "Pour le chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte est plus clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-03-q2"
+            }
+          ],
+          "summary": [
+            "Breakpoints et debugger.",
+            "Pile d'appels.",
+            "Logs contextualisés."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre le DOM »."
+        },
+        {
+          "id": "jsn-04",
+          "title": "Comprendre le DOM",
+          "duration": 20,
+          "objectives": [
+            "Décrire l'arbre DOM",
+            "Relier HTML et nœuds",
+            "Éviter les accès répétés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le DOM est un arbre d'objets représentant le HTML. Chaque balise devient un nœud manipulable en JavaScript."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "document.title;          // titre de la page\ndocument.body.children;   // éléments enfants\nconst main = document.querySelector(\"main\");",
+              "title": "Accès au DOM"
+            },
+            {
+              "type": "warning",
+              "text": "Modifier le DOM coûte cher : regroupez les changements et évitez les lectures/écritures alternées dans une boucle."
+            }
+          ],
+          "exercise": {
+            "title": "Accéder",
+            "instructions": "Quelle méthode sélectionne le premier élément correspondant à un sélecteur CSS ?",
+            "hints": [
+              "Une méthode de document."
+            ],
+            "solution": "document.querySelector()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "queryselector"
+              ],
+              "success": "Correct : querySelector."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce que le DOM ?",
+              "options": [
+                "Un arbre d'objets du document",
+                "Un fichier CSS",
+                "Un serveur",
+                "Un type de date"
+              ],
+              "answer": 0,
+              "explanation": "Le HTML est représenté en objets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-04-q1"
+            },
+            {
+              "question": "Que renvoie querySelectorAll ?",
+              "options": [
+                "Une liste de nœuds",
+                "Un seul nœud",
+                "Une chaîne",
+                "Un booléen"
+              ],
+              "answer": 0,
+              "explanation": "Tous les éléments correspondants.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-04-q2"
+            }
+          ],
+          "summary": [
+            "DOM = arbre du document.",
+            "querySelector pour un élément.",
+            "Limiter les manipulations."
+          ],
+          "nextStep": "Chapitre suivant : « Sélectionner des éléments »."
+        },
+        {
+          "id": "jsn-05",
+          "title": "Sélectionner des éléments",
+          "duration": 20,
+          "objectives": [
+            "Utiliser querySelector et querySelectorAll",
+            "Parcourir une NodeList",
+            "Éviter les sélecteurs fragiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "querySelector renvoie le premier élément correspondant, querySelectorAll une NodeList statique parcourable avec forEach ou for...of."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const liens = document.querySelectorAll(\"nav a\");\nliens.forEach((lien) => lien.classList.add(\"lien\"));\nconst titre = document.querySelector(\"h1\");",
+              "title": "Sélection"
+            },
+            {
+              "type": "warning",
+              "text": "Un sélecteur basé sur la structure (div > div:nth-child(3)) casse au premier changement de HTML : préférez une classe stable."
+            }
+          ],
+          "exercise": {
+            "title": "Sélectionner plusieurs",
+            "instructions": "Quelle méthode récupère tous les liens du menu ?",
+            "hints": [
+              "Tous les éléments correspondants."
+            ],
+            "solution": "document.querySelectorAll(\"nav a\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "queryselectorall"
+              ],
+              "success": "Correct : querySelectorAll."
+            }
+          },
+          "quiz": [
+            {
+              "question": "querySelector renvoie…",
+              "options": [
+                "le premier élément",
+                "tous les éléments",
+                "une chaîne",
+                "un booléen"
+              ],
+              "answer": 0,
+              "explanation": "Un seul nœud ou null.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-05-q1"
+            },
+            {
+              "question": "Que faire d'une NodeList ?",
+              "options": [
+                "La parcourir avec forEach",
+                "La convertir en CSS",
+                "La chiffrer",
+                "La supprimer"
+              ],
+              "answer": 0,
+              "explanation": "Elle est itérable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsn-05-q2"
+            }
+          ],
+          "summary": [
+            "querySelectorAll pour plusieurs.",
+            "classes stables.",
+            "NodeList parcourable."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

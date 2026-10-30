@@ -1,0 +1,420 @@
+{
+  "courseId": "git-travail-equipe",
+  "modules": [
+    {
+      "id": "git-travail-equipe-module",
+      "title": "Git en équipe",
+      "chapters": [
+        {
+          "id": "git3-01",
+          "title": "Travailler à plusieurs",
+          "duration": 20,
+          "objectives": [
+            "Créer une branche par tâche",
+            "Synchroniser avant de commencer",
+            "Éviter les conflits inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Travailler à plusieurs exige des branches courtes, une synchronisation régulière et des commits compréhensibles. Une branche par tâche limite les conflits."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git switch main\ngit pull\ngit switch -c feat/recherche\n# commits...\ngit push -u origin feat/recherche",
+              "title": "Cycle de travail"
+            },
+            {
+              "type": "warning",
+              "text": "Rester plusieurs jours sans récupérer les changements distants transforme une petite fusion en conflit massif."
+            }
+          ],
+          "exercise": {
+            "title": "Démarrer une tâche",
+            "instructions": "Quelles deux actions avant de créer une branche de fonctionnalité ?",
+            "hints": [
+              "Se placer sur la branche principale.",
+              "Récupérer les derniers changements."
+            ],
+            "solution": "git switch main puis git pull, avant git switch -c.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "switch main",
+                "pull"
+              ],
+              "success": "Correct : se synchroniser puis créer la branche."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi une branche par tâche ?",
+              "options": [
+                "Limiter les conflits et isoler la revue",
+                "Accélérer le disque",
+                "Supprimer les commits",
+                "Éviter les tests"
+              ],
+              "answer": 0,
+              "explanation": "La portée reste claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-01-q1"
+            },
+            {
+              "question": "Que risque une branche trop ancienne ?",
+              "options": [
+                "Des conflits importants",
+                "De disparaître",
+                "De changer de nom",
+                "D'être ignorée par Git"
+              ],
+              "answer": 0,
+              "explanation": "Les divergences s'accumulent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-01-q2"
+            }
+          ],
+          "summary": [
+            "Branche courte par tâche.",
+            "Synchroniser régulièrement.",
+            "Commits compréhensibles."
+          ],
+          "nextStep": "Chapitre suivant : « Travailler dans un projet professionnel »."
+        },
+        {
+          "id": "git3-02",
+          "title": "Travailler dans un projet professionnel",
+          "duration": 20,
+          "objectives": [
+            "Écrire des commits atomiques",
+            "Passer par la revue",
+            "Relier commits, issue et PR"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un commit atomique réalise un changement cohérent et laisse le projet fonctionnel. La revue de code et l'intégration continue complètent la qualité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un commit = un changement logique.",
+                "Référencer l'issue dans la PR.",
+                "Ne pas mélanger formatage massif et correction.",
+                "La CI doit passer avant fusion."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un historique lisible permet de retrouver l'origine d'un bug : c'est un outil de diagnostic, pas une formalité."
+            }
+          ],
+          "exercise": {
+            "title": "Découper un travail",
+            "instructions": "Vous corrigez un bug et renommez 40 fichiers. Un seul commit ?",
+            "hints": [
+              "Deux intentions différentes.",
+              "La revue devient illisible."
+            ],
+            "solution": "Deux commits : la correction, puis le renommage (ou l'inverse), chacun cohérent.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "deux commits",
+                "2 commits"
+              ],
+              "success": "Correct : séparer les intentions."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un commit atomique ?",
+              "options": [
+                "Un changement logique unique",
+                "Un commit de 1 000 lignes",
+                "Un commit sans message",
+                "Un tag"
+              ],
+              "answer": 0,
+              "explanation": "Il reste relisible et réversible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-02-q1"
+            },
+            {
+              "question": "Pourquoi relier la PR à l'issue ?",
+              "options": [
+                "Pour garder le contexte et fermer automatiquement",
+                "Pour accélérer Git",
+                "Pour changer la licence",
+                "Pour créer un tag"
+              ],
+              "answer": 0,
+              "explanation": "Le lien documente la demande.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-02-q2"
+            }
+          ],
+          "summary": [
+            "Commits atomiques.",
+            "Revue et CI avant fusion.",
+            "Relier PR et issue."
+          ],
+          "nextStep": "Chapitre suivant : « Créer un dépôt GitHub »."
+        },
+        {
+          "id": "git3-03",
+          "title": "Créer un dépôt GitHub",
+          "duration": 20,
+          "objectives": [
+            "Créer un dépôt",
+            "Choisir README, gitignore et licence",
+            "Relier un dépôt local"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Créer un dépôt distant se fait depuis l'interface GitHub ou l'outil en ligne de commande. Ajoutez tout de suite README, .gitignore et licence."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git init\ngit add .\ngit commit -m \"Initialisation\"\ngit remote add origin https://github.com/utilisateur/projet.git\ngit push -u origin main",
+              "title": "Relier un dépôt local"
+            },
+            {
+              "type": "warning",
+              "text": "Ne poussez jamais un fichier .env ou une clé : vérifiez git status et .gitignore avant le premier push."
+            }
+          ],
+          "exercise": {
+            "title": "Relier un dépôt",
+            "instructions": "Quelle commande associe un dépôt local à un dépôt GitHub nommé origin ?",
+            "hints": [
+              "remote add associe une URL."
+            ],
+            "solution": "git remote add origin <url>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "git remote add",
+                "origin"
+              ],
+              "success": "Correct : remote add origin."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il ajouter dès la création ?",
+              "options": [
+                "README, .gitignore et licence",
+                "Un mot de passe",
+                "Un fichier .env",
+                "Les dépendances"
+              ],
+              "answer": 0,
+              "explanation": "Ces fichiers structurent le projet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-03-q1"
+            },
+            {
+              "question": "Que fait git remote add ?",
+              "options": [
+                "Il associe un dépôt distant",
+                "Il crée une branche",
+                "Il fusionne",
+                "Il supprime un commit"
+              ],
+              "answer": 0,
+              "explanation": "Le nom devient une référence.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-03-q2"
+            }
+          ],
+          "summary": [
+            "Créer le dépôt puis le relier.",
+            "README, .gitignore, licence.",
+            "Vérifier avant le premier push."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les dépôts publics et privés »."
+        },
+        {
+          "id": "git3-04",
+          "title": "Comprendre les dépôts publics et privés",
+          "duration": 20,
+          "objectives": [
+            "Choisir la visibilité",
+            "Protéger les secrets",
+            "Comprendre forks et collaborateurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un dépôt public est visible et clonable par tous ; un dépôt privé limite l'accès aux invités. La visibilité ne remplace pas la gestion des secrets."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Public : portfolio, open source, documentation.",
+                "Privé : code client, secrets, travaux en cours.",
+                "Les forks d'un dépôt public restent publics.",
+                "Un secret poussé reste dans l'historique même après suppression."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Passer un dépôt de public à privé ne supprime ni les clones ni les forks déjà créés."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la visibilité",
+            "instructions": "Un dépôt contient des identifiants de test d'un client. Public ou privé ?",
+            "hints": [
+              "Les identifiants ne doivent pas être exposés."
+            ],
+            "solution": "Privé, et retirer les identifiants de l'historique si nécessaire.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "prive",
+                "privé"
+              ],
+              "success": "Correct : dépôt privé."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un fork d'un dépôt public est-il privé ?",
+              "options": [
+                "Non, il reste public",
+                "Oui",
+                "Seulement avec une licence",
+                "Uniquement s'il est petit"
+              ],
+              "answer": 0,
+              "explanation": "Le fork hérite de la visibilité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-04-q1"
+            },
+            {
+              "question": "Supprimer un fichier de secret suffit-il ?",
+              "options": [
+                "Non, il reste dans l'historique",
+                "Oui",
+                "Oui après un commit",
+                "Oui après un push"
+              ],
+              "answer": 0,
+              "explanation": "L'historique conserve les objets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-04-q2"
+            }
+          ],
+          "summary": [
+            "Public ou privé selon le contenu.",
+            "Un secret poussé reste dans l'historique.",
+            "Les forks héritent de la visibilité."
+          ],
+          "nextStep": "Chapitre suivant : « Rédiger un README »."
+        },
+        {
+          "id": "git3-05",
+          "title": "Rédiger un README",
+          "duration": 20,
+          "objectives": [
+            "Structurer un README",
+            "Documenter installation et usage",
+            "Donner envie sans mentir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le README est la porte d'entrée du dépôt : il explique le problème, l'installation, l'usage et les limites."
+            },
+            {
+              "type": "code",
+              "lang": "md",
+              "code": "# Mon projet\n\nObjectif en une phrase.\n\n## Prérequis\n- Node.js 20\n\n## Installation\nnpm ci\n\n## Lancement\nnpm start\n\n## Tests\nnpm test",
+              "title": "README minimal"
+            },
+            {
+              "type": "tip",
+              "text": "Un exemple de commande copiable vaut mieux qu'une longue description : le lecteur veut démarrer en moins d'une minute."
+            }
+          ],
+          "exercise": {
+            "title": "Structurer",
+            "instructions": "Quelles trois sections minimales pour un README ?",
+            "hints": [
+              "Objet, installation, usage."
+            ],
+            "solution": "Objet du projet, prérequis et installation, lancement et tests.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "objet",
+                "installation",
+                "lancement"
+              ],
+              "success": "Correct : objet, installation, lancement."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À qui s'adresse le README ?",
+              "options": [
+                "Aux nouveaux arrivants et utilisateurs",
+                "Au compilateur",
+                "Au serveur DNS",
+                "Au disque"
+              ],
+              "answer": 0,
+              "explanation": "C'est la documentation d'entrée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-05-q1"
+            },
+            {
+              "question": "Que vaut-il mieux qu'un long texte ?",
+              "options": [
+                "Un exemple de commande copiable",
+                "Une capture d'écran seule",
+                "Un badge",
+                "Un logo"
+              ],
+              "answer": 0,
+              "explanation": "Le lecteur peut essayer immédiatement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git3-05-q2"
+            }
+          ],
+          "summary": [
+            "README = problème, installation, usage.",
+            "Commandes copiables.",
+            "Mentionner les limites."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

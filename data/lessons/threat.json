@@ -1,0 +1,478 @@
+{
+  "courseId": "threat",
+  "modules": [
+    {
+      "id": "threat-module",
+      "title": "Renseignements et playbooks",
+      "chapters": [
+        {
+          "id": "thr-01",
+          "title": "Analyse de journaux système",
+          "duration": 20,
+          "objectives": [
+            "Lire",
+            "Filtrer",
+            "Corréler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les journaux système révèlent connexions, erreurs et changements."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Auth.",
+                "Services.",
+                "Changements."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que chercher ?",
+            "hints": [
+              "Les événements significatifs."
+            ],
+            "solution": "Les connexions échouées, erreurs et changements de configuration.",
+            "check": {
+              "type": "any",
+              "any": [
+                "evenements",
+                "événements",
+                "connexions"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que filtrer ?",
+              "options": [
+                "Par source et niveau",
+                "Par couleur",
+                "Par taille",
+                "Par logo"
+              ],
+              "answer": 0,
+              "explanation": "Le bruit diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-01-q1"
+            },
+            {
+              "question": "Que corréler ?",
+              "options": [
+                "Services et auth",
+                "Le CSS",
+                "Le DNS",
+                "Le thème"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte apparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-01-q2"
+            }
+          ],
+          "summary": [
+            "Lire.",
+            "Filtrer.",
+            "Corréler."
+          ],
+          "nextStep": "Chapitre suivant : « Threat intelligence »."
+        },
+        {
+          "id": "thr-02",
+          "title": "Threat intelligence",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Qualifier",
+            "Appliquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le renseignement sur les menaces aide à prioriser, s'il est pertinent et à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sources.",
+                "Fraîcheur.",
+                "Pertinence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier dans un flux ?",
+            "hints": [
+              "La pertinence et la fraîcheur."
+            ],
+            "solution": "La pertinence pour votre contexte et la fraîcheur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "pertinence",
+                "fraicheur",
+                "fraîcheur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Tout flux est-il utile ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-02-q1"
+            },
+            {
+              "question": "Que faire des indicateurs ?",
+              "options": [
+                "Les qualifier",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le bruit est filtré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-02-q2"
+            }
+          ],
+          "summary": [
+            "Sources.",
+            "Pertinence.",
+            "Qualification."
+          ],
+          "nextStep": "Chapitre suivant : « Indicateurs de compromission »."
+        },
+        {
+          "id": "thr-03",
+          "title": "Indicateurs de compromission",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître un IoC",
+            "Corréler",
+            "Agir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un IoC est un signe observable d'une compromission (hash, IP, domaine)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hash.",
+                "IP/domaine.",
+                "Comportement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier avant d'agir ?",
+            "hints": [
+              "Le contexte."
+            ],
+            "solution": "Le contexte pour éviter un faux positif.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contexte"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un IoC est-il une preuve ?",
+              "options": [
+                "Pas à lui seul",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il indique une piste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-03-q1"
+            },
+            {
+              "question": "Que faire ?",
+              "options": [
+                "Corréler et vérifier",
+                "Bloquer au hasard",
+                "Publier",
+                "Ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La chasse est méthodique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-03-q2"
+            }
+          ],
+          "summary": [
+            "IoC.",
+            "Contexte.",
+            "Vérification."
+          ],
+          "nextStep": "Chapitre suivant : « MITRE ATT&CK »."
+        },
+        {
+          "id": "thr-04",
+          "title": "MITRE ATT&CK",
+          "duration": 20,
+          "objectives": [
+            "Situer les tactiques",
+            "Cartographier",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ATT&CK décrit tactiques et techniques adverses pour guider la détection."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tactiques.",
+                "Techniques.",
+                "Couverture."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que décrit ATT&CK ?",
+            "hints": [
+              "Des techniques adverses."
+            ],
+            "solution": "Des tactiques et techniques d'attaque observées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "techniques"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Sert-il à attaquer ?",
+              "options": [
+                "Non, à défendre et détecter",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il guide la défense.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-04-q1"
+            },
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "La couverture",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les angles morts apparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-04-q2"
+            }
+          ],
+          "summary": [
+            "Tactiques.",
+            "Techniques.",
+            "Couverture."
+          ],
+          "nextStep": "Chapitre suivant : « Playbooks de sécurité »."
+        },
+        {
+          "id": "thr-05",
+          "title": "Playbooks de sécurité",
+          "duration": 20,
+          "objectives": [
+            "Décrire les étapes",
+            "Assigner",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un playbook décrit les étapes de réponse, les responsables et les critères."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étapes.",
+                "Responsables.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que tester ?",
+            "hints": [
+              "Le playbook."
+            ],
+            "solution": "Le playbook en exercice.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tester"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi un playbook ?",
+              "options": [
+                "Réagir vite et de façon homogène",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La réponse est préparée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-05-q1"
+            },
+            {
+              "question": "Qui assigner ?",
+              "options": [
+                "Un responsable par étape",
+                "Personne",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La responsabilité est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-05-q2"
+            }
+          ],
+          "summary": [
+            "Étapes.",
+            "Responsables.",
+            "Tests."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des incidents en entreprise »."
+        },
+        {
+          "id": "thr-06",
+          "title": "Gestion des incidents en entreprise",
+          "duration": 20,
+          "objectives": [
+            "Coordonner",
+            "Communiquer",
+            "Améliorer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La gestion d'incident coordonne technique, communication et direction."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cellule.",
+                "Communication.",
+                "Retour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que communiquer ?",
+            "hints": [
+              "Une information validée."
+            ],
+            "solution": "Une information validée et adaptée au public.",
+            "check": {
+              "type": "any",
+              "any": [
+                "validee",
+                "validée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui décide ?",
+              "options": [
+                "La cellule de crise",
+                "Au hasard",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La coordination est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-06-q1"
+            },
+            {
+              "question": "Que faire après ?",
+              "options": [
+                "Un retour d'expérience",
+                "Rien",
+                "Un logo",
+                "Un thème"
+              ],
+              "answer": 0,
+              "explanation": "Le processus s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "thr-06-q2"
+            }
+          ],
+          "summary": [
+            "Coordination.",
+            "Communication.",
+            "Retour."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

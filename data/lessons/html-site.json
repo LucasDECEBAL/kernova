@@ -1,0 +1,411 @@
+{
+  "courseId": "html-site",
+  "modules": [
+    {
+      "id": "html-site-module",
+      "title": "Site multipage et accessibilité",
+      "chapters": [
+        {
+          "id": "htm3-01",
+          "title": "Structure d'un site multipage",
+          "duration": 20,
+          "objectives": [
+            "Organiser les fichiers",
+            "Écrire des liens relatifs",
+            "Éviter les liens cassés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un site multipage partage une structure et des ressources communes. Les liens relatifs dépendent de l'emplacement du fichier courant."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "site/\n├── index.html\n├── contact.html\n├── css/styles.css\n└── images/logo.png\n\nDepuis index.html : <a href=\"contact.html\">\nDepuis css/ : url(\"../images/logo.png\")",
+              "title": "Arborescence"
+            },
+            {
+              "type": "warning",
+              "text": "Un chemin absolu local (/images/logo.png) casse sur un hébergement dans un sous-dossier : préférez le relatif."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire un lien",
+            "instructions": "Depuis index.html, lien vers contact.html ?",
+            "hints": [
+              "Même dossier."
+            ],
+            "solution": "<a href=\"contact.html\">Contact</a>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "href=\"contact.html\""
+              ],
+              "success": "Correct : lien relatif."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ../ ?",
+              "options": [
+                "Il remonte d'un dossier",
+                "Il descend",
+                "Il supprime",
+                "Il crée un lien"
+              ],
+              "answer": 0,
+              "explanation": "C'est le dossier parent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter les chemins absolus locaux ?",
+              "options": [
+                "Ils cassent en sous-dossier",
+                "Ils sont plus lents",
+                "Ils sont interdits",
+                "Ils modifient le HTML"
+              ],
+              "answer": 0,
+              "explanation": "Le déploiement peut changer la racine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-01-q2"
+            }
+          ],
+          "summary": [
+            "Arborescence claire.",
+            "Liens relatifs.",
+            "Éviter les chemins absolus locaux."
+          ],
+          "nextStep": "Chapitre suivant : « Sémantique HTML avancée »."
+        },
+        {
+          "id": "htm3-02",
+          "title": "Sémantique HTML avancée",
+          "duration": 20,
+          "objectives": [
+            "Choisir section et article",
+            "Utiliser figure et figcaption",
+            "Structurer un sommaire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "section regroupe un thème, article un contenu autonome. figure associe un média à sa légende, et une hiérarchie de titres structure le document."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<section aria-labelledby=\"titre-notes\">\n  <h2 id=\"titre-notes\">Notes</h2>\n  <article>...</article>\n</section>\n<figure>\n  <img src=\"graphique.png\" alt=\"Ventes par mois\">\n  <figcaption>Ventes 2026</figcaption>\n</figure>",
+              "title": "Structure avancée"
+            },
+            {
+              "type": "tip",
+              "text": "Un titre h3 ne doit pas sauter un niveau : la hiérarchie h1 → h2 → h3 reflète la structure."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'élément",
+            "instructions": "Un graphique avec sa légende : quel groupe d'éléments ?",
+            "hints": [
+              "Un média et sa légende."
+            ],
+            "solution": "figure et figcaption.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "figure",
+                "figcaption"
+              ],
+              "success": "Correct : figure et figcaption."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle différence entre section et article ?",
+              "options": [
+                "article est autonome",
+                "section est plus petit",
+                "article ne peut pas avoir de titre",
+                "aucune"
+              ],
+              "answer": 0,
+              "explanation": "Un article peut être distribué seul.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-02-q1"
+            },
+            {
+              "question": "Peut-on sauter de h1 à h4 ?",
+              "options": [
+                "Non, la hiérarchie doit rester cohérente",
+                "Oui",
+                "Seulement en HTML5",
+                "Seulement avec CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les niveaux indiquent la structure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-02-q2"
+            }
+          ],
+          "summary": [
+            "article autonome, section thématique.",
+            "figure + figcaption.",
+            "Hiérarchie de titres continue."
+          ],
+          "nextStep": "Chapitre suivant : « Formulaires accessibles »."
+        },
+        {
+          "id": "htm3-03",
+          "title": "Formulaires accessibles",
+          "duration": 20,
+          "objectives": [
+            "Associer chaque champ",
+            "Décrire les erreurs",
+            "Grouper les choix"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un formulaire accessible a des labels visibles, des messages d'erreur liés au champ et des groupes pour les choix apparentés (fieldset/legend)."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<fieldset>\n  <legend>Notification</legend>\n  <label><input type=\"radio\" name=\"notif\" value=\"oui\"> Oui</label>\n  <label><input type=\"radio\" name=\"notif\" value=\"non\"> Non</label>\n</fieldset>",
+              "title": "Groupe de choix"
+            },
+            {
+              "type": "warning",
+              "text": "Un placeholder ne remplace pas un label : il disparaît à la saisie et n'est pas toujours lu."
+            }
+          ],
+          "exercise": {
+            "title": "Grouper des choix",
+            "instructions": "Quels éléments pour un groupe de boutons radio ?",
+            "hints": [
+              "Un groupe avec un titre."
+            ],
+            "solution": "fieldset et legend.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "fieldset",
+                "legend"
+              ],
+              "success": "Correct : fieldset et legend."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi un label visible ?",
+              "options": [
+                "Il reste lisible pendant la saisie",
+                "Il accélère le réseau",
+                "Il chiffre",
+                "Il réduit la page"
+              ],
+              "answer": 0,
+              "explanation": "Le placeholder disparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-03-q1"
+            },
+            {
+              "question": "À quoi sert fieldset ?",
+              "options": [
+                "À grouper des champs liés",
+                "À créer un tableau",
+                "À envoyer",
+                "À styler un bouton"
+              ],
+              "answer": 0,
+              "explanation": "Le groupe est annoncé comme un tout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-03-q2"
+            }
+          ],
+          "summary": [
+            "Label visible et associé.",
+            "Erreurs liées au champ.",
+            "fieldset/legend pour grouper."
+          ],
+          "nextStep": "Chapitre suivant : « Validation native des formulaires »."
+        },
+        {
+          "id": "htm3-04",
+          "title": "Validation native des formulaires",
+          "duration": 20,
+          "objectives": [
+            "Utiliser required",
+            "Limiter avec min, max, pattern",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le navigateur peut valider sans JavaScript : required, minlength, min/max, pattern et type. La validation native améliore l'expérience mais ne remplace pas le serveur."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<input type=\"number\" name=\"age\" min=\"13\" max=\"120\" required>\n<input type=\"text\" name=\"code\" pattern=\"[A-Z]{3}[0-9]{2}\" required>",
+              "title": "Contraintes natives"
+            },
+            {
+              "type": "warning",
+              "text": "La validation côté client se contourne : le serveur doit revalider chaque donnée."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter une contrainte",
+            "instructions": "Comment rendre un champ obligatoire ?",
+            "hints": [
+              "Un attribut booléen."
+            ],
+            "solution": "required",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "required"
+              ],
+              "success": "Correct : required."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait pattern ?",
+              "options": [
+                "Il impose un format par expression régulière",
+                "Il chiffre",
+                "Il envoie",
+                "Il crée un label"
+              ],
+              "answer": 0,
+              "explanation": "Le format est vérifié avant envoi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-04-q1"
+            },
+            {
+              "question": "La validation native suffit-elle ?",
+              "options": [
+                "Non, le serveur doit revalider",
+                "Oui",
+                "Seulement en HTTPS",
+                "Seulement pour les nombres"
+              ],
+              "answer": 0,
+              "explanation": "Le client est contournable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-04-q2"
+            }
+          ],
+          "summary": [
+            "required, min/max, pattern.",
+            "Confort côté client.",
+            "Revalidation serveur."
+          ],
+          "nextStep": "Chapitre suivant : « Accessibilité des éléments HTML »."
+        },
+        {
+          "id": "htm3-05",
+          "title": "Accessibilité des éléments HTML",
+          "duration": 20,
+          "objectives": [
+            "Utiliser les éléments natifs",
+            "Ajouter un nom accessible",
+            "Éviter ARIA inutile"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le meilleur accessibilité vient des éléments natifs : button, a, label, table. ARIA complète quand le HTML ne suffit pas, mais ne corrige pas un mauvais élément."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un bouton cliquable est un button, pas un div.",
+                "Un lien navigue, un bouton agit.",
+                "Chaque contrôle a un nom accessible.",
+                "aria-label seulement si aucun texte visible ne convient."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "ARIA mal utilisé est pire que pas d'ARIA : un rôle sans comportement associé trompe les technologies d'assistance."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'élément",
+            "instructions": "Un contrôle qui déclenche une action au clic : quoi ?",
+            "hints": [
+              "Pas un lien si ça n'ouvre pas une URL."
+            ],
+            "solution": "Un button.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "button"
+              ],
+              "success": "Correct : button."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel élément pour naviguer vers une page ?",
+              "options": [
+                "a avec href",
+                "button",
+                "div",
+                "span"
+              ],
+              "answer": 0,
+              "explanation": "Le lien porte une destination.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-05-q1"
+            },
+            {
+              "question": "Quand utiliser ARIA ?",
+              "options": [
+                "Quand le HTML natif ne suffit pas",
+                "Toujours",
+                "Jamais",
+                "Pour styler"
+              ],
+              "answer": 0,
+              "explanation": "ARIA est un complément.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm3-05-q2"
+            }
+          ],
+          "summary": [
+            "Éléments natifs d'abord.",
+            "Un nom accessible par contrôle.",
+            "ARIA en dernier recours."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,397 @@
+{
+  "courseId": "linux-stockage",
+  "modules": [
+    {
+      "id": "linux-stockage-module",
+      "title": "Stockage et montage",
+      "chapters": [
+        {
+          "id": "lin4-01",
+          "title": "Liens symboliques",
+          "duration": 20,
+          "objectives": [
+            "Créer un lien",
+            "Différencier dur et symbolique",
+            "Éviter les liens cassés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un lien symbolique pointe un chemin ; un lien dur partage l'inode."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ln -s cible lien.",
+                "Un lien symbolique casse si la cible disparaît.",
+                "Un lien dur ne traverse pas les systèmes de fichiers."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quelle commande crée un lien symbolique ?",
+            "hints": [
+              "Une option -s."
+            ],
+            "solution": "ln -s /chemin/cible lien",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ln -s"
+              ],
+              "success": "Correct : ln -s."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un lien dur ?",
+              "options": [
+                "Il partage l'inode",
+                "Il copie le fichier",
+                "Il pointe un chemin",
+                "Il compresse"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont partagées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-01-q1"
+            },
+            {
+              "question": "Quand un lien symbolique casse-t-il ?",
+              "options": [
+                "Si la cible disparaît",
+                "Jamais",
+                "Au redémarrage",
+                "S'il est lu"
+              ],
+              "answer": 0,
+              "explanation": "Le chemin n'existe plus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-01-q2"
+            }
+          ],
+          "summary": [
+            "ln -s pour symbolique.",
+            "Lien dur = inode.",
+            "Cible stable."
+          ],
+          "nextStep": "Chapitre suivant : « Disques et partitions »."
+        },
+        {
+          "id": "lin4-02",
+          "title": "Disques et partitions",
+          "duration": 20,
+          "objectives": [
+            "Lister les disques",
+            "Créer une partition",
+            "Comprendre les types"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "lsblk et fdisk listent les disques ; une partition découpe un disque."
+            },
+            {
+              "type": "list",
+              "items": [
+                "lsblk en arbre.",
+                "fdisk/parted pour modifier.",
+                "Attention à la table de partitions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lister",
+            "instructions": "Quelle commande montre les disques en arbre ?",
+            "hints": [
+              "Une commande de bloc."
+            ],
+            "solution": "lsblk",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "lsblk"
+              ],
+              "success": "Correct : lsblk."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une partition ?",
+              "options": [
+                "Elle découpe un disque",
+                "Elle monte",
+                "Elle formate",
+                "Elle chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le disque est divisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-02-q1"
+            },
+            {
+              "question": "Que fait lsblk ?",
+              "options": [
+                "Il liste les périphériques bloc",
+                "Il monte",
+                "Il formate",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "La hiérarchie est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-02-q2"
+            }
+          ],
+          "summary": [
+            "lsblk.",
+            "Partition = découpage.",
+            "Prudence avec fdisk."
+          ],
+          "nextStep": "Chapitre suivant : « Systèmes de fichiers »."
+        },
+        {
+          "id": "lin4-03",
+          "title": "Systèmes de fichiers",
+          "duration": 20,
+          "objectives": [
+            "Choisir un FS",
+            "Formater",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ext4 et xfs sont courants ; le formatage crée le système de fichiers, il efface les données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "mkfs.ext4 /dev/sdX.",
+                "Vérifier avant de formater.",
+                "fsck pour vérifier."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Formater",
+            "instructions": "Que fait mkfs ?",
+            "hints": [
+              "Il crée un système de fichiers.",
+              "Il efface les données."
+            ],
+            "solution": "Il formate la partition et efface son contenu.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "format"
+              ],
+              "success": "Correct : formatage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le formatage conserve-t-il les données ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "En lecture seule"
+              ],
+              "answer": 0,
+              "explanation": "Tout est écrasé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-03-q1"
+            },
+            {
+              "question": "Que fait fsck ?",
+              "options": [
+                "Il vérifie le système de fichiers",
+                "Il monte",
+                "Il formatte",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont détectées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-03-q2"
+            }
+          ],
+          "summary": [
+            "ext4/xfs.",
+            "mkfs efface.",
+            "fsck vérifie."
+          ],
+          "nextStep": "Chapitre suivant : « Montage de volumes »."
+        },
+        {
+          "id": "lin4-04",
+          "title": "Montage de volumes",
+          "duration": 20,
+          "objectives": [
+            "Monter un volume",
+            "Déclarer dans fstab",
+            "Vérifier avant redémarrage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "mount attache un système de fichiers ; /etc/fstab déclare les montages permanents."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Utiliser l'UUID.",
+                "Option nofail.",
+                "Tester avec mount -a."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Où déclarer un montage permanent ?",
+            "hints": [
+              "Un fichier de configuration."
+            ],
+            "solution": "/etc/fstab",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "fstab"
+              ],
+              "success": "Correct : fstab."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi l'UUID ?",
+              "options": [
+                "Il reste stable",
+                "Il est plus court",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le nom du périphérique peut changer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-04-q1"
+            },
+            {
+              "question": "Que fait mount -a ?",
+              "options": [
+                "Il monte tout fstab",
+                "Il démonte",
+                "Il formate",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs apparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-04-q2"
+            }
+          ],
+          "summary": [
+            "mount.",
+            "fstab par UUID.",
+            "Tester mount -a."
+          ],
+          "nextStep": "Chapitre suivant : « Mémoire et processeur »."
+        },
+        {
+          "id": "lin4-05",
+          "title": "Mémoire et processeur",
+          "duration": 20,
+          "objectives": [
+            "Lire la mémoire",
+            "Voir le CPU",
+            "Comprendre le swap"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "free et /proc/meminfo détaillent la mémoire ; nproc et lscpu le processeur ; le swap étend la RAM sur disque."
+            },
+            {
+              "type": "list",
+              "items": [
+                "free -h.",
+                "swap lent.",
+                "Un swap saturé ralentit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Quelle commande montre la mémoire en unités lisibles ?",
+            "hints": [
+              "Une option humaine."
+            ],
+            "solution": "free -h",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "free -h"
+              ],
+              "success": "Correct : free -h."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le swap est-il rapide ?",
+              "options": [
+                "Non, il utilise le disque",
+                "Oui",
+                "Plus que la RAM",
+                "Autant"
+              ],
+              "answer": 0,
+              "explanation": "Le disque est plus lent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-05-q1"
+            },
+            {
+              "question": "Que fait lscpu ?",
+              "options": [
+                "Il décrit le CPU",
+                "Il monte",
+                "Il formate",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "Les cœurs et le modèle sont listés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin4-05-q2"
+            }
+          ],
+          "summary": [
+            "free -h.",
+            "Swap lent.",
+            "lscpu."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

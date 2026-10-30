@@ -1,0 +1,476 @@
+{
+  "courseId": "incident",
+  "modules": [
+    {
+      "id": "incident-module",
+      "title": "Réponse aux incidents",
+      "chapters": [
+        {
+          "id": "inc-01",
+          "title": "Analyse initiale d'une alerte",
+          "duration": 20,
+          "objectives": [
+            "Qualifier",
+            "Collecter",
+            "Décider"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'analyse initiale qualifie la gravité et décide de la suite."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contexte.",
+                "Portée.",
+                "Décision."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'abord ?",
+            "hints": [
+              "Qualifier l'alerte."
+            ],
+            "solution": "Qualifier la gravité et la portée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "qualifier"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que décider ?",
+              "options": [
+                "Escalader ou clore",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La suite est choisie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-01-q1"
+            },
+            {
+              "question": "Que collecter ?",
+              "options": [
+                "Les preuves",
+                "Le thème",
+                "Le logo",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'analyse est étayée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-01-q2"
+            }
+          ],
+          "summary": [
+            "Qualifier.",
+            "Preuves.",
+            "Décider."
+          ],
+          "nextStep": "Chapitre suivant : « Triage des incidents »."
+        },
+        {
+          "id": "inc-02",
+          "title": "Triage des incidents",
+          "duration": 20,
+          "objectives": [
+            "Prioriser",
+            "Classer",
+            "Assigner"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le triage classe les incidents par impact et urgence."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Impact.",
+                "Urgence.",
+                "Responsable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que croiser au triage ?",
+            "hints": [
+              "Impact et urgence."
+            ],
+            "solution": "L'impact et l'urgence.",
+            "check": {
+              "type": "any",
+              "any": [
+                "impact",
+                "urgence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des incidents critiques ?",
+              "options": [
+                "Escalader vite",
+                "Ignorer",
+                "Publier",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La priorité est haute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-02-q1"
+            },
+            {
+              "question": "Qui traite ?",
+              "options": [
+                "Un responsable assigné",
+                "Personne",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La responsabilité est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-02-q2"
+            }
+          ],
+          "summary": [
+            "Impact.",
+            "Urgence.",
+            "Assignation."
+          ],
+          "nextStep": "Chapitre suivant : « Investigation numérique »."
+        },
+        {
+          "id": "inc-03",
+          "title": "Investigation numérique",
+          "duration": 20,
+          "objectives": [
+            "Préserver",
+            "Analyser",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'investigation préserve les preuves et reconstruit les faits."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Preuves.",
+                "Ordre.",
+                "Chaîne de possession."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que préserver ?",
+            "hints": [
+              "Les preuves volatiles."
+            ],
+            "solution": "Les preuves, en commençant par les plus volatiles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "preuve"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "La chaîne de possession",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les preuves sont recevables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-03-q1"
+            },
+            {
+              "question": "Que faire de la mémoire ?",
+              "options": [
+                "La préserver",
+                "L'effacer",
+                "La publier",
+                "La vendre"
+              ],
+              "answer": 0,
+              "explanation": "Elle est volatile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-03-q2"
+            }
+          ],
+          "summary": [
+            "Preuves.",
+            "Volatilité.",
+            "Chaîne."
+          ],
+          "nextStep": "Chapitre suivant : « Préservation des preuves »."
+        },
+        {
+          "id": "inc-04",
+          "title": "Préservation des preuves",
+          "duration": 20,
+          "objectives": [
+            "Copier",
+            "Hasher",
+            "Stocker"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les preuves sont copiées, hachées et stockées en sécurité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Copie.",
+                "Empreinte.",
+                "Stockage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi hacher une preuve ?",
+            "hints": [
+              "Prouver son intégrité."
+            ],
+            "solution": "Prouver qu'elle n'a pas été modifiée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "integrite",
+                "intégrité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire avant analyse ?",
+              "options": [
+                "Copier",
+                "Modifier",
+                "Supprimer",
+                "Publier"
+              ],
+              "answer": 0,
+              "explanation": "L'original reste intact.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-04-q1"
+            },
+            {
+              "question": "Où stocker ?",
+              "options": [
+                "En sécurité",
+                "Sur le bureau",
+                "Dans le CSS",
+                "Dans un log public"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est limité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-04-q2"
+            }
+          ],
+          "summary": [
+            "Copie.",
+            "Empreinte.",
+            "Stockage."
+          ],
+          "nextStep": "Chapitre suivant : « Réponse à un incident »."
+        },
+        {
+          "id": "inc-05",
+          "title": "Réponse à un incident",
+          "duration": 20,
+          "objectives": [
+            "Contenir",
+            "Éradiquer",
+            "Rétablir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La réponse contient, éradique, rétablit puis tire les leçons."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Containment.",
+                "Éradication.",
+                "Retour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire avant de rétablir ?",
+            "hints": [
+              "Éradiquer la cause."
+            ],
+            "solution": "Éradiquer la cause avant le retour.",
+            "check": {
+              "type": "any",
+              "any": [
+                "eradiqu",
+                "éradiqu"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le containment ?",
+              "options": [
+                "Il limite la propagation",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'incident est circonscrit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-05-q1"
+            },
+            {
+              "question": "Que faire après ?",
+              "options": [
+                "Un postmortem",
+                "Rien",
+                "Un logo",
+                "Un thème"
+              ],
+              "answer": 0,
+              "explanation": "Les leçons sont tirées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-05-q2"
+            }
+          ],
+          "summary": [
+            "Contenir.",
+            "Éradiquer.",
+            "Rétablir."
+          ],
+          "nextStep": "Chapitre suivant : « Containment et remédiation »."
+        },
+        {
+          "id": "inc-06",
+          "title": "Containment et remédiation",
+          "duration": 20,
+          "objectives": [
+            "Isoler",
+            "Corriger",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le containment isole sans détruire les preuves ; la remédiation corrige."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Isolation.",
+                "Correctif.",
+                "Surveillance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que préserver en isolant ?",
+            "hints": [
+              "Les preuves."
+            ],
+            "solution": "Les preuves et les journaux.",
+            "check": {
+              "type": "any",
+              "any": [
+                "preuve"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire de la machine compromise ?",
+              "options": [
+                "L'isoler",
+                "La publier",
+                "La vendre",
+                "L'ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La propagation est stoppée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-06-q1"
+            },
+            {
+              "question": "Que surveiller après ?",
+              "options": [
+                "Une récidive",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le retour est confirmé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "inc-06-q2"
+            }
+          ],
+          "summary": [
+            "Isoler.",
+            "Corriger.",
+            "Surveiller."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "courseId": "linux-securite",
+  "modules": [
+    {
+      "id": "linux-securite-module",
+      "title": "Démarrage et comptes",
+      "chapters": [
+        {
+          "id": "lin6-01",
+          "title": "Démarrage du système",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les étapes",
+            "Intervenir sur le chargeur",
+            "Réparer un démarrage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le démarrage enchaîne firmware, chargeur (GRUB), noyau et systemd."
+            },
+            {
+              "type": "list",
+              "items": [
+                "GRUB pour les options du noyau.",
+                "Mode de secours.",
+                "Les logs du noyau aident."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Réparer",
+            "instructions": "Quel composant charge le noyau ?",
+            "hints": [
+              "Le chargeur d'amorçage."
+            ],
+            "solution": "GRUB",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "grub"
+              ],
+              "success": "Correct : GRUB."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le noyau au démarrage ?",
+              "options": [
+                "Il initialise le matériel et lance init",
+                "Il monte le CSS",
+                "Il route",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le système prend la main.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-01-q1"
+            },
+            {
+              "question": "Où voir les messages du noyau ?",
+              "options": [
+                "dmesg",
+                "ls",
+                "df",
+                "cron"
+              ],
+              "answer": 0,
+              "explanation": "Le tampon du noyau est lisible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-01-q2"
+            }
+          ],
+          "summary": [
+            "GRUB.",
+            "Noyau puis systemd.",
+            "dmesg."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion avancée des services »."
+        },
+        {
+          "id": "lin6-02",
+          "title": "Gestion avancée des services",
+          "duration": 20,
+          "objectives": [
+            "Créer une unité",
+            "Comprendre les dépendances",
+            "Gérer les échecs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une unité systemd décrit un service : ExecStart, Restart, After."
+            },
+            {
+              "type": "list",
+              "items": [
+                "/etc/systemd/system/*.service.",
+                "daemon-reload après modification.",
+                "Restart=on-failure."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Redémarrer",
+            "instructions": "Quelle option relance après échec ?",
+            "hints": [
+              "Une directive de service."
+            ],
+            "solution": "Restart=on-failure",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "restart"
+              ],
+              "success": "Correct : Restart."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait After ?",
+              "options": [
+                "Il ordonne le démarrage",
+                "Il redémarre",
+                "Il tue",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Les dépendances sont ordonnées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-02-q1"
+            },
+            {
+              "question": "Où placer une unité ?",
+              "options": [
+                "/etc/systemd/system",
+                "/var/log",
+                "/home",
+                "/tmp"
+              ],
+              "answer": 0,
+              "explanation": "L'emplacement standard.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-02-q2"
+            }
+          ],
+          "summary": [
+            "Unités systemd.",
+            "Restart.",
+            "After."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des disques »."
+        },
+        {
+          "id": "lin6-03",
+          "title": "Gestion des disques",
+          "duration": 20,
+          "objectives": [
+            "Ajouter un disque",
+            "Étendre un volume",
+            "Surveiller l'espace"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un disque ajouté se partitionne, se formate et se monte ; LVM permet d'étendre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "lsblk, mkfs, mount.",
+                "lvextend puis resize2fs.",
+                "df -h pour l'espace."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Étendre",
+            "instructions": "Quelles deux commandes agrandissent un LV ext4 ?",
+            "hints": [
+              "Volume puis système de fichiers."
+            ],
+            "solution": "lvextend puis resize2fs",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "lvextend",
+                "resize2fs"
+              ],
+              "success": "Correct : lvextend + resize2fs."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait LVM ?",
+              "options": [
+                "Il gère des volumes logiques",
+                "Il route",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les volumes sont flexibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-03-q1"
+            },
+            {
+              "question": "Que fait df -h ?",
+              "options": [
+                "Il montre l'espace",
+                "Il monte",
+                "Il formate",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "L'occupation est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-03-q2"
+            }
+          ],
+          "summary": [
+            "Partitionner/formater/monter.",
+            "LVM.",
+            "df -h."
+          ],
+          "nextStep": "Chapitre suivant : « Quotas »."
+        },
+        {
+          "id": "lin6-04",
+          "title": "Quotas",
+          "duration": 20,
+          "objectives": [
+            "Activer les quotas",
+            "Limiter un utilisateur",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les quotas limitent l'espace ou le nombre d'inodes par utilisateur ou groupe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Options usrquota/grpquota.",
+                "quotacheck, quotaon.",
+                "edquota pour modifier."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Limiter",
+            "instructions": "Que limite un quota ?",
+            "hints": [
+              "L'espace ou les inodes."
+            ],
+            "solution": "L'espace disque ou le nombre de fichiers d'un utilisateur/groupe.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "espace",
+                "inode"
+              ],
+              "success": "Correct : espace/inodes."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait edquota ?",
+              "options": [
+                "Il modifie un quota",
+                "Il monte",
+                "Il tue",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les limites sont éditées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-04-q1"
+            },
+            {
+              "question": "Pourquoi des quotas ?",
+              "options": [
+                "Éviter la saturation",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Un compte ne remplit pas tout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-04-q2"
+            }
+          ],
+          "summary": [
+            "Quotas par utilisateur.",
+            "edquota.",
+            "Surveiller."
+          ],
+          "nextStep": "Chapitre suivant : « Utilisateurs à grande échelle »."
+        },
+        {
+          "id": "lin6-05",
+          "title": "Utilisateurs à grande échelle",
+          "duration": 20,
+          "objectives": [
+            "Automatiser les comptes",
+            "Gérer les groupes",
+            "Désactiver proprement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les comptes se créent par scripts ou annuaires ; la désactivation évite la suppression brutale."
+            },
+            {
+              "type": "list",
+              "items": [
+                "useradd/groupadd.",
+                "Scripts idempotents.",
+                "Verrouiller plutôt que supprimer."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Désactiver",
+            "instructions": "Que faire d'un compte partant ?",
+            "hints": [
+              "Le verrouiller et archiver ses données."
+            ],
+            "solution": "Verrouiller le compte (usermod -L) et archiver ses données avant suppression.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "verrouill",
+                "lock"
+              ],
+              "success": "Correct : verrouiller."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi verrouiller avant de supprimer ?",
+              "options": [
+                "Conserver les données et l'audit",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La trace reste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-05-q1"
+            },
+            {
+              "question": "Que fait useradd ?",
+              "options": [
+                "Il crée un compte",
+                "Il supprime",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le compte est ajouté.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin6-05-q2"
+            }
+          ],
+          "summary": [
+            "Comptes par script.",
+            "Verrouiller.",
+            "Archiver."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

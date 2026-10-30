@@ -1,0 +1,427 @@
+{
+  "courseId": "css-position",
+  "modules": [
+    {
+      "id": "css-position-module",
+      "title": "Positionnement et cascade",
+      "chapters": [
+        {
+          "id": "cssp-01",
+          "title": "Positionnement",
+          "duration": 20,
+          "objectives": [
+            "Utiliser position",
+            "Comprendre z-index",
+            "Éviter les positions absolues fragiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "position: static suit le flux ; relative décale sans quitter sa place ; absolute se place par rapport à un ancêtre positionné ; fixed reste à l'écran ; sticky alterne selon le défilement."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".barre {\n  position: sticky;\n  top: 0;\n  z-index: 10;\n}\n.overlay {\n  position: absolute;\n  inset: 0;\n}",
+              "title": "Sticky et overlay"
+            },
+            {
+              "type": "warning",
+              "text": "Un position: absolute sans ancêtre positionné se place par rapport à la page et surprend lors du redimensionnement."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir position",
+            "instructions": "Une barre doit rester en haut pendant le défilement. Quelle valeur ?",
+            "hints": [
+              "Elle colle en haut."
+            ],
+            "solution": "position: sticky; top: 0",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sticky"
+              ],
+              "success": "Correct : sticky."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Par rapport à quoi se place un absolute ?",
+              "options": [
+                "Un ancêtre positionné",
+                "Le texte voisin",
+                "Le disque",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Sans ancêtre, la page sert de référence.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-01-q1"
+            },
+            {
+              "question": "Que fait z-index ?",
+              "options": [
+                "Il ordonne les plans",
+                "Il change la couleur",
+                "Il espace",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "Plus la valeur est haute, plus l'élément passe devant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-01-q2"
+            }
+          ],
+          "summary": [
+            "static, relative, absolute, fixed, sticky.",
+            "absolute dépend d'un ancêtre.",
+            "z-index ordonne les plans."
+          ],
+          "nextStep": "Chapitre suivant : « Pseudo-classes »."
+        },
+        {
+          "id": "cssp-02",
+          "title": "Pseudo-classes",
+          "duration": 20,
+          "objectives": [
+            "Styler un état",
+            "Cibler par position",
+            "Gérer le focus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une pseudo-classe cible un état ou une position : :hover, :focus-visible, :nth-child, :not, :first-child."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": "a:hover { text-decoration-thickness: 2px; }\ninput:focus-visible { outline: 3px solid #1e4fd0; }\nli:nth-child(2n) { background: #f6f7f6; }",
+              "title": "États et positions"
+            },
+            {
+              "type": "tip",
+              "text": "Préférez :focus-visible à :focus pour ne pas afficher le contour lors d'un clic souris, tout en gardant le clavier visible."
+            }
+          ],
+          "exercise": {
+            "title": "Cibler un état",
+            "instructions": "Quelle pseudo-classe pour le survol ?",
+            "hints": [
+              "Le pointeur passe dessus."
+            ],
+            "solution": ":hover",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                ":hover",
+                "hover"
+              ],
+              "success": "Correct : :hover."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que cible :nth-child(2n) ?",
+              "options": [
+                "Un enfant sur deux",
+                "Le deuxième uniquement",
+                "Le premier",
+                "Tous"
+              ],
+              "answer": 0,
+              "explanation": "2n sélectionne les pairs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-02-q1"
+            },
+            {
+              "question": "Pourquoi :focus-visible ?",
+              "options": [
+                "Pour garder un focus clavier visible",
+                "Pour cacher le focus",
+                "Pour animer",
+                "Pour changer la police"
+              ],
+              "answer": 0,
+              "explanation": "Il évite le contour au clic souris.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-02-q2"
+            }
+          ],
+          "summary": [
+            "Les pseudo-classes ciblent un état.",
+            ":nth-child pour les positions.",
+            ":focus-visible pour le clavier."
+          ],
+          "nextStep": "Chapitre suivant : « Pseudo-éléments »."
+        },
+        {
+          "id": "cssp-03",
+          "title": "Pseudo-éléments",
+          "duration": 20,
+          "objectives": [
+            "Utiliser ::before et ::after",
+            "Comprendre content",
+            "Éviter le contenu porteur de sens"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "::before et ::after créent des boîtes générées, stylables, souvent utilisées pour une décoration ou une icône. content fournit leur contenu."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".externe::after {\n  content: \" ↗\";\n  font-size: 0.8em;\n}",
+              "title": "Indicateur décoratif"
+            },
+            {
+              "type": "warning",
+              "text": "Un contenu ajouté par CSS peut ne pas être lu de façon fiable par les lecteurs d'écran : ne l'utilisez pas pour une information essentielle."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir le pseudo-élément",
+            "instructions": "Quel pseudo-élément ajoute une décoration après un élément ?",
+            "hints": [
+              "Après le contenu."
+            ],
+            "solution": "::after",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "::after",
+                "after"
+              ],
+              "success": "Correct : ::after."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait content ?",
+              "options": [
+                "Il fournit le contenu du pseudo-élément",
+                "Il centre",
+                "Il anime",
+                "Il crée un lien"
+              ],
+              "answer": 0,
+              "explanation": "Sans content, ::before/::after n'affichent rien.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-03-q1"
+            },
+            {
+              "question": "Peut-on y mettre une information vitale ?",
+              "options": [
+                "Non, l'accessibilité n'est pas garantie",
+                "Oui",
+                "Seulement en anglais",
+                "Seulement avec ARIA"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu généré reste décoratif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-03-q2"
+            }
+          ],
+          "summary": [
+            "::before/::after créent des boîtes.",
+            "content les remplit.",
+            "Décoration, pas information."
+          ],
+          "nextStep": "Chapitre suivant : « Héritage et spécificité »."
+        },
+        {
+          "id": "cssp-04",
+          "title": "Héritage et spécificité",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la cascade",
+            "Calculer une spécificité",
+            "Éviter !important"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La cascade départage les règles : origine, importance, spécificité, ordre. La spécificité compte les identifiants, classes et éléments."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Sélecteur",
+                "Spécificité"
+              ],
+              "rows": [
+                [
+                  "a",
+                  "0-0-1"
+                ],
+                [
+                  ".lien",
+                  "0-1-0"
+                ],
+                [
+                  "#principal",
+                  "1-0-0"
+                ],
+                [
+                  ".nav a",
+                  "0-1-1"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "!important gagne ponctuellement mais casse la maintenabilité : corrigez la spécificité ou la structure à la place."
+            }
+          ],
+          "exercise": {
+            "title": "Comparer",
+            "instructions": "Quelle règle gagne entre .nav a et #menu a ?",
+            "hints": [
+              "L'identifiant pèse plus lourd."
+            ],
+            "solution": "#menu a, grâce à l'identifiant.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "#menu"
+              ],
+              "success": "Correct : #menu a."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que compare la spécificité ?",
+              "options": [
+                "Le poids des sélecteurs",
+                "La taille du fichier",
+                "Le nombre de propriétés",
+                "La vitesse"
+              ],
+              "answer": 0,
+              "explanation": "Elle départage les règles concurrentes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-04-q1"
+            },
+            {
+              "question": "Pourquoi éviter !important ?",
+              "options": [
+                "Il rend les corrections difficiles",
+                "Il ralentit le réseau",
+                "Il supprime le CSS",
+                "Il change la police"
+              ],
+              "answer": 0,
+              "explanation": "Il écrase la cascade.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-04-q2"
+            }
+          ],
+          "summary": [
+            "Cascade : origine, importance, spécificité, ordre.",
+            "IDs > classes > éléments.",
+            "Éviter !important."
+          ],
+          "nextStep": "Chapitre suivant : « Variables CSS »."
+        },
+        {
+          "id": "cssp-05",
+          "title": "Variables CSS",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une variable",
+            "Utiliser var()",
+            "Changer un thème"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une variable CSS se déclare avec --nom et s'utilise avec var(--nom). Elle se transmet aux descendants et peut changer selon un sélecteur."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ":root {\n  --encre: #17202b;\n  --papier: #edf0ee;\n}\nbody { color: var(--encre); background: var(--papier); }\n[data-theme=\"dark\"] { --papier: #0e141c; --encre: #e4e9ef; }",
+              "title": "Variables et thème"
+            },
+            {
+              "type": "tip",
+              "text": "Les variables de thème se redéfinissent sur un conteneur : tout son sous-arbre change sans répéter les couleurs."
+            }
+          ],
+          "exercise": {
+            "title": "Utiliser une variable",
+            "instructions": "Comment lire la variable --encre ?",
+            "hints": [
+              "Une fonction dédiée."
+            ],
+            "solution": "var(--encre)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "var(--encre)"
+              ],
+              "success": "Correct : var(--encre)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où déclarer les variables globales ?",
+              "options": [
+                "Sur :root",
+                "Sur chaque lien",
+                "Dans le HTML",
+                "Dans le titre"
+              ],
+              "answer": 0,
+              "explanation": ":root représente le document.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-05-q1"
+            },
+            {
+              "question": "Que permet une variable ?",
+              "options": [
+                "Réutiliser et thématiser une valeur",
+                "Accélérer le réseau",
+                "Créer un fichier",
+                "Supprimer le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est centralisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssp-05-q2"
+            }
+          ],
+          "summary": [
+            "--nom et var().",
+            "Héritage vers les descendants.",
+            "Thème par redéfinition."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

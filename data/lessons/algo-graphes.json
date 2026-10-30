@@ -1,0 +1,471 @@
+{
+  "courseId": "algo-graphes",
+  "modules": [
+    {
+      "id": "algo-graphes-module",
+      "title": "Arbres, graphes et complexité",
+      "chapters": [
+        {
+          "id": "alg7-01",
+          "title": "Arbres",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître un arbre",
+            "Nommer racine, feuilles, hauteur",
+            "Parcourir un arbre binaire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un arbre est un graphe connexe sans cycle : chaque nœud sauf la racine a un parent, et chaque nœud peut avoir des enfants."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "        A\n      /   \\\n     B     C\n    / \\\n   D   E",
+              "title": "Arbre binaire"
+            },
+            {
+              "type": "p",
+              "text": "La hauteur est le nombre de niveaux ; un arbre binaire limite chaque nœud à deux enfants. Les parcours préfixe, infixe et suffixe changent l'ordre de visite."
+            },
+            {
+              "type": "tip",
+              "text": "Un arbre binaire de recherche range les plus petits à gauche et les plus grands à droite : la recherche suit un chemin unique."
+            }
+          ],
+          "exercise": {
+            "title": "Identifier les feuilles",
+            "instructions": "Dans l'arbre précédent, quels nœuds sont des feuilles ?",
+            "hints": [
+              "Une feuille n'a aucun enfant."
+            ],
+            "solution": "D, E et C.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "d",
+                "e",
+                "c"
+              ],
+              "success": "Correct : D, E et C."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'une feuille ?",
+              "options": [
+                "Un nœud sans enfant",
+                "La racine",
+                "Un cycle",
+                "Une arête"
+              ],
+              "answer": 0,
+              "explanation": "Elle termine une branche.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-01-q1"
+            },
+            {
+              "question": "Qu'est-ce qu'un arbre binaire ?",
+              "options": [
+                "Un arbre où chaque nœud a au plus deux enfants",
+                "Un arbre de deux nœuds",
+                "Un graphe pondéré",
+                "Une liste"
+              ],
+              "answer": 0,
+              "explanation": "Deux enfants maximum.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-01-q2"
+            }
+          ],
+          "summary": [
+            "Arbre : connexe sans cycle.",
+            "Racine, feuilles, hauteur.",
+            "Binaire : au plus deux enfants."
+          ],
+          "nextStep": "Chapitre suivant : « Graphes »."
+        },
+        {
+          "id": "alg7-02",
+          "title": "Graphes",
+          "duration": 20,
+          "objectives": [
+            "Décrire sommets et arêtes",
+            "Distinguer orienté et pondéré",
+            "Choisir une représentation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un graphe relie des sommets par des arêtes. Il peut être orienté (arcs) ou non, pondéré (poids) ou non."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Représentation",
+                "Mémoire",
+                "Usage"
+              ],
+              "rows": [
+                [
+                  "Matrice d'adjacence",
+                  "O(n²)",
+                  "graphes denses"
+                ],
+                [
+                  "Liste d'adjacence",
+                  "O(n + m)",
+                  "graphes creux"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Un réseau routier se modélise par un graphe pondéré : les sommets sont des lieux, les poids des distances."
+            },
+            {
+              "type": "warning",
+              "text": "Un graphe orienté se parcourt dans le sens des arcs : ignorer l'orientation fausse le résultat."
+            }
+          ],
+          "exercise": {
+            "title": "Modéliser",
+            "instructions": "Quels sont les sommets et les arêtes d'un réseau de métro ?",
+            "hints": [
+              "Les lieux et les liaisons."
+            ],
+            "solution": "Sommets : stations ; arêtes : liaisons entre stations (pondérées par le temps).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "station",
+                "liaison"
+              ],
+              "success": "Correct : stations et liaisons."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sont les sommets d'un graphe ?",
+              "options": [
+                "Les objets reliés",
+                "Les poids",
+                "Les cycles",
+                "Les feuilles"
+              ],
+              "answer": 0,
+              "explanation": "Les arêtes relient les sommets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-02-q1"
+            },
+            {
+              "question": "Quand une liste d'adjacence est-elle préférable ?",
+              "options": [
+                "Pour un graphe creux",
+                "Pour un graphe complet",
+                "Pour un tableau trié",
+                "Pour une pile"
+              ],
+              "answer": 0,
+              "explanation": "Elle économise la mémoire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-02-q2"
+            }
+          ],
+          "summary": [
+            "Sommets et arêtes.",
+            "Orienté, pondéré, ou non.",
+            "Liste d'adjacence pour les graphes creux."
+          ],
+          "nextStep": "Chapitre suivant : « Parcours en largeur et en profondeur »."
+        },
+        {
+          "id": "alg7-03",
+          "title": "Parcours en largeur et en profondeur",
+          "duration": 20,
+          "objectives": [
+            "Utiliser une file pour le BFS",
+            "Utiliser une pile pour le DFS",
+            "Choisir selon le besoin"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le parcours en largeur (BFS) explore les voisins de proche en proche avec une file ; le parcours en profondeur (DFS) descend le plus loin possible avec une pile ou la récursion."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "BFS(départ) : file ← [départ] ; visités ← {}\nTANT QUE file non vide FAIRE\n  s ← défiler(file)\n  POUR chaque voisin v de s FAIRE\n    SI v non visité ALORS visiter(v) ; enfiler(file, v)",
+              "title": "Parcours en largeur"
+            },
+            {
+              "type": "p",
+              "text": "BFS trouve le plus court chemin en nombre d'arêtes dans un graphe non pondéré ; DFS sert aux cycles, aux composantes et aux tris topologiques."
+            },
+            {
+              "type": "tip",
+              "text": "Marquez un sommet comme visité au moment de l'enfiler, pas au moment de le défiler, pour éviter les doublons."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir le parcours",
+            "instructions": "Quel parcours pour trouver le plus court chemin en nombre de sauts ?",
+            "hints": [
+              "Le parcours par niveaux."
+            ],
+            "solution": "Le parcours en largeur (BFS).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "largeur",
+                "bfs"
+              ],
+              "success": "Correct : BFS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle structure utilise le BFS ?",
+              "options": [
+                "Une file",
+                "Une pile",
+                "Un arbre",
+                "Une matrice"
+              ],
+              "answer": 0,
+              "explanation": "Il explore niveau par niveau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-03-q1"
+            },
+            {
+              "question": "Quel parcours descend le plus loin possible ?",
+              "options": [
+                "DFS",
+                "BFS",
+                "Tri fusion",
+                "Dichotomie"
+              ],
+              "answer": 0,
+              "explanation": "La profondeur d'abord.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-03-q2"
+            }
+          ],
+          "summary": [
+            "BFS : file, par niveaux.",
+            "DFS : pile ou récursion.",
+            "BFS pour le plus court en sauts."
+          ],
+          "nextStep": "Chapitre suivant : « Notation Big O »."
+        },
+        {
+          "id": "alg7-04",
+          "title": "Notation Big O",
+          "duration": 20,
+          "objectives": [
+            "Lire une notation Big O",
+            "Ignorer les constantes",
+            "Classer les croissances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Big O décrit la croissance d'un algorithme quand la taille d'entrée augmente, en ignorant les constantes et les termes dominés."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Complexité",
+                "Croissance",
+                "Exemple"
+              ],
+              "rows": [
+                [
+                  "O(1)",
+                  "constante",
+                  "accès par indice"
+                ],
+                [
+                  "O(log n)",
+                  "logarithmique",
+                  "dichotomie"
+                ],
+                [
+                  "O(n)",
+                  "linéaire",
+                  "parcours"
+                ],
+                [
+                  "O(n log n)",
+                  "quasi linéaire",
+                  "tri fusion"
+                ],
+                [
+                  "O(n²)",
+                  "quadratique",
+                  "tri sélection"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "O(2n) et O(n + 5) s'écrivent O(n) : les constantes comptent en pratique, pas dans la notation."
+            }
+          ],
+          "exercise": {
+            "title": "Simplifier",
+            "instructions": "Comment s'écrit O(3n² + 100n + 7) ?",
+            "hints": [
+              "Gardez le terme dominant."
+            ],
+            "solution": "O(n²).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "n²",
+                "n2"
+              ],
+              "success": "Correct : O(n²)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que néglige Big O ?",
+              "options": [
+                "Les constantes et termes dominés",
+                "La taille d'entrée",
+                "Les algorithmes",
+                "Les boucles"
+              ],
+              "answer": 0,
+              "explanation": "Seule la croissance compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-04-q1"
+            },
+            {
+              "question": "Quelle complexité pour un parcours simple ?",
+              "options": [
+                "O(n)",
+                "O(1)",
+                "O(n²)",
+                "O(log n)"
+              ],
+              "answer": 0,
+              "explanation": "Un élément par itération.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-04-q2"
+            }
+          ],
+          "summary": [
+            "Big O décrit la croissance.",
+            "On garde le terme dominant.",
+            "O(1) < O(log n) < O(n) < O(n log n) < O(n²)."
+          ],
+          "nextStep": "Chapitre suivant : « Complexité temporelle »."
+        },
+        {
+          "id": "alg7-05",
+          "title": "Complexité temporelle",
+          "duration": 20,
+          "objectives": [
+            "Distinguer meilleur, moyen et pire cas",
+            "Analyser une boucle",
+            "Relier complexité et choix"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La complexité temporelle compte les opérations en fonction de n. On distingue le meilleur cas, le cas moyen et le pire cas."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "POUR i DE 0 À n - 1 FAIRE          // n itérations\n  POUR j DE 0 À n - 1 FAIRE        // n fois chacune\n    opération                      // O(n²)",
+              "title": "Boucles imbriquées"
+            },
+            {
+              "type": "p",
+              "text": "Une boucle simple est O(n) ; deux boucles imbriquées sont O(n²) ; une division par deux à chaque étape donne O(log n)."
+            },
+            {
+              "type": "tip",
+              "text": "Le pire cas guide la robustesse ; le cas moyen guide les performances attendues."
+            }
+          ],
+          "exercise": {
+            "title": "Analyser une boucle",
+            "instructions": "Quelle est la complexité de deux boucles imbriquées parcourant n éléments chacune ?",
+            "hints": [
+              "Multipliez les itérations."
+            ],
+            "solution": "O(n²).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "n²",
+                "n2"
+              ],
+              "success": "Correct : O(n²)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesure la complexité temporelle ?",
+              "options": [
+                "Le nombre d'opérations selon n",
+                "La mémoire utilisée",
+                "La vitesse du processeur",
+                "La taille du code"
+              ],
+              "answer": 0,
+              "explanation": "Elle compte les opérations.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-05-q1"
+            },
+            {
+              "question": "Quel cas faut-il considérer pour la robustesse ?",
+              "options": [
+                "Le pire cas",
+                "Le meilleur",
+                "Le cas moyen uniquement",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "Il garantit une borne supérieure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg7-05-q2"
+            }
+          ],
+          "summary": [
+            "Compter les opérations selon n.",
+            "Meilleur, moyen, pire cas.",
+            "Boucles imbriquées : O(n²)."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,398 @@
+{
+  "courseId": "aws-applications",
+  "modules": [
+    {
+      "id": "aws-applications-module",
+      "title": "AWS applications",
+      "chapters": [
+        {
+          "id": "awa-01",
+          "title": "Lambda",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Déclencher",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Lambda exécute des fonctions à la demande, sans serveur à gérer."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événements.",
+                "Durée.",
+                "Coût."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que facture Lambda ?",
+            "hints": [
+              "Les exécutions."
+            ],
+            "solution": "Les exécutions et leur durée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "execution",
+                "exécution"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gère le fournisseur ?",
+              "options": [
+                "Les serveurs",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'infrastructure est masquée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-01-q1"
+            },
+            {
+              "question": "Quelle limite ?",
+              "options": [
+                "La durée",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les fonctions sont bornées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-01-q2"
+            }
+          ],
+          "summary": [
+            "Lambda.",
+            "Événements.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « CloudWatch »."
+        },
+        {
+          "id": "awa-02",
+          "title": "CloudWatch",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Alarmer",
+            "Visualiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "CloudWatch centralise métriques, logs et alarmes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Métriques.",
+                "Logs.",
+                "Alarmes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'une alarme ?",
+            "hints": [
+              "Déclencher une action."
+            ],
+            "solution": "Déclencher une action ou une notification.",
+            "check": {
+              "type": "any",
+              "any": [
+                "action"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et latence",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'expérience compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-02-q1"
+            },
+            {
+              "question": "Que faire des logs ?",
+              "options": [
+                "Les centraliser",
+                "Les publier",
+                "Les supprimer",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le diagnostic est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-02-q2"
+            }
+          ],
+          "summary": [
+            "Métriques.",
+            "Logs.",
+            "Alarmes."
+          ],
+          "nextStep": "Chapitre suivant : « CloudTrail »."
+        },
+        {
+          "id": "awa-03",
+          "title": "CloudTrail",
+          "duration": 20,
+          "objectives": [
+            "Tracer",
+            "Auditer",
+            "Conserver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "CloudTrail journalise les appels API du compte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événements.",
+                "Audit.",
+                "Rétention."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que trace CloudTrail ?",
+            "hints": [
+              "Les appels API."
+            ],
+            "solution": "Les appels API et leurs auteurs.",
+            "check": {
+              "type": "any",
+              "any": [
+                "api"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi conserver ?",
+              "options": [
+                "Pour l'audit",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les preuves restent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-03-q1"
+            },
+            {
+              "question": "Que détecter ?",
+              "options": [
+                "Les actions inhabituelles",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les abus sont vus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-03-q2"
+            }
+          ],
+          "summary": [
+            "CloudTrail.",
+            "API.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Route 53 »."
+        },
+        {
+          "id": "awa-04",
+          "title": "Route 53",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Router",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Route 53 gère DNS, domaines et politiques de routage."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zones.",
+                "Enregistrements.",
+                "Santé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait Route 53 ?",
+            "hints": [
+              "Il gère le DNS."
+            ],
+            "solution": "Il gère les zones DNS et le routage.",
+            "check": {
+              "type": "any",
+              "any": [
+                "dns"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier après création ?",
+              "options": [
+                "La résolution",
+                "Le CSS",
+                "Le logo",
+                "Le thème"
+              ],
+              "answer": 0,
+              "explanation": "La zone répond.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-04-q1"
+            },
+            {
+              "question": "Que faire des enregistrements ?",
+              "options": [
+                "Les documenter",
+                "Les cacher",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le DNS reste clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-04-q2"
+            }
+          ],
+          "summary": [
+            "Route 53.",
+            "DNS.",
+            "Santé."
+          ],
+          "nextStep": "Chapitre suivant : « Load Balancing »."
+        },
+        {
+          "id": "awa-05",
+          "title": "Load Balancing",
+          "duration": 20,
+          "objectives": [
+            "Répartir",
+            "Sonder",
+            "Chiffrer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un équilibreur répartit le trafic et retire les cibles défaillantes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Répartition.",
+                "Sondes.",
+                "TLS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait une sonde ?",
+            "hints": [
+              "Elle vérifie la santé."
+            ],
+            "solution": "Elle vérifie la santé des cibles.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sante",
+                "santé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'une cible défaillante ?",
+              "options": [
+                "La retirer",
+                "La garder",
+                "La publier",
+                "La dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le service reste disponible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-05-q1"
+            },
+            {
+              "question": "Que terminer où ?",
+              "options": [
+                "Le TLS à l'équilibreur",
+                "Nulle part",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le chiffrement est centralisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awa-05-q2"
+            }
+          ],
+          "summary": [
+            "Équilibrage.",
+            "Sondes.",
+            "TLS."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

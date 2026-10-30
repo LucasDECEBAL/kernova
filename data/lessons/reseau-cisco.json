@@ -1,0 +1,398 @@
+{
+  "courseId": "reseau-cisco",
+  "modules": [
+    {
+      "id": "reseau-cisco-module",
+      "title": "Cisco IOS et laboratoire",
+      "chapters": [
+        {
+          "id": "rcs-01",
+          "title": "Découvrir Cisco IOS",
+          "duration": 20,
+          "objectives": [
+            "Se connecter",
+            "Utiliser les modes",
+            "Sauvegarder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IOS propose les modes utilisateur, privilégié et configuration."
+            },
+            {
+              "type": "list",
+              "items": [
+                "enable.",
+                "configure terminal.",
+                "copy run start."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel mode permet de configurer ?",
+            "hints": [
+              "Le mode de configuration."
+            ],
+            "solution": "Le mode de configuration globale (configure terminal).",
+            "check": {
+              "type": "any",
+              "any": [
+                "configuration",
+                "configure"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait enable ?",
+              "options": [
+                "Il passe en privilégié",
+                "Il configure",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les commandes sensibles s'ouvrent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-01-q1"
+            },
+            {
+              "question": "Que fait copy run start ?",
+              "options": [
+                "Il sauvegarde",
+                "Il redémarre",
+                "Il efface",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La config est conservée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-01-q2"
+            }
+          ],
+          "summary": [
+            "Modes IOS.",
+            "enable.",
+            "Sauvegarde."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration initiale d'un commutateur »."
+        },
+        {
+          "id": "rcs-02",
+          "title": "Configuration initiale d'un commutateur",
+          "duration": 20,
+          "objectives": [
+            "Nommer",
+            "Sécuriser l'accès",
+            "Sauvegarder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La configuration initiale nomme l'équipement et protège l'accès."
+            },
+            {
+              "type": "list",
+              "items": [
+                "hostname.",
+                "Mot de passe enable.",
+                "SSH plutôt que telnet."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire de l'accès distant ?",
+            "hints": [
+              "Le sécuriser avec SSH."
+            ],
+            "solution": "Désactiver telnet et utiliser SSH.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ssh"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Telnet est-il chiffré ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le mot de passe circule en clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-02-q1"
+            },
+            {
+              "question": "Que fait hostname ?",
+              "options": [
+                "Il nomme l'équipement",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'identification est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-02-q2"
+            }
+          ],
+          "summary": [
+            "Nommer.",
+            "SSH.",
+            "Sauvegarder."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration initiale d'un routeur »."
+        },
+        {
+          "id": "rcs-03",
+          "title": "Configuration initiale d'un routeur",
+          "duration": 20,
+          "objectives": [
+            "Configurer une interface",
+            "Ajouter une route",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un routeur configure ses interfaces puis ses routes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ip address.",
+                "no shutdown.",
+                "ip route."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait no shutdown ?",
+            "hints": [
+              "Il active l'interface."
+            ],
+            "solution": "Il active l'interface précédemment désactivée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "active",
+                "shutdown"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Sans route, que se passe-t-il ?",
+              "options": [
+                "Le trafic distant échoue",
+                "Rien",
+                "Le CSS casse",
+                "Le DNS tombe"
+              ],
+              "answer": 0,
+              "explanation": "La destination est inconnue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-03-q1"
+            },
+            {
+              "question": "Que fait ip route ?",
+              "options": [
+                "Il ajoute une route statique",
+                "Il chiffre",
+                "Il trie",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Le chemin est défini.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-03-q2"
+            }
+          ],
+          "summary": [
+            "Interfaces.",
+            "Routes.",
+            "Tester."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration des VLAN et trunks »."
+        },
+        {
+          "id": "rcs-04",
+          "title": "Configuration des VLAN et trunks",
+          "duration": 20,
+          "objectives": [
+            "Créer un VLAN",
+            "Configurer un accès",
+            "Configurer un trunk"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VLAN se crée puis s'associe aux ports d'accès ; le trunk transporte plusieurs VLAN."
+            },
+            {
+              "type": "list",
+              "items": [
+                "vlan 10.",
+                "switchport access.",
+                "switchport mode trunk."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel mode pour un lien entre commutateurs ?",
+            "hints": [
+              "Un trunk."
+            ],
+            "solution": "Le mode trunk.",
+            "check": {
+              "type": "any",
+              "any": [
+                "trunk"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel mode pour un poste ?",
+              "options": [
+                "accès",
+                "trunk",
+                "routé",
+                "mixte"
+              ],
+              "answer": 0,
+              "explanation": "Un seul VLAN.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-04-q1"
+            },
+            {
+              "question": "Que transporte un trunk ?",
+              "options": [
+                "Plusieurs VLAN",
+                "Un seul",
+                "Aucun",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les trames sont étiquetées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-04-q2"
+            }
+          ],
+          "summary": [
+            "VLAN.",
+            "Accès/trunk.",
+            "Étiquetage."
+          ],
+          "nextStep": "Chapitre suivant : « Diagnostic Cisco »."
+        },
+        {
+          "id": "rcs-05",
+          "title": "Diagnostic Cisco",
+          "duration": 20,
+          "objectives": [
+            "Lire les interfaces",
+            "Tester",
+            "Sauvegarder"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "show ip interface brief, ping et traceroute diagnostiquent ; la config se sauvegarde."
+            },
+            {
+              "type": "list",
+              "items": [
+                "show interfaces.",
+                "ping/traceroute.",
+                "copy run start."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que montre show ip interface brief ?",
+            "hints": [
+              "L'état des interfaces."
+            ],
+            "solution": "L'adresse, le statut et le protocole de chaque interface.",
+            "check": {
+              "type": "any",
+              "any": [
+                "interface"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ping ?",
+              "options": [
+                "Il teste la joignabilité",
+                "Il route",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'écho vérifie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-05-q1"
+            },
+            {
+              "question": "Que fait copy run start ?",
+              "options": [
+                "Il sauvegarde",
+                "Il efface",
+                "Il redémarre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La config survit au reboot.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rcs-05-q2"
+            }
+          ],
+          "summary": [
+            "show.",
+            "ping/traceroute.",
+            "Sauvegarde."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

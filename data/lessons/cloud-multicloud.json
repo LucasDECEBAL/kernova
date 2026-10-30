@@ -1,0 +1,399 @@
+{
+  "courseId": "cloud-multicloud",
+  "modules": [
+    {
+      "id": "cloud-multicloud-module",
+      "title": "Multicloud et IaC",
+      "chapters": [
+        {
+          "id": "clm-01",
+          "title": "Architectures multicloud",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Éviter la complexité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le multicloud répartit les services entre fournisseurs ; il ajoute complexité et coûts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Portabilité.",
+                "Compétences.",
+                "Coûts."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand le multicloud se justifie ?",
+            "hints": [
+              "Un besoin réel."
+            ],
+            "solution": "Pour un besoin réel de résilience ou de conformité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "besoin"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Est-ce gratuit en complexité ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Chaque fournisseur ajoute des coûts.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-01-q1"
+            },
+            {
+              "question": "Que standardiser ?",
+              "options": [
+                "Les pratiques",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exploitation reste gérable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-01-q2"
+            }
+          ],
+          "summary": [
+            "Multicloud.",
+            "Complexité.",
+            "Standardisation."
+          ],
+          "nextStep": "Chapitre suivant : « Landing zones »."
+        },
+        {
+          "id": "clm-02",
+          "title": "Landing zones",
+          "duration": 20,
+          "objectives": [
+            "Structurer",
+            "Séparer",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une landing zone prépare comptes, réseaux et garde-fous pour les équipes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Comptes.",
+                "Réseau.",
+                "Garde-fous."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fournit une landing zone ?",
+            "hints": [
+              "Un socle sécurisé."
+            ],
+            "solution": "Un socle de comptes, réseau et politiques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "socle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que séparer ?",
+              "options": [
+                "Les environnements",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La production est isolée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-02-q1"
+            },
+            {
+              "question": "Que faire des politiques ?",
+              "options": [
+                "Les automatiser",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Les garde-fous sont appliqués.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-02-q2"
+            }
+          ],
+          "summary": [
+            "Socle.",
+            "Séparation.",
+            "Automatisation."
+          ],
+          "nextStep": "Chapitre suivant : « Gouvernance cloud »."
+        },
+        {
+          "id": "clm-03",
+          "title": "Gouvernance cloud",
+          "duration": 20,
+          "objectives": [
+            "Définir les règles",
+            "Contrôler",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La gouvernance définit qui peut faire quoi et comment c'est vérifié."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Contrôles.",
+                "Exceptions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que documenter ?",
+            "hints": [
+              "Les règles et exceptions."
+            ],
+            "solution": "Les règles, les contrôles et les exceptions.",
+            "check": {
+              "type": "any",
+              "any": [
+                "regles",
+                "règles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire des exceptions ?",
+              "options": [
+                "Les tracer",
+                "Les cacher",
+                "Les oublier",
+                "Les publier"
+              ],
+              "answer": 0,
+              "explanation": "Elles sont limitées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-03-q1"
+            },
+            {
+              "question": "Que contrôler ?",
+              "options": [
+                "La conformité",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les écarts sont détectés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-03-q2"
+            }
+          ],
+          "summary": [
+            "Règles.",
+            "Contrôles.",
+            "Exceptions."
+          ],
+          "nextStep": "Chapitre suivant : « Infrastructure as Code »."
+        },
+        {
+          "id": "clm-04",
+          "title": "Infrastructure as Code",
+          "duration": 20,
+          "objectives": [
+            "Décrire",
+            "Versionner",
+            "Appliquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'IaC décrit l'infrastructure dans des fichiers versionnés et rejouables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Déclaratif.",
+                "Versionné.",
+                "Rejouable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que garantit l'IaC ?",
+            "hints": [
+              "La reproductibilité."
+            ],
+            "solution": "La reproductibilité et la traçabilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reproduct"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi versionner ?",
+              "options": [
+                "Tracer les changements",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'historique est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-04-q1"
+            },
+            {
+              "question": "Que faire avant d'appliquer ?",
+              "options": [
+                "Prévisualiser",
+                "Appliquer direct",
+                "Supprimer",
+                "Publier"
+              ],
+              "answer": 0,
+              "explanation": "Le plan est vérifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-04-q2"
+            }
+          ],
+          "summary": [
+            "Déclaratif.",
+            "Versionné.",
+            "Plan."
+          ],
+          "nextStep": "Chapitre suivant : « FinOps »."
+        },
+        {
+          "id": "clm-05",
+          "title": "FinOps",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Responsabiliser",
+            "Optimiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le FinOps relie technique, finance et produit pour maîtriser les coûts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Visibilité.",
+                "Responsabilité.",
+                "Optimisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le FinOps ?",
+            "hints": [
+              "Il pilote les coûts."
+            ],
+            "solution": "Il rend les coûts visibles et responsabilise les équipes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cout",
+                "coût",
+                "visible"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui est responsable ?",
+              "options": [
+                "Les équipes",
+                "Personne",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les coûts sont attribués.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-05-q1"
+            },
+            {
+              "question": "Que faire régulièrement ?",
+              "options": [
+                "Optimiser",
+                "Rien",
+                "Publier",
+                "Chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Les gains sont continus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clm-05-q2"
+            }
+          ],
+          "summary": [
+            "Visibilité.",
+            "Responsabilité.",
+            "Optimisation."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

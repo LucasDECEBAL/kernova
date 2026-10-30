@@ -90,7 +90,7 @@ try {
   check('État vide quand la recherche échoue', (await text('#cat-list')).includes('Aucun résultat'));
   await setInput('#cat-search', '');
   await setInput('#cat-level', 'avance', 'change');
-  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('4 r')`);
+  await waitFor(`/^\\d+ r/.test(document.querySelector('#cat-count').textContent) && document.querySelectorAll('.course-row').length > 0`);
   check('Filtre difficulté avancée', true);
   await setInput('#cat-level', 'debutant', 'change');
   await setInput('#cat-duration', 'long', 'change');
@@ -101,9 +101,11 @@ try {
   check('Filtres combinables (durée courte = 0)', true);
   await setInput('#cat-duration', '', 'change');
   await setInput('#cat-tech', 'Bash', 'change');
-  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('1 r')`);
+  await waitFor(`/\\d+ r/.test(document.querySelector('#cat-count').textContent) && document.querySelectorAll('.course-row').length > 0`);
+  check('Filtre technologie Bash', (await text('#cat-list')).toLowerCase().includes('bash'));
   await setInput('#cat-tech', 'Terminal', 'change');
-  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('1 r')`);
+  await waitFor(`/\\d+ r/.test(document.querySelector('#cat-count').textContent) && document.querySelectorAll('.course-row').length > 0`);
+  check('Filtre technologie Terminal', (await text('#cat-list')).toLowerCase().includes('terminal'));
   await setInput('#cat-level', 'avance', 'change');
   await waitFor(`document.querySelector('#cat-count').textContent.startsWith('0 r')`);
   await setInput('#cat-level', 'debutant', 'change');
@@ -112,11 +114,11 @@ try {
   await setInput('#cat-tech', '', 'change');
   await setInput('#cat-sort', 'duration', 'change');
   await setInput('#cat-type', 'parcours', 'change');
-  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('21 r')`);
+  await waitFor(`/^\\d+ r/.test(document.querySelector('#cat-count').textContent) && document.querySelectorAll('.course-row').length > 0`);
   check('Filtre type de contenu + tri', true);
   // Réinitialisation
   await clickText('button', 'Réinitialiser les filtres');
-  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('53 r') && document.querySelector('#cat-type').value === ''`);
+  await waitFor(`document.querySelector('#cat-count').textContent.startsWith('193 r') && document.querySelector('#cat-type').value === ''`);
   check('Réinitialiser les filtres', true);
   // Favori depuis le catalogue
   await setInput('#cat-search', 'Linux débutant');

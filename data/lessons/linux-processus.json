@@ -1,0 +1,405 @@
+{
+  "courseId": "linux-processus",
+  "modules": [
+    {
+      "id": "linux-processus-module",
+      "title": "Processus et services",
+      "chapters": [
+        {
+          "id": "lin3-01",
+          "title": "Processus et signaux",
+          "duration": 20,
+          "objectives": [
+            "Lire les processus",
+            "Envoyer un signal",
+            "Arrêter proprement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ps et top listent les processus ; kill envoie un signal. SIGTERM demande un arrêt propre, SIGKILL force."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SIGTERM d'abord.",
+                "nice/renice pour la priorité.",
+                "Un processus zombie attend son parent."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Arrêter",
+            "instructions": "Quel signal demander pour un arrêt propre ?",
+            "hints": [
+              "Le signal par défaut.",
+              "Il laisse le processus se terminer."
+            ],
+            "solution": "SIGTERM (kill PID)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sigterm"
+              ],
+              "success": "Correct : SIGTERM."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait SIGKILL ?",
+              "options": [
+                "Il force l'arrêt",
+                "Il suspend",
+                "Il relance",
+                "Il renice"
+              ],
+              "answer": 0,
+              "explanation": "Aucun nettoyage possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-01-q1"
+            },
+            {
+              "question": "Que fait renice ?",
+              "options": [
+                "Il change la priorité",
+                "Il tue",
+                "Il liste",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "La priorité est ajustée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-01-q2"
+            }
+          ],
+          "summary": [
+            "ps/top.",
+            "SIGTERM puis SIGKILL.",
+            "renice."
+          ],
+          "nextStep": "Chapitre suivant : « Services et systemd »."
+        },
+        {
+          "id": "lin3-02",
+          "title": "Services et systemd",
+          "duration": 20,
+          "objectives": [
+            "Gérer un service",
+            "Activer au démarrage",
+            "Lire un statut"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "systemctl démarre, arrête et active les services ; daemon-reload relit les unités."
+            },
+            {
+              "type": "list",
+              "items": [
+                "systemctl status/start/stop.",
+                "enable --now.",
+                "journalctl -u pour les logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Activer",
+            "instructions": "Quelle commande active un service immédiatement et au démarrage ?",
+            "hints": [
+              "Une option combinée.",
+              "enable et start."
+            ],
+            "solution": "systemctl enable --now mon-service",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "enable",
+                "now"
+              ],
+              "success": "Correct : enable --now."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait daemon-reload ?",
+              "options": [
+                "Il relit les unités",
+                "Il démarre",
+                "Il arrête",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "Les fichiers modifiés sont pris en compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-02-q1"
+            },
+            {
+              "question": "Où lire les logs d'un service ?",
+              "options": [
+                "journalctl -u",
+                "cat /etc",
+                "ls",
+                "df"
+              ],
+              "answer": 0,
+              "explanation": "Le journal est filtré par unité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-02-q2"
+            }
+          ],
+          "summary": [
+            "systemctl.",
+            "enable --now.",
+            "journalctl -u."
+          ],
+          "nextStep": "Chapitre suivant : « Journalisation »."
+        },
+        {
+          "id": "lin3-03",
+          "title": "Journalisation",
+          "duration": 20,
+          "objectives": [
+            "Lire le journal",
+            "Filtrer par service",
+            "Comprendre la rotation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "journalctl lit le journal systemd ; les journaux texte vivent dans /var/log et sont rotés par logrotate."
+            },
+            {
+              "type": "list",
+              "items": [
+                "journalctl -u service.",
+                "-f pour suivre.",
+                "logrotate limite la taille."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer",
+            "instructions": "Comment suivre les logs d'un service en direct ?",
+            "hints": [
+              "En combinaison avec -u.",
+              "Une option de suivi."
+            ],
+            "solution": "journalctl -u mon-service -f",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "journalctl",
+                "-f"
+              ],
+              "success": "Correct : journalctl -f."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait logrotate ?",
+              "options": [
+                "Il fait tourner les journaux",
+                "Il les supprime tous",
+                "Il les chiffre",
+                "Il les envoie"
+              ],
+              "answer": 0,
+              "explanation": "Les fichiers restent bornés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-03-q1"
+            },
+            {
+              "question": "Où sont les journaux texte ?",
+              "options": [
+                "/var/log",
+                "/etc",
+                "/home",
+                "/tmp"
+              ],
+              "answer": 0,
+              "explanation": "Le dossier est standard.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-03-q2"
+            }
+          ],
+          "summary": [
+            "journalctl.",
+            "-f.",
+            "logrotate."
+          ],
+          "nextStep": "Chapitre suivant : « Planification avec cron »."
+        },
+        {
+          "id": "lin3-04",
+          "title": "Planification avec cron",
+          "duration": 20,
+          "objectives": [
+            "Écrire une crontab",
+            "Comprendre les champs",
+            "Rediriger la sortie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "cron exécute des tâches planifiées ; cinq champs : minute, heure, jour, mois, jour de semaine."
+            },
+            {
+              "type": "list",
+              "items": [
+                "0 3 * * * = chaque jour à 3 h.",
+                "Le dimanche vaut 0 ou 7.",
+                "Les sorties partent par mail ou dans un log."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Planifier",
+            "instructions": "Écrivez la ligne pour exécuter sauvegarde.sh chaque dimanche à 3 h.",
+            "hints": [
+              "Cinq champs.",
+              "Dimanche = 0."
+            ],
+            "solution": "0 3 * * 0 /usr/local/bin/sauvegarde.sh",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "0 3 * * 0"
+              ],
+              "success": "Correct : 0 3 * * 0."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de champs ?",
+              "options": [
+                "Cinq",
+                "Trois",
+                "Sept",
+                "Deux"
+              ],
+              "answer": 0,
+              "explanation": "Minute à jour de semaine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-04-q1"
+            },
+            {
+              "question": "Où va la sortie standard ?",
+              "options": [
+                "Par mail ou redirigée",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Nulle part"
+              ],
+              "answer": 0,
+              "explanation": "Sinon elle est perdue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-04-q2"
+            }
+          ],
+          "summary": [
+            "cron à cinq champs.",
+            "Dimanche 0/7.",
+            "Rediriger les sorties."
+          ],
+          "nextStep": "Chapitre suivant : « Diagnostic des performances »."
+        },
+        {
+          "id": "lin3-05",
+          "title": "Diagnostic des performances",
+          "duration": 20,
+          "objectives": [
+            "Lire la charge",
+            "Identifier le goulot",
+            "Utiliser les bons outils"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "uptime, top, iostat et vmstat montrent charge, CPU, mémoire et E/S."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Une charge élevée avec CPU faible évoque les E/S.",
+                "free -h pour la mémoire.",
+                "df -h pour le disque."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer",
+            "instructions": "La charge est élevée et le CPU faible. Quelle hypothèse ?",
+            "hints": [
+              "Les entrées-sorties.",
+              "Attendre sur le disque ralentit tout."
+            ],
+            "solution": "Une saturation des entrées-sorties (iostat/vmstat, attente disque).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "e/s",
+                "disque",
+                "iowait"
+              ],
+              "success": "Correct : E/S."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait df -h ?",
+              "options": [
+                "Il montre l'espace disque",
+                "Il tue",
+                "Il monte",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les volumes sont listés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-05-q1"
+            },
+            {
+              "question": "Que fait free -h ?",
+              "options": [
+                "Il montre la mémoire",
+                "Il trie",
+                "Il déploie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "La RAM et le swap sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin3-05-q2"
+            }
+          ],
+          "summary": [
+            "Charge = attente.",
+            "iostat/vmstat.",
+            "df/free."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

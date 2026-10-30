@@ -1,0 +1,399 @@
+{
+  "courseId": "linux-durcissement",
+  "modules": [
+    {
+      "id": "linux-durcissement-module",
+      "title": "Pare-feu et audit",
+      "chapters": [
+        {
+          "id": "lin7-01",
+          "title": "Pare-feu",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les règles",
+            "Ouvrir un port",
+            "Activer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ufw simplifie iptables/nftables ; les règles définissent les flux autorisés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ufw allow 22/tcp.",
+                "ufw enable.",
+                "ufw status verbose."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Ouvrir",
+            "instructions": "Quelle commande autorise SSH ?",
+            "hints": [
+              "Un port et un protocole."
+            ],
+            "solution": "ufw allow 22/tcp",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ufw allow"
+              ],
+              "success": "Correct : ufw allow."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ufw enable ?",
+              "options": [
+                "Il active le filtrage",
+                "Il désactive",
+                "Il liste",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "Les règles s'appliquent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-01-q1"
+            },
+            {
+              "question": "Pourquoi limiter les ports ?",
+              "options": [
+                "Réduire la surface d'attaque",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Moins de services exposés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-01-q2"
+            }
+          ],
+          "summary": [
+            "ufw.",
+            "allow 22/tcp.",
+            "Surface minimale."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des journaux »."
+        },
+        {
+          "id": "lin7-02",
+          "title": "Gestion des journaux",
+          "duration": 20,
+          "objectives": [
+            "Centraliser",
+            "Filtrer",
+            "Conserver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les journaux doivent être centralisés, protégés et conservés selon une durée définie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "rsyslog/journald.",
+                "Rotation.",
+                "Accès restreint."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Conserver",
+            "instructions": "Pourquoi centraliser les journaux ?",
+            "hints": [
+              "Survivre à la compromission de la machine."
+            ],
+            "solution": "Pour conserver les preuves si l'hôte est compromis ou effacé.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "centralis",
+                "preuve"
+              ],
+              "success": "Correct : centraliser."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait logrotate ?",
+              "options": [
+                "Il fait tourner",
+                "Il chiffre",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les fichiers restent bornés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-02-q1"
+            },
+            {
+              "question": "Qui lit les journaux ?",
+              "options": [
+                "Un rôle restreint",
+                "Tout le monde",
+                "Personne",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les preuves sont protégées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-02-q2"
+            }
+          ],
+          "summary": [
+            "Centraliser.",
+            "Rotation.",
+            "Accès restreint."
+          ],
+          "nextStep": "Chapitre suivant : « Audit système »."
+        },
+        {
+          "id": "lin7-03",
+          "title": "Audit système",
+          "duration": 20,
+          "objectives": [
+            "Activer auditd",
+            "Suivre les accès",
+            "Analyser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "auditd journalise les appels système et accès sensibles ; les règles ciblent fichiers et commandes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "auditctl -w fichier.",
+                "ausearch.",
+                "aureport."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Surveiller",
+            "instructions": "Quel outil journalise les accès sensibles ?",
+            "hints": [
+              "Un démon d'audit."
+            ],
+            "solution": "auditd",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "auditd"
+              ],
+              "success": "Correct : auditd."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait auditctl ?",
+              "options": [
+                "Il pose des règles",
+                "Il monte",
+                "Il route",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "La surveillance est ciblée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-03-q1"
+            },
+            {
+              "question": "Que fait ausearch ?",
+              "options": [
+                "Il recherche dans l'audit",
+                "Il chiffre",
+                "Il monte",
+                "Il formate"
+              ],
+              "answer": 0,
+              "explanation": "Les événements sont filtrés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-03-q2"
+            }
+          ],
+          "summary": [
+            "auditd.",
+            "auditctl.",
+            "ausearch/aureport."
+          ],
+          "nextStep": "Chapitre suivant : « Sécuriser un serveur »."
+        },
+        {
+          "id": "lin7-04",
+          "title": "Sécuriser un serveur",
+          "duration": 20,
+          "objectives": [
+            "Réduire les services",
+            "Mettre à jour",
+            "Limiter les accès"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurisation commence par la surface d'attaque : services inutiles, mises à jour, accès restreints."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Désactiver l'inutile.",
+                "Mises à jour régulières.",
+                "Accès administratif par clé et bastion."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Réduire",
+            "instructions": "Première action de sécurisation ?",
+            "hints": [
+              "Réduire la surface d'attaque."
+            ],
+            "solution": "Désactiver les services et ports non nécessaires, puis mettre à jour.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "service",
+                "surface"
+              ],
+              "success": "Correct : réduire la surface."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi les mises à jour ?",
+              "options": [
+                "Corriger les vulnérabilités",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les failles connues sont fermées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-04-q1"
+            },
+            {
+              "question": "Comment administrer à distance ?",
+              "options": [
+                "Par clé SSH",
+                "Par mot de passe partagé",
+                "Par HTTP",
+                "Par FTP"
+              ],
+              "answer": 0,
+              "explanation": "Les clés évitent les mots de passe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-04-q2"
+            }
+          ],
+          "summary": [
+            "Surface minimale.",
+            "Mises à jour.",
+            "SSH par clé."
+          ],
+          "nextStep": "Chapitre suivant : « Durcissement des configurations »."
+        },
+        {
+          "id": "lin7-05",
+          "title": "Durcissement des configurations",
+          "duration": 20,
+          "objectives": [
+            "Appliquer des référentiels",
+            "Vérifier les écarts",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un référentiel (CIS, ANSSI) fournit des mesures vérifiables ; un audit compare l'état réel aux règles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Mesures vérifiables.",
+                "Écarts priorisés.",
+                "Documenter les exceptions."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Comment prouver une mesure de durcissement ?",
+            "hints": [
+              "Une commande et sa sortie attendue."
+            ],
+            "solution": "Une commande de vérification, la sortie attendue et une preuve conservée.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "commande",
+                "preuve"
+              ],
+              "success": "Correct : vérification + preuve."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un référentiel ?",
+              "options": [
+                "Il liste des mesures",
+                "Il monte",
+                "Il route",
+                "Il tue"
+              ],
+              "answer": 0,
+              "explanation": "Les règles sont connues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-05-q1"
+            },
+            {
+              "question": "Que faire d'un écart ?",
+              "options": [
+                "Le prioriser et le corriger",
+                "L'ignorer",
+                "Le cacher",
+                "Le dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est traité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lin7-05-q2"
+            }
+          ],
+          "summary": [
+            "Référentiels.",
+            "Vérifier/prouver.",
+            "Prioriser les écarts."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

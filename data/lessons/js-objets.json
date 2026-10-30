@@ -1,0 +1,402 @@
+{
+  "courseId": "js-objets",
+  "modules": [
+    {
+      "id": "js-objets-module",
+      "title": "Objets et structures avancées",
+      "chapters": [
+        {
+          "id": "jso-01",
+          "title": "Classes JavaScript",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une classe",
+            "Utiliser un constructeur",
+            "Définir des méthodes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une classe définit un modèle d'objets avec un constructeur et des méthodes. new crée une instance."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "class Compte {\n  constructor(solde) { this.solde = solde; }\n  deposer(n) { this.solde += n; }\n}\nconst c = new Compte(100);",
+              "title": "Classe"
+            },
+            {
+              "type": "warning",
+              "text": "Les champs de classe sont publics par défaut : un préfixe # les rend privés (syntaxe moderne)."
+            }
+          ],
+          "exercise": {
+            "title": "Créer une instance",
+            "instructions": "Quel mot-clé crée un objet à partir d'une classe ?",
+            "hints": [
+              "Il appelle le constructeur."
+            ],
+            "solution": "new",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "new"
+              ],
+              "success": "Correct : new."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le constructeur ?",
+              "options": [
+                "Il initialise l'instance",
+                "Il supprime",
+                "Il exporte",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "Il s'exécute à la création.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-01-q1"
+            },
+            {
+              "question": "Comment appeler une méthode ?",
+              "options": [
+                "instance.methode()",
+                "methode.instance",
+                "new methode",
+                "instance:methode"
+              ],
+              "answer": 0,
+              "explanation": "L'instance porte ses méthodes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-01-q2"
+            }
+          ],
+          "summary": [
+            "Classe = constructeur + méthodes.",
+            "new instancie.",
+            "Champs privés avec #."
+          ]
+        },
+        {
+          "id": "jso-02",
+          "title": "Prototypes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la chaîne de prototypes",
+            "Éviter de modifier les prototypes natifs",
+            "Relier classe et prototype"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Chaque objet hérite d'un prototype. Une méthode cherchée sur l'objet remonte la chaîne jusqu'à Object.prototype."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "class Chien {\n  parler() { return \"Wouf\"; }\n}\nconst rex = new Chien();\nrex.parler(); // méthode trouvée sur Chien.prototype",
+              "title": "Chaîne de prototypes"
+            },
+            {
+              "type": "warning",
+              "text": "Modifier Array.prototype ou Object.prototype affecte tout le programme : ne le faites jamais dans une application."
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où est cherchée une méthode absente de l'objet ?",
+            "hints": [
+              "Sur son prototype."
+            ],
+            "solution": "Sur son prototype, puis dans la chaîne jusqu'à Object.prototype.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "prototype"
+              ],
+              "success": "Correct : le prototype."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Object.create(proto) ?",
+              "options": [
+                "Il crée un objet héritant de proto",
+                "Il clone",
+                "Il supprime",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le prototype est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-02-q1"
+            },
+            {
+              "question": "Pourquoi ne pas modifier les prototypes natifs ?",
+              "options": [
+                "Cela affecte tout le code",
+                "C'est plus lent",
+                "Cela casse le CSS",
+                "Cela bloque le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est global.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-02-q2"
+            }
+          ],
+          "summary": [
+            "Héritage par prototype.",
+            "Chaîne jusqu'à Object.",
+            "Ne pas modifier les natifs."
+          ]
+        },
+        {
+          "id": "jso-03",
+          "title": "Itérateurs et générateurs",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le protocole d'itération",
+            "Écrire un générateur",
+            "Utiliser for...of"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un itérateur expose next() renvoyant { value, done }. Un générateur (function*) produit des valeurs avec yield."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "function* nombres() {\n  yield 1;\n  yield 2;\n}\nfor (const n of nombres()) console.log(n);",
+              "title": "Générateur"
+            },
+            {
+              "type": "tip",
+              "text": "for...of fonctionne avec tout itérable : tableaux, chaînes, Map, Set et générateurs."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire un générateur",
+            "instructions": "Quel symbole déclare un générateur ?",
+            "hints": [
+              "Une étoile après function."
+            ],
+            "solution": "function*",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "function*",
+                "yield"
+              ],
+              "success": "Correct : function*."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie next() ?",
+              "options": [
+                "{ value, done }",
+                "Une promesse",
+                "Un tableau",
+                "undefined"
+              ],
+              "answer": 0,
+              "explanation": "Le protocole d'itération.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-03-q1"
+            },
+            {
+              "question": "Que fait yield ?",
+              "options": [
+                "Il produit une valeur et suspend",
+                "Il termine",
+                "Il supprime",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La reprise se fait au prochain next.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-03-q2"
+            }
+          ],
+          "summary": [
+            "Itérateur = next().",
+            "Générateur = yield.",
+            "for...of pour consommer."
+          ]
+        },
+        {
+          "id": "jso-04",
+          "title": "Map et Set",
+          "duration": 20,
+          "objectives": [
+            "Choisir Map plutôt qu'un objet",
+            "Utiliser Set pour l'unicité",
+            "Parcourir les deux"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Map associe des clés de tout type à des valeurs ; Set stocke des valeurs uniques. Les deux sont itérables et ont size."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const vues = new Map();\nvues.set(\"accueil\", 3);\nvues.get(\"accueil\"); // 3\nconst tags = new Set([\"js\", \"js\", \"css\"]);\ntags.size; // 2",
+              "title": "Map et Set"
+            },
+            {
+              "type": "warning",
+              "text": "Un objet classique convertit ses clés en chaînes : Map conserve le type réel de la clé."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quelle structure garantit des valeurs uniques ?",
+            "hints": [
+              "Un ensemble."
+            ],
+            "solution": "Set",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "set"
+              ],
+              "success": "Correct : Set."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Map.set ?",
+              "options": [
+                "Il associe une clé à une valeur",
+                "Il supprime",
+                "Il trie",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "La clé peut être un objet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-04-q1"
+            },
+            {
+              "question": "Que fait Set.size ?",
+              "options": [
+                "Il donne le nombre d'éléments uniques",
+                "Il trie",
+                "Il ajoute",
+                "Il vide"
+              ],
+              "answer": 0,
+              "explanation": "Les doublons sont ignorés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-04-q2"
+            }
+          ],
+          "summary": [
+            "Map conserve le type des clés.",
+            "Set garantit l'unicité.",
+            "Les deux sont itérables."
+          ]
+        },
+        {
+          "id": "jso-05",
+          "title": "Expressions régulières",
+          "duration": 20,
+          "objectives": [
+            "Écrire un motif",
+            "Utiliser test et match",
+            "Éviter les regex illisibles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une expression régulière décrit un motif de texte. test renvoie un booléen ; match extrait les correspondances ; des groupes capturent des parties."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const email = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nemail.test(\"ada@example.fr\"); // true\n\"2026-01\".match(/(\\d{4})-(\\d{2})/); // groupes",
+              "title": "Motifs"
+            },
+            {
+              "type": "warning",
+              "text": "Une regex trop complexe devient impossible à maintenir : préférez plusieurs vérifications simples."
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Quelle méthode renvoie vrai ou faux pour une regex ?",
+            "hints": [
+              "Un test booléen."
+            ],
+            "solution": "regex.test(texte)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "test"
+              ],
+              "success": "Correct : test()."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait match ?",
+              "options": [
+                "Il extrait les correspondances",
+                "Il remplace",
+                "Il supprime",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Il renvoie un tableau ou null.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-05-q1"
+            },
+            {
+              "question": "Que capturent les parenthèses ?",
+              "options": [
+                "Des groupes",
+                "Des erreurs",
+                "Des fichiers",
+                "Des balises"
+              ],
+              "answer": 0,
+              "explanation": "Chaque groupe est accessible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jso-05-q2"
+            }
+          ],
+          "summary": [
+            "Regex = motif.",
+            "test pour valider.",
+            "Groupes pour extraire."
+          ]
+        }
+      ]
+    }
+  ]
+}

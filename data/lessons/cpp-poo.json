@@ -1,0 +1,409 @@
+{
+  "courseId": "cpp-poo",
+  "modules": [
+    {
+      "id": "cpp-poo-module",
+      "title": "C++ : polymorphisme et STL",
+      "chapters": [
+        {
+          "id": "cppp-01",
+          "title": "Héritage",
+          "duration": 20,
+          "objectives": [
+            "Dériver une classe",
+            "Appeler le constructeur parent",
+            "Comprendre public/protégé"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une classe dérivée hérite des membres accessibles. Le constructeur parent s'appelle dans la liste d'initialisation."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "class Animal {\npublic:\n  virtual void parler() const { }\n};\n\nclass Chien : public Animal {\npublic:\n  void parler() const override { std::cout << \"Wouf\"; }\n};",
+              "title": "Héritage"
+            },
+            {
+              "type": "warning",
+              "text": "L'héritage public exprime « est un » ; pour « possède un », préférez la composition."
+            }
+          ],
+          "exercise": {
+            "title": "Initialiser",
+            "instructions": "Comment appeler le constructeur de la classe de base ?",
+            "hints": [
+              "Liste d'initialisation."
+            ],
+            "solution": "Dans la liste d'initialisation : Base(args).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "base(",
+                ":"
+              ],
+              "success": "Correct : initialisation de Base."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait override ?",
+              "options": [
+                "Il vérifie la redéfinition",
+                "Il hérite",
+                "Il copie",
+                "Il libère"
+              ],
+              "answer": 0,
+              "explanation": "Le compilateur signale une erreur si la signature diffère.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-01-q1"
+            },
+            {
+              "question": "Que signifie héritage public ?",
+              "options": [
+                "Relation « est un »",
+                "Relation « possède »",
+                "Une copie",
+                "Une allocation"
+              ],
+              "answer": 0,
+              "explanation": "Le type dérivé est un type de base.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-01-q2"
+            }
+          ],
+          "summary": [
+            "Héritage public = est un.",
+            "override.",
+            "Composition sinon."
+          ],
+          "nextStep": "Chapitre suivant : « Polymorphisme »."
+        },
+        {
+          "id": "cppp-02",
+          "title": "Polymorphisme",
+          "duration": 20,
+          "objectives": [
+            "Utiliser virtual",
+            "Appeler via une référence",
+            "Éviter le slicing"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une méthode virtual est choisie à l'exécution selon le type réel. Un pointeur ou une référence de base suffit."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "void faireParler(const Animal& a) {\n  a.parler();\n}\nChien c;\nfaireParler(c);",
+              "title": "Polymorphisme"
+            },
+            {
+              "type": "warning",
+              "text": "Passer un objet dérivé par valeur à un paramètre de base provoque le slicing : utilisez une référence."
+            }
+          ],
+          "exercise": {
+            "title": "Éviter",
+            "instructions": "Comment passer un objet pour conserver le polymorphisme ?",
+            "hints": [
+              "Pas par valeur."
+            ],
+            "solution": "Par référence (const Base&) ou pointeur.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "reference",
+                "référence",
+                "pointeur"
+              ],
+              "success": "Correct : référence ou pointeur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand la méthode virtuelle est-elle choisie ?",
+              "options": [
+                "À l'exécution",
+                "À la compilation",
+                "Jamais",
+                "À l'édition"
+              ],
+              "answer": 0,
+              "explanation": "Le type réel décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-02-q1"
+            },
+            {
+              "question": "Qu'est-ce que le slicing ?",
+              "options": [
+                "La perte de la partie dérivée",
+                "Une copie profonde",
+                "Une allocation",
+                "Un template"
+              ],
+              "answer": 0,
+              "explanation": "Le passage par valeur coupe l'objet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-02-q2"
+            }
+          ],
+          "summary": [
+            "virtual pour le dispatch.",
+            "Référence/pointeur.",
+            "Éviter le slicing."
+          ],
+          "nextStep": "Chapitre suivant : « STL et conteneurs »."
+        },
+        {
+          "id": "cppp-03",
+          "title": "STL et conteneurs",
+          "duration": 20,
+          "objectives": [
+            "Choisir un conteneur",
+            "Utiliser vector",
+            "Comprendre les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La STL fournit vector, map, unordered_map, set. Chaque conteneur a un coût d'accès, d'insertion et de mémoire différent."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "std::vector<int> notes = {8, 12, 17};\nnotes.push_back(15);\nfor (int n : notes) std::cout << n;",
+              "title": "vector"
+            },
+            {
+              "type": "warning",
+              "text": "Un vector peut réallouer : une référence ou un itérateur devient invalide après push_back."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel conteneur pour un accès par clé sans ordre ?",
+            "hints": [
+              "Hachage."
+            ],
+            "solution": "std::unordered_map",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "unordered_map"
+              ],
+              "success": "Correct : unordered_map."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait vector ?",
+              "options": [
+                "Un tableau dynamique contigu",
+                "Une liste chaînée",
+                "Un arbre",
+                "Une table de hachage"
+              ],
+              "answer": 0,
+              "explanation": "L'accès par indice est O(1).",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-03-q1"
+            },
+            {
+              "question": "Quand les itérateurs deviennent-ils invalides ?",
+              "options": [
+                "Après réallocation",
+                "Jamais",
+                "Après lecture",
+                "Après copie"
+              ],
+              "answer": 0,
+              "explanation": "La réallocation déplace les éléments.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-03-q2"
+            }
+          ],
+          "summary": [
+            "vector contigu.",
+            "map trié, unordered_map haché.",
+            "Attention aux invalidations."
+          ],
+          "nextStep": "Chapitre suivant : « Itérateurs »."
+        },
+        {
+          "id": "cppp-04",
+          "title": "Itérateurs",
+          "duration": 20,
+          "objectives": [
+            "Parcourir avec un itérateur",
+            "Utiliser begin/end",
+            "Comprendre les catégories"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un itérateur pointe un élément d'un conteneur. begin/end délimitent le parcours ; les algorithmes de la STL les utilisent."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "for (auto it = notes.begin(); it != notes.end(); ++it) {\n  std::cout << *it;\n}\nstd::sort(notes.begin(), notes.end());",
+              "title": "Itérateurs"
+            },
+            {
+              "type": "tip",
+              "text": "Range-for est plus lisible ; gardez les itérateurs quand vous devez connaître la position."
+            }
+          ],
+          "exercise": {
+            "title": "Déréférencer",
+            "instructions": "Comment lire la valeur d'un itérateur it ?",
+            "hints": [
+              "Un astérisque."
+            ],
+            "solution": "*it",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "*it"
+              ],
+              "success": "Correct : *it."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que délimite begin/end ?",
+              "options": [
+                "Le parcours",
+                "La mémoire",
+                "Les fichiers",
+                "Les threads"
+              ],
+              "answer": 0,
+              "explanation": "La fin est exclue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-04-q1"
+            },
+            {
+              "question": "Que fait std::sort ?",
+              "options": [
+                "Il trie la plage",
+                "Il filtre",
+                "Il copie",
+                "Il alloue"
+              ],
+              "answer": 0,
+              "explanation": "Les itérateurs indiquent la plage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-04-q2"
+            }
+          ],
+          "summary": [
+            "begin/end.",
+            "*it.",
+            "Algorithmes sur plages."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des ressources »."
+        },
+        {
+          "id": "cppp-05",
+          "title": "Gestion des ressources",
+          "duration": 20,
+          "objectives": [
+            "Appliquer RAII",
+            "Libérer dans le destructeur",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "RAII lie la ressource à la durée de vie de l'objet : acquisition au constructeur, libération au destructeur, y compris en cas d'exception."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "class Fichier {\n  std::FILE* f;\npublic:\n  explicit Fichier(const char* nom) : f(std::fopen(nom, \"r\")) {}\n  ~Fichier() { if (f) std::fclose(f); }\n};",
+              "title": "RAII"
+            },
+            {
+              "type": "warning",
+              "text": "Un destructeur ne doit pas lever d'exception : libérez sans risque de throw."
+            }
+          ],
+          "exercise": {
+            "title": "Libérer",
+            "instructions": "Où libérer une ressource en RAII ?",
+            "hints": [
+              "Dans le destructeur."
+            ],
+            "solution": "Dans le destructeur de l'objet qui la possède.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "destructeur"
+              ],
+              "success": "Correct : le destructeur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit RAII ?",
+              "options": [
+                "La libération automatique",
+                "La vitesse",
+                "Le tri",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "La durée de vie gère la ressource.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-05-q1"
+            },
+            {
+              "question": "Que faire si l'acquisition échoue ?",
+              "options": [
+                "Signaler l'erreur",
+                "Continuer",
+                "Ignorer",
+                "Doubler"
+              ],
+              "answer": 0,
+              "explanation": "Le constructeur doit échouer proprement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppp-05-q2"
+            }
+          ],
+          "summary": [
+            "RAII.",
+            "Destructeur.",
+            "Pas d'exception au destructeur."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

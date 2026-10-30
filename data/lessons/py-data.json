@@ -1,0 +1,412 @@
+{
+  "courseId": "py-data",
+  "modules": [
+    {
+      "id": "py-data-module",
+      "title": "Données et scripts",
+      "chapters": [
+        {
+          "id": "pyq-01",
+          "title": "Web scraping respectueux",
+          "duration": 20,
+          "objectives": [
+            "Lire les règles d'un site",
+            "Respecter robots.txt",
+            "Limiter la charge"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le scraping doit respecter les conditions du site, robots.txt, les délais et la charge serveur. Préférez une API officielle quand elle existe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Identifier l'usage et les conditions.",
+                "Respecter robots.txt.",
+                "Espacer les requêtes.",
+                "Ne pas contourner une protection."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Contourner une authentification ou une limitation est illégal et contraire aux conditions du site."
+            }
+          ],
+          "exercise": {
+            "title": "Respecter",
+            "instructions": "Que consulter avant de scraper ?",
+            "hints": [
+              "Les règles du site."
+            ],
+            "solution": "robots.txt et les conditions d'utilisation.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "robots",
+                "conditions"
+              ],
+              "success": "Correct : robots.txt et conditions."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier si une API existe ?",
+              "options": [
+                "L'API officielle",
+                "Le scraping",
+                "Un proxy",
+                "Un robot"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est prévu et stable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-01-q1"
+            },
+            {
+              "question": "Pourquoi espacer les requêtes ?",
+              "options": [
+                "Pour ne pas surcharger le serveur",
+                "Pour chiffrer",
+                "Pour trier",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La charge reste raisonnable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-01-q2"
+            }
+          ],
+          "summary": [
+            "Conditions et robots.txt.",
+            "API d'abord.",
+            "Limiter la charge."
+          ],
+          "nextStep": "Chapitre suivant : « Scripts d'administration système »."
+        },
+        {
+          "id": "pyq-02",
+          "title": "Scripts d'administration système",
+          "duration": 20,
+          "objectives": [
+            "Manipuler chemins et processus",
+            "Vérifier les droits",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pathlib remplace les manipulations de chaînes ; subprocess exécute des commandes avec argument list, sans shell quand possible."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from pathlib import Path\nimport subprocess\n\nsubprocess.run([\"df\", \"-h\"], check=True)\nfor fichier in Path(\"/var/log\").glob(\"*.log\"):\n    print(fichier.name)",
+              "title": "Admin"
+            },
+            {
+              "type": "warning",
+              "text": "Éviter shell=True avec une entrée utilisateur : risque d'injection de commande."
+            }
+          ],
+          "exercise": {
+            "title": "Sécuriser",
+            "instructions": "Que préférer à shell=True ?",
+            "hints": [
+              "Une liste d'arguments."
+            ],
+            "solution": "subprocess.run([\"commande\", \"arg\"], check=True)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "subprocess",
+                "check"
+              ],
+              "success": "Correct : liste d'arguments."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait pathlib ?",
+              "options": [
+                "Il manipule les chemins",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Les chemins deviennent des objets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-02-q1"
+            },
+            {
+              "question": "Que fait check=True ?",
+              "options": [
+                "Il lève une erreur si échec",
+                "Il ignore",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'échec est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-02-q2"
+            }
+          ],
+          "summary": [
+            "pathlib.",
+            "subprocess sans shell.",
+            "check=True."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à NumPy »."
+        },
+        {
+          "id": "pyq-03",
+          "title": "Introduction à NumPy",
+          "duration": 20,
+          "objectives": [
+            "Créer un tableau",
+            "Calculer vectorisé",
+            "Comprendre les formes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "NumPy fournit des tableaux typés et des opérations vectorisées, bien plus rapides que des boucles Python."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import numpy as np\na = np.array([1, 2, 3])\na * 2          # [2 4 6]\na.shape        # (3,)",
+              "title": "NumPy"
+            },
+            {
+              "type": "warning",
+              "text": "Les opérations NumPy sont élément par élément : la multiplication de matrices utilise @ ou dot."
+            }
+          ],
+          "exercise": {
+            "title": "Vectoriser",
+            "instructions": "Comment doubler tous les éléments d'un tableau NumPy ?",
+            "hints": [
+              "Une opération globale."
+            ],
+            "solution": "a * 2",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "* 2",
+                "*2"
+              ],
+              "success": "Correct : a * 2."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait shape ?",
+              "options": [
+                "Il donne les dimensions",
+                "Il trie",
+                "Il chiffre",
+                "Il copie"
+              ],
+              "answer": 0,
+              "explanation": "La forme est décrite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-03-q1"
+            },
+            {
+              "question": "Pourquoi vectoriser ?",
+              "options": [
+                "Pour la vitesse",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Les boucles Python sont lentes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-03-q2"
+            }
+          ],
+          "summary": [
+            "Tableaux NumPy.",
+            "Opérations vectorisées.",
+            "shape."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à pandas »."
+        },
+        {
+          "id": "pyq-04",
+          "title": "Introduction à pandas",
+          "duration": 20,
+          "objectives": [
+            "Charger un CSV",
+            "Filtrer",
+            "Agréger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pandas lit un CSV dans un DataFrame, filtre par colonne et agrège avec groupby."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import pandas as pd\n\ndf = pd.read_csv(\"ventes.csv\")\ndf[df[\"montant\"] > 100]\ndf.groupby(\"produit\")[\"montant\"].sum()",
+              "title": "DataFrame"
+            },
+            {
+              "type": "warning",
+              "text": "Vérifiez les types après lecture : un montant lu en texte ne s'additionne pas."
+            }
+          ],
+          "exercise": {
+            "title": "Charger",
+            "instructions": "Quelle fonction lit un CSV dans un DataFrame ?",
+            "hints": [
+              "Une fonction de pandas."
+            ],
+            "solution": "pd.read_csv(\"fichier.csv\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "read_csv"
+              ],
+              "success": "Correct : read_csv."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait groupby ?",
+              "options": [
+                "Il regroupe pour agréger",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Les groupes sont calculés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-04-q1"
+            },
+            {
+              "question": "Que vérifier après lecture ?",
+              "options": [
+                "Les types",
+                "Le CSS",
+                "Le DNS",
+                "Les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Un texte ne se calcule pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-04-q2"
+            }
+          ],
+          "summary": [
+            "read_csv.",
+            "Filtres et groupby.",
+            "Vérifier les types."
+          ],
+          "nextStep": "Chapitre suivant : « Visualisation de données »."
+        },
+        {
+          "id": "pyq-05",
+          "title": "Visualisation de données",
+          "duration": 20,
+          "objectives": [
+            "Choisir un graphique",
+            "Éviter les graphiques trompeurs",
+            "Exporter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le graphique dépend de la question : évolution (ligne), comparaison (barres), distribution (histogramme). Les axes doivent être honnêtes."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import matplotlib.pyplot as plt\n\nplt.plot(dates, valeurs)\nplt.xlabel(\"Date\")\nplt.ylabel(\"Ventes\")\nplt.savefig(\"ventes.png\", dpi=150)",
+              "title": "Graphique"
+            },
+            {
+              "type": "warning",
+              "text": "Un axe tronqué peut exagérer une variation : commencez à zéro quand c'est pertinent."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel graphique pour une évolution dans le temps ?",
+            "hints": [
+              "Une ligne."
+            ],
+            "solution": "Un graphique en ligne.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ligne"
+              ],
+              "success": "Correct : courbe/ligne."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait savefig ?",
+              "options": [
+                "Il exporte l'image",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le fichier est produit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-05-q1"
+            },
+            {
+              "question": "Pourquoi des axes honnêtes ?",
+              "options": [
+                "Éviter la tromperie",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "La lecture doit rester juste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyq-05-q2"
+            }
+          ],
+          "summary": [
+            "Graphique selon la question.",
+            "Axes honnêtes.",
+            "Exporter en haute résolution."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

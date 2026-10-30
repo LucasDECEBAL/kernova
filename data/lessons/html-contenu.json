@@ -1,0 +1,434 @@
+{
+  "courseId": "html-contenu",
+  "modules": [
+    {
+      "id": "html-contenu-module",
+      "title": "Images, listes et formulaires",
+      "chapters": [
+        {
+          "id": "htm-01",
+          "title": "Images",
+          "duration": 20,
+          "objectives": [
+            "Insérer une image",
+            "Écrire une alternative utile",
+            "Choisir un format"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une image se déclare avec img et deux attributs essentiels : src (adresse) et alt (description). alt n'est pas décoratif : il décrit l'image pour les lecteurs d'écran et si le fichier ne charge pas."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<img src=\"logo.png\" alt=\"Logo de l'association\" width=\"120\" height=\"40\">",
+              "title": "Image accessible"
+            },
+            {
+              "type": "warning",
+              "text": "alt=\"\" convient uniquement aux images purement décoratives ; sinon, décrivez l'information portée."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire une alternative",
+            "instructions": "Écrivez une image logo.png avec une alternative claire.",
+            "hints": [
+              "src et alt sont obligatoires.",
+              "Décrivez le contenu."
+            ],
+            "solution": "<img src=\"logo.png\" alt=\"Logo de l'association\">",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "src=",
+                "alt="
+              ],
+              "success": "Correct : source et alternative."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert alt ?",
+              "options": [
+                "Décrire l'image",
+                "Changer sa taille",
+                "La compresser",
+                "La rendre cliquable"
+              ],
+              "answer": 0,
+              "explanation": "L'alternative est lue et affichée en cas d'échec.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-01-q1"
+            },
+            {
+              "question": "Quand utiliser alt=\"\" ?",
+              "options": [
+                "Pour une image décorative",
+                "Pour un logo",
+                "Pour un graphique",
+                "Pour une photo de produit"
+              ],
+              "answer": 0,
+              "explanation": "Une image sans information peut être ignorée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-01-q2"
+            }
+          ],
+          "summary": [
+            "src et alt sont indispensables.",
+            "Décrire l'information, pas le fichier.",
+            "width et height évitent les sauts."
+          ],
+          "nextStep": "Chapitre suivant : « Listes ordonnées et non ordonnées »."
+        },
+        {
+          "id": "htm-02",
+          "title": "Listes ordonnées et non ordonnées",
+          "duration": 20,
+          "objectives": [
+            "Choisir ul ou ol",
+            "Structurer des listes imbriquées",
+            "Éviter les listes décoratives"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ul regroupe des éléments sans ordre, ol une séquence dont l'ordre compte. Chaque élément est un li."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<ul>\n  <li>HTML</li>\n  <li>CSS</li>\n</ul>\n<ol>\n  <li>Ouvrir le terminal</li>\n  <li>Lancer le serveur</li>\n</ol>",
+              "title": "Deux listes"
+            },
+            {
+              "type": "tip",
+              "text": "Une navigation est une liste de liens : ul et li structurent aussi les menus."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la liste",
+            "instructions": "Une recette a des étapes ordonnées. ul ou ol ?",
+            "hints": [
+              "L'ordre des étapes compte."
+            ],
+            "solution": "ol.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ol"
+              ],
+              "success": "Correct : liste ordonnée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que représente ol ?",
+              "options": [
+                "Une liste ordonnée",
+                "Une liste sans ordre",
+                "Un tableau",
+                "Un formulaire"
+              ],
+              "answer": 0,
+              "explanation": "L'ordre est significatif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-02-q1"
+            },
+            {
+              "question": "Quel élément contient chaque item ?",
+              "options": [
+                "li",
+                "item",
+                "td",
+                "p"
+              ],
+              "answer": 0,
+              "explanation": "li = list item.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-02-q2"
+            }
+          ],
+          "summary": [
+            "ul sans ordre, ol ordonné.",
+            "Chaque item est un li.",
+            "Les menus sont des listes de liens."
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux »."
+        },
+        {
+          "id": "htm-03",
+          "title": "Tableaux",
+          "duration": 20,
+          "objectives": [
+            "Structurer un tableau",
+            "Utiliser th et scope",
+            "Éviter les tableaux de mise en page"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau présente des données en lignes et colonnes : table, thead, tbody, tr, th, td. th identifie une en-tête, scope précise sa portée."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<table>\n  <caption>Notes</caption>\n  <thead>\n    <tr><th scope=\"col\">Matière</th><th scope=\"col\">Note</th></tr>\n  </thead>\n  <tbody>\n    <tr><td>Maths</td><td>15</td></tr>\n  </tbody>\n</table>",
+              "title": "Tableau de données"
+            },
+            {
+              "type": "warning",
+              "text": "Un tableau ne sert pas à placer des éléments côte à côte : utilisez CSS Grid ou Flexbox."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'élément",
+            "instructions": "Quel élément pour une cellule d'en-tête de colonne ?",
+            "hints": [
+              "En-tête, pas cellule de données."
+            ],
+            "solution": "<th scope=\"col\">",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "th",
+                "scope"
+              ],
+              "success": "Correct : th avec scope."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait caption ?",
+              "options": [
+                "Il décrit le tableau",
+                "Il crée une colonne",
+                "Il trie",
+                "Il masque le tableau"
+              ],
+              "answer": 0,
+              "explanation": "La légende est associée au tableau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-03-q1"
+            },
+            {
+              "question": "Quand utiliser un tableau ?",
+              "options": [
+                "Pour des données tabulaires",
+                "Pour la mise en page",
+                "Pour un menu",
+                "Pour une image"
+              ],
+              "answer": 0,
+              "explanation": "Le tableau sert les données.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-03-q2"
+            }
+          ],
+          "summary": [
+            "Tableau = données structurées.",
+            "th et scope pour les en-têtes.",
+            "Pas de tableau pour la mise en page."
+          ],
+          "nextStep": "Chapitre suivant : « Formulaires »."
+        },
+        {
+          "id": "htm-04",
+          "title": "Formulaires",
+          "duration": 20,
+          "objectives": [
+            "Créer un formulaire",
+            "Relier champs et labels",
+            "Choisir la méthode et l'action"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un formulaire regroupe des champs et un bouton d'envoi. action indique la destination, method la façon d'envoyer (GET ou POST)."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<form action=\"/contact\" method=\"post\">\n  <label for=\"email\">Adresse e-mail</label>\n  <input id=\"email\" name=\"email\" type=\"email\" required>\n  <button type=\"submit\">Envoyer</button>\n</form>",
+              "title": "Formulaire minimal"
+            },
+            {
+              "type": "warning",
+              "text": "Un champ sans attribut name n'est pas transmis : c'est une erreur fréquente et silencieuse."
+            }
+          ],
+          "exercise": {
+            "title": "Relier un label",
+            "instructions": "Comment associer un label à un champ d'identifiant email ?",
+            "hints": [
+              "for pointe vers l'id."
+            ],
+            "solution": "<label for=\"email\">Adresse e-mail</label>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "label",
+                "for=",
+                "email"
+              ],
+              "success": "Correct : label associé par for."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait method=\"post\" ?",
+              "options": [
+                "Envoie les données dans le corps",
+                "Les met dans l'URL",
+                "Les chiffre toujours",
+                "Les supprime"
+              ],
+              "answer": 0,
+              "explanation": "POST transporte les données autrement que GET.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-04-q1"
+            },
+            {
+              "question": "Que se passe-t-il sans name ?",
+              "options": [
+                "Le champ n'est pas transmis",
+                "Le champ est en lecture seule",
+                "Le formulaire plante",
+                "Le label disparaît"
+              ],
+              "answer": 0,
+              "explanation": "Le nom identifie la donnée envoyée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-04-q2"
+            }
+          ],
+          "summary": [
+            "Formulaire = champs + envoi.",
+            "label associé par for/id.",
+            "name est indispensable."
+          ],
+          "nextStep": "Chapitre suivant : « Champs de saisie »."
+        },
+        {
+          "id": "htm-05",
+          "title": "Champs de saisie",
+          "duration": 20,
+          "objectives": [
+            "Choisir un type de champ",
+            "Ajouter une aide contextuelle",
+            "Limiter les erreurs de saisie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le type d'un input adapte le clavier et la validation : text, email, password, number, date, checkbox, radio, file."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Type",
+                "Usage"
+              ],
+              "rows": [
+                [
+                  "email",
+                  "adresse e-mail"
+                ],
+                [
+                  "password",
+                  "mot de passe masqué"
+                ],
+                [
+                  "number",
+                  "valeur numérique"
+                ],
+                [
+                  "date",
+                  "sélecteur de date"
+                ],
+                [
+                  "checkbox",
+                  "choix multiple"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Le type seul ne remplace pas une validation serveur : il améliore la saisie, il ne garantit rien."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir un type",
+            "instructions": "Quel type pour un champ mot de passe ?",
+            "hints": [
+              "Le texte doit être masqué."
+            ],
+            "solution": "type=\"password\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "password"
+              ],
+              "success": "Correct : password."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait type=\"email\" ?",
+              "options": [
+                "Il adapte le clavier et vérifie le format",
+                "Il chiffre l'envoi",
+                "Il crée un compte",
+                "Il envoie un e-mail"
+              ],
+              "answer": 0,
+              "explanation": "Il aide la saisie et la validation native.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-05-q1"
+            },
+            {
+              "question": "Un checkbox sert à…",
+              "options": [
+                "un choix multiple",
+                "une saisie libre",
+                "un envoi de fichier",
+                "un titre"
+              ],
+              "answer": 0,
+              "explanation": "Il peut être coché indépendamment.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm-05-q2"
+            }
+          ],
+          "summary": [
+            "Le type adapte le champ.",
+            "Aide à la saisie, pas sécurité.",
+            "Valider aussi côté serveur."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

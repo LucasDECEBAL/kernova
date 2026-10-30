@@ -1,0 +1,407 @@
+{
+  "courseId": "frontend-vue",
+  "modules": [
+    {
+      "id": "frontend-vue-module",
+      "title": "Vue, Svelte et Next.js",
+      "chapters": [
+        {
+          "id": "fe-01",
+          "title": "Introduction à Vue.js",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le modèle",
+            "Créer une application",
+            "Utiliser les templates"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Vue combine templates déclaratifs et réactivité. Une application se crée avec createApp et se monte sur un élément."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "import { createApp, ref } from \"vue\";\ncreateApp({\n  setup() {\n    const n = ref(0);\n    return { n };\n  },\n  template: \"<button @click=\\\"n++\\\">{{ n }}</button>\"\n}).mount(\"#app\");",
+              "title": "Vue minimal"
+            },
+            {
+              "type": "tip",
+              "text": "Vue est progressif : il s'intègre à une page existante ou structure toute l'application."
+            }
+          ],
+          "exercise": {
+            "title": "Monter",
+            "instructions": "Quelle fonction crée une application Vue ?",
+            "hints": [
+              "Une fonction d'usine."
+            ],
+            "solution": "createApp",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "createapp"
+              ],
+              "success": "Correct : createApp."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ref ?",
+              "options": [
+                "Il crée une valeur réactive",
+                "Il crée un composant",
+                "Il monte l'app",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "La valeur déclenche les mises à jour.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-01-q1"
+            },
+            {
+              "question": "Où monte-t-on l'application ?",
+              "options": [
+                "Sur un élément du DOM",
+                "Dans le CSS",
+                "Dans un cookie",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "mount(\"#app\") par exemple.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-01-q2"
+            }
+          ],
+          "summary": [
+            "Vue réactif et déclaratif.",
+            "createApp.",
+            "ref pour l'état."
+          ],
+          "nextStep": "Chapitre suivant : « Composants Vue »."
+        },
+        {
+          "id": "fe-02",
+          "title": "Composants Vue",
+          "duration": 20,
+          "objectives": [
+            "Déclarer un composant",
+            "Passer des props",
+            "Émettre des événements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un composant Vue est un fichier .vue avec template, script et style. Les props descendent, les événements remontent."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "defineProps({ titre: String });\nconst emit = defineEmits([\"choisir\"]);\nemit(\"choisir\", 42);",
+              "title": "Props et événements"
+            },
+            {
+              "type": "warning",
+              "text": "Un composant ne doit pas modifier une prop : il émet un événement et le parent décide."
+            }
+          ],
+          "exercise": {
+            "title": "Communiquer",
+            "instructions": "Comment un enfant remonte une action au parent ?",
+            "hints": [
+              "Un événement."
+            ],
+            "solution": "Avec emit (defineEmits).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "emit"
+              ],
+              "success": "Correct : emit."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi servent les props ?",
+              "options": [
+                "À passer des données au composant",
+                "À remonter un événement",
+                "À styler",
+                "À router"
+              ],
+              "answer": 0,
+              "explanation": "Le flux descend.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-02-q1"
+            },
+            {
+              "question": "Que fait defineEmits ?",
+              "options": [
+                "Il déclare les événements",
+                "Il crée l'état",
+                "Il monte l'app",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "Les événements sont typés et documentés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-02-q2"
+            }
+          ],
+          "summary": [
+            "Props vers le bas.",
+            "Événements vers le haut.",
+            "Pas de mutation de prop."
+          ],
+          "nextStep": "Chapitre suivant : « Réactivité et état »."
+        },
+        {
+          "id": "fe-03",
+          "title": "Réactivité et état",
+          "duration": 20,
+          "objectives": [
+            "Distinguer ref et reactive",
+            "Dériver une valeur",
+            "Éviter les effets inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ref enveloppe une valeur (accès par .value dans le script), reactive un objet. computed dérive une valeur, watch réagit à un changement."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const prix = ref(10);\nconst ttc = computed(() => prix.value * 1.2);\nwatch(prix, (v) => console.log(\"nouveau\", v));",
+              "title": "Réactivité"
+            },
+            {
+              "type": "warning",
+              "text": "Un état dérivé stocké à la main se désynchronise : utilisez computed."
+            }
+          ],
+          "exercise": {
+            "title": "Dériver",
+            "instructions": "Quel outil calcule une valeur à partir de l'état ?",
+            "hints": [
+              "Une valeur calculée."
+            ],
+            "solution": "computed",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "computed"
+              ],
+              "success": "Correct : computed."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Comment lire une ref dans le script ?",
+              "options": [
+                "Avec .value",
+                "Directement",
+                "Avec get()",
+                "Avec ref()"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est enveloppée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-03-q1"
+            },
+            {
+              "question": "Que fait watch ?",
+              "options": [
+                "Il réagit à un changement",
+                "Il crée un composant",
+                "Il monte",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'effet est déclenché.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-03-q2"
+            }
+          ],
+          "summary": [
+            "ref/reactive.",
+            "computed pour dériver.",
+            "watch pour réagir."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Svelte »."
+        },
+        {
+          "id": "fe-04",
+          "title": "Introduction à Svelte",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la compilation",
+            "Déclarer un état",
+            "Créer un composant"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Svelte compile les composants en JavaScript : la réactivité est intégrée au langage, sans DOM virtuel."
+            },
+            {
+              "type": "code",
+              "lang": "svelte",
+              "code": "<script>\n  let n = 0;\n</script>\n<button on:click={() => n++}>{n}</button>",
+              "title": "Composant Svelte"
+            },
+            {
+              "type": "tip",
+              "text": "Svelte déplace une partie du travail à la compilation : le bundle est souvent plus léger."
+            }
+          ],
+          "exercise": {
+            "title": "Réactivité",
+            "instructions": "Comment déclare-t-on un état mutable en Svelte ?",
+            "hints": [
+              "Une simple variable."
+            ],
+            "solution": "let n = 0;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "let"
+              ],
+              "success": "Correct : let."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Svelte à la compilation ?",
+              "options": [
+                "Il transforme les composants en JS",
+                "Il crée un serveur",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La réactivité est compilée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-04-q1"
+            },
+            {
+              "question": "Svelte utilise-t-il un DOM virtuel ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Seulement en SSR"
+              ],
+              "answer": 0,
+              "explanation": "Le code compile des mises à jour ciblées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-04-q2"
+            }
+          ],
+          "summary": [
+            "Svelte compile.",
+            "Réactivité native.",
+            "Bundle léger."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Next.js »."
+        },
+        {
+          "id": "fe-05",
+          "title": "Introduction à Next.js",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le framework",
+            "Choisir rendu serveur ou statique",
+            "Organiser les pages"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Next.js ajoute à React le routage par fichiers, le rendu serveur et la génération statique, avec une structure de dossiers."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "app/\n├── page.jsx          → /\n├── taches/page.jsx   → /taches\n└── layout.jsx        → mise en page commune",
+              "title": "App Router"
+            },
+            {
+              "type": "warning",
+              "text": "Un composant serveur ne peut pas utiliser d'état local : séparez les parties interactives en composants client."
+            }
+          ],
+          "exercise": {
+            "title": "Router",
+            "instructions": "Comment crée-t-on la route /taches dans l'App Router ?",
+            "hints": [
+              "Un dossier et un fichier page."
+            ],
+            "solution": "app/taches/page.jsx",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "taches/page",
+                "page.jsx"
+              ],
+              "success": "Correct : app/taches/page.jsx."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gère Next.js en plus de React ?",
+              "options": [
+                "Routage et rendu",
+                "Le CSS uniquement",
+                "La base de données",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le framework complète React.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-05-q1"
+            },
+            {
+              "question": "Que fait un layout ?",
+              "options": [
+                "Il entoure les pages",
+                "Il remplace le HTML",
+                "Il crée la base",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "La mise en page est partagée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "fe-05-q2"
+            }
+          ],
+          "summary": [
+            "Next = React + routage + rendu.",
+            "Dossiers = routes.",
+            "Serveur vs client."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

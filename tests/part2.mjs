@@ -80,10 +80,10 @@ try {
   await send('Runtime.enable');
 
   await send('Page.navigate', { url: BASE + '#/catalogue' });
-  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('53 r')`);
+  await waitFor(`document.querySelector('#cat-count')?.textContent.startsWith('193 r')`);
   check('Catalogue : 53 cours', true);
 
-  for (const [domain, expected] of [['informatique-generale', '3 r'], ['maintenance', '3 r'], ['environnements', '2 r']]) {
+  for (const [domain, expected] of [['informatique-generale', '3 r'], ['maintenance', '3 r'], ['environnements', '3 r']]) {
     await setValue('#cat-domain', domain);
     await waitFor(`document.querySelector('#cat-count').textContent.startsWith('${expected}')`);
     check(`Filtre ${domain} : ${expected}`, true);

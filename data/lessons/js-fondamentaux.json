@@ -1,0 +1,408 @@
+{
+  "courseId": "js-fondamentaux",
+  "modules": [
+    {
+      "id": "js-fondamentaux-module",
+      "title": "Bases du langage",
+      "chapters": [
+        {
+          "id": "jsf-01",
+          "title": "Introduction à JavaScript",
+          "duration": 20,
+          "objectives": [
+            "Situer JavaScript",
+            "Exécuter un script",
+            "Distinguer navigateur et Node.js"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "JavaScript est un langage de programmation exécuté par le navigateur et par Node.js. Il manipule le DOM côté navigateur et les fichiers côté serveur."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<script src=\"app.js\" defer></script>\n<script>console.log(\"Bonjour\");</script>",
+              "title": "Charger un script"
+            },
+            {
+              "type": "tip",
+              "text": "Avec defer, le script s'exécute après l'analyse du HTML : le DOM est prêt."
+            }
+          ],
+          "exercise": {
+            "title": "Exécuter",
+            "instructions": "Où s'affiche console.log dans le navigateur ?",
+            "hints": [
+              "Dans les outils de développement."
+            ],
+            "solution": "Dans la console des DevTools.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "console"
+              ],
+              "success": "Correct : console des DevTools."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où JavaScript s'exécute-t-il ?",
+              "options": [
+                "Navigateur et Node.js",
+                "Uniquement en CSS",
+                "Uniquement en HTML",
+                "Dans le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Le langage dépasse le navigateur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-01-q1"
+            },
+            {
+              "question": "Que fait defer ?",
+              "options": [
+                "Il exécute après l'analyse du HTML",
+                "Il supprime le script",
+                "Il bloque la page",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le DOM est disponible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-01-q2"
+            }
+          ],
+          "summary": [
+            "JS côté navigateur et serveur.",
+            "defer pour le DOM.",
+            "Console pour observer."
+          ],
+          "nextStep": "Chapitre suivant : « Variables et constantes »."
+        },
+        {
+          "id": "jsf-02",
+          "title": "Variables et constantes",
+          "duration": 20,
+          "objectives": [
+            "Choisir let ou const",
+            "Comprendre la portée de bloc",
+            "Éviter var"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "const déclare une liaison non réaffectée ; let une variable modifiable. Les deux ont une portée de bloc, contrairement à var."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const taxe = 0.2;\nlet prix = 19.9;\nprix = prix * (1 + taxe);\n// taxe = 0.3; // TypeError",
+              "title": "let et const"
+            },
+            {
+              "type": "warning",
+              "text": "const empêche la réaffectation, pas la mutation d'un objet : un tableau const peut toujours recevoir push."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Déclarez une constante taxe à 0.2 et une variable prix à 19.9.",
+            "hints": [
+              "Constante pour la taxe."
+            ],
+            "solution": "const taxe = 0.2; let prix = 19.9;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "const",
+                "let"
+              ],
+              "success": "Correct : const et let."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit const ?",
+              "options": [
+                "La non-réaffectation",
+                "L'immutabilité profonde",
+                "La vitesse",
+                "Le chiffrement"
+              ],
+              "answer": 0,
+              "explanation": "L'objet peut encore être modifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-02-q1"
+            },
+            {
+              "question": "Quelle portée pour let ?",
+              "options": [
+                "Le bloc",
+                "La fonction uniquement",
+                "La page",
+                "Le fichier"
+              ],
+              "answer": 0,
+              "explanation": "let respecte les blocs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-02-q2"
+            }
+          ],
+          "summary": [
+            "const par défaut, let si besoin.",
+            "Portée de bloc.",
+            "var à éviter."
+          ],
+          "nextStep": "Chapitre suivant : « Types primitifs »."
+        },
+        {
+          "id": "jsf-03",
+          "title": "Types primitifs",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître les types",
+            "Utiliser typeof",
+            "Éviter les conversions implicites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les primitifs sont string, number, boolean, null, undefined, bigint et symbol. typeof indique le type d'une valeur."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "typeof \"Ada\"      // \"string\"\ntypeof 42         // \"number\"\ntypeof true       // \"boolean\"\ntypeof undefined  // \"undefined\"\ntypeof null       // \"object\" (particularité historique)",
+              "title": "typeof"
+            },
+            {
+              "type": "warning",
+              "text": "typeof null renvoie \"object\" : vérifiez null avec valeur === null, pas avec typeof."
+            }
+          ],
+          "exercise": {
+            "title": "Tester le type",
+            "instructions": "Quel opérateur donne le type d'une valeur ?",
+            "hints": [
+              "Un opérateur unaire."
+            ],
+            "solution": "typeof",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "typeof"
+              ],
+              "success": "Correct : typeof."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie typeof null ?",
+              "options": [
+                "\"object\"",
+                "\"null\"",
+                "\"undefined\"",
+                "\"boolean\""
+              ],
+              "answer": 0,
+              "explanation": "Particularité historique du langage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-03-q1"
+            },
+            {
+              "question": "Quel type pour 3.14 ?",
+              "options": [
+                "number",
+                "float",
+                "decimal",
+                "string"
+              ],
+              "answer": 0,
+              "explanation": "JS n'a qu'un type number.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-03-q2"
+            }
+          ],
+          "summary": [
+            "Primitifs et typeof.",
+            "null se teste par ===.",
+            "Pas de type float séparé."
+          ],
+          "nextStep": "Chapitre suivant : « Opérateurs »."
+        },
+        {
+          "id": "jsf-04",
+          "title": "Opérateurs",
+          "duration": 20,
+          "objectives": [
+            "Utiliser les opérateurs arithmétiques",
+            "Comparer avec ===",
+            "Combiner avec et/ou"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les opérateurs combinent des valeurs : + - * / %, comparaisons === !==, logiques && || !. === compare valeur et type."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "1 + \"2\"      // \"12\"\n1 === \"1\"    // false\n10 % 3       // 1\nx > 0 && x < 10",
+              "title": "Pièges et logique"
+            },
+            {
+              "type": "warning",
+              "text": "+ concatène dès qu'une chaîne est présente : convertissez explicitement avec Number()."
+            }
+          ],
+          "exercise": {
+            "title": "Comparer",
+            "instructions": "Quel opérateur compare valeur et type ?",
+            "hints": [
+              "Trois signes."
+            ],
+            "solution": "===",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "==="
+              ],
+              "success": "Correct : ===."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vaut 1 === \"1\" ?",
+              "options": [
+                "false",
+                "true",
+                "undefined",
+                "Erreur"
+              ],
+              "answer": 0,
+              "explanation": "Les types diffèrent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-04-q1"
+            },
+            {
+              "question": "Que fait % ?",
+              "options": [
+                "Il donne le reste",
+                "Il divise",
+                "Il concatène",
+                "Il compare"
+              ],
+              "answer": 0,
+              "explanation": "C'est le modulo.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-04-q2"
+            }
+          ],
+          "summary": [
+            "=== plutôt que ==.",
+            "+ concatène avec une chaîne.",
+            "&& et || combinent des booléens."
+          ],
+          "nextStep": "Chapitre suivant : « Conditions »."
+        },
+        {
+          "id": "jsf-05",
+          "title": "Conditions",
+          "duration": 20,
+          "objectives": [
+            "Écrire if / else if / else",
+            "Utiliser le ternaire",
+            "Éviter les conditions imbriquées"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "if exécute un bloc selon une condition ; else if enchaîne ; le ternaire condition ? a : b renvoie une valeur."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "if (note >= 10) {\n  console.log(\"Admis\");\n} else {\n  console.log(\"Refusé\");\n}\nconst statut = note >= 10 ? \"admis\" : \"refusé\";",
+              "title": "Conditions"
+            },
+            {
+              "type": "tip",
+              "text": "Une condition complexe se nomme dans une variable booléenne : if (estMajeur && aConsenti) se lit mieux."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire une condition",
+            "instructions": "Affichez « Majeur » si age ≥ 18, sinon « Mineur ».",
+            "hints": [
+              "if / else."
+            ],
+            "solution": "if (age >= 18) console.log(\"Majeur\"); else console.log(\"Mineur\");",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "if",
+                "else"
+              ],
+              "success": "Correct : if/else."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie le ternaire ?",
+              "options": [
+                "Une valeur",
+                "Rien",
+                "Une boucle",
+                "Un fichier"
+              ],
+              "answer": 0,
+              "explanation": "C'est une expression.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-05-q1"
+            },
+            {
+              "question": "Que faire d'une condition trop longue ?",
+              "options": [
+                "La nommer dans une variable",
+                "La supprimer",
+                "La commenter",
+                "La mettre en CSS"
+              ],
+              "answer": 0,
+              "explanation": "La lisibilité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsf-05-q2"
+            }
+          ],
+          "summary": [
+            "if/else pour les blocs.",
+            "Ternaire pour une valeur.",
+            "Nommer les conditions complexes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

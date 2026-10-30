@@ -1,0 +1,440 @@
+{
+  "courseId": "algo-controle",
+  "modules": [
+    {
+      "id": "algo-controle-module",
+      "title": "Conditions, boucles et fonctions",
+      "chapters": [
+        {
+          "id": "algc-01",
+          "title": "Opérateurs logiques",
+          "duration": 20,
+          "objectives": [
+            "Utiliser et, ou, non",
+            "Lire une table de vérité",
+            "Éviter les conditions inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les opérateurs logiques combinent des booléens : et exige les deux vrais, ou en exige un seul, non inverse."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "a",
+                "b",
+                "a et b",
+                "a ou b"
+              ],
+              "rows": [
+                [
+                  "vrai",
+                  "vrai",
+                  "vrai",
+                  "vrai"
+                ],
+                [
+                  "vrai",
+                  "faux",
+                  "faux",
+                  "vrai"
+                ],
+                [
+                  "faux",
+                  "faux",
+                  "faux",
+                  "faux"
+                ]
+              ]
+            },
+            {
+              "type": "p",
+              "text": "Un mauvais enchaînement crée des conditions impossibles : « âge ≥ 18 et âge ≤ 12 » ne peut jamais être vrai."
+            },
+            {
+              "type": "tip",
+              "text": "En programmation, beaucoup de langages évaluent « et » de gauche à droite et s'arrêtent dès qu'un terme est faux (court-circuit)."
+            }
+          ],
+          "exercise": {
+            "title": "Simplifier une condition",
+            "instructions": "Écrivez la condition « majeur » pour un âge supérieur ou égal à 18.",
+            "hints": [
+              "Une seule comparaison suffit."
+            ],
+            "solution": "age ≥ 18",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "18"
+              ],
+              "success": "Correct : âge ≥ 18."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand « a et b » est-il vrai ?",
+              "options": [
+                "Quand les deux sont vrais",
+                "Quand un seul est vrai",
+                "Toujours",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "Le et exige les deux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-01-q1"
+            },
+            {
+              "question": "Que fait non ?",
+              "options": [
+                "Il inverse la valeur de vérité",
+                "Il additionne",
+                "Il répète",
+                "Il concatène"
+              ],
+              "answer": 0,
+              "explanation": "non vrai donne faux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-01-q2"
+            }
+          ],
+          "summary": [
+            "et, ou, non combinent des booléens.",
+            "Les tables de vérité lèvent les ambiguïtés.",
+            "Éviter les conditions contradictoires."
+          ],
+          "nextStep": "Chapitre suivant : « Conditions »."
+        },
+        {
+          "id": "algc-02",
+          "title": "Conditions",
+          "duration": 20,
+          "objectives": [
+            "Écrire si / sinon",
+            "Imbriquer des conditions",
+            "Comparer correctement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une condition exécute un bloc selon qu'une expression est vraie ou fausse. sinon couvre tous les autres cas."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "SI note ≥ 10 ALORS\n  AFFICHER \"Admis\"\nSINON SI note ≥ 7 ALORS\n  AFFICHER \"Rattrapage\"\nSINON\n  AFFICHER \"Refusé\"\nFIN SI",
+              "title": "Conditions imbriquées"
+            },
+            {
+              "type": "warning",
+              "text": "L'ordre des tests compte : tester « ≥ 7 » avant « ≥ 10 » classerait un 15 en rattrapage."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire une classification",
+            "instructions": "Affichez « Majeur » si age ≥ 18, sinon « Mineur ».",
+            "hints": [
+              "Deux cas suffisent."
+            ],
+            "solution": "SI age ≥ 18 ALORS AFFICHER \"Majeur\" SINON AFFICHER \"Mineur\" FIN SI",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "si",
+                "sinon",
+                "18"
+              ],
+              "success": "Correct : condition à deux branches."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que couvre sinon ?",
+              "options": [
+                "Tous les cas non couverts",
+                "Uniquement zéro",
+                "Les erreurs",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Sinon est la branche par défaut.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-02-q1"
+            },
+            {
+              "question": "Pourquoi l'ordre des tests importe-t-il ?",
+              "options": [
+                "Un test trop large masque les suivants",
+                "Il change le type",
+                "Il crée une boucle",
+                "Il supprime sinon"
+              ],
+              "answer": 0,
+              "explanation": "Le premier test vrai gagne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-02-q2"
+            }
+          ],
+          "summary": [
+            "si / sinon choisit un bloc.",
+            "L'ordre des tests est décisif.",
+            "sinon couvre les cas restants."
+          ],
+          "nextStep": "Chapitre suivant : « Boucles »."
+        },
+        {
+          "id": "algc-03",
+          "title": "Boucles",
+          "duration": 20,
+          "objectives": [
+            "Choisir entre pour et tant que",
+            "Écrire une condition d'arrêt",
+            "Éviter les boucles infinies"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une boucle répète un bloc. « pour » convient quand le nombre d'itérations est connu ; « tant que » répète jusqu'à ce qu'une condition devienne fausse."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "POUR i DE 1 À 5 FAIRE\n  AFFICHER i\nFIN POUR\n\nsomme ← 0\nTANT QUE somme < 100 FAIRE\n  somme ← somme + 7\nFIN TANT QUE",
+              "title": "Deux boucles"
+            },
+            {
+              "type": "warning",
+              "text": "Dans « tant que », la condition doit pouvoir devenir fausse : sinon la boucle ne s'arrête jamais."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la boucle",
+            "instructions": "Vous devez afficher les nombres de 1 à 10. Quelle boucle et quelle condition ?",
+            "hints": [
+              "Le nombre d'itérations est connu."
+            ],
+            "solution": "Une boucle pour i de 1 à 10.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pour",
+                "1",
+                "10"
+              ],
+              "success": "Correct : boucle pour bornée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand préférer « tant que » ?",
+              "options": [
+                "Quand l'arrêt dépend d'une condition",
+                "Quand le nombre est connu",
+                "Pour déclarer une variable",
+                "Pour concaténer"
+              ],
+              "answer": 0,
+              "explanation": "La répétition dure jusqu'à changer la condition.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-03-q1"
+            },
+            {
+              "question": "Que risque une boucle sans mise à jour ?",
+              "options": [
+                "De ne jamais s'arrêter",
+                "De changer de type",
+                "De supprimer le disque",
+                "D'afficher plus vite"
+              ],
+              "answer": 0,
+              "explanation": "La condition reste vraie indéfiniment.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-03-q2"
+            }
+          ],
+          "summary": [
+            "pour : nombre d'itérations connu.",
+            "tant que : arrêt par condition.",
+            "La condition doit pouvoir devenir fausse."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions »."
+        },
+        {
+          "id": "algc-04",
+          "title": "Fonctions",
+          "duration": 20,
+          "objectives": [
+            "Définir une fonction",
+            "Appeler une fonction avec des arguments",
+            "Séparer les responsabilités"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction regroupe des instructions sous un nom et peut renvoyer un résultat. Elle évite la duplication et isole une responsabilité."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION aireRectangle(largeur, hauteur)\n  RETOURNER largeur × hauteur\nFIN FONCTION\n\nAFFICHER aireRectangle(4, 3)   // 12",
+              "title": "Fonction avec retour"
+            },
+            {
+              "type": "tip",
+              "text": "Une fonction courte, au nom explicite, se teste et se relit plus facilement qu'un long bloc."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire une fonction",
+            "instructions": "Écrivez la fonction doubler(n) qui renvoie le double de n.",
+            "hints": [
+              "Un paramètre, un retour."
+            ],
+            "solution": "FONCTION doubler(n)\n  RETOURNER n × 2\nFIN FONCTION",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "fonction",
+                "retourner"
+              ],
+              "success": "Correct : fonction avec retour."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel est l'intérêt d'une fonction ?",
+              "options": [
+                "Éviter la duplication et isoler une responsabilité",
+                "Ralentir le programme",
+                "Créer un fichier",
+                "Changer le type des variables"
+              ],
+              "answer": 0,
+              "explanation": "Elle rend le code réutilisable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-04-q1"
+            },
+            {
+              "question": "Que fait RETOURNER ?",
+              "options": [
+                "Il renvoie une valeur à l'appelant",
+                "Il affiche",
+                "Il répète",
+                "Il déclare une constante"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est transmis à l'appel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-04-q2"
+            }
+          ],
+          "summary": [
+            "Une fonction a un nom et des instructions.",
+            "Elle peut renvoyer une valeur.",
+            "Elle isole une responsabilité."
+          ],
+          "nextStep": "Chapitre suivant : « Paramètres et valeurs de retour »."
+        },
+        {
+          "id": "algc-05",
+          "title": "Paramètres et valeurs de retour",
+          "duration": 20,
+          "objectives": [
+            "Distinguer paramètre et argument",
+            "Comprendre le passage par valeur",
+            "Renvoyer plusieurs informations"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les paramètres décrivent ce que la fonction attend ; les arguments sont les valeurs fournies à l'appel. Le passage par valeur transmet une copie."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "FONCTION moyenne(a, b)\n  RETOURNER (a + b) / 2\nFIN FONCTION\n\nrésultat ← moyenne(10, 14)   // 12",
+              "title": "Paramètres et retour"
+            },
+            {
+              "type": "warning",
+              "text": "Modifier un paramètre numérique dans la fonction ne modifie pas la variable de l'appelant : c'est une copie."
+            }
+          ],
+          "exercise": {
+            "title": "Identifier paramètres et arguments",
+            "instructions": "Dans moyenne(10, 14), que sont a et b, et que sont 10 et 14 ?",
+            "hints": [
+              "Le nom est dans la définition.",
+              "La valeur est dans l'appel."
+            ],
+            "solution": "a et b sont les paramètres ; 10 et 14 sont les arguments.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "parametre",
+                "argument"
+              ],
+              "success": "Correct : paramètres et arguments."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un argument ?",
+              "options": [
+                "Une valeur fournie à l'appel",
+                "Un nom de fonction",
+                "Un type de boucle",
+                "Un fichier"
+              ],
+              "answer": 0,
+              "explanation": "L'argument remplit le paramètre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-05-q1"
+            },
+            {
+              "question": "Que signifie le passage par valeur ?",
+              "options": [
+                "La fonction reçoit une copie",
+                "La fonction modifie l'original",
+                "La fonction ne reçoit rien",
+                "La fonction renvoie toujours 0"
+              ],
+              "answer": 0,
+              "explanation": "La copie protège l'appelant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "algc-05-q2"
+            }
+          ],
+          "summary": [
+            "Paramètres dans la définition, arguments à l'appel.",
+            "Le passage par valeur transmet une copie.",
+            "Une fonction peut renvoyer plusieurs valeurs dans certains langages."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,408 @@
+{
+  "courseId": "java-poo",
+  "modules": [
+    {
+      "id": "java-poo-module",
+      "title": "Java : conception objet",
+      "chapters": [
+        {
+          "id": "jav-01",
+          "title": "Encapsulation",
+          "duration": 20,
+          "objectives": [
+            "Cacher l'état",
+            "Exposer des méthodes",
+            "Protéger les invariants"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les champs privés et les méthodes publiques protègent l'état. La validation vit dans la classe, pas chez l'appelant."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "public class Compte {\n  private double solde;\n  public void deposer(double m) {\n    if (m <= 0) throw new IllegalArgumentException();\n    solde += m;\n  }\n}",
+              "title": "Invariant"
+            },
+            {
+              "type": "p",
+              "text": "Un setter public qui accepte tout annule la protection : validez dans chaque méthode qui modifie l'état."
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Où valider un dépôt ?",
+            "hints": [
+              "Dans la classe."
+            ],
+            "solution": "Dans la méthode deposer, avant de modifier le solde.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "deposer",
+                "methode"
+              ],
+              "success": "Correct : dans la méthode."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi un champ privé ?",
+              "options": [
+                "Empêcher les modifications directes",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "L'état reste cohérent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-01-q1"
+            },
+            {
+              "question": "Que garantit un invariant ?",
+              "options": [
+                "Un état toujours valide",
+                "La vitesse",
+                "Le réseau",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les règles sont vérifiées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-01-q2"
+            }
+          ],
+          "summary": [
+            "Champs privés.",
+            "Validation interne.",
+            "Invariants protégés."
+          ],
+          "nextStep": "Chapitre suivant : « Héritage »."
+        },
+        {
+          "id": "jav-02",
+          "title": "Héritage",
+          "duration": 20,
+          "objectives": [
+            "Étendre une classe",
+            "Appeler super",
+            "Redéfinir avec @Override"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une classe étend une autre et peut redéfinir ses méthodes. @Override vérifie la signature."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "class Animal { void parler() {} }\nclass Chien extends Animal {\n  @Override void parler() { System.out.println(\"Wouf\"); }\n}",
+              "title": "extends"
+            },
+            {
+              "type": "p",
+              "text": "L'héritage exprime « est un » ; préférez la composition quand la relation n'est pas claire."
+            }
+          ],
+          "exercise": {
+            "title": "Redéfinir",
+            "instructions": "Quelle annotation vérifie une redéfinition ?",
+            "hints": [
+              "Une annotation standard."
+            ],
+            "solution": "@Override",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "override"
+              ],
+              "success": "Correct : @Override."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait extends ?",
+              "options": [
+                "Il hérite",
+                "Il implémente",
+                "Il importe",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La classe dérivée hérite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-02-q1"
+            },
+            {
+              "question": "Que fait super ?",
+              "options": [
+                "Il appelle le parent",
+                "Il crée un objet",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le constructeur ou la méthode parente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-02-q2"
+            }
+          ],
+          "summary": [
+            "extends.",
+            "@Override.",
+            "Composition si ambigu."
+          ],
+          "nextStep": "Chapitre suivant : « Interfaces »."
+        },
+        {
+          "id": "jav-03",
+          "title": "Interfaces",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une interface",
+            "Implémenter plusieurs interfaces",
+            "Utiliser les méthodes par défaut"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une interface décrit un contrat sans état. Une classe peut en implémenter plusieurs ; les méthodes default fournissent un comportement."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "interface Forme { double aire(); }\nclass Carre implements Forme {\n  public double aire() { return 4; }\n}",
+              "title": "Implements"
+            },
+            {
+              "type": "p",
+              "text": "Une interface se préfère à une classe abstraite quand il n'y a pas de code commun à partager."
+            }
+          ],
+          "exercise": {
+            "title": "Implémenter",
+            "instructions": "Quel mot-clé implémente une interface ?",
+            "hints": [
+              "Il respecte le contrat."
+            ],
+            "solution": "implements",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "implements"
+              ],
+              "success": "Correct : implements."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une classe peut-elle implémenter plusieurs interfaces ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement deux",
+                "Seulement avec Spring"
+              ],
+              "answer": 0,
+              "explanation": "Les contrats se cumulent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-03-q1"
+            },
+            {
+              "question": "Que fait une méthode default ?",
+              "options": [
+                "Elle fournit un comportement",
+                "Elle interdit",
+                "Elle trie",
+                "Elle chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'implémentation est optionnelle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-03-q2"
+            }
+          ],
+          "summary": [
+            "Interface = contrat.",
+            "implements.",
+            "default pour un comportement."
+          ],
+          "nextStep": "Chapitre suivant : « Collections »."
+        },
+        {
+          "id": "jav-04",
+          "title": "Collections",
+          "duration": 20,
+          "objectives": [
+            "Choisir List, Set ou Map",
+            "Utiliser ArrayList et HashMap",
+            "Parcourir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "List garde l'ordre et les doublons ; Set garantit l'unicité ; Map associe clés et valeurs."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "List<String> noms = new ArrayList<>();\nMap<String, Integer> ages = new HashMap<>();\nages.put(\"Ada\", 36);\nfor (var e : ages.entrySet()) { }",
+              "title": "Collections"
+            },
+            {
+              "type": "p",
+              "text": "Choisissez la collection selon l'opération dominante : accès par indice, unicité ou accès par clé."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quelle collection pour des identifiants uniques ?",
+            "hints": [
+              "Un ensemble."
+            ],
+            "solution": "Set (par exemple HashSet)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "set",
+                "hashset"
+              ],
+              "success": "Correct : Set."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit List ?",
+              "options": [
+                "L'ordre",
+                "L'unicité",
+                "Les clés",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les doublons sont permis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-04-q1"
+            },
+            {
+              "question": "Que fait Map ?",
+              "options": [
+                "Il associe clé et valeur",
+                "Il trie",
+                "Il filtre",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'accès se fait par clé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-04-q2"
+            }
+          ],
+          "summary": [
+            "List ordonnée.",
+            "Set unique.",
+            "Map clé→valeur."
+          ],
+          "nextStep": "Chapitre suivant : « Exceptions »."
+        },
+        {
+          "id": "jav-05",
+          "title": "Exceptions",
+          "duration": 20,
+          "objectives": [
+            "Distinguer checked et unchecked",
+            "Utiliser try/catch/finally",
+            "Créer une exception"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les exceptions checked doivent être déclarées ou attrapées ; les unchecked signalent des erreurs de programmation."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "try {\n  int n = Integer.parseInt(\"abc\");\n} catch (NumberFormatException e) {\n  System.out.println(\"invalide\");\n} finally {\n  liberer();\n}",
+              "title": "try/catch"
+            },
+            {
+              "type": "p",
+              "text": "N'attrapez pas Exception sans raison : ciblez le type et laissez remonter ce que vous ne savez pas traiter."
+            }
+          ],
+          "exercise": {
+            "title": "Cibler",
+            "instructions": "Quelle exception pour Integer.parseInt(\"abc\") ?",
+            "hints": [
+              "Une erreur de format."
+            ],
+            "solution": "NumberFormatException",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "numberformatexception"
+              ],
+              "success": "Correct : NumberFormatException."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand finally s'exécute-t-il ?",
+              "options": [
+                "Toujours",
+                "En cas d'erreur",
+                "Jamais",
+                "Au succès"
+              ],
+              "answer": 0,
+              "explanation": "Il nettoie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-05-q1"
+            },
+            {
+              "question": "Que faire d'une exception non gérée ?",
+              "options": [
+                "La laisser remonter",
+                "L'ignorer",
+                "La trier",
+                "La chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Le niveau supérieur décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav-05-q2"
+            }
+          ],
+          "summary": [
+            "Checked vs unchecked.",
+            "try/catch/finally.",
+            "Cibler le type."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

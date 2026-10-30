@@ -1,0 +1,788 @@
+{
+  "courseId": "bash-pro",
+  "modules": [
+    {
+      "id": "bash-pro-module",
+      "title": "Bash : scripts robustes",
+      "chapters": [
+        {
+          "id": "bashp-01",
+          "title": "Gestion des erreurs",
+          "duration": 20,
+          "objectives": [
+            "Arrêter sur erreur",
+            "Nettoyer",
+            "Afficher un message"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "set -euo pipefail durcit un script ; trap nettoie à la sortie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "set -euo pipefail.",
+                "trap \"rm -f $tmp\" EXIT.",
+                "Messages sur stderr."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Durcir",
+            "instructions": "Quelle ligne active le mode strict ?",
+            "hints": [
+              "Trois options."
+            ],
+            "solution": "set -euo pipefail",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "set -euo"
+              ],
+              "success": "Correct : set -euo pipefail."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -u ?",
+              "options": [
+                "Il refuse les variables non définies",
+                "Il trie",
+                "Il chiffre",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Les fautes de frappe échouent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-01-q1"
+            },
+            {
+              "question": "Que fait -o pipefail ?",
+              "options": [
+                "Il propage l'échec du pipe",
+                "Il ignore",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le pipe échoue correctement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-01-q2"
+            }
+          ],
+          "summary": [
+            "set -euo.",
+            "trap.",
+            "stderr."
+          ],
+          "nextStep": "Chapitre suivant : « Débogage de scripts »."
+        },
+        {
+          "id": "bashp-02",
+          "title": "Débogage de scripts",
+          "duration": 20,
+          "objectives": [
+            "Tracer l'exécution",
+            "Voir les commandes",
+            "Isoler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "bash -x affiche chaque commande ; set -x dans le script cible une section."
+            },
+            {
+              "type": "list",
+              "items": [
+                "bash -x script.sh.",
+                "set -x / set +x.",
+                "Vérifier avec shellcheck."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tracer",
+            "instructions": "Quelle option trace l'exécution ?",
+            "hints": [
+              "Une option de bash."
+            ],
+            "solution": "bash -x",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "-x"
+              ],
+              "success": "Correct : -x."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait shellcheck ?",
+              "options": [
+                "Il analyse le script",
+                "Il l'exécute",
+                "Il le chiffre",
+                "Il le monte"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont signalées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-02-q1"
+            },
+            {
+              "question": "Que fait set +x ?",
+              "options": [
+                "Il arrête la trace",
+                "Il l'active",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le traçage est désactivé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-02-q2"
+            }
+          ],
+          "summary": [
+            "bash -x.",
+            "set -x/+x.",
+            "shellcheck."
+          ],
+          "nextStep": "Chapitre suivant : « Scripts de sauvegarde »."
+        },
+        {
+          "id": "bashp-03",
+          "title": "Scripts de sauvegarde",
+          "duration": 20,
+          "objectives": [
+            "Archiver",
+            "Vérifier",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script de sauvegarde vérifie les prérequis, archive, teste le résultat et journalise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier l'espace.",
+                "tar horodaté.",
+                "Code de sortie explicite."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Que faire après l'archive ?",
+            "hints": [
+              "Vérifier son intégrité."
+            ],
+            "solution": "Vérifier l'archive (taille/format) et journaliser le résultat.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "verifi",
+                "vérifi"
+              ],
+              "success": "Correct : vérifier."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi horodater ?",
+              "options": [
+                "Éviter d'écraser",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les versions s'accumulent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-03-q1"
+            },
+            {
+              "question": "Que faire avant l'archive ?",
+              "options": [
+                "Vérifier l'espace",
+                "Supprimer",
+                "Trier",
+                "Chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Le disque peut être plein.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-03-q2"
+            }
+          ],
+          "summary": [
+            "Prérequis.",
+            "Archive testée.",
+            "Journal."
+          ],
+          "nextStep": "Chapitre suivant : « Scripts de surveillance »."
+        },
+        {
+          "id": "bashp-04",
+          "title": "Scripts de surveillance",
+          "duration": 20,
+          "objectives": [
+            "Surveiller une ressource",
+            "Définir un seuil",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script de surveillance mesure, compare à un seuil et alerte sans bruit inutile."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Seuil explicite.",
+                "Éviter le spam.",
+                "Code de sortie pour l'ordonnanceur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Alerter",
+            "instructions": "Que faire si le seuil est dépassé ?",
+            "hints": [
+              "Alerter avec un message clair."
+            ],
+            "solution": "Alerter et renvoyer un code non nul.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "alerte"
+              ],
+              "success": "Correct : alerter."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi éviter le spam ?",
+              "options": [
+                "Les alertes deviennent ignorées",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La confiance se perd.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-04-q1"
+            },
+            {
+              "question": "Que renvoyer en cas d'échec ?",
+              "options": [
+                "Un code non nul",
+                "0",
+                "Rien",
+                "Un texte"
+              ],
+              "answer": 0,
+              "explanation": "L'ordonnanceur détecte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-04-q2"
+            }
+          ],
+          "summary": [
+            "Mesure + seuil.",
+            "Alerte utile.",
+            "Code de sortie."
+          ],
+          "nextStep": "Chapitre suivant : « Automatisation de tâches »."
+        },
+        {
+          "id": "bashp-05",
+          "title": "Automatisation de tâches",
+          "duration": 20,
+          "objectives": [
+            "Identifier une tâche stable",
+            "Rendre idempotent",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Automatisez une tâche stable, répétitive et vérifiable, avec un script idempotent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Vérifier l'état avant.",
+                "Journaliser.",
+                "Documenter les prérequis."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Idempotent",
+            "instructions": "Que signifie idempotent ?",
+            "hints": [
+              "Rejouable sans effet supplémentaire."
+            ],
+            "solution": "Relancer le script ne modifie pas deux fois le résultat.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rejou",
+                "relanc"
+              ],
+              "success": "Correct : rejouable."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand automatiser ?",
+              "options": [
+                "Quand la tâche est stable",
+                "Quand elle change chaque jour",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "L'automatisation reste fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-05-q1"
+            },
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Prérequis et effets",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La maintenance est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-05-q2"
+            }
+          ],
+          "summary": [
+            "Tâche stable.",
+            "Idempotence.",
+            "Documenter."
+          ],
+          "nextStep": "Chapitre suivant : « Planification avec cron »."
+        },
+        {
+          "id": "bashp-06",
+          "title": "Planification avec cron",
+          "duration": 20,
+          "objectives": [
+            "Programmer",
+            "Comprendre les champs",
+            "Éviter les chevauchements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "cron planifie ; un verrou évite deux exécutions simultanées."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cinq champs.",
+                "flock pour le verrou.",
+                "Journaux redirigés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Éviter",
+            "instructions": "Comment empêcher deux exécutions simultanées ?",
+            "hints": [
+              "Un verrou."
+            ],
+            "solution": "flock -n fichier_de_verrou",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "flock"
+              ],
+              "success": "Correct : flock."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait cron ?",
+              "options": [
+                "Il planifie",
+                "Il trie",
+                "Il chiffre",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Les tâches sont récurrentes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-06-q1"
+            },
+            {
+              "question": "Où va la sortie ?",
+              "options": [
+                "Mail ou journal",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Nulle part"
+              ],
+              "answer": 0,
+              "explanation": "Sinon elle est perdue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-06-q2"
+            }
+          ],
+          "summary": [
+            "cron.",
+            "flock.",
+            "Rediriger."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des journaux »."
+        },
+        {
+          "id": "bashp-07",
+          "title": "Gestion des journaux",
+          "duration": 20,
+          "objectives": [
+            "Écrire un journal",
+            "Faire tourner",
+            "Filtrer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script journalise horodaté et évite la croissance infinie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "logger ou >> fichier.",
+                "logrotate.",
+                "Niveau explicite."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Journaliser",
+            "instructions": "Pourquoi horodater ?",
+            "hints": [
+              "Situer l'événement."
+            ],
+            "solution": "Pour retrouver l'ordre des événements lors d'un incident.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "horodat",
+                "date"
+              ],
+              "success": "Correct : horodatage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait logrotate ?",
+              "options": [
+                "Il fait tourner",
+                "Il chiffre",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les fichiers restent bornés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-07-q1"
+            },
+            {
+              "question": "Que journaliser ?",
+              "options": [
+                "Les étapes et erreurs",
+                "Les mots de passe",
+                "Les jetons",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Les secrets restent dehors.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-07-q2"
+            }
+          ],
+          "summary": [
+            "Journal horodaté.",
+            "Rotation.",
+            "Pas de secrets."
+          ],
+          "nextStep": "Chapitre suivant : « Scripts d'administration »."
+        },
+        {
+          "id": "bashp-08",
+          "title": "Scripts d'administration",
+          "duration": 20,
+          "objectives": [
+            "Manipuler des fichiers",
+            "Vérifier les droits",
+            "Éviter les dégâts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script d'administration vérifie les droits, confirme les actions destructrices et journalise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "set -euo.",
+                "Confirmation pour rm.",
+                "Journal."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Que faire avant une suppression ?",
+            "hints": [
+              "Demander confirmation et vérifier le chemin."
+            ],
+            "solution": "Vérifier le chemin, demander confirmation et journaliser l'action.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "confirmation",
+                "verifi"
+              ],
+              "success": "Correct : vérifier et confirmer."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi vérifier les droits ?",
+              "options": [
+                "Éviter un échec partiel",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le script échoue tôt.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-08-q1"
+            },
+            {
+              "question": "Que journaliser ?",
+              "options": [
+                "L'action et son résultat",
+                "Rien",
+                "Le mot de passe",
+                "Le jeton"
+              ],
+              "answer": 0,
+              "explanation": "La trace est utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-08-q2"
+            }
+          ],
+          "summary": [
+            "Vérifier droits.",
+            "Confirmer.",
+            "Journaliser."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurisation des scripts »."
+        },
+        {
+          "id": "bashp-09",
+          "title": "Sécurisation des scripts",
+          "duration": 20,
+          "objectives": [
+            "Éviter l'injection",
+            "Protéger les secrets",
+            "Limiter les droits"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Ne concaténez pas une entrée dans une commande ; citez les variables et limitez les privilèges."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Citer \"$var\".",
+                "Pas de eval.",
+                "Secrets hors du script."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Éviter",
+            "instructions": "Pourquoi éviter eval ?",
+            "hints": [
+              "Il exécute du code arbitraire."
+            ],
+            "solution": "eval interprète la chaîne : une entrée malveillante s'exécute.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "eval",
+                "arbitraire"
+              ],
+              "success": "Correct : code arbitraire."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait citer \"$var\" ?",
+              "options": [
+                "Il protège les espaces",
+                "Il chiffre",
+                "Il trie",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "La valeur reste un mot.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-09-q1"
+            },
+            {
+              "question": "Où stocker un secret ?",
+              "options": [
+                "Hors du script",
+                "Dans le script",
+                "Dans un log",
+                "Dans le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le dépôt reste propre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-09-q2"
+            }
+          ],
+          "summary": [
+            "Citer.",
+            "Pas d'eval.",
+            "Secrets dehors."
+          ],
+          "nextStep": "Chapitre suivant : « Bonnes pratiques Bash »."
+        },
+        {
+          "id": "bashp-10",
+          "title": "Bonnes pratiques Bash",
+          "duration": 20,
+          "objectives": [
+            "Structurer",
+            "Documenter",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un script professionnel est court, documenté, testé et lisible."
+            },
+            {
+              "type": "list",
+              "items": [
+                "En-tête et usage.",
+                "Fonctions.",
+                "shellcheck + tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Structurer",
+            "instructions": "Que mettre en tête d'un script ?",
+            "hints": [
+              "Un en-tête avec usage et prérequis."
+            ],
+            "solution": "Un commentaire d'en-tête décrivant l'objectif, l'usage et les prérequis.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "usage",
+                "en-tete",
+                "en-tête"
+              ],
+              "success": "Correct : en-tête/usage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi shellcheck ?",
+              "options": [
+                "Détecter les erreurs",
+                "Chiffrer",
+                "Monter",
+                "Router"
+              ],
+              "answer": 0,
+              "explanation": "L'analyse statique aide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-10-q1"
+            },
+            {
+              "question": "Que tester ?",
+              "options": [
+                "Cas normaux et erreurs",
+                "Uniquement le succès",
+                "Rien",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les échecs comptent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "bashp-10-q2"
+            }
+          ],
+          "summary": [
+            "En-tête/usage.",
+            "Fonctions.",
+            "shellcheck + tests."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

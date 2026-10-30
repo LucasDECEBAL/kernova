@@ -1,0 +1,400 @@
+{
+  "courseId": "cyber-fondamentaux",
+  "modules": [
+    {
+      "id": "cyber-fondamentaux-module",
+      "title": "Fondamentaux sécurité",
+      "chapters": [
+        {
+          "id": "cf-01",
+          "title": "Introduction à la cybersécurité",
+          "duration": 20,
+          "objectives": [
+            "Définir la sécurité",
+            "Situer les acteurs",
+            "Comprendre le cadre légal"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La cybersécurité protège les systèmes et les données contre des menaces, dans un cadre légal."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Défense.",
+                "Cadre légal.",
+                "Environnements autorisés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel cadre pour les tests ?",
+            "hints": [
+              "Une autorisation explicite."
+            ],
+            "solution": "Un cadre légal et une autorisation écrite.",
+            "check": {
+              "type": "any",
+              "any": [
+                "autorisation",
+                "legal",
+                "légal"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Peut-on tester un système sans accord ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Si c'est public"
+              ],
+              "answer": 0,
+              "explanation": "L'autorisation est requise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-01-q1"
+            },
+            {
+              "question": "Que protège la cybersécurité ?",
+              "options": [
+                "Systèmes et données",
+                "Le CSS",
+                "Les logos",
+                "Les DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les actifs sont protégés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-01-q2"
+            }
+          ],
+          "summary": [
+            "Cadre légal.",
+            "Autorisation.",
+            "Défense."
+          ],
+          "nextStep": "Chapitre suivant : « Confidentialité, intégrité, disponibilité »."
+        },
+        {
+          "id": "cf-02",
+          "title": "Confidentialité, intégrité, disponibilité",
+          "duration": 20,
+          "objectives": [
+            "Définir la triade",
+            "Classer une atteinte",
+            "Choisir les mesures"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La triade DIC classe les atteintes et guide les mesures."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Confidentialité.",
+                "Intégrité.",
+                "Disponibilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Classer",
+            "instructions": "Un serveur indisponible atteint quelle propriété ?",
+            "hints": [
+              "Il ne répond plus."
+            ],
+            "solution": "La disponibilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "disponibilite",
+                "disponibilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une fuite de données atteint…",
+              "options": [
+                "la confidentialité",
+                "la disponibilité",
+                "l'intégrité",
+                "rien"
+              ],
+              "answer": 0,
+              "explanation": "L'accès non autorisé expose.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-02-q1"
+            },
+            {
+              "question": "Une modification non autorisée atteint…",
+              "options": [
+                "l'intégrité",
+                "la confidentialité",
+                "la disponibilité",
+                "rien"
+              ],
+              "answer": 0,
+              "explanation": "La donnée est altérée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-02-q2"
+            }
+          ],
+          "summary": [
+            "DIC.",
+            "Classer.",
+            "Mesures adaptées."
+          ],
+          "nextStep": "Chapitre suivant : « Menaces et vulnérabilités »."
+        },
+        {
+          "id": "cf-03",
+          "title": "Menaces et vulnérabilités",
+          "duration": 20,
+          "objectives": [
+            "Distinguer menace et vulnérabilité",
+            "Évaluer",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une menace exploite une vulnérabilité ; le risque combine probabilité et impact."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Menace.",
+                "Vulnérabilité.",
+                "Risque."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Distinguer",
+            "instructions": "Une faille non corrigée est…",
+            "hints": [
+              "une vulnérabilité."
+            ],
+            "solution": "Une vulnérabilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "vulnerabilite",
+                "vulnérabilité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le risque dépend de…",
+              "options": [
+                "probabilité et impact",
+                "du CSS",
+                "du DNS",
+                "du logo"
+              ],
+              "answer": 0,
+              "explanation": "Les deux comptent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-03-q1"
+            },
+            {
+              "question": "Que fait une menace ?",
+              "options": [
+                "Elle exploite une faille",
+                "Elle corrige",
+                "Elle chiffre",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "L'exploitation vise une faiblesse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-03-q2"
+            }
+          ],
+          "summary": [
+            "Menace/vulnérabilité.",
+            "Risque.",
+            "Prioriser."
+          ],
+          "nextStep": "Chapitre suivant : « Modélisation des menaces »."
+        },
+        {
+          "id": "cf-04",
+          "title": "Modélisation des menaces",
+          "duration": 20,
+          "objectives": [
+            "Identifier les actifs",
+            "Décrire les scénarios",
+            "Prioriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La modélisation décrit actifs, acteurs, scénarios et mesures avant de coder."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Actifs.",
+                "Scénarios.",
+                "Contre-mesures."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Par quoi commencer ?",
+            "hints": [
+              "L'inventaire des actifs."
+            ],
+            "solution": "Un inventaire des actifs et des données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "actif"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand modéliser ?",
+              "options": [
+                "Dès la conception",
+                "Après la panne",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "La sécurité est précoce.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-04-q1"
+            },
+            {
+              "question": "Que décrit un scénario ?",
+              "options": [
+                "Une attaque possible",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le chemin d'attaque est décrit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-04-q2"
+            }
+          ],
+          "summary": [
+            "Actifs.",
+            "Scénarios.",
+            "Conception."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des risques »."
+        },
+        {
+          "id": "cf-05",
+          "title": "Gestion des risques",
+          "duration": 20,
+          "objectives": [
+            "Identifier",
+            "Évaluer",
+            "Traiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La gestion des risques accepte, réduit, transfère ou évite."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Identifier.",
+                "Évaluer.",
+                "Traiter."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un risque faible accepté ?",
+            "hints": [
+              "Le documenter."
+            ],
+            "solution": "Le documenter et le surveiller.",
+            "check": {
+              "type": "any",
+              "any": [
+                "document"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait la réduction ?",
+              "options": [
+                "Elle ajoute une mesure",
+                "Elle ignore",
+                "Elle transfère",
+                "Elle évite"
+              ],
+              "answer": 0,
+              "explanation": "La mesure diminue le risque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-05-q1"
+            },
+            {
+              "question": "Que fait le transfert ?",
+              "options": [
+                "Il passe à un tiers",
+                "Il supprime",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "L'assurance en est un exemple.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cf-05-q2"
+            }
+          ],
+          "summary": [
+            "Identifier/évaluer.",
+            "Traiter.",
+            "Documenter."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

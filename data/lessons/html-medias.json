@@ -1,0 +1,410 @@
+{
+  "courseId": "html-medias",
+  "modules": [
+    {
+      "id": "html-medias-module",
+      "title": "Métadonnées et médias",
+      "chapters": [
+        {
+          "id": "htm4-01",
+          "title": "Métadonnées",
+          "duration": 20,
+          "objectives": [
+            "Décrire la page",
+            "Définir le viewport",
+            "Préparer le partage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les balises meta décrivent l'encodage, le viewport, la description et les aperçus de partage (Open Graph)."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<meta name=\"description\" content=\"Cours d'informatique\">\n<meta property=\"og:title\" content=\"kernova\">",
+              "title": "Métadonnées"
+            },
+            {
+              "type": "warning",
+              "text": "Sans meta viewport, un site s'affiche comme une page de bureau réduite sur mobile."
+            }
+          ],
+          "exercise": {
+            "title": "Décrire une page",
+            "instructions": "Quelle balise indique l'encodage ?",
+            "hints": [
+              "charset."
+            ],
+            "solution": "<meta charset=\"utf-8\">",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "charset"
+              ],
+              "success": "Correct : meta charset."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert la description ?",
+              "options": [
+                "Elle résume la page pour les moteurs",
+                "Elle chiffre",
+                "Elle met en page",
+                "Elle charge le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Elle apparaît dans les résultats.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-01-q1"
+            },
+            {
+              "question": "Que fait le viewport ?",
+              "options": [
+                "Il adapte l'affichage mobile",
+                "Il crée un tableau",
+                "Il envoie un formulaire",
+                "Il définit la police"
+              ],
+              "answer": 0,
+              "explanation": "Sans lui, le mobile zoome.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-01-q2"
+            }
+          ],
+          "summary": [
+            "charset et viewport.",
+            "Description pour les moteurs.",
+            "Open Graph pour le partage."
+          ],
+          "nextStep": "Chapitre suivant : « Images responsives »."
+        },
+        {
+          "id": "htm4-02",
+          "title": "Images responsives",
+          "duration": 20,
+          "objectives": [
+            "Utiliser srcset",
+            "Choisir sizes",
+            "Éviter les images trop lourdes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "srcset propose plusieurs tailles ; le navigateur choisit selon l'écran et la densité. sizes décrit la largeur d'affichage attendue."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<img src=\"photo-800.jpg\"\n     srcset=\"photo-400.jpg 400w, photo-800.jpg 800w, photo-1600.jpg 1600w\"\n     sizes=\"(max-width: 600px) 100vw, 50vw\"\n     alt=\"Atelier\">",
+              "title": "Image responsive"
+            },
+            {
+              "type": "warning",
+              "text": "Servir une image de 3 Mo sur mobile gaspille la bande passante : compressez et proposez plusieurs tailles."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'attribut",
+            "instructions": "Quel attribut propose plusieurs tailles d'image ?",
+            "hints": [
+              "Il liste des sources."
+            ],
+            "solution": "srcset",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "srcset"
+              ],
+              "success": "Correct : srcset."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait srcset ?",
+              "options": [
+                "Il propose des variantes au navigateur",
+                "Il compresse",
+                "Il crée un lien",
+                "Il définit alt"
+              ],
+              "answer": 0,
+              "explanation": "Le choix dépend de l'écran.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-02-q1"
+            },
+            {
+              "question": "Pourquoi plusieurs tailles ?",
+              "options": [
+                "Pour économiser la bande passante",
+                "Pour changer la couleur",
+                "Pour le SEO uniquement",
+                "Pour éviter alt"
+              ],
+              "answer": 0,
+              "explanation": "On sert la taille utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-02-q2"
+            }
+          ],
+          "summary": [
+            "srcset + sizes.",
+            "Compresser les images.",
+            "width/height réservent la place."
+          ],
+          "nextStep": "Chapitre suivant : « Chargement différé »."
+        },
+        {
+          "id": "htm4-03",
+          "title": "Chargement différé",
+          "duration": 20,
+          "objectives": [
+            "Utiliser loading=\"lazy\"",
+            "Choisir les images concernées",
+            "Éviter le décalage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "loading=\"lazy\" demande au navigateur de charger une image proche du défilement seulement quand elle approche de l'écran."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<img src=\"photo.jpg\" loading=\"lazy\" width=\"800\" height=\"600\" alt=\"...\">",
+              "title": "Chargement différé"
+            },
+            {
+              "type": "warning",
+              "text": "Ne chargez pas en différé l'image principale visible en haut de page : elle retarderait le rendu perçu."
+            }
+          ],
+          "exercise": {
+            "title": "Activer le différé",
+            "instructions": "Quel attribut diffère le chargement d'une image ?",
+            "hints": [
+              "Une valeur lazy."
+            ],
+            "solution": "loading=\"lazy\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "loading",
+                "lazy"
+              ],
+              "success": "Correct : loading=\"lazy\"."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand charger une image lazy ?",
+              "options": [
+                "Quand elle approche de l'écran",
+                "Immédiatement",
+                "Jamais",
+                "Après le clic"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur décide selon la position.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-03-q1"
+            },
+            {
+              "question": "Que faut-il préciser avec ?",
+              "options": [
+                "width et height",
+                "Un mot de passe",
+                "Un id",
+                "Un style inline"
+              ],
+              "answer": 0,
+              "explanation": "Ils évitent les sauts de mise en page.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-03-q2"
+            }
+          ],
+          "summary": [
+            "loading lazy.",
+            "Pas pour l'image principale.",
+            "Toujours width/height."
+          ],
+          "nextStep": "Chapitre suivant : « Intégration de contenus externes »."
+        },
+        {
+          "id": "htm4-04",
+          "title": "Intégration de contenus externes",
+          "duration": 20,
+          "objectives": [
+            "Intégrer une vidéo",
+            "Utiliser iframe prudemment",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "audio et video intègrent des médias natifs ; iframe embarque un document externe. Les deux peuvent charger des ressources tierces."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<video controls width=\"640\">\n  <source src=\"demo.mp4\" type=\"video/mp4\">\n  Votre navigateur ne prend pas en charge la vidéo.\n</video>\n<iframe src=\"https://exemple.fr/carte\" title=\"Carte\" loading=\"lazy\"></iframe>",
+              "title": "Médias embarqués"
+            },
+            {
+              "type": "warning",
+              "text": "Une iframe sans title est opaque pour les lecteurs d'écran ; un contenu tiers peut aussi suivre les visiteurs."
+            }
+          ],
+          "exercise": {
+            "title": "Rendre une iframe accessible",
+            "instructions": "Quel attribut donne un nom à une iframe ?",
+            "hints": [
+              "Un titre."
+            ],
+            "solution": "title",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "title"
+              ],
+              "success": "Correct : title."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait controls ?",
+              "options": [
+                "Il affiche les commandes du lecteur",
+                "Il chiffre",
+                "Il télécharge",
+                "Il crée un lien"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur peut lire, mettre en pause.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-04-q1"
+            },
+            {
+              "question": "Pourquoi limiter les iframes ?",
+              "options": [
+                "Vie privée et performance",
+                "Elles sont interdites",
+                "Elles cassent le HTML",
+                "Elles suppriment le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Chaque iframe peut charger du tiers.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-04-q2"
+            }
+          ],
+          "summary": [
+            "video/audio natifs.",
+            "iframe avec title.",
+            "Limiter le contenu tiers."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des formulaires »."
+        },
+        {
+          "id": "htm4-05",
+          "title": "Sécurité des formulaires",
+          "duration": 20,
+          "objectives": [
+            "Utiliser POST pour les données sensibles",
+            "Comprendre CSRF",
+            "Éviter l'exposition"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un formulaire contenant des données sensibles s'envoie en POST, sur HTTPS. La protection CSRF vérifie l'origine de la requête côté serveur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jamais de mot de passe dans l'URL (GET).",
+                "HTTPS obligatoire.",
+                "Jeton CSRF côté serveur.",
+                "Revalider toutes les entrées."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Masquer un champ en CSS ne le protège pas : il reste présent dans la page et modifiable."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la méthode",
+            "instructions": "Un formulaire de connexion doit utiliser quelle méthode ?",
+            "hints": [
+              "Les identifiants ne vont pas dans l'URL."
+            ],
+            "solution": "POST sur HTTPS.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "post"
+              ],
+              "success": "Correct : POST."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi éviter GET pour un mot de passe ?",
+              "options": [
+                "Il apparaît dans l'URL et l'historique",
+                "Il est plus lent",
+                "Il chiffre mal",
+                "Il supprime le champ"
+              ],
+              "answer": 0,
+              "explanation": "L'URL est journalisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-05-q1"
+            },
+            {
+              "question": "Que protège un jeton CSRF ?",
+              "options": [
+                "Contre les requêtes forgées",
+                "Contre les virus",
+                "Contre le spam",
+                "Contre le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il vérifie l'origine de l'envoi.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "htm4-05-q2"
+            }
+          ],
+          "summary": [
+            "POST + HTTPS.",
+            "Jeton CSRF.",
+            "Revalidation serveur."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

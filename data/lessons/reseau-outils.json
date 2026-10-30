@@ -1,0 +1,400 @@
+{
+  "courseId": "reseau-outils",
+  "modules": [
+    {
+      "id": "reseau-outils-module",
+      "title": "Services et outils",
+      "chapters": [
+        {
+          "id": "rto2-01",
+          "title": "ss et netstat",
+          "duration": 20,
+          "objectives": [
+            "Lister les ports",
+            "Filtrer",
+            "Comprendre l'écoute"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ss -tulpn liste les ports en écoute et le processus ; netstat est l'ancien outil."
+            },
+            {
+              "type": "list",
+              "items": [
+                "-t TCP, -u UDP.",
+                "-l écoute, -p processus.",
+                "-n numérique."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Que montre ss -tulpn ?",
+            "hints": [
+              "Les ports en écoute."
+            ],
+            "solution": "Les sockets en écoute, avec processus et ports numériques.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ecoute",
+                "écoute"
+              ],
+              "success": "Correct : ports en écoute."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -l ?",
+              "options": [
+                "Écoute uniquement",
+                "Tout",
+                "UDP",
+                "TCP"
+              ],
+              "answer": 0,
+              "explanation": "Les services ouverts sont listés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-01-q1"
+            },
+            {
+              "question": "Que fait -p ?",
+              "options": [
+                "Il montre le processus",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le responsable est identifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-01-q2"
+            }
+          ],
+          "summary": [
+            "ss -tulpn.",
+            "Ports ouverts.",
+            "Processus."
+          ],
+          "nextStep": "Chapitre suivant : « Résolution des problèmes DNS »."
+        },
+        {
+          "id": "rto2-02",
+          "title": "Résolution des problèmes DNS",
+          "duration": 20,
+          "objectives": [
+            "Vérifier la résolution",
+            "Changer de serveur",
+            "Vider le cache"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "dig/nslookup interrogent un serveur précis ; le cache et le fichier hosts influencent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "dig @serveur nom.",
+                "nslookup.",
+                "Cache/hosts."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer",
+            "instructions": "Comment interroger un serveur DNS précis ?",
+            "hints": [
+              "Une option de serveur."
+            ],
+            "solution": "dig @192.168.1.10 exemple.fr",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "dig",
+                "@"
+              ],
+              "success": "Correct : dig @serveur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait /etc/hosts ?",
+              "options": [
+                "Il résout localement",
+                "Il route",
+                "Il chiffre",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "La priorité locale existe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-02-q1"
+            },
+            {
+              "question": "Que faire après un changement DNS ?",
+              "options": [
+                "Vider le cache",
+                "Rien",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "L'ancienne valeur persiste.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-02-q2"
+            }
+          ],
+          "summary": [
+            "dig/nslookup.",
+            "@serveur.",
+            "Cache/hosts."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration d'un réseau local »."
+        },
+        {
+          "id": "rto2-03",
+          "title": "Configuration d'un réseau local",
+          "duration": 20,
+          "objectives": [
+            "Adresser",
+            "Câbler",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un LAN se configure avec un plan d'adressage, des VLAN éventuels et des tests ordonnés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Plan d'adressage.",
+                "Pas de doublon.",
+                "Tester lien/IP/passerelle."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Que vérifier en premier ?",
+            "hints": [
+              "Le lien physique."
+            ],
+            "solution": "Le lien (câble/Wi-Fi), puis l'adresse, la passerelle et le service.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "lien"
+              ],
+              "success": "Correct : le lien."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi un plan d'adressage ?",
+              "options": [
+                "Éviter les conflits",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les adresses sont organisées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-03-q1"
+            },
+            {
+              "question": "Que fait un ping croisé ?",
+              "options": [
+                "Il teste la joignabilité",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La communication est vérifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-03-q2"
+            }
+          ],
+          "summary": [
+            "Plan d'adressage.",
+            "Pas de doublon.",
+            "Tester."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration d'un serveur DHCP »."
+        },
+        {
+          "id": "rto2-04",
+          "title": "Configuration d'un serveur DHCP",
+          "duration": 20,
+          "objectives": [
+            "Créer une étendue",
+            "Exclure",
+            "Vérifier les baux"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un serveur DHCP définit étendue, exclusions, passerelle et DNS."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Étendue.",
+                "Exclusions.",
+                "Baux actifs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Que faut-il exclure ?",
+            "hints": [
+              "L'infrastructure."
+            ],
+            "solution": "Les adresses des routeurs, serveurs et équipements fixes.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "infrastructure",
+                "routeur",
+                "serveur"
+              ],
+              "success": "Correct : infrastructure."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire avant de démarrer DHCP ?",
+              "options": [
+                "Définir l'étendue",
+                "Rien",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La plage est connue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-04-q1"
+            },
+            {
+              "question": "Où voir les baux ?",
+              "options": [
+                "Console DHCP",
+                "Le CSS",
+                "Le DNS",
+                "Le routeur"
+              ],
+              "answer": 0,
+              "explanation": "Les attributions sont listées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-04-q2"
+            }
+          ],
+          "summary": [
+            "Étendue.",
+            "Exclusions.",
+            "Baux."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration d'un service DNS »."
+        },
+        {
+          "id": "rto2-05",
+          "title": "Configuration d'un service DNS",
+          "duration": 20,
+          "objectives": [
+            "Créer une zone",
+            "Ajouter des enregistrements",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une zone contient les enregistrements d'un domaine ; les clients doivent la joindre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zone directe.",
+                "A/AAAA/CNAME/MX.",
+                "dig/nslookup."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quel enregistrement pour un alias ?",
+            "hints": [
+              "Un alias de nom."
+            ],
+            "solution": "CNAME",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cname"
+              ],
+              "success": "Correct : CNAME."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un enregistrement MX ?",
+              "options": [
+                "Il désigne la messagerie",
+                "Il alias",
+                "Il route",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur mail est indiqué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-05-q1"
+            },
+            {
+              "question": "Que tester après création ?",
+              "options": [
+                "La résolution",
+                "Le CSS",
+                "Le disque",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La zone répond.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rto2-05-q2"
+            }
+          ],
+          "summary": [
+            "Zone.",
+            "Enregistrements.",
+            "Tester."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

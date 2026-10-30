@@ -1,0 +1,490 @@
+{
+  "courseId": "js-avance-2",
+  "modules": [
+    {
+      "id": "js-avance-2-module",
+      "title": "Navigateur avancé",
+      "chapters": [
+        {
+          "id": "jsv-01",
+          "title": "Web Workers",
+          "duration": 20,
+          "objectives": [
+            "Déplacer un calcul lourd",
+            "Communiquer par messages",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un Worker exécute du JavaScript dans un thread séparé. Il communique par postMessage et ne touche pas au DOM."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const worker = new Worker(\"calcul.js\");\nworker.postMessage({ n: 40 });\nworker.onmessage = (e) => console.log(e.data);",
+              "title": "Worker"
+            },
+            {
+              "type": "warning",
+              "text": "Un Worker n'a pas accès au DOM : transmettez les données et mettez à jour l'interface dans le thread principal."
+            }
+          ],
+          "exercise": {
+            "title": "Communiquer",
+            "instructions": "Quelle méthode envoie des données à un Worker ?",
+            "hints": [
+              "Un message."
+            ],
+            "solution": "worker.postMessage(donnees)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "postmessage"
+              ],
+              "success": "Correct : postMessage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un Worker peut-il modifier le DOM ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en HTTPS",
+                "Seulement avec fetch"
+              ],
+              "answer": 0,
+              "explanation": "Il n'a pas accès au document.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-01-q1"
+            },
+            {
+              "question": "Que reçoit onmessage ?",
+              "options": [
+                "Un événement avec data",
+                "Une promesse",
+                "Un tableau",
+                "Un cookie"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont dans event.data.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-01-q2"
+            }
+          ],
+          "summary": [
+            "Worker = thread séparé.",
+            "postMessage.",
+            "Pas de DOM."
+          ]
+        },
+        {
+          "id": "jsv-02",
+          "title": "IndexedDB",
+          "duration": 20,
+          "objectives": [
+            "Ouvrir une base",
+            "Créer un magasin",
+            "Lire et écrire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IndexedDB stocke de gros volumes de données structurées côté navigateur, de façon asynchrone et transactionnelle."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const req = indexedDB.open(\"app\", 1);\nreq.onupgradeneeded = () => {\n  req.result.createObjectStore(\"mesures\", { keyPath: \"id\" });\n};\nreq.onsuccess = () => console.log(\"base prête\");",
+              "title": "Base"
+            },
+            {
+              "type": "warning",
+              "text": "Changer la version déclenche onupgradeneeded : prévoyez la migration des magasins existants."
+            }
+          ],
+          "exercise": {
+            "title": "Créer un magasin",
+            "instructions": "Dans quel événement crée-t-on un object store ?",
+            "hints": [
+              "À la montée de version."
+            ],
+            "solution": "onupgradeneeded",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "onupgradeneeded"
+              ],
+              "success": "Correct : onupgradeneeded."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi IndexedDB plutôt que localStorage ?",
+              "options": [
+                "Pour le volume et l'asynchrone",
+                "Pour le CSS",
+                "Pour le réseau",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les gros volumes sont possibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-02-q1"
+            },
+            {
+              "question": "Que fait keyPath ?",
+              "options": [
+                "Il définit la clé des objets",
+                "Il trie",
+                "Il filtre",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La clé identifie l'enregistrement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-02-q2"
+            }
+          ],
+          "summary": [
+            "IndexedDB asynchrone.",
+            "Stores et keyPath.",
+            "Version pour migrer."
+          ]
+        },
+        {
+          "id": "jsv-03",
+          "title": "Service Workers",
+          "duration": 20,
+          "objectives": [
+            "Enregistrer un service worker",
+            "Mettre en cache",
+            "Comprendre le cycle de vie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un service worker intercepte les requêtes réseau, permet le cache hors ligne et les notifications. Il fonctionne hors du DOM et exige HTTPS."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "navigator.serviceWorker.register(\"/sw.js\");\n// sw.js\nself.addEventListener(\"fetch\", (e) => {\n  e.respondWith(caches.match(e.request).then((r) => r || fetch(e.request)));\n});",
+              "title": "Cache hors ligne"
+            },
+            {
+              "type": "warning",
+              "text": "Un service worker mal versionné sert des fichiers obsolètes : prévoyez une stratégie de mise à jour explicite."
+            }
+          ],
+          "exercise": {
+            "title": "Condition",
+            "instructions": "Quel protocole est requis ?",
+            "hints": [
+              "Connexion sécurisée."
+            ],
+            "solution": "HTTPS (ou localhost en développement).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "https"
+              ],
+              "success": "Correct : HTTPS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que peut faire un service worker ?",
+              "options": [
+                "Intercepter les requêtes",
+                "Modifier le HTML",
+                "Créer un serveur",
+                "Accéder au DOM"
+              ],
+              "answer": 0,
+              "explanation": "Il agit comme proxy réseau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-03-q1"
+            },
+            {
+              "question": "Que fait caches.match ?",
+              "options": [
+                "Il cherche une réponse en cache",
+                "Il supprime le cache",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "La réponse est réutilisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-03-q2"
+            }
+          ],
+          "summary": [
+            "Service worker = proxy.",
+            "HTTPS requis.",
+            "Versionner les caches."
+          ]
+        },
+        {
+          "id": "jsv-04",
+          "title": "Fonctionnement de l'event loop",
+          "duration": 20,
+          "objectives": [
+            "Distinguer pile et files",
+            "Comprendre les microtâches",
+            "Prédire l'ordre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La boucle d'événements exécute la pile d'appels, puis vide la file des microtâches (promesses), puis une macrotâche (minuteur, événement)."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "console.log(\"1\");\nsetTimeout(() => console.log(\"4\"));\nPromise.resolve().then(() => console.log(\"3\"));\nconsole.log(\"2\");\n// 1, 2, 3, 4",
+              "title": "Ordre"
+            },
+            {
+              "type": "warning",
+              "text": "Une microtâche qui en crée une autre peut affamer les minuteurs : ne bouclez pas sur des promesses résolues."
+            }
+          ],
+          "exercise": {
+            "title": "Prédire",
+            "instructions": "Entre promesse résolue et setTimeout(0), lequel passe d'abord ?",
+            "hints": [
+              "Les microtâches passent avant les minuteurs."
+            ],
+            "solution": "La promesse (microtâche), puis le setTimeout.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "promesse",
+                "microtache",
+                "microtâche"
+              ],
+              "success": "Correct : la promesse."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où passent les callbacks de promesse ?",
+              "options": [
+                "File des microtâches",
+                "Pile d'appels",
+                "File des minuteurs",
+                "Cache"
+              ],
+              "answer": 0,
+              "explanation": "Ils sont traités avant les macrotâches.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-04-q1"
+            },
+            {
+              "question": "Que fait setTimeout(fn, 0) ?",
+              "options": [
+                "Planifie une macrotâche",
+                "Exécute immédiatement",
+                "Bloque",
+                "Annule"
+              ],
+              "answer": 0,
+              "explanation": "Le délai n'est pas une exécution immédiate.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-04-q2"
+            }
+          ],
+          "summary": [
+            "Pile, microtâches, macrotâches.",
+            "Promesses avant minuteurs.",
+            "Éviter d'affamer la boucle."
+          ]
+        },
+        {
+          "id": "jsv-05",
+          "title": "Performance JavaScript",
+          "duration": 20,
+          "objectives": [
+            "Réduire le travail sur le thread principal",
+            "Éviter les fuites",
+            "Mesurer avant d'optimiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La performance se mesure : tâches longues, allocations, gestionnaires oubliés. Le thread principal doit rester disponible pour l'interface."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Découper les calculs longs ou les déplacer en Worker.",
+                "Limiter les accès répétés au DOM.",
+                "Retirer les écouteurs et timers inutiles.",
+                "Profiler avec les DevTools avant d'optimiser."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une optimisation non mesurée ajoute de la complexité sans gain : commencez par le profil."
+            }
+          ],
+          "exercise": {
+            "title": "Mesurer",
+            "instructions": "Que faire avant d'optimiser ?",
+            "hints": [
+              "Observer avec un profil."
+            ],
+            "solution": "Profiler l'application et identifier le goulot d'étranglement.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "profil",
+                "mesur"
+              ],
+              "success": "Correct : mesurer/profiler."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que bloque une tâche longue ?",
+              "options": [
+                "L'interface",
+                "Le DNS",
+                "Le CSS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le thread principal est occupé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-05-q1"
+            },
+            {
+              "question": "Que faire d'un gestionnaire inutile ?",
+              "options": [
+                "Le retirer",
+                "Le dupliquer",
+                "Le commenter",
+                "Le déplacer en CSS"
+              ],
+              "answer": 0,
+              "explanation": "Il retient des références.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-05-q2"
+            }
+          ],
+          "summary": [
+            "Mesurer d'abord.",
+            "Thread principal libre.",
+            "Nettoyer écouteurs et timers."
+          ]
+        },
+        {
+          "id": "jsv-06",
+          "title": "Sécurité côté navigateur",
+          "duration": 20,
+          "objectives": [
+            "Prévenir XSS",
+            "Protéger les données locales",
+            "Comprendre les limites du client"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le navigateur exécute du code tiers : la sécurité repose sur l'échappement, la validation serveur et une politique de contenu (CSP)."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jamais innerHTML avec une entrée utilisateur.",
+                "Échapper à la génération HTML.",
+                "CSP pour limiter les sources de scripts.",
+                "Aucun secret dans le JavaScript client."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Masquer un bouton ne protège rien : l'action doit être autorisée côté serveur."
+            }
+          ],
+          "exercise": {
+            "title": "Prévenir",
+            "instructions": "Quelle pratique évite une injection HTML ?",
+            "hints": [
+              "Ne pas interpréter l'entrée."
+            ],
+            "solution": "Insérer en texte (textContent) ou échapper le HTML, jamais innerHTML brut.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "textcontent",
+                "echapp",
+                "échapp"
+              ],
+              "success": "Correct : textContent ou échappement."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi pas de secret côté client ?",
+              "options": [
+                "Tout est visible",
+                "C'est trop lent",
+                "Cela bloque le CSS",
+                "Cela casse le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le code est téléchargé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-06-q1"
+            },
+            {
+              "question": "Que fait une CSP ?",
+              "options": [
+                "Elle limite les sources autorisées",
+                "Elle chiffre les cookies",
+                "Elle trie",
+                "Elle compresse"
+              ],
+              "answer": 0,
+              "explanation": "Les scripts non autorisés sont bloqués.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsv-06-q2"
+            }
+          ],
+          "summary": [
+            "Échapper les entrées.",
+            "CSP.",
+            "Autorisation côté serveur."
+          ]
+        }
+      ]
+    }
+  ]
+}

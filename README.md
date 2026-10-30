@@ -19,7 +19,7 @@ N'ouvrez pas `index.html` par double-clic : les modules ES et les fichiers JSON 
 
 ## Contenu
 
-- 53 cours, 34 domaines, 280 leçons, 561 questions de quiz, 46 projets, 14 paquets de cartes, 12 fiches mémo.
+- 193 cours, 34 domaines, 976 leçons, 1953 questions de quiz, 46 projets, 14 paquets de cartes, 12 fiches mémo.
 - Chaque leçon : résumé en trois points, contenu, exercice vérifiable, suite logique, notes personnelles.
 - Chaque exercice de projet fournit des fichiers de départ téléchargeables et deux indices progressifs.
 - Évaluation finale par cours : 12 questions, une tentative, seuil de 70 %.

@@ -1,0 +1,402 @@
+{
+  "courseId": "cyber-chiffrement",
+  "modules": [
+    {
+      "id": "cyber-chiffrement-module",
+      "title": "Chiffrement",
+      "chapters": [
+        {
+          "id": "cc-01",
+          "title": "Chiffrement symétrique",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la clé partagée",
+            "Choisir AES",
+            "Protéger la clé"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le chiffrement symétrique utilise une même clé pour chiffrer et déchiffrer."
+            },
+            {
+              "type": "list",
+              "items": [
+                "AES.",
+                "Clé partagée.",
+                "Problème de distribution."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Combien de clés en symétrique ?",
+            "hints": [
+              "Une seule, partagée."
+            ],
+            "solution": "Une clé partagée par les deux parties.",
+            "check": {
+              "type": "any",
+              "any": [
+                "une",
+                "partage",
+                "partagée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait AES ?",
+              "options": [
+                "Il chiffre",
+                "Il hache",
+                "Il signe",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "C'est un chiffrement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-01-q1"
+            },
+            {
+              "question": "Que faut-il protéger ?",
+              "options": [
+                "La clé",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La clé ouvre tout.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-01-q2"
+            }
+          ],
+          "summary": [
+            "Symétrique.",
+            "AES.",
+            "Protéger la clé."
+          ],
+          "nextStep": "Chapitre suivant : « Chiffrement asymétrique »."
+        },
+        {
+          "id": "cc-02",
+          "title": "Chiffrement asymétrique",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la paire",
+            "Utiliser la clé publique",
+            "Éviter les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le chiffrement asymétrique utilise une clé publique pour chiffrer et une privée pour déchiffrer."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Paire de clés.",
+                "Publique/privée.",
+                "Lenteur relative."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quelle clé déchiffre ?",
+            "hints": [
+              "La clé privée."
+            ],
+            "solution": "La clé privée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "privee",
+                "privée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait la clé publique ?",
+              "options": [
+                "Elle chiffre",
+                "Elle déchiffre",
+                "Elle signe",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Elle est partagée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-02-q1"
+            },
+            {
+              "question": "Que fait la clé privée ?",
+              "options": [
+                "Elle déchiffre et signe",
+                "Elle chiffre tout",
+                "Elle trie",
+                "Elle monte"
+              ],
+              "answer": 0,
+              "explanation": "Elle reste secrète.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-02-q2"
+            }
+          ],
+          "summary": [
+            "Paire de clés.",
+            "Publique/privée.",
+            "Secret."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions de hachage »."
+        },
+        {
+          "id": "cc-03",
+          "title": "Fonctions de hachage",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un hachage",
+            "Vérifier l'intégrité",
+            "Éviter MD5"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction de hachage produit une empreinte non réversible ; elle vérifie l'intégrité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Empreinte.",
+                "Non réversible.",
+                "Collisions faibles à éviter."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Le hachage est-il réversible ?",
+            "hints": [
+              "Non."
+            ],
+            "solution": "Non : il ne permet pas de retrouver l'entrée.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi sert un hachage ?",
+              "options": [
+                "Vérifier l'intégrité",
+                "Chiffrer réversiblement",
+                "Router",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "L'empreinte détecte les changements.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-03-q1"
+            },
+            {
+              "question": "MD5 est-il recommandé ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il est obsolète.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-03-q2"
+            }
+          ],
+          "summary": [
+            "Hachage non réversible.",
+            "Intégrité.",
+            "Pas MD5."
+          ],
+          "nextStep": "Chapitre suivant : « Signatures numériques »."
+        },
+        {
+          "id": "cc-04",
+          "title": "Signatures numériques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la signature",
+            "Vérifier l'origine",
+            "Éviter les confusions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une signature prouve l'origine et l'intégrité d'un message."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clé privée pour signer.",
+                "Clé publique pour vérifier.",
+                "Non-répudiation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Avec quelle clé signe-t-on ?",
+            "hints": [
+              "La clé privée."
+            ],
+            "solution": "La clé privée de l'émetteur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "privee",
+                "privée"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que prouve une signature ?",
+              "options": [
+                "Origine et intégrité",
+                "La vitesse",
+                "Le DNS",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'auteur et le contenu sont liés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-04-q1"
+            },
+            {
+              "question": "Que fait la clé publique ?",
+              "options": [
+                "Elle vérifie",
+                "Elle signe",
+                "Elle chiffre seulement",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "La vérification est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-04-q2"
+            }
+          ],
+          "summary": [
+            "Signer avec la privée.",
+            "Vérifier avec la publique.",
+            "Intégrité/origine."
+          ],
+          "nextStep": "Chapitre suivant : « Certificats numériques »."
+        },
+        {
+          "id": "cc-05",
+          "title": "Certificats numériques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre un certificat",
+            "Vérifier une chaîne",
+            "Éviter les certificats auto-signés en production"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un certificat lie une clé publique à une identité, signé par une autorité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Chaîne de confiance.",
+                "Expiration.",
+                "Révocation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Qui signe un certificat ?",
+            "hints": [
+              "Une autorité de certification."
+            ],
+            "solution": "Une autorité de certification (CA).",
+            "check": {
+              "type": "any",
+              "any": [
+                "autorite",
+                "autorité",
+                "ca"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient un certificat ?",
+              "options": [
+                "Une clé publique et une identité",
+                "Un mot de passe",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le lien est signé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-05-q1"
+            },
+            {
+              "question": "Que faire d'un certificat expiré ?",
+              "options": [
+                "Le renouveler",
+                "L'ignorer",
+                "Le publier",
+                "Le vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur refuse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cc-05-q2"
+            }
+          ],
+          "summary": [
+            "Certificat signé.",
+            "Chaîne.",
+            "Expiration."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

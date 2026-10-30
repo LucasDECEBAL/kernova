@@ -1,0 +1,408 @@
+{
+  "courseId": "js-interfaces",
+  "modules": [
+    {
+      "id": "js-interfaces-module",
+      "title": "Interfaces et stockage",
+      "chapters": [
+        {
+          "id": "jsi-01",
+          "title": "Créer des interfaces interactives",
+          "duration": 20,
+          "objectives": [
+            "Réagir aux actions",
+            "Mettre à jour l'affichage",
+            "Éviter les états incohérents"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une interface interactive relie une action à une mise à jour d'état, puis reflète l'état dans le DOM."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "let compteur = 0;\nplus.addEventListener(\"click\", () => {\n  compteur += 1;\n  total.textContent = String(compteur);\n});",
+              "title": "Compteur"
+            },
+            {
+              "type": "warning",
+              "text": "Mettre à jour le DOM à plusieurs endroits pour un même état crée des incohérences : centralisez la fonction de rendu."
+            }
+          ],
+          "exercise": {
+            "title": "Mettre à jour",
+            "instructions": "Comment afficher la nouvelle valeur dans un élément ?",
+            "hints": [
+              "Une propriété textuelle."
+            ],
+            "solution": "total.textContent = String(valeur);",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "textcontent"
+              ],
+              "success": "Correct : textContent."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il centraliser ?",
+              "options": [
+                "La fonction de rendu",
+                "Les couleurs",
+                "Les fichiers",
+                "Les serveurs"
+              ],
+              "answer": 0,
+              "explanation": "Un seul point met à jour l'affichage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter plusieurs sources d'état ?",
+              "options": [
+                "Pour éviter les incohérences",
+                "Pour accélérer le réseau",
+                "Pour le SEO",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'état doit être unique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-01-q2"
+            }
+          ],
+          "summary": [
+            "Action → état → rendu.",
+            "Rendu centralisé.",
+            "État unique."
+          ],
+          "nextStep": "Chapitre suivant : « Manipuler les classes CSS »."
+        },
+        {
+          "id": "jsi-02",
+          "title": "Manipuler les classes CSS",
+          "duration": 20,
+          "objectives": [
+            "Ajouter et retirer",
+            "Utiliser toggle",
+            "Synchroniser avec aria"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les classes pilotent l'apparence ; les attributs ARIA pilotent l'état accessible. Les deux doivent rester synchronisés."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "bouton.addEventListener(\"click\", () => {\n  const ouvert = panneau.hidden;\n  panneau.hidden = !ouvert;\n  bouton.setAttribute(\"aria-expanded\", String(!ouvert));\n});",
+              "title": "État accessible"
+            },
+            {
+              "type": "warning",
+              "text": "Un menu visuellement ouvert mais aria-expanded=\"false\" désoriente les lecteurs d'écran."
+            }
+          ],
+          "exercise": {
+            "title": "Synchroniser",
+            "instructions": "Quel attribut annonce l'état d'un menu déroulant ?",
+            "hints": [
+              "Un attribut ARIA."
+            ],
+            "solution": "aria-expanded",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "aria-expanded"
+              ],
+              "success": "Correct : aria-expanded."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que pilote une classe ?",
+              "options": [
+                "L'apparence",
+                "L'accessibilité seule",
+                "Le réseau",
+                "Les tests"
+              ],
+              "answer": 0,
+              "explanation": "Le style suit la classe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-02-q1"
+            },
+            {
+              "question": "Que faut-il synchroniser ?",
+              "options": [
+                "Apparence et état accessible",
+                "Couleur et police",
+                "CSS et HTML seulement",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "Les deux décrivent le même état.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-02-q2"
+            }
+          ],
+          "summary": [
+            "Classes pour l'apparence.",
+            "ARIA pour l'état.",
+            "Synchroniser les deux."
+          ],
+          "nextStep": "Chapitre suivant : « Créer des composants simples »."
+        },
+        {
+          "id": "jsi-03",
+          "title": "Créer des composants simples",
+          "duration": 20,
+          "objectives": [
+            "Isoler un composant",
+            "Passer des options",
+            "Éviter les dépendances globales"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un composant regroupe structure, comportement et état, avec une fonction d'initialisation qui reçoit ses options."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "function creerCompteur(racine, { depart = 0 } = {}) {\n  let n = depart;\n  const total = racine.querySelector(\"[data-total]\");\n  racine.querySelector(\"button\").addEventListener(\"click\", () => {\n    n += 1;\n    total.textContent = String(n);\n  });\n}",
+              "title": "Composant"
+            },
+            {
+              "type": "tip",
+              "text": "Un composant qui ne dépend que de son élément racine est réutilisable sur plusieurs pages."
+            }
+          ],
+          "exercise": {
+            "title": "Isoler",
+            "instructions": "Que doit recevoir un composant pour être réutilisable ?",
+            "hints": [
+              "Sa racine et ses options."
+            ],
+            "solution": "Son élément racine et un objet d'options.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "racine",
+                "options"
+              ],
+              "success": "Correct : racine et options."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi éviter les globals ?",
+              "options": [
+                "Pour isoler les composants",
+                "Pour accélérer",
+                "Pour le SEO",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les dépendances implicites compliquent les tests.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-03-q1"
+            },
+            {
+              "question": "Où chercher les éléments du composant ?",
+              "options": [
+                "Dans sa racine",
+                "Dans tout le document",
+                "Dans un cookie",
+                "Dans le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La portée reste locale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-03-q2"
+            }
+          ],
+          "summary": [
+            "Composant = structure + état.",
+            "Racine + options.",
+            "Pas de globals."
+          ],
+          "nextStep": "Chapitre suivant : « Stocker des données avec localStorage »."
+        },
+        {
+          "id": "jsi-04",
+          "title": "Stocker des données avec localStorage",
+          "duration": 20,
+          "objectives": [
+            "Enregistrer et lire",
+            "Sérialiser en JSON",
+            "Gérer les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "localStorage stocke des chaînes par origine, sans expiration. JSON.stringify sérialise, JSON.parse relit."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const brut = localStorage.getItem(\"visites\");\nconst n = brut ? Number(brut) : 0;\nlocalStorage.setItem(\"visites\", String(n + 1));",
+              "title": "Compteur persistant"
+            },
+            {
+              "type": "warning",
+              "text": "JSON.parse peut lever une erreur sur une valeur corrompue : encadrez-le d'un try/catch et prévoyez une valeur par défaut."
+            }
+          ],
+          "exercise": {
+            "title": "Enregistrer",
+            "instructions": "Comment enregistrer un objet dans localStorage ?",
+            "hints": [
+              "Une chaîne est requise."
+            ],
+            "solution": "localStorage.setItem(\"cle\", JSON.stringify(objet))",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "json.stringify",
+                "setitem"
+              ],
+              "success": "Correct : JSON.stringify + setItem."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que stocke localStorage ?",
+              "options": [
+                "Des chaînes",
+                "Des objets",
+                "Des fichiers",
+                "Des nombres uniquement"
+              ],
+              "answer": 0,
+              "explanation": "Les valeurs sont converties en texte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-04-q1"
+            },
+            {
+              "question": "Que faire d'un JSON corrompu ?",
+              "options": [
+                "try/catch avec valeur par défaut",
+                "Ignorer",
+                "Le supprimer",
+                "Le chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur doit être gérée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-04-q2"
+            }
+          ],
+          "summary": [
+            "localStorage = chaînes.",
+            "JSON pour les objets.",
+            "try/catch à la lecture."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre sessionStorage »."
+        },
+        {
+          "id": "jsi-05",
+          "title": "Comprendre sessionStorage",
+          "duration": 20,
+          "objectives": [
+            "Différencier session et local",
+            "Choisir selon l'usage",
+            "Nettoyer à la fermeture"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "sessionStorage garde les données le temps de l'onglet ; localStorage persiste après fermeture. Les deux sont limités à l'origine."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "sessionStorage.setItem(\"etape\", \"2\");\nconst etape = sessionStorage.getItem(\"etape\");\nsessionStorage.removeItem(\"etape\");",
+              "title": "Session"
+            },
+            {
+              "type": "tip",
+              "text": "Un formulaire multi-étapes utilise sessionStorage : les données disparaissent quand l'onglet est fermé."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel stockage pour un brouillon propre à l'onglet ?",
+            "hints": [
+              "Il disparaît à la fermeture."
+            ],
+            "solution": "sessionStorage",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "sessionstorage"
+              ],
+              "success": "Correct : sessionStorage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand sessionStorage est-il vidé ?",
+              "options": [
+                "À la fermeture de l'onglet",
+                "Jamais",
+                "Toutes les heures",
+                "Au rechargement"
+              ],
+              "answer": 0,
+              "explanation": "La session dure le temps de l'onglet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-05-q1"
+            },
+            {
+              "question": "Les deux stockages sont-ils partagés entre sites ?",
+              "options": [
+                "Non, par origine",
+                "Oui",
+                "Seulement en HTTPS",
+                "Seulement en privé"
+              ],
+              "answer": 0,
+              "explanation": "L'origine isole les données.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsi-05-q2"
+            }
+          ],
+          "summary": [
+            "session = onglet.",
+            "local = persistant.",
+            "Origine commune."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

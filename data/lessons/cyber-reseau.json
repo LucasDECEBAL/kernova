@@ -1,0 +1,398 @@
+{
+  "courseId": "cyber-reseau",
+  "modules": [
+    {
+      "id": "cyber-reseau-module",
+      "title": "Sécurité réseau",
+      "chapters": [
+        {
+          "id": "cr-01",
+          "title": "Principes de défense réseau",
+          "duration": 20,
+          "objectives": [
+            "Segmenter",
+            "Filtrer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La défense réseau combine segmentation, filtrage et surveillance."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zones.",
+                "Filtrage.",
+                "Journaux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limite la segmentation ?",
+            "hints": [
+              "Les mouvements latéraux."
+            ],
+            "solution": "Les déplacements latéraux d'un attaquant.",
+            "check": {
+              "type": "any",
+              "any": [
+                "lateral",
+                "latéral"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi filtrer ?",
+              "options": [
+                "Réduire l'exposition",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les flux sont limités.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-01-q1"
+            },
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les refus et anomalies",
+                "Le logo",
+                "Le thème",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les signaux sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-01-q2"
+            }
+          ],
+          "summary": [
+            "Segmentation.",
+            "Filtrage.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Configuration d'un pare-feu »."
+        },
+        {
+          "id": "cr-02",
+          "title": "Configuration d'un pare-feu",
+          "duration": 20,
+          "objectives": [
+            "Définir la politique",
+            "Ordonner",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pare-feu applique une politique par défaut et des exceptions explicites."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Refus par défaut.",
+                "Exceptions.",
+                "Logs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quelle politique par défaut ?",
+            "hints": [
+              "Le refus."
+            ],
+            "solution": "Un refus par défaut avec exceptions documentées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "refus"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi ordonner ?",
+              "options": [
+                "La première règle gagne",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les règles sont séquentielles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-02-q1"
+            },
+            {
+              "question": "Que journaliser ?",
+              "options": [
+                "Les refus",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les tentatives sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-02-q2"
+            }
+          ],
+          "summary": [
+            "Refus par défaut.",
+            "Exceptions.",
+            "Logs."
+          ],
+          "nextStep": "Chapitre suivant : « Segmentation réseau »."
+        },
+        {
+          "id": "cr-03",
+          "title": "Segmentation réseau",
+          "duration": 20,
+          "objectives": [
+            "Définir les zones",
+            "Filtrer entre zones",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les zones (utilisateurs, serveurs, administration) limitent les chemins possibles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Zones.",
+                "ACL.",
+                "Moindre flux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet la zone d'administration ?",
+            "hints": [
+              "Un accès restreint."
+            ],
+            "solution": "Un accès limité aux postes et comptes autorisés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "restreint",
+                "limite"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire entre zones ?",
+              "options": [
+                "Filtrer",
+                "Tout autoriser",
+                "Rien",
+                "Chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Les flux sont contrôlés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-03-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les flux nécessaires",
+                "Les logs",
+                "Les mises à jour",
+                "Les comptes"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège réseau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-03-q2"
+            }
+          ],
+          "summary": [
+            "Zones.",
+            "Filtrage.",
+            "Moindre flux."
+          ],
+          "nextStep": "Chapitre suivant : « IDS et IPS »."
+        },
+        {
+          "id": "cr-04",
+          "title": "IDS et IPS",
+          "duration": 20,
+          "objectives": [
+            "Distinguer IDS/IPS",
+            "Placer",
+            "Trier les alertes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un IDS détecte, un IPS bloque ; leur placement et le réglage comptent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Détection.",
+                "Blocage.",
+                "Faux positifs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un IPS ?",
+            "hints": [
+              "Il bloque."
+            ],
+            "solution": "Il bloque le trafic malveillant détecté.",
+            "check": {
+              "type": "any",
+              "any": [
+                "bloque"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un IDS ?",
+              "options": [
+                "Il détecte",
+                "Il bloque",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Il alerte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-04-q1"
+            },
+            {
+              "question": "Que régler ?",
+              "options": [
+                "Les faux positifs",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Trop de bruit gêne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-04-q2"
+            }
+          ],
+          "summary": [
+            "IDS/IPS.",
+            "Placement.",
+            "Réglage."
+          ],
+          "nextStep": "Chapitre suivant : « VPN et sécurité »."
+        },
+        {
+          "id": "cr-05",
+          "title": "VPN et sécurité",
+          "duration": 20,
+          "objectives": [
+            "Chiffrer",
+            "Authentifier",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VPN protège le transport ; il ne remplace ni l'authentification ni les droits."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tunnel.",
+                "MFA.",
+                "Droits."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que ne remplace pas un VPN ?",
+            "hints": [
+              "Les droits d'accès."
+            ],
+            "solution": "L'autorisation et les droits d'accès.",
+            "check": {
+              "type": "any",
+              "any": [
+                "droits"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire en plus du tunnel ?",
+              "options": [
+                "Authentifier fortement",
+                "Rien",
+                "Chiffrer le CSS",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "MFA est nécessaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-05-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les accès",
+                "Les logs",
+                "Le DNS",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cr-05-q2"
+            }
+          ],
+          "summary": [
+            "VPN = transport.",
+            "MFA.",
+            "Droits."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

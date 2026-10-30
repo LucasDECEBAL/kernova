@@ -1,0 +1,319 @@
+{
+  "courseId": "langages-script",
+  "modules": [
+    {
+      "id": "langages-script-module",
+      "title": "Dart, PowerShell, Bash et Lua",
+      "chapters": [
+        {
+          "id": "lgs-01",
+          "title": "Introduction à Dart",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Dart",
+            "Déclarer des variables",
+            "Découvrir Flutter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Dart est typé et compile pour le Web et le mobile ; Flutter l'utilise pour les interfaces multiplateformes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "var/final/const.",
+                "Null safety intégrée.",
+                "Widgets Flutter."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Quel mot-clé déclare une constante à la compilation ?",
+            "hints": [
+              "Le plus strict."
+            ],
+            "solution": "const",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "const"
+              ],
+              "success": "Correct : const."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel framework utilise Dart ?",
+              "options": [
+                "Flutter",
+                "React",
+                "Django",
+                "Rails"
+              ],
+              "answer": 0,
+              "explanation": "Flutter cible le mobile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-01-q1"
+            },
+            {
+              "question": "Dart est-il typé ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement en Web",
+                "Seulement en mobile"
+              ],
+              "answer": 0,
+              "explanation": "Le typage est vérifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-01-q2"
+            }
+          ],
+          "summary": [
+            "Dart typé.",
+            "Null safety.",
+            "Flutter."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à PowerShell »."
+        },
+        {
+          "id": "lgs-02",
+          "title": "Introduction à PowerShell",
+          "duration": 20,
+          "objectives": [
+            "Utiliser les cmdlets",
+            "Paginer avec le pipeline",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "PowerShell manipule des objets. Les cmdlets suivent verbe-nom et le pipeline transmet des objets."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Get-Help pour la documentation.",
+                "Where-Object filtre.",
+                "Les scripts s'exécutent avec une politique adaptée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer",
+            "instructions": "Quelle cmdlet filtre des objets dans le pipeline ?",
+            "hints": [
+              "Un filtre."
+            ],
+            "solution": "Where-Object",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "where-object"
+              ],
+              "success": "Correct : Where-Object."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que transporte le pipeline ?",
+              "options": [
+                "Des objets",
+                "Du texte",
+                "Des fichiers",
+                "Des images"
+              ],
+              "answer": 0,
+              "explanation": "La puissance vient des objets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-02-q1"
+            },
+            {
+              "question": "Comment obtenir de l'aide ?",
+              "options": [
+                "Get-Help",
+                "man",
+                "help.txt",
+                "doc"
+              ],
+              "answer": 0,
+              "explanation": "La documentation est intégrée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-02-q2"
+            }
+          ],
+          "summary": [
+            "Objets et pipeline.",
+            "Where-Object.",
+            "Get-Help."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Bash »."
+        },
+        {
+          "id": "lgs-03",
+          "title": "Introduction à Bash",
+          "duration": 20,
+          "objectives": [
+            "Écrire un script",
+            "Comprendre les variables",
+            "Utiliser les codes de retour"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Bash exécute des commandes en séquence, avec variables, conditions, boucles et codes de retour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "#!/usr/bin/env bash.",
+                "set -euo pipefail pour durcir.",
+                "$? contient le code de retour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Durcir",
+            "instructions": "Quelle ligne durcit un script Bash ?",
+            "hints": [
+              "Une option de shell."
+            ],
+            "solution": "set -euo pipefail",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "set -euo"
+              ],
+              "success": "Correct : set -euo pipefail."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient $? ?",
+              "options": [
+                "Le code de retour",
+                "Le nom du script",
+                "Le chemin",
+                "Le PID"
+              ],
+              "answer": 0,
+              "explanation": "0 signifie succès.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-03-q1"
+            },
+            {
+              "question": "Que fait set -e ?",
+              "options": [
+                "Il arrête à la première erreur",
+                "Il ignore",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le script échoue vite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-03-q2"
+            }
+          ],
+          "summary": [
+            "Script Bash.",
+            "set -euo.",
+            "$?."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Lua »."
+        },
+        {
+          "id": "lgs-04",
+          "title": "Introduction à Lua",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Lua",
+            "Utiliser les tables",
+            "Découvrir l'intégration"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Lua est un langage léger, souvent intégré dans des applications et des jeux. Les tables servent de tableaux et d'objets."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tables = structure universelle.",
+                "Syntaxe minimale.",
+                "Souvent embarqué (C)."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Utiliser",
+            "instructions": "Quelle structure sert de tableau et d'objet en Lua ?",
+            "hints": [
+              "Une structure unique."
+            ],
+            "solution": "table",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "table"
+              ],
+              "success": "Correct : table."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où Lua est-il souvent utilisé ?",
+              "options": [
+                "Embarqué dans des applications",
+                "Uniquement serveur",
+                "Uniquement mobile",
+                "Uniquement CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le langage est léger.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-04-q1"
+            },
+            {
+              "question": "Que sont les tables ?",
+              "options": [
+                "Des tableaux/objets",
+                "Des fichiers",
+                "Des threads",
+                "Des exceptions"
+              ],
+              "answer": 0,
+              "explanation": "Tout passe par les tables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "lgs-04-q2"
+            }
+          ],
+          "summary": [
+            "Lua léger.",
+            "Tables.",
+            "Intégration."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

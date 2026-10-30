@@ -1,0 +1,405 @@
+{
+  "courseId": "ts-typage",
+  "modules": [
+    {
+      "id": "ts-typage-module",
+      "title": "Typage avancé",
+      "chapters": [
+        {
+          "id": "tst-01",
+          "title": "Types littéraux",
+          "duration": 20,
+          "objectives": [
+            "Restreindre aux valeurs exactes",
+            "Combiner avec des unions",
+            "Utiliser les littéraux comme états"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un type littéral n'accepte qu'une valeur exacte : \"actif\" | \"inactif\". Combiné aux unions, il modélise des états finis."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "type Etat = \"brouillon\" | \"publie\" | \"archive\";\nlet etat: Etat = \"brouillon\";\n// etat = \"autre\"; // erreur",
+              "title": "États"
+            },
+            {
+              "type": "tip",
+              "text": "Les littéraux remplacent souvent des booléens multiples et rendent les états impossibles à confondre."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Déclarez Priorite limité à basse, normale, haute.",
+            "hints": [
+              "Une union de littéraux."
+            ],
+            "solution": "type Priorite = \"basse\" | \"normale\" | \"haute\";",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "type",
+                "basse",
+                "haute"
+              ],
+              "success": "Correct : union de littéraux."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit un type littéral ?",
+              "options": [
+                "La valeur exacte",
+                "La vitesse",
+                "Le formatage",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Les autres valeurs sont refusées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-01-q1"
+            },
+            {
+              "question": "Comment combiner des littéraux ?",
+              "options": [
+                "Avec |",
+                "Avec +",
+                "Avec &",
+                "Avec ;"
+              ],
+              "answer": 0,
+              "explanation": "L'union accepte l'un ou l'autre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-01-q2"
+            }
+          ],
+          "summary": [
+            "Littéraux = valeurs exactes.",
+            "Unions pour les états.",
+            "Refus à la compilation."
+          ]
+        },
+        {
+          "id": "tst-02",
+          "title": "Fonctions typées",
+          "duration": 20,
+          "objectives": [
+            "Typer paramètres et retour",
+            "Utiliser les paramètres optionnels",
+            "Éviter any"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction typée annonce ses paramètres et son retour ; TypeScript vérifie les appels. ? rend un paramètre optionnel."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "function saluer(nom: string, fois = 1): string {\n  return (\"Bonjour \" + nom + \" \").repeat(fois).trim();\n}",
+              "title": "Fonction typée"
+            },
+            {
+              "type": "warning",
+              "text": "any désactive la vérification : préférez unknown et affinez avec un test de type."
+            }
+          ],
+          "exercise": {
+            "title": "Typer",
+            "instructions": "Écrivez la signature de doubler(n) renvoyant un number.",
+            "hints": [
+              "Paramètre et retour."
+            ],
+            "solution": "function doubler(n: number): number",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "number",
+                "number"
+              ],
+              "success": "Correct : number en paramètre et retour."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifie ? sur un paramètre ?",
+              "options": [
+                "Il est optionnel",
+                "Il est interdit",
+                "Il est nul",
+                "Il est constant"
+              ],
+              "answer": 0,
+              "explanation": "L'appel peut l'omettre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-02-q1"
+            },
+            {
+              "question": "Pourquoi éviter any ?",
+              "options": [
+                "Il désactive la vérification",
+                "Il ralentit le réseau",
+                "Il casse le CSS",
+                "Il empêche les tests"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs passent inaperçues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-02-q2"
+            }
+          ],
+          "summary": [
+            "Paramètres et retour typés.",
+            "? optionnel.",
+            "Éviter any."
+          ]
+        },
+        {
+          "id": "tst-03",
+          "title": "Génériques",
+          "duration": 20,
+          "objectives": [
+            "Écrire une fonction générique",
+            "Contraindre un générique",
+            "Préserver le type"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un générique <T> rend une fonction réutilisable en conservant le type des entrées : le type de retour suit l'argument."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "function premier<T>(elements: T[]): T | undefined {\n  return elements[0];\n}\nconst n = premier([3, 5]); // number | undefined",
+              "title": "Générique"
+            },
+            {
+              "type": "warning",
+              "text": "Sans générique, vous perdriez le type et devriez caster : le cast masque les erreurs."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Écrivez dernier<T> qui renvoie le dernier élément ou undefined.",
+            "hints": [
+              "Un générique et un retour union."
+            ],
+            "solution": "function dernier<T>(elements: T[]): T | undefined { return elements[elements.length - 1]; }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "<t>",
+                "undefined"
+              ],
+              "success": "Correct : générique avec undefined."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que préserve un générique ?",
+              "options": [
+                "Le type des entrées",
+                "La vitesse",
+                "Le CSS",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le retour suit l'entrée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-03-q1"
+            },
+            {
+              "question": "Que fait extends dans <T extends X> ?",
+              "options": [
+                "Il contraint T",
+                "Il hérite",
+                "Il importe",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "T doit respecter X.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-03-q2"
+            }
+          ],
+          "summary": [
+            "<T> pour réutiliser.",
+            "extends pour contraindre.",
+            "Éviter les casts."
+          ]
+        },
+        {
+          "id": "tst-04",
+          "title": "Classes et interfaces",
+          "duration": 20,
+          "objectives": [
+            "Implémenter une interface",
+            "Déclarer des propriétés",
+            "Distinguer type et interface"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une interface décrit la forme d'un objet ; une classe peut l'implémenter. Type et interface se ressemblent, l'interface est extensible."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "interface Utilisateur { id: number; nom: string }\n\nclass Compte implements Utilisateur {\n  constructor(public id: number, public nom: string) {}\n}",
+              "title": "Interface"
+            },
+            {
+              "type": "tip",
+              "text": "Les modificateurs public/private/protected contrôlent la visibilité à la compilation et documentent l'intention."
+            }
+          ],
+          "exercise": {
+            "title": "Implémenter",
+            "instructions": "Quel mot-clé indique qu'une classe respecte une interface ?",
+            "hints": [
+              "Il implémente."
+            ],
+            "solution": "implements",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "implements"
+              ],
+              "success": "Correct : implements."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que décrit une interface ?",
+              "options": [
+                "La forme d'un objet",
+                "Une fonction exécutable",
+                "Un fichier",
+                "Un style"
+              ],
+              "answer": 0,
+              "explanation": "Aucun code n'est généré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-04-q1"
+            },
+            {
+              "question": "Type ou interface pour une forme extensible ?",
+              "options": [
+                "interface",
+                "type",
+                "class",
+                "enum"
+              ],
+              "answer": 0,
+              "explanation": "L'interface est ouverte aux extensions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-04-q2"
+            }
+          ],
+          "summary": [
+            "Interface = forme.",
+            "implements dans la classe.",
+            "Visibilité documentée."
+          ]
+        },
+        {
+          "id": "tst-05",
+          "title": "Types utilitaires",
+          "duration": 20,
+          "objectives": [
+            "Utiliser Partial et Required",
+            "Choisir Pick et Omit",
+            "Créer Readonly"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les utilitaires transforment les types : Partial rend tout optionnel, Required tout obligatoire, Pick/Omit sélectionnent, Readonly interdit la mutation."
+            },
+            {
+              "type": "code",
+              "lang": "ts",
+              "code": "interface Tache { id: number; titre: string; faite: boolean }\ntype Brouillon = Partial<Tache>;\ntype Resume = Pick<Tache, \"id\" | \"titre\">;\ntype Lecture = Readonly<Tache>;",
+              "title": "Utilitaires"
+            },
+            {
+              "type": "warning",
+              "text": "Partial ne valide pas les données à l'exécution : il décrit seulement la forme attendue."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel utilitaire rend toutes les propriétés optionnelles ?",
+            "hints": [
+              "Un utilitaire de type."
+            ],
+            "solution": "Partial",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "partial"
+              ],
+              "success": "Correct : Partial."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Omit ?",
+              "options": [
+                "Il retire des propriétés",
+                "Il ajoute",
+                "Il rend optionnel",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les clés listées sont exclues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-05-q1"
+            },
+            {
+              "question": "Que fait Readonly ?",
+              "options": [
+                "Il interdit la réaffectation des propriétés",
+                "Il fige la mémoire",
+                "Il chiffre",
+                "Il exporte"
+              ],
+              "answer": 0,
+              "explanation": "La mutation est refusée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "tst-05-q2"
+            }
+          ],
+          "summary": [
+            "Partial/Required.",
+            "Pick/Omit.",
+            "Readonly pour l'immutabilité."
+          ]
+        }
+      ]
+    }
+  ]
+}

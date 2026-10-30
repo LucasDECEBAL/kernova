@@ -1,0 +1,402 @@
+{
+  "courseId": "cyber-systemes",
+  "modules": [
+    {
+      "id": "cyber-systemes-module",
+      "title": "Sécurité des systèmes",
+      "chapters": [
+        {
+          "id": "cs-01",
+          "title": "Sécuriser Windows",
+          "duration": 20,
+          "objectives": [
+            "Réduire les services",
+            "Gérer les comptes",
+            "Activer les journaux"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Sécuriser Windows commence par les comptes, les services et les mises à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Compte standard.",
+                "Services inutiles.",
+                "Journaux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel compte pour l'usage quotidien ?",
+            "hints": [
+              "Un compte standard."
+            ],
+            "solution": "Un compte standard, distinct de l'administrateur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "standard"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "Les services exposés",
+                "Les journaux",
+                "Les mises à jour",
+                "Les comptes"
+              ],
+              "answer": 0,
+              "explanation": "La surface diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-01-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les mises à jour",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les failles sont corrigées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-01-q2"
+            }
+          ],
+          "summary": [
+            "Comptes.",
+            "Services.",
+            "Journaux."
+          ],
+          "nextStep": "Chapitre suivant : « Sécuriser Linux »."
+        },
+        {
+          "id": "cs-02",
+          "title": "Sécuriser Linux",
+          "duration": 20,
+          "objectives": [
+            "Réduire la surface",
+            "Configurer SSH",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Linux se sécurise par les comptes, SSH par clé, le pare-feu et les mises à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SSH par clé.",
+                "UFW.",
+                "Mises à jour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment administrer à distance ?",
+            "hints": [
+              "Par clé SSH."
+            ],
+            "solution": "Par clé SSH, sans mot de passe.",
+            "check": {
+              "type": "any",
+              "any": [
+                "cle",
+                "clé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait le pare-feu ?",
+              "options": [
+                "Il filtre les flux",
+                "Il chiffre",
+                "Il trie",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "La surface est réduite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-02-q1"
+            },
+            {
+              "question": "Que désactiver si possible ?",
+              "options": [
+                "L'authentification par mot de passe SSH",
+                "Les logs",
+                "Les mises à jour",
+                "Les comptes"
+              ],
+              "answer": 0,
+              "explanation": "Les clés sont plus sûres.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-02-q2"
+            }
+          ],
+          "summary": [
+            "SSH par clé.",
+            "Pare-feu.",
+            "Mises à jour."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des correctifs »."
+        },
+        {
+          "id": "cs-03",
+          "title": "Gestion des correctifs",
+          "duration": 20,
+          "objectives": [
+            "Planifier",
+            "Tester",
+            "Déployer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les correctifs corrigent des failles connues ; ils se testent avant déploiement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Prioriser les critiques.",
+                "Tester.",
+                "Fenêtre de maintenance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire avant un déploiement massif ?",
+            "hints": [
+              "Tester."
+            ],
+            "solution": "Tester sur un environnement de recette.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tester",
+                "test"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi prioriser ?",
+              "options": [
+                "Les failles critiques d'abord",
+                "Au hasard",
+                "Par taille",
+                "Par couleur"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est ciblé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-03-q1"
+            },
+            {
+              "question": "Que prévoir ?",
+              "options": [
+                "Un retour arrière",
+                "Rien",
+                "Un e-mail",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le déploiement peut échouer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-03-q2"
+            }
+          ],
+          "summary": [
+            "Prioriser.",
+            "Tester.",
+            "Retour arrière."
+          ],
+          "nextStep": "Chapitre suivant : « Durcissement des systèmes »."
+        },
+        {
+          "id": "cs-04",
+          "title": "Durcissement des systèmes",
+          "duration": 20,
+          "objectives": [
+            "Appliquer un référentiel",
+            "Réduire",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le durcissement applique des mesures vérifiables pour réduire la surface."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CIS/ANSSI.",
+                "Mesures vérifiables.",
+                "Écarts documentés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Comment prouver une mesure ?",
+            "hints": [
+              "Par une vérification documentée."
+            ],
+            "solution": "Avec une commande, un résultat attendu et une preuve.",
+            "check": {
+              "type": "any",
+              "any": [
+                "preuve",
+                "verification",
+                "vérification"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un écart ?",
+              "options": [
+                "Le prioriser",
+                "L'ignorer",
+                "Le cacher",
+                "Le dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est traité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-04-q1"
+            },
+            {
+              "question": "Que réduit le durcissement ?",
+              "options": [
+                "La surface d'attaque",
+                "Le CSS",
+                "Le SEO",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Moins de services et de droits.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-04-q2"
+            }
+          ],
+          "summary": [
+            "Référentiel.",
+            "Vérifier.",
+            "Prioriser."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des permissions »."
+        },
+        {
+          "id": "cs-05",
+          "title": "Gestion des permissions",
+          "duration": 20,
+          "objectives": [
+            "Appliquer le moindre privilège",
+            "Auditer",
+            "Retirer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les permissions évoluent avec les rôles ; elles se révisent régulièrement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Groupes.",
+                "Revue.",
+                "Retrait au départ."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire au départ d'un compte ?",
+            "hints": [
+              "Retirer les droits."
+            ],
+            "solution": "Retirer les droits et désactiver le compte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "retir",
+                "desactiv",
+                "désactiv"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi auditer ?",
+              "options": [
+                "Repérer les excès",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les dérives sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-05-q1"
+            },
+            {
+              "question": "Que fait un groupe ?",
+              "options": [
+                "Il porte les droits",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La gestion est centralisée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cs-05-q2"
+            }
+          ],
+          "summary": [
+            "Moindre privilège.",
+            "Audit.",
+            "Retrait."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

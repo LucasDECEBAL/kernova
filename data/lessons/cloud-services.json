@@ -1,0 +1,400 @@
+{
+  "courseId": "cloud-services",
+  "modules": [
+    {
+      "id": "cloud-services-module",
+      "title": "Services cloud",
+      "chapters": [
+        {
+          "id": "cls-01",
+          "title": "Stockage cloud",
+          "duration": 20,
+          "objectives": [
+            "Choisir un type",
+            "Comprendre la durabilité",
+            "Gérer le cycle de vie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Objet, bloc et fichier répondent à des usages différents."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Objet.",
+                "Bloc.",
+                "Fichier."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quel stockage pour des images ?",
+            "hints": [
+              "Le stockage objet."
+            ],
+            "solution": "Le stockage objet, durable et accessible par HTTP.",
+            "check": {
+              "type": "any",
+              "any": [
+                "objet"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sert le stockage bloc ?",
+              "options": [
+                "Les disques des machines",
+                "Les images web",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il simule un disque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-01-q1"
+            },
+            {
+              "question": "Que fait une règle de cycle ?",
+              "options": [
+                "Elle archive/supprime",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-01-q2"
+            }
+          ],
+          "summary": [
+            "Objet/bloc/fichier.",
+            "Durabilité.",
+            "Cycle de vie."
+          ],
+          "nextStep": "Chapitre suivant : « Réseaux virtuels »."
+        },
+        {
+          "id": "cls-02",
+          "title": "Réseaux virtuels",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le VPC",
+            "Segmenter",
+            "Contrôler les flux"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VPC isole un réseau avec sous-réseaux publics et privés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sous-réseaux.",
+                "Tables de routage.",
+                "Passerelles."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que place-t-on en public ?",
+            "hints": [
+              "L'équilibreur."
+            ],
+            "solution": "Seulement l'équilibreur ou la passerelle nécessaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "equilibreur",
+                "équilibreur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garder en privé ?",
+              "options": [
+                "Application et base",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exposition est limitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-02-q1"
+            },
+            {
+              "question": "Que filtrent les groupes de sécurité ?",
+              "options": [
+                "Les flux",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le trafic est contrôlé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-02-q2"
+            }
+          ],
+          "summary": [
+            "VPC.",
+            "Public/privé.",
+            "Filtrage."
+          ],
+          "nextStep": "Chapitre suivant : « Identités et permissions cloud »."
+        },
+        {
+          "id": "cls-03",
+          "title": "Identités et permissions cloud",
+          "duration": 20,
+          "objectives": [
+            "Comprendre IAM",
+            "Appliquer le moindre privilège",
+            "Utiliser des rôles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IAM gère utilisateurs, rôles et politiques ; les rôles évitent les clés durables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Utilisateurs.",
+                "Rôles.",
+                "Politiques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que préférer aux clés durables ?",
+            "hints": [
+              "Des rôles temporaires."
+            ],
+            "solution": "Des rôles avec identifiants temporaires.",
+            "check": {
+              "type": "any",
+              "any": [
+                "roles",
+                "rôles",
+                "temporaire"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une politique ?",
+              "options": [
+                "Elle autorise/refuse des actions",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont explicites.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-03-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les privilèges",
+                "Les logs",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-03-q2"
+            }
+          ],
+          "summary": [
+            "IAM.",
+            "Rôles.",
+            "Moindre privilège."
+          ],
+          "nextStep": "Chapitre suivant : « Haute disponibilité »."
+        },
+        {
+          "id": "cls-04",
+          "title": "Haute disponibilité",
+          "duration": 20,
+          "objectives": [
+            "Répartir",
+            "Surveiller",
+            "Prévoir les pannes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La HA répartit la charge et survit à la perte d'une zone."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Multi-zones.",
+                "Équilibrage.",
+                "Sondes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il tester ?",
+            "hints": [
+              "La perte d'une zone."
+            ],
+            "solution": "La perte d'une zone ou d'une instance.",
+            "check": {
+              "type": "any",
+              "any": [
+                "zone",
+                "panne"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un équilibreur ?",
+              "options": [
+                "Il répartit le trafic",
+                "Il chiffre",
+                "Il trie",
+                "Il route les DNS"
+              ],
+              "answer": 0,
+              "explanation": "La charge est distribuée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-04-q1"
+            },
+            {
+              "question": "Que fait une sonde ?",
+              "options": [
+                "Elle vérifie la santé",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle monte"
+              ],
+              "answer": 0,
+              "explanation": "Les instances saines restent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-04-q2"
+            }
+          ],
+          "summary": [
+            "Multi-zones.",
+            "Équilibrage.",
+            "Sondes."
+          ],
+          "nextStep": "Chapitre suivant : « Élasticité et mise à l'échelle »."
+        },
+        {
+          "id": "cls-05",
+          "title": "Élasticité et mise à l'échelle",
+          "duration": 20,
+          "objectives": [
+            "Comprendre l'auto-scaling",
+            "Choisir les métriques",
+            "Éviter les oscillations"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'auto-scaling ajoute ou retire des instances selon des métriques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Horizontale/verticale.",
+                "Métriques.",
+                "Cooldown."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le scaling horizontal ?",
+            "hints": [
+              "Il ajoute des instances."
+            ],
+            "solution": "Il ajoute des instances.",
+            "check": {
+              "type": "any",
+              "any": [
+                "instances"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "Charge et latence",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La décision est fondée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-05-q1"
+            },
+            {
+              "question": "Pourquoi un cooldown ?",
+              "options": [
+                "Éviter les oscillations",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La stabilité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cls-05-q2"
+            }
+          ],
+          "summary": [
+            "Auto-scaling.",
+            "Métriques.",
+            "Cooldown."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,432 @@
+{
+  "courseId": "css-responsive",
+  "modules": [
+    {
+      "id": "css-responsive-module",
+      "title": "Responsive et fonctions CSS",
+      "chapters": [
+        {
+          "id": "cssr-01",
+          "title": "Responsive design",
+          "duration": 20,
+          "objectives": [
+            "Concevoir pour plusieurs largeurs",
+            "Choisir des points de rupture",
+            "Tester le contenu"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le responsive adapte la mise en page à la largeur disponible. Les points de rupture se choisissent selon le contenu, pas selon un modèle d'appareil."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".grille { display: grid; gap: 16px; }\n@media (min-width: 768px) {\n  .grille { grid-template-columns: repeat(2, 1fr); }\n}",
+              "title": "Deux colonnes à partir de 768 px"
+            },
+            {
+              "type": "warning",
+              "text": "Une largeur fixe de 1 200 px avec défilement horizontal sur mobile est le symptôme d'une mise en page non responsive."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir un point de rupture",
+            "instructions": "Comment passer de une à deux colonnes à partir de 768 px ?",
+            "hints": [
+              "Une media query min-width."
+            ],
+            "solution": "@media (min-width: 768px) { .grille { grid-template-columns: repeat(2, 1fr); } }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "@media",
+                "768"
+              ],
+              "success": "Correct : media query à 768 px."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il tester ?",
+              "options": [
+                "Le contenu à plusieurs largeurs",
+                "Un seul appareil",
+                "La couleur uniquement",
+                "Le serveur"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu dicte les ruptures.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-01-q1"
+            },
+            {
+              "question": "Que signifie responsive ?",
+              "options": [
+                "Adaptation à la largeur",
+                "Site plus rapide",
+                "Site en anglais",
+                "Site sombre"
+              ],
+              "answer": 0,
+              "explanation": "La mise en page s'adapte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-01-q2"
+            }
+          ],
+          "summary": [
+            "Points de rupture selon le contenu.",
+            "Tester plusieurs largeurs.",
+            "Pas de largeur fixe."
+          ],
+          "nextStep": "Chapitre suivant : « Media queries »."
+        },
+        {
+          "id": "cssr-02",
+          "title": "Media queries",
+          "duration": 20,
+          "objectives": [
+            "Utiliser min-width et max-width",
+            "Cibler les préférences",
+            "Adapter l'impression"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une media query applique des règles selon des conditions : largeur, préférence de thème, réduction des animations, impression."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": "@media (prefers-reduced-motion: reduce) {\n  * { animation: none !important; transition: none !important; }\n}\n@media print {\n  nav, .no-print { display: none; }\n}",
+              "title": "Préférences et impression"
+            },
+            {
+              "type": "tip",
+              "text": "Respectez prefers-reduced-motion : couper les animations évite un vrai malaise pour certaines personnes."
+            }
+          ],
+          "exercise": {
+            "title": "Cibler une préférence",
+            "instructions": "Quelle media query cible la réduction des animations ?",
+            "hints": [
+              "Une préférence utilisateur."
+            ],
+            "solution": "@media (prefers-reduced-motion: reduce)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "prefers-reduced-motion"
+              ],
+              "success": "Correct : prefers-reduced-motion."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait @media print ?",
+              "options": [
+                "Elle applique des règles à l'impression",
+                "Elle imprime le CSS",
+                "Elle change le réseau",
+                "Elle anime"
+              ],
+              "answer": 0,
+              "explanation": "Le rendu papier diffère.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-02-q1"
+            },
+            {
+              "question": "Que signifie min-width ?",
+              "options": [
+                "À partir de cette largeur",
+                "Jusqu'à cette largeur",
+                "Exactement",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "L'approche mobile-first utilise min-width.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-02-q2"
+            }
+          ],
+          "summary": [
+            "Media queries conditionnelles.",
+            "Préférences utilisateur.",
+            "Impression."
+          ],
+          "nextStep": "Chapitre suivant : « Approche mobile-first »."
+        },
+        {
+          "id": "cssr-03",
+          "title": "Approche mobile-first",
+          "duration": 20,
+          "objectives": [
+            "Écrire la base mobile",
+            "Ajouter progressivement",
+            "Éviter les surcharges"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Mobile-first écrit d'abord la mise en page étroite, puis ajoute des règles avec min-width. Le code reste plus court et plus prévisible."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".grille { grid-template-columns: 1fr; }\n@media (min-width: 640px) { .grille { grid-template-columns: 1fr 1fr; } }\n@media (min-width: 1024px) { .grille { grid-template-columns: repeat(3, 1fr); } }",
+              "title": "Progression mobile-first"
+            },
+            {
+              "type": "warning",
+              "text": "Multiplier les max-width descendantes crée des conflits d'ordre : une base mobile et des ajouts min-width sont plus simples."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire la base",
+            "instructions": "Quelle est la première règle en mobile-first ?",
+            "hints": [
+              "La mise en page étroite."
+            ],
+            "solution": "Une seule colonne (grid-template-columns: 1fr) sans media query.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "1fr",
+                "une colonne"
+              ],
+              "success": "Correct : base à une colonne."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi mobile-first ?",
+              "options": [
+                "Le code est plus simple à étendre",
+                "Le réseau est plus rapide",
+                "Cela supprime les tests",
+                "Cela évite le HTML"
+              ],
+              "answer": 0,
+              "explanation": "On ajoute au lieu de surcharger.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-03-q1"
+            },
+            {
+              "question": "Quelle media query pour ajouter des colonnes ?",
+              "options": [
+                "min-width",
+                "max-height",
+                "prefers-color-scheme",
+                "print"
+              ],
+              "answer": 0,
+              "explanation": "On part du petit écran.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-03-q2"
+            }
+          ],
+          "summary": [
+            "Base étroite.",
+            "Ajouts avec min-width.",
+            "Moins de surcharges."
+          ],
+          "nextStep": "Chapitre suivant : « Unités relatives »."
+        },
+        {
+          "id": "cssr-04",
+          "title": "Unités relatives",
+          "duration": 20,
+          "objectives": [
+            "Choisir rem, em, % ou vw",
+            "Éviter les pièges",
+            "Garder une mesure lisible"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "rem dépend de la taille racine, em de la taille du parent, % du conteneur, vw de la largeur de la fenêtre. Les unités relatives s'adaptent mieux."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Unité",
+                "Référence",
+                "Piège"
+              ],
+              "rows": [
+                [
+                  "rem",
+                  "racine",
+                  "aucun majeur"
+                ],
+                [
+                  "em",
+                  "parent",
+                  "effet cumulatif"
+                ],
+                [
+                  "%",
+                  "conteneur",
+                  "dépend du contexte"
+                ],
+                [
+                  "vw",
+                  "fenêtre",
+                  "barre de défilement"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Pour la typographie et les espacements, rem est prévisible ; gardez une largeur de ligne entre 55 et 75 caractères (ch)."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir une unité",
+            "instructions": "Quelle unité pour une taille de texte indépendante du parent ?",
+            "hints": [
+              "Elle dépend de la racine."
+            ],
+            "solution": "rem",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rem"
+              ],
+              "success": "Correct : rem."
+            }
+          },
+          "quiz": [
+            {
+              "question": "À quoi se rapporte em ?",
+              "options": [
+                "À la taille du parent",
+                "À la racine",
+                "À la fenêtre",
+                "Au disque"
+              ],
+              "answer": 0,
+              "explanation": "D'où l'effet cumulatif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-04-q1"
+            },
+            {
+              "question": "Quelle unité mesure une largeur de ligne ?",
+              "options": [
+                "ch",
+                "vw",
+                "px",
+                "vh"
+              ],
+              "answer": 0,
+              "explanation": "ch correspond à la largeur d'un caractère.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-04-q2"
+            }
+          ],
+          "summary": [
+            "rem/em/%/vw selon la référence.",
+            "em cumule.",
+            "ch pour la mesure de ligne."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions CSS modernes »."
+        },
+        {
+          "id": "cssr-05",
+          "title": "Fonctions CSS modernes",
+          "duration": 20,
+          "objectives": [
+            "Utiliser clamp, min et max",
+            "Calculer avec calc",
+            "Mélanger des couleurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "clamp(min, idéal, max) borne une valeur fluide ; min et max choisissent une borne ; calc combine des unités ; color-mix mélange des couleurs."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".titre {\n  font-size: clamp(1.5rem, 1rem + 2vw, 2.5rem);\n  width: min(100% - 32px, 65ch);\n}\n.fond { background: color-mix(in srgb, #1e4fd0 15%, transparent); }",
+              "title": "Fonctions fluides"
+            },
+            {
+              "type": "warning",
+              "text": "calc doit respecter les unités : on n'additionne pas des pixels et des pourcentages sans opérateur cohérent."
+            }
+          ],
+          "exercise": {
+            "title": "Borner une taille",
+            "instructions": "Quelle fonction borne une taille entre un minimum et un maximum ?",
+            "hints": [
+              "Trois valeurs."
+            ],
+            "solution": "clamp()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "clamp"
+              ],
+              "success": "Correct : clamp()."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait min(100% - 32px, 65ch) ?",
+              "options": [
+                "Il garde la plus petite valeur",
+                "Il garde la plus grande",
+                "Il anime",
+                "Il arrondit"
+              ],
+              "answer": 0,
+              "explanation": "La largeur reste bornée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-05-q1"
+            },
+            {
+              "question": "À quoi sert calc ?",
+              "options": [
+                "À combiner des unités",
+                "À changer la police",
+                "À créer une grille",
+                "À chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Les calculs restent explicites.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssr-05-q2"
+            }
+          ],
+          "summary": [
+            "clamp pour les tailles fluides.",
+            "min/max/calc.",
+            "color-mix pour les teintes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

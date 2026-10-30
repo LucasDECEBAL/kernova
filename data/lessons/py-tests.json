@@ -1,0 +1,406 @@
+{
+  "courseId": "py-tests",
+  "modules": [
+    {
+      "id": "py-tests-module",
+      "title": "Tests et exécution",
+      "chapters": [
+        {
+          "id": "pyt-01",
+          "title": "Tests unitaires",
+          "duration": 20,
+          "objectives": [
+            "Écrire un test pytest",
+            "Tester les erreurs",
+            "Isoler les cas"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pytest découvre les fonctions test_*. Une assertion simple suffit ; pytest.raises vérifie une exception."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "def test_moyenne():\n    assert moyenne([10, 14]) == 12\n\ndef test_vide():\n    with pytest.raises(ValueError):\n        moyenne([])",
+              "title": "pytest"
+            },
+            {
+              "type": "warning",
+              "text": "Un test qui ne vérifie rien passe toujours : chaque test doit contenir une assertion significative."
+            }
+          ],
+          "exercise": {
+            "title": "Tester une erreur",
+            "instructions": "Quel gestionnaire vérifie qu'une exception est levée ?",
+            "hints": [
+              "Un contexte de pytest."
+            ],
+            "solution": "pytest.raises",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "raises"
+              ],
+              "success": "Correct : pytest.raises."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel préfixe pour un test pytest ?",
+              "options": [
+                "test_",
+                "check_",
+                "assert_",
+                "run_"
+              ],
+              "answer": 0,
+              "explanation": "La découverte repose sur ce préfixe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-01-q1"
+            },
+            {
+              "question": "Qu'est-ce qu'un bon test ?",
+              "options": [
+                "Un comportement vérifié",
+                "Une ligne exécutée",
+                "Un print",
+                "Un import"
+              ],
+              "answer": 0,
+              "explanation": "L'assertion prouve le comportement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-01-q2"
+            }
+          ],
+          "summary": [
+            "pytest découvre test_.",
+            "assertions.",
+            "pytest.raises."
+          ],
+          "nextStep": "Chapitre suivant : « Débogage »."
+        },
+        {
+          "id": "pyt-02",
+          "title": "Débogage",
+          "duration": 20,
+          "objectives": [
+            "Utiliser pdb",
+            "Lire une trace",
+            "Reproduire un bug"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "pdb permet d'exécuter pas à pas, d'inspecter les variables et la pile. breakpoint() ouvre le débogueur."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "def diviser(a, b):\n    breakpoint()\n    return a / b",
+              "title": "Point d'arrêt"
+            },
+            {
+              "type": "warning",
+              "text": "Retirer les breakpoint() avant de livrer : ils bloquent l'exécution."
+            }
+          ],
+          "exercise": {
+            "title": "Ouvrir",
+            "instructions": "Quelle fonction ouvre le débogueur ?",
+            "hints": [
+              "Une fonction intégrée."
+            ],
+            "solution": "breakpoint()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "breakpoint"
+              ],
+              "success": "Correct : breakpoint()."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait pdb ?",
+              "options": [
+                "Il exécute pas à pas",
+                "Il teste",
+                "Il trie",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le débogage est interactif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-02-q1"
+            },
+            {
+              "question": "Que lire dans une trace ?",
+              "options": [
+                "La dernière ligne utile",
+                "Le titre",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur et la ligne sont indiquées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-02-q2"
+            }
+          ],
+          "summary": [
+            "breakpoint().",
+            "Trace de bas en haut.",
+            "Reproduire d'abord."
+          ],
+          "nextStep": "Chapitre suivant : « Organisation d'un package »."
+        },
+        {
+          "id": "pyt-03",
+          "title": "Organisation d'un package",
+          "duration": 20,
+          "objectives": [
+            "Créer un package",
+            "Déclarer pyproject",
+            "Installer en local"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un package regroupe des modules dans un dossier avec __init__.py, décrit par pyproject.toml."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "mon_paquet/\n├── __init__.py\n├── calculs.py\n└── io.py\npyproject.toml",
+              "title": "Package"
+            },
+            {
+              "type": "tip",
+              "text": "pip install -e . installe le package en mode développement : les modifications sont prises en compte."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Quel fichier décrit un package moderne ?",
+            "hints": [
+              "Un fichier de projet."
+            ],
+            "solution": "pyproject.toml",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pyproject"
+              ],
+              "success": "Correct : pyproject.toml."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait __init__.py ?",
+              "options": [
+                "Il marque un package",
+                "Il exécute tout",
+                "Il teste",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le dossier devient importable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-03-q1"
+            },
+            {
+              "question": "Que fait pip install -e . ?",
+              "options": [
+                "Il installe en développement",
+                "Il déploie",
+                "Il teste",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le code est lié, pas copié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-03-q2"
+            }
+          ],
+          "summary": [
+            "Package + __init__.",
+            "pyproject.toml.",
+            "install -e ."
+          ],
+          "nextStep": "Chapitre suivant : « Programmation asynchrone »."
+        },
+        {
+          "id": "pyt-04",
+          "title": "Programmation asynchrone",
+          "duration": 20,
+          "objectives": [
+            "Écrire async/await",
+            "Lancer des tâches",
+            "Comprendre la boucle"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "async def déclare une coroutine ; await attend un résultat sans bloquer. asyncio.run lance la boucle."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import asyncio\n\nasync def charger():\n    await asyncio.sleep(1)\n    return \"ok\"\n\nasyncio.run(charger())",
+              "title": "asyncio"
+            },
+            {
+              "type": "warning",
+              "text": "Un appel bloquant dans une coroutine bloque toute la boucle : utilisez les versions asynchrones."
+            }
+          ],
+          "exercise": {
+            "title": "Lancer",
+            "instructions": "Quelle fonction démarre la boucle asyncio ?",
+            "hints": [
+              "Une fonction du module."
+            ],
+            "solution": "asyncio.run()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "asyncio.run"
+              ],
+              "success": "Correct : asyncio.run()."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait await ?",
+              "options": [
+                "Il attend sans bloquer la boucle",
+                "Il bloque tout",
+                "Il crée une tâche",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La boucle peut avancer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-04-q1"
+            },
+            {
+              "question": "Que fait asyncio.gather ?",
+              "options": [
+                "Il lance plusieurs coroutines",
+                "Il trie",
+                "Il importe",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les résultats sont rassemblés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-04-q2"
+            }
+          ],
+          "summary": [
+            "async/await.",
+            "asyncio.run.",
+            "Pas d'appel bloquant."
+          ],
+          "nextStep": "Chapitre suivant : « Threads et processus »."
+        },
+        {
+          "id": "pyt-05",
+          "title": "Threads et processus",
+          "duration": 20,
+          "objectives": [
+            "Choisir threads ou processus",
+            "Comprendre le GIL",
+            "Éviter les accès concurrents"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les threads conviennent aux attentes d'entrées-sorties ; les processus au calcul intensif. Le GIL limite le parallélisme CPU des threads."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from concurrent.futures import ThreadPoolExecutor\n\nwith ThreadPoolExecutor(max_workers=4) as pool:\n    resultats = list(pool.map(fetch, urls))",
+              "title": "ThreadPool"
+            },
+            {
+              "type": "warning",
+              "text": "Deux threads qui modifient la même liste sans verrou produisent des résultats imprévisibles."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Threads ou processus pour un calcul intensif ?",
+            "hints": [
+              "Contourner le GIL."
+            ],
+            "solution": "Des processus (multiprocessing / ProcessPoolExecutor).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "processus"
+              ],
+              "success": "Correct : processus."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limite le GIL ?",
+              "options": [
+                "Le parallélisme CPU des threads",
+                "Le réseau",
+                "Le disque",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Un seul thread exécute du bytecode à la fois.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-05-q1"
+            },
+            {
+              "question": "Pourquoi un verrou ?",
+              "options": [
+                "Protéger l'état partagé",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les accès concurrents sont sérialisés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyt-05-q2"
+            }
+          ],
+          "summary": [
+            "Threads pour les E/S.",
+            "Processus pour le calcul.",
+            "Verrou pour l'état partagé."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

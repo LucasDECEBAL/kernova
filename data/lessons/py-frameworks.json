@@ -1,0 +1,492 @@
+{
+  "courseId": "py-frameworks",
+  "modules": [
+    {
+      "id": "py-frameworks-module",
+      "title": "Frameworks et distribution",
+      "chapters": [
+        {
+          "id": "pyw-01",
+          "title": "Introduction à FastAPI",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une route",
+            "Typer les données",
+            "Documenter automatiquement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "FastAPI déclare des routes et des modèles typés ; la validation et la documentation OpenAPI sont générées."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from fastapi import FastAPI\nfrom pydantic import BaseModel\n\napp = FastAPI()\n\nclass Tache(BaseModel):\n    titre: str\n\n@app.post(\"/taches\")\ndef creer(tache: Tache):\n    return tache",
+              "title": "FastAPI"
+            },
+            {
+              "type": "warning",
+              "text": "Le typage valide la forme, pas les règles métier : vérifiez la longueur, les droits et les doublons."
+            }
+          ],
+          "exercise": {
+            "title": "Typer",
+            "instructions": "Quel outil valide le corps d'une requête FastAPI ?",
+            "hints": [
+              "Un modèle."
+            ],
+            "solution": "Un modèle Pydantic (BaseModel).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pydantic",
+                "basemodel"
+              ],
+              "success": "Correct : modèle Pydantic."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que génère FastAPI ?",
+              "options": [
+                "Une documentation OpenAPI",
+                "Un CSS",
+                "Un DNS",
+                "Un cookie"
+              ],
+              "answer": 0,
+              "explanation": "La doc est automatique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-01-q1"
+            },
+            {
+              "question": "Que valide Pydantic ?",
+              "options": [
+                "La forme des données",
+                "Les droits",
+                "Le réseau",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Les types sont contrôlés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-01-q2"
+            }
+          ],
+          "summary": [
+            "FastAPI + Pydantic.",
+            "Validation de forme.",
+            "OpenAPI."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Django »."
+        },
+        {
+          "id": "pyw-02",
+          "title": "Introduction à Django",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le cadre",
+            "Créer une application",
+            "Utiliser l'administration"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Django fournit ORM, routage, templates et administration. Un projet se découpe en applications."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "django-admin startproject site\ndjango-admin startapp blog\npython manage.py runserver",
+              "title": "Django"
+            },
+            {
+              "type": "tip",
+              "text": "L'administration Django est puissante mais doit être protégée : comptes dédiés et permissions minimales."
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quelle commande crée une application Django ?",
+            "hints": [
+              "Une commande de gestion."
+            ],
+            "solution": "django-admin startapp nom",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "startapp"
+              ],
+              "success": "Correct : startapp."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fournit Django ?",
+              "options": [
+                "ORM et administration",
+                "Un navigateur",
+                "Un réseau",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le cadre est complet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-02-q1"
+            },
+            {
+              "question": "Comment lancer le serveur de développement ?",
+              "options": [
+                "manage.py runserver",
+                "npm start",
+                "python -m venv",
+                "pip freeze"
+              ],
+              "answer": 0,
+              "explanation": "La commande est dédiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-02-q2"
+            }
+          ],
+          "summary": [
+            "Projet + applications.",
+            "ORM et admin.",
+            "Protéger l'admin."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Flask »."
+        },
+        {
+          "id": "pyw-03",
+          "title": "Introduction à Flask",
+          "duration": 20,
+          "objectives": [
+            "Créer une application minimale",
+            "Déclarer des routes",
+            "Servir des templates"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Flask est minimal : une application, des routes et des extensions au besoin."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from flask import Flask\n\napp = Flask(__name__)\n\n@app.get(\"/\")\ndef accueil():\n    return \"Bonjour\"",
+              "title": "Flask"
+            },
+            {
+              "type": "warning",
+              "text": "Le serveur de développement Flask n'est pas prévu pour la production : utilisez un serveur WSGI/ASGI."
+            }
+          ],
+          "exercise": {
+            "title": "Déclarer",
+            "instructions": "Quel décorateur déclare une route GET en Flask ?",
+            "hints": [
+              "Un décorateur de route."
+            ],
+            "solution": "@app.get(\"/\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "@app.get",
+                "route"
+              ],
+              "success": "Correct : @app.get."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Flask est-il complet par défaut ?",
+              "options": [
+                "Non, minimal",
+                "Oui",
+                "Seulement avec Django",
+                "Seulement en production"
+              ],
+              "answer": 0,
+              "explanation": "Les extensions complètent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-03-q1"
+            },
+            {
+              "question": "Que faire avant la production ?",
+              "options": [
+                "Utiliser un vrai serveur",
+                "Garder le serveur de dev",
+                "Supprimer les routes",
+                "Changer de langage"
+              ],
+              "answer": 0,
+              "explanation": "Le serveur de dev est limité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-03-q2"
+            }
+          ],
+          "summary": [
+            "Flask minimal.",
+            "Routes décorées.",
+            "Serveur de production."
+          ],
+          "nextStep": "Chapitre suivant : « Créer un outil en ligne de commande »."
+        },
+        {
+          "id": "pyw-04",
+          "title": "Créer un outil en ligne de commande",
+          "duration": 20,
+          "objectives": [
+            "Concevoir des options",
+            "Afficher une aide",
+            "Renvoyer un code de sortie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un outil en ligne de commande a des options claires, une aide générée et un code de sortie. argparse ou typer/click simplifient cela."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "parser.add_argument(\"--sortie\", default=\"resultat.json\")\nargs = parser.parse_args()\nprint(args.sortie)",
+              "title": "Option"
+            },
+            {
+              "type": "tip",
+              "text": "Une option par défaut documentée évite les questions : --sortie resultat.json se comprend seule."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter",
+            "instructions": "Quelle ligne ajoute --sortie avec une valeur par défaut ?",
+            "hints": [
+              "add_argument et default."
+            ],
+            "solution": "parser.add_argument(\"--sortie\", default=\"resultat.json\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "add_argument",
+                "default"
+              ],
+              "success": "Correct : add_argument + default."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que génère argparse ?",
+              "options": [
+                "Une aide",
+                "Un CSS",
+                "Un DNS",
+                "Un cookie"
+              ],
+              "answer": 0,
+              "explanation": "L'aide est automatique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-04-q1"
+            },
+            {
+              "question": "Que renvoyer en cas d'échec ?",
+              "options": [
+                "Un code non nul",
+                "0",
+                "Rien",
+                "Un texte"
+              ],
+              "answer": 0,
+              "explanation": "Le shell détecte l'échec.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-04-q2"
+            }
+          ],
+          "summary": [
+            "Options explicites.",
+            "Aide automatique.",
+            "Code de sortie."
+          ],
+          "nextStep": "Chapitre suivant : « Packaging et distribution »."
+        },
+        {
+          "id": "pyw-05",
+          "title": "Packaging et distribution",
+          "duration": 20,
+          "objectives": [
+            "Construire une distribution",
+            "Déclarer les métadonnées",
+            "Publier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le packaging produit une wheel et un sdist installables. pyproject.toml déclare nom, version, dépendances et point d'entrée."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "python -m build\npython -m twine upload dist/*",
+              "title": "Build et publication"
+            },
+            {
+              "type": "warning",
+              "text": "Publier sur PyPI est public et difficile à annuler : vérifiez le nom et la version avant l'envoi."
+            }
+          ],
+          "exercise": {
+            "title": "Construire",
+            "instructions": "Quelle commande construit les distributions ?",
+            "hints": [
+              "Le module build."
+            ],
+            "solution": "python -m build",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "build"
+              ],
+              "success": "Correct : python -m build."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que déclare pyproject.toml ?",
+              "options": [
+                "Métadonnées et dépendances",
+                "Le CSS",
+                "Le DNS",
+                "Les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Le paquet est décrit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-05-q1"
+            },
+            {
+              "question": "Pourquoi vérifier avant publication ?",
+              "options": [
+                "L'envoi est difficile à annuler",
+                "Pour le CSS",
+                "Pour le réseau",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "PyPI est public.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-05-q2"
+            }
+          ],
+          "summary": [
+            "build + twine.",
+            "pyproject.toml.",
+            "Vérifier avant publication."
+          ],
+          "nextStep": "Chapitre suivant : « Bonnes pratiques de sécurité Python »."
+        },
+        {
+          "id": "pyw-06",
+          "title": "Bonnes pratiques de sécurité Python",
+          "duration": 20,
+          "objectives": [
+            "Valider les entrées",
+            "Gérer les secrets",
+            "Mettre à jour les dépendances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La sécurité repose sur la validation, le moindre privilège et la gestion des secrets. Aucune clé dans le code ou les journaux."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Valider les entrées et les chemins.",
+                "Secrets par variables d'environnement ou coffre.",
+                "pip-audit pour les vulnérabilités.",
+                "Droits minimaux pour les services."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "eval() sur une entrée utilisateur exécute du code arbitraire : ne l'utilisez jamais pour parser des données."
+            }
+          ],
+          "exercise": {
+            "title": "Éviter",
+            "instructions": "Pourquoi ne jamais utiliser eval() sur une entrée ?",
+            "hints": [
+              "Exécution de code arbitraire."
+            ],
+            "solution": "eval exécute le code fourni : préférez un parseur (json, ast.literal_eval pour des littéraux).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "eval",
+                "arbitraire"
+              ],
+              "success": "Correct : code arbitraire."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où stocker un secret ?",
+              "options": [
+                "Variables d'environnement ou coffre",
+                "Dans le code",
+                "Dans un log",
+                "Dans un CSV"
+              ],
+              "answer": 0,
+              "explanation": "Le secret reste hors du dépôt.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-06-q1"
+            },
+            {
+              "question": "Que fait pip-audit ?",
+              "options": [
+                "Il signale les vulnérabilités",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Les dépendances sont contrôlées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyw-06-q2"
+            }
+          ],
+          "summary": [
+            "Valider les entrées.",
+            "Secrets hors du code.",
+            "Auditer les dépendances."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

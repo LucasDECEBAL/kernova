@@ -1,0 +1,397 @@
+{
+  "courseId": "reseau-transport",
+  "modules": [
+    {
+      "id": "reseau-transport-module",
+      "title": "Transport et services",
+      "chapters": [
+        {
+          "id": "rtp-01",
+          "title": "TCP",
+          "duration": 20,
+          "objectives": [
+            "Comprendre TCP",
+            "Connaître les garanties",
+            "Situer les usages"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "TCP établit une connexion, garantit l'ordre et retransmet les pertes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Connexion.",
+                "Fiabilité.",
+                "Transfert de fichiers, web."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel protocole pour un transfert fiable ?",
+            "hints": [
+              "La fiabilité prime."
+            ],
+            "solution": "TCP",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tcp"
+              ],
+              "success": "Correct : TCP."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit TCP ?",
+              "options": [
+                "L'ordre et la fiabilité",
+                "La vitesse brute",
+                "Le chiffrement",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les pertes sont retransmises.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-01-q1"
+            },
+            {
+              "question": "Que coûte TCP ?",
+              "options": [
+                "De la latence",
+                "Rien",
+                "Du CSS",
+                "Du DNS"
+              ],
+              "answer": 0,
+              "explanation": "La connexion et les accusés coûtent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-01-q2"
+            }
+          ],
+          "summary": [
+            "TCP fiable.",
+            "Ordre garanti.",
+            "Coût de latence."
+          ],
+          "nextStep": "Chapitre suivant : « UDP »."
+        },
+        {
+          "id": "rtp-02",
+          "title": "UDP",
+          "duration": 20,
+          "objectives": [
+            "Comprendre UDP",
+            "Choisir quand l'utiliser",
+            "Connaître les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "UDP envoie sans connexion ni garantie : latence minimale, pertes possibles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sans connexion.",
+                "Pas de retransmission.",
+                "Streaming, DNS, jeux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel protocole pour un flux temps réel tolérant les pertes ?",
+            "hints": [
+              "La latence prime."
+            ],
+            "solution": "UDP",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "udp"
+              ],
+              "success": "Correct : UDP."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne garantit pas UDP ?",
+              "options": [
+                "La livraison",
+                "Le port",
+                "L'adresse",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les paquets peuvent se perdre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-02-q1"
+            },
+            {
+              "question": "Pourquoi l'utiliser ?",
+              "options": [
+                "Pour la latence",
+                "Pour la fiabilité",
+                "Pour le chiffrement",
+                "Pour le tri"
+              ],
+              "answer": 0,
+              "explanation": "Moins de surcoût.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-02-q2"
+            }
+          ],
+          "summary": [
+            "UDP rapide.",
+            "Pertes possibles.",
+            "Temps réel."
+          ],
+          "nextStep": "Chapitre suivant : « Ports réseau »."
+        },
+        {
+          "id": "rtp-03",
+          "title": "Ports réseau",
+          "duration": 20,
+          "objectives": [
+            "Lire un port",
+            "Connaître les ports usuels",
+            "Limiter l'exposition"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un port identifie un service sur une adresse ; 22 SSH, 53 DNS, 80 HTTP, 443 HTTPS."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ports 0-65535.",
+                "Bien connus < 1024.",
+                "Un port ouvert expose un service."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Quel port pour HTTPS ?",
+            "hints": [
+              "Le port sécurisé du web."
+            ],
+            "solution": "443",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "443"
+              ],
+              "success": "Correct : 443."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel port pour SSH ?",
+              "options": [
+                "22",
+                "80",
+                "443",
+                "53"
+              ],
+              "answer": 0,
+              "explanation": "SSH utilise 22.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-03-q1"
+            },
+            {
+              "question": "Pourquoi fermer des ports ?",
+              "options": [
+                "Réduire la surface",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Moins de services exposés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-03-q2"
+            }
+          ],
+          "summary": [
+            "Ports et services.",
+            "22/53/80/443.",
+            "Surface minimale."
+          ],
+          "nextStep": "Chapitre suivant : « DNS »."
+        },
+        {
+          "id": "rtp-04",
+          "title": "DNS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la résolution",
+            "Lire les types",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le DNS traduit les noms en adresses ; A, AAAA, CNAME, MX et TXT couvrent les usages courants."
+            },
+            {
+              "type": "list",
+              "items": [
+                "A/AAAA.",
+                "CNAME alias.",
+                "MX messagerie."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Quel type pour une IPv4 ?",
+            "hints": [
+              "Un enregistrement de nom."
+            ],
+            "solution": "A",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "a"
+              ],
+              "success": "Correct : A."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait CNAME ?",
+              "options": [
+                "Un alias",
+                "Une IPv6",
+                "Un mail",
+                "Un texte"
+              ],
+              "answer": 0,
+              "explanation": "Le nom pointe un autre nom.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-04-q1"
+            },
+            {
+              "question": "Où tester ?",
+              "options": [
+                "nslookup/dig",
+                "ls",
+                "df",
+                "ip"
+              ],
+              "answer": 0,
+              "explanation": "La requête est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-04-q2"
+            }
+          ],
+          "summary": [
+            "DNS annuaire.",
+            "A/AAAA/CNAME/MX.",
+            "nslookup/dig."
+          ],
+          "nextStep": "Chapitre suivant : « DHCP »."
+        },
+        {
+          "id": "rtp-05",
+          "title": "DHCP",
+          "duration": 20,
+          "objectives": [
+            "Comprendre l'attribution",
+            "Lire un bail",
+            "Éviter les conflits"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DHCP attribue IP, masque, passerelle et DNS ; un bail limite la durée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "DORA.",
+                "Bail.",
+                "Réservations."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Expliquer",
+            "instructions": "Que fournit DHCP en plus de l'IP ?",
+            "hints": [
+              "Masque, passerelle et DNS."
+            ],
+            "solution": "Le masque, la passerelle par défaut et les serveurs DNS.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "passerelle",
+                "dns"
+              ],
+              "success": "Correct : passerelle et DNS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un bail ?",
+              "options": [
+                "Il limite la durée",
+                "Il supprime",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'adresse est renouvelée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-05-q1"
+            },
+            {
+              "question": "Que fait une réservation ?",
+              "options": [
+                "Elle fixe une adresse",
+                "Elle supprime",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le client garde la même IP.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rtp-05-q2"
+            }
+          ],
+          "summary": [
+            "DHCP complet.",
+            "Bail.",
+            "Réservations."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

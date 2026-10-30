@@ -1,0 +1,397 @@
+{
+  "courseId": "rust-avance",
+  "modules": [
+    {
+      "id": "rust-avance-module",
+      "title": "Rust : structures et traits",
+      "chapters": [
+        {
+          "id": "rs2-01",
+          "title": "Structures et enums",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une struct",
+            "Définir un enum",
+            "Utiliser derive"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "struct regroupe des champs ; enum représente des variantes. #[derive(Debug, Clone)] génère des implémentations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Les enums Rust peuvent porter des données.",
+                "derive Debug pour afficher.",
+                "Les méthodes vont dans impl."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Dériver",
+            "instructions": "Quel attribut génère Debug ?",
+            "hints": [
+              "Un attribut derive."
+            ],
+            "solution": "#[derive(Debug)]",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "derive"
+              ],
+              "success": "Correct : derive."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que peut porter un enum ?",
+              "options": [
+                "Des données par variante",
+                "Rien",
+                "Uniquement des entiers",
+                "Des fichiers"
+              ],
+              "answer": 0,
+              "explanation": "Les variantes sont riches.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-01-q1"
+            },
+            {
+              "question": "Où définir une méthode ?",
+              "options": [
+                "Dans impl",
+                "Dans struct",
+                "Dans main",
+                "Dans mod"
+              ],
+              "answer": 0,
+              "explanation": "impl regroupe les méthodes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-01-q2"
+            }
+          ],
+          "summary": [
+            "struct/enum.",
+            "derive.",
+            "impl pour les méthodes."
+          ],
+          "nextStep": "Chapitre suivant : « Pattern matching »."
+        },
+        {
+          "id": "rs2-02",
+          "title": "Pattern matching",
+          "duration": 20,
+          "objectives": [
+            "Utiliser match",
+            "Décomposer une enum",
+            "Gérer None"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "match compare des motifs exhaustifs ; Option force à traiter Some et None."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Le compilateur exige l'exhaustivité.",
+                "_ couvre le reste.",
+                "if let simplifie un seul cas."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Traiter None",
+            "instructions": "Comment traiter Option sans match complet ?",
+            "hints": [
+              "Une forme courte."
+            ],
+            "solution": "if let Some(x) = valeur { ... }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "if let"
+              ],
+              "success": "Correct : if let."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifie le compilateur sur match ?",
+              "options": [
+                "L'exhaustivité",
+                "La vitesse",
+                "Le tri",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Tous les cas sont couverts.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-02-q1"
+            },
+            {
+              "question": "Que couvre _ ?",
+              "options": [
+                "Tous les cas restants",
+                "Rien",
+                "Some",
+                "None"
+              ],
+              "answer": 0,
+              "explanation": "C'est le motif par défaut.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-02-q2"
+            }
+          ],
+          "summary": [
+            "match exhaustif.",
+            "Option explicite.",
+            "if let."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des erreurs »."
+        },
+        {
+          "id": "rs2-03",
+          "title": "Gestion des erreurs",
+          "duration": 20,
+          "objectives": [
+            "Retourner Result",
+            "Utiliser ?",
+            "Éviter unwrap"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Result<T, E> représente succès ou erreur. L'opérateur ? propage l'erreur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "unwrap panique en cas d'erreur.",
+                "? simplifie la propagation.",
+                "Les erreurs sont typées."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Propager",
+            "instructions": "Quel opérateur propage une erreur ?",
+            "hints": [
+              "Un point d'interrogation."
+            ],
+            "solution": "?",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "?"
+              ],
+              "success": "Correct : ?."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait unwrap ?",
+              "options": [
+                "Il panique si erreur",
+                "Il ignore",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "À éviter en production.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-03-q1"
+            },
+            {
+              "question": "Que représente Result ?",
+              "options": [
+                "Succès ou erreur",
+                "Un pointeur",
+                "Un thread",
+                "Un fichier"
+              ],
+              "answer": 0,
+              "explanation": "Ok ou Err.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-03-q2"
+            }
+          ],
+          "summary": [
+            "Result.",
+            "? propage.",
+            "Éviter unwrap."
+          ],
+          "nextStep": "Chapitre suivant : « Collections »."
+        },
+        {
+          "id": "rs2-04",
+          "title": "Collections",
+          "duration": 20,
+          "objectives": [
+            "Utiliser Vec",
+            "Utiliser HashMap",
+            "Parcourir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Vec<T> est un tableau dynamique ; HashMap<K, V> associe clés et valeurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "push ajoute à la fin.",
+                "get renvoie Option.",
+                "entry permet d'insérer si absent."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Insérer",
+            "instructions": "Comment accéder à une valeur de HashMap ?",
+            "hints": [
+              "Une méthode qui renvoie Option."
+            ],
+            "solution": "map.get(&cle)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "get("
+              ],
+              "success": "Correct : get."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie HashMap::get ?",
+              "options": [
+                "Option",
+                "La valeur directe",
+                "Un booléen",
+                "Une erreur"
+              ],
+              "answer": 0,
+              "explanation": "La clé peut être absente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-04-q1"
+            },
+            {
+              "question": "Que fait Vec::push ?",
+              "options": [
+                "Il ajoute à la fin",
+                "Il retire",
+                "Il trie",
+                "Il copie"
+              ],
+              "answer": 0,
+              "explanation": "La taille augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-04-q2"
+            }
+          ],
+          "summary": [
+            "Vec dynamique.",
+            "HashMap.",
+            "get renvoie Option."
+          ],
+          "nextStep": "Chapitre suivant : « Traits »."
+        },
+        {
+          "id": "rs2-05",
+          "title": "Traits",
+          "duration": 20,
+          "objectives": [
+            "Définir un trait",
+            "Implémenter",
+            "Utiliser les bornes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un trait décrit un comportement ; impl l'implémente. Les bornes T: Trait contraignent les génériques."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Les traits ressemblent aux interfaces.",
+                "Les méthodes par défaut existent.",
+                "Les bornes documentent les capacités."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Implémenter",
+            "instructions": "Quel mot-clé implémente un trait ?",
+            "hints": [
+              "Un mot-clé dédié."
+            ],
+            "solution": "impl Trait for Type",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "impl",
+                "for"
+              ],
+              "success": "Correct : impl ... for."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un trait ?",
+              "options": [
+                "Un comportement partagé",
+                "Une structure",
+                "Un fichier",
+                "Un thread"
+              ],
+              "answer": 0,
+              "explanation": "Il décrit des méthodes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-05-q1"
+            },
+            {
+              "question": "Que fait une borne T: Trait ?",
+              "options": [
+                "Elle contraint T",
+                "Elle hérite",
+                "Elle copie",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "T doit implémenter le trait.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs2-05-q2"
+            }
+          ],
+          "summary": [
+            "Trait = comportement.",
+            "impl for.",
+            "Bornes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

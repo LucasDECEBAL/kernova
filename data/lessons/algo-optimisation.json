@@ -1,0 +1,439 @@
+{
+  "courseId": "algo-optimisation",
+  "modules": [
+    {
+      "id": "algo-optimisation-module",
+      "title": "Complexité spatiale et optimisation",
+      "chapters": [
+        {
+          "id": "alg8-01",
+          "title": "Complexité spatiale",
+          "duration": 20,
+          "objectives": [
+            "Mesurer la mémoire auxiliaire",
+            "Comparer tri en place et tri avec copie",
+            "Réduire l'empreinte"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La complexité spatiale mesure la mémoire supplémentaire utilisée, hors entrée. Un tri en place est O(1) en auxiliaire ; un tri fusion est O(n)."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Algorithme",
+                "Temps",
+                "Espace"
+              ],
+              "rows": [
+                [
+                  "Tri sélection",
+                  "O(n²)",
+                  "O(1)"
+                ],
+                [
+                  "Tri fusion",
+                  "O(n log n)",
+                  "O(n)"
+                ],
+                [
+                  "Dichotomie",
+                  "O(log n)",
+                  "O(1)"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Sur un appareil à mémoire limitée, un algorithme un peu plus lent mais en place peut être le bon choix."
+            }
+          ],
+          "exercise": {
+            "title": "Comparer",
+            "instructions": "Quel tri utilise le moins de mémoire auxiliaire : sélection ou fusion ?",
+            "hints": [
+              "L'un trie sur place."
+            ],
+            "solution": "Le tri par sélection, en O(1).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "selection",
+                "sélection"
+              ],
+              "success": "Correct : tri par sélection."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesure la complexité spatiale ?",
+              "options": [
+                "La mémoire auxiliaire utilisée",
+                "Le temps d'exécution",
+                "Le nombre de tests",
+                "La taille du disque"
+              ],
+              "answer": 0,
+              "explanation": "Elle porte sur la mémoire supplémentaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-01-q1"
+            },
+            {
+              "question": "Quel tri est en place ?",
+              "options": [
+                "Tri par sélection",
+                "Tri fusion",
+                "Tri par comptage",
+                "Tri externe"
+              ],
+              "answer": 0,
+              "explanation": "Il ne copie pas le tableau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-01-q2"
+            }
+          ],
+          "summary": [
+            "Espace = mémoire auxiliaire.",
+            "Temps et espace se compromettent.",
+            "Tri sélection en place, fusion en O(n)."
+          ],
+          "nextStep": "Chapitre suivant : « Mémoïsation »."
+        },
+        {
+          "id": "alg8-02",
+          "title": "Mémoïsation",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître un calcul répété",
+            "Mettre en cache un résultat",
+            "Mesurer le gain"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La mémoïsation conserve les résultats déjà calculés pour éviter de les recalculer. Elle transforme une récursion exponentielle en calcul linéaire."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "cache ← {}\nFONCTION fib(n)\n  SI n DANS cache ALORS RETOURNER cache[n]\n  SI n ≤ 1 ALORS RETOURNER n\n  cache[n] ← fib(n - 1) + fib(n - 2)\n  RETOURNER cache[n]",
+              "title": "Fibonacci mémoïsé"
+            },
+            {
+              "type": "warning",
+              "text": "Le cache consomme de la mémoire : sur de très grandes entrées, il faut borner sa taille ou choisir une autre approche."
+            }
+          ],
+          "exercise": {
+            "title": "Expliquer le gain",
+            "instructions": "Pourquoi fib(30) devient-il rapide avec un cache ?",
+            "hints": [
+              "Sans cache, les mêmes sous-problèmes sont recalculés."
+            ],
+            "solution": "Chaque valeur est calculée une fois puis relue dans le cache, au lieu d'être recalculée des millions de fois.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cache",
+                "recalcul"
+              ],
+              "success": "Correct : résultats réutilisés."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que stocke la mémoïsation ?",
+              "options": [
+                "Les résultats déjà calculés",
+                "Les entrées brutes",
+                "Le code source",
+                "Les erreurs"
+              ],
+              "answer": 0,
+              "explanation": "Le cache évite les recalculs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-02-q1"
+            },
+            {
+              "question": "Quel est le compromis ?",
+              "options": [
+                "Mémoire contre temps",
+                "Temps contre sécurité",
+                "Réseau contre disque",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "Le cache occupe de la mémoire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-02-q2"
+            }
+          ],
+          "summary": [
+            "Mémoïsation = cache de résultats.",
+            "Évite les recalculs.",
+            "Compromis mémoire/temps."
+          ],
+          "nextStep": "Chapitre suivant : « Programmation dynamique : introduction »."
+        },
+        {
+          "id": "alg8-03",
+          "title": "Programmation dynamique : introduction",
+          "duration": 20,
+          "objectives": [
+            "Identifier des sous-problèmes",
+            "Construire une table",
+            "Passer de la récursion au tableau"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La programmation dynamique résout un problème en combinant des sous-problèmes, en stockant leurs résultats dans une table."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "fib[0] ← 0 ; fib[1] ← 1\nPOUR i DE 2 À n FAIRE\n  fib[i] ← fib[i - 1] + fib[i - 2]\nRETOURNER fib[n]",
+              "title": "Fibonacci itératif"
+            },
+            {
+              "type": "p",
+              "text": "Deux conditions : des sous-problèmes qui se répètent et une structure optimale (la solution se construit à partir des sous-solutions)."
+            },
+            {
+              "type": "tip",
+              "text": "Commencez par écrire la récurrence, puis la version tabulée : la seconde évite la récursion profonde."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire la récurrence",
+            "instructions": "Donnez la relation qui définit fib(n).",
+            "hints": [
+              "Chaque terme dépend des deux précédents."
+            ],
+            "solution": "fib(n) = fib(n − 1) + fib(n − 2), avec fib(0) = 0 et fib(1) = 1.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "fib(n - 1)",
+                "fib(n-1)",
+                "n - 1"
+              ],
+              "success": "Correct : somme des deux précédents."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que stocke la programmation dynamique ?",
+              "options": [
+                "Les résultats des sous-problèmes",
+                "Le code compilé",
+                "Les entrées utilisateur",
+                "Les fichiers"
+              ],
+              "answer": 0,
+              "explanation": "La table évite les recalculs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-03-q1"
+            },
+            {
+              "question": "Quelle condition est nécessaire ?",
+              "options": [
+                "Des sous-problèmes répétés",
+                "Un tableau trié",
+                "Un graphe",
+                "Une boucle infinie"
+              ],
+              "answer": 0,
+              "explanation": "Sans répétition, le gain disparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-03-q2"
+            }
+          ],
+          "summary": [
+            "Sous-problèmes + table.",
+            "Récurrence puis tabulation.",
+            "Évite la récursion profonde."
+          ],
+          "nextStep": "Chapitre suivant : « Stratégies gloutonnes »."
+        },
+        {
+          "id": "alg8-04",
+          "title": "Stratégies gloutonnes",
+          "duration": 20,
+          "objectives": [
+            "Choisir localement",
+            "Reconnaître quand le glouton échoue",
+            "Comparer avec l'optimal"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un algorithme glouton choisit à chaque étape l'option qui semble la meilleure localement, sans revenir en arrière."
+            },
+            {
+              "type": "p",
+              "text": "Sur le rendu de monnaie avec des pièces 1, 2, 5 et 10, le glouton est optimal ; avec des pièces 1, 3 et 4 pour rendre 6, il échoue (4 + 1 + 1 au lieu de 3 + 3)."
+            },
+            {
+              "type": "warning",
+              "text": "Le glouton ne garantit l'optimum que si le problème possède la propriété du choix glouton : vérifiez-le, ne le supposez pas."
+            }
+          ],
+          "exercise": {
+            "title": "Tester le glouton",
+            "instructions": "Avec des pièces 1, 3, 4, que donne le glouton pour rendre 6 ?",
+            "hints": [
+              "Choisissez la plus grande pièce possible."
+            ],
+            "solution": "4 + 1 + 1 = 3 pièces, alors que 3 + 3 = 2 pièces est optimal.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "4",
+                "3"
+              ],
+              "success": "Correct : le glouton donne 4+1+1, l'optimal est 3+3."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un algorithme glouton ?",
+              "options": [
+                "Il choisit le meilleur localement sans revenir",
+                "Il explore toutes les solutions",
+                "Il trie le tableau",
+                "Il divise le problème"
+              ],
+              "answer": 0,
+              "explanation": "Aucun retour arrière.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-04-q1"
+            },
+            {
+              "question": "Le glouton est-il toujours optimal ?",
+              "options": [
+                "Non",
+                "Oui, toujours",
+                "Seulement en Python",
+                "Seulement sur les graphes"
+              ],
+              "answer": 0,
+              "explanation": "Il faut une propriété particulière.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-04-q2"
+            }
+          ],
+          "summary": [
+            "Glouton : choix local sans retour.",
+            "Pas toujours optimal.",
+            "Vérifier la propriété avant de l'utiliser."
+          ],
+          "nextStep": "Chapitre suivant : « Résolution de problèmes algorithmiques »."
+        },
+        {
+          "id": "alg8-05",
+          "title": "Résolution de problèmes algorithmiques",
+          "duration": 20,
+          "objectives": [
+            "Suivre une méthode",
+            "Choisir une structure adaptée",
+            "Vérifier la complexité et les tests"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Résoudre un problème se fait par étapes : comprendre l'entrée et la sortie, écrire des exemples, décomposer, choisir une structure, évaluer la complexité, tester."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Reformuler le problème avec ses propres mots.",
+                "Écrire un exemple à la main.",
+                "Traiter d'abord le cas simple.",
+                "Choisir la structure selon les opérations dominantes.",
+                "Estimer le coût avant d'optimiser.",
+                "Tester cas normaux, limites et invalides."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un algorithme correct mais O(n²) sur n = 10⁶ peut être inutilisable : mesurez avant de conclure."
+            }
+          ],
+          "exercise": {
+            "title": "Méthode",
+            "instructions": "Quelles deux étapes précèdent l'écriture du code ?",
+            "hints": [
+              "Comprendre et décomposer."
+            ],
+            "solution": "Comprendre entrées/sorties avec des exemples, puis décomposer en sous-problèmes et choisir les structures.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "exemple",
+                "decompos",
+                "décompos"
+              ],
+              "success": "Correct : exemples puis décomposition."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire avant d'optimiser ?",
+              "options": [
+                "Mesurer et estimer la complexité",
+                "Réécrire tout le code",
+                "Changer de langage",
+                "Ajouter des commentaires"
+              ],
+              "answer": 0,
+              "explanation": "L'optimisation doit être guidée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-05-q1"
+            },
+            {
+              "question": "Quel test est souvent oublié ?",
+              "options": [
+                "Le cas limite",
+                "Le cas normal",
+                "Le premier cas",
+                "Le cas vide uniquement"
+              ],
+              "answer": 0,
+              "explanation": "Les limites révèlent les erreurs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "alg8-05-q2"
+            }
+          ],
+          "summary": [
+            "Comprendre, exemplifier, décomposer.",
+            "Choisir selon les opérations dominantes.",
+            "Mesurer la complexité et tester les limites."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

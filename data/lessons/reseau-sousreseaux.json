@@ -1,0 +1,401 @@
+{
+  "courseId": "reseau-sousreseaux",
+  "modules": [
+    {
+      "id": "reseau-sousreseaux-module",
+      "title": "Sous-réseaux et voisinage",
+      "chapters": [
+        {
+          "id": "rsr-01",
+          "title": "Calcul de sous-réseaux",
+          "duration": 20,
+          "objectives": [
+            "Découper une plage",
+            "Calculer les bornes",
+            "Vérifier la cohérence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Découper un /24 en /26 donne quatre sous-réseaux de 64 adresses."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Incrément = taille.",
+                "Première/dernière adresse.",
+                "Éviter le chevauchement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Calculer",
+            "instructions": "Combien de /26 dans un /24 ?",
+            "hints": [
+              "64 adresses par /26."
+            ],
+            "solution": "Quatre sous-réseaux /26.",
+            "check": {
+              "type": "any",
+              "any": [
+                "4",
+                "quatre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vaut 256/64 ?",
+              "options": [
+                "4",
+                "2",
+                "8",
+                "16"
+              ],
+              "answer": 0,
+              "explanation": "Quatre blocs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-01-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les bornes",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les plages ne se chevauchent pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-01-q2"
+            }
+          ],
+          "summary": [
+            "Découpage régulier.",
+            "Bornes.",
+            "Pas de chevauchement."
+          ],
+          "nextStep": "Chapitre suivant : « Adresses privées et publiques »."
+        },
+        {
+          "id": "rsr-02",
+          "title": "Adresses privées et publiques",
+          "duration": 20,
+          "objectives": [
+            "Reconnaître les plages privées",
+            "Comprendre le NAT",
+            "Éviter les conflits"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "10/8, 172.16/12 et 192.168/16 sont privées ; elles ne sont pas routées sur Internet."
+            },
+            {
+              "type": "list",
+              "items": [
+                "192.168.x.x.",
+                "10.x.x.x.",
+                "172.16-31.x.x."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Classer",
+            "instructions": "192.168.1.10 est-elle publique ?",
+            "hints": [
+              "Non, privée."
+            ],
+            "solution": "Non : plage privée.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non",
+                "prive",
+                "privé"
+              ],
+              "success": "Correct : privée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi des adresses privées ?",
+              "options": [
+                "Éviter d'épuiser les publiques",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le NAT les traduit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-02-q1"
+            },
+            {
+              "question": "Que fait le NAT ?",
+              "options": [
+                "Il traduit les adresses",
+                "Il chiffre",
+                "Il trie",
+                "Il route les MAC"
+              ],
+              "answer": 0,
+              "explanation": "Le privé sort via une publique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-02-q2"
+            }
+          ],
+          "summary": [
+            "Plages privées.",
+            "NAT.",
+            "Pas de routage public."
+          ],
+          "nextStep": "Chapitre suivant : « Passerelles »."
+        },
+        {
+          "id": "rsr-03",
+          "title": "Passerelles",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la passerelle",
+            "Configurer",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La passerelle est le routeur qui sort du réseau local ; sans elle, seuls les voisins sont joignables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Adresse du routeur.",
+                "Dans le même sous-réseau.",
+                "Tester avec ping."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Que se passe-t-il sans passerelle correcte ?",
+            "hints": [
+              "Pas d'accès hors du réseau local."
+            ],
+            "solution": "Les communications hors du sous-réseau échouent.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "hors",
+                "exterieur",
+                "extérieur"
+              ],
+              "success": "Correct : pas d'accès externe."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où doit être la passerelle ?",
+              "options": [
+                "Dans le même sous-réseau",
+                "N'importe où",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Elle doit être joignable localement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-03-q1"
+            },
+            {
+              "question": "Comment tester ?",
+              "options": [
+                "ping passerelle",
+                "ls",
+                "df",
+                "cron"
+              ],
+              "answer": 0,
+              "explanation": "Le premier saut est vérifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-03-q2"
+            }
+          ],
+          "summary": [
+            "Passerelle = sortie.",
+            "Même sous-réseau.",
+            "Ping."
+          ],
+          "nextStep": "Chapitre suivant : « ARP »."
+        },
+        {
+          "id": "rsr-04",
+          "title": "ARP",
+          "duration": 20,
+          "objectives": [
+            "Comprendre ARP",
+            "Lire la table",
+            "Éviter les faux positifs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ARP associe une IPv4 à une MAC sur le réseau local."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Requête de diffusion.",
+                "Réponse avec MAC.",
+                "Table ARP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Expliquer",
+            "instructions": "Que fait ARP ?",
+            "hints": [
+              "Il associe IP et MAC."
+            ],
+            "solution": "Il résout une adresse IPv4 en adresse MAC locale.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "mac"
+              ],
+              "success": "Correct : IP → MAC."
+            }
+          },
+          "quiz": [
+            {
+              "question": "ARP fonctionne-t-il sur Internet ?",
+              "options": [
+                "Non, localement",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La résolution est locale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-04-q1"
+            },
+            {
+              "question": "Où lire la table ?",
+              "options": [
+                "arp -a",
+                "ls",
+                "df",
+                "cron"
+              ],
+              "answer": 0,
+              "explanation": "Les associations sont listées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-04-q2"
+            }
+          ],
+          "summary": [
+            "ARP local.",
+            "IP→MAC.",
+            "Table arp."
+          ],
+          "nextStep": "Chapitre suivant : « ICMP »."
+        },
+        {
+          "id": "rsr-05",
+          "title": "ICMP",
+          "duration": 20,
+          "objectives": [
+            "Comprendre ICMP",
+            "Utiliser ping",
+            "Interpréter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ICMP transporte des messages de contrôle ; ping s'en sert pour tester la joignabilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Echo request/reply.",
+                "Traceroute.",
+                "Certains filtrent ICMP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Quel protocole utilise ping ?",
+            "hints": [
+              "Un protocole de contrôle."
+            ],
+            "solution": "ICMP",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "icmp"
+              ],
+              "success": "Correct : ICMP."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait ping ?",
+              "options": [
+                "Il teste la joignabilité",
+                "Il route",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Un écho est envoyé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-05-q1"
+            },
+            {
+              "question": "Un ping bloqué signifie-t-il un hôte éteint ?",
+              "options": [
+                "Pas forcément",
+                "Oui",
+                "Toujours",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "ICMP peut être filtré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsr-05-q2"
+            }
+          ],
+          "summary": [
+            "ICMP.",
+            "ping.",
+            "Filtrage possible."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

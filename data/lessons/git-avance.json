@@ -1,0 +1,432 @@
+{
+  "courseId": "git-avance",
+  "modules": [
+    {
+      "id": "git-avance-module",
+      "title": "Git avancé",
+      "chapters": [
+        {
+          "id": "git2-01",
+          "title": "Comprendre les tags",
+          "duration": 20,
+          "objectives": [
+            "Créer un tag",
+            "Distinguer tag léger et annoté",
+            "Publier les tags"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tag marque un commit particulier, généralement une version livrée. Le tag annoté contient un message, un auteur et une date ; le tag léger n'est qu'un pointeur."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git tag -a v1.0.0 -m \"Version 1.0.0\"\ngit push origin v1.0.0\ngit tag",
+              "title": "Créer et publier un tag"
+            },
+            {
+              "type": "warning",
+              "text": "git push n'envoie pas les tags par défaut : utilisez git push --tags ou poussez chaque tag explicitement."
+            }
+          ],
+          "exercise": {
+            "title": "Créer un tag annoté",
+            "instructions": "Quelle commande crée le tag v1.0.0 avec un message ?",
+            "hints": [
+              "-a crée un tag annoté.",
+              "-m fournit le message."
+            ],
+            "solution": "git tag -a v1.0.0 -m \"Version 1.0.0\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "git tag",
+                "-a",
+                "v1.0.0"
+              ],
+              "success": "Correct : tag annoté."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'apporte un tag annoté ?",
+              "options": [
+                "Un message et des métadonnées",
+                "Une nouvelle branche",
+                "Un commit supplémentaire",
+                "Un fichier ignoré"
+              ],
+              "answer": 0,
+              "explanation": "Il documente la version.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-01-q1"
+            },
+            {
+              "question": "Les tags sont-ils poussés automatiquement ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement les légers",
+                "Seulement en HTTPS"
+              ],
+              "answer": 0,
+              "explanation": "Il faut les pousser explicitement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-01-q2"
+            }
+          ],
+          "summary": [
+            "Un tag marque une version.",
+            "Annoté = message et métadonnées.",
+            "Pousser les tags explicitement."
+          ],
+          "nextStep": "Chapitre suivant : « Utiliser les dépôts distants »."
+        },
+        {
+          "id": "git2-02",
+          "title": "Utiliser les dépôts distants",
+          "duration": 20,
+          "objectives": [
+            "Lister les remotes",
+            "Ajouter un dépôt distant",
+            "Distinguer fetch et pull"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un remote est un dépôt distant nommé, souvent origin. git fetch récupère les objets sans modifier la branche courante ; git pull récupère puis intègre."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git remote -v\ngit remote add origin https://exemple.fr/depot.git\ngit fetch origin\ngit pull --ff-only",
+              "title": "Gérer un remote"
+            },
+            {
+              "type": "tip",
+              "text": "Préférez git fetch puis un examen avant d'intégrer : vous voyez ce qui arrive avant de fusionner."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la commande",
+            "instructions": "Vous voulez voir les nouveautés distantes sans modifier votre branche. Quelle commande ?",
+            "hints": [
+              "Récupérer sans intégrer."
+            ],
+            "solution": "git fetch",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "git fetch"
+              ],
+              "success": "Correct : git fetch."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait git fetch ?",
+              "options": [
+                "Il récupère sans intégrer",
+                "Il fusionne automatiquement",
+                "Il pousse",
+                "Il supprime le remote"
+              ],
+              "answer": 0,
+              "explanation": "La branche locale reste inchangée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-02-q1"
+            },
+            {
+              "question": "Que fait git pull ?",
+              "options": [
+                "Il récupère puis intègre",
+                "Il ne fait que récupérer",
+                "Il pousse",
+                "Il crée un tag"
+              ],
+              "answer": 0,
+              "explanation": "Pull = fetch + intégration.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-02-q2"
+            }
+          ],
+          "summary": [
+            "remote = dépôt distant nommé.",
+            "fetch récupère, pull intègre.",
+            "Examiner avant d'intégrer."
+          ],
+          "nextStep": "Chapitre suivant : « Cloner un projet »."
+        },
+        {
+          "id": "git2-03",
+          "title": "Cloner un projet",
+          "duration": 20,
+          "objectives": [
+            "Cloner un dépôt",
+            "Choisir la profondeur",
+            "Comprendre ce qui est copié"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "git clone copie un dépôt distant avec son historique et configure origin. L'option --depth limite l'historique pour les gros dépôts."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git clone https://exemple.fr/depot.git\ngit clone --depth 1 https://exemple.fr/gros-depot.git",
+              "title": "Cloner"
+            },
+            {
+              "type": "warning",
+              "text": "Un clone superficiel (--depth 1) complique certaines opérations comme le blame ou les comparaisons anciennes."
+            }
+          ],
+          "exercise": {
+            "title": "Cloner",
+            "instructions": "Quelle commande clone un dépôt dans un dossier mon-projet ?",
+            "hints": [
+              "clone prend l'URL puis le dossier cible."
+            ],
+            "solution": "git clone https://exemple.fr/depot.git mon-projet",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "git clone",
+                "mon-projet"
+              ],
+              "success": "Correct : clone avec dossier cible."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que copie git clone ?",
+              "options": [
+                "Le dépôt et son historique",
+                "Seulement le dernier fichier",
+                "Uniquement les tags",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "L'historique est inclus, sauf clone superficiel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-03-q1"
+            },
+            {
+              "question": "Que fait --depth 1 ?",
+              "options": [
+                "Limite l'historique au dernier commit",
+                "Crée une branche",
+                "Supprime origin",
+                "Pousse"
+              ],
+              "answer": 0,
+              "explanation": "Clone superficiel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-03-q2"
+            }
+          ],
+          "summary": [
+            "clone copie dépôt et historique.",
+            "--depth limite l'historique.",
+            "Le clone configure origin."
+          ],
+          "nextStep": "Chapitre suivant : « Pousser et récupérer des modifications »."
+        },
+        {
+          "id": "git2-04",
+          "title": "Pousser et récupérer des modifications",
+          "duration": 20,
+          "objectives": [
+            "Pousser une branche",
+            "Configurer le suivi",
+            "Résoudre un rejet de push"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "git push publie les commits locaux. -u enregistre la branche de suivi pour simplifier les envois suivants. Un push rejeté signifie que le distant a avancé."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "git push -u origin main\ngit pull --rebase\ngit push",
+              "title": "Pousser et récupérer"
+            },
+            {
+              "type": "warning",
+              "text": "Ne forcez jamais un push sur une branche partagée sans accord : vous réécrivez l'historique des autres."
+            }
+          ],
+          "exercise": {
+            "title": "Configurer le suivi",
+            "instructions": "Quelle commande pousse main et enregistre le suivi ?",
+            "hints": [
+              "-u configure upstream."
+            ],
+            "solution": "git push -u origin main",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "git push",
+                "-u",
+                "origin",
+                "main"
+              ],
+              "success": "Correct : push -u origin main."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -u ?",
+              "options": [
+                "Il enregistre la branche de suivi",
+                "Il force le push",
+                "Il supprime la branche",
+                "Il crée un tag"
+              ],
+              "answer": 0,
+              "explanation": "Les prochains push sont simplifiés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-04-q1"
+            },
+            {
+              "question": "Que signifie un push rejeté ?",
+              "options": [
+                "Le distant contient des commits absents en local",
+                "Le réseau est coupé uniquement",
+                "Le dépôt est vide",
+                "La branche n'existe pas"
+              ],
+              "answer": 0,
+              "explanation": "Il faut récupérer puis intégrer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-04-q2"
+            }
+          ],
+          "summary": [
+            "push publie, -u configure le suivi.",
+            "Un rejet impose de récupérer.",
+            "Pas de force-push sur du partagé."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les stratégies de branches »."
+        },
+        {
+          "id": "git2-05",
+          "title": "Comprendre les stratégies de branches",
+          "duration": 20,
+          "objectives": [
+            "Comparer Git Flow et trunk-based",
+            "Protéger la branche principale",
+            "Choisir une convention"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une stratégie définit comment branches et fusions s'organisent. Git Flow multiplie les branches durables ; trunk-based garde une branche principale et des branches très courtes."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Stratégie",
+                "Avantage",
+                "Limite"
+              ],
+              "rows": [
+                [
+                  "Git Flow",
+                  "versions et correctifs séparés",
+                  "lourd pour une petite équipe"
+                ],
+                [
+                  "Trunk-based",
+                  "intégration fréquente",
+                  "exige des tests solides"
+                ],
+                [
+                  "Feature branch",
+                  "isole une fonctionnalité",
+                  "branches qui vieillissent"
+                ]
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "La meilleure stratégie est celle que l'équipe applique réellement : documentez-la dans le README ou CONTRIBUTING."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir une stratégie",
+            "instructions": "Une équipe de trois personnes livre souvent. Git Flow ou trunk-based ?",
+            "hints": [
+              "Le flux fréquent demande peu de branches durables."
+            ],
+            "solution": "Trunk-based avec branches courtes et tests automatisés.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "trunk"
+              ],
+              "success": "Correct : trunk-based."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel est l'inconvénient de Git Flow sur une petite équipe ?",
+              "options": [
+                "Sa lourdeur",
+                "Son absence de branches",
+                "Son incompatibilité avec Git",
+                "Son coût réseau"
+              ],
+              "answer": 0,
+              "explanation": "Trop de branches durables à maintenir.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-05-q1"
+            },
+            {
+              "question": "Que protège une branche principale protégée ?",
+              "options": [
+                "Les fusions directes non revues",
+                "Les tags",
+                "Le disque",
+                "Les remotes"
+              ],
+              "answer": 0,
+              "explanation": "Les changements passent par une revue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "git2-05-q2"
+            }
+          ],
+          "summary": [
+            "Une stratégie organise branches et fusions.",
+            "Trunk-based pour livrer souvent.",
+            "Documenter la convention."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

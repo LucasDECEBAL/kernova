@@ -1,0 +1,488 @@
+{
+  "courseId": "java-avance",
+  "modules": [
+    {
+      "id": "java-avance-module",
+      "title": "Java : génériques et tests",
+      "chapters": [
+        {
+          "id": "jav2-01",
+          "title": "Génériques",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une classe générique",
+            "Utiliser des bornes",
+            "Éviter les casts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un générique <T> préserve le type des éléments et évite les casts. extends borne T à un type compatible."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "class Boite<T> {\n  private T valeur;\n  Boite(T v) { valeur = v; }\n  T lire() { return valeur; }\n}",
+              "title": "Boite"
+            },
+            {
+              "type": "p",
+              "text": "Les génériques sont effacés à l'exécution : le type sert surtout à la compilation."
+            }
+          ],
+          "exercise": {
+            "title": "Borner",
+            "instructions": "Comment limiter T à Number ?",
+            "hints": [
+              "Une borne."
+            ],
+            "solution": "<T extends Number>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "extends",
+                "number"
+              ],
+              "success": "Correct : T extends Number."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que font les génériques ?",
+              "options": [
+                "Ils préservent les types",
+                "Ils accélèrent",
+                "Ils chiffrent",
+                "Ils trient"
+              ],
+              "answer": 0,
+              "explanation": "Les casts disparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-01-q1"
+            },
+            {
+              "question": "Que se passe-t-il à l'exécution ?",
+              "options": [
+                "Effacement des types",
+                "Copie",
+                "Compilation",
+                "Réseau"
+              ],
+              "answer": 0,
+              "explanation": "Les paramètres sont effacés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-01-q2"
+            }
+          ],
+          "summary": [
+            "<T> générique.",
+            "Bornes extends.",
+            "Effacement."
+          ],
+          "nextStep": "Chapitre suivant : « Streams »."
+        },
+        {
+          "id": "jav2-02",
+          "title": "Streams",
+          "duration": 20,
+          "objectives": [
+            "Transformer une collection",
+            "Filtrer et collecter",
+            "Éviter les effets de bord"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un Stream enchaîne filter, map, collect. Les opérations intermédiaires sont paresseuses ; une opération terminale déclenche le calcul."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "List<String> noms = personnes.stream()\n  .filter(p -> p.age() >= 18)\n  .map(Personne::nom)\n  .toList();",
+              "title": "Stream"
+            },
+            {
+              "type": "p",
+              "text": "Un stream ne se réutilise pas : créez-en un nouveau pour chaque traitement."
+            }
+          ],
+          "exercise": {
+            "title": "Collecter",
+            "instructions": "Quelle opération termine un stream en liste ?",
+            "hints": [
+              "Une opération terminale."
+            ],
+            "solution": ".toList() (ou .collect(Collectors.toList()))",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tolist",
+                "collect"
+              ],
+              "success": "Correct : toList/collect."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand le stream calcule-t-il ?",
+              "options": [
+                "À l'opération terminale",
+                "À chaque filter",
+                "Jamais",
+                "À l'import"
+              ],
+              "answer": 0,
+              "explanation": "Le pipeline est paresseux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-02-q1"
+            },
+            {
+              "question": "Peut-on réutiliser un stream ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Deux fois",
+                "Avec Spring"
+              ],
+              "answer": 0,
+              "explanation": "Il est consommé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-02-q2"
+            }
+          ],
+          "summary": [
+            "filter/map/collect.",
+            "Paresseux.",
+            "Usage unique."
+          ],
+          "nextStep": "Chapitre suivant : « Entrées et sorties »."
+        },
+        {
+          "id": "jav2-03",
+          "title": "Entrées et sorties",
+          "duration": 20,
+          "objectives": [
+            "Lire un fichier",
+            "Écrire un fichier",
+            "Fermer avec try-with-resources"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "java.nio.file.Files lit et écrit simplement ; BufferedReader lit ligne par ligne. try-with-resources ferme automatiquement."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "try (var lignes = Files.lines(Path.of(\"notes.txt\"))) {\n  lignes.forEach(System.out::println);\n}",
+              "title": "Fichiers"
+            },
+            {
+              "type": "p",
+              "text": "Précisez toujours l'encodage UTF-8 pour éviter les surprises entre systèmes."
+            }
+          ],
+          "exercise": {
+            "title": "Fermer",
+            "instructions": "Quelle structure ferme automatiquement un flux ?",
+            "hints": [
+              "Une structure de contexte."
+            ],
+            "solution": "try-with-resources",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "try-with-resources",
+                "try ("
+              ],
+              "success": "Correct : try-with-resources."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Files.lines ?",
+              "options": [
+                "Il lit les lignes",
+                "Il écrit",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le flux est paresseux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-03-q1"
+            },
+            {
+              "question": "Pourquoi préciser UTF-8 ?",
+              "options": [
+                "Pour un encodage cohérent",
+                "Pour le CSS",
+                "Pour le réseau",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Les accents restent lisibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-03-q2"
+            }
+          ],
+          "summary": [
+            "Files/BufferedReader.",
+            "try-with-resources.",
+            "UTF-8."
+          ],
+          "nextStep": "Chapitre suivant : « Concurrence »."
+        },
+        {
+          "id": "jav2-04",
+          "title": "Concurrence",
+          "duration": 20,
+          "objectives": [
+            "Créer une tâche",
+            "Utiliser un executor",
+            "Protéger l'état partagé"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un ExecutorService gère un pool de threads. Les tâches renvoient des Future ; l'état partagé doit être synchronisé."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "try (var pool = Executors.newFixedThreadPool(4)) {\n  Future<Integer> r = pool.submit(() -> calcul());\n  System.out.println(r.get());\n}",
+              "title": "Executor"
+            },
+            {
+              "type": "p",
+              "text": "Évitez de partager un état mutable sans protection : préférez des tâches indépendantes ou des structures concurrentes."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel outil gère un pool de threads ?",
+            "hints": [
+              "Un service d'exécution."
+            ],
+            "solution": "ExecutorService",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "executor"
+              ],
+              "success": "Correct : ExecutorService."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que représente Future ?",
+              "options": [
+                "Un résultat à venir",
+                "Un thread",
+                "Un fichier",
+                "Un test"
+              ],
+              "answer": 0,
+              "explanation": "get() attend le résultat.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-04-q1"
+            },
+            {
+              "question": "Pourquoi synchroniser ?",
+              "options": [
+                "Protéger l'état partagé",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les accès concurrents sont ordonnés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-04-q2"
+            }
+          ],
+          "summary": [
+            "ExecutorService.",
+            "Future.",
+            "Synchroniser l'état partagé."
+          ],
+          "nextStep": "Chapitre suivant : « Tests unitaires »."
+        },
+        {
+          "id": "jav2-05",
+          "title": "Tests unitaires",
+          "duration": 20,
+          "objectives": [
+            "Écrire un test JUnit",
+            "Vérifier une exception",
+            "Isoler les dépendances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "JUnit exécute les méthodes @Test. assertThrows vérifie qu'une exception est levée ; les mocks isolent les dépendances."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "@Test\nvoid refuseSoldeNegatif() {\n  assertThrows(IllegalArgumentException.class, () -> compte.retirer(150));\n}",
+              "title": "JUnit"
+            },
+            {
+              "type": "p",
+              "text": "Un test doit pouvoir échouer : vérifiez un comportement précis, pas seulement que la méthode s'exécute."
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Quelle assertion vérifie qu'une exception est levée ?",
+            "hints": [
+              "Une assertion dédiée."
+            ],
+            "solution": "assertThrows",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "assertthrows"
+              ],
+              "success": "Correct : assertThrows."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait @Test ?",
+              "options": [
+                "Il marque un test",
+                "Il exécute",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le runner le découvre.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-05-q1"
+            },
+            {
+              "question": "Pourquoi un mock ?",
+              "options": [
+                "Isoler une dépendance",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le test reste unitaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-05-q2"
+            }
+          ],
+          "summary": [
+            "JUnit @Test.",
+            "assertThrows.",
+            "Mocks."
+          ],
+          "nextStep": "Chapitre suivant : « Introduction à Spring Boot »."
+        },
+        {
+          "id": "jav2-06",
+          "title": "Introduction à Spring Boot",
+          "duration": 20,
+          "objectives": [
+            "Créer un contrôleur",
+            "Exposer une route",
+            "Injecter une dépendance"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Spring Boot démarre une application avec un serveur intégré. @RestController expose des routes ; l'injection fournit les dépendances."
+            },
+            {
+              "type": "code",
+              "lang": "java",
+              "code": "@RestController\nclass TachesController {\n  @GetMapping(\"/taches\")\n  List<Tache> lister() { return service.lister(); }\n}",
+              "title": "Contrôleur"
+            },
+            {
+              "type": "p",
+              "text": "Les contrôleurs restent minces : la logique vit dans des services testables."
+            }
+          ],
+          "exercise": {
+            "title": "Exposer",
+            "instructions": "Quelle annotation déclare une route GET ?",
+            "hints": [
+              "Une annotation HTTP."
+            ],
+            "solution": "@GetMapping",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "getmapping"
+              ],
+              "success": "Correct : @GetMapping."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait @RestController ?",
+              "options": [
+                "Il expose des routes",
+                "Il teste",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les réponses sont sérialisées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-06-q1"
+            },
+            {
+              "question": "Où placer la logique ?",
+              "options": [
+                "Dans un service",
+                "Dans le contrôleur",
+                "Dans le CSS",
+                "Dans le cookie"
+              ],
+              "answer": 0,
+              "explanation": "Le contrôleur reste mince.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jav2-06-q2"
+            }
+          ],
+          "summary": [
+            "Spring Boot.",
+            "@RestController.",
+            "Services testables."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

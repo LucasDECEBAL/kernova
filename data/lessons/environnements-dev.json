@@ -1,0 +1,427 @@
+{
+  "courseId": "environnements-dev",
+  "modules": [
+    {
+      "id": "environnements-dev-module",
+      "title": "Outils du développeur",
+      "chapters": [
+        {
+          "id": "env3-01",
+          "title": "Installer des extensions utiles",
+          "duration": 20,
+          "objectives": [
+            "Choisir des extensions ciblées",
+            "Éviter les conflits",
+            "Désactiver par espace de travail"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une extension ajoute une capacité : langage, linter, débogueur, aperçu. Trop d'extensions ralentissent l'éditeur et se contredisent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Une extension par besoin réel.",
+                "Vérifier l'éditeur et la maintenance.",
+                "Désactiver globalement ce qui ne sert qu'à un projet.",
+                "Auditer les extensions inutilisées."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Une extension populaire peut être abandonnée ou compromise : vérifiez la source avant d'installer."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Faut-il installer dix extensions de thème ?",
+            "hints": [
+              "Une seule suffit."
+            ],
+            "solution": "Non : une extension de thème suffit, les autres ajoutent du bruit.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non",
+                "une"
+              ],
+              "success": "Correct : une seule suffit."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un excès d'extensions ?",
+              "options": [
+                "Ralentissement et conflits",
+                "Une meilleure sécurité",
+                "Moins de code",
+                "Plus de RAM libre"
+              ],
+              "answer": 0,
+              "explanation": "Chaque extension a un coût.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-01-q1"
+            },
+            {
+              "question": "Où désactiver une extension pour un projet ?",
+              "options": [
+                "Dans les paramètres de l'espace de travail",
+                "Dans le BIOS",
+                "Dans le DNS",
+                "Dans le routeur"
+              ],
+              "answer": 0,
+              "explanation": "La configuration d'espace de travail est locale au projet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-01-q2"
+            }
+          ],
+          "summary": [
+            "Extensions ciblées.",
+            "Vérifier la maintenance.",
+            "Désactiver par espace de travail."
+          ],
+          "nextStep": "Chapitre suivant : « Déboguer une application »."
+        },
+        {
+          "id": "env3-02",
+          "title": "Déboguer une application",
+          "duration": 20,
+          "objectives": [
+            "Poser un point d'arrêt",
+            "Avancer pas à pas",
+            "Inspecter les variables"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Déboguer consiste à observer l'exécution : points d'arrêt, pas à pas, pile d'appels et valeurs des variables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un point d'arrêt suspend l'exécution à une ligne.",
+                "Pas à pas détaillé entre dans les fonctions.",
+                "La pile d'appels montre le chemin parcouru.",
+                "La console permet d'évaluer une expression."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Reproduire le bug de façon fiable est la moitié du travail : notez les étapes avant d'ouvrir le débogueur."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'outil",
+            "instructions": "Vous voulez voir la valeur d'une variable à une ligne précise. Que posez-vous ?",
+            "hints": [
+              "Suspendre à cette ligne."
+            ],
+            "solution": "Un point d'arrêt sur la ligne, puis inspecter la variable.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "point d'arret",
+                "point d'arrêt"
+              ],
+              "success": "Correct : point d'arrêt."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un point d'arrêt ?",
+              "options": [
+                "Il suspend l'exécution",
+                "Il compile",
+                "Il supprime la ligne",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "On inspecte l'état à cet instant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-02-q1"
+            },
+            {
+              "question": "Que montre la pile d'appels ?",
+              "options": [
+                "Le chemin des appels",
+                "Les fichiers ignorés",
+                "Les variables d'environnement",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Elle situe l'appel courant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-02-q2"
+            }
+          ],
+          "summary": [
+            "Observer plutôt que deviner.",
+            "Points d'arrêt et pas à pas.",
+            "Reproduire le bug d'abord."
+          ],
+          "nextStep": "Chapitre suivant : « Comprendre les linters et les formateurs »."
+        },
+        {
+          "id": "env3-03",
+          "title": "Comprendre les linters et les formateurs",
+          "duration": 20,
+          "objectives": [
+            "Distinguer lint et formatage",
+            "Configurer les règles",
+            "Intégrer à la CI"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un linter signale des erreurs et des pratiques risquées ; un formateur réécrit le style. Les deux se configurent et s'exécutent en CI."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ESLint : règles de code JavaScript.",
+                "Prettier : formatage.",
+                "Ruff/Black : Python.",
+                "Les règles doivent être versionnées avec le projet."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un formateur appliqué seulement en local crée des diffs inutiles : intégrez-le à la CI ou à un hook."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'outil",
+            "instructions": "Vous voulez un style homogène sans débat. Linter ou formateur ?",
+            "hints": [
+              "Le style relève du formateur."
+            ],
+            "solution": "Un formateur (Prettier, Black, gofmt).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "formateur",
+                "prettier",
+                "black"
+              ],
+              "success": "Correct : formateur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un linter ?",
+              "options": [
+                "Il signale des problèmes",
+                "Il réécrit le style",
+                "Il déploie",
+                "Il teste le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Il analyse sans réécrire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-03-q1"
+            },
+            {
+              "question": "Pourquoi versionner la configuration ?",
+              "options": [
+                "Pour un résultat identique pour tous",
+                "Pour cacher les règles",
+                "Pour éviter les tests",
+                "Pour changer la licence"
+              ],
+              "answer": 0,
+              "explanation": "La configuration fait partie du projet.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-03-q2"
+            }
+          ],
+          "summary": [
+            "Lint signale, format réécrit.",
+            "Configuration versionnée.",
+            "Intégrer à la CI."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les dépendances »."
+        },
+        {
+          "id": "env3-04",
+          "title": "Gérer les dépendances",
+          "duration": 20,
+          "objectives": [
+            "Lire un lockfile",
+            "Auditer les vulnérabilités",
+            "Mettre à jour sans casser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les dépendances évoluent : il faut verrouiller les versions, auditer les vulnérabilités et lire les notes de version avant une montée majeure."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Le lockfile garantit une installation identique.",
+                "npm audit / pip-audit signalent des vulnérabilités connues.",
+                "Les mises à jour majeures peuvent casser l'API.",
+                "Automatiser les mises à jour mineures, relire les majeures."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une dépendance non maintenue est un risque : prévoyez son remplacement avant qu'elle ne bloque une mise à jour de sécurité."
+            }
+          ],
+          "exercise": {
+            "title": "Auditer",
+            "instructions": "Quelle commande npm liste les vulnérabilités connues ?",
+            "hints": [
+              "Une commande d'audit."
+            ],
+            "solution": "npm audit",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "npm audit"
+              ],
+              "success": "Correct : npm audit."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit un lockfile ?",
+              "options": [
+                "Une installation reproductible",
+                "Une sécurité totale",
+                "Un déploiement",
+                "Un test"
+              ],
+              "answer": 0,
+              "explanation": "Les versions exactes sont figées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-04-q1"
+            },
+            {
+              "question": "Que faire avant une mise à jour majeure ?",
+              "options": [
+                "Lire les notes de version et tester",
+                "La pousser en production",
+                "Supprimer les tests",
+                "Changer de licence"
+              ],
+              "answer": 0,
+              "explanation": "Les ruptures d'API doivent être anticipées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-04-q2"
+            }
+          ],
+          "summary": [
+            "Lockfile et audit.",
+            "Lire les notes de version.",
+            "Surveiller les dépendances abandonnées."
+          ],
+          "nextStep": "Chapitre suivant : « Utiliser les outils de développement du navigateur »."
+        },
+        {
+          "id": "env3-05",
+          "title": "Utiliser les outils de développement du navigateur",
+          "duration": 20,
+          "objectives": [
+            "Inspecter le DOM",
+            "Analyser le réseau",
+            "Mesurer les performances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les DevTools montrent le DOM, les styles, le réseau, la console et les performances réelles de la page."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Éléments : structure et styles calculés.",
+                "Réseau : requêtes, tailles, statuts, durée.",
+                "Console : erreurs et exécution d'expressions.",
+                "Performance : temps de chargement et tâches longues."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Le cache du navigateur fausse les mesures : utilisez « vider le cache et recharger » ou l'option de désactivation du cache."
+            }
+          ],
+          "exercise": {
+            "title": "Diagnostiquer",
+            "instructions": "Une requête API échoue. Quel onglet des DevTools consulter ?",
+            "hints": [
+              "Les échanges réseau."
+            ],
+            "solution": "L'onglet Réseau (Network).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "reseau",
+                "réseau",
+                "network"
+              ],
+              "success": "Correct : onglet Réseau."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que montre l'onglet Réseau ?",
+              "options": [
+                "Les requêtes et leurs statuts",
+                "Les mots de passe",
+                "Le code source compilé",
+                "Le BIOS"
+              ],
+              "answer": 0,
+              "explanation": "Il détaille les échanges HTTP.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-05-q1"
+            },
+            {
+              "question": "Pourquoi vider le cache pour mesurer ?",
+              "options": [
+                "Pour éviter des mesures faussées",
+                "Pour accélérer le CPU",
+                "Pour changer le DNS",
+                "Pour supprimer les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Le cache modifie les temps.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "env3-05-q2"
+            }
+          ],
+          "summary": [
+            "DevTools : DOM, réseau, console, performances.",
+            "Vider le cache pour mesurer.",
+            "Observer les statuts et tailles."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

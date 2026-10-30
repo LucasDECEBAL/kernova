@@ -1,0 +1,406 @@
+{
+  "courseId": "py-dataclasses",
+  "modules": [
+    {
+      "id": "py-dataclasses-module",
+      "title": "Données et journaux",
+      "chapters": [
+        {
+          "id": "pydc-01",
+          "title": "Dataclasses",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une dataclass",
+            "Comparer et afficher",
+            "Éviter le code répétitif"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "@dataclass génère __init__, __repr__ et __eq__ à partir des champs annotés."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "from dataclasses import dataclass\n\n@dataclass\nclass Tache:\n    id: int\n    titre: str\n    faite: bool = False",
+              "title": "Dataclass"
+            },
+            {
+              "type": "warning",
+              "text": "Les valeurs par défaut mutables (liste) exigent field(default_factory=list)."
+            }
+          ],
+          "exercise": {
+            "title": "Générer",
+            "instructions": "Quel décorateur crée une dataclass ?",
+            "hints": [
+              "Un décorateur du module dataclasses."
+            ],
+            "solution": "@dataclass",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "dataclass"
+              ],
+              "success": "Correct : @dataclass."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que génère une dataclass ?",
+              "options": [
+                "__init__, __repr__, __eq__",
+                "Un serveur",
+                "Un fichier",
+                "Un test"
+              ],
+              "answer": 0,
+              "explanation": "Le code répétitif disparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-01-q1"
+            },
+            {
+              "question": "Que faire pour une liste par défaut ?",
+              "options": [
+                "default_factory",
+                "None",
+                "Une constante",
+                "Un décorateur"
+              ],
+              "answer": 0,
+              "explanation": "La valeur est créée par instance.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-01-q2"
+            }
+          ],
+          "summary": [
+            "@dataclass.",
+            "Champs annotés.",
+            "default_factory pour les mutables."
+          ],
+          "nextStep": "Chapitre suivant : « Expressions régulières »."
+        },
+        {
+          "id": "pydc-02",
+          "title": "Expressions régulières",
+          "duration": 20,
+          "objectives": [
+            "Utiliser re",
+            "Extraire des groupes",
+            "Éviter les motifs fragiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "re.search cherche, re.findall liste, re.sub remplace. Les groupes nommés rendent le motif lisible."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import re\nm = re.search(r\"(?P<annee>\\d{4})-(?P<mois>\\d{2})\", \"2026-01\")\nm.group(\"annee\")  # \"2026\"",
+              "title": "Groupes nommés"
+            },
+            {
+              "type": "warning",
+              "text": "Utilisez des chaînes brutes r\"...\" pour éviter les échappements involontaires."
+            }
+          ],
+          "exercise": {
+            "title": "Nommer",
+            "instructions": "Quelle syntaxe pour un groupe nommé ?",
+            "hints": [
+              "Un point d'interrogation et un nom."
+            ],
+            "solution": "(?P<nom>...)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "?p<"
+              ],
+              "success": "Correct : (?P<nom>...)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait re.findall ?",
+              "options": [
+                "Il liste les correspondances",
+                "Il remplace",
+                "Il trie",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "Toutes les occurrences.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-02-q1"
+            },
+            {
+              "question": "Pourquoi r\"...\" ?",
+              "options": [
+                "Pour éviter les échappements",
+                "Pour chiffrer",
+                "Pour trier",
+                "Pour importer"
+              ],
+              "answer": 0,
+              "explanation": "La chaîne est brute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-02-q2"
+            }
+          ],
+          "summary": [
+            "re.search/findall/sub.",
+            "Groupes nommés.",
+            "Chaînes brutes."
+          ],
+          "nextStep": "Chapitre suivant : « Manipulation de fichiers CSV »."
+        },
+        {
+          "id": "pydc-03",
+          "title": "Manipulation de fichiers CSV",
+          "duration": 20,
+          "objectives": [
+            "Lire un CSV",
+            "Écrire un CSV",
+            "Gérer l'encodage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le module csv lit et écrit des lignes ; DictReader/DictWriter travaillent par nom de colonne."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import csv\n\nwith open(\"ventes.csv\", newline=\"\", encoding=\"utf-8\") as f:\n    for ligne in csv.DictReader(f):\n        print(ligne[\"produit\"])",
+              "title": "DictReader"
+            },
+            {
+              "type": "warning",
+              "text": "newline=\"\" évite les lignes vides parasites à l'écriture sur Windows."
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Quel lecteur donne les colonnes par nom ?",
+            "hints": [
+              "Un lecteur de dictionnaires."
+            ],
+            "solution": "csv.DictReader",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "dictreader"
+              ],
+              "success": "Correct : DictReader."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie DictReader ?",
+              "options": [
+                "Des dictionnaires par ligne",
+                "Des listes",
+                "Un fichier",
+                "Un test"
+              ],
+              "answer": 0,
+              "explanation": "Les colonnes sont nommées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-03-q1"
+            },
+            {
+              "question": "Pourquoi newline=\"\" ?",
+              "options": [
+                "Éviter les lignes vides",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les fins de ligne sont gérées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-03-q2"
+            }
+          ],
+          "summary": [
+            "csv + DictReader.",
+            "newline=\"\".",
+            "Toujours préciser l'encodage."
+          ],
+          "nextStep": "Chapitre suivant : « Manipulation de fichiers JSON »."
+        },
+        {
+          "id": "pydc-04",
+          "title": "Manipulation de fichiers JSON",
+          "duration": 20,
+          "objectives": [
+            "Lire du JSON",
+            "Écrire du JSON",
+            "Gérer les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "json.load lit un fichier, json.loads une chaîne, json.dump écrit. ensure_ascii=False conserve les accents."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import json\n\nwith open(\"data.json\", encoding=\"utf-8\") as f:\n    data = json.load(f)\n\njson.dump(data, open(\"out.json\", \"w\", encoding=\"utf-8\"), ensure_ascii=False, indent=2)",
+              "title": "JSON"
+            },
+            {
+              "type": "warning",
+              "text": "Un JSON invalide lève json.JSONDecodeError : traitez ce cas avec un message clair."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Quelle option conserve les accents ?",
+            "hints": [
+              "Un paramètre d'encodage JSON."
+            ],
+            "solution": "ensure_ascii=False",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ensure_ascii"
+              ],
+              "success": "Correct : ensure_ascii=False."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que lit json.load ?",
+              "options": [
+                "Un fichier",
+                "Une chaîne",
+                "Un réseau",
+                "Un test"
+              ],
+              "answer": 0,
+              "explanation": "loads lit une chaîne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-04-q1"
+            },
+            {
+              "question": "Que faire d'un JSON invalide ?",
+              "options": [
+                "Le signaler",
+                "L'ignorer",
+                "Le concaténer",
+                "Le chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-04-q2"
+            }
+          ],
+          "summary": [
+            "load/loads/dump.",
+            "ensure_ascii=False.",
+            "Gérer JSONDecodeError."
+          ],
+          "nextStep": "Chapitre suivant : « Journalisation »."
+        },
+        {
+          "id": "pydc-05",
+          "title": "Journalisation",
+          "duration": 20,
+          "objectives": [
+            "Utiliser logging",
+            "Choisir un niveau",
+            "Configurer la sortie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "logging remplace print pour les journaux : niveaux debug, info, warning, error, critical, format et destination configurables."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import logging\nlogging.basicConfig(level=logging.INFO, format=\"%(levelname)s %(message)s\")\nlogging.warning(\"disque presque plein\")",
+              "title": "logging"
+            },
+            {
+              "type": "warning",
+              "text": "Un logging.basicConfig mal placé peut être ignoré si une configuration existe déjà."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel niveau pour une erreur non bloquante ?",
+            "hints": [
+              "Un niveau d'avertissement."
+            ],
+            "solution": "warning",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "warning"
+              ],
+              "success": "Correct : warning."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi logging plutôt que print ?",
+              "options": [
+                "Niveaux et destination configurables",
+                "Plus rapide",
+                "Plus joli",
+                "Chiffré"
+              ],
+              "answer": 0,
+              "explanation": "Le journal est structuré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-05-q1"
+            },
+            {
+              "question": "Que fait basicConfig ?",
+              "options": [
+                "Il configure le journal",
+                "Il trie",
+                "Il importe",
+                "Il teste"
+              ],
+              "answer": 0,
+              "explanation": "Le format et le niveau sont fixés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pydc-05-q2"
+            }
+          ],
+          "summary": [
+            "logging structuré.",
+            "Niveaux.",
+            "Configuration explicite."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

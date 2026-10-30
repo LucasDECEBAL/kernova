@@ -1,0 +1,400 @@
+{
+  "courseId": "api-avance",
+  "modules": [
+    {
+      "id": "api-avance-module",
+      "title": "API avancées",
+      "chapters": [
+        {
+          "id": "api5-01",
+          "title": "CORS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la politique",
+            "Configurer les origines",
+            "Gérer le préflight"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "CORS autorise le navigateur à appeler une autre origine ; le serveur déclare les origines permises."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Access-Control-Allow-Origin.",
+                "Préflight OPTIONS.",
+                "Pas de joker avec credentials."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Configurer",
+            "instructions": "Que déclare le serveur pour autoriser une origine ?",
+            "hints": [
+              "Un en-tête CORS."
+            ],
+            "solution": "Access-Control-Allow-Origin",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "access-control-allow-origin"
+              ],
+              "success": "Correct : en-tête CORS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand un préflight est-il envoyé ?",
+              "options": [
+                "Pour certaines requêtes complexes",
+                "Toujours",
+                "Jamais",
+                "Seulement en GET"
+              ],
+              "answer": 0,
+              "explanation": "OPTIONS vérifie les permissions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-01-q1"
+            },
+            {
+              "question": "Peut-on utiliser * avec credentials ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "En HTTPS"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur refuse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-01-q2"
+            }
+          ],
+          "summary": [
+            "CORS = origines.",
+            "Préflight.",
+            "Pas de * avec credentials."
+          ],
+          "nextStep": "Chapitre suivant : « WebSockets »."
+        },
+        {
+          "id": "api5-02",
+          "title": "WebSockets",
+          "duration": 20,
+          "objectives": [
+            "Établir une connexion",
+            "Échanger des messages",
+            "Authentifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "WebSocket maintient une connexion bidirectionnelle après une poignée de main HTTP."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Messages texte/JSON.",
+                "Authentification à la connexion.",
+                "Reconnexion gérée côté client."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Établir la connexion",
+            "instructions": "Que permet une connexion WebSocket ?",
+            "hints": [
+              "Les deux côtés peuvent envoyer.",
+              "La connexion reste ouverte."
+            ],
+            "solution": "Une communication bidirectionnelle entre client et serveur sur une connexion maintenue.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "bidirectionnel"
+              ],
+              "success": "Correct : communication bidirectionnelle."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Sur quoi repose la poignée de main ?",
+              "options": [
+                "HTTP",
+                "FTP",
+                "SMTP",
+                "SSH"
+              ],
+              "answer": 0,
+              "explanation": "Puis le protocole bascule.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-02-q1"
+            },
+            {
+              "question": "Que gérer côté client ?",
+              "options": [
+                "La reconnexion",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Les coupures arrivent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-02-q2"
+            }
+          ],
+          "summary": [
+            "Bidirectionnel.",
+            "Auth à la connexion.",
+            "Reconnexion."
+          ],
+          "nextStep": "Chapitre suivant : « Tâches asynchrones »."
+        },
+        {
+          "id": "api5-03",
+          "title": "Tâches asynchrones",
+          "duration": 20,
+          "objectives": [
+            "Découpler une tâche longue",
+            "Suivre l'état",
+            "Éviter les doublons"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une tâche longue part en arrière-plan ; l'API renvoie un identifiant de suivi."
+            },
+            {
+              "type": "list",
+              "items": [
+                "202 Accepted.",
+                "Statut de la tâche.",
+                "Idempotence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Renvoyer",
+            "instructions": "Quel statut pour une tâche acceptée en arrière-plan ?",
+            "hints": [
+              "Traitement différé."
+            ],
+            "solution": "202 Accepted",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "202"
+              ],
+              "success": "Correct : 202."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Comment suivre la tâche ?",
+              "options": [
+                "Par un identifiant",
+                "Par le CSS",
+                "Par le DNS",
+                "Par le cookie"
+              ],
+              "answer": 0,
+              "explanation": "Le client interroge l'état.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-03-q1"
+            },
+            {
+              "question": "Comment éviter les doublons ?",
+              "options": [
+                "Clé d'idempotence",
+                "Un log",
+                "Un cookie",
+                "Un CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le même envoi ne duplique pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-03-q2"
+            }
+          ],
+          "summary": [
+            "202.",
+            "Suivi par identifiant.",
+            "Idempotence."
+          ],
+          "nextStep": "Chapitre suivant : « Files de messages »."
+        },
+        {
+          "id": "api5-04",
+          "title": "Files de messages",
+          "duration": 20,
+          "objectives": [
+            "Découpler producteur et consommateur",
+            "Gérer les relances",
+            "Éviter les pertes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une file transporte des messages entre services ; les consommateurs traitent à leur rythme."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Accusé de réception.",
+                "Relances et DLQ.",
+                "Messages idempotents."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Relancer",
+            "instructions": "Que faire d'un message en échec répété ?",
+            "hints": [
+              "Le déplacer en file morte"
+            ],
+            "solution": "Après plusieurs relances, l'envoyer dans une file de messages morts (DLQ).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "dlq",
+                "file morte"
+              ],
+              "success": "Correct : DLQ."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un accusé de réception ?",
+              "options": [
+                "Confirme le traitement",
+                "Chiffre",
+                "Trie",
+                "Déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le message peut être retiré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-04-q1"
+            },
+            {
+              "question": "Pourquoi l'idempotence ?",
+              "options": [
+                "Relances sans doublon",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Un message peut arriver deux fois.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-04-q2"
+            }
+          ],
+          "summary": [
+            "File = découplage.",
+            "Relances/DLQ.",
+            "Idempotence."
+          ],
+          "nextStep": "Chapitre suivant : « Mise en cache »."
+        },
+        {
+          "id": "api5-05",
+          "title": "Mise en cache",
+          "duration": 20,
+          "objectives": [
+            "Choisir une stratégie",
+            "Invalider",
+            "Éviter les données périmées"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le cache réduit la latence ; il faut définir durée, clé et invalidation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cache-Control/ETag.",
+                "Invalidation à l'écriture.",
+                "Ne pas cacher les données personnelles."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Invalider",
+            "instructions": "Quand invalider un cache ?",
+            "hints": [
+              "Quand la donnée change."
+            ],
+            "solution": "À chaque écriture concernée ou selon une durée (TTL) explicite.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "invalidation",
+                "ttl",
+                "ecriture"
+              ],
+              "success": "Correct : invalidation à l'écriture."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un ETag ?",
+              "options": [
+                "Il identifie une version",
+                "Il chiffre",
+                "Il trie",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le client peut revalider.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-05-q1"
+            },
+            {
+              "question": "Que ne pas cacher ?",
+              "options": [
+                "Les données personnelles",
+                "Le CSS",
+                "Le logo",
+                "Les statuts"
+              ],
+              "answer": 0,
+              "explanation": "La fuite est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api5-05-q2"
+            }
+          ],
+          "summary": [
+            "Cache = latence.",
+            "Invalidation.",
+            "Pas de données privées."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

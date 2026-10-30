@@ -1,0 +1,401 @@
+{
+  "courseId": "reseau-multicast",
+  "modules": [
+    {
+      "id": "reseau-multicast-module",
+      "title": "Multicast et VPN",
+      "chapters": [
+        {
+          "id": "rmc-01",
+          "title": "Multicast",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le multicast",
+            "Situer IGMP",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le multicast envoie un flux à un groupe d'abonnés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "IGMP.",
+                "Groupes.",
+                "Routage multicast."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait IGMP ?",
+            "hints": [
+              "Il gère l'abonnement aux groupes."
+            ],
+            "solution": "Il permet aux hôtes de rejoindre un groupe multicast.",
+            "check": {
+              "type": "any",
+              "any": [
+                "igmp",
+                "groupe"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Le multicast envoie-t-il une copie par destinataire ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "Toujours"
+              ],
+              "answer": 0,
+              "explanation": "Un seul flux partage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-01-q1"
+            },
+            {
+              "question": "Que faut-il pour traverser les routeurs ?",
+              "options": [
+                "Un routage multicast",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le routage est spécifique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-01-q2"
+            }
+          ],
+          "summary": [
+            "Multicast = groupe.",
+            "IGMP.",
+            "Routage multicast."
+          ],
+          "nextStep": "Chapitre suivant : « IPv6 avancé »."
+        },
+        {
+          "id": "rmc-02",
+          "title": "IPv6 avancé",
+          "duration": 20,
+          "objectives": [
+            "Comprendre SLAAC",
+            "Planifier",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IPv6 utilise SLAAC, ND et des en-têtes simplifiés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SLAAC.",
+                "ND.",
+                "Pas de NAT obligatoire."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait SLAAC ?",
+            "hints": [
+              "Il configure l'adresse automatiquement."
+            ],
+            "solution": "Il permet à l'hôte de construire son adresse sans DHCP.",
+            "check": {
+              "type": "any",
+              "any": [
+                "slaac"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "IPv6 exige-t-il le NAT ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le NAT n'est pas requis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-02-q1"
+            },
+            {
+              "question": "Que remplace ARP en IPv6 ?",
+              "options": [
+                "ND",
+                "DNS",
+                "DHCP",
+                "STP"
+              ],
+              "answer": 0,
+              "explanation": "Neighbor Discovery.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-02-q2"
+            }
+          ],
+          "summary": [
+            "SLAAC.",
+            "ND.",
+            "Pas de NAT obligatoire."
+          ],
+          "nextStep": "Chapitre suivant : « VPN site à site »."
+        },
+        {
+          "id": "rmc-03",
+          "title": "VPN site à site",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Chiffrer",
+            "Router"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un VPN site à site relie deux réseaux via un tunnel chiffré."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Tunnel.",
+                "Sous-réseaux distincts.",
+                "Routes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que relie un VPN site à site ?",
+            "hints": [
+              "Deux réseaux."
+            ],
+            "solution": "Deux réseaux distants via un tunnel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "réseaux",
+                "reseaux",
+                "tunnel"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Les sous-réseaux doivent-ils être distincts ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Sinon le routage est ambigu.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-03-q1"
+            },
+            {
+              "question": "Que fait le tunnel ?",
+              "options": [
+                "Il chiffre",
+                "Il trie",
+                "Il affiche",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Le trafic est protégé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-03-q2"
+            }
+          ],
+          "summary": [
+            "Site à site.",
+            "Tunnel.",
+            "Sous-réseaux distincts."
+          ],
+          "nextStep": "Chapitre suivant : « VPN d'accès distant »."
+        },
+        {
+          "id": "rmc-04",
+          "title": "VPN d'accès distant",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Authentifier",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le VPN d'accès distant connecte un utilisateur nomade au réseau de l'entreprise."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Client VPN.",
+                "MFA.",
+                "Moindre privilège."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il en plus du tunnel ?",
+            "hints": [
+              "Une authentification forte."
+            ],
+            "solution": "Une authentification forte (MFA) et des droits limités.",
+            "check": {
+              "type": "any",
+              "any": [
+                "mfa",
+                "authentification"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un VPN remplace-t-il les droits ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'autorisation reste nécessaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-04-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les accès",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-04-q2"
+            }
+          ],
+          "summary": [
+            "Accès distant.",
+            "MFA.",
+            "Droits limités."
+          ],
+          "nextStep": "Chapitre suivant : « Segmentation réseau »."
+        },
+        {
+          "id": "rmc-05",
+          "title": "Segmentation réseau",
+          "duration": 20,
+          "objectives": [
+            "Segmenter",
+            "Filtrer",
+            "Limiter le mouvement latéral"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La segmentation limite ce qu'un poste compromis peut atteindre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "VLAN et zones.",
+                "ACL.",
+                "Journalisation des refus."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limite la segmentation ?",
+            "hints": [
+              "Les mouvements latéraux."
+            ],
+            "solution": "Les déplacements d'un attaquant entre zones.",
+            "check": {
+              "type": "any",
+              "any": [
+                "lateral",
+                "latéral"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "La segmentation remplace-t-elle le pare-feu ?",
+              "options": [
+                "Non, elle le complète",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les deux se complètent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-05-q1"
+            },
+            {
+              "question": "Que journaliser ?",
+              "options": [
+                "Les refus",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les tentatives sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rmc-05-q2"
+            }
+          ],
+          "summary": [
+            "Segmentation.",
+            "Filtrage.",
+            "Mouvement latéral limité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

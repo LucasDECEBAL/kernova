@@ -1,0 +1,403 @@
+{
+  "courseId": "react-app",
+  "modules": [
+    {
+      "id": "react-app-module",
+      "title": "Applications React",
+      "chapters": [
+        {
+          "id": "rct3-01",
+          "title": "Chargement des données",
+          "duration": 20,
+          "objectives": [
+            "Charger dans un effet",
+            "Gérer chargement et erreur",
+            "Éviter les mises à jour après démontage"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le chargement de données combine état de chargement, données et erreur. Un drapeau annulé évite la mise à jour après démontage."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "useEffect(() => {\n  let actif = true;\n  charger().then((d) => actif && setDonnees(d)).catch(setErreur);\n  return () => { actif = false; };\n}, []);",
+              "title": "Chargement"
+            },
+            {
+              "type": "warning",
+              "text": "Sans protection, une réponse lente peut écraser un état plus récent ou un composant démonté."
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Que vérifier avant de mettre à jour l'état ?",
+            "hints": [
+              "Que le composant est toujours actif."
+            ],
+            "solution": "Un drapeau actif, remis à false dans le nettoyage.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "actif",
+                "nettoyage"
+              ],
+              "success": "Correct : drapeau de nettoyage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quels états pour un chargement ?",
+              "options": [
+                "Chargement, données, erreur",
+                "Un seul booléen",
+                "Aucun",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Chaque cas a un rendu.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter les mises à jour après démontage ?",
+              "options": [
+                "Pour éviter les fuites et avertissements",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le réseau"
+              ],
+              "answer": 0,
+              "explanation": "La mémoire est libérée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-01-q2"
+            }
+          ],
+          "summary": [
+            "Chargement + erreur.",
+            "Drapeau actif.",
+            "Nettoyage dans l'effet."
+          ]
+        },
+        {
+          "id": "rct3-02",
+          "title": "Gestion des erreurs",
+          "duration": 20,
+          "objectives": [
+            "Afficher une erreur utile",
+            "Proposer une nouvelle tentative",
+            "Éviter les écrans blancs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une erreur de chargement doit être visible et actionnable : message clair, bouton réessayer, et conservation de l'état précédent si possible."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "{erreur ? (\n  <div role=\"alert\">\n    <p>{erreur}</p>\n    <button onClick={recharger}>Réessayer</button>\n  </div>\n) : <Liste elements={donnees} />}",
+              "title": "Erreur actionnable"
+            },
+            {
+              "type": "tip",
+              "text": "role=\"alert\" annonce l'erreur aux lecteurs d'écran dès son apparition."
+            }
+          ],
+          "exercise": {
+            "title": "Annoncer",
+            "instructions": "Quel rôle ARIA pour une erreur affichée dynamiquement ?",
+            "hints": [
+              "Une alerte."
+            ],
+            "solution": "role=\"alert\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "alert"
+              ],
+              "success": "Correct : role=\"alert\"."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que doit proposer une erreur ?",
+              "options": [
+                "Une action",
+                "Rien",
+                "Une couleur",
+                "Un log"
+              ],
+              "answer": 0,
+              "explanation": "L'utilisateur peut réessayer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-02-q1"
+            },
+            {
+              "question": "Que faire des données précédentes ?",
+              "options": [
+                "Les conserver si possible",
+                "Les supprimer",
+                "Les dupliquer",
+                "Les cacher"
+              ],
+              "answer": 0,
+              "explanation": "L'écran reste utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-02-q2"
+            }
+          ],
+          "summary": [
+            "Erreur visible et actionnable.",
+            "role=alert.",
+            "Ne pas vider inutilement."
+          ]
+        },
+        {
+          "id": "rct3-03",
+          "title": "Composants réutilisables",
+          "duration": 20,
+          "objectives": [
+            "Définir une API de props",
+            "Composer plutôt qu'hériter",
+            "Documenter les variantes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un composant réutilisable a une API de props claire : children pour composer, variantes explicites, pas de dépendance à un contexte implicite."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "function Carte({ titre, children, ton = \"neutre\" }) {\n  return (\n    <section className={\"carte carte--\" + ton}>\n      <h2>{titre}</h2>\n      {children}\n    </section>\n  );\n}",
+              "title": "API de props"
+            },
+            {
+              "type": "warning",
+              "text": "Un composant qui devine son contexte devient difficile à réutiliser : rendez les dépendances explicites."
+            }
+          ],
+          "exercise": {
+            "title": "Composer",
+            "instructions": "Quelle prop transmet le contenu imbriqué ?",
+            "hints": [
+              "Une prop spéciale."
+            ],
+            "solution": "children",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "children"
+              ],
+              "success": "Correct : children."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que permet children ?",
+              "options": [
+                "La composition",
+                "L'héritage",
+                "Le CSS",
+                "Le routed"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu est passé entre les balises.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-03-q1"
+            },
+            {
+              "question": "Pourquoi documenter les variantes ?",
+              "options": [
+                "Pour un usage cohérent",
+                "Pour le CSS",
+                "Pour le réseau",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les états sont connus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-03-q2"
+            }
+          ],
+          "summary": [
+            "Props explicites.",
+            "children pour composer.",
+            "Variantes documentées."
+          ]
+        },
+        {
+          "id": "rct3-04",
+          "title": "Architecture d'une application React",
+          "duration": 20,
+          "objectives": [
+            "Séparer présentation et logique",
+            "Organiser par fonctionnalité",
+            "Limiter les dépendances"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une application React se découpe par fonctionnalité : composants de présentation, hooks métier, accès aux données, routes."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "src/\n├── features/taches/\n│   ├── TachesPage.jsx\n│   ├── useTaches.js\n│   └── api.js\n└── ui/",
+              "title": "Organisation"
+            },
+            {
+              "type": "tip",
+              "text": "Un composant de présentation ne devrait pas connaître fetch : la logique vit dans un hook ou un service."
+            }
+          ],
+          "exercise": {
+            "title": "Organiser",
+            "instructions": "Où placer l'appel réseau d'une fonctionnalité ?",
+            "hints": [
+              "Pas dans le composant de présentation."
+            ],
+            "solution": "Dans un module api ou un hook de la fonctionnalité.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "hook",
+                "api"
+              ],
+              "success": "Correct : hook ou module api."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sépare l'architecture ?",
+              "options": [
+                "Présentation et logique",
+                "CSS et HTML",
+                "Réseau et DNS",
+                "Tests et production"
+              ],
+              "answer": 0,
+              "explanation": "Chacun évolue séparément.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-04-q1"
+            },
+            {
+              "question": "Pourquoi organiser par fonctionnalité ?",
+              "options": [
+                "Pour limiter les dépendances",
+                "Pour le SEO",
+                "Pour le CSS",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Le code reste local.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-04-q2"
+            }
+          ],
+          "summary": [
+            "Par fonctionnalité.",
+            "Présentation sans fetch.",
+            "Dépendances limitées."
+          ]
+        },
+        {
+          "id": "rct3-05",
+          "title": "Performance et mémoïsation",
+          "duration": 20,
+          "objectives": [
+            "Identifier les rendus inutiles",
+            "Utiliser memo et useMemo",
+            "Mesurer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "React rend à nouveau les composants dont l'état ou les props changent. memo évite un rendu si les props sont égales ; useMemo/useCallback stabilisent des valeurs."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "const Liste = memo(function Liste({ elements }) {\n  return <ul>{elements.map((e) => <li key={e.id}>{e.nom}</li>)}</ul>;\n});",
+              "title": "memo"
+            },
+            {
+              "type": "warning",
+              "text": "Mémoïser partout coûte plus cher que de rendre : mesurez avec le profiler avant d'ajouter memo."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel outil évite un rendu si les props n'ont pas changé ?",
+            "hints": [
+              "Une fonction de React."
+            ],
+            "solution": "React.memo",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "memo"
+              ],
+              "success": "Correct : memo."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait useMemo ?",
+              "options": [
+                "Il mémorise une valeur calculée",
+                "Il mémorise un composant",
+                "Il trie",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "Le calcul est réutilisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-05-q1"
+            },
+            {
+              "question": "Quand mémoïser ?",
+              "options": [
+                "Après mesure d'un coût réel",
+                "Toujours",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "La mesure guide l'optimisation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct3-05-q2"
+            }
+          ],
+          "summary": [
+            "Rendus inutiles.",
+            "memo/useMemo.",
+            "Mesurer d'abord."
+          ]
+        }
+      ]
+    }
+  ]
+}

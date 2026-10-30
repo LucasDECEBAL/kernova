@@ -1,0 +1,405 @@
+{
+  "courseId": "react-effets",
+  "modules": [
+    {
+      "id": "react-effets-module",
+      "title": "Effets et contexte",
+      "chapters": [
+        {
+          "id": "rct2-01",
+          "title": "useEffect",
+          "duration": 20,
+          "objectives": [
+            "Exécuter un effet",
+            "Contrôler les dépendances",
+            "Nettoyer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "useEffect exécute un effet après le rendu. Le tableau de dépendances décide quand il se relance ; la fonction de nettoyage s'exécute avant le prochain effet et au démontage."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "useEffect(() => {\n  const id = setInterval(rafraichir, 1000);\n  return () => clearInterval(id);\n}, []);",
+              "title": "Minuteur nettoyé"
+            },
+            {
+              "type": "warning",
+              "text": "Un effet sans dépendances s'exécute à chaque rendu : source de boucles et de fuites."
+            }
+          ],
+          "exercise": {
+            "title": "Nettoyer",
+            "instructions": "Que doit renvoyer un effet qui crée un minuteur ?",
+            "hints": [
+              "Une fonction de nettoyage."
+            ],
+            "solution": "() => clearInterval(id)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "clearinterval"
+              ],
+              "success": "Correct : clearInterval."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand s'exécute l'effet ?",
+              "options": [
+                "Après le rendu",
+                "Avant le rendu",
+                "Au clic",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "Le DOM est à jour.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-01-q1"
+            },
+            {
+              "question": "À quoi sert le tableau ?",
+              "options": [
+                "À limiter les relances",
+                "À trier",
+                "À styler",
+                "À importer"
+              ],
+              "answer": 0,
+              "explanation": "Les dépendances contrôlent l'exécution.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-01-q2"
+            }
+          ],
+          "summary": [
+            "Effet après rendu.",
+            "Dépendances explicites.",
+            "Nettoyage obligatoire."
+          ]
+        },
+        {
+          "id": "rct2-02",
+          "title": "Hooks personnalisés",
+          "duration": 20,
+          "objectives": [
+            "Extraire une logique",
+            "Réutiliser un état",
+            "Nommer avec use"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un hook personnalisé est une fonction useX qui compose des hooks pour réutiliser une logique avec état."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "function useCompteur(depart = 0) {\n  const [n, setN] = useState(depart);\n  const incrementer = () => setN((v) => v + 1);\n  return { n, incrementer };\n}",
+              "title": "Hook personnalisé"
+            },
+            {
+              "type": "tip",
+              "text": "Un hook personnalisé ne partage pas l'état : chaque appel crée son propre état."
+            }
+          ],
+          "exercise": {
+            "title": "Nommer",
+            "instructions": "Quel préfixe pour un hook personnalisé ?",
+            "hints": [
+              "Une convention obligatoire."
+            ],
+            "solution": "use",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "use"
+              ],
+              "success": "Correct : use."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réutilise un hook personnalisé ?",
+              "options": [
+                "La logique",
+                "L'état partagé",
+                "Le DOM",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Chaque appel a son état.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-02-q1"
+            },
+            {
+              "question": "Pourquoi le préfixe use ?",
+              "options": [
+                "Pour les règles de lint et la lisibilité",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Les outils identifient les hooks.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-02-q2"
+            }
+          ],
+          "summary": [
+            "useX = logique réutilisable.",
+            "État par appel.",
+            "Préfixe use."
+          ]
+        },
+        {
+          "id": "rct2-03",
+          "title": "Context API",
+          "duration": 20,
+          "objectives": [
+            "Créer un contexte",
+            "Fournir une valeur",
+            "Consommer sans prop drilling"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un contexte transporte une valeur à travers l'arbre sans passer par chaque prop. Provider fournit, useContext consomme."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "const Theme = createContext(\"clair\");\n<Theme.Provider value=\"sombre\"><App /></Theme.Provider>\nconst theme = useContext(Theme);",
+              "title": "Contexte"
+            },
+            {
+              "type": "warning",
+              "text": "Un contexte qui change souvent provoque des rendus larges : réservez-le aux valeurs stables ou peu fréquentes."
+            }
+          ],
+          "exercise": {
+            "title": "Consommer",
+            "instructions": "Quel hook lit un contexte ?",
+            "hints": [
+              "Un hook dédié."
+            ],
+            "solution": "useContext",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "usecontext"
+              ],
+              "success": "Correct : useContext."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un Provider ?",
+              "options": [
+                "Il fournit une valeur",
+                "Il supprime",
+                "Il trie",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "Les descendants la lisent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-03-q1"
+            },
+            {
+              "question": "Quand éviter un contexte ?",
+              "options": [
+                "Pour un état très changeant",
+                "Pour un thème",
+                "Pour une langue",
+                "Pour un utilisateur"
+              ],
+              "answer": 0,
+              "explanation": "Trop de rendus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-03-q2"
+            }
+          ],
+          "summary": [
+            "Contexte = valeur partagée.",
+            "Provider/useContext.",
+            "Attention aux rendus."
+          ]
+        },
+        {
+          "id": "rct2-04",
+          "title": "Gestion de l'état global",
+          "duration": 20,
+          "objectives": [
+            "Choisir local ou global",
+            "Éviter les duplications",
+            "Composer les sources"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'état local suffit souvent. Un état global se justifie quand plusieurs écrans éloignés le partagent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "État local par défaut.",
+                "Contexte pour un thème ou une session.",
+                "Bibliothèque dédiée si la logique devient complexe.",
+                "Une seule source de vérité par donnée."
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Dupliquer un état dans deux stores crée des incohérences impossibles à déboguer."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Un thème clair/sombre partagé partout : local ou global ?",
+            "hints": [
+              "Plusieurs écrans le lisent."
+            ],
+            "solution": "Global (contexte ou store).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "global",
+                "contexte"
+              ],
+              "success": "Correct : global."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand l'état local suffit-il ?",
+              "options": [
+                "Quand un seul composant le porte",
+                "Jamais",
+                "Toujours",
+                "Pour le thème"
+              ],
+              "answer": 0,
+              "explanation": "Inutile de globaliser.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-04-q1"
+            },
+            {
+              "question": "Que risque une duplication ?",
+              "options": [
+                "Des incohérences",
+                "Un CSS cassé",
+                "Un réseau lent",
+                "Un SEO faible"
+              ],
+              "answer": 0,
+              "explanation": "Les sources divergent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-04-q2"
+            }
+          ],
+          "summary": [
+            "Local par défaut.",
+            "Global si partagé.",
+            "Une source par donnée."
+          ]
+        },
+        {
+          "id": "rct2-05",
+          "title": "Navigation avec un routeur",
+          "duration": 20,
+          "objectives": [
+            "Déclarer des routes",
+            "Naviguer par lien",
+            "Lire les paramètres"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un routeur associe une URL à un composant. Les liens du routeur évitent le rechargement complet ; useParams lit les segments."
+            },
+            {
+              "type": "code",
+              "lang": "jsx",
+              "code": "<Routes>\n  <Route path=\"/\" element={<Accueil />} />\n  <Route path=\"/taches/:id\" element={<Detail />} />\n</Routes>",
+              "title": "Routes"
+            },
+            {
+              "type": "warning",
+              "text": "Un lien <a href> provoque un rechargement complet : utilisez le composant Link du routeur."
+            }
+          ],
+          "exercise": {
+            "title": "Lire un paramètre",
+            "instructions": "Quel hook lit :id dans l'URL ?",
+            "hints": [
+              "Un hook de paramètres."
+            ],
+            "solution": "useParams",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "useparams"
+              ],
+              "success": "Correct : useParams."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Route ?",
+              "options": [
+                "Il associe URL et composant",
+                "Il stylise",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le routeur choisit le rendu.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-05-q1"
+            },
+            {
+              "question": "Pourquoi Link plutôt que a ?",
+              "options": [
+                "Pour éviter le rechargement",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "La navigation reste côté client.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rct2-05-q2"
+            }
+          ],
+          "summary": [
+            "Routes et paramètres.",
+            "Link du routeur.",
+            "useParams pour l'URL."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "courseId": "soc",
+  "modules": [
+    {
+      "id": "soc-module",
+      "title": "SOC et détection",
+      "chapters": [
+        {
+          "id": "soc-01",
+          "title": "Introduction à un SOC",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le SOC",
+            "Situer les rôles",
+            "Organiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un SOC surveille, détecte et répond aux incidents de sécurité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Niveaux 1/2/3.",
+                "24/7.",
+                "Outils."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un SOC ?",
+            "hints": [
+              "Surveiller et répondre."
+            ],
+            "solution": "Il surveille, détecte et répond aux incidents.",
+            "check": {
+              "type": "any",
+              "any": [
+                "surveille",
+                "detecte",
+                "détecte"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que traite le niveau 1 ?",
+              "options": [
+                "Le triage initial",
+                "La stratégie",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les alertes sont triées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-01-q1"
+            },
+            {
+              "question": "Pourquoi 24/7 ?",
+              "options": [
+                "Couverture continue",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les attaques ne dorment pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-01-q2"
+            }
+          ],
+          "summary": [
+            "SOC.",
+            "Triage.",
+            "Réponse."
+          ],
+          "nextStep": "Chapitre suivant : « Collecte des journaux »."
+        },
+        {
+          "id": "soc-02",
+          "title": "Collecte des journaux",
+          "duration": 20,
+          "objectives": [
+            "Centraliser",
+            "Normaliser",
+            "Conserver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La collecte centralise les journaux hétérogènes pour analyse."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sources.",
+                "Format.",
+                "Rétention."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des formats ?",
+            "hints": [
+              "Les normaliser."
+            ],
+            "solution": "Normaliser les formats pour corréler.",
+            "check": {
+              "type": "any",
+              "any": [
+                "normalis"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi centraliser ?",
+              "options": [
+                "Corréler et conserver",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La vue est globale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-02-q1"
+            },
+            {
+              "question": "Que définir ?",
+              "options": [
+                "La rétention",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les preuves restent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-02-q2"
+            }
+          ],
+          "summary": [
+            "Centraliser.",
+            "Normaliser.",
+            "Rétention."
+          ],
+          "nextStep": "Chapitre suivant : « SIEM : principes »."
+        },
+        {
+          "id": "soc-03",
+          "title": "SIEM : principes",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le SIEM",
+            "Écrire des règles",
+            "Réduire le bruit"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un SIEM agrège, corrèle et alerte selon des règles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Agrégation.",
+                "Règles.",
+                "Bruit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait un SIEM ?",
+            "hints": [
+              "Il corrèle et alerte."
+            ],
+            "solution": "Il agrège et corrèle les événements pour alerter.",
+            "check": {
+              "type": "any",
+              "any": [
+                "correle",
+                "corrèle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduire ?",
+              "options": [
+                "Les faux positifs",
+                "Les logs",
+                "Les sources",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La fatigue baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-03-q1"
+            },
+            {
+              "question": "Que définir ?",
+              "options": [
+                "Des règles",
+                "Un logo",
+                "Un thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La détection est ciblée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-03-q2"
+            }
+          ],
+          "summary": [
+            "SIEM.",
+            "Corrélation.",
+            "Règles."
+          ],
+          "nextStep": "Chapitre suivant : « Corrélation d'événements »."
+        },
+        {
+          "id": "soc-04",
+          "title": "Corrélation d'événements",
+          "duration": 20,
+          "objectives": [
+            "Relier les signaux",
+            "Reconstituer",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La corrélation relie des événements de sources différentes pour révéler une attaque."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Horodatage.",
+                "Identifiants.",
+                "Chaîne."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que relie la corrélation ?",
+            "hints": [
+              "Des événements de sources différentes."
+            ],
+            "solution": "Des événements de sources différentes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "sources",
+                "evenements",
+                "événements"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il synchroniser ?",
+              "options": [
+                "Les horodatages",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La chronologie est fiable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-04-q1"
+            },
+            {
+              "question": "Que reconstituer ?",
+              "options": [
+                "La chaîne d'attaque",
+                "Le thème",
+                "Le logo",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le récit est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-04-q2"
+            }
+          ],
+          "summary": [
+            "Corrélation.",
+            "Horodatage.",
+            "Chaîne."
+          ],
+          "nextStep": "Chapitre suivant : « Détection des anomalies »."
+        },
+        {
+          "id": "soc-05",
+          "title": "Détection des anomalies",
+          "duration": 20,
+          "objectives": [
+            "Établir une base",
+            "Détecter",
+            "Qualifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La détection d'anomalies repère les écarts au comportement attendu."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Base.",
+                "Seuils.",
+                "Contexte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que détecte-t-on ?",
+            "hints": [
+              "Les écarts à la normale."
+            ],
+            "solution": "Les écarts au comportement habituel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ecart",
+                "écart"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un écart est-il toujours une attaque ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-05-q1"
+            },
+            {
+              "question": "Que faire des alertes ?",
+              "options": [
+                "Les qualifier",
+                "Les ignorer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le tri est nécessaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "soc-05-q2"
+            }
+          ],
+          "summary": [
+            "Base.",
+            "Écarts.",
+            "Qualification."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

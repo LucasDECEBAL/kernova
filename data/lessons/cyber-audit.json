@@ -1,0 +1,401 @@
+{
+  "courseId": "cyber-audit",
+  "modules": [
+    {
+      "id": "cyber-audit-module",
+      "title": "Audit système",
+      "chapters": [
+        {
+          "id": "ca-01",
+          "title": "Audit des configurations",
+          "duration": 20,
+          "objectives": [
+            "Comparer à une référence",
+            "Prioriser",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'audit compare la configuration réelle au référentiel et documente les écarts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Référentiel.",
+                "Écarts.",
+                "Preuves."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que compare un audit ?",
+            "hints": [
+              "L'état réel et la référence."
+            ],
+            "solution": "La configuration réelle et le référentiel.",
+            "check": {
+              "type": "any",
+              "any": [
+                "reel",
+                "réel",
+                "reference",
+                "référence"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un écart critique ?",
+              "options": [
+                "Le corriger vite",
+                "L'ignorer",
+                "Le cacher",
+                "Le publier"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est élevé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-01-q1"
+            },
+            {
+              "question": "Que conserver ?",
+              "options": [
+                "Les preuves",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'audit est traçable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-01-q2"
+            }
+          ],
+          "summary": [
+            "Référentiel.",
+            "Écarts.",
+            "Preuves."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des services »."
+        },
+        {
+          "id": "ca-02",
+          "title": "Sécurité des services",
+          "duration": 20,
+          "objectives": [
+            "Lister les services",
+            "Désactiver l'inutile",
+            "Restreindre"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Chaque service exposé est une surface ; on désactive et restreint."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lister.",
+                "Désactiver.",
+                "Restreindre l'accès."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un service inutile ?",
+            "hints": [
+              "Le désactiver."
+            ],
+            "solution": "Le désactiver et le retirer si possible.",
+            "check": {
+              "type": "any",
+              "any": [
+                "desactiv",
+                "désactiv"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi restreindre ?",
+              "options": [
+                "Réduire l'exposition",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est limité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-02-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les ports en écoute",
+                "Le logo",
+                "Le thème",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La surface est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-02-q2"
+            }
+          ],
+          "summary": [
+            "Lister.",
+            "Désactiver.",
+            "Restreindre."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité SSH »."
+        },
+        {
+          "id": "ca-03",
+          "title": "Sécurité SSH",
+          "duration": 20,
+          "objectives": [
+            "Configurer",
+            "Restreindre",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SSH se durcit : clés, utilisateurs limités, pas de root direct, journalisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Clés.",
+                "AllowUsers.",
+                "Pas de root."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Faut-il autoriser root en SSH ?",
+            "hints": [
+              "Non."
+            ],
+            "solution": "Non : un utilisateur nominatif puis sudo.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier ?",
+              "options": [
+                "Les clés",
+                "Les mots de passe",
+                "Telnet",
+                "FTP"
+              ],
+              "answer": 0,
+              "explanation": "Les clés sont plus sûres.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-03-q1"
+            },
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Les échecs de connexion",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les attaques sont détectées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-03-q2"
+            }
+          ],
+          "summary": [
+            "Clés.",
+            "Utilisateurs limités.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Journalisation de sécurité »."
+        },
+        {
+          "id": "ca-04",
+          "title": "Journalisation de sécurité",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Protéger",
+            "Conserver"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les journaux de sécurité sont collectés, protégés et conservés selon une durée définie."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Centraliser.",
+                "Intégrité.",
+                "Durée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi centraliser ?",
+            "hints": [
+              "Survivre à la compromission."
+            ],
+            "solution": "Pour conserver les preuves si l'hôte est compromis.",
+            "check": {
+              "type": "any",
+              "any": [
+                "centralis",
+                "preuve"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que protéger ?",
+              "options": [
+                "L'intégrité des journaux",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les preuves restent fiables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-04-q1"
+            },
+            {
+              "question": "Que définir ?",
+              "options": [
+                "La durée de conservation",
+                "La couleur",
+                "Le logo",
+                "Le thème"
+              ],
+              "answer": 0,
+              "explanation": "La conformité l'exige.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-04-q2"
+            }
+          ],
+          "summary": [
+            "Centraliser.",
+            "Protéger.",
+            "Conserver."
+          ],
+          "nextStep": "Chapitre suivant : « Surveillance des événements »."
+        },
+        {
+          "id": "ca-05",
+          "title": "Surveillance des événements",
+          "duration": 20,
+          "objectives": [
+            "Définir les événements",
+            "Alerter",
+            "Trier les alertes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "On surveille les événements significatifs et on trie les alertes pour éviter la fatigue."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événements clés.",
+                "Seuils.",
+                "Triage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que risque trop d'alertes ?",
+            "hints": [
+              "La fatigue et l'ignorance."
+            ],
+            "solution": "La fatigue d'alerte : les vraies alertes sont ignorées.",
+            "check": {
+              "type": "any",
+              "any": [
+                "fatigue"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que définir ?",
+              "options": [
+                "Des seuils",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les alertes sont pertinentes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-05-q1"
+            },
+            {
+              "question": "Que faire des alertes ?",
+              "options": [
+                "Les trier",
+                "Les supprimer",
+                "Les publier",
+                "Les vendre"
+              ],
+              "answer": 0,
+              "explanation": "Le triage priorise.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "ca-05-q2"
+            }
+          ],
+          "summary": [
+            "Événements.",
+            "Seuils.",
+            "Triage."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

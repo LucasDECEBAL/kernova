@@ -1,0 +1,410 @@
+{
+  "courseId": "js-donnees",
+  "modules": [
+    {
+      "id": "js-donnees-module",
+      "title": "Tableaux, chaînes et portée",
+      "chapters": [
+        {
+          "id": "jsd-01",
+          "title": "Méthodes des tableaux",
+          "duration": 20,
+          "objectives": [
+            "Utiliser map, filter, reduce",
+            "Chaîner les méthodes",
+            "Éviter les mutations inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "map transforme, filter garde, reduce agrège. Ces méthodes renvoient un nouveau tableau ou une valeur sans modifier l'original."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const notes = [8, 12, 17, 9, 15];\nconst doubles = notes.filter((n) => n >= 10).map((n) => n * 2);\n// [24, 34, 30]",
+              "title": "Chaînage"
+            },
+            {
+              "type": "warning",
+              "text": "forEach ne renvoie rien : pour construire un résultat, utilisez map, filter ou reduce."
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer et transformer",
+            "instructions": "Gardez les notes ≥ 10 puis multipliez-les par 2.",
+            "hints": [
+              "filter puis map."
+            ],
+            "solution": "notes.filter((n) => n >= 10).map((n) => n * 2)",
+            "check": {
+              "type": "any",
+              "any": [
+                "[24, 34, 30]",
+                "24, 34, 30",
+                "24,34,30"
+              ],
+              "success": "Correct : [24, 34, 30]."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait filter ?",
+              "options": [
+                "Il garde les éléments qui passent le test",
+                "Il transforme",
+                "Il agrège",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Un nouveau tableau est renvoyé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-01-q1"
+            },
+            {
+              "question": "Que fait reduce ?",
+              "options": [
+                "Il agrège en une valeur",
+                "Il filtre",
+                "Il ajoute à la fin",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "Il réduit le tableau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-01-q2"
+            }
+          ],
+          "summary": [
+            "map, filter, reduce.",
+            "Chaînage lisible.",
+            "Pas de mutation inutile."
+          ],
+          "nextStep": "Chapitre suivant : « Manipulation des chaînes »."
+        },
+        {
+          "id": "jsd-02",
+          "title": "Manipulation des chaînes",
+          "duration": 20,
+          "objectives": [
+            "Découper et joindre",
+            "Rechercher dans une chaîne",
+            "Normaliser pour comparer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les chaînes ont des méthodes : split, join, includes, startsWith, slice, replace, toLowerCase."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const titre = \"  Les Bases de JS  \";\ntitre.trim().toLowerCase().includes(\"js\"); // true\ntitre.trim().split(\" \"); // [\"Les\",\"Bases\",\"de\",\"JS\"]",
+              "title": "Chaînes"
+            },
+            {
+              "type": "warning",
+              "text": "Les chaînes sont immuables : replace renvoie une nouvelle chaîne, il ne modifie pas l'originale."
+            }
+          ],
+          "exercise": {
+            "title": "Comparer",
+            "instructions": "Comparez deux chaînes sans tenir compte de la casse.",
+            "hints": [
+              "Normalisez les deux côtés."
+            ],
+            "solution": "a.toLowerCase() === b.toLowerCase()",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tolowercase"
+              ],
+              "success": "Correct : toLowerCase."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait trim ?",
+              "options": [
+                "Il retire les espaces aux extrémités",
+                "Il coupe au milieu",
+                "Il inverse",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les bords sont nettoyés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-02-q1"
+            },
+            {
+              "question": "Que fait split ?",
+              "options": [
+                "Il découpe en tableau",
+                "Il joint",
+                "Il trie",
+                "Il compare"
+              ],
+              "answer": 0,
+              "explanation": "Le séparateur découpe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-02-q2"
+            }
+          ],
+          "summary": [
+            "split/join, includes, slice.",
+            "Chaînes immuables.",
+            "Normaliser avant comparaison."
+          ],
+          "nextStep": "Chapitre suivant : « Dates et heures »."
+        },
+        {
+          "id": "jsd-03",
+          "title": "Dates et heures",
+          "duration": 20,
+          "objectives": [
+            "Créer une date",
+            "Formater pour l'affichage",
+            "Calculer une différence"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Date représente un instant. toISOString donne un format international ; les opérations se font en millisecondes."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const debut = new Date(\"2026-01-01T00:00:00Z\");\nconst fin = new Date();\nconst jours = Math.round((fin - debut) / 86400000);\nfin.toLocaleDateString(\"fr-FR\");",
+              "title": "Dates"
+            },
+            {
+              "type": "warning",
+              "text": "new Date(\"2026-01-01\") est interprété en UTC : pour un jour local, précisez l'heure ou construisez avec année, mois, jour."
+            }
+          ],
+          "exercise": {
+            "title": "Calculer",
+            "instructions": "Combien de millisecondes dans une journée ?",
+            "hints": [
+              "Secondes × minutes × heures."
+            ],
+            "solution": "86 400 000",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "86400000",
+                "86 400 000"
+              ],
+              "success": "Correct : 86 400 000."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie toISOString ?",
+              "options": [
+                "Une chaîne ISO",
+                "Un nombre",
+                "Un objet",
+                "Un tableau"
+              ],
+              "answer": 0,
+              "explanation": "Format international normalisé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-03-q1"
+            },
+            {
+              "question": "Comment obtenir une différence en jours ?",
+              "options": [
+                "Diviser par 86 400 000",
+                "Soustraire les mois",
+                "Utiliser length",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La soustraction donne des millisecondes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-03-q2"
+            }
+          ],
+          "summary": [
+            "Dates en millisecondes.",
+            "toISOString pour échanger.",
+            "Attention aux fuseaux."
+          ],
+          "nextStep": "Chapitre suivant : « Conversion des types »."
+        },
+        {
+          "id": "jsd-04",
+          "title": "Conversion des types",
+          "duration": 20,
+          "objectives": [
+            "Convertir en nombre",
+            "Convertir en chaîne",
+            "Éviter les conversions implicites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Number(), String() et Boolean() convertissent explicitement. parseInt/parseFloat lisent un préfixe numérique."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "Number(\"42\")     // 42\nNumber(\"42px\")   // NaN\nparseInt(\"42px\") // 42\nString(42)       // \"42\"\nBoolean(\"\")      // false",
+              "title": "Conversions"
+            },
+            {
+              "type": "warning",
+              "text": "NaN est un number : testez avec Number.isNaN(), pas avec === NaN."
+            }
+          ],
+          "exercise": {
+            "title": "Convertir",
+            "instructions": "Convertissez la chaîne \"42\" en nombre.",
+            "hints": [
+              "Une fonction globale."
+            ],
+            "solution": "Number(\"42\")",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "number("
+              ],
+              "success": "Correct : Number."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie Number(\"42px\") ?",
+              "options": [
+                "NaN",
+                "42",
+                "0",
+                "Erreur"
+              ],
+              "answer": 0,
+              "explanation": "La chaîne entière doit être numérique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-04-q1"
+            },
+            {
+              "question": "Comment tester NaN ?",
+              "options": [
+                "Number.isNaN()",
+                "=== NaN",
+                "typeof",
+                "isNull"
+              ],
+              "answer": 0,
+              "explanation": "NaN n'est égal à rien.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-04-q2"
+            }
+          ],
+          "summary": [
+            "Conversion explicite.",
+            "parseInt tolère un suffixe.",
+            "Number.isNaN()."
+          ],
+          "nextStep": "Chapitre suivant : « Portée et closures »."
+        },
+        {
+          "id": "jsd-05",
+          "title": "Portée et closures",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la portée",
+            "Reconnaître une closure",
+            "Éviter les fuites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une closure est une fonction qui retient les variables de son contexte de création, même après la fin de ce contexte."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "function compteur() {\n  let n = 0;\n  return () => ++n;\n}\nconst suivant = compteur();\nsuivant(); // 1\nsuivant(); // 2",
+              "title": "Closure"
+            },
+            {
+              "type": "warning",
+              "text": "Une closure qui capture un gros objet le garde en mémoire : attention aux fuites dans les gestionnaires d'événements."
+            }
+          ],
+          "exercise": {
+            "title": "Reconnaître",
+            "instructions": "Que retient la fonction renvoyée par compteur ?",
+            "hints": [
+              "La variable de son contexte."
+            ],
+            "solution": "La variable n, capturée dans la closure.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "n",
+                "closure"
+              ],
+              "success": "Correct : n capturée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'une closure ?",
+              "options": [
+                "Une fonction qui retient son contexte",
+                "Une boucle infinie",
+                "Un type de tableau",
+                "Un module"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte survit à l'appel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-05-q1"
+            },
+            {
+              "question": "Que risque une closure sur un gros objet ?",
+              "options": [
+                "Une fuite mémoire",
+                "Une erreur de type",
+                "Un fichier vide",
+                "Un conflit CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'objet reste référencé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsd-05-q2"
+            }
+          ],
+          "summary": [
+            "Portée de bloc et de fonction.",
+            "Closure = contexte retenu.",
+            "Surveiller la mémoire."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

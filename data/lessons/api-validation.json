@@ -1,0 +1,398 @@
+{
+  "courseId": "api-validation",
+  "modules": [
+    {
+      "id": "api-validation-module",
+      "title": "Validation et accès",
+      "chapters": [
+        {
+          "id": "api2-01",
+          "title": "Valider les données",
+          "duration": 20,
+          "objectives": [
+            "Définir un schéma",
+            "Renvoyer 422",
+            "Refuser tôt"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La validation vérifie forme et règles métier avant tout traitement."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Schéma explicite.",
+                "Message par champ.",
+                "Revalidation serveur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Renvoyer",
+            "instructions": "Quel statut pour une entité invalide ?",
+            "hints": [
+              "Le format est compris mais invalide."
+            ],
+            "solution": "422 Unprocessable Content",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "422"
+              ],
+              "success": "Correct : 422."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où valider ?",
+              "options": [
+                "Côté serveur",
+                "Uniquement client",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le client est contournable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-01-q1"
+            },
+            {
+              "question": "Que contient la réponse 422 ?",
+              "options": [
+                "Les champs fautifs",
+                "La pile d'appels",
+                "Le mot de passe",
+                "Le SQL"
+              ],
+              "answer": 0,
+              "explanation": "Le client peut corriger.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-01-q2"
+            }
+          ],
+          "summary": [
+            "Schéma de validation.",
+            "422.",
+            "Revalidation."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les erreurs »."
+        },
+        {
+          "id": "api2-02",
+          "title": "Gérer les erreurs",
+          "duration": 20,
+          "objectives": [
+            "Normaliser le format",
+            "Choisir le statut",
+            "Ne pas fuiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une API renvoie des erreurs cohérentes : code, message, détails sans données sensibles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "400 vs 422 vs 500.",
+                "Pas de pile d'appels.",
+                "Identifiant de corrélation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel statut pour une erreur interne ?",
+            "hints": [
+              "Le serveur a échoué."
+            ],
+            "solution": "500 Internal Server Error",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "500"
+              ],
+              "success": "Correct : 500."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne pas exposer ?",
+              "options": [
+                "La pile d'appels",
+                "Le code",
+                "Le message",
+                "Le statut"
+              ],
+              "answer": 0,
+              "explanation": "Les détails internes fuient.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-02-q1"
+            },
+            {
+              "question": "Que renvoyer pour un corps mal formé ?",
+              "options": [
+                "400",
+                "500",
+                "201",
+                "204"
+              ],
+              "answer": 0,
+              "explanation": "Bad Request.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-02-q2"
+            }
+          ],
+          "summary": [
+            "Erreurs cohérentes.",
+            "Statuts justes.",
+            "Pas de fuite."
+          ],
+          "nextStep": "Chapitre suivant : « Pagination »."
+        },
+        {
+          "id": "api2-03",
+          "title": "Pagination",
+          "duration": 20,
+          "objectives": [
+            "Choisir offset ou curseur",
+            "Limiter la taille",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La pagination borne la réponse ; le curseur reste stable sur les flux changeants."
+            },
+            {
+              "type": "list",
+              "items": [
+                "page/taille ou curseur.",
+                "Taille maximale.",
+                "Métadonnées de suite."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel type pour un flux qui reçoit des éléments ?",
+            "hints": [
+              "Stabilité."
+            ],
+            "solution": "Pagination par curseur",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "curseur"
+              ],
+              "success": "Correct : curseur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque offset sur un flux ?",
+              "options": [
+                "Doublons et oublis",
+                "Un CSS cassé",
+                "Un DNS lent",
+                "Une erreur SSL"
+              ],
+              "answer": 0,
+              "explanation": "Les lignes se décalent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-03-q1"
+            },
+            {
+              "question": "Pourquoi limiter la taille ?",
+              "options": [
+                "Protéger le serveur",
+                "Chiffrer",
+                "Trier",
+                "Déployer"
+              ],
+              "answer": 0,
+              "explanation": "Les réponses restent gérables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-03-q2"
+            }
+          ],
+          "summary": [
+            "Offset ou curseur.",
+            "Taille bornée.",
+            "Documenter."
+          ],
+          "nextStep": "Chapitre suivant : « Filtrage et tri »."
+        },
+        {
+          "id": "api2-04",
+          "title": "Filtrage et tri",
+          "duration": 20,
+          "objectives": [
+            "Exposer des filtres",
+            "Valider les paramètres",
+            "Limiter les combinaisons"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les filtres et tris sont des paramètres de requête validés, pas du SQL libre."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Paramètres nommés.",
+                "Liste blanche de champs.",
+                "Index adaptés."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Sécuriser",
+            "instructions": "Comment éviter l'injection par un filtre ?",
+            "hints": [
+              "Pas de concaténation."
+            ],
+            "solution": "Valider contre une liste blanche et utiliser des paramètres liés.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "liste blanche",
+                "parametre"
+              ],
+              "success": "Correct : liste blanche + paramètres."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que filtrer côté client ?",
+              "options": [
+                "Le rendu uniquement",
+                "Les droits",
+                "Le SQL",
+                "Le chiffrement"
+              ],
+              "answer": 0,
+              "explanation": "La sécurité reste serveur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-04-q1"
+            },
+            {
+              "question": "Pourquoi une liste blanche ?",
+              "options": [
+                "Éviter les champs arbitraires",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Seuls les champs prévus passent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-04-q2"
+            }
+          ],
+          "summary": [
+            "Filtres validés.",
+            "Liste blanche.",
+            "Paramètres liés."
+          ],
+          "nextStep": "Chapitre suivant : « Authentification »."
+        },
+        {
+          "id": "api2-05",
+          "title": "Authentification",
+          "duration": 20,
+          "objectives": [
+            "Choisir un mécanisme",
+            "Protéger les identifiants",
+            "Gérer l'expiration"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Authentification vérifie l'identité ; elle précède l'autorisation."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Session ou jeton.",
+                "Hachage des mots de passe.",
+                "Expiration et renouvellement."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Protéger",
+            "instructions": "Comment stocker un mot de passe ?",
+            "hints": [
+              "Jamais en clair."
+            ],
+            "solution": "Avec un hachage lent et salé (bcrypt, argon2).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "hash",
+                "hach"
+              ],
+              "success": "Correct : hachage."
+            }
+          },
+          "quiz": [
+            {
+              "question": "401 signifie…",
+              "options": [
+                "non authentifié",
+                "interdit",
+                "introuvable",
+                "créé"
+              ],
+              "answer": 0,
+              "explanation": "L'identité manque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-05-q1"
+            },
+            {
+              "question": "Que faire d'un jeton expiré ?",
+              "options": [
+                "Le renouveler",
+                "L'ignorer",
+                "Le partager",
+                "Le journaliser"
+              ],
+              "answer": 0,
+              "explanation": "La session est prolongée proprement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api2-05-q2"
+            }
+          ],
+          "summary": [
+            "Auth ≠ autorisation.",
+            "Hachage.",
+            "Expiration."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

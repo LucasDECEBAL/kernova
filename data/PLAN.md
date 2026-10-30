@@ -1,6 +1,6 @@
 # Progression du catalogue kernova
 
-## Contenu : plafond atteint — 53 cours, 280 leçons, 35 domaines sur 35
+## Contenu : plafond atteint — 193 cours, 976 leçons, 35 domaines sur 35
 
 | Bloc | Cours |
 |---|---|
@@ -26,7 +26,7 @@
 | Cadre | Réglementation et bonnes pratiques |
 | Pratique | Projets pratiques guidés |
 
-Totaux : 98 modules, 280 leçons, 250 exercices, 561 questions de quiz, 46 projets.
+Totaux : 98 modules, 976 leçons, 250 exercices, 1953 questions de quiz, 46 projets.
 
 ## Cartes mémo : 14 paquets, 112 cartes
 
@@ -215,7 +215,7 @@ virtualisation, Windows Server, maintenance, environnements de travail, hacking 
 3. Tests : 16 suites dans 	ests/, lanceur 
 pm test, serveur statique intégré, README, 404.html, .nojekyll, 
 etlify.toml.
-4. Plafond : 280 leçons, 53 cours, 34 domaines, 46 projets, 561 questions. Deux cours en doublon ont été archivés dans kernova-archives/ (projets pratiques et environnements de travail), avec nettoyage des liens de prérequis.
+4. Plafond : 976 leçons, 193 cours, 34 domaines, 46 projets, 1953 questions. Deux cours en doublon ont été archivés dans kernova-archives/ (projets pratiques et environnements de travail), avec nettoyage des liens de prérequis.
 5. Accessibilité : axe-core sur 10 pages en trois thèmes, 0 violation sérieuse ou critique ; contrastes corrigés sans opacité sur le texte.
 6. Cohérence : l'éditeur Rust a été retiré ; les cinq langages restants correspondent tous à un cours.
 
@@ -223,5 +223,12 @@ etlify.toml.
 
 - 
 pm test : 16/16 suites (intégrité, unités, 12 parcours navigateur, accessibilité, mobile).
-- Catalogue cohérent : 280 leçons, 250 exercices, 46 projets.
+- Catalogue cohérent : 976 leçons, 250 exercices, 46 projets.
 - Python et SQL restent les seuls outils à exécuter réellement du code, via CDN ; le reste fonctionne hors ligne.
+## Couverture du prompt initial (1 324 entrées)
+
+- Partie 2 (1-40) : terminée — 8 cours, 40 leçons.
+- Partie 3 (41-80) : terminée — 8 cours, 40 leçons.
+- Total : 193 cours, 976 leçons, 1953 questions, 46 projets, 34 domaines.
+- Suivi détaillé : data/BACKLOG.md.
+- Prochaine partie : 4 (Git et outils de développement, 81-120).

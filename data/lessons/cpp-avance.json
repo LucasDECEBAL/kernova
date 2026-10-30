@@ -1,0 +1,409 @@
+{
+  "courseId": "cpp-avance",
+  "modules": [
+    {
+      "id": "cpp-avance-module",
+      "title": "C++ : templates et exceptions",
+      "chapters": [
+        {
+          "id": "cppa-01",
+          "title": "Smart pointers",
+          "duration": 20,
+          "objectives": [
+            "Choisir unique_ptr ou shared_ptr",
+            "Éviter new/delete manuels",
+            "Comprendre la propriété"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "unique_ptr exprime une propriété unique ; shared_ptr partage avec comptage. Les deux libèrent automatiquement."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "auto t = std::make_unique<Tache>();\nauto partage = std::make_shared<Config>();",
+              "title": "Smart pointers"
+            },
+            {
+              "type": "warning",
+              "text": "shared_ptr crée des cycles s'il pointe vers lui-même : utilisez weak_ptr pour casser le cycle."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel pointeur pour une propriété unique ?",
+            "hints": [
+              "Une seule propriété."
+            ],
+            "solution": "std::unique_ptr",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "unique_ptr"
+              ],
+              "success": "Correct : unique_ptr."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait shared_ptr ?",
+              "options": [
+                "Il partage la propriété",
+                "Il copie les données",
+                "Il trie",
+                "Il alloue"
+              ],
+              "answer": 0,
+              "explanation": "Un compteur suit les références.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-01-q1"
+            },
+            {
+              "question": "Pourquoi éviter new/delete ?",
+              "options": [
+                "Pour éviter les fuites",
+                "Pour accélérer",
+                "Pour le CSS",
+                "Pour le réseau"
+              ],
+              "answer": 0,
+              "explanation": "RAII gère la libération.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-01-q2"
+            }
+          ],
+          "summary": [
+            "unique_ptr par défaut.",
+            "shared_ptr si partage.",
+            "weak_ptr contre les cycles."
+          ],
+          "nextStep": "Chapitre suivant : « Templates »."
+        },
+        {
+          "id": "cppa-02",
+          "title": "Templates",
+          "duration": 20,
+          "objectives": [
+            "Écrire un template",
+            "Comprendre l'instanciation",
+            "Éviter les erreurs illisibles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un template génère du code pour chaque type utilisé. La vérification a lieu à l'instanciation, d'où des erreurs parfois longues."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "template <typename T>\nT maxDe(T a, T b) {\n  return a < b ? b : a;\n}",
+              "title": "Template"
+            },
+            {
+              "type": "warning",
+              "text": "Un template mal contraint produit des erreurs au point d'utilisation : documentez les opérations attendues."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Écrivez un template maxDe(a, b) renvoyant le plus grand.",
+            "hints": [
+              "template typename."
+            ],
+            "solution": "template <typename T> T maxDe(T a, T b) { return a < b ? b : a; }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "template",
+                "typename"
+              ],
+              "success": "Correct : template."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand le code est-il généré ?",
+              "options": [
+                "À l'instanciation",
+                "À l'écriture",
+                "Jamais",
+                "À l'exécution"
+              ],
+              "answer": 0,
+              "explanation": "Un type concret est nécessaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-02-q1"
+            },
+            {
+              "question": "Que fait typename T ?",
+              "options": [
+                "Il déclare un paramètre de type",
+                "Il alloue",
+                "Il libère",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "T sera remplacé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-02-q2"
+            }
+          ],
+          "summary": [
+            "Templates génériques.",
+            "Instanciation par type.",
+            "Contraintes explicites."
+          ],
+          "nextStep": "Chapitre suivant : « Exceptions »."
+        },
+        {
+          "id": "cppa-03",
+          "title": "Exceptions",
+          "duration": 20,
+          "objectives": [
+            "Lancer et attraper",
+            "Utiliser noexcept",
+            "Garantir la libération"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "throw lance une exception ; try/catch l'intercepte. Les objets locaux sont détruits pendant la propagation (RAII)."
+            },
+            {
+              "type": "code",
+              "lang": "cpp",
+              "code": "try {\n  if (b == 0) throw std::invalid_argument(\"division par zero\");\n} catch (const std::exception& e) {\n  std::cerr << e.what();\n}",
+              "title": "Exceptions"
+            },
+            {
+              "type": "warning",
+              "text": "Attraper par valeur coupe le type réel : attrapez par référence const."
+            }
+          ],
+          "exercise": {
+            "title": "Attraper",
+            "instructions": "Comment attraper une exception sans copie ?",
+            "hints": [
+              "Par référence."
+            ],
+            "solution": "catch (const std::exception& e)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "catch",
+                "&"
+              ],
+              "success": "Correct : référence const."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait throw ?",
+              "options": [
+                "Il lance une exception",
+                "Il ignore",
+                "Il trie",
+                "Il alloue"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur remonte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-03-q1"
+            },
+            {
+              "question": "Que garantit RAII pendant l'exception ?",
+              "options": [
+                "La destruction des objets locaux",
+                "Le silence",
+                "La vitesse",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "Les destructeurs sont appelés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-03-q2"
+            }
+          ],
+          "summary": [
+            "throw/catch.",
+            "Référence const.",
+            "RAII protège."
+          ],
+          "nextStep": "Chapitre suivant : « Compilation et débogage C++ »."
+        },
+        {
+          "id": "cppa-04",
+          "title": "Compilation et débogage C++",
+          "duration": 20,
+          "objectives": [
+            "Compiler avec warnings",
+            "Utiliser sanitizers",
+            "Lire une erreur de template"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Compilez avec -Wall -Wextra -std=c++20 et testez avec les sanitizers. Les erreurs de template se lisent de la dernière ligne vers la première."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "g++ -std=c++20 -Wall -Wextra -g -fsanitize=address,undefined -o app main.cpp",
+              "title": "g++"
+            },
+            {
+              "type": "tip",
+              "text": "Une erreur de template cite souvent la vraie cause en premier : cherchez la première ligne « required from here »."
+            }
+          ],
+          "exercise": {
+            "title": "Compiler",
+            "instructions": "Quelle option fixe la version du langage ?",
+            "hints": [
+              "Une option de standard."
+            ],
+            "solution": "-std=c++20",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "-std="
+              ],
+              "success": "Correct : -std=c++20."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait -fsanitize ?",
+              "options": [
+                "Il détecte les erreurs mémoire",
+                "Il optimise",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Les accès invalides sont signalés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-04-q1"
+            },
+            {
+              "question": "Que lire en premier dans une erreur de template ?",
+              "options": [
+                "La première ligne required from",
+                "La dernière",
+                "Le titre",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La cause est en amont.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-04-q2"
+            }
+          ],
+          "summary": [
+            "-std et warnings.",
+            "Sanitizers.",
+            "Lire les erreurs de haut en bas."
+          ],
+          "nextStep": "Chapitre suivant : « Organiser un projet C++ »."
+        },
+        {
+          "id": "cppa-05",
+          "title": "Organiser un projet C++",
+          "duration": 20,
+          "objectives": [
+            "Séparer en-têtes et sources",
+            "Gérer les dépendances",
+            "Automatiser le build"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet C++ sépare les en-têtes (.hpp) et les sources (.cpp). CMake décrit la compilation et les dépendances."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "projet/\n├── include/\n├── src/\n├── tests/\n└── CMakeLists.txt",
+              "title": "Organisation"
+            },
+            {
+              "type": "warning",
+              "text": "Les définitions dans un en-tête inclus plusieurs fois provoquent des erreurs de symbole : utilisez inline ou déplacez dans un .cpp."
+            }
+          ],
+          "exercise": {
+            "title": "Séparer",
+            "instructions": "Où placer la définition d'une fonction non inline ?",
+            "hints": [
+              "Dans une source."
+            ],
+            "solution": "Dans un fichier .cpp, avec la déclaration dans le .hpp.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cpp",
+                "source"
+              ],
+              "success": "Correct : dans le .cpp."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait CMake ?",
+              "options": [
+                "Il décrit le build",
+                "Il exécute les tests",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "La compilation est générée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-05-q1"
+            },
+            {
+              "question": "Pourquoi séparer include et src ?",
+              "options": [
+                "Pour clarifier l'API",
+                "Pour accélérer le réseau",
+                "Pour le SEO",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "Les en-têtes publics sont isolés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cppa-05-q2"
+            }
+          ],
+          "summary": [
+            "En-têtes/sources.",
+            "CMake.",
+            "Définitions hors en-tête."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

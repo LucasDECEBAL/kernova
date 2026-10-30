@@ -1,0 +1,402 @@
+{
+  "courseId": "cloud-architecture",
+  "modules": [
+    {
+      "id": "cloud-architecture-module",
+      "title": "Architecture cloud",
+      "chapters": [
+        {
+          "id": "cla-01",
+          "title": "Architecture cloud de base",
+          "duration": 20,
+          "objectives": [
+            "Séparer les zones",
+            "Placer les services",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une architecture de base sépare public, applicatif et données."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Équilibreur public.",
+                "App privée.",
+                "Base privée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où placer la base ?",
+            "hints": [
+              "En privé."
+            ],
+            "solution": "Dans un sous-réseau privé.",
+            "check": {
+              "type": "any",
+              "any": [
+                "prive",
+                "privé"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que placer en public ?",
+              "options": [
+                "L'équilibreur",
+                "La base",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exposition est minimale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-01-q1"
+            },
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Les flux",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'architecture est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-01-q2"
+            }
+          ],
+          "summary": [
+            "Zones.",
+            "Flux.",
+            "Documentation."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture multizone »."
+        },
+        {
+          "id": "cla-02",
+          "title": "Architecture multizone",
+          "duration": 20,
+          "objectives": [
+            "Répartir",
+            "Tester",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le multizone répartit les instances et survit à une panne de zone."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Deux zones.",
+                "Équilibrage.",
+                "Tests."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Combien de zones ?",
+            "hints": [
+              "Deux minimum."
+            ],
+            "solution": "Au moins deux zones.",
+            "check": {
+              "type": "any",
+              "any": [
+                "deux",
+                "2"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que tester ?",
+              "options": [
+                "La perte d'une zone",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La résilience est prouvée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-02-q1"
+            },
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "La santé par zone",
+                "Le thème",
+                "Le logo",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les pannes sont vues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-02-q2"
+            }
+          ],
+          "summary": [
+            "Multizone.",
+            "Tests.",
+            "Surveillance."
+          ],
+          "nextStep": "Chapitre suivant : « Haute disponibilité multi-région »."
+        },
+        {
+          "id": "cla-03",
+          "title": "Haute disponibilité multi-région",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les coûts",
+            "Répliquer",
+            "Router"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le multi-région protège d'une panne régionale, au prix de la complexité et du coût."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Réplication.",
+                "Latence.",
+                "Bascule."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que coûte le multi-région ?",
+            "hints": [
+              "Plus de complexité et de coût."
+            ],
+            "solution": "Plus de complexité, de latence et de coût.",
+            "check": {
+              "type": "any",
+              "any": [
+                "complexite",
+                "complexité",
+                "cout",
+                "coût"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quand le justifier ?",
+              "options": [
+                "Besoin critique",
+                "Toujours",
+                "Jamais",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le coût doit être justifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-03-q1"
+            },
+            {
+              "question": "Que répliquer ?",
+              "options": [
+                "Données et services",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La reprise est possible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-03-q2"
+            }
+          ],
+          "summary": [
+            "Multi-région.",
+            "Coût.",
+            "Bascule."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture événementielle »."
+        },
+        {
+          "id": "cla-04",
+          "title": "Architecture événementielle",
+          "duration": 20,
+          "objectives": [
+            "Découpler",
+            "Traiter",
+            "Relancer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les événements déclenchent des traitements asynchrones et découplés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Événements.",
+                "Files.",
+                "Idempotence."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet le découplage ?",
+            "hints": [
+              "Des traitements indépendants."
+            ],
+            "solution": "Des traitements indépendants et résilients.",
+            "check": {
+              "type": "any",
+              "any": [
+                "independant",
+                "indépendant"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gérer ?",
+              "options": [
+                "Les relances",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les échecs sont traités.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-04-q1"
+            },
+            {
+              "question": "Pourquoi l'idempotence ?",
+              "options": [
+                "Éviter les doublons",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Un événement peut arriver deux fois.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-04-q2"
+            }
+          ],
+          "summary": [
+            "Événements.",
+            "Files.",
+            "Idempotence."
+          ],
+          "nextStep": "Chapitre suivant : « Serverless »."
+        },
+        {
+          "id": "cla-05",
+          "title": "Serverless",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le serverless exécute des fonctions à la demande sans gérer de serveur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Fonctions.",
+                "Facturation à l'usage.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que gère le fournisseur ?",
+            "hints": [
+              "Les serveurs."
+            ],
+            "solution": "Les serveurs et la mise à l'échelle.",
+            "check": {
+              "type": "any",
+              "any": [
+                "serveur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que facture le serverless ?",
+              "options": [
+                "L'usage",
+                "Le serveur fixe",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exécution est facturée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-05-q1"
+            },
+            {
+              "question": "Quelle limite ?",
+              "options": [
+                "La durée d'exécution",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les fonctions sont bornées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cla-05-q2"
+            }
+          ],
+          "summary": [
+            "Serverless.",
+            "Usage.",
+            "Limites."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

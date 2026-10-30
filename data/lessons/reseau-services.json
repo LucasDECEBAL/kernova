@@ -1,0 +1,399 @@
+{
+  "courseId": "reseau-services",
+  "modules": [
+    {
+      "id": "reseau-services-module",
+      "title": "Services réseau",
+      "chapters": [
+        {
+          "id": "rsv2-01",
+          "title": "NAT",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la traduction",
+            "Distinguer les types",
+            "Limiter les entrées"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le NAT traduit les adresses privées en publiques ; le port forwarding expose un service."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SNAT/DNAT.",
+                "Port forwarding.",
+                "Journaliser."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet le port forwarding ?",
+            "hints": [
+              "Exposer un service interne."
+            ],
+            "solution": "Rendre un service interne joignable depuis l'extérieur via un port public.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "expose",
+                "exposer"
+              ],
+              "success": "Correct : exposer un service."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi le NAT ?",
+              "options": [
+                "Économiser les IP publiques",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Plusieurs hôtes partagent une IP.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-01-q1"
+            },
+            {
+              "question": "Que risque une redirection ?",
+              "options": [
+                "Exposer un service vulnérable",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La surface augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-01-q2"
+            }
+          ],
+          "summary": [
+            "NAT.",
+            "Port forwarding.",
+            "Prudence."
+          ],
+          "nextStep": "Chapitre suivant : « HTTP et HTTPS »."
+        },
+        {
+          "id": "rsv2-02",
+          "title": "HTTP et HTTPS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la requête",
+            "Lire les statuts",
+            "Situer TLS"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "HTTP décrit requête/réponse ; HTTPS ajoute TLS pour confidentialité et intégrité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Méthodes.",
+                "Statuts.",
+                "TLS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Que protège HTTPS ?",
+            "hints": [
+              "La confidentialité et l'intégrité."
+            ],
+            "solution": "Le contenu échangé, via TLS.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "tls",
+                "chiffr"
+              ],
+              "success": "Correct : TLS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifie 404 ?",
+              "options": [
+                "Introuvable",
+                "OK",
+                "Erreur serveur",
+                "Créé"
+              ],
+              "answer": 0,
+              "explanation": "La ressource manque.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-02-q1"
+            },
+            {
+              "question": "Que fait TLS ?",
+              "options": [
+                "Il chiffre la connexion",
+                "Il route",
+                "Il trie",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Les échanges sont protégés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-02-q2"
+            }
+          ],
+          "summary": [
+            "HTTP/HTTPS.",
+            "Statuts.",
+            "TLS."
+          ],
+          "nextStep": "Chapitre suivant : « Routage »."
+        },
+        {
+          "id": "rsv2-03",
+          "title": "Routage",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la table",
+            "Choisir un chemin",
+            "Diagnostiquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un routeur choisit le prochain saut selon la table de routage et la destination."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Route par défaut.",
+                "Métrique.",
+                "Prochain saut."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Que fait une route par défaut ?",
+            "hints": [
+              "Elle couvre les destinations inconnues."
+            ],
+            "solution": "Elle envoie tout trafic non couvert vers une passerelle.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "defaut",
+                "défaut"
+              ],
+              "success": "Correct : route par défaut."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui décide du chemin ?",
+              "options": [
+                "Le routeur",
+                "Le CSS",
+                "Le DNS",
+                "Le client"
+              ],
+              "answer": 0,
+              "explanation": "La table guide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-03-q1"
+            },
+            {
+              "question": "Que fait la métrique ?",
+              "options": [
+                "Elle classe les routes",
+                "Elle chiffre",
+                "Elle trie les DNS",
+                "Elle monte"
+              ],
+              "answer": 0,
+              "explanation": "La meilleure route gagne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-03-q2"
+            }
+          ],
+          "summary": [
+            "Table de routage.",
+            "Route par défaut.",
+            "Métrique."
+          ],
+          "nextStep": "Chapitre suivant : « Commutation »."
+        },
+        {
+          "id": "rsv2-04",
+          "title": "Commutation",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le commutateur",
+            "Lire la table MAC",
+            "Éviter les boucles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un commutateur apprend les MAC et commute les trames ; STP évite les boucles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Table MAC.",
+                "VLAN.",
+                "STP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait STP ?",
+            "hints": [
+              "Il évite les boucles."
+            ],
+            "solution": "Spanning Tree Protocol bloque les liens redondants pour éviter les boucles.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "boucle"
+              ],
+              "success": "Correct : éviter les boucles."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un commutateur ?",
+              "options": [
+                "Il commute par MAC",
+                "Il route par IP",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La table MAC décide.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-04-q1"
+            },
+            {
+              "question": "Pourquoi des VLAN ?",
+              "options": [
+                "Segmenter",
+                "Chiffrer",
+                "Trier",
+                "Router"
+              ],
+              "answer": 0,
+              "explanation": "La segmentation isole.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-04-q2"
+            }
+          ],
+          "summary": [
+            "Commutation MAC.",
+            "VLAN.",
+            "STP."
+          ],
+          "nextStep": "Chapitre suivant : « Pare-feu réseau »."
+        },
+        {
+          "id": "rsv2-05",
+          "title": "Pare-feu réseau",
+          "duration": 20,
+          "objectives": [
+            "Écrire une règle",
+            "Comprendre l'ordre",
+            "Journaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un pare-feu filtre les flux ; l'ordre des règles compte et le refus final protège."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ordre.",
+                "Refus par défaut.",
+                "Journaux."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Que mettre en fin de liste ?",
+            "hints": [
+              "Un refus par défaut."
+            ],
+            "solution": "Une règle de refus par défaut, après les autorisations explicites.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "refus"
+              ],
+              "success": "Correct : refus par défaut."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi l'ordre compte ?",
+              "options": [
+                "La première règle gagne",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Les règles sont séquentielles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-05-q1"
+            },
+            {
+              "question": "Pourquoi journaliser ?",
+              "options": [
+                "Diagnostiquer et détecter",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les refus sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rsv2-05-q2"
+            }
+          ],
+          "summary": [
+            "Pare-feu.",
+            "Ordre.",
+            "Refus par défaut."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

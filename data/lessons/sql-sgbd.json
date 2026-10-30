@@ -1,0 +1,388 @@
+{
+  "courseId": "sql-sgbd",
+  "modules": [
+    {
+      "id": "sql-sgbd-module",
+      "title": "Systèmes de bases de données",
+      "chapters": [
+        {
+          "id": "sqlg-01",
+          "title": "PostgreSQL",
+          "duration": 20,
+          "objectives": [
+            "Découvrir PostgreSQL",
+            "Utiliser psql",
+            "Exploiter les types avancés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "PostgreSQL est un SGBD relationnel robuste, avec types riches (JSONB, tableaux), extensions et transactions avancées."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "psql -d app -c \"SELECT version();\"",
+              "title": "psql"
+            }
+          ],
+          "exercise": {
+            "title": "Utiliser",
+            "instructions": "Quel client en ligne de commande pour PostgreSQL ?",
+            "hints": [
+              "Un outil dédié."
+            ],
+            "solution": "psql",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "psql"
+              ],
+              "success": "Correct : psql."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que propose PostgreSQL en plus du SQL standard ?",
+              "options": [
+                "Des types et extensions",
+                "Un CSS",
+                "Un DNS",
+                "Un navigateur"
+              ],
+              "answer": 0,
+              "explanation": "JSONB, tableaux, extensions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-01-q1"
+            },
+            {
+              "question": "Que fait psql ?",
+              "options": [
+                "Il exécute du SQL",
+                "Il stylise",
+                "Il route",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le client est interactif.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-01-q2"
+            }
+          ],
+          "summary": [
+            "PostgreSQL riche.",
+            "psql.",
+            "Extensions."
+          ],
+          "nextStep": "Chapitre suivant : « Administration PostgreSQL »."
+        },
+        {
+          "id": "sqlg-02",
+          "title": "Administration PostgreSQL",
+          "duration": 20,
+          "objectives": [
+            "Sauvegarder",
+            "Surveiller",
+            "Gérer les rôles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'administration couvre sauvegardes, rôles, paramètres et surveillance des requêtes lentes."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "pg_dump -Fc app > app.dump\npsql -c \"SELECT * FROM pg_stat_activity;\"",
+              "title": "Admin"
+            }
+          ],
+          "exercise": {
+            "title": "Surveiller",
+            "instructions": "Où voir les sessions actives ?",
+            "hints": [
+              "Une vue système."
+            ],
+            "solution": "pg_stat_activity",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "pg_stat_activity"
+              ],
+              "success": "Correct : pg_stat_activity."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait pg_dump ?",
+              "options": [
+                "Il sauvegarde",
+                "Il restaure",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Un dump est produit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-02-q1"
+            },
+            {
+              "question": "Pourquoi des rôles dédiés ?",
+              "options": [
+                "Limiter les droits",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-02-q2"
+            }
+          ],
+          "summary": [
+            "Sauvegarde.",
+            "pg_stat_activity.",
+            "Rôles."
+          ],
+          "nextStep": "Chapitre suivant : « MySQL »."
+        },
+        {
+          "id": "sqlg-03",
+          "title": "MySQL",
+          "duration": 20,
+          "objectives": [
+            "Découvrir MySQL",
+            "Utiliser le client",
+            "Comprendre les moteurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "MySQL est répandu pour le Web ; InnoDB assure transactions et clés étrangères."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "mysql -u app -p app -e \"SHOW TABLES;\"",
+              "title": "Client"
+            }
+          ],
+          "exercise": {
+            "title": "Utiliser",
+            "instructions": "Quel moteur transactionnel courant ?",
+            "hints": [
+              "Un moteur InnoDB."
+            ],
+            "solution": "InnoDB",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "innodb"
+              ],
+              "success": "Correct : InnoDB."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel moteur pour les transactions ?",
+              "options": [
+                "InnoDB",
+                "MyISAM",
+                "CSV",
+                "MEMORY"
+              ],
+              "answer": 0,
+              "explanation": "InnoDB est transactionnel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-03-q1"
+            },
+            {
+              "question": "Que fait SHOW TABLES ?",
+              "options": [
+                "Il liste les tables",
+                "Il trie",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le schéma est visible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-03-q2"
+            }
+          ],
+          "summary": [
+            "MySQL/InnoDB.",
+            "Client mysql.",
+            "Transactions."
+          ],
+          "nextStep": "Chapitre suivant : « SQLite et applications »."
+        },
+        {
+          "id": "sqlg-04",
+          "title": "SQLite et applications",
+          "duration": 20,
+          "objectives": [
+            "Utiliser SQLite",
+            "Comprendre les limites",
+            "Gérer les migrations"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SQLite est une base fichier, sans serveur : idéale pour les applications locales et les tests."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import sqlite3\nconn = sqlite3.connect(\"app.db\")\nconn.execute(\"CREATE TABLE IF NOT EXISTS t (id INTEGER PRIMARY KEY)\")\nconn.commit()",
+              "title": "SQLite"
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "SQLite convient-il à un site à fort trafic concurrent ?",
+            "hints": [
+              "Non, écritures sérialisées."
+            ],
+            "solution": "Non : préférez un SGBD serveur pour de nombreuses écritures concurrentes.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non"
+              ],
+              "success": "Correct : non."
+            }
+          },
+          "quiz": [
+            {
+              "question": "SQLite nécessite-t-il un serveur ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Parfois",
+                "En production"
+              ],
+              "answer": 0,
+              "explanation": "C'est un fichier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-04-q1"
+            },
+            {
+              "question": "Que faire des migrations ?",
+              "options": [
+                "Les versionner",
+                "Les ignorer",
+                "Les commenter",
+                "Les supprimer"
+              ],
+              "answer": 0,
+              "explanation": "Le schéma évolue proprement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-04-q2"
+            }
+          ],
+          "summary": [
+            "SQLite = fichier.",
+            "Pas de serveur.",
+            "Concurrence limitée."
+          ],
+          "nextStep": "Chapitre suivant : « Choisir une base de données »."
+        },
+        {
+          "id": "sqlg-05",
+          "title": "Choisir une base de données",
+          "duration": 20,
+          "objectives": [
+            "Comparer relationnel et NoSQL",
+            "Choisir selon l'usage",
+            "Éviter les modes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le choix dépend des données, des requêtes et des contraintes : relationnel pour l'intégrité, documentaire pour la souplesse, clé-valeur pour le cache."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "Relationnel : contraintes, jointures\nDocument : documents imbriqués\nClé-valeur : cache, sessions",
+              "title": "Critères"
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel type pour un cache de sessions ?",
+            "hints": [
+              "Clé-valeur."
+            ],
+            "solution": "Une base clé-valeur (par exemple Redis).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cle-valeur",
+                "clé-valeur",
+                "redis"
+              ],
+              "success": "Correct : clé-valeur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier pour l'intégrité ?",
+              "options": [
+                "Le relationnel",
+                "Le document",
+                "Le cache",
+                "Un fichier texte"
+              ],
+              "answer": 0,
+              "explanation": "Les contraintes protègent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-05-q1"
+            },
+            {
+              "question": "Pourquoi éviter de suivre la mode ?",
+              "options": [
+                "L'usage réel compte",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le besoin guide le choix.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlg-05-q2"
+            }
+          ],
+          "summary": [
+            "Critères d'usage.",
+            "Relationnel/NoSQL.",
+            "Pas de mode."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

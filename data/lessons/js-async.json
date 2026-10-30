@@ -1,0 +1,411 @@
+{
+  "courseId": "js-async",
+  "modules": [
+    {
+      "id": "js-async-module",
+      "title": "Requêtes réseau",
+      "chapters": [
+        {
+          "id": "jsa2-01",
+          "title": "async et await",
+          "duration": 20,
+          "objectives": [
+            "Écrire une fonction async",
+            "Attendre une promesse",
+            "Gérer les erreurs avec try/catch"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "async rend une fonction promesse ; await suspend l'exécution jusqu'au résultat, sans bloquer la page. Les erreurs se gèrent avec try/catch."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "async function chargerTaches() {\n  try {\n    const reponse = await fetch(\"/api/taches\");\n    return await reponse.json();\n  } catch (err) {\n    console.error(err);\n    return [];\n  }\n}",
+              "title": "async/await"
+            },
+            {
+              "type": "warning",
+              "text": "await dans une boucle sérialise les requêtes : pour des appels indépendants, utilisez Promise.all."
+            }
+          ],
+          "exercise": {
+            "title": "Attendre",
+            "instructions": "Quel mot-clé attend une promesse ?",
+            "hints": [
+              "Dans une fonction async."
+            ],
+            "solution": "await",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "await"
+              ],
+              "success": "Correct : await."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie une fonction async ?",
+              "options": [
+                "Une promesse",
+                "Une valeur directe",
+                "Un callback",
+                "Un objet DOM"
+              ],
+              "answer": 0,
+              "explanation": "Le résultat est enveloppé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-01-q1"
+            },
+            {
+              "question": "Comment gérer une erreur avec await ?",
+              "options": [
+                "try/catch",
+                "if/else",
+                "finally seul",
+                "throw seul"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur est levée dans la fonction.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-01-q2"
+            }
+          ],
+          "summary": [
+            "async/await.",
+            "try/catch.",
+            "Promise.all pour le parallèle."
+          ],
+          "nextStep": "Chapitre suivant : « Fetch API »."
+        },
+        {
+          "id": "jsa2-02",
+          "title": "Fetch API",
+          "duration": 20,
+          "objectives": [
+            "Effectuer une requête",
+            "Vérifier response.ok",
+            "Convertir la réponse"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "fetch envoie une requête HTTP et renvoie une promesse de réponse. Il ne rejette pas sur 404 ou 500 : vérifiez response.ok."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const reponse = await fetch(\"/api/taches\", {\n  headers: { Accept: \"application/json\" }\n});\nif (!reponse.ok) throw new Error(\"HTTP \" + reponse.status);\nconst taches = await reponse.json();",
+              "title": "Requête GET"
+            },
+            {
+              "type": "warning",
+              "text": "Un fetch sans vérification de ok traite une erreur 500 comme un succès : le JSON contiendra peut-être un message d'erreur."
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Que faut-il tester avant de lire le JSON ?",
+            "hints": [
+              "Le statut HTTP."
+            ],
+            "solution": "response.ok (ou response.status)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "reponse.ok",
+                "response.ok",
+                "ok"
+              ],
+              "success": "Correct : response.ok."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie fetch sur un 500 ?",
+              "options": [
+                "Une promesse résolue",
+                "Une promesse rejetée",
+                "null",
+                "Une chaîne"
+              ],
+              "answer": 0,
+              "explanation": "Il faut vérifier ok.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-02-q1"
+            },
+            {
+              "question": "Que fait response.json() ?",
+              "options": [
+                "Il lit le corps en JSON",
+                "Il envoie",
+                "Il vérifie le statut",
+                "Il annule"
+              ],
+              "answer": 0,
+              "explanation": "Il renvoie une promesse de données.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-02-q2"
+            }
+          ],
+          "summary": [
+            "fetch ne rejette pas sur 4xx/5xx.",
+            "Vérifier ok.",
+            "json() lit le corps."
+          ],
+          "nextStep": "Chapitre suivant : « JSON »."
+        },
+        {
+          "id": "jsa2-03",
+          "title": "JSON",
+          "duration": 20,
+          "objectives": [
+            "Sérialiser et désérialiser",
+            "Gérer les erreurs",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "JSON est un format texte d'échange : JSON.stringify convertit une valeur, JSON.parse la relit. Il ne transporte ni fonctions ni dates typées."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const texte = JSON.stringify({ id: 1, titre: \"Tâche\" });\nconst objet = JSON.parse(texte);\n// objet.titre === \"Tâche\"",
+              "title": "Aller-retour"
+            },
+            {
+              "type": "warning",
+              "text": "JSON.parse sur une entrée non fiable peut lever une exception : encadrez l'appel et validez la forme des données."
+            }
+          ],
+          "exercise": {
+            "title": "Sérialiser",
+            "instructions": "Comment convertir un objet en JSON ?",
+            "hints": [
+              "Une méthode statique."
+            ],
+            "solution": "JSON.stringify(objet)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "json.stringify"
+              ],
+              "success": "Correct : JSON.stringify."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que devient une date dans JSON ?",
+              "options": [
+                "Une chaîne",
+                "Un objet Date",
+                "Un nombre",
+                "null"
+              ],
+              "answer": 0,
+              "explanation": "La date est sérialisée en texte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-03-q1"
+            },
+            {
+              "question": "Que faire d'un JSON invalide ?",
+              "options": [
+                "try/catch",
+                "l'ignorer",
+                "le concaténer",
+                "le chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur doit être gérée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-03-q2"
+            }
+          ],
+          "summary": [
+            "stringify/parse.",
+            "Pas de fonctions.",
+            "Valider après parse."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des requêtes HTTP »."
+        },
+        {
+          "id": "jsa2-04",
+          "title": "Gestion des requêtes HTTP",
+          "duration": 20,
+          "objectives": [
+            "Choisir la méthode",
+            "Envoyer un corps JSON",
+            "Annuler une requête"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GET lit, POST crée, PATCH modifie partiellement, DELETE supprime. Un corps JSON exige l'en-tête Content-Type et une sérialisation."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "await fetch(\"/api/taches\", {\n  method: \"POST\",\n  headers: { \"Content-Type\": \"application/json\" },\n  body: JSON.stringify({ titre: \"Nouvelle tâche\" })\n});",
+              "title": "Requête POST"
+            },
+            {
+              "type": "warning",
+              "text": "Ne mettez pas de données sensibles dans l'URL (GET) : elles apparaissent dans les journaux et l'historique."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quelle méthode pour créer une ressource ?",
+            "hints": [
+              "Création."
+            ],
+            "solution": "POST",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "post"
+              ],
+              "success": "Correct : POST."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait PATCH ?",
+              "options": [
+                "Une modification partielle",
+                "Une suppression",
+                "Une lecture",
+                "Une création"
+              ],
+              "answer": 0,
+              "explanation": "Seuls les champs fournis changent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-04-q1"
+            },
+            {
+              "question": "Quel en-tête pour un corps JSON ?",
+              "options": [
+                "Content-Type: application/json",
+                "Accept",
+                "Authorization",
+                "Cookie"
+              ],
+              "answer": 0,
+              "explanation": "Il décrit le corps.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-04-q2"
+            }
+          ],
+          "summary": [
+            "GET/POST/PATCH/DELETE.",
+            "Content-Type pour JSON.",
+            "Pas de secret en URL."
+          ],
+          "nextStep": "Chapitre suivant : « Gérer les erreurs réseau »."
+        },
+        {
+          "id": "jsa2-05",
+          "title": "Gérer les erreurs réseau",
+          "duration": 20,
+          "objectives": [
+            "Distinguer erreur réseau et statut",
+            "Afficher un message utile",
+            "Réessayer prudemment"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "fetch rejette sur une erreur réseau, pas sur un statut d'échec. Distinguez les deux et proposez une action adaptée."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "try {\n  const r = await fetch(url);\n  if (!r.ok) throw new Error(\"Statut \" + r.status);\n  return await r.json();\n} catch (err) {\n  afficherErreur(\"Connexion impossible\", true);\n}",
+              "title": "Erreurs"
+            },
+            {
+              "type": "warning",
+              "text": "Réessayer en boucle sur une erreur 401 ou 403 aggrave la situation : corrigez d'abord la configuration d'accès."
+            }
+          ],
+          "exercise": {
+            "title": "Distinguer les erreurs",
+            "instructions": "Que signifie un fetch rejeté ?",
+            "hints": [
+              "Le rejet concerne le transport, pas le statut HTTP.",
+              "Un 404 ne rejette pas la promesse."
+            ],
+            "solution": "Un fetch rejeté signale une erreur réseau ou une annulation, pas un statut 404 ou 500.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "reseau",
+                "réseau",
+                "annul"
+              ],
+              "success": "Correct : erreur réseau ou annulation."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un 404 rejette-t-il fetch ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en POST",
+                "Seulement en HTTPS"
+              ],
+              "answer": 0,
+              "explanation": "Il faut vérifier ok.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-05-q1"
+            },
+            {
+              "question": "Que faire d'un 401 ?",
+              "options": [
+                "Corriger l'authentification",
+                "Réessayer en boucle",
+                "Ignorer",
+                "Supprimer le cookie"
+              ],
+              "answer": 0,
+              "explanation": "La cause est l'accès.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsa2-05-q2"
+            }
+          ],
+          "summary": [
+            "Réseau ≠ statut.",
+            "Messages adaptés.",
+            "Pas de réessai aveugle."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

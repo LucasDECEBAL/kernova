@@ -1,0 +1,387 @@
+{
+  "courseId": "sql-transactions",
+  "modules": [
+    {
+      "id": "sql-transactions-module",
+      "title": "Transactions et concurrence",
+      "chapters": [
+        {
+          "id": "sqlt-01",
+          "title": "Transactions",
+          "duration": 20,
+          "objectives": [
+            "Regrouper des opérations",
+            "Valider ou annuler",
+            "Protéger les invariants"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "BEGIN ouvre une transaction ; COMMIT valide, ROLLBACK annule. Les opérations forment un tout."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "BEGIN;\nUPDATE comptes SET solde = solde - 100 WHERE id = 1;\nUPDATE comptes SET solde = solde + 100 WHERE id = 2;\nCOMMIT;",
+              "title": "Virement"
+            }
+          ],
+          "exercise": {
+            "title": "Annuler",
+            "instructions": "Quelle commande annule une transaction ?",
+            "hints": [
+              "Un retour en arrière."
+            ],
+            "solution": "ROLLBACK",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rollback"
+              ],
+              "success": "Correct : ROLLBACK."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait COMMIT ?",
+              "options": [
+                "Il valide",
+                "Il annule",
+                "Il trie",
+                "Il joint"
+              ],
+              "answer": 0,
+              "explanation": "Les changements sont écrits.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-01-q1"
+            },
+            {
+              "question": "Pourquoi une transaction pour un virement ?",
+              "options": [
+                "Éviter une perte d'argent",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Débit et crédit sont atomiques.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-01-q2"
+            }
+          ],
+          "summary": [
+            "BEGIN/COMMIT/ROLLBACK.",
+            "Atomicité.",
+            "Invariants protégés."
+          ],
+          "nextStep": "Chapitre suivant : « Propriétés ACID »."
+        },
+        {
+          "id": "sqlt-02",
+          "title": "Propriétés ACID",
+          "duration": 20,
+          "objectives": [
+            "Définir ACID",
+            "Relier aux garanties",
+            "Choisir le niveau"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "ACID : atomicité, cohérence, isolation, durabilité. Ces garanties distinguent une base transactionnelle."
+            },
+            {
+              "type": "code",
+              "lang": "text",
+              "code": "Atomicité : tout ou rien\nCohérence : contraintes respectées\nIsolation : transactions concurrentes\nDurabilité : écriture persistante",
+              "title": "ACID"
+            }
+          ],
+          "exercise": {
+            "title": "Définir",
+            "instructions": "Que signifie le A d'ACID ?",
+            "hints": [
+              "Tout ou rien."
+            ],
+            "solution": "Atomicité",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "atomicite",
+                "atomicité"
+              ],
+              "success": "Correct : atomicité."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit la durabilité ?",
+              "options": [
+                "Les données survivent à une panne",
+                "Le tri",
+                "Le CSS",
+                "Le réseau"
+              ],
+              "answer": 0,
+              "explanation": "L'écriture est persistante.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-02-q1"
+            },
+            {
+              "question": "Que garantit l'isolation ?",
+              "options": [
+                "Les transactions ne se perturbent pas",
+                "La vitesse",
+                "Le chiffrement",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Les effets concurrents sont contrôlés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-02-q2"
+            }
+          ],
+          "summary": [
+            "ACID.",
+            "Atomicité.",
+            "Durabilité."
+          ],
+          "nextStep": "Chapitre suivant : « Isolation »."
+        },
+        {
+          "id": "sqlt-03",
+          "title": "Isolation",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les niveaux",
+            "Éviter les lectures sales",
+            "Choisir le compromis"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les niveaux d'isolation contrôlent les phénomènes de concurrence : lecture sale, non répétable, fantôme."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SET TRANSACTION ISOLATION LEVEL READ COMMITTED;",
+              "title": "Niveau"
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel phénomène évite READ COMMITTED ?",
+            "hints": [
+              "La lecture sale."
+            ],
+            "solution": "READ COMMITTED empêche les lectures sales.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "lecture sale"
+              ],
+              "success": "Correct : lecture sale."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduit un niveau plus strict ?",
+              "options": [
+                "Les anomalies de concurrence",
+                "La vitesse",
+                "Le chiffrement",
+                "Le tri"
+              ],
+              "answer": 0,
+              "explanation": "Le coût augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-03-q1"
+            },
+            {
+              "question": "Pourquoi choisir un niveau ?",
+              "options": [
+                "Selon le besoin métier",
+                "Au hasard",
+                "Pour le CSS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le compromis est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-03-q2"
+            }
+          ],
+          "summary": [
+            "Niveaux d'isolation.",
+            "Anomalies.",
+            "Compromis."
+          ],
+          "nextStep": "Chapitre suivant : « Verrouillage »."
+        },
+        {
+          "id": "sqlt-04",
+          "title": "Verrouillage",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les verrous",
+            "Éviter les interblocages",
+            "Ordonner les accès"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un verrou protège une ressource pendant une transaction ; deux ordres opposés provoquent un interblocage."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT * FROM comptes WHERE id = 1 FOR UPDATE;",
+              "title": "Verrou"
+            }
+          ],
+          "exercise": {
+            "title": "Éviter",
+            "instructions": "Comment éviter un interblocage ?",
+            "hints": [
+              "Le même ordre d'accès."
+            ],
+            "solution": "Accéder toujours aux ressources dans le même ordre et prévoir un réessai.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ordre"
+              ],
+              "success": "Correct : ordre constant."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait FOR UPDATE ?",
+              "options": [
+                "Il verrouille les lignes lues",
+                "Il trie",
+                "Il chiffre",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "Les autres transactions attendent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-04-q1"
+            },
+            {
+              "question": "Que fait un interblocage ?",
+              "options": [
+                "Il annule une transaction",
+                "Il accélère",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le moteur rompt le cycle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-04-q2"
+            }
+          ],
+          "summary": [
+            "Verrous.",
+            "Ordre constant.",
+            "Réessai."
+          ],
+          "nextStep": "Chapitre suivant : « Points de sauvegarde »."
+        },
+        {
+          "id": "sqlt-05",
+          "title": "Points de sauvegarde",
+          "duration": 20,
+          "objectives": [
+            "Créer un savepoint",
+            "Revenir en arrière",
+            "Utiliser en transaction longue"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SAVEPOINT marque un état intermédiaire ; ROLLBACK TO annule une partie sans perdre le début."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "BEGIN;\nINSERT INTO journal VALUES ('debut');\nSAVEPOINT apres_journal;\n-- erreur\nROLLBACK TO apres_journal;\nCOMMIT;",
+              "title": "Savepoint"
+            }
+          ],
+          "exercise": {
+            "title": "Revenir",
+            "instructions": "Comment revenir à un point intermédiaire ?",
+            "hints": [
+              "ROLLBACK TO."
+            ],
+            "solution": "ROLLBACK TO nom_du_savepoint",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "rollback to"
+              ],
+              "success": "Correct : ROLLBACK TO."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait SAVEPOINT ?",
+              "options": [
+                "Il marque un point",
+                "Il valide",
+                "Il trie",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "On peut y revenir.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-05-q1"
+            },
+            {
+              "question": "Quand l'utiliser ?",
+              "options": [
+                "Transaction longue ou étapes risquées",
+                "Jamais",
+                "En lecture seule",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le retour partiel est utile.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlt-05-q2"
+            }
+          ],
+          "summary": [
+            "SAVEPOINT.",
+            "ROLLBACK TO.",
+            "Étapes risquées."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

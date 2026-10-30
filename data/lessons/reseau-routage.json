@@ -1,0 +1,401 @@
+{
+  "courseId": "reseau-routage",
+  "modules": [
+    {
+      "id": "reseau-routage-module",
+      "title": "Routage et disponibilité",
+      "chapters": [
+        {
+          "id": "rrt-01",
+          "title": "BGP : introduction",
+          "duration": 20,
+          "objectives": [
+            "Comprendre BGP",
+            "Situer les AS",
+            "Éviter les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "BGP échange des routes entre systèmes autonomes, notamment sur Internet."
+            },
+            {
+              "type": "list",
+              "items": [
+                "AS.",
+                "Politiques.",
+                "Stabilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Entre quoi BGP échange-t-il des routes ?",
+            "hints": [
+              "Des systèmes autonomes."
+            ],
+            "solution": "Entre systèmes autonomes (AS).",
+            "check": {
+              "type": "any",
+              "any": [
+                "autonome",
+                "as"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "BGP est-il un protocole interne ?",
+              "options": [
+                "Plutôt externe",
+                "Interne uniquement",
+                "Uniquement LAN",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "Il relie les AS.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-01-q1"
+            },
+            {
+              "question": "Que pilotent les politiques ?",
+              "options": [
+                "Les routes acceptées",
+                "Le CSS",
+                "Le DNS",
+                "Les disques"
+              ],
+              "answer": 0,
+              "explanation": "Les annonces sont filtrées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-01-q2"
+            }
+          ],
+          "summary": [
+            "BGP externe.",
+            "AS.",
+            "Politiques."
+          ],
+          "nextStep": "Chapitre suivant : « Routage inter-VLAN »."
+        },
+        {
+          "id": "rrt-02",
+          "title": "Routage inter-VLAN",
+          "duration": 20,
+          "objectives": [
+            "Comprendre le routage entre VLAN",
+            "Utiliser un routeur ou un switch L3",
+            "Filtrer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Deux VLAN communiquent via un routeur ou un commutateur de niveau 3."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sous-interfaces.",
+                "Switch L3.",
+                "ACL entre VLAN."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il pour relier deux VLAN ?",
+            "hints": [
+              "Un routage."
+            ],
+            "solution": "Un routeur ou un switch de niveau 3.",
+            "check": {
+              "type": "any",
+              "any": [
+                "routeur",
+                "niveau 3",
+                "l3"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Les VLAN sont-ils routés par défaut ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il faut une passerelle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-02-q1"
+            },
+            {
+              "question": "Que filtre-t-on entre VLAN ?",
+              "options": [
+                "Le trafic",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les ACL s'appliquent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-02-q2"
+            }
+          ],
+          "summary": [
+            "Routage inter-VLAN.",
+            "L3.",
+            "Filtrer."
+          ],
+          "nextStep": "Chapitre suivant : « Haute disponibilité »."
+        },
+        {
+          "id": "rrt-03",
+          "title": "Haute disponibilité",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la redondance",
+            "Éviter le point unique",
+            "Tester le basculement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La haute disponibilité combine redondance et basculement automatique."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Liens redondants.",
+                "Équipements redondants.",
+                "Tests de bascule."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faut-il tester ?",
+            "hints": [
+              "Le basculement."
+            ],
+            "solution": "Le basculement réel, pas seulement la configuration.",
+            "check": {
+              "type": "any",
+              "any": [
+                "basculement"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "La redondance suffit-elle ?",
+              "options": [
+                "Non, il faut tester",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Un basculement non testé peut échouer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-03-q1"
+            },
+            {
+              "question": "Que fait le basculement ?",
+              "options": [
+                "Il prend le relais",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le service continue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-03-q2"
+            }
+          ],
+          "summary": [
+            "Redondance.",
+            "Basculement testé.",
+            "Pas de SPOF."
+          ],
+          "nextStep": "Chapitre suivant : « Redondance réseau »."
+        },
+        {
+          "id": "rrt-04",
+          "title": "Redondance réseau",
+          "duration": 20,
+          "objectives": [
+            "Choisir les mécanismes",
+            "Éviter les boucles",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La redondance ajoute des chemins et équipements de secours."
+            },
+            {
+              "type": "list",
+              "items": [
+                "VRRP/HSRP.",
+                "STP.",
+                "Agrégation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait VRRP ?",
+            "hints": [
+              "Une passerelle redondante."
+            ],
+            "solution": "Il fournit une passerelle virtuelle redondante.",
+            "check": {
+              "type": "any",
+              "any": [
+                "vrrp",
+                "passerelle"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque la redondance L2 ?",
+              "options": [
+                "Des boucles",
+                "Un DNS lent",
+                "Un CSS cassé",
+                "Rien"
+              ],
+              "answer": 0,
+              "explanation": "STP est nécessaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-04-q1"
+            },
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Les chemins et bascules",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le plan est clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-04-q2"
+            }
+          ],
+          "summary": [
+            "Redondance.",
+            "VRRP/HSRP.",
+            "STP."
+          ],
+          "nextStep": "Chapitre suivant : « QoS »."
+        },
+        {
+          "id": "rrt-05",
+          "title": "QoS",
+          "duration": 20,
+          "objectives": [
+            "Prioriser",
+            "Limiter",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La QoS classe et priorise certains flux quand la bande passante est limitée."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Marquage.",
+                "Files.",
+                "Limites."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Quand QoS est-elle utile ?",
+            "hints": [
+              "Quand la bande passante est limitée."
+            ],
+            "solution": "Quand la capacité est insuffisante et que certains flux sont critiques.",
+            "check": {
+              "type": "any",
+              "any": [
+                "limite",
+                "limit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "La QoS crée-t-elle de la bande passante ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Elle répartit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-05-q1"
+            },
+            {
+              "question": "Que fait le marquage ?",
+              "options": [
+                "Il classe les paquets",
+                "Il chiffre",
+                "Il route",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La priorité est identifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rrt-05-q2"
+            }
+          ],
+          "summary": [
+            "QoS = priorisation.",
+            "Marquage.",
+            "Pas de magie."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

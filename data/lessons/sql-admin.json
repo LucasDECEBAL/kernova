@@ -1,0 +1,388 @@
+{
+  "courseId": "sql-admin",
+  "modules": [
+    {
+      "id": "sql-admin-module",
+      "title": "Objets et droits",
+      "chapters": [
+        {
+          "id": "sqlad-01",
+          "title": "Procédures stockées",
+          "duration": 20,
+          "objectives": [
+            "Créer une procédure",
+            "Passer des paramètres",
+            "Comprendre les limites"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une procédure stockée regroupe du SQL exécuté côté serveur ; elle centralise une logique."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "CREATE PROCEDURE archiver_commandes()\nBEGIN\n  DELETE FROM commandes WHERE date < CURRENT_DATE - INTERVAL '1 year';\nEND;",
+              "title": "Procédure"
+            }
+          ],
+          "exercise": {
+            "title": "Créer",
+            "instructions": "Quelle instruction crée une procédure ?",
+            "hints": [
+              "Un CREATE dédié."
+            ],
+            "solution": "CREATE PROCEDURE",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "create procedure"
+              ],
+              "success": "Correct : CREATE PROCEDURE."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où s'exécute la procédure ?",
+              "options": [
+                "Côté serveur",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Dans le navigateur"
+              ],
+              "answer": 0,
+              "explanation": "La base exécute.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-01-q1"
+            },
+            {
+              "question": "Que faut-il documenter ?",
+              "options": [
+                "Paramètres et effets",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "La procédure modifie des données.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-01-q2"
+            }
+          ],
+          "summary": [
+            "Procédures côté serveur.",
+            "Paramètres.",
+            "Documenter les effets."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions SQL »."
+        },
+        {
+          "id": "sqlad-02",
+          "title": "Fonctions SQL",
+          "duration": 20,
+          "objectives": [
+            "Créer une fonction",
+            "Retourner une valeur",
+            "Différencier procédure"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction renvoie une valeur et s'utilise dans une requête ; une procédure exécute des actions."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "CREATE FUNCTION ttc(prix NUMERIC) RETURNS NUMERIC AS $$\n  SELECT prix * 1.2;\n$$ LANGUAGE sql;",
+              "title": "Fonction"
+            }
+          ],
+          "exercise": {
+            "title": "Différencier",
+            "instructions": "Que renvoie une fonction ?",
+            "hints": [
+              "Une valeur."
+            ],
+            "solution": "Une valeur utilisable dans une requête.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "valeur"
+              ],
+              "success": "Correct : une valeur."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où utiliser une fonction ?",
+              "options": [
+                "Dans SELECT",
+                "Dans le CSS",
+                "Dans le DNS",
+                "Dans un cookie"
+              ],
+              "answer": 0,
+              "explanation": "Elle retourne une valeur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-02-q1"
+            },
+            {
+              "question": "Que fait une procédure ?",
+              "options": [
+                "Des actions",
+                "Une valeur uniquement",
+                "Du CSS",
+                "Du réseau"
+              ],
+              "answer": 0,
+              "explanation": "Elle exécute des instructions.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-02-q2"
+            }
+          ],
+          "summary": [
+            "Fonction → valeur.",
+            "Procédure → actions.",
+            "Nommer clairement."
+          ],
+          "nextStep": "Chapitre suivant : « Déclencheurs »."
+        },
+        {
+          "id": "sqlad-03",
+          "title": "Déclencheurs",
+          "duration": 20,
+          "objectives": [
+            "Créer un trigger",
+            "Choisir le moment",
+            "Éviter la logique cachée"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un trigger s'exécute avant ou après une modification ; il doit rester simple et documenté."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "CREATE TRIGGER maj_date\nBEFORE UPDATE ON commandes\nFOR EACH ROW EXECUTE FUNCTION maj_modifie_le();",
+              "title": "Trigger"
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quand un trigger BEFORE s'exécute-t-il ?",
+            "hints": [
+              "Avant la modification."
+            ],
+            "solution": "Avant l'écriture de la ligne.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "avant",
+                "before"
+              ],
+              "success": "Correct : BEFORE."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que risque un trigger complexe ?",
+              "options": [
+                "Une logique cachée difficile à déboguer",
+                "La vitesse",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les effets sont implicites.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-03-q1"
+            },
+            {
+              "question": "Que doit-on documenter ?",
+              "options": [
+                "Le déclenchement et l'effet",
+                "Le logo",
+                "Le thème",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La maintenance est facilitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-03-q2"
+            }
+          ],
+          "summary": [
+            "BEFORE/AFTER.",
+            "Simple.",
+            "Documenté."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des utilisateurs »."
+        },
+        {
+          "id": "sqlad-04",
+          "title": "Gestion des utilisateurs",
+          "duration": 20,
+          "objectives": [
+            "Créer un compte",
+            "Attribuer des droits",
+            "Révoquer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Chaque application utilise un compte dédié avec les droits minimaux nécessaires."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "CREATE USER app WITH PASSWORD '...';\nGRANT SELECT, INSERT ON commandes TO app;",
+              "title": "Droits"
+            }
+          ],
+          "exercise": {
+            "title": "Accorder",
+            "instructions": "Quelle commande donne des droits ?",
+            "hints": [
+              "Un ordre de droits."
+            ],
+            "solution": "GRANT",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "grant"
+              ],
+              "success": "Correct : GRANT."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait REVOKE ?",
+              "options": [
+                "Il retire des droits",
+                "Il ajoute",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est retiré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-04-q1"
+            },
+            {
+              "question": "Pourquoi un compte dédié ?",
+              "options": [
+                "Limiter les droits",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-04-q2"
+            }
+          ],
+          "summary": [
+            "Compte dédié.",
+            "GRANT/REVOKE.",
+            "Moindre privilège."
+          ],
+          "nextStep": "Chapitre suivant : « Permissions SQL »."
+        },
+        {
+          "id": "sqlad-05",
+          "title": "Permissions SQL",
+          "duration": 20,
+          "objectives": [
+            "Comprendre les niveaux",
+            "Auditer les droits",
+            "Éviter les super-comptes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les permissions s'appliquent aux bases, tables ou colonnes ; un super-utilisateur ne doit pas servir à l'application."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "GRANT SELECT (nom, email) ON clients TO lecteur;",
+              "title": "Colonnes"
+            }
+          ],
+          "exercise": {
+            "title": "Limiter",
+            "instructions": "Que privilégier pour une application ?",
+            "hints": [
+              "Des droits précis."
+            ],
+            "solution": "Un compte aux droits minimaux, sans rôle super-utilisateur.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "minimal",
+                "moindre"
+              ],
+              "success": "Correct : droits minimaux."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Peut-on limiter à des colonnes ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement MySQL",
+                "Seulement Oracle"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont granulaires.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-05-q1"
+            },
+            {
+              "question": "Pourquoi auditer ?",
+              "options": [
+                "Repérer les excès",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les dérives sont visibles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlad-05-q2"
+            }
+          ],
+          "summary": [
+            "Droits granulaires.",
+            "Pas de super-compte applicatif.",
+            "Audit."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

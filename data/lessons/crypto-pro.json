@@ -1,0 +1,400 @@
+{
+  "courseId": "crypto-pro",
+  "modules": [
+    {
+      "id": "crypto-pro-module",
+      "title": "Mots de passe et chaîne",
+      "chapters": [
+        {
+          "id": "crp-01",
+          "title": "Hachage et dérivation de clés",
+          "duration": 20,
+          "objectives": [
+            "Distinguer hachage et dérivation",
+            "Choisir un KDF",
+            "Saler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un KDF lent (bcrypt, argon2) transforme un mot de passe en clé résistante au force brute."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Sel.",
+                "Coût.",
+                "Argon2/bcrypt."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi un KDF lent ?",
+            "hints": [
+              "Ralentir la force brute."
+            ],
+            "solution": "Il ralentit les attaques par force brute.",
+            "check": {
+              "type": "any",
+              "any": [
+                "lent",
+                "force brute"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un hash rapide convient-il ?",
+              "options": [
+                "Non pour les mots de passe",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Il est trop rapide à attaquer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-01-q1"
+            },
+            {
+              "question": "Que fait le sel ?",
+              "options": [
+                "Il rend le hash unique",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Les tables précalculées échouent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-01-q2"
+            }
+          ],
+          "summary": [
+            "KDF lent.",
+            "Sel.",
+            "Argon2."
+          ],
+          "nextStep": "Chapitre suivant : « Stockage sécurisé des mots de passe »."
+        },
+        {
+          "id": "crp-02",
+          "title": "Stockage sécurisé des mots de passe",
+          "duration": 20,
+          "objectives": [
+            "Hacher",
+            "Saler",
+            "Mettre à jour"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les mots de passe se stockent hachés et salés, avec un algorithme à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Hash lent.",
+                "Sel unique.",
+                "Migration."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire lors d'une migration ?",
+            "hints": [
+              "Rehacher progressivement."
+            ],
+            "solution": "Rehacher à la prochaine connexion.",
+            "check": {
+              "type": "any",
+              "any": [
+                "rehach"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne jamais stocker ?",
+              "options": [
+                "Le mot de passe en clair",
+                "Le sel",
+                "Le hash",
+                "Les logs"
+              ],
+              "answer": 0,
+              "explanation": "Il serait exposé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-02-q1"
+            },
+            {
+              "question": "Que faire d'un ancien algorithme ?",
+              "options": [
+                "Migrer",
+                "Garder",
+                "Publier",
+                "Ignorer"
+              ],
+              "answer": 0,
+              "explanation": "La sécurité s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-02-q2"
+            }
+          ],
+          "summary": [
+            "Hash salé.",
+            "Migration.",
+            "Pas de clair."
+          ],
+          "nextStep": "Chapitre suivant : « Protocoles cryptographiques »."
+        },
+        {
+          "id": "crp-03",
+          "title": "Protocoles cryptographiques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la composition",
+            "Éviter les protocoles maison",
+            "Vérifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un protocole combine primitives et échanges ; ne jamais en inventer un."
+            },
+            {
+              "type": "list",
+              "items": [
+                "TLS.",
+                "SSH.",
+                "Signal."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Peut-on inventer un protocole ?",
+            "hints": [
+              "Non."
+            ],
+            "solution": "Non : les erreurs de conception sont fréquentes.",
+            "check": {
+              "type": "any",
+              "any": [
+                "non"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que privilégier ?",
+              "options": [
+                "Des protocoles éprouvés",
+                "Un protocole maison",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Ils sont analysés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-03-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "La version et la configuration",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les vieilles versions faillissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-03-q2"
+            }
+          ],
+          "summary": [
+            "Composition.",
+            "Éprouvé.",
+            "Configuration."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des certificats »."
+        },
+        {
+          "id": "crp-04",
+          "title": "Gestion des certificats",
+          "duration": 20,
+          "objectives": [
+            "Renouveler",
+            "Révoquer",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les certificats expirent et se révoquent ; leur gestion évite les interruptions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Expiration.",
+                "Révocation.",
+                "Automatisation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire d'un certificat compromis ?",
+            "hints": [
+              "Le révoquer."
+            ],
+            "solution": "Le révoquer et le remplacer.",
+            "check": {
+              "type": "any",
+              "any": [
+                "revoquer",
+                "révoquer"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "L'expiration",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'interruption est évitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-04-q1"
+            },
+            {
+              "question": "Que faire automatiquement ?",
+              "options": [
+                "Le renouvellement",
+                "La révocation seule",
+                "Rien",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les oublis disparaissent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-04-q2"
+            }
+          ],
+          "summary": [
+            "Expiration.",
+            "Révocation.",
+            "Automatisation."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité de la chaîne d'approvisionnement »."
+        },
+        {
+          "id": "crp-05",
+          "title": "Sécurité de la chaîne d'approvisionnement",
+          "duration": 20,
+          "objectives": [
+            "Inventorier",
+            "Vérifier",
+            "Signer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La chaîne logicielle inclut dépendances, builds et artefacts."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SBOM.",
+                "Signatures.",
+                "Reproductibilité."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier sur un artefact ?",
+            "hints": [
+              "Son origine et son intégrité."
+            ],
+            "solution": "Son origine et son intégrité (signature).",
+            "check": {
+              "type": "any",
+              "any": [
+                "signature",
+                "integrite",
+                "intégrité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que produire ?",
+              "options": [
+                "Un SBOM",
+                "Un logo",
+                "Un thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les composants sont listés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-05-q1"
+            },
+            {
+              "question": "Pourquoi signer ?",
+              "options": [
+                "Prouver l'origine",
+                "Pour le SEO",
+                "Pour le DNS",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'artefact est authentifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "crp-05-q2"
+            }
+          ],
+          "summary": [
+            "Dépendances.",
+            "SBOM.",
+            "Signature."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

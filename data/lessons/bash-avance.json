@@ -1,0 +1,478 @@
+{
+  "courseId": "bash-avance",
+  "modules": [
+    {
+      "id": "bash-avance-module",
+      "title": "Bash : fonctions et texte",
+      "chapters": [
+        {
+          "id": "basha-01",
+          "title": "Fonctions",
+          "duration": 20,
+          "objectives": [
+            "Définir une fonction",
+            "Retourner un code",
+            "Éviter les globales"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction regroupe des commandes ; return fixe le code de sortie, pas une valeur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "nom() { ... }.",
+                "return 1 en erreur.",
+                "Variables locales avec local."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Définir",
+            "instructions": "Comment déclarer une fonction ?",
+            "hints": [
+              "Un nom suivi de parenthèses."
+            ],
+            "solution": "maFonction() { ... }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "()"
+              ],
+              "success": "Correct : nom() { }."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait return ?",
+              "options": [
+                "Il fixe le code de sortie",
+                "Il renvoie une chaîne",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le statut est transmis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-01-q1"
+            },
+            {
+              "question": "Que fait local ?",
+              "options": [
+                "Il limite la portée",
+                "Il exporte",
+                "Il trie",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "La variable reste locale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-01-q2"
+            }
+          ],
+          "summary": [
+            "Fonctions.",
+            "return = code.",
+            "local."
+          ],
+          "nextStep": "Chapitre suivant : « Codes de retour »."
+        },
+        {
+          "id": "basha-02",
+          "title": "Codes de retour",
+          "duration": 20,
+          "objectives": [
+            "Vérifier un succès",
+            "Propager une erreur",
+            "Utiliser $?"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un code 0 signifie succès ; tout autre code signale une erreur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "if commande; then.",
+                "$? après la commande.",
+                "set -e pour arrêter."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Que signifie le code 0 ?",
+            "hints": [
+              "Succès."
+            ],
+            "solution": "0 = succès",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "0",
+                "succes",
+                "succès"
+              ],
+              "success": "Correct : succès."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que contient $? ?",
+              "options": [
+                "Le dernier code de retour",
+                "Le PID",
+                "Le nom",
+                "Le chemin"
+              ],
+              "answer": 0,
+              "explanation": "Le statut est disponible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-02-q1"
+            },
+            {
+              "question": "Que fait set -e ?",
+              "options": [
+                "Il arrête à la première erreur",
+                "Il ignore",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le script échoue vite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-02-q2"
+            }
+          ],
+          "summary": [
+            "0 = succès.",
+            "$?.",
+            "set -e."
+          ],
+          "nextStep": "Chapitre suivant : « Redirections »."
+        },
+        {
+          "id": "basha-03",
+          "title": "Redirections",
+          "duration": 20,
+          "objectives": [
+            "Rediriger la sortie",
+            "Séparer stdout et stderr",
+            "Ajouter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "> écrase, >> ajoute, 2> redirige les erreurs."
+            },
+            {
+              "type": "list",
+              "items": [
+                "commande > sortie.txt.",
+                "commande 2> erreurs.txt.",
+                "&> tout."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Rediriger",
+            "instructions": "Quelle redirection ajoute à la fin ?",
+            "hints": [
+              "Deux chevrons."
+            ],
+            "solution": ">>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                ">>"
+              ],
+              "success": "Correct : >>."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait 2> ?",
+              "options": [
+                "Il redirige stderr",
+                "Il redirige stdout",
+                "Il ajoute",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les erreurs sont séparées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-03-q1"
+            },
+            {
+              "question": "Que fait > ?",
+              "options": [
+                "Il écrase",
+                "Il ajoute",
+                "Il lit",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Le fichier est remplacé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-03-q2"
+            }
+          ],
+          "summary": [
+            "> / >>.",
+            "2>.",
+            "&>."
+          ],
+          "nextStep": "Chapitre suivant : « Pipes »."
+        },
+        {
+          "id": "basha-04",
+          "title": "Pipes",
+          "duration": 20,
+          "objectives": [
+            "Enchaîner des commandes",
+            "Filtrer",
+            "Éviter les abus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le pipe | passe la sortie d'une commande à la suivante."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ls | wc -l.",
+                "grep | sort | uniq.",
+                "Chaque étape reste simple."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Compter",
+            "instructions": "Comment compter les lignes de la sortie de ls ?",
+            "hints": [
+              "Un pipe vers wc."
+            ],
+            "solution": "ls | wc -l",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "|",
+                "wc -l"
+              ],
+              "success": "Correct : pipe + wc."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait | ?",
+              "options": [
+                "Il relie les commandes",
+                "Il chiffre",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le flux passe à la suivante.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-04-q1"
+            },
+            {
+              "question": "Que fait uniq ?",
+              "options": [
+                "Il supprime les doublons adjacents",
+                "Il trie",
+                "Il chiffre",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Il faut souvent trier avant.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-04-q2"
+            }
+          ],
+          "summary": [
+            "Pipe |.",
+            "wc -l.",
+            "Étapes simples."
+          ],
+          "nextStep": "Chapitre suivant : « Traitement de texte »."
+        },
+        {
+          "id": "basha-05",
+          "title": "Traitement de texte",
+          "duration": 20,
+          "objectives": [
+            "Découper",
+            "Remplacer",
+            "Extraire"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "cut, tr, sort et uniq découpent, transforment et organisent le texte."
+            },
+            {
+              "type": "list",
+              "items": [
+                "cut -d: -f1.",
+                "tr -d.",
+                "sort | uniq -c."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Découper",
+            "instructions": "Quelle commande prend le premier champ séparé par : ?",
+            "hints": [
+              "cut avec un délimiteur."
+            ],
+            "solution": "cut -d: -f1",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cut",
+                "-d",
+                "-f1"
+              ],
+              "success": "Correct : cut."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait tr ?",
+              "options": [
+                "Il transforme des caractères",
+                "Il trie",
+                "Il monte",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le flux est modifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-05-q1"
+            },
+            {
+              "question": "Que fait uniq -c ?",
+              "options": [
+                "Il compte les occurrences",
+                "Il trie",
+                "Il chiffre",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "Le nombre est affiché.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-05-q2"
+            }
+          ],
+          "summary": [
+            "cut.",
+            "tr.",
+            "sort/uniq."
+          ],
+          "nextStep": "Chapitre suivant : « Expressions régulières »."
+        },
+        {
+          "id": "basha-06",
+          "title": "Expressions régulières",
+          "duration": 20,
+          "objectives": [
+            "Écrire un motif",
+            "Utiliser grep -E",
+            "Éviter les regex fragiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "grep -E active les expressions étendues ; les motifs doivent rester lisibles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "^debut, fin$.",
+                "grep -E \"erreur|échec\".",
+                "Tester sur des exemples."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Filtrer",
+            "instructions": "Quelle option active les regex étendues ?",
+            "hints": [
+              "Une option de grep."
+            ],
+            "solution": "grep -E",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "-e"
+              ],
+              "success": "Correct : -E."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifie ^ ?",
+              "options": [
+                "Début de ligne",
+                "Fin",
+                "N'importe quel caractère",
+                "Un chiffre"
+              ],
+              "answer": 0,
+              "explanation": "L'ancrage commence.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-06-q1"
+            },
+            {
+              "question": "Que signifie $ en fin de motif ?",
+              "options": [
+                "Fin de ligne",
+                "Dollar",
+                "Variable",
+                "Début"
+              ],
+              "answer": 0,
+              "explanation": "L'ancrage termine.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "basha-06-q2"
+            }
+          ],
+          "summary": [
+            "grep -E.",
+            "Ancrages.",
+            "Tester."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

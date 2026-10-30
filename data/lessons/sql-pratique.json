@@ -1,0 +1,390 @@
+{
+  "courseId": "sql-pratique",
+  "modules": [
+    {
+      "id": "sql-pratique-module",
+      "title": "Écriture et agrégation",
+      "chapters": [
+        {
+          "id": "sqlp-01",
+          "title": "INSERT",
+          "duration": 20,
+          "objectives": [
+            "Insérer une ligne",
+            "Insérer plusieurs lignes",
+            "Éviter les erreurs de colonnes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "INSERT INTO ajoute des lignes ; les colonnes et valeurs doivent correspondre."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "INSERT INTO clients (nom, email) VALUES ('Ada', 'ada@example.fr');",
+              "title": "Insertion"
+            }
+          ],
+          "exercise": {
+            "title": "Insérer",
+            "instructions": "Insérez un client nommé Ada.",
+            "hints": [
+              "Colonnes puis valeurs."
+            ],
+            "solution": "INSERT INTO clients (nom) VALUES ('Ada');",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "insert into",
+                "values"
+              ],
+              "success": "Correct : INSERT INTO."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait INSERT ?",
+              "options": [
+                "Il ajoute des lignes",
+                "Il modifie",
+                "Il supprime",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Une nouvelle ligne est créée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-01-q1"
+            },
+            {
+              "question": "Que se passe-t-il si une colonne obligatoire manque ?",
+              "options": [
+                "Erreur",
+                "Null",
+                "Rien",
+                "Valeur par défaut"
+              ],
+              "answer": 0,
+              "explanation": "La contrainte est violée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-01-q2"
+            }
+          ],
+          "summary": [
+            "INSERT INTO.",
+            "Colonnes explicites.",
+            "Contraintes respectées."
+          ],
+          "nextStep": "Chapitre suivant : « UPDATE »."
+        },
+        {
+          "id": "sqlp-02",
+          "title": "UPDATE",
+          "duration": 20,
+          "objectives": [
+            "Modifier des lignes",
+            "Cibler avec WHERE",
+            "Vérifier avant"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "UPDATE modifie les lignes correspondant à WHERE ; sans WHERE, toute la table est touchée."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "UPDATE clients SET email = 'nouveau@example.fr' WHERE id = 7;",
+              "title": "Mise à jour"
+            }
+          ],
+          "exercise": {
+            "title": "Modifier",
+            "instructions": "Passez le prix du produit 7 à 19.90.",
+            "hints": [
+              "UPDATE et WHERE."
+            ],
+            "solution": "UPDATE produits SET prix = 19.90 WHERE id = 7;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "update",
+                "where"
+              ],
+              "success": "Correct : UPDATE ciblé."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait UPDATE sans WHERE ?",
+              "options": [
+                "Il modifie toutes les lignes",
+                "Rien",
+                "Il supprime",
+                "Il crée"
+              ],
+              "answer": 0,
+              "explanation": "Toute la table est concernée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-02-q1"
+            },
+            {
+              "question": "Comment vérifier avant ?",
+              "options": [
+                "Avec SELECT",
+                "Avec DELETE",
+                "Avec DROP",
+                "Avec COMMIT"
+              ],
+              "answer": 0,
+              "explanation": "On teste la condition.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-02-q2"
+            }
+          ],
+          "summary": [
+            "UPDATE + WHERE.",
+            "Tester avec SELECT.",
+            "Transaction si risqué."
+          ],
+          "nextStep": "Chapitre suivant : « DELETE »."
+        },
+        {
+          "id": "sqlp-03",
+          "title": "DELETE",
+          "duration": 20,
+          "objectives": [
+            "Supprimer des lignes",
+            "Cibler",
+            "Préférer la désactivation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "DELETE supprime des lignes ; TRUNCATE vide la table entière. Les clés étrangères peuvent bloquer."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "DELETE FROM commandes WHERE statut = 'annulee';",
+              "title": "Suppression"
+            }
+          ],
+          "exercise": {
+            "title": "Supprimer",
+            "instructions": "Supprimez les commandes annulées.",
+            "hints": [
+              "DELETE et WHERE."
+            ],
+            "solution": "DELETE FROM commandes WHERE statut = 'annulee';",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "delete",
+                "where"
+              ],
+              "success": "Correct : DELETE ciblé."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait DELETE sans WHERE ?",
+              "options": [
+                "Il vide la table",
+                "Rien",
+                "Il crée",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Toutes les lignes sont supprimées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-03-q1"
+            },
+            {
+              "question": "Pourquoi préférer une désactivation ?",
+              "options": [
+                "Conserver l'historique",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La donnée reste traçable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-03-q2"
+            }
+          ],
+          "summary": [
+            "DELETE ciblé.",
+            "TRUNCATE vide.",
+            "Historique vs suppression."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions d'agrégation »."
+        },
+        {
+          "id": "sqlp-04",
+          "title": "Fonctions d'agrégation",
+          "duration": 20,
+          "objectives": [
+            "Compter et sommer",
+            "Calculer une moyenne",
+            "Gérer NULL"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "COUNT, SUM, AVG, MIN, MAX agrègent plusieurs lignes ; les NULL sont ignorés par la plupart."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT COUNT(*) AS total, AVG(montant) AS moyenne FROM commandes;",
+              "title": "Agrégats"
+            }
+          ],
+          "exercise": {
+            "title": "Compter",
+            "instructions": "Comptez les lignes de commandes.",
+            "hints": [
+              "Un agrégat."
+            ],
+            "solution": "SELECT COUNT(*) FROM commandes;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "count"
+              ],
+              "success": "Correct : COUNT."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait AVG ?",
+              "options": [
+                "La moyenne",
+                "La somme",
+                "Le minimum",
+                "Le nombre"
+              ],
+              "answer": 0,
+              "explanation": "La moyenne est calculée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-04-q1"
+            },
+            {
+              "question": "Les NULL sont-ils comptés par COUNT(*) ?",
+              "options": [
+                "Oui, la ligne existe",
+                "Non",
+                "Parfois",
+                "Jamais"
+              ],
+              "answer": 0,
+              "explanation": "COUNT(*) compte les lignes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-04-q2"
+            }
+          ],
+          "summary": [
+            "COUNT/SUM/AVG.",
+            "NULL ignorés.",
+            "Alias lisibles."
+          ],
+          "nextStep": "Chapitre suivant : « GROUP BY »."
+        },
+        {
+          "id": "sqlp-05",
+          "title": "GROUP BY",
+          "duration": 20,
+          "objectives": [
+            "Regrouper",
+            "Agréger par groupe",
+            "Éviter les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "GROUP BY forme des groupes ; les colonnes sélectionnées doivent être agrégées ou présentes dans le groupe."
+            },
+            {
+              "type": "code",
+              "lang": "sql",
+              "code": "SELECT client_id, COUNT(*) AS nb\nFROM commandes\nGROUP BY client_id;",
+              "title": "Groupement"
+            }
+          ],
+          "exercise": {
+            "title": "Regrouper",
+            "instructions": "Comptez les commandes par client_id.",
+            "hints": [
+              "GROUP BY."
+            ],
+            "solution": "SELECT client_id, COUNT(*) FROM commandes GROUP BY client_id;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "group by",
+                "count"
+              ],
+              "success": "Correct : GROUP BY."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait GROUP BY ?",
+              "options": [
+                "Il regroupe des lignes",
+                "Il trie",
+                "Il filtre",
+                "Il joint"
+              ],
+              "answer": 0,
+              "explanation": "Les agrégats s'appliquent par groupe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-05-q1"
+            },
+            {
+              "question": "Comment filtrer un groupe ?",
+              "options": [
+                "HAVING",
+                "WHERE",
+                "ORDER BY",
+                "LIMIT"
+              ],
+              "answer": 0,
+              "explanation": "HAVING agit après regroupement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "sqlp-05-q2"
+            }
+          ],
+          "summary": [
+            "GROUP BY + agrégat.",
+            "HAVING pour filtrer.",
+            "Colonnes cohérentes."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

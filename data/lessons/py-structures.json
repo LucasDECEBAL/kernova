@@ -1,0 +1,409 @@
+{
+  "courseId": "py-structures",
+  "modules": [
+    {
+      "id": "py-structures-module",
+      "title": "Structures et compréhensions",
+      "chapters": [
+        {
+          "id": "pys-01",
+          "title": "Tuples",
+          "duration": 20,
+          "objectives": [
+            "Créer un tuple",
+            "Déballer des valeurs",
+            "Choisir tuple ou liste"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tuple est une séquence immuable : idéal pour des valeurs liées qui ne doivent pas changer (coordonnées, enregistrement)."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "point = (3, 5)\nx, y = point\n# point[0] = 7  -> TypeError",
+              "title": "Tuple"
+            },
+            {
+              "type": "warning",
+              "text": "Un tuple contenant une liste n'est pas profondément immuable : la liste reste modifiable."
+            }
+          ],
+          "exercise": {
+            "title": "Déballer",
+            "instructions": "Déballer le tuple point dans x et y.",
+            "hints": [
+              "Une affectation multiple."
+            ],
+            "solution": "x, y = point",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "=",
+                "point"
+              ],
+              "success": "Correct : x, y = point."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un tuple est-il modifiable ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en lecture",
+                "Seulement le premier élément"
+              ],
+              "answer": 0,
+              "explanation": "Il est immuable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-01-q1"
+            },
+            {
+              "question": "Quand préférer un tuple ?",
+              "options": [
+                "Pour des valeurs fixes liées",
+                "Pour ajouter souvent",
+                "Pour trier",
+                "Pour un fichier"
+              ],
+              "answer": 0,
+              "explanation": "L'immuabilité protège la structure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-01-q2"
+            }
+          ],
+          "summary": [
+            "Tuple immuable.",
+            "Déballage direct.",
+            "Immuabilité de surface."
+          ],
+          "nextStep": "Chapitre suivant : « Ensembles »."
+        },
+        {
+          "id": "pys-02",
+          "title": "Ensembles",
+          "duration": 20,
+          "objectives": [
+            "Créer un set",
+            "Éviter les doublons",
+            "Faire des opérations d'ensemble"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un set stocke des valeurs uniques, non ordonnées. Les opérations |, &, - donnent union, intersection et différence."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "tags = {\"js\", \"css\", \"js\"}\nlen(tags)            # 2\n\"js\" in tags         # True\n{\"js\"} & tags        # {\"js\"}",
+              "title": "Sets"
+            },
+            {
+              "type": "tip",
+              "text": "Convertir une liste en set élimine les doublons en une ligne, mais perd l'ordre."
+            }
+          ],
+          "exercise": {
+            "title": "Dédoublonner",
+            "instructions": "Comment obtenir les valeurs uniques de notes ?",
+            "hints": [
+              "Un set."
+            ],
+            "solution": "set(notes)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "set("
+              ],
+              "success": "Correct : set(notes)."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que garantit un set ?",
+              "options": [
+                "L'unicité",
+                "L'ordre",
+                "Les clés",
+                "La persistance"
+              ],
+              "answer": 0,
+              "explanation": "Les doublons sont ignorés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-02-q1"
+            },
+            {
+              "question": "Que fait & ?",
+              "options": [
+                "L'intersection",
+                "L'union",
+                "La différence",
+                "La somme"
+              ],
+              "answer": 0,
+              "explanation": "Les éléments communs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-02-q2"
+            }
+          ],
+          "summary": [
+            "Set = unicité.",
+            "| & - pour les ensembles.",
+            "L'ordre n'est pas garanti."
+          ],
+          "nextStep": "Chapitre suivant : « Chaînes de caractères »."
+        },
+        {
+          "id": "pys-03",
+          "title": "Chaînes de caractères",
+          "duration": 20,
+          "objectives": [
+            "Découper et joindre",
+            "Formater",
+            "Normaliser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les chaînes sont immuables. split, join, strip, replace, f-strings couvrent la plupart des besoins."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "nom = \" Ada \"\nf\"Bonjour {nom.strip()}\"\n\"a,b,c\".split(\",\")\n\"-\".join([\"2026\", \"01\"])",
+              "title": "Chaînes"
+            },
+            {
+              "type": "warning",
+              "text": "La comparaison est sensible à la casse : normalisez avec lower() ou casefold() avant de comparer."
+            }
+          ],
+          "exercise": {
+            "title": "Joindre",
+            "instructions": "Joindre [\"2026\",\"01\"] avec un tiret.",
+            "hints": [
+              "Une méthode de chaîne."
+            ],
+            "solution": "\"-\".join([\"2026\", \"01\"])",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "join"
+              ],
+              "success": "Correct : join."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une chaîne est-elle immuable ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Seulement en UTF-8"
+              ],
+              "answer": 0,
+              "explanation": "Chaque opération crée une nouvelle chaîne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-03-q1"
+            },
+            {
+              "question": "Que fait strip ?",
+              "options": [
+                "Il retire les espaces aux extrémités",
+                "Il coupe au milieu",
+                "Il inverse",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les bords sont nettoyés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-03-q2"
+            }
+          ],
+          "summary": [
+            "Chaînes immuables.",
+            "split/join.",
+            "Normaliser avant comparaison."
+          ],
+          "nextStep": "Chapitre suivant : « Compréhensions »."
+        },
+        {
+          "id": "pys-04",
+          "title": "Compréhensions",
+          "duration": 20,
+          "objectives": [
+            "Écrire une compréhension",
+            "Filtrer",
+            "Éviter la complexité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une compréhension construit une liste, un set ou un dictionnaire en une expression lisible."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "carres = [n * n for n in range(5)]\npairs = [n for n in range(10) if n % 2 == 0]\ntailles = {mot: len(mot) for mot in [\"ada\", \"linus\"]}",
+              "title": "Compréhensions"
+            },
+            {
+              "type": "warning",
+              "text": "Une compréhension imbriquée sur trois niveaux devient illisible : revenez à une boucle explicite."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire",
+            "instructions": "Construisez la liste des carrés de 0 à 4.",
+            "hints": [
+              "Une compréhension."
+            ],
+            "solution": "[n * n for n in range(5)]",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "for",
+                "range"
+              ],
+              "success": "Correct : compréhension."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que peut produire une compréhension ?",
+              "options": [
+                "Liste, set ou dictionnaire",
+                "Un fichier",
+                "Un module",
+                "Une fonction"
+              ],
+              "answer": 0,
+              "explanation": "Selon les crochets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-04-q1"
+            },
+            {
+              "question": "Comment filtrer ?",
+              "options": [
+                "Avec if",
+                "Avec else",
+                "Avec def",
+                "Avec import"
+              ],
+              "answer": 0,
+              "explanation": "La condition suit le for.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-04-q2"
+            }
+          ],
+          "summary": [
+            "Compréhensions concises.",
+            "Filtre avec if.",
+            "Éviter les imbrications."
+          ],
+          "nextStep": "Chapitre suivant : « Lecture et écriture de fichiers »."
+        },
+        {
+          "id": "pys-05",
+          "title": "Lecture et écriture de fichiers",
+          "duration": 20,
+          "objectives": [
+            "Ouvrir un fichier",
+            "Choisir le mode",
+            "Fermer proprement"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "with open(chemin, mode, encoding=\"utf-8\") ferme le fichier automatiquement. Les modes principaux sont r, w et a."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "with open(\"notes.txt\", \"a\", encoding=\"utf-8\") as f:\n    f.write(\"Nouvelle note\\n\")",
+              "title": "Écriture"
+            },
+            {
+              "type": "warning",
+              "text": "Le mode w efface le contenu existant : vérifiez le mode avant d'écrire."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter",
+            "instructions": "Quel mode ajoute à la fin sans effacer ?",
+            "hints": [
+              "Un mode d'ajout."
+            ],
+            "solution": "\"a\"",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "\"a\"",
+                "'a'"
+              ],
+              "success": "Correct : mode a."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait with ?",
+              "options": [
+                "Il ferme le fichier automatiquement",
+                "Il écrit",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte gère la fermeture.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-05-q1"
+            },
+            {
+              "question": "Quel mode écrase ?",
+              "options": [
+                "\"w\"",
+                "\"a\"",
+                "\"r\"",
+                "\"x\""
+              ],
+              "answer": 0,
+              "explanation": "w tronque le fichier.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pys-05-q2"
+            }
+          ],
+          "summary": [
+            "with pour fermer.",
+            "r/w/a.",
+            "w écrase."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

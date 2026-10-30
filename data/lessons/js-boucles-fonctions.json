@@ -1,0 +1,410 @@
+{
+  "courseId": "js-boucles-fonctions",
+  "modules": [
+    {
+      "id": "js-boucles-fonctions-module",
+      "title": "Boucles, fonctions et structures",
+      "chapters": [
+        {
+          "id": "jsb-01",
+          "title": "Boucles",
+          "duration": 20,
+          "objectives": [
+            "Choisir for, for...of ou while",
+            "Parcourir un tableau",
+            "Éviter les boucles infinies"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "for convient aux itérations comptées, for...of parcourt les valeurs, while répète tant qu'une condition est vraie."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "for (let i = 1; i <= 5; i++) {\n  console.log(i);\n}\nfor (const nom of [\"Ada\", \"Linus\"]) {\n  console.log(nom);\n}",
+              "title": "Deux boucles"
+            },
+            {
+              "type": "warning",
+              "text": "Une condition de while qui ne change jamais provoque une boucle infinie et bloque l'onglet."
+            }
+          ],
+          "exercise": {
+            "title": "Parcourir",
+            "instructions": "Affichez chaque prénom du tableau prenoms avec for...of.",
+            "hints": [
+              "for...of parcourt les valeurs."
+            ],
+            "solution": "for (const p of prenoms) console.log(p);",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "for",
+                "of",
+                "console.log"
+              ],
+              "success": "Correct : for...of."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que parcourt for...of ?",
+              "options": [
+                "Les valeurs",
+                "Les clés",
+                "Les fichiers",
+                "Les classes"
+              ],
+              "answer": 0,
+              "explanation": "Il donne chaque valeur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-01-q1"
+            },
+            {
+              "question": "Que risque un while sans mise à jour ?",
+              "options": [
+                "Une boucle infinie",
+                "Une erreur de type",
+                "Un fichier vide",
+                "Une animation"
+              ],
+              "answer": 0,
+              "explanation": "La condition reste vraie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-01-q2"
+            }
+          ],
+          "summary": [
+            "for compté, for...of valeurs.",
+            "while jusqu'à condition fausse.",
+            "Toujours faire évoluer la condition."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions »."
+        },
+        {
+          "id": "jsb-02",
+          "title": "Fonctions",
+          "duration": 20,
+          "objectives": [
+            "Déclarer une fonction",
+            "Retourner une valeur",
+            "Comprendre les paramètres"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction regroupe des instructions, reçoit des paramètres et renvoie éventuellement une valeur avec return."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "function doubler(n) {\n  return n * 2;\n}\nconsole.log(doubler(4)); // 8",
+              "title": "Fonction simple"
+            },
+            {
+              "type": "tip",
+              "text": "Une fonction sans return renvoie undefined : ne comptez pas sur un effet implicite."
+            }
+          ],
+          "exercise": {
+            "title": "Écrire une fonction",
+            "instructions": "Écrivez doubler(n) qui renvoie le double.",
+            "hints": [
+              "Un paramètre, un return."
+            ],
+            "solution": "function doubler(n) { return n * 2; }",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "function",
+                "return"
+              ],
+              "success": "Correct : fonction avec return."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que renvoie une fonction sans return ?",
+              "options": [
+                "undefined",
+                "null",
+                "0",
+                "Erreur"
+              ],
+              "answer": 0,
+              "explanation": "Aucune valeur n'est renvoyée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-02-q1"
+            },
+            {
+              "question": "À quoi sert un paramètre ?",
+              "options": [
+                "À recevoir une valeur",
+                "À créer un fichier",
+                "À boucler",
+                "À styler"
+              ],
+              "answer": 0,
+              "explanation": "L'appel fournit l'argument.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-02-q2"
+            }
+          ],
+          "summary": [
+            "Fonction = nom + paramètres + return.",
+            "Sans return : undefined.",
+            "Une responsabilité par fonction."
+          ],
+          "nextStep": "Chapitre suivant : « Fonctions fléchées »."
+        },
+        {
+          "id": "jsb-03",
+          "title": "Fonctions fléchées",
+          "duration": 20,
+          "objectives": [
+            "Écrire une fonction fléchée",
+            "Connaître this",
+            "Choisir la forme adaptée"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une fonction fléchée s'écrit (a, b) => expression. Elle ne crée pas son propre this, ce qui la rend pratique dans les callbacks."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const doubler = (n) => n * 2;\nconst total = notes.reduce((somme, n) => somme + n, 0);",
+              "title": "Fléchées"
+            },
+            {
+              "type": "warning",
+              "text": "Une fléchée ne doit pas servir de méthode d'objet quand this est attendu : utilisez une méthode classique."
+            }
+          ],
+          "exercise": {
+            "title": "Réécrire",
+            "instructions": "Transformez function doubler(n) { return n * 2 } en fléchée.",
+            "hints": [
+              "Une expression."
+            ],
+            "solution": "const doubler = (n) => n * 2;",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "=>"
+              ],
+              "success": "Correct : fonction fléchée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que ne crée pas une fléchée ?",
+              "options": [
+                "Son propre this",
+                "De paramètres",
+                "De return",
+                "De variables"
+              ],
+              "answer": 0,
+              "explanation": "Elle capture this du contexte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-03-q1"
+            },
+            {
+              "question": "Quand éviter une fléchée ?",
+              "options": [
+                "Comme méthode utilisant this",
+                "Dans un callback",
+                "Dans reduce",
+                "Dans map"
+              ],
+              "answer": 0,
+              "explanation": "this serait celui du contexte externe.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-03-q2"
+            }
+          ],
+          "summary": [
+            "Fléchée pour les callbacks.",
+            "Pas de this propre.",
+            "Méthodes : forme classique."
+          ],
+          "nextStep": "Chapitre suivant : « Tableaux »."
+        },
+        {
+          "id": "jsb-04",
+          "title": "Tableaux",
+          "duration": 20,
+          "objectives": [
+            "Créer un tableau",
+            "Accéder par indice",
+            "Ajouter et retirer"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau est une liste ordonnée, indexée à partir de 0, avec length et des méthodes comme push, pop, shift, unshift."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const langues = [\"HTML\", \"CSS\"];\nlangues.push(\"JS\");\nconsole.log(langues[0]); // HTML\nconsole.log(langues.length); // 3",
+              "title": "Tableau"
+            },
+            {
+              "type": "warning",
+              "text": "Un accès hors bornes renvoie undefined sans erreur : vérifiez la longueur avant un accès calculé."
+            }
+          ],
+          "exercise": {
+            "title": "Ajouter",
+            "instructions": "Ajoutez « JS » à la fin du tableau langues.",
+            "hints": [
+              "Une méthode dédiée."
+            ],
+            "solution": "langues.push(\"JS\");",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "push"
+              ],
+              "success": "Correct : push."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quel est l'indice du premier élément ?",
+              "options": [
+                "0",
+                "1",
+                "-1",
+                "length"
+              ],
+              "answer": 0,
+              "explanation": "Les indices commencent à 0.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-04-q1"
+            },
+            {
+              "question": "Que fait length ?",
+              "options": [
+                "Il donne le nombre d'éléments",
+                "Il trie",
+                "Il ajoute",
+                "Il supprime"
+              ],
+              "answer": 0,
+              "explanation": "C'est la taille du tableau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-04-q2"
+            }
+          ],
+          "summary": [
+            "Indices à partir de 0.",
+            "push/pop à la fin.",
+            "length pour la taille."
+          ],
+          "nextStep": "Chapitre suivant : « Objets »."
+        },
+        {
+          "id": "jsb-05",
+          "title": "Objets",
+          "duration": 20,
+          "objectives": [
+            "Créer un objet",
+            "Lire et écrire une propriété",
+            "Parcourir les clés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un objet associe des clés à des valeurs. On accède avec point ou crochets ; Object.keys, Object.values et Object.entries facilitent le parcours."
+            },
+            {
+              "type": "code",
+              "lang": "js",
+              "code": "const personne = { nom: \"Ada\", age: 36 };\nconsole.log(personne.nom);\npersonne.age = 37;\nfor (const [cle, valeur] of Object.entries(personne)) {\n  console.log(cle, valeur);\n}",
+              "title": "Objet"
+            },
+            {
+              "type": "tip",
+              "text": "Utilisez les crochets pour une clé dynamique : objet[cle], surtout pas objet.cle."
+            }
+          ],
+          "exercise": {
+            "title": "Lire une propriété",
+            "instructions": "Comment lire la propriété nom de personne ?",
+            "hints": [
+              "Deux syntaxes possibles."
+            ],
+            "solution": "personne.nom ou personne[\"nom\"]",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "personne.nom",
+                "[\"nom\"]"
+              ],
+              "success": "Correct : point ou crochets."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait Object.keys ?",
+              "options": [
+                "Il liste les clés",
+                "Il liste les valeurs",
+                "Il copie",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "Les noms des propriétés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-05-q1"
+            },
+            {
+              "question": "Comment accéder à une clé dynamique ?",
+              "options": [
+                "objet[cle]",
+                "objet.cle",
+                "objet->cle",
+                "cle(objet)"
+              ],
+              "answer": 0,
+              "explanation": "Les crochets évaluent la variable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "jsb-05-q2"
+            }
+          ],
+          "summary": [
+            "Objet = clés → valeurs.",
+            "Point ou crochets.",
+            "Object.entries pour parcourir."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

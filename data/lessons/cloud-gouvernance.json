@@ -1,0 +1,399 @@
+{
+  "courseId": "cloud-gouvernance",
+  "modules": [
+    {
+      "id": "cloud-gouvernance-module",
+      "title": "Gouvernance cloud",
+      "chapters": [
+        {
+          "id": "clg-01",
+          "title": "Identités fédérées",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la fédération",
+            "Configurer",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La fédération relie l'annuaire de l'entreprise au cloud via SAML/OIDC."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SAML/OIDC.",
+                "SSO.",
+                "MFA."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que permet le SSO ?",
+            "hints": [
+              "Une connexion unique."
+            ],
+            "solution": "Une connexion unique entre services.",
+            "check": {
+              "type": "any",
+              "any": [
+                "unique"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faut-il conserver ?",
+              "options": [
+                "MFA",
+                "Le mot de passe partagé",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La sécurité reste forte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-01-q1"
+            },
+            {
+              "question": "Que mapper ?",
+              "options": [
+                "Identités et rôles",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les droits suivent l'annuaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-01-q2"
+            }
+          ],
+          "summary": [
+            "Fédération.",
+            "SSO.",
+            "MFA."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité et conformité cloud »."
+        },
+        {
+          "id": "clg-02",
+          "title": "Sécurité et conformité cloud",
+          "duration": 20,
+          "objectives": [
+            "Identifier les exigences",
+            "Vérifier",
+            "Documenter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La conformité cloud vérifie les exigences légales et référentiels."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Données.",
+                "Résidence.",
+                "Audits."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier sur les données ?",
+            "hints": [
+              "Leur localisation."
+            ],
+            "solution": "La localisation et la classification des données.",
+            "check": {
+              "type": "any",
+              "any": [
+                "localisation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documenter ?",
+              "options": [
+                "Les contrôles",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La conformité est prouvée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-02-q1"
+            },
+            {
+              "question": "Que vérifier ?",
+              "options": [
+                "Les accès",
+                "Le thème",
+                "Le logo",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont limités.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-02-q2"
+            }
+          ],
+          "summary": [
+            "Exigences.",
+            "Localisation.",
+            "Preuves."
+          ],
+          "nextStep": "Chapitre suivant : « Optimisation des coûts »."
+        },
+        {
+          "id": "clg-03",
+          "title": "Optimisation des coûts",
+          "duration": 20,
+          "objectives": [
+            "Mesurer",
+            "Choisir les offres",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'optimisation ajuste tailles, réservations et stockage au besoin réel."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Dimensionnement.",
+                "Réservations.",
+                "Archivage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire des données froides ?",
+            "hints": [
+              "Les archiver."
+            ],
+            "solution": "Les archiver dans un stockage moins coûteux.",
+            "check": {
+              "type": "any",
+              "any": [
+                "archiv"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que mesurer ?",
+              "options": [
+                "La consommation réelle",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le gaspillage apparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-03-q1"
+            },
+            {
+              "question": "Que faire des réservations ?",
+              "options": [
+                "Pour les charges stables",
+                "Toujours",
+                "Jamais",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-03-q2"
+            }
+          ],
+          "summary": [
+            "Dimensionnement.",
+            "Archivage.",
+            "Réservations."
+          ],
+          "nextStep": "Chapitre suivant : « Observabilité cloud »."
+        },
+        {
+          "id": "clg-04",
+          "title": "Observabilité cloud",
+          "duration": 20,
+          "objectives": [
+            "Collecter",
+            "Corréler",
+            "Alerter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'observabilité combine métriques, journaux et traces."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Métriques.",
+                "Logs.",
+                "Traces."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que relient les traces ?",
+            "hints": [
+              "Les étapes d'une requête."
+            ],
+            "solution": "Les étapes d'une requête entre services.",
+            "check": {
+              "type": "any",
+              "any": [
+                "etapes",
+                "étapes",
+                "requete",
+                "requête"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que surveiller ?",
+              "options": [
+                "Erreurs et latence",
+                "Le logo",
+                "Le thème",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'expérience compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-04-q1"
+            },
+            {
+              "question": "Que faire des alertes ?",
+              "options": [
+                "Les rendre actionnables",
+                "Les multiplier",
+                "Les cacher",
+                "Les ignorer"
+              ],
+              "answer": 0,
+              "explanation": "Elles déclenchent une action.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-04-q2"
+            }
+          ],
+          "summary": [
+            "Métriques/logs/traces.",
+            "Corrélation.",
+            "Alertes."
+          ],
+          "nextStep": "Chapitre suivant : « Disaster recovery »."
+        },
+        {
+          "id": "clg-05",
+          "title": "Disaster recovery",
+          "duration": 20,
+          "objectives": [
+            "Planifier",
+            "Tester",
+            "Réviser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le plan de reprise définit scénarios, priorités, RTO/RPO et procédures."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Scénarios.",
+                "RTO/RPO.",
+                "Exercices."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire régulièrement ?",
+            "hints": [
+              "Tester le plan."
+            ],
+            "solution": "Tester le plan de reprise.",
+            "check": {
+              "type": "any",
+              "any": [
+                "tester"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que définir ?",
+              "options": [
+                "Les priorités",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les services critiques reviennent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-05-q1"
+            },
+            {
+              "question": "Que faire après un test ?",
+              "options": [
+                "Réviser le plan",
+                "Rien",
+                "Publier",
+                "Supprimer"
+              ],
+              "answer": 0,
+              "explanation": "Le plan s'améliore.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "clg-05-q2"
+            }
+          ],
+          "summary": [
+            "Scénarios.",
+            "Tests.",
+            "Révision."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,409 @@
+{
+  "courseId": "css-composants",
+  "modules": [
+    {
+      "id": "css-composants-module",
+      "title": "Composants d'interface",
+      "chapters": [
+        {
+          "id": "cssc-01",
+          "title": "Créer des formulaires modernes",
+          "duration": 20,
+          "objectives": [
+            "Espacer les champs",
+            "Afficher les erreurs",
+            "Garder l'accessibilité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un formulaire lisible espace les champs, associe les labels et affiche les erreurs près du champ concerné."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".champ { display: grid; gap: 6px; margin-bottom: 16px; }\n.champ input { padding: 10px; border: 1px solid #c3cbd3; }\n.erreur { color: #a33b2f; }",
+              "title": "Champ et erreur"
+            },
+            {
+              "type": "warning",
+              "text": "Une erreur signalée uniquement par la couleur n'est pas accessible : ajoutez un texte explicite lié au champ."
+            }
+          ],
+          "exercise": {
+            "title": "Afficher une erreur",
+            "instructions": "Comment relier une erreur à son champ ?",
+            "hints": [
+              "Un identifiant commun."
+            ],
+            "solution": "aria-describedby sur le champ, pointant vers le texte d'erreur, avec un message explicite.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "aria-describedby"
+              ],
+              "success": "Correct : aria-describedby."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi un message d'erreur textuel ?",
+              "options": [
+                "La couleur seule n'est pas accessible",
+                "Pour décorer",
+                "Pour accélérer",
+                "Pour éviter les labels"
+              ],
+              "answer": 0,
+              "explanation": "Le texte est lisible par tous.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-01-q1"
+            },
+            {
+              "question": "Où placer l'erreur ?",
+              "options": [
+                "Près du champ concerné",
+                "En bas de page",
+                "Dans le titre",
+                "Dans un commentaire"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte reste clair.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-01-q2"
+            }
+          ],
+          "summary": [
+            "Champs espacés et labels.",
+            "Erreur textuelle liée.",
+            "Pas de couleur seule."
+          ],
+          "nextStep": "Chapitre suivant : « Créer un tableau de bord »."
+        },
+        {
+          "id": "cssc-02",
+          "title": "Créer un tableau de bord",
+          "duration": 20,
+          "objectives": [
+            "Utiliser grid-template-areas",
+            "Gérer la barre latérale",
+            "Adapter sur mobile"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un tableau de bord se décrit en zones nommées : en-tête, navigation, contenu, compléments. Grid les place, puis une media query replie la barre latérale."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".bord {\n  display: grid;\n  grid-template-columns: 220px 1fr;\n  grid-template-areas: \"nav main\";\n  gap: 16px;\n}\n@media (max-width: 860px) {\n  .bord { grid-template-columns: 1fr; grid-template-areas: \"main\"; }\n}",
+              "title": "Tableau de bord"
+            },
+            {
+              "type": "tip",
+              "text": "Sur petit écran, la navigation devient une rangée ou un menu : ne gardez pas une barre latérale étroite et illisible."
+            }
+          ],
+          "exercise": {
+            "title": "Nommer des zones",
+            "instructions": "Quelle propriété nomme les zones d'une grille ?",
+            "hints": [
+              "Les zones du modèle."
+            ],
+            "solution": "grid-template-areas",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "grid-template-areas"
+              ],
+              "success": "Correct : grid-template-areas."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Comment replier une grille sur mobile ?",
+              "options": [
+                "Avec une media query",
+                "En supprimant le HTML",
+                "Avec !important",
+                "Avec un cookie"
+              ],
+              "answer": 0,
+              "explanation": "La media query change le modèle.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-02-q1"
+            },
+            {
+              "question": "À quoi servent les zones nommées ?",
+              "options": [
+                "À décrire la mise en page lisiblement",
+                "À animer",
+                "À chiffrer",
+                "À compresser"
+              ],
+              "answer": 0,
+              "explanation": "Le CSS reflète la structure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-02-q2"
+            }
+          ],
+          "summary": [
+            "Zones nommées.",
+            "Barre latérale repliée.",
+            "Media query pour mobile."
+          ],
+          "nextStep": "Chapitre suivant : « Créer des menus déroulants »."
+        },
+        {
+          "id": "cssc-03",
+          "title": "Créer des menus déroulants",
+          "duration": 20,
+          "objectives": [
+            "Utiliser details/summary",
+            "Styler un menu natif",
+            "Gérer le clavier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un menu déroulant simple peut reposer sur details/summary : natif, accessible au clavier, sans JavaScript."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<details class=\"menu\">\n  <summary>Langages</summary>\n  <ul><li><a href=\"#\">Python</a></li><li><a href=\"#\">Go</a></li></ul>\n</details>",
+              "title": "Menu natif"
+            },
+            {
+              "type": "warning",
+              "text": "Un menu construit avec des div et des événements souris seulement exclut le clavier : préférez les éléments natifs ou gérez focus et Échap."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'élément",
+            "instructions": "Quel couple d'éléments crée un déroulant natif ?",
+            "hints": [
+              "Un résumé et un contenu."
+            ],
+            "solution": "details et summary.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "details",
+                "summary"
+              ],
+              "success": "Correct : details et summary."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait summary ?",
+              "options": [
+                "Il affiche le titre cliquable",
+                "Il crée un lien",
+                "Il anime",
+                "Il charge un script"
+              ],
+              "answer": 0,
+              "explanation": "Il ouvre et ferme le détail.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-03-q1"
+            },
+            {
+              "question": "Le déroulant natif fonctionne-t-il au clavier ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Seulement avec JS",
+                "Seulement sur mobile"
+              ],
+              "answer": 0,
+              "explanation": "Le navigateur gère le focus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-03-q2"
+            }
+          ],
+          "summary": [
+            "details/summary natif.",
+            "Clavier géré.",
+            "Pas de div cliquable seul."
+          ],
+          "nextStep": "Chapitre suivant : « Créer des fenêtres modales »."
+        },
+        {
+          "id": "cssc-04",
+          "title": "Créer des fenêtres modales",
+          "duration": 20,
+          "objectives": [
+            "Utiliser dialog",
+            "Styler le fond",
+            "Gérer le focus"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "L'élément dialog affiche une modale native avec piégeage du focus et fermeture par Échap. ::backdrop stylise le fond."
+            },
+            {
+              "type": "code",
+              "lang": "html",
+              "code": "<dialog id=\"confirmation\">\n  <h2>Confirmer</h2>\n  <p>Cette action est définitive.</p>\n  <form method=\"dialog\"><button>Fermer</button></form>\n</dialog>",
+              "title": "Modale native"
+            },
+            {
+              "type": "warning",
+              "text": "Une modale doit avoir un titre et un moyen de fermeture visible : ne piégez pas l'utilisateur sans issue."
+            }
+          ],
+          "exercise": {
+            "title": "Styler le fond",
+            "instructions": "Quel pseudo-élément style l'arrière-plan d'une dialog ?",
+            "hints": [
+              "Il est derrière la boîte."
+            ],
+            "solution": "::backdrop",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "::backdrop",
+                "backdrop"
+              ],
+              "success": "Correct : ::backdrop."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait dialog ?",
+              "options": [
+                "Il affiche une modale native",
+                "Il crée une grille",
+                "Il anime",
+                "Il charge une image"
+              ],
+              "answer": 0,
+              "explanation": "Le focus et Échap sont gérés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-04-q1"
+            },
+            {
+              "question": "Comment fermer une dialog avec un bouton ?",
+              "options": [
+                "Un form method=\"dialog\"",
+                "Un lien externe",
+                "Un cookie",
+                "Un script réseau"
+              ],
+              "answer": 0,
+              "explanation": "Le formulaire ferme la boîte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-04-q2"
+            }
+          ],
+          "summary": [
+            "dialog natif.",
+            "::backdrop pour le fond.",
+            "Titre et fermeture visibles."
+          ],
+          "nextStep": "Chapitre suivant : « Créer des mises en page complexes »."
+        },
+        {
+          "id": "cssc-05",
+          "title": "Créer des mises en page complexes",
+          "duration": 20,
+          "objectives": [
+            "Combiner grid et flex",
+            "Utiliser les zones nommées",
+            "Prévoir le repli"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une page complexe combine Grid pour la structure et Flexbox pour les composants internes. Les zones nommées rendent le CSS lisible."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".page {\n  display: grid;\n  grid-template-areas:\n    \"header header\"\n    \"nav main\"\n    \"footer footer\";\n  grid-template-columns: 220px 1fr;\n}\nheader { grid-area: header; }\nmain { grid-area: main; }\nbody { margin: 0; }",
+              "title": "Structure complète"
+            },
+            {
+              "type": "warning",
+              "text": "Empiler des positions absolues pour la structure rend la page fragile : réservez absolute aux superpositions."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir l'outil",
+            "instructions": "Grid ou Flexbox pour la structure générale de la page ?",
+            "hints": [
+              "Deux dimensions."
+            ],
+            "solution": "Grid pour la structure, Flexbox pour les composants internes.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "grid",
+                "flex"
+              ],
+              "success": "Correct : Grid pour la structure, Flexbox pour les composants."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait grid-area ?",
+              "options": [
+                "Il place un élément dans une zone nommée",
+                "Il anime",
+                "Il crée un lien",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Le nom relie l'élément à la zone.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-05-q1"
+            },
+            {
+              "question": "Pourquoi éviter absolute pour la structure ?",
+              "options": [
+                "La mise en page devient fragile",
+                "C'est interdit",
+                "Cela supprime le CSS",
+                "Cela bloque le clavier"
+              ],
+              "answer": 0,
+              "explanation": "Les superpositions ne suivent pas le flux.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssc-05-q2"
+            }
+          ],
+          "summary": [
+            "Grid pour la structure.",
+            "Flexbox pour les composants.",
+            "Absolute pour les superpositions."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

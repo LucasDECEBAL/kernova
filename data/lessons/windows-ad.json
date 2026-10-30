@@ -1,0 +1,400 @@
+{
+  "courseId": "windows-ad",
+  "modules": [
+    {
+      "id": "windows-ad-module",
+      "title": "Active Directory",
+      "chapters": [
+        {
+          "id": "wad-01",
+          "title": "Active Directory Domain Services",
+          "duration": 20,
+          "objectives": [
+            "Comprendre AD DS",
+            "Identifier ses rôles",
+            "Situer le contrôleur de domaine"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "AD DS centralise comptes, groupes et stratégies ; un contrôleur de domaine héberge l'annuaire."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Domaine et forêt.",
+                "Contrôleur de domaine.",
+                "Réplication entre contrôleurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Situer",
+            "instructions": "Où sont stockés les comptes du domaine ?",
+            "hints": [
+              "Dans l'annuaire."
+            ],
+            "solution": "Dans l'annuaire Active Directory, hébergé par les contrôleurs de domaine.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "annuaire"
+              ],
+              "success": "Correct : l'annuaire."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un contrôleur de domaine ?",
+              "options": [
+                "Un serveur hébergeant l'annuaire",
+                "Un poste client",
+                "Un routeur",
+                "Un pare-feu"
+              ],
+              "answer": 0,
+              "explanation": "Il authentifie les utilisateurs.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-01-q1"
+            },
+            {
+              "question": "Que fait AD DS ?",
+              "options": [
+                "Il centralise identités et stratégies",
+                "Il route",
+                "Il chiffre le disque",
+                "Il affiche"
+              ],
+              "answer": 0,
+              "explanation": "L'annuaire est central.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-01-q2"
+            }
+          ],
+          "summary": [
+            "AD DS central.",
+            "Contrôleur de domaine.",
+            "Réplication."
+          ],
+          "nextStep": "Chapitre suivant : « Domaines et forêts »."
+        },
+        {
+          "id": "wad-02",
+          "title": "Domaines et forêts",
+          "duration": 20,
+          "objectives": [
+            "Comprendre domaine et forêt",
+            "Choisir une structure",
+            "Éviter la complexité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un domaine partage un annuaire et des stratégies ; une forêt regroupe des domaines liés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un domaine suffit souvent.",
+                "Les forêts multiples compliquent.",
+                "Le nommage doit être stable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Une PME a-t-elle besoin de plusieurs forêts ?",
+            "hints": [
+              "Souvent non."
+            ],
+            "solution": "Non : un domaine unique suffit généralement à une PME.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non"
+              ],
+              "success": "Correct : non."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que regroupe une forêt ?",
+              "options": [
+                "Des domaines liés",
+                "Des postes uniquement",
+                "Des routeurs",
+                "Des CSS"
+              ],
+              "answer": 0,
+              "explanation": "La forêt est le conteneur le plus large.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-02-q1"
+            },
+            {
+              "question": "Quand multiplier les domaines ?",
+              "options": [
+                "Quand l'organisation l'exige",
+                "Toujours",
+                "Au hasard",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "La complexité doit être justifiée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-02-q2"
+            }
+          ],
+          "summary": [
+            "Domaine/forêt.",
+            "Un seul domaine souvent.",
+            "Nommage stable."
+          ],
+          "nextStep": "Chapitre suivant : « Utilisateurs et groupes »."
+        },
+        {
+          "id": "wad-03",
+          "title": "Utilisateurs et groupes",
+          "duration": 20,
+          "objectives": [
+            "Créer un utilisateur",
+            "Choisir le type de groupe",
+            "Appliquer le moindre privilège"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les groupes globaux contiennent les comptes ; les groupes de domaine local portent les permissions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "GG pour les comptes.",
+                "DL pour les droits.",
+                "Moindre privilège."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Quel groupe contient les comptes utilisateurs ?",
+            "hints": [
+              "Un groupe global."
+            ],
+            "solution": "Un groupe global (Global Group).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "global"
+              ],
+              "success": "Correct : groupe global."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que porte les permissions ?",
+              "options": [
+                "Un groupe de domaine local",
+                "Un groupe global",
+                "Un utilisateur seul",
+                "Un poste"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont attribués.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-03-q1"
+            },
+            {
+              "question": "Pourquoi le moindre privilège ?",
+              "options": [
+                "Limiter les dégâts",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Le risque diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-03-q2"
+            }
+          ],
+          "summary": [
+            "Comptes dans GG.",
+            "Droits via DL.",
+            "Moindre privilège."
+          ],
+          "nextStep": "Chapitre suivant : « Unités organisationnelles »."
+        },
+        {
+          "id": "wad-04",
+          "title": "Unités organisationnelles",
+          "duration": 20,
+          "objectives": [
+            "Organiser les objets",
+            "Déléguer",
+            "Éviter la profondeur inutile"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les OU organisent et délèguent ; les GPO s'y lient."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Structure par fonction.",
+                "Délégation explicite.",
+                "Pas plus de niveaux que nécessaire."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Organiser",
+            "instructions": "À quoi sert une OU ?",
+            "hints": [
+              "Organiser et déléguer."
+            ],
+            "solution": "À organiser les objets et permettre des délégations et des GPO ciblées.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "organis",
+                "délégu",
+                "delegu"
+              ],
+              "success": "Correct : organiser/déléguer."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que peut-on y lier ?",
+              "options": [
+                "Des GPO",
+                "Des routeurs",
+                "Des CSS",
+                "Des disques"
+              ],
+              "answer": 0,
+              "explanation": "Les stratégies ciblent des OU.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-04-q1"
+            },
+            {
+              "question": "Pourquoi limiter la profondeur ?",
+              "options": [
+                "Simplifier l'administration",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La structure reste lisible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-04-q2"
+            }
+          ],
+          "summary": [
+            "OU = organisation.",
+            "Délégation.",
+            "Liens GPO."
+          ],
+          "nextStep": "Chapitre suivant : « Stratégies de groupe »."
+        },
+        {
+          "id": "wad-05",
+          "title": "Stratégies de groupe",
+          "duration": 20,
+          "objectives": [
+            "Créer une GPO",
+            "Comprendre l'ordre LSDOU",
+            "Tester avant généralisation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les GPO appliquent des configurations ; l'ordre Local, Site, Domaine, OU détermine la priorité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "LSDOU.",
+                "Filtrer par groupe.",
+                "Tester sur une OU pilote."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que signifie l'ordre LSDOU ?",
+            "hints": [
+              "Local, Site, Domaine, OU."
+            ],
+            "solution": "Local, Site, Domaine, OU (la dernière appliquée gagne en cas de conflit).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "local",
+                "domaine",
+                "ou"
+              ],
+              "success": "Correct : LSDOU."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où lier une GPO de mot de passe ?",
+              "options": [
+                "Au domaine",
+                "À une OU",
+                "À un poste",
+                "À un routeur"
+              ],
+              "answer": 0,
+              "explanation": "La politique de domaine est globale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-05-q1"
+            },
+            {
+              "question": "Pourquoi tester ?",
+              "options": [
+                "Éviter de casser la production",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "Une OU pilote limite l'impact.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "wad-05-q2"
+            }
+          ],
+          "summary": [
+            "GPO ciblées.",
+            "LSDOU.",
+            "Tester."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

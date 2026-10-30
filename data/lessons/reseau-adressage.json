@@ -1,0 +1,397 @@
+{
+  "courseId": "reseau-adressage",
+  "modules": [
+    {
+      "id": "reseau-adressage-module",
+      "title": "Adressage IP",
+      "chapters": [
+        {
+          "id": "rad-01",
+          "title": "Adresses MAC",
+          "duration": 20,
+          "objectives": [
+            "Lire une MAC",
+            "Comprendre son rôle",
+            "Éviter la confusion avec IP"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une MAC est une adresse physique de 48 bits, locale au segment."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Six octets hexadécimaux.",
+                "Locale au réseau.",
+                "Ne traverse pas les routeurs."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Distinguer",
+            "instructions": "Une MAC est-elle routable sur Internet ?",
+            "hints": [
+              "Non, elle est locale."
+            ],
+            "solution": "Non : la MAC reste sur le segment local.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "non"
+              ],
+              "success": "Correct : non."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Combien de bits pour une MAC ?",
+              "options": [
+                "48",
+                "32",
+                "128",
+                "64"
+              ],
+              "answer": 0,
+              "explanation": "Six octets.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-01-q1"
+            },
+            {
+              "question": "Qui utilise la MAC ?",
+              "options": [
+                "Le commutateur local",
+                "Le routeur Internet",
+                "Le DNS",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "La commutation est locale.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-01-q2"
+            }
+          ],
+          "summary": [
+            "MAC 48 bits.",
+            "Locale.",
+            "Pas routable."
+          ],
+          "nextStep": "Chapitre suivant : « Adresses IPv4 »."
+        },
+        {
+          "id": "rad-02",
+          "title": "Adresses IPv4",
+          "duration": 20,
+          "objectives": [
+            "Lire une IPv4",
+            "Comprendre les octets",
+            "Situer les classes historiques"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une IPv4 compte 32 bits, notés en quatre octets de 0 à 255."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Quatre octets.",
+                "Masque associé.",
+                "Classes historiques obsolètes."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Combien d'octets dans une IPv4 ?",
+            "hints": [
+              "Quatre."
+            ],
+            "solution": "Quatre octets (32 bits).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "4",
+                "quatre"
+              ],
+              "success": "Correct : quatre."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Quelle valeur maximale par octet ?",
+              "options": [
+                "255",
+                "256",
+                "128",
+                "1024"
+              ],
+              "answer": 0,
+              "explanation": "Un octet va de 0 à 255.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-02-q1"
+            },
+            {
+              "question": "Que faut-il avec une IP ?",
+              "options": [
+                "Un masque",
+                "Un CSS",
+                "Un DNS",
+                "Un cookie"
+              ],
+              "answer": 0,
+              "explanation": "Le masque sépare réseau et hôte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-02-q2"
+            }
+          ],
+          "summary": [
+            "IPv4 32 bits.",
+            "Quatre octets.",
+            "Masque."
+          ],
+          "nextStep": "Chapitre suivant : « Adresses IPv6 »."
+        },
+        {
+          "id": "rad-03",
+          "title": "Adresses IPv6",
+          "duration": 20,
+          "objectives": [
+            "Lire une IPv6",
+            "Comprendre la taille",
+            "Reconnaître la notation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IPv6 utilise 128 bits, notés en groupes hexadécimaux séparés par deux-points."
+            },
+            {
+              "type": "list",
+              "items": [
+                "128 bits.",
+                "Groupes hexa.",
+                ":: compresse les zéros."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Combien de bits pour IPv6 ?",
+            "hints": [
+              "128."
+            ],
+            "solution": "128 bits",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "128"
+              ],
+              "success": "Correct : 128."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait :: ?",
+              "options": [
+                "Il compresse les zéros",
+                "Il sépare",
+                "Il chiffre",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La notation est abrégée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-03-q1"
+            },
+            {
+              "question": "IPv6 remplace-t-il IPv4 ?",
+              "options": [
+                "Progressivement",
+                "Immédiatement",
+                "Jamais",
+                "Seulement en LAN"
+              ],
+              "answer": 0,
+              "explanation": "Les deux coexistent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-03-q2"
+            }
+          ],
+          "summary": [
+            "IPv6 128 bits.",
+            "Hexadécimal.",
+            "Compression ::."
+          ],
+          "nextStep": "Chapitre suivant : « Masques de sous-réseau »."
+        },
+        {
+          "id": "rad-04",
+          "title": "Masques de sous-réseau",
+          "duration": 20,
+          "objectives": [
+            "Lire un masque",
+            "Séparer réseau et hôte",
+            "Comprendre /24"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le masque indique les bits réseau ; /24 correspond à 255.255.255.0."
+            },
+            {
+              "type": "list",
+              "items": [
+                "/24 = 255.255.255.0.",
+                "Bits réseau.",
+                "Bits hôte."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Lire",
+            "instructions": "Que vaut /24 en notation décimale ?",
+            "hints": [
+              "Trois octets pleins."
+            ],
+            "solution": "255.255.255.0",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "255.255.255.0"
+              ],
+              "success": "Correct : 255.255.255.0."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sépare le masque ?",
+              "options": [
+                "Réseau et hôte",
+                "Deux VLAN",
+                "Deux DNS",
+                "Deux CSS"
+              ],
+              "answer": 0,
+              "explanation": "La frontière est définie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-04-q1"
+            },
+            {
+              "question": "Que signifie /26 ?",
+              "options": [
+                "26 bits réseau",
+                "26 hôtes",
+                "26 routeurs",
+                "26 VLAN"
+              ],
+              "answer": 0,
+              "explanation": "Le préfixe compte les bits.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-04-q2"
+            }
+          ],
+          "summary": [
+            "Masque = préfixe.",
+            "/24.",
+            "Réseau/hôte."
+          ],
+          "nextStep": "Chapitre suivant : « CIDR »."
+        },
+        {
+          "id": "rad-05",
+          "title": "CIDR",
+          "duration": 20,
+          "objectives": [
+            "Écrire un préfixe",
+            "Calculer une plage",
+            "Éviter les erreurs de frontière"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "CIDR note le préfixe après une barre : 192.168.1.0/24."
+            },
+            {
+              "type": "list",
+              "items": [
+                "/n = n bits réseau.",
+                "Plage = 2^(32-n).",
+                "Attention aux adresses réseau/diffusion."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Calculer",
+            "instructions": "Combien d'adresses dans un /26 ?",
+            "hints": [
+              "2^6."
+            ],
+            "solution": "64 adresses (dont 62 hôtes utilisables).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "64"
+              ],
+              "success": "Correct : 64."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que note le /n ?",
+              "options": [
+                "Les bits réseau",
+                "Les hôtes",
+                "Les VLAN",
+                "Les ports"
+              ],
+              "answer": 0,
+              "explanation": "Le préfixe est réseau.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-05-q1"
+            },
+            {
+              "question": "Que retirer du total ?",
+              "options": [
+                "Adresse réseau et diffusion",
+                "Rien",
+                "Les DNS",
+                "Les routeurs"
+              ],
+              "answer": 0,
+              "explanation": "Deux adresses sont réservées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rad-05-q2"
+            }
+          ],
+          "summary": [
+            "CIDR /n.",
+            "2^(32-n).",
+            "Retirer réseau/diffusion."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "courseId": "windows-entra",
+  "modules": [
+    {
+      "id": "windows-entra-module",
+      "title": "Identités Microsoft",
+      "chapters": [
+        {
+          "id": "went-01",
+          "title": "Microsoft Entra ID",
+          "duration": 20,
+          "objectives": [
+            "Comprendre Entra",
+            "Situer ses usages",
+            "Différencier du client"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Entra ID est l'annuaire cloud de Microsoft : identités, applications, accès conditionnel."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Cloud.",
+                "Authentification.",
+                "Applications SaaS."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Situer",
+            "instructions": "Où vit Entra ID ?",
+            "hints": [
+              "Dans le cloud Microsoft."
+            ],
+            "solution": "Dans le cloud Microsoft (service d'identité).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cloud"
+              ],
+              "success": "Correct : cloud."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que gère Entra ID ?",
+              "options": [
+                "Identités et accès",
+                "Le CSS",
+                "Le DNS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Les accès sont centralisés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-01-q1"
+            },
+            {
+              "question": "Que fait l'accès conditionnel ?",
+              "options": [
+                "Il applique des règles",
+                "Il trie",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "Le contexte est évalué.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-01-q2"
+            }
+          ],
+          "summary": [
+            "Entra = cloud.",
+            "Identités/applications.",
+            "Accès conditionnel."
+          ],
+          "nextStep": "Chapitre suivant : « Différences Active Directory et Entra ID »."
+        },
+        {
+          "id": "went-02",
+          "title": "Différences Active Directory et Entra ID",
+          "duration": 20,
+          "objectives": [
+            "Comparer les deux",
+            "Choisir selon le contexte",
+            "Comprendre la synchronisation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "AD DS est local et historique ; Entra ID est cloud et orienté applications. La synchronisation relie les deux."
+            },
+            {
+              "type": "list",
+              "items": [
+                "AD DS local.",
+                "Entra cloud.",
+                "Sync/connecteur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comparer",
+            "instructions": "Quel annuaire est local ?",
+            "hints": [
+              "AD DS."
+            ],
+            "solution": "Active Directory Domain Services (local).",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "ad ds",
+                "local"
+              ],
+              "success": "Correct : AD DS."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Lequel est cloud ?",
+              "options": [
+                "Entra ID",
+                "AD DS",
+                "Les deux",
+                "Aucun"
+              ],
+              "answer": 0,
+              "explanation": "Entra est le service cloud.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-02-q1"
+            },
+            {
+              "question": "Que fait la synchronisation ?",
+              "options": [
+                "Elle relie les identités",
+                "Elle chiffre",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Les comptes sont alignés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-02-q2"
+            }
+          ],
+          "summary": [
+            "AD local, Entra cloud.",
+            "Synchronisation.",
+            "Usages différents."
+          ],
+          "nextStep": "Chapitre suivant : « Notions de Microsoft 365 »."
+        },
+        {
+          "id": "went-03",
+          "title": "Notions de Microsoft 365",
+          "duration": 20,
+          "objectives": [
+            "Situer M365",
+            "Comprendre les licences",
+            "Gérer les accès"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Microsoft 365 regroupe des services (messagerie, fichiers, collaboration) liés à des identités Entra."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Licences par utilisateur.",
+                "Groupes et accès.",
+                "Administration déléguée."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que pilote l'attribution d'une licence ?",
+            "hints": [
+              "L'accès aux services."
+            ],
+            "solution": "La licence détermine les services accessibles à l'utilisateur.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "licence"
+              ],
+              "success": "Correct : licence."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qui porte les identités ?",
+              "options": [
+                "Entra ID",
+                "Le routeur",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les services s'y rattachent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-03-q1"
+            },
+            {
+              "question": "Pourquoi déléguer ?",
+              "options": [
+                "Limiter les droits admin",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège s'applique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-03-q2"
+            }
+          ],
+          "summary": [
+            "M365 = services.",
+            "Licences.",
+            "Délégation."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des identités »."
+        },
+        {
+          "id": "went-04",
+          "title": "Gestion des identités",
+          "duration": 20,
+          "objectives": [
+            "Créer un utilisateur",
+            "Gérer les groupes",
+            "Automatiser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les identités se créent manuellement ou par synchronisation ; les groupes simplifient l'accès."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Groupes de sécurité.",
+                "Cycle de vie.",
+                "Attribution par groupe."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Gérer",
+            "instructions": "Comment accorder un accès à plusieurs personnes ?",
+            "hints": [
+              "Par un groupe."
+            ],
+            "solution": "Ajouter les utilisateurs à un groupe de sécurité et accorder l'accès au groupe.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "groupe"
+              ],
+              "success": "Correct : groupe."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un groupe de sécurité ?",
+              "options": [
+                "Il porte les accès",
+                "Il trie",
+                "Il chiffre",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'attribution est collective.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-04-q1"
+            },
+            {
+              "question": "Que gérer au départ ?",
+              "options": [
+                "Le cycle de vie",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Arrivée et départ comptent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-04-q2"
+            }
+          ],
+          "summary": [
+            "Identités via groupes.",
+            "Cycle de vie.",
+            "Automatisation."
+          ],
+          "nextStep": "Chapitre suivant : « Authentification multifacteur »."
+        },
+        {
+          "id": "went-05",
+          "title": "Authentification multifacteur",
+          "duration": 20,
+          "objectives": [
+            "Activer MFA",
+            "Choisir les facteurs",
+            "Gérer les exceptions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "MFA combine plusieurs preuves d'identité ; elle réduit fortement le risque de vol de mot de passe."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Application ou SMS.",
+                "Éviter les exceptions durables.",
+                "Accès conditionnel."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Activer",
+            "instructions": "Que apporte MFA ?",
+            "hints": [
+              "Une preuve supplémentaire."
+            ],
+            "solution": "Une seconde preuve, qui limite l'usage d'un mot de passe volé.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "seconde",
+                "preuve",
+                "facteur"
+              ],
+              "success": "Correct : facteur supplémentaire."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que réduit MFA ?",
+              "options": [
+                "Le risque de compromission",
+                "La vitesse",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le mot de passe seul ne suffit plus.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-05-q1"
+            },
+            {
+              "question": "Pourquoi limiter les exceptions ?",
+              "options": [
+                "Éviter les comptes faibles",
+                "Pour le SEO",
+                "Pour le DNS",
+                "Pour le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les exceptions deviennent des portes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "went-05-q2"
+            }
+          ],
+          "summary": [
+            "MFA.",
+            "Facteurs.",
+            "Exceptions limitées."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,402 @@
+{
+  "courseId": "cyber-pki",
+  "modules": [
+    {
+      "id": "cyber-pki-module",
+      "title": "PKI et principes",
+      "chapters": [
+        {
+          "id": "cp-01",
+          "title": "Infrastructure à clés publiques",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la PKI",
+            "Gérer les autorités",
+            "Publier les listes"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La PKI gère les clés, certificats, autorités et révocations."
+            },
+            {
+              "type": "list",
+              "items": [
+                "CA racine.",
+                "Sous-CA.",
+                "CRL/OCSP."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que publie une PKI pour les révocations ?",
+            "hints": [
+              "Une liste de révocation."
+            ],
+            "solution": "Une CRL ou un service OCSP.",
+            "check": {
+              "type": "any",
+              "any": [
+                "crl",
+                "ocsp",
+                "revocation",
+                "révocation"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une CA racine ?",
+              "options": [
+                "Elle ancre la confiance",
+                "Elle chiffre tout",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Sa clé est protégée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-01-q1"
+            },
+            {
+              "question": "Que fait OCSP ?",
+              "options": [
+                "Il vérifie la révocation",
+                "Il chiffre",
+                "Il trie",
+                "Il monte"
+              ],
+              "answer": 0,
+              "explanation": "Le statut est en ligne.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-01-q2"
+            }
+          ],
+          "summary": [
+            "PKI.",
+            "CA.",
+            "Révocation."
+          ],
+          "nextStep": "Chapitre suivant : « TLS et HTTPS »."
+        },
+        {
+          "id": "cp-02",
+          "title": "TLS et HTTPS",
+          "duration": 20,
+          "objectives": [
+            "Comprendre la poignée de main",
+            "Vérifier le certificat",
+            "Éviter les erreurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "TLS négocie une session chiffrée et vérifie le certificat du serveur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Poignée de main.",
+                "Chiffrement.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifie le client ?",
+            "hints": [
+              "Le certificat du serveur."
+            ],
+            "solution": "La chaîne de confiance et le nom du serveur.",
+            "check": {
+              "type": "any",
+              "any": [
+                "certificat"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "HTTPS utilise-t-il TLS ?",
+              "options": [
+                "Oui",
+                "Non",
+                "Parfois",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le transport est chiffré.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-02-q1"
+            },
+            {
+              "question": "Que faire d'un certificat invalide ?",
+              "options": [
+                "Refuser la connexion",
+                "Continuer",
+                "Ignorer",
+                "Publier"
+              ],
+              "answer": 0,
+              "explanation": "Le risque est réel.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-02-q2"
+            }
+          ],
+          "summary": [
+            "TLS.",
+            "Certificat.",
+            "Refuser si invalide."
+          ],
+          "nextStep": "Chapitre suivant : « Gestion des secrets »."
+        },
+        {
+          "id": "cp-03",
+          "title": "Gestion des secrets",
+          "duration": 20,
+          "objectives": [
+            "Stocker",
+            "Faire tourner",
+            "Limiter l'accès"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les secrets vivent dans un coffre, avec rotation et droits limités."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Coffre.",
+                "Rotation.",
+                "Audit."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Où stocker un secret ?",
+            "hints": [
+              "Dans un coffre."
+            ],
+            "solution": "Dans un coffre de secrets, jamais dans le code.",
+            "check": {
+              "type": "any",
+              "any": [
+                "coffre"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire d'un secret exposé ?",
+              "options": [
+                "Le révoquer",
+                "Le renommer",
+                "Le déplacer",
+                "Le commenter"
+              ],
+              "answer": 0,
+              "explanation": "Il est compromis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-03-q1"
+            },
+            {
+              "question": "Pourquoi la rotation ?",
+              "options": [
+                "Limiter la durée d'exposition",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le secret change.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-03-q2"
+            }
+          ],
+          "summary": [
+            "Coffre.",
+            "Rotation.",
+            "Audit."
+          ],
+          "nextStep": "Chapitre suivant : « Principe du moindre privilège »."
+        },
+        {
+          "id": "cp-04",
+          "title": "Principe du moindre privilège",
+          "duration": 20,
+          "objectives": [
+            "Limiter les droits",
+            "Séparer les rôles",
+            "Réviser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Chaque compte ne reçoit que les droits nécessaires à sa tâche."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Rôles.",
+                "Séparation.",
+                "Revue régulière."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait le moindre privilège ?",
+            "hints": [
+              "Il limite les droits."
+            ],
+            "solution": "Il accorde seulement le nécessaire.",
+            "check": {
+              "type": "any",
+              "any": [
+                "necessaire",
+                "nécessaire",
+                "limite"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi séparer les rôles ?",
+              "options": [
+                "Éviter les abus",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les pouvoirs sont répartis.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-04-q1"
+            },
+            {
+              "question": "Que faire régulièrement ?",
+              "options": [
+                "Réviser les droits",
+                "Tout supprimer",
+                "Rien",
+                "Chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "Les excès sont retirés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-04-q2"
+            }
+          ],
+          "summary": [
+            "Moindre privilège.",
+            "Séparation.",
+            "Revue."
+          ],
+          "nextStep": "Chapitre suivant : « Défense en profondeur »."
+        },
+        {
+          "id": "cp-05",
+          "title": "Défense en profondeur",
+          "duration": 20,
+          "objectives": [
+            "Empiler les mesures",
+            "Ne dépendre d'aucune seule",
+            "Détecter et réagir"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La défense en profondeur combine plusieurs barrières indépendantes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Prévention.",
+                "Détection.",
+                "Réaction."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Pourquoi plusieurs mesures ?",
+            "hints": [
+              "Aucune n'est infaillible."
+            ],
+            "solution": "Parce qu'une mesure peut échouer ; les autres ralentissent ou détectent.",
+            "check": {
+              "type": "any",
+              "any": [
+                "plusieurs",
+                "profondeur"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Une seule mesure suffit-elle ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La profondeur protège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-05-q1"
+            },
+            {
+              "question": "Que fait la détection ?",
+              "options": [
+                "Elle repère l'attaque",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "La réaction suit.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cp-05-q2"
+            }
+          ],
+          "summary": [
+            "Prévention/détection/réaction.",
+            "Indépendance.",
+            "Profondeur."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

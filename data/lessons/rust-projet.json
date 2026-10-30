@@ -1,0 +1,166 @@
+{
+  "courseId": "rust-projet",
+  "modules": [
+    {
+      "id": "rust-projet-module",
+      "title": "Rust : concurrence et projet",
+      "chapters": [
+        {
+          "id": "rs3-01",
+          "title": "Concurrence",
+          "duration": 20,
+          "objectives": [
+            "Lancer un thread",
+            "Partager avec Arc/Mutex",
+            "Éviter les courses"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "std::thread lance un thread ; Arc<Mutex<T>> partage un état protégé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Les threads sont vérifiés à la compilation (Send/Sync).",
+                "Un Mutex protège l'accès.",
+                "Arc compte les références."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Partager",
+            "instructions": "Quel couple partage un état mutable entre threads ?",
+            "hints": [
+              "Comptage + verrou."
+            ],
+            "solution": "Arc<Mutex<T>>",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "arc",
+                "mutex"
+              ],
+              "success": "Correct : Arc<Mutex<T>>."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que protège Mutex ?",
+              "options": [
+                "L'accès à une donnée",
+                "Le réseau",
+                "Le CSS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Un seul accès à la fois.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs3-01-q1"
+            },
+            {
+              "question": "Que fait Arc ?",
+              "options": [
+                "Il partage la propriété",
+                "Il copie",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Comptage atomique.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs3-01-q2"
+            }
+          ],
+          "summary": [
+            "thread + Arc/Mutex.",
+            "Protection des accès.",
+            "Vérification compile."
+          ],
+          "nextStep": "Chapitre suivant : « Organisation d'un projet Rust »."
+        },
+        {
+          "id": "rs3-02",
+          "title": "Organisation d'un projet Rust",
+          "duration": 20,
+          "objectives": [
+            "Utiliser modules et crates",
+            "Déclarer dans Cargo.toml",
+            "Tester"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un projet se découpe en modules (mod) et dépendances déclarées dans Cargo.toml. cargo test exécute les tests."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Un fichier ou dossier par module.",
+                "Les dépendances sont versionnées.",
+                "Les tests vivent dans le même fichier ou tests/."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Tester",
+            "instructions": "Quelle commande lance les tests ?",
+            "hints": [
+              "Cargo."
+            ],
+            "solution": "cargo test",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cargo test"
+              ],
+              "success": "Correct : cargo test."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où déclarer une dépendance ?",
+              "options": [
+                "Cargo.toml",
+                "main.rs",
+                "lib.rs",
+                "README"
+              ],
+              "answer": 0,
+              "explanation": "Cargo gère les crates.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs3-02-q1"
+            },
+            {
+              "question": "Que fait mod ?",
+              "options": [
+                "Il déclare un module",
+                "Il importe",
+                "Il teste",
+                "Il trie"
+              ],
+              "answer": 0,
+              "explanation": "La structure est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "rs3-02-q2"
+            }
+          ],
+          "summary": [
+            "Modules + Cargo.",
+            "Dépendances versionnées.",
+            "cargo test."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,399 @@
+{
+  "courseId": "cyber-web-pro",
+  "modules": [
+    {
+      "id": "cyber-web-pro-module",
+      "title": "API et dépendances",
+      "chapters": [
+        {
+          "id": "cwp-01",
+          "title": "Gestion sécurisée des fichiers téléversés",
+          "duration": 20,
+          "objectives": [
+            "Valider le type",
+            "Renommer",
+            "Isoler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un fichier téléversé peut être malveillant : valider, renommer et stocker hors exécution."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Type réel.",
+                "Nom généré.",
+                "Dossier non exécutable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire du nom fourni ?",
+            "hints": [
+              "Le remplacer."
+            ],
+            "solution": "Générer un nom et ne pas l'utiliser comme chemin.",
+            "check": {
+              "type": "any",
+              "any": [
+                "nom",
+                "renomm"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que valider ?",
+              "options": [
+                "Le contenu réel",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'extension ne suffit pas.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-01-q1"
+            },
+            {
+              "question": "Où stocker ?",
+              "options": [
+                "Hors zone exécutable",
+                "Dans le code",
+                "Dans un log",
+                "Dans le CSS"
+              ],
+              "answer": 0,
+              "explanation": "L'exécution est évitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-01-q2"
+            }
+          ],
+          "summary": [
+            "Type réel.",
+            "Nom généré.",
+            "Hors exécution."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des API »."
+        },
+        {
+          "id": "cwp-02",
+          "title": "Sécurité des API",
+          "duration": 20,
+          "objectives": [
+            "Authentifier",
+            "Autoriser",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une API vérifie authentification, autorisation, validation et débit."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jetons.",
+                "Droits.",
+                "Quotas."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier par requête ?",
+            "hints": [
+              "Les droits."
+            ],
+            "solution": "L'authentification et les droits sur la ressource.",
+            "check": {
+              "type": "any",
+              "any": [
+                "droits"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Le débit",
+                "Les logs",
+                "Les mises à jour",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les abus sont bornés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-02-q1"
+            },
+            {
+              "question": "Que valider ?",
+              "options": [
+                "Les entrées",
+                "Le logo",
+                "Le thème",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les données sont cadrées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-02-q2"
+            }
+          ],
+          "summary": [
+            "Authn/authz.",
+            "Validation.",
+            "Quotas."
+          ],
+          "nextStep": "Chapitre suivant : « OAuth 2.0 »."
+        },
+        {
+          "id": "cwp-03",
+          "title": "OAuth 2.0",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Choisir le flux",
+            "Protéger les jetons"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "OAuth délègue l'accès via des jetons et des scopes."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Jetons.",
+                "Scopes.",
+                "Pas de mot de passe partagé."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que limite un scope ?",
+            "hints": [
+              "Les droits du jeton."
+            ],
+            "solution": "Les actions autorisées pour le jeton.",
+            "check": {
+              "type": "any",
+              "any": [
+                "scope",
+                "droits"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "OAuth remplace-t-il l'authentification ?",
+              "options": [
+                "Non, OpenID Connect la couvre",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "OIDC ajoute l'identité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-03-q1"
+            },
+            {
+              "question": "Que protéger ?",
+              "options": [
+                "Les jetons",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Ils valent un accès.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-03-q2"
+            }
+          ],
+          "summary": [
+            "OAuth.",
+            "Scopes.",
+            "Jetons."
+          ],
+          "nextStep": "Chapitre suivant : « OpenID Connect »."
+        },
+        {
+          "id": "cwp-04",
+          "title": "OpenID Connect",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Vérifier l'identité",
+            "Limiter"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "OIDC ajoute une couche d'identité à OAuth via un jeton d'identité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "ID token.",
+                "Claims.",
+                "Vérification."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fournit OIDC ?",
+            "hints": [
+              "L'identité."
+            ],
+            "solution": "Un jeton d'identité signé avec des claims.",
+            "check": {
+              "type": "any",
+              "any": [
+                "identite",
+                "identité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que vérifier dans le jeton ?",
+              "options": [
+                "La signature et les claims",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le jeton est authentifié.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-04-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les scopes",
+                "Les logs",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-04-q2"
+            }
+          ],
+          "summary": [
+            "OIDC.",
+            "ID token.",
+            "Claims."
+          ],
+          "nextStep": "Chapitre suivant : « Sécurité des dépendances »."
+        },
+        {
+          "id": "cwp-05",
+          "title": "Sécurité des dépendances",
+          "duration": 20,
+          "objectives": [
+            "Inventorier",
+            "Auditer",
+            "Mettre à jour"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les dépendances ajoutent du code tiers : inventaire, audit et mises à jour."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Lockfile.",
+                "Audit.",
+                "Versions à jour."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que faire régulièrement ?",
+            "hints": [
+              "Auditer."
+            ],
+            "solution": "Auditer les dépendances et mettre à jour.",
+            "check": {
+              "type": "any",
+              "any": [
+                "audit"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fige le lockfile ?",
+              "options": [
+                "Les versions",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "L'installation est reproductible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-05-q1"
+            },
+            {
+              "question": "Que faire d'une dépendance abandonnée ?",
+              "options": [
+                "Planifier son remplacement",
+                "L'ignorer",
+                "La dupliquer",
+                "La publier"
+              ],
+              "answer": 0,
+              "explanation": "Le risque diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cwp-05-q2"
+            }
+          ],
+          "summary": [
+            "Inventaire.",
+            "Audit.",
+            "Mises à jour."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

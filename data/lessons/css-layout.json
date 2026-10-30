@@ -1,0 +1,429 @@
+{
+  "courseId": "css-layout",
+  "modules": [
+    {
+      "id": "css-layout-module",
+      "title": "Dimensions et affichage",
+      "chapters": [
+        {
+          "id": "cssl-01",
+          "title": "Marges et espacements",
+          "duration": 20,
+          "objectives": [
+            "Distinguer margin et padding",
+            "Utiliser gap",
+            "Gérer l'effondrement des marges"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "margin espace l'élément de ses voisins ; padding espace le contenu de sa bordure. Les marges verticales de blocs adjacents peuvent fusionner."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".carte {\n  margin: 16px 0;\n  padding: 24px;\n  border: 1px solid #c3cbd3;\n}",
+              "title": "Marge et rembourrage"
+            },
+            {
+              "type": "tip",
+              "text": "Dans Flexbox et Grid, utilisez gap plutôt que des marges entre enfants : l'espacement reste régulier."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir la propriété",
+            "instructions": "Vous voulez de l'espace à l'intérieur d'un cadre, autour du texte. margin ou padding ?",
+            "hints": [
+              "L'espace est dedans."
+            ],
+            "solution": "padding",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "padding"
+              ],
+              "success": "Correct : padding."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait margin ?",
+              "options": [
+                "Elle espace l'élément de ses voisins",
+                "Elle espace le contenu",
+                "Elle change la couleur",
+                "Elle ajoute une bordure"
+              ],
+              "answer": 0,
+              "explanation": "La marge est extérieure.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-01-q1"
+            },
+            {
+              "question": "Que fait gap ?",
+              "options": [
+                "Il espace les enfants d'un conteneur flex/grid",
+                "Il ajoute une bordure",
+                "Il centre le texte",
+                "Il change la police"
+              ],
+              "answer": 0,
+              "explanation": "Gap évite les marges manuelles.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-01-q2"
+            }
+          ],
+          "summary": [
+            "margin dehors, padding dedans.",
+            "gap pour les conteneurs.",
+            "Attention aux marges qui fusionnent."
+          ],
+          "nextStep": "Chapitre suivant : « Bordures »."
+        },
+        {
+          "id": "cssl-02",
+          "title": "Bordures",
+          "duration": 20,
+          "objectives": [
+            "Écrire une bordure",
+            "Arrondir les angles",
+            "Utiliser les styles de bordure"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "border combine épaisseur, style et couleur. border-radius arrondit les angles ; outline sert au focus et ne prend pas de place."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".bouton {\n  border: 1px solid #17202b;\n  border-radius: 2px;\n}\n.bouton:focus-visible { outline: 3px solid #1e4fd0; }",
+              "title": "Bordure et focus"
+            },
+            {
+              "type": "warning",
+              "text": "Supprimer outline sans le remplacer rend la navigation clavier invisible : gardez toujours un focus visible."
+            }
+          ],
+          "exercise": {
+            "title": "Arrondir",
+            "instructions": "Quelle propriété arrondit les angles ?",
+            "hints": [
+              "Un rayon."
+            ],
+            "solution": "border-radius",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "border-radius"
+              ],
+              "success": "Correct : border-radius."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait outline ?",
+              "options": [
+                "Il dessine un contour de focus",
+                "Il espace le contenu",
+                "Il arrondit",
+                "Il change la police"
+              ],
+              "answer": 0,
+              "explanation": "Il ne modifie pas la mise en page.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-02-q1"
+            },
+            {
+              "question": "Que combine border ?",
+              "options": [
+                "Épaisseur, style et couleur",
+                "Marge et padding",
+                "Police et taille",
+                "Grille et flex"
+              ],
+              "answer": 0,
+              "explanation": "C'est une propriété raccourcie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-02-q2"
+            }
+          ],
+          "summary": [
+            "border = épaisseur + style + couleur.",
+            "border-radius arrondit.",
+            "Ne jamais supprimer le focus."
+          ],
+          "nextStep": "Chapitre suivant : « Arrière-plans »."
+        },
+        {
+          "id": "cssl-03",
+          "title": "Arrière-plans",
+          "duration": 20,
+          "objectives": [
+            "Poser une couleur de fond",
+            "Utiliser une image de fond",
+            "Contrôler la taille et la position"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "background-color pose une couleur ; background-image accepte une URL ou un dégradé. background-size et background-position contrôlent l'image."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".hero {\n  background-color: #0f1720;\n  background-image: linear-gradient(120deg, #17202b, #1e4fd0);\n  background-size: cover;\n  background-position: center;\n}",
+              "title": "Fond et dégradé"
+            },
+            {
+              "type": "tip",
+              "text": "Un dégradé évite une image lourde pour un fond décoratif, et reste net à toutes les tailles."
+            }
+          ],
+          "exercise": {
+            "title": "Poser un fond",
+            "instructions": "Quelle propriété pose une couleur de fond ?",
+            "hints": [
+              "Une propriété dédiée."
+            ],
+            "solution": "background-color",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "background-color"
+              ],
+              "success": "Correct : background-color."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait background-size: cover ?",
+              "options": [
+                "Couvre la zone en gardant le ratio",
+                "Étire l'image",
+                "Répète l'image",
+                "Supprime l'image"
+              ],
+              "answer": 0,
+              "explanation": "L'image remplit sans déformation.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-03-q1"
+            },
+            {
+              "question": "Quel type de valeur pour un dégradé ?",
+              "options": [
+                "linear-gradient()",
+                "url()",
+                "#fff",
+                "solid"
+              ],
+              "answer": 0,
+              "explanation": "Un dégradé est une fonction CSS.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-03-q2"
+            }
+          ],
+          "summary": [
+            "Couleur ou image.",
+            "cover et center.",
+            "Dégradé pour un fond léger."
+          ],
+          "nextStep": "Chapitre suivant : « Dimensions »."
+        },
+        {
+          "id": "cssl-04",
+          "title": "Dimensions",
+          "duration": 20,
+          "objectives": [
+            "Définir largeur et hauteur",
+            "Utiliser min/max",
+            "Comprendre box-sizing"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "width et height fixent les dimensions ; min- et max- bornent. box-sizing: border-box inclut padding et bordure dans la largeur déclarée."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": "* { box-sizing: border-box; }\n.panneau {\n  width: 100%;\n  max-width: 65ch;\n  min-height: 40vh;\n  aspect-ratio: 16 / 9;\n}",
+              "title": "Dimensions bornées"
+            },
+            {
+              "type": "warning",
+              "text": "Une hauteur fixe en pixels sur un texte flexible provoque des débordements : préférez min-height."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir box-sizing",
+            "instructions": "Vous voulez que width inclue padding et bordure. Quelle valeur ?",
+            "hints": [
+              "La boîte inclut tout."
+            ],
+            "solution": "border-box",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "border-box"
+              ],
+              "success": "Correct : border-box."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait max-width ?",
+              "options": [
+                "Elle borne la largeur",
+                "Elle centre",
+                "Elle espace",
+                "Elle change la police"
+              ],
+              "answer": 0,
+              "explanation": "La largeur ne dépasse pas la limite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-04-q1"
+            },
+            {
+              "question": "Que fait aspect-ratio ?",
+              "options": [
+                "Il fixe un rapport largeur/hauteur",
+                "Il change la couleur",
+                "Il ajoute une bordure",
+                "Il anime"
+              ],
+              "answer": 0,
+              "explanation": "Le ratio est conservé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-04-q2"
+            }
+          ],
+          "summary": [
+            "width/height, min/max.",
+            "border-box simplifie le calcul.",
+            "min-height plutôt que hauteur fixe."
+          ],
+          "nextStep": "Chapitre suivant : « Affichage des éléments »."
+        },
+        {
+          "id": "cssl-05",
+          "title": "Affichage des éléments",
+          "duration": 20,
+          "objectives": [
+            "Choisir display",
+            "Différencier block et inline",
+            "Masquer sans casser l'accessibilité"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "display définit le type de boîte : block, inline, inline-block, flex, grid ou none. Chaque valeur change le flux et les propriétés applicables."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Valeur",
+                "Comportement"
+              ],
+              "rows": [
+                [
+                  "block",
+                  "prend toute la largeur"
+                ],
+                [
+                  "inline",
+                  "suit le texte, largeur ignorée"
+                ],
+                [
+                  "flex",
+                  "enfants alignés sur un axe"
+                ],
+                [
+                  "grid",
+                  "grille en deux dimensions"
+                ],
+                [
+                  "none",
+                  "retiré du flux et de l'arbre d'accessibilité"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "display: none retire l'élément des lecteurs d'écran ; pour masquer visuellement en gardant l'accessibilité, utilisez une classe de texte hors écran."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir display",
+            "instructions": "Quel display pour aligner des enfants sur une ligne avec espacement ?",
+            "hints": [
+              "Un conteneur flexible."
+            ],
+            "solution": "display: flex",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "flex"
+              ],
+              "success": "Correct : flex."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait display: none ?",
+              "options": [
+                "Retire l'élément du flux et de l'accessibilité",
+                "Le rend transparent",
+                "Le déplace",
+                "Le réduit"
+              ],
+              "answer": 0,
+              "explanation": "Il disparaît complètement.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-05-q1"
+            },
+            {
+              "question": "Quelle différence entre block et inline ?",
+              "options": [
+                "block prend la largeur, inline suit le texte",
+                "Aucune",
+                "inline prend toute la largeur",
+                "block ne peut pas avoir de marge"
+              ],
+              "answer": 0,
+              "explanation": "Le flux diffère.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssl-05-q2"
+            }
+          ],
+          "summary": [
+            "display change la boîte.",
+            "flex et grid pour la mise en page.",
+            "none retire de l'accessibilité."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,430 @@
+{
+  "courseId": "css-methodo",
+  "modules": [
+    {
+      "id": "css-methodo-module",
+      "title": "Méthodes et design system",
+      "chapters": [
+        {
+          "id": "cssm-01",
+          "title": "Méthodologie BEM",
+          "duration": 20,
+          "objectives": [
+            "Nommer un bloc",
+            "Déclarer un élément",
+            "Gérer les modificateurs"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "BEM nomme les classes en bloc__élément--modificateur. Le nom décrit la structure et évite les sélecteurs profonds."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ".carte { }\n.carte__titre { }\n.carte__action { }\n.carte--mise-en-avant { }",
+              "title": "Convention BEM"
+            },
+            {
+              "type": "warning",
+              "text": "BEM ne remplace pas une bonne structure HTML : il documente les composants, il ne corrige pas un mauvais découpage."
+            }
+          ],
+          "exercise": {
+            "title": "Nommer un élément",
+            "instructions": "Comment nommer le titre à l'intérieur du bloc carte en BEM ?",
+            "hints": [
+              "Deux underscores."
+            ],
+            "solution": "carte__titre",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "carte__titre"
+              ],
+              "success": "Correct : carte__titre."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que sépare __ ?",
+              "options": [
+                "Le bloc et son élément",
+                "Deux blocs",
+                "Deux pages",
+                "Deux fichiers"
+              ],
+              "answer": 0,
+              "explanation": "C'est la convention élément.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-01-q1"
+            },
+            {
+              "question": "Que fait -- ?",
+              "options": [
+                "Il déclare un modificateur",
+                "Il crée un élément",
+                "Il commente",
+                "Il importe"
+              ],
+              "answer": 0,
+              "explanation": "Le modificateur change une variante.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-01-q2"
+            }
+          ],
+          "summary": [
+            "BEM = bloc__élément--modificateur.",
+            "Noms plats.",
+            "Structure d'abord."
+          ],
+          "nextStep": "Chapitre suivant : « Optimiser les performances CSS »."
+        },
+        {
+          "id": "cssm-02",
+          "title": "Optimiser les performances CSS",
+          "duration": 20,
+          "objectives": [
+            "Réduire les sélecteurs coûteux",
+            "Limiter les animations",
+            "Charger le CSS utile"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le CSS peut coûter cher en recalculs : sélecteurs profonds, animations de propriétés de mise en page, feuilles inutiles."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Éviter les sélecteurs universels profonds.",
+                "Animer transform et opacity.",
+                "Minifier en production.",
+                "Charger le CSS critique en priorité."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Mesurez avec les DevTools : une règle « élégante » mais coûteuse se repère dans les recalculs de style."
+            }
+          ],
+          "exercise": {
+            "title": "Choisir quoi animer",
+            "instructions": "Quelle paire de propriétés animer sans recalcul de mise en page ?",
+            "hints": [
+              "Deux propriétés composées."
+            ],
+            "solution": "transform et opacity",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "transform",
+                "opacity"
+              ],
+              "success": "Correct : transform et opacity."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi éviter d'animer width ?",
+              "options": [
+                "Recalculs de mise en page",
+                "CSS l'interdit",
+                "Cela change la couleur",
+                "Cela bloque le clavier"
+              ],
+              "answer": 0,
+              "explanation": "La mise en page est recalculée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-02-q1"
+            },
+            {
+              "question": "Que faire du CSS en production ?",
+              "options": [
+                "Le minifier",
+                "Le supprimer",
+                "L'inliner partout",
+                "Le commenter"
+              ],
+              "answer": 0,
+              "explanation": "Le poids diminue.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-02-q2"
+            }
+          ],
+          "summary": [
+            "Sélecteurs simples.",
+            "Animer transform/opacity.",
+            "Minifier en production."
+          ],
+          "nextStep": "Chapitre suivant : « Accessibilité visuelle »."
+        },
+        {
+          "id": "cssm-03",
+          "title": "Accessibilité visuelle",
+          "duration": 20,
+          "objectives": [
+            "Garantir le contraste",
+            "Ne pas dépendre de la couleur",
+            "Agrandir sans casser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un texte doit atteindre 4,5:1 de contraste (3:1 pour les grands textes). L'information ne doit pas reposer sur la couleur seule."
+            },
+            {
+              "type": "table",
+              "headers": [
+                "Élément",
+                "Contraste minimal"
+              ],
+              "rows": [
+                [
+                  "Texte courant",
+                  "4,5:1"
+                ],
+                [
+                  "Grand texte",
+                  "3:1"
+                ],
+                [
+                  "Composant et focus",
+                  "3:1"
+                ]
+              ]
+            },
+            {
+              "type": "warning",
+              "text": "Un état « erreur » rouge sans texte ni icône est invisible pour une partie des utilisateurs : ajoutez un symbole et un message."
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Quel contraste minimal pour du texte courant ?",
+            "hints": [
+              "Un ratio précis."
+            ],
+            "solution": "4,5:1",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "4,5",
+                "4.5"
+              ],
+              "success": "Correct : 4,5:1."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Peut-on coder une information par la couleur seule ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Seulement en rouge",
+                "Seulement en noir"
+              ],
+              "answer": 0,
+              "explanation": "Ajoutez texte ou forme.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-03-q1"
+            },
+            {
+              "question": "Que faire du zoom à 200 % ?",
+              "options": [
+                "Vérifier que rien ne se superpose",
+                "Bloquer le zoom",
+                "Réduire le texte",
+                "Masquer le menu"
+              ],
+              "answer": 0,
+              "explanation": "Le contenu doit rester lisible.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-03-q2"
+            }
+          ],
+          "summary": [
+            "4,5:1 pour le texte.",
+            "Pas de couleur seule.",
+            "Tester le zoom."
+          ],
+          "nextStep": "Chapitre suivant : « Design systems »."
+        },
+        {
+          "id": "cssm-04",
+          "title": "Design systems",
+          "duration": 20,
+          "objectives": [
+            "Définir des jetons",
+            "Documenter les composants",
+            "Versionner les changements"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un design system centralise jetons (couleurs, espacements, typographie) et composants documentés, avec des états et des règles d'usage."
+            },
+            {
+              "type": "code",
+              "lang": "css",
+              "code": ":root {\n  --s1: 4px; --s2: 8px; --s3: 12px;\n  --text-sm: 0.9375rem;\n  --action: #1e4fd0;\n}",
+              "title": "Jetons"
+            },
+            {
+              "type": "tip",
+              "text": "Un composant sans état documenté (survol, focus, erreur, désactivé) sera mal utilisé : documentez les états avec le composant."
+            }
+          ],
+          "exercise": {
+            "title": "Centraliser",
+            "instructions": "Qu'est-ce qu'un jeton de design ?",
+            "hints": [
+              "Une valeur nommée réutilisable."
+            ],
+            "solution": "Une valeur nommée (couleur, espace, taille) partagée par les composants.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "valeur",
+                "nom"
+              ],
+              "success": "Correct : une valeur nommée."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que documente un design system ?",
+              "options": [
+                "Jetons, composants et états",
+                "Les serveurs",
+                "Les mots de passe",
+                "Les réseaux"
+              ],
+              "answer": 0,
+              "explanation": "La cohérence est outillée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-04-q1"
+            },
+            {
+              "question": "Pourquoi versionner ?",
+              "options": [
+                "Pour suivre les changements",
+                "Pour chiffrer",
+                "Pour accélérer",
+                "Pour éviter les tests"
+              ],
+              "answer": 0,
+              "explanation": "Les évolutions sont traçables.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-04-q2"
+            }
+          ],
+          "summary": [
+            "Jetons + composants + états.",
+            "Documentation.",
+            "Versionnement."
+          ],
+          "nextStep": "Chapitre suivant : « Créer une identité visuelle web »."
+        },
+        {
+          "id": "cssm-05",
+          "title": "Créer une identité visuelle web",
+          "duration": 20,
+          "objectives": [
+            "Choisir une palette",
+            "Fixer une typographie",
+            "Rester cohérent"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Une identité visuelle combine palette limitée, typographie lisible, espacements réguliers et un ton graphique constant."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Deux polices maximum, avec des rôles distincts.",
+                "Une couleur d'action unique.",
+                "Des espacements sur une échelle.",
+                "Un contraste validé dès le départ."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "La cohérence se teste sur trois pages différentes : accueil, contenu long et formulaire."
+            }
+          ],
+          "exercise": {
+            "title": "Limiter la palette",
+            "instructions": "Combien de couleurs d'action dans une interface ?",
+            "hints": [
+              "Une seule, pour éviter l'ambiguïté."
+            ],
+            "solution": "Une couleur d'action principale.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "une"
+              ],
+              "success": "Correct : une couleur d'action."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi limiter les polices ?",
+              "options": [
+                "Lisibilité et cohérence",
+                "Vitesse du réseau seulement",
+                "Pour éviter le CSS",
+                "Pour le SEO seulement"
+              ],
+              "answer": 0,
+              "explanation": "Trop de polices brouillent la hiérarchie.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-05-q1"
+            },
+            {
+              "question": "Que tester en priorité ?",
+              "options": [
+                "Le contraste",
+                "Le logo",
+                "Les animations",
+                "Les ombres"
+              ],
+              "answer": 0,
+              "explanation": "L'accessibilité conditionne la lecture.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "cssm-05-q2"
+            }
+          ],
+          "summary": [
+            "Palette limitée.",
+            "Typographie à rôles.",
+            "Cohérence testée sur plusieurs pages."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

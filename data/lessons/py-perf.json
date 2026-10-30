@@ -1,0 +1,413 @@
+{
+  "courseId": "py-perf",
+  "modules": [
+    {
+      "id": "py-perf-module",
+      "title": "Performance et intégrations",
+      "chapters": [
+        {
+          "id": "pyf-01",
+          "title": "Performance Python",
+          "duration": 20,
+          "objectives": [
+            "Mesurer avant d'optimiser",
+            "Choisir la structure adaptée",
+            "Éviter les copies inutiles"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La performance se mesure avec timeit ou un profileur. Les structures adaptées et les générateurs évitent souvent les optimisations prématurées."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import timeit\ntimeit.timeit(\"sum(range(1000))\", number=1000)",
+              "title": "timeit"
+            },
+            {
+              "type": "tip",
+              "text": "Mesurez sur des données réalistes : un micro-benchmark peut tromper."
+            }
+          ],
+          "exercise": {
+            "title": "Mesurer",
+            "instructions": "Quel module mesure un petit fragment de code ?",
+            "hints": [
+              "Un module de mesure."
+            ],
+            "solution": "timeit",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "timeit"
+              ],
+              "success": "Correct : timeit."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi mesurer ?",
+              "options": [
+                "Pour éviter les optimisations inutiles",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour les cookies"
+              ],
+              "answer": 0,
+              "explanation": "La mesure guide le choix.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-01-q1"
+            },
+            {
+              "question": "Que coûte une copie de liste ?",
+              "options": [
+                "De la mémoire et du temps",
+                "Rien",
+                "Un fichier",
+                "Un serveur"
+              ],
+              "answer": 0,
+              "explanation": "Les grandes listes pèsent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-01-q2"
+            }
+          ],
+          "summary": [
+            "timeit avant tout.",
+            "Structures adaptées.",
+            "Éviter les copies."
+          ],
+          "nextStep": "Chapitre suivant : « Profilage »."
+        },
+        {
+          "id": "pyf-02",
+          "title": "Profilage",
+          "duration": 20,
+          "objectives": [
+            "Utiliser cProfile",
+            "Lire les résultats",
+            "Cibler le goulot"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "cProfile identifie les fonctions coûteuses. On trie par temps cumulé pour trouver le vrai goulot, pas la fonction la plus « suspecte »."
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "code": "python -m cProfile -s cumtime mon_script.py",
+              "title": "Profil"
+            },
+            {
+              "type": "warning",
+              "text": "Optimiser une fonction rapide appelée peu souvent ne change rien : suivez le profil."
+            }
+          ],
+          "exercise": {
+            "title": "Lancer",
+            "instructions": "Quelle commande profile un script avec cProfile ?",
+            "hints": [
+              "Le module en ligne de commande."
+            ],
+            "solution": "python -m cProfile -s cumtime mon_script.py",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "cprofile"
+              ],
+              "success": "Correct : cProfile."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que trier en premier ?",
+              "options": [
+                "Le temps cumulé",
+                "Le nom",
+                "Le fichier",
+                "La ligne"
+              ],
+              "answer": 0,
+              "explanation": "Le goulot apparaît.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-02-q1"
+            },
+            {
+              "question": "Que fait -s ?",
+              "options": [
+                "Il trie",
+                "Il supprime",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le tri est explicite.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-02-q2"
+            }
+          ],
+          "summary": [
+            "cProfile.",
+            "Temps cumulé.",
+            "Cibler le goulot."
+          ],
+          "nextStep": "Chapitre suivant : « Manipulation d'API »."
+        },
+        {
+          "id": "pyf-03",
+          "title": "Manipulation d'API",
+          "duration": 20,
+          "objectives": [
+            "Envoyer une requête",
+            "Gérer les statuts",
+            "Gérer les erreurs réseau"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "requests (ou httpx) envoie des requêtes HTTP. Vérifiez le statut, les délais et les erreurs réseau."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "import requests\n\nr = requests.get(url, timeout=5)\nr.raise_for_status()\ndata = r.json()",
+              "title": "Requête"
+            },
+            {
+              "type": "warning",
+              "text": "Sans timeout, une requête peut bloquer indéfiniment : fixez toujours une limite."
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Que faire après une réponse HTTP ?",
+            "hints": [
+              "Vérifier le statut."
+            ],
+            "solution": "r.raise_for_status() (ou tester status_code)",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "raise_for_status",
+                "status"
+              ],
+              "success": "Correct : vérifier le statut."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait timeout ?",
+              "options": [
+                "Il limite l'attente",
+                "Il chiffre",
+                "Il trie",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "Le blocage est borné.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-03-q1"
+            },
+            {
+              "question": "Que faire d'un 500 ?",
+              "options": [
+                "Traiter l'erreur",
+                "Ignorer",
+                "Réessayer en boucle",
+                "Supprimer la réponse"
+              ],
+              "answer": 0,
+              "explanation": "L'erreur est gérée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-03-q2"
+            }
+          ],
+          "summary": [
+            "Toujours un timeout.",
+            "Vérifier le statut.",
+            "Gérer les erreurs."
+          ],
+          "nextStep": "Chapitre suivant : « Automatisation de tâches »."
+        },
+        {
+          "id": "pyf-04",
+          "title": "Automatisation de tâches",
+          "duration": 20,
+          "objectives": [
+            "Détecter une tâche répétitive",
+            "Écrire un script idempotent",
+            "Planifier"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Automatisez une tâche stable et répétitive. Un script idempotent peut être relancé sans effet de bord."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Journaliser chaque étape.",
+                "Vérifier l'état avant d'agir.",
+                "Renvoyer un code non nul en cas d'échec.",
+                "Planifier avec cron ou un ordonnanceur."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Un script qui suppose un état initial casse au deuxième passage : vérifiez avant de créer."
+            }
+          ],
+          "exercise": {
+            "title": "Idempotent",
+            "instructions": "Que signifie idempotent ?",
+            "hints": [
+              "Rejouable sans effet supplémentaire."
+            ],
+            "solution": "Le script peut être relancé sans modifier deux fois le résultat.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "relanc",
+                "rejou"
+              ],
+              "success": "Correct : rejouable sans effet."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que faire avant de créer un dossier ?",
+              "options": [
+                "Vérifier son existence",
+                "Le supprimer",
+                "Le dupliquer",
+                "Le chiffrer"
+              ],
+              "answer": 0,
+              "explanation": "L'état est contrôlé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-04-q1"
+            },
+            {
+              "question": "Que renvoyer en cas d'échec ?",
+              "options": [
+                "Un code non nul",
+                "0",
+                "Rien",
+                "Un texte"
+              ],
+              "answer": 0,
+              "explanation": "Le pipeline s'arrête.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-04-q2"
+            }
+          ],
+          "summary": [
+            "Tâche stable.",
+            "Idempotence.",
+            "Code de sortie."
+          ],
+          "nextStep": "Chapitre suivant : « Traitement de données »."
+        },
+        {
+          "id": "pyf-05",
+          "title": "Traitement de données",
+          "duration": 20,
+          "objectives": [
+            "Lire un CSV volumineux",
+            "Agréger",
+            "Écrire un résultat"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Pour de gros volumes, parcourez ligne par ligne plutôt que tout charger. csv et les générateurs limitent la mémoire."
+            },
+            {
+              "type": "code",
+              "lang": "python",
+              "code": "with open(\"ventes.csv\", newline=\"\", encoding=\"utf-8\") as f:\n    total = sum(float(l[\"montant\"]) for l in csv.DictReader(f))",
+              "title": "Agrégation"
+            },
+            {
+              "type": "warning",
+              "text": "float pour des montants introduit des erreurs d'arrondi : utilisez Decimal pour la facturation."
+            }
+          ],
+          "exercise": {
+            "title": "Agréger",
+            "instructions": "Quel générateur évite de tout charger en mémoire ?",
+            "hints": [
+              "Une expression génératrice."
+            ],
+            "solution": "Une expression avec sum(... for ...) plutôt qu'une liste complète.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "generateur",
+                "générateur",
+                "sum"
+              ],
+              "success": "Correct : parcours à la demande."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi Decimal ?",
+              "options": [
+                "Éviter les arrondis binaires",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les montants restent exacts.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-05-q1"
+            },
+            {
+              "question": "Que fait DictReader ?",
+              "options": [
+                "Il lit par colonnes nommées",
+                "Il écrit",
+                "Il trie",
+                "Il chiffre"
+              ],
+              "answer": 0,
+              "explanation": "Les en-têtes deviennent des clés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "pyf-05-q2"
+            }
+          ],
+          "summary": [
+            "Parcours en flux.",
+            "Decimal pour l'argent.",
+            "Agrégation simple."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

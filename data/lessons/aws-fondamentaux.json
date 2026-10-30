@@ -1,0 +1,400 @@
+{
+  "courseId": "aws-fondamentaux",
+  "modules": [
+    {
+      "id": "aws-fondamentaux-module",
+      "title": "AWS fondamentaux",
+      "chapters": [
+        {
+          "id": "awf-01",
+          "title": "Introduction à AWS",
+          "duration": 20,
+          "objectives": [
+            "Situer AWS",
+            "Comprendre les services",
+            "Prévoir les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "AWS propose calcul, stockage, réseau et services managés à la demande."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Régions.",
+                "Services.",
+                "Facturation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que choisir en premier ?",
+            "hints": [
+              "La région."
+            ],
+            "solution": "La région et les services adaptés.",
+            "check": {
+              "type": "any",
+              "any": [
+                "region",
+                "région"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que facture AWS ?",
+              "options": [
+                "L'usage",
+                "Un forfait unique",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La consommation compte.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-01-q1"
+            },
+            {
+              "question": "Où placer les données ?",
+              "options": [
+                "Dans une région choisie",
+                "Au hasard",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La latence et la conformité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-01-q2"
+            }
+          ],
+          "summary": [
+            "Régions.",
+            "Services.",
+            "Usage."
+          ],
+          "nextStep": "Chapitre suivant : « Régions et zones AWS »."
+        },
+        {
+          "id": "awf-02",
+          "title": "Régions et zones AWS",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Répartir",
+            "Comprendre le coût"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "AWS répartit les services en régions et zones de disponibilité."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Régions.",
+                "AZ.",
+                "Transferts."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que placer dans plusieurs AZ ?",
+            "hints": [
+              "Les services critiques."
+            ],
+            "solution": "Les services critiques, pour la disponibilité.",
+            "check": {
+              "type": "any",
+              "any": [
+                "az",
+                "zones"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que coûte le transfert inter-AZ ?",
+              "options": [
+                "Il est facturé",
+                "Rien",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le trafic a un prix.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-02-q1"
+            },
+            {
+              "question": "Que choisir selon les utilisateurs ?",
+              "options": [
+                "La région proche",
+                "Au hasard",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La latence baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-02-q2"
+            }
+          ],
+          "summary": [
+            "Régions/AZ.",
+            "Répartition.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « IAM »."
+        },
+        {
+          "id": "awf-03",
+          "title": "IAM",
+          "duration": 20,
+          "objectives": [
+            "Gérer utilisateurs et rôles",
+            "Appliquer le moindre privilège",
+            "Éviter les clés"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "IAM gère identités et politiques ; les rôles fournissent des identifiants temporaires."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Utilisateurs.",
+                "Rôles.",
+                "Politiques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que préférer aux clés durables ?",
+            "hints": [
+              "Des rôles."
+            ],
+            "solution": "Des rôles avec identifiants temporaires.",
+            "check": {
+              "type": "any",
+              "any": [
+                "roles",
+                "rôles"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait une politique ?",
+              "options": [
+                "Elle autorise/refuse",
+                "Elle chiffre",
+                "Elle trie",
+                "Elle route"
+              ],
+              "answer": 0,
+              "explanation": "Les droits sont explicites.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-03-q1"
+            },
+            {
+              "question": "Que limiter ?",
+              "options": [
+                "Les privilèges",
+                "Les logs",
+                "Le CSS",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Le moindre privilège.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-03-q2"
+            }
+          ],
+          "summary": [
+            "IAM.",
+            "Rôles.",
+            "Politiques."
+          ],
+          "nextStep": "Chapitre suivant : « EC2 »."
+        },
+        {
+          "id": "awf-04",
+          "title": "EC2",
+          "duration": 20,
+          "objectives": [
+            "Lancer une instance",
+            "Choisir une taille",
+            "Sécuriser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "EC2 fournit des machines virtuelles configurables."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Type.",
+                "Sécurité.",
+                "Stockage."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier avant lancement ?",
+            "hints": [
+              "Le groupe de sécurité."
+            ],
+            "solution": "Le groupe de sécurité et la taille.",
+            "check": {
+              "type": "any",
+              "any": [
+                "securite",
+                "sécurité"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un groupe de sécurité ?",
+              "options": [
+                "Il filtre les flux",
+                "Il chiffre",
+                "Il trie",
+                "Il route"
+              ],
+              "answer": 0,
+              "explanation": "L'accès est contrôlé.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-04-q1"
+            },
+            {
+              "question": "Que faire d'une instance inutilisée ?",
+              "options": [
+                "L'arrêter",
+                "La garder",
+                "La publier",
+                "La dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-04-q2"
+            }
+          ],
+          "summary": [
+            "EC2.",
+            "Sécurité.",
+            "Coût."
+          ],
+          "nextStep": "Chapitre suivant : « S3 »."
+        },
+        {
+          "id": "awf-05",
+          "title": "S3",
+          "duration": 20,
+          "objectives": [
+            "Créer un bucket",
+            "Contrôler l'accès",
+            "Gérer le cycle de vie"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "S3 stocke des objets ; l'accès public doit être volontaire et contrôlé."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Buckets.",
+                "Politiques.",
+                "Cycle de vie."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que vérifier sur un bucket ?",
+            "hints": [
+              "L'accès public."
+            ],
+            "solution": "Que l'accès public est désactivé par défaut.",
+            "check": {
+              "type": "any",
+              "any": [
+                "public"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Un bucket est-il public par défaut ?",
+              "options": [
+                "Non",
+                "Oui",
+                "Toujours",
+                "Avec le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exposition est volontaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-05-q1"
+            },
+            {
+              "question": "Que fait une règle de cycle ?",
+              "options": [
+                "Elle archive/supprime",
+                "Elle chiffre",
+                "Elle route",
+                "Elle trie"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "awf-05-q2"
+            }
+          ],
+          "summary": [
+            "S3.",
+            "Accès.",
+            "Cycle de vie."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

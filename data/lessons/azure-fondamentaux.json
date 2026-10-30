@@ -1,0 +1,319 @@
+{
+  "courseId": "azure-fondamentaux",
+  "modules": [
+    {
+      "id": "azure-fondamentaux-module",
+      "title": "Azure fondamentaux",
+      "chapters": [
+        {
+          "id": "azf-01",
+          "title": "Introduction à Azure",
+          "duration": 20,
+          "objectives": [
+            "Situer Azure",
+            "Comprendre les services",
+            "Prévoir les coûts"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Azure propose calcul, stockage, réseau et services managés."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Régions.",
+                "Services.",
+                "Facturation."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que facture Azure ?",
+            "hints": [
+              "L'usage."
+            ],
+            "solution": "La consommation de ressources.",
+            "check": {
+              "type": "any",
+              "any": [
+                "usage"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que choisir en premier ?",
+              "options": [
+                "La région",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La latence et la conformité.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-01-q1"
+            },
+            {
+              "question": "Que suivre ?",
+              "options": [
+                "Les coûts",
+                "Le thème",
+                "Le logo",
+                "Le CSS"
+              ],
+              "answer": 0,
+              "explanation": "Les dérives sont vues.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-01-q2"
+            }
+          ],
+          "summary": [
+            "Régions.",
+            "Services.",
+            "Usage."
+          ],
+          "nextStep": "Chapitre suivant : « Abonnements et groupes de ressources »."
+        },
+        {
+          "id": "azf-02",
+          "title": "Abonnements et groupes de ressources",
+          "duration": 20,
+          "objectives": [
+            "Organiser",
+            "Séparer",
+            "Contrôler"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un abonnement regroupe des ressources ; les groupes de ressources facilitent la gestion."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Abonnements.",
+                "Groupes.",
+                "Politiques."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que regroupe un groupe de ressources ?",
+            "hints": [
+              "Des ressources liées."
+            ],
+            "solution": "Des ressources gérées ensemble.",
+            "check": {
+              "type": "any",
+              "any": [
+                "ressources"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi séparer les environnements ?",
+              "options": [
+                "Isoler production et test",
+                "Pour le CSS",
+                "Pour le SEO",
+                "Pour le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les risques sont limités.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-02-q1"
+            },
+            {
+              "question": "Que séparer par groupe ?",
+              "options": [
+                "Les cycles de vie",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "La gestion est claire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-02-q2"
+            }
+          ],
+          "summary": [
+            "Abonnements.",
+            "Groupes.",
+            "Séparation."
+          ],
+          "nextStep": "Chapitre suivant : « Microsoft Entra ID »."
+        },
+        {
+          "id": "azf-03",
+          "title": "Microsoft Entra ID",
+          "duration": 20,
+          "objectives": [
+            "Comprendre",
+            "Fédérer",
+            "Protéger"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Entra ID gère identités et accès aux services Microsoft."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Identités.",
+                "MFA.",
+                "Accès conditionnel."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que fait l'accès conditionnel ?",
+            "hints": [
+              "Il applique des règles."
+            ],
+            "solution": "Il applique des règles selon le contexte.",
+            "check": {
+              "type": "any",
+              "any": [
+                "contexte"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que protéger ?",
+              "options": [
+                "Les comptes admin",
+                "Le CSS",
+                "Le logo",
+                "Le DNS"
+              ],
+              "answer": 0,
+              "explanation": "MFA est prioritaire.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-03-q1"
+            },
+            {
+              "question": "Que fédérer ?",
+              "options": [
+                "L'annuaire existant",
+                "Le CSS",
+                "Le DNS",
+                "Le logo"
+              ],
+              "answer": 0,
+              "explanation": "Les identités sont unifiées.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-03-q2"
+            }
+          ],
+          "summary": [
+            "Entra ID.",
+            "MFA.",
+            "Conditionnel."
+          ],
+          "nextStep": "Chapitre suivant : « Machines virtuelles Azure »."
+        },
+        {
+          "id": "azf-04",
+          "title": "Machines virtuelles Azure",
+          "duration": 20,
+          "objectives": [
+            "Choisir",
+            "Sécuriser",
+            "Surveiller"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les VM Azure se dimensionnent et se protègent par réseau et IAM."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Taille.",
+                "NSG.",
+                "Surveillance."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Comprendre",
+            "instructions": "Que filtre un NSG ?",
+            "hints": [
+              "Le trafic réseau."
+            ],
+            "solution": "Le trafic réseau entrant et sortant.",
+            "check": {
+              "type": "any",
+              "any": [
+                "trafic"
+              ],
+              "success": "Correct."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où placer la VM applicative ?",
+              "options": [
+                "En privé",
+                "En public",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "L'exposition est limitée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-04-q1"
+            },
+            {
+              "question": "Que faire si inutilisée ?",
+              "options": [
+                "L'arrêter",
+                "La garder",
+                "La publier",
+                "La dupliquer"
+              ],
+              "answer": 0,
+              "explanation": "Le coût baisse.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "azf-04-q2"
+            }
+          ],
+          "summary": [
+            "Taille.",
+            "NSG.",
+            "Surveillance."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "courseId": "js-perf",
+  "modules": [
+    {
+      "id": "js-perf-module",
+      "title": "Performance",
+      "chapters": [
+        {
+          "id": "jsp-01",
+          "title": "Optimiser les performances JavaScript",
+          "duration": 20,
+          "objectives": [
+            "Mesurer avant d'optimiser",
+            "Réduire le travail du thread principal",
+            "Nettoyer les ressources"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "La performance se mesure avec le profiler : tâches longues, allocations, écouteurs oubliés. Le thread principal doit rester disponible pour l'interface."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Découper un calcul long ou le déplacer dans un Worker.",
+                "Limiter les accès répétés au DOM.",
+                "Retirer les écouteurs et minuteurs inutiles.",
+                "Mesurer avant et après chaque changement."
+              ]
+            },
+            {
+              "type": "tip",
+              "text": "Une optimisation non mesurée ajoute de la complexité sans gain."
+            }
+          ],
+          "exercise": {
+            "title": "Mesurer avant",
+            "instructions": "Que faire avant d'optimiser une fonction lente ?",
+            "hints": [
+              "Le profiler montre où le temps passe.",
+              "Une intuition n'est pas une mesure."
+            ],
+            "solution": "Profiler l'application, identifier le goulot d'étranglement, puis optimiser et remesurer.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "profil",
+                "mesur"
+              ],
+              "success": "Correct : mesurer puis optimiser."
+            }
+          },
+          "quiz": [
+            {
+              "id": "jsp-01-q1",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que bloque une tâche longue ?",
+              "options": [
+                "L'interface",
+                "Le DNS",
+                "Le CSS",
+                "Le disque"
+              ],
+              "answer": 0,
+              "explanation": "Le thread principal est occupé.",
+              "hints": []
+            },
+            {
+              "id": "jsp-01-q2",
+              "type": "single",
+              "difficulty": 1,
+              "question": "Que faire d'un écouteur inutile ?",
+              "options": [
+                "Le retirer",
+                "Le dupliquer",
+                "Le commenter",
+                "Le déplacer en CSS"
+              ],
+              "answer": 0,
+              "explanation": "Il retient des références.",
+              "hints": []
+            }
+          ],
+          "summary": [
+            "Mesurer d'abord.",
+            "Libérer le thread principal.",
+            "Nettoyer écouteurs et minuteurs."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}

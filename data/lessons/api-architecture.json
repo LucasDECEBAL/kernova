@@ -1,0 +1,556 @@
+{
+  "courseId": "api-architecture",
+  "modules": [
+    {
+      "id": "api-architecture-module",
+      "title": "Architecture et production",
+      "chapters": [
+        {
+          "id": "api6-01",
+          "title": "Architecture en couches",
+          "duration": 20,
+          "objectives": [
+            "Séparer les responsabilités",
+            "Éviter les dépendances inverses",
+            "Tester par couche"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Contrôleur, service et dépôt séparent transport, logique et persistance."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Contrôleur mince.",
+                "Service testable.",
+                "Dépôt remplaçable."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Séparer",
+            "instructions": "Où placer la logique métier ?",
+            "hints": [
+              "Pas dans le contrôleur."
+            ],
+            "solution": "Dans un service.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "service"
+              ],
+              "success": "Correct : service."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que fait un dépôt ?",
+              "options": [
+                "Il encapsule la persistance",
+                "Il stylise",
+                "Il chiffre",
+                "Il déploie"
+              ],
+              "answer": 0,
+              "explanation": "La base reste un détail.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-01-q1"
+            },
+            {
+              "question": "Pourquoi un contrôleur mince ?",
+              "options": [
+                "Faciliter les tests",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "La logique est isolée.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-01-q2"
+            }
+          ],
+          "summary": [
+            "Couches.",
+            "Service métier.",
+            "Dépôt."
+          ],
+          "nextStep": "Chapitre suivant : « Principes SOLID »."
+        },
+        {
+          "id": "api6-02",
+          "title": "Principes SOLID",
+          "duration": 20,
+          "objectives": [
+            "Comprendre SRP et DIP",
+            "Éviter les classes géantes",
+            "Dépendre d'abstractions"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "SOLID vise des modules cohérents et remplaçables. SRP : une responsabilité ; DIP : dépendre d'abstractions."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Une raison de changer par classe.",
+                "Interfaces aux frontières.",
+                "Composition."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Appliquer",
+            "instructions": "Que fait DIP ?",
+            "hints": [
+              "Il inverse les dépendances"
+            ],
+            "solution": "Dépendre d'une abstraction, pas d'une implémentation concrète.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "abstraction",
+                "interface"
+              ],
+              "success": "Correct : abstraction."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que signifie SRP ?",
+              "options": [
+                "Une responsabilité",
+                "Un serveur",
+                "Un protocole",
+                "Un format"
+              ],
+              "answer": 0,
+              "explanation": "Une seule raison de changer.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-02-q1"
+            },
+            {
+              "question": "Que permet DIP ?",
+              "options": [
+                "Remplacer l'implémentation",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Le test devient simple.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-02-q2"
+            }
+          ],
+          "summary": [
+            "SRP.",
+            "DIP.",
+            "Composition."
+          ],
+          "nextStep": "Chapitre suivant : « Architecture hexagonale »."
+        },
+        {
+          "id": "api6-03",
+          "title": "Architecture hexagonale",
+          "duration": 20,
+          "objectives": [
+            "Définir un domaine",
+            "Isoler les adaptateurs",
+            "Tester sans infrastructure"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Le domaine ne dépend d'aucun détail ; les ports décrivent les besoins, les adaptateurs les implémentent."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Ports entrants/sortants.",
+                "Adaptateurs.",
+                "Dépendances vers l'intérieur."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Isoler",
+            "instructions": "Où vivent les règles métier ?",
+            "hints": [
+              "Au centre."
+            ],
+            "solution": "Dans le domaine, sans dépendance technique.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "domaine"
+              ],
+              "success": "Correct : le domaine."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un adaptateur ?",
+              "options": [
+                "Une implémentation technique",
+                "Une règle métier",
+                "Un test",
+                "Un format"
+              ],
+              "answer": 0,
+              "explanation": "Il relie le domaine au monde extérieur.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-03-q1"
+            },
+            {
+              "question": "Pourquoi isoler le domaine ?",
+              "options": [
+                "Tester sans base",
+                "Accélérer le réseau",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les tests restent rapides.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-03-q2"
+            }
+          ],
+          "summary": [
+            "Domaine au centre.",
+            "Ports/adaptateurs.",
+            "Tests isolés."
+          ],
+          "nextStep": "Chapitre suivant : « Monolithe et microservices »."
+        },
+        {
+          "id": "api6-04",
+          "title": "Monolithe et microservices",
+          "duration": 20,
+          "objectives": [
+            "Comparer les coûts",
+            "Choisir selon l'équipe",
+            "Découper par besoin"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Les microservices ajoutent réseau, déploiement et supervision ; le monolithe modulaire reste souvent le bon défaut."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Monolithe d'abord.",
+                "Découpage par domaine.",
+                "Coût opérationnel."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Choisir",
+            "instructions": "Que privilégier pour une petite équipe ?",
+            "hints": [
+              "La simplicité."
+            ],
+            "solution": "Un monolithe bien modularisé.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "monolithe"
+              ],
+              "success": "Correct : monolithe."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Que coûtent les microservices ?",
+              "options": [
+                "Plus d'opérations",
+                "Moins de tests",
+                "Moins de réseau",
+                "Moins de supervision"
+              ],
+              "answer": 0,
+              "explanation": "La complexité augmente.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-04-q1"
+            },
+            {
+              "question": "Quand découper ?",
+              "options": [
+                "Quand le besoin est réel",
+                "Dès le départ",
+                "Jamais",
+                "Au hasard"
+              ],
+              "answer": 0,
+              "explanation": "Le découpage suit l'usage.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-04-q2"
+            }
+          ],
+          "summary": [
+            "Monolithe par défaut.",
+            "Microservices = coûts.",
+            "Découper selon le besoin."
+          ],
+          "nextStep": "Chapitre suivant : « Erreurs en production »."
+        },
+        {
+          "id": "api6-05",
+          "title": "Erreurs en production",
+          "duration": 20,
+          "objectives": [
+            "Éviter les fuites",
+            "Corréler les incidents",
+            "Prévoir la dégradation"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "En production, l'erreur est journalisée en détail côté serveur et présentée sobrement au client."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Pas de pile d'appels.",
+                "Identifiant de corrélation.",
+                "Messages actionnables."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Présenter",
+            "instructions": "Que montrer au client pour une erreur 500 ?",
+            "hints": [
+              "Un message sûr."
+            ],
+            "solution": "Un message générique avec un identifiant de corrélation.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "generique",
+                "générique",
+                "correlation"
+              ],
+              "success": "Correct : message générique + corrélation."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Où va le détail ?",
+              "options": [
+                "Dans les journaux",
+                "Au client",
+                "Dans le CSS",
+                "Dans le DNS"
+              ],
+              "answer": 0,
+              "explanation": "Les données sensibles restent internes.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-05-q1"
+            },
+            {
+              "question": "Que permet la corrélation ?",
+              "options": [
+                "Retrouver l'incident",
+                "Accélérer",
+                "Chiffrer",
+                "Trier"
+              ],
+              "answer": 0,
+              "explanation": "Les journaux sont reliés.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api6-05-q2"
+            }
+          ],
+          "summary": [
+            "Détail côté serveur.",
+            "Corrélation.",
+            "Message sûr."
+          ],
+          "nextStep": "Chapitre suivant : « Déploiement d'un backend »."
+        },
+        {
+          "id": "api7-01",
+          "title": "Déploiement d'un backend",
+          "duration": 20,
+          "objectives": [
+            "Préparer la configuration",
+            "Migrer la base",
+            "Vérifier la santé"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Un déploiement inclut configuration, migrations et vérification de santé, avec retour arrière prévu."
+            },
+            {
+              "type": "list",
+              "items": [
+                "Migrations versionnées.",
+                "Health check.",
+                "Retour arrière."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Vérifier",
+            "instructions": "Que vérifier après déploiement ?",
+            "hints": [
+              "La santé du service."
+            ],
+            "solution": "Le health check et les routes critiques.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "health",
+                "sante",
+                "santé"
+              ],
+              "success": "Correct : health check."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Pourquoi versionner les migrations ?",
+              "options": [
+                "Reproductibilité",
+                "Pour le CSS",
+                "Pour le DNS",
+                "Pour le SEO"
+              ],
+              "answer": 0,
+              "explanation": "L'état de la base suit le code.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api7-01-q1"
+            },
+            {
+              "question": "Que prévoir en cas d'échec ?",
+              "options": [
+                "Un retour arrière",
+                "Rien",
+                "Un e-mail",
+                "Un cookie"
+              ],
+              "answer": 0,
+              "explanation": "Le service revient à l'état précédent.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api7-01-q2"
+            }
+          ],
+          "summary": [
+            "Migrations.",
+            "Health check.",
+            "Retour arrière."
+          ],
+          "nextStep": "Chapitre suivant : « Surveillance d'une API »."
+        },
+        {
+          "id": "api7-02",
+          "title": "Surveillance d'une API",
+          "duration": 20,
+          "objectives": [
+            "Choisir des indicateurs",
+            "Alerter utilement",
+            "Analyser"
+          ],
+          "content": [
+            {
+              "type": "p",
+              "text": "Surveiller taux d'erreur, latence et saturation ; alerter sur l'expérience utilisateur."
+            },
+            {
+              "type": "list",
+              "items": [
+                "SLI/SLO.",
+                "Alertes actionnables.",
+                "Tableaux de bord."
+              ]
+            }
+          ],
+          "exercise": {
+            "title": "Alerter",
+            "instructions": "Sur quoi alerter en priorité ?",
+            "hints": [
+              "La dégradation vécue par l'utilisateur."
+            ],
+            "solution": "Le taux d'erreur et la latence dépassant les seuils convenus.",
+            "check": {
+              "type": "keywords",
+              "keywords": [
+                "erreur",
+                "latence"
+              ],
+              "success": "Correct : erreurs et latence."
+            }
+          },
+          "quiz": [
+            {
+              "question": "Qu'est-ce qu'un SLO ?",
+              "options": [
+                "Un objectif de niveau de service",
+                "Un serveur",
+                "Un format",
+                "Un test"
+              ],
+              "answer": 0,
+              "explanation": "L'objectif est mesurable.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api7-02-q1"
+            },
+            {
+              "question": "Une alerte doit être…",
+              "options": [
+                "actionnable",
+                "nombreuse",
+                "secrète",
+                "inutile"
+              ],
+              "answer": 0,
+              "explanation": "Elle déclenche une action.",
+              "type": "single",
+              "difficulty": 1,
+              "hints": [],
+              "id": "api7-02-q2"
+            }
+          ],
+          "summary": [
+            "SLI/SLO.",
+            "Alertes actionnables.",
+            "Tableaux de bord."
+          ],
+          "nextStep": "Le parcours est terminé : passez l'évaluation finale pour valider vos acquis."
+        }
+      ]
+    }
+  ]
+}
