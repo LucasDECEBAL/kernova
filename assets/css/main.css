@@ -9,6 +9,7 @@
 :root {
   /* Couleurs (mode clair) */
   --paper: #edf0ee;
+  --paper-2: #e4e9e6;
   --ink: #17202b;
   --ink-2: #4f5b6a;
   --rule: #c3cbd3;
@@ -67,6 +68,7 @@
 
 :root[data-theme="dark"] {
   --paper: #0e141c;
+  --paper-2: #151f2b;
   --ink: #e4e9ef;
   --ink-2: #9aa6b5;
   --rule: #2a3645;
@@ -88,6 +90,7 @@
 @media (prefers-color-scheme: dark) {
   :root[data-theme="system"] {
     --paper: #0e141c;
+    --paper-2: #151f2b;
     --ink: #e4e9ef;
     --ink-2: #9aa6b5;
     --rule: #2a3645;
@@ -1001,6 +1004,91 @@ dialog p { color: var(--ink-2); }
 .editor-disclosure { margin: var(--s2) 0; }
 .editor-disclosure > summary { cursor: pointer; font-weight: 600; }
 @media (max-width: 560px) { .editor-actions .btn { flex: 1 1 auto; } }
+
+/* ---------- Menus déroulants ---------- */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 40px;
+  padding: 9px 38px 9px 11px;
+  border: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  border-radius: 3px;
+  background-color: var(--paper-2);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%234f5b6a' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 11px center;
+  color: var(--ink);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease;
+}
+select:hover { border-color: var(--ink-2); background-color: var(--wash); }
+select:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-color: var(--action);
+  background-color: var(--paper-2);
+}
+:root[data-theme="dark"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239aa6b5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%239aa6b5' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+}
+option { background: var(--paper); color: var(--ink); }
+
+/* Chrome 135+ : sélecteur personnalisable, animation d'ouverture. */
+@supports (appearance: base-select) {
+  select,
+  ::picker(select) { appearance: base-select; }
+
+  select { background-image: none; }
+  :root[data-theme="dark"] select,
+  :root[data-theme="system"] select { background-image: none; }
+  select::picker-icon { color: var(--ink-2); margin-left: 8px; transition: rotate 160ms ease; }
+  select:open::picker-icon { rotate: 180deg; }
+
+  ::picker(select) {
+    margin-block: 6px;
+    padding: 6px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    box-shadow: 0 18px 40px rgb(23 32 43 / 0.22);
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+    transform-origin: top;
+    transition: opacity 160ms ease, transform 160ms ease,
+      display 160ms allow-discrete, overlay 160ms allow-discrete;
+  }
+  select:open::picker(select) { opacity: 1; transform: none; }
+  @starting-style {
+    select:open::picker(select) { opacity: 0; transform: translateY(-6px) scale(0.985); }
+  }
+  option {
+    padding: 9px 10px;
+    border-radius: 4px;
+    transition: background-color 120ms ease, color 120ms ease;
+  }
+  option:hover,
+  option:focus { background: var(--tint); }
+  option:checked {
+    background: color-mix(in srgb, var(--action) 14%, transparent);
+    font-weight: 600;
+  }
+  option::checkmark { color: var(--action); }
+  @media (prefers-reduced-motion: reduce) {
+    select::picker-icon,
+    ::picker(select),
+    option { transition: none; }
+  }
+}
 
 /* ---------- Impression ---------- */
 @media print {

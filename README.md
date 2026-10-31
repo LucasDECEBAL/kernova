@@ -134,6 +134,10 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
     <td width="50%"><img src="docs/screenshots/fiches.png" alt="Fiches mémo avec recherche et catégories" width="100%" /></td>
     <td width="50%"><img src="docs/screenshots/catalogue.png" alt="Catalogue en thème sombre" width="100%" /></td>
   </tr>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/menus.png" alt="Menu déroulant personnalisé avec animation" width="100%" /></td>
+    <td width="50%"><img src="docs/screenshots/menus-sombre.png" alt="Menu déroulant en thème sombre" width="100%" /></td>
+  </tr>
 </table>
 
 ### Outils interactifs
