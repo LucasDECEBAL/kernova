@@ -71,9 +71,9 @@ try {
   await send('Page.navigate', { url: BASE + '#/cours/linux-debutant/linux-01' });
   await waitFor(`!!document.querySelector('#chapter-title')`);
 
-  check('Résumé affiché', (await evaluate(`document.querySelector('#main').textContent`)).includes('Résumé'));
+  check('L\'essentiel affiché', (await evaluate(`document.querySelector('#main').textContent`)).includes('L\'essentiel'));
   check('Trois points de résumé', (await evaluate(`document.querySelectorAll('#summary-title + ul li').length`)) === 3);
-  check('Suite logique affichée', (await evaluate(`document.querySelector('#main').textContent`)).includes('Suite logique'));
+  check('Chapitre suivant proposé', (await evaluate(`document.querySelector('.chapter-nav .next .nav-title')?.textContent || ''`)).length > 0);
   check('Champ de réponse présent', await evaluate(`!!document.querySelector('#exercise-answer')`));
 
   await typeAnswer('nope');
@@ -102,8 +102,8 @@ try {
   await clickVerify();
   await waitFor(`document.querySelector('.exercise-feedback')?.className.includes('ko')`);
   check('Vérification ouverte annoncée comme indicative', (await evaluate(`document.querySelector('.exercise-feedback').textContent`)).includes('indicative'));
-  check('Auto-évaluation proposée après deux échecs', await evaluate(`[...document.querySelectorAll('.exercise button')].some((b) => b.textContent.includes("m'auto-évaluer"))`));
-  await evaluate(`[...document.querySelectorAll('.exercise button')].find((b) => b.textContent.includes("m'auto-évaluer")).click(), true`);
+  check('Solution unique proposée', await evaluate(`[...document.querySelectorAll('.exercise button')].filter((b) => b.textContent.includes('solution')).length === 1`));
+  await evaluate(`[...document.querySelectorAll('.exercise button')].find((b) => b.textContent.includes('Voir la solution')).click(), true`);
   await sleep(150);
   check('Solution révélée pour comparaison', await evaluate(`document.querySelector('.exercise .callout')?.hidden === false`));
   check('Message d\'auto-évaluation', (await evaluate(`document.querySelector('.exercise-feedback').textContent`)).includes('Comparez'));

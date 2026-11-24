@@ -140,7 +140,7 @@ try {
   await setHash('#/cours/linux-debutant/linux-01');
   await waitFor(`document.querySelector('#main h1')?.textContent.includes('Découvrir Linux')`);
   check('Chapitre 1 accessible', true);
-  await clickText('button', 'Marquer comme terminé');
+  await clickText('button', 'Terminer le chapitre');
   await waitFor(`(JSON.parse(localStorage.getItem('kernova:v1')||'{}').progress?.['linux-debutant']?.completed||{})['linux-01']`);
   check('Terminer un chapitre persiste', true);
 
@@ -161,23 +161,25 @@ try {
   await setHash('#/cours/linux-debutant/linux-02');
   await waitFor(`document.querySelector('#main h1')?.textContent.includes('Comprendre le terminal')`);
   check('Chapitre suivant débloqué après validation', true);
-  await clickText('button', 'Marquer comme terminé');
+  await clickText('button', 'Terminer le chapitre');
   await waitFor(`(JSON.parse(localStorage.getItem('kernova:v1')||'{}').progress?.['linux-debutant']?.completed||{})['linux-02']`);
   // Retour arrière : annulation
-  await clickText('button', 'Terminé (annuler)');
+  await clickText('button', 'Terminé');
   await waitFor(`!(JSON.parse(localStorage.getItem('kernova:v1')||'{}').progress?.['linux-debutant']?.completed||{})['linux-02']`);
   check('Annuler un chapitre terminé', true);
-  await clickText('button', 'Marquer comme terminé');
+  await clickText('button', 'Terminer le chapitre');
   await waitFor(`(JSON.parse(localStorage.getItem('kernova:v1')||'{}').progress?.['linux-debutant']?.completed||{})['linux-02']`);
 
-  // Arbre de compétences : clic sur une compétence
+  // Page cours : une seule liste de chapitres, états et action principale
   await setHash('#/cours/linux-debutant');
-  await waitFor(`!!document.querySelector('.skill-node')`);
-  await evaluate(`document.querySelectorAll('.skill-node')[3].click(), true`);
-  check('Arbre : clic affiche le détail', (await text('.skill-detail')).includes('Naviguer dans les dossiers'));
-  const done = await evaluate(`document.querySelectorAll('.skill-node[data-status="done"]').length`);
-  check('Arbre : compétences terminées marquées', done === 2, `terminées=${done}`);
-  check('Arbre : compétence verrouillée marquée', (await evaluate(`document.querySelectorAll('.skill-node[data-status="locked"]').length`)) >= 1);
+  await waitFor(`!!document.querySelector('.chapter-list a')`);
+  const chapterLinks = await evaluate(`document.querySelectorAll('.chapter-list a').length`);
+  const tocLists = await evaluate(`document.querySelectorAll('.skill-tree, .list-plain').length`);
+  check('Une seule liste de chapitres', chapterLinks >= 5 && tocLists === 0, `liens=${chapterLinks}, listes=${tocLists}`);
+  check('Chapitres terminés marqués', (await evaluate(`document.querySelectorAll('.chapter-list .status.done').length`)) === 2);
+  check('Chapitre verrouillé marqué', (await evaluate(`document.querySelectorAll('.chapter-list .status.locked').length`)) >= 1);
+  check('Une seule action principale', (await evaluate(`document.querySelectorAll('.course-start .btn-primary').length`)) === 1);
+  check('Détails repliés', (await evaluate(`document.querySelectorAll('details.fold').length`)) >= 1);
 
   // ---------- Quiz ----------
   await setHash('#/quiz/linux-debutant/linux-01');

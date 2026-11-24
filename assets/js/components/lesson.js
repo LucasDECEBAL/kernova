@@ -63,13 +63,13 @@ export function renderExercise(exercise) {
   const solution = h('div', { class: 'callout callout-tip', hidden: true });
   solution.append(h('strong', {}, 'Solution'), h('p', { text: exercise.solution }));
 
+  const totalHints = exercise.hints?.length || 0;
   const updateHintBtn = () => {
-    const left = (exercise.hints?.length || 0) - revealed;
-    hintBtn.textContent = left > 0 ? `Indice suivant (${revealed}/${exercise.hints.length})` : 'Tous les indices affichés';
-    hintBtn.disabled = left <= 0;
+    hintBtn.hidden = revealed >= totalHints;
+    hintBtn.textContent = `Indice suivant (${revealed}/${totalHints})`;
   };
   hintBtn.addEventListener('click', () => {
-    if (revealed < (exercise.hints?.length || 0)) {
+    if (revealed < totalHints) {
       hintsList.append(h('li', {}, exercise.hints[revealed]));
       revealed += 1;
       updateHintBtn();
@@ -77,6 +77,7 @@ export function renderExercise(exercise) {
   });
   updateHintBtn();
 
+  // Un seul bouton pour la solution : il sert aussi à l'auto-évaluation.
   const solutionBtn = h('button', {
     class: 'btn btn-small',
     type: 'button',
@@ -85,23 +86,15 @@ export function renderExercise(exercise) {
       solution.hidden = !solution.hidden;
       solutionBtn.setAttribute('aria-expanded', String(!solution.hidden));
       solutionBtn.textContent = solution.hidden ? 'Voir la solution' : 'Masquer la solution';
+      if (!solution.hidden && !validated) {
+        showFeedback('info', 'Comparez votre réponse à la solution : rien n\'est enregistré comme validé par l\'auto-évaluation.');
+      }
     }
   }, 'Voir la solution');
 
   const check = exercise.check;
   const indicative = Boolean(check) && (check.type === 'keywords' || check.type === 'any');
   const feedback = h('p', { class: 'exercise-feedback', role: 'status', hidden: true });
-  const selfCheckBtn = h('button', {
-    class: 'btn btn-small',
-    type: 'button',
-    onClick: () => {
-      solution.hidden = false;
-      solutionBtn.setAttribute('aria-expanded', 'true');
-      solutionBtn.textContent = 'Masquer la solution';
-      showFeedback('info', 'Comparez votre réponse à la solution. Si elle exprime la même idée, considérez l\'exercice compris : rien n\'est enregistré comme validé.');
-    }
-  }, 'Voir la solution et m\'auto-évaluer');
-  const selfCheck = h('div', { class: 'row', hidden: true }, selfCheckBtn);
   let answerInput = null;
   let verifyBtn = null;
 
@@ -140,19 +133,19 @@ export function renderExercise(exercise) {
       validated = true;
       answerInput.disabled = true;
       verifyBtn.disabled = true;
-      selfCheck.hidden = true;
       showFeedback('ok', check.success || 'Réponse correcte.');
       return;
     }
     const restant = check.maxAttempts ? Math.max(0, check.maxAttempts - attempts) : null;
     showFeedback('ko', indicative
-      ? `Aucun élément attendu repéré. La vérification est indicative : votre formulation peut être juste sans contenir les mots-clés. Comparez avec la solution.`
+      ? attempts >= 2
+        ? 'La vérification est indicative : elle ne repère que des mots-clés. Comparez votre réponse avec la solution.'
+        : 'Aucun élément attendu repéré. La vérification est indicative : votre formulation peut être juste.'
       : restant === null
         ? 'Réponse incorrecte. Relisez la consigne, demandez un indice ou vérifiez votre orthographe.'
         : restant > 0
           ? `Réponse incorrecte. Tentatives restantes : ${restant}.`
           : 'Réponse incorrecte. Affichez la solution pour comparer.');
-    if (indicative && attempts >= 2) selfCheck.hidden = false;
   }
 
   if (check) {
@@ -176,13 +169,12 @@ export function renderExercise(exercise) {
       h('div', { class: 'field' }, h('label', { for: 'exercise-answer' }, 'Votre réponse'), answerInput),
       h('div', { class: 'row' }, verifyBtn)) : null,
     feedback,
-    selfCheck,
     hintsList,
     h('div', { class: 'row' }, hintBtn, solutionBtn),
     solution,
     check ? h('p', { id: 'exercise-check-note', class: 'small muted', style: 'margin:var(--s2) 0 0' },
       indicative
-        ? 'Vérification indicative : elle repère des mots-clés attendus, pas le sens de votre réponse. La solution reste la référence.'
-        : 'La vérification est locale et pédagogique : elle compare votre réponse à des réponses acceptées, sans prétendre à une correction sécurisée.') : null
+        ? 'Vérification indicative par mots-clés : la solution reste la référence.'
+        : 'Vérification locale : votre réponse est comparée à des réponses acceptées, sans envoi sur un serveur.') : null
   );
 }

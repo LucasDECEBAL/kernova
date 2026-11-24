@@ -10,7 +10,7 @@ import {
 import { debounce, formatDuration } from '../core/utils.js';
 import { toast } from '../core/ui.js';
 import { renderBlocks, renderExercise } from '../components/lesson.js';
-import { inline, statusBadge } from '../components/widgets.js';
+import { inline } from '../components/widgets.js';
 
 export async function renderLessonPage({ outlet, params }) {
   await ensureCourse(params.courseId);
@@ -52,7 +52,9 @@ export async function renderLessonPage({ outlet, params }) {
     toggleBtn.setAttribute('aria-pressed', String(isDone));
     toggleBtn.classList.toggle('is-active', isDone);
     toggleBtn.classList.toggle('btn-primary', !isDone);
-    setChildren(toggleBtn, icon('check', { size: 16 }), isDone ? ' Terminé (annuler)' : ' Marquer comme terminé');
+    setChildren(toggleBtn, icon('check', { size: 16 }), isDone ? ' Terminé' : ' Terminer le chapitre');
+    toggleBtn.setAttribute('aria-label', isDone ? 'Chapitre terminé, cliquer pour annuler' : 'Marquer ce chapitre comme terminé');
+    toggleBtn.title = isDone ? 'Cliquer pour annuler' : 'Marquer ce chapitre comme terminé';
   };
   setToggle(done);
   toggleBtn.addEventListener('click', () => {
@@ -66,16 +68,16 @@ export async function renderLessonPage({ outlet, params }) {
     }
   });
 
-  const notesStatus = h('span', { class: 'notes-status', role: 'status', 'aria-live': 'polite' }, 'Enregistrées automatiquement sur cet appareil');
+  const notesStatus = h('span', { class: 'notes-status', role: 'status', 'aria-live': 'polite' }, '');
   const notesArea = h('textarea', {
     id: 'notes',
     'aria-describedby': 'notes-hint',
-    placeholder: 'Écrivez vos remarques, commandes à retenir, questions…'
+    placeholder: 'Remarques, commandes à retenir, questions…'
   });
   notesArea.value = getNote(course.id, chapter.id);
   const saveDebounced = debounce(() => {
     saveNote(course.id, chapter.id, notesArea.value);
-    notesStatus.textContent = 'Notes enregistrées.';
+    notesStatus.textContent = 'Enregistrées.';
   }, 400);
   notesArea.addEventListener('input', () => {
     notesStatus.textContent = 'Enregistrement…';
@@ -120,50 +122,51 @@ export async function renderLessonPage({ outlet, params }) {
       tocEl,
       h('article', { class: 'lesson stack', style: 'gap:var(--space-4)', 'aria-labelledby': 'chapter-title' },
         h('header', {},
-          h('div', { class: 'row', style: 'gap:8px' }, statusBadge(chapterStatus(course, chapter)),
-            h('span', { class: 'small muted' }, `Chapitre ${chapter.index + 1} sur ${course.chapters.length}`),
-            h('span', { class: 'small muted' }, formatDuration(chapter.duration))),
+          h('p', { class: 'lesson-meta' },
+            `Chapitre ${chapter.index + 1} sur ${course.chapters.length}`,
+            h('span', { 'aria-hidden': 'true' }, ' · '),
+            formatDuration(chapter.duration)),
           h('h1', { id: 'chapter-title', tabindex: '-1', text: chapter.title })
         ),
+        chapter.summary?.length
+          ? h('section', { class: 'essential', 'aria-labelledby': 'summary-title' },
+            h('h2', { id: 'summary-title' }, 'L\'essentiel'),
+            h('ul', {}, chapter.summary.map((line) => h('li', { text: line }))))
+          : null,
         chapter.objectives?.length
-          ? h('section', { class: 'card' },
-            h('h2', { style: 'margin-top:0;font-size:1.05rem' }, 'Objectifs'),
-            h('ul', {}, chapter.objectives.map((o) => h('li', {}, inline(o)))))
+          ? h('details', { class: 'fold' },
+            h('summary', {}, 'Objectifs du chapitre'),
+            h('div', { class: 'fold-body' }, h('ul', {}, chapter.objectives.map((o) => h('li', {}, inline(o))))))
           : null,
         renderBlocks(chapter.content),
-        chapter.summary?.length
-          ? h('section', { class: 'card', 'aria-labelledby': 'summary-title' },
-            h('h2', { id: 'summary-title', style: 'margin-top:0;font-size:1.2rem' }, 'Résumé'),
-            h('ul', { style: 'margin:0' }, chapter.summary.map((line) => h('li', { text: line }))))
-          : null,
         chapter.exercise ? renderExercise(chapter.exercise) : null,
-        h('section', { class: 'card', 'aria-labelledby': 'quiz-block-title' },
-          h('h2', { id: 'quiz-block-title', style: 'margin-top:0;font-size:1.2rem' }, 'Quiz du chapitre'),
-          h('p', { class: 'muted' }, quizCount
-            ? `${quizCount} question(s) : QCM, vrai ou faux, texte à trous, classement, association. Vos scores sont enregistrés sur cet appareil.`
-            : 'Aucune question pour ce chapitre.'),
-          quizCount ? h('a', { class: 'btn btn-primary', href: `#/quiz/${course.id}/${chapter.id}` }, icon('play', { size: 16 }), 'Lancer le quiz') : null
-        ),
-        h('section', { class: 'card', 'aria-labelledby': 'notes-title' },
-          h('div', { class: 'row', style: 'justify-content:space-between' },
-            h('h2', { id: 'notes-title', style: 'margin:0;font-size:1.2rem' }, 'Mes notes'),
-            notesStatus),
-          h('p', { id: 'notes-hint', class: 'small muted' }, 'Notes personnelles, stockées uniquement dans ce navigateur.'),
-          h('div', { class: 'field' },
-            h('label', { for: 'notes' }, 'Notes sur ce chapitre'),
-            notesArea)
-        ),
-        h('div', { class: 'row', style: 'justify-content:space-between;margin-top:var(--space-4)' },
-          toggleBtn,
-          h('a', { class: 'btn btn-ghost', href: `#/cours/${course.id}` }, 'Retour au parcours')
-        ),
-        chapter.nextStep
-          ? h('div', { class: 'callout callout-tip', role: 'note' }, h('strong', {}, 'Suite logique'), chapter.nextStep)
+        quizCount
+          ? h('section', { class: 'quiz-row', 'aria-labelledby': 'quiz-block-title' },
+            h('div', {},
+              h('h2', { id: 'quiz-block-title' }, 'Quiz du chapitre'),
+              h('p', { class: 'small muted' }, `${quizCount} question${quizCount > 1 ? 's' : ''}`)),
+            h('a', { class: 'btn btn-small', href: `#/quiz/${course.id}/${chapter.id}` },
+              icon('play', { size: 15 }), ' Lancer le quiz'))
           : null,
+        h('details', { class: 'fold' },
+          h('summary', {}, h('span', {}, 'Mes notes'), notesStatus),
+          h('div', { class: 'fold-body' },
+            h('label', { for: 'notes', class: 'sr-only' }, 'Notes sur ce chapitre'),
+            h('p', { id: 'notes-hint', class: 'small muted' }, 'Enregistrées uniquement dans ce navigateur.'),
+            notesArea)),
+        h('div', { class: 'lesson-actions' },
+          toggleBtn,
+          h('a', { class: 'link-quiet', href: `#/cours/${course.id}` }, 'Retour au cours')),
         h('nav', { class: 'chapter-nav', 'aria-label': 'Navigation entre chapitres' },
-          prev ? h('a', { href: `#/cours/${course.id}/${prev.id}` }, h('small', {}, 'Chapitre précédent'), h('span', { class: 'nav-title' }, prev.title)) : h('span'),
-          next ? h('a', { class: 'next', href: `#/cours/${course.id}/${next.id}` }, h('small', {}, 'Chapitre suivant'), h('span', { class: 'nav-title' }, next.title)) : h('span')
-        )
+          prev
+            ? h('a', { href: `#/cours/${course.id}/${prev.id}` },
+              h('small', {}, 'Chapitre précédent'), h('span', { class: 'nav-title' }, prev.title))
+            : h('span'),
+          next
+            ? h('a', { class: 'next', href: `#/cours/${course.id}/${next.id}` },
+              h('small', {}, 'Chapitre suivant'), h('span', { class: 'nav-title' }, next.title))
+            : h('a', { class: 'next', href: `#/evaluation/${course.id}` },
+              h('small', {}, 'Dernier chapitre'), h('span', { class: 'nav-title' }, 'Évaluation finale du cours')))
       )
     )
   ));

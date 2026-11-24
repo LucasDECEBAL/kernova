@@ -51,9 +51,10 @@ informatique générale, algorithmique, développement web, Python et autres lan
 bases de données, Linux, Windows, réseaux, cybersécurité, cloud, conteneurs, tests,
 architecture, IA, automatisation, mobile, UX/UI, SEO, observabilité, gestion et réglementation.
 
-Chaque cours est un parcours de plusieurs leçons. Une leçon contient des objectifs, un contenu
-progressif, des exemples, un résumé en trois points, une suite logique, un exercice vérifiable
-et des questions de quiz. Les cours se répondent par des prérequis et des recommandations.
+Chaque cours est un parcours de plusieurs leçons. Une leçon contient des objectifs repliés, un
+contenu progressif, des exemples, un encadré « L'essentiel » en trois points, un exercice
+vérifiable et des questions de quiz. Les cours se répondent par des prérequis et des
+recommandations.
 
 Le tout fonctionne **sans serveur applicatif** : le navigateur charge des fichiers statiques et
 conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil.
@@ -82,8 +83,11 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
   progression et favoris, avec recherche plein texte et tri.
 - Cours organisés en modules et chapitres, avec objectifs, prérequis et compétences.
 - Leçons avec blocs de contenu, tableaux, code coloré, encarts d'astuce et d'avertissement.
-- Arbre de compétences, prérequis et cours suivants recommandés.
-- Projet pratique par cours : cahier des charges, étapes, critères, fichiers de départ et indices.
+- Une seule liste de chapitres par cours, avec pastilles d'état ; objectifs, prérequis,
+  compétences et projet regroupés dans des blocs repliés.
+- Prérequis et cours suivants recommandés.
+- Projet pratique par cours, replié en bas de page : cahier des charges, étapes, critères,
+  fichiers de départ et indices.
 
 **Évaluation et progression**
 
@@ -123,8 +127,8 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/screenshots/cours.png" alt="Page de cours avec modules et arbre de compétences" width="100%" /></td>
-    <td width="50%"><img src="docs/screenshots/lecon.png" alt="Leçon avec contenu, résumé et exercice" width="100%" /></td>
+    <td width="50%"><img src="docs/screenshots/cours.png" alt="Page de cours : présentation, progression et liste des chapitres" width="100%" /></td>
+    <td width="50%"><img src="docs/screenshots/lecon.png" alt="Leçon avec encadré L'essentiel, contenu et exercice" width="100%" /></td>
   </tr>
   <tr>
     <td width="50%"><img src="docs/screenshots/projets.png" alt="Index des projets guidés" width="100%" /></td>

@@ -119,7 +119,7 @@ try {
 
   await send('Page.navigate', { url: BASE + '#/cours/linux-debutant' });
   await waitFor(`!!document.querySelector('#main h1')`);
-  check('Meilleur score affiché sur le cours', (await evaluate(`document.querySelector('#main').textContent`)).includes('Évaluation finale ('));
+  check('Meilleur score affiché sur le cours', /Évaluation finale · \d+ %/.test(await evaluate(`document.querySelector('#main').textContent`)));
 
   check('Aucune erreur console', issues.length === 0, issues.join(' | '));
 } catch (e) {

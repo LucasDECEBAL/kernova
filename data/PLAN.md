@@ -211,7 +211,7 @@ virtualisation, Windows Server, maintenance, environnements de travail, hacking 
 ## État final — les six points de finition
 
 1. Projets : 46/46 ont des fichiers de départ téléchargeables et deux indices (36 ajoutés, contenus spécifiques à chaque projet).
-2. Exercices ouverts : le retour annonce une vérification indicative et propose, après deux échecs, « Voir la solution et m'auto-évaluer ».
+2. Exercices ouverts : le retour annonce une vérification indicative ; après deux échecs, il invite à comparer avec la solution, révélée par le même bouton « Voir la solution ».
 3. Tests : 16 suites dans 	ests/, lanceur 
 pm test, serveur statique intégré, README, 404.html, .nojekyll, 
 etlify.toml.
@@ -231,4 +231,17 @@ pm test : 16/16 suites (intégrité, unités, 12 parcours navigateur, accessibil
 - Partie 3 (41-80) : terminée — 8 cours, 40 leçons.
 - Total : 273 cours, 1358 leçons, 2335 questions, 46 projets, 34 domaines.
 - Suivi détaillé : data/BACKLOG.md.
-- Prochaine partie : 4 (Git et outils de développement, 81-120).
+- Couverture : toutes les parties du prompt initial sont traitées ; le suivi par entrée est dans BACKLOG.md.
+
+## Simplification de l'interface (novembre 2026)
+
+Objectif : moins de texte, moins de boutons concurrents, une seule liste de chapitres par page.
+
+- Page leçon : encadré « L'essentiel » en tête (les trois points du résumé), objectifs et notes repliés,
+  quiz en une ligne, un seul bouton de solution, plus d'encart « Suite logique » (la navigation vers le
+  chapitre suivant porte l'information, le dernier chapitre renvoie à l'évaluation finale).
+- Page cours : une seule liste de chapitres avec pastilles d'état ; objectifs, prérequis, compétences,
+  technologies et projet regroupés dans des blocs repliés ; arbre de compétences supprimé (il répétait la liste).
+- Ces changements ne touchent ni aux données pédagogiques, ni aux identifiants de chapitres : la progression
+  enregistrée reste valide.
+- Vérifié par npm test : 34 suites, accessibilité 30 audits, mobile 390 px.
