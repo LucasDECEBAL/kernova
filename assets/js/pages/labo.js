@@ -22,6 +22,12 @@ const TOOLS = [
     text: 'Adresser des appareils, tester la joignabilité, régler un pare-feu et calculer des sous-réseaux.'
   },
   {
+    href: '#/cartes',
+    icon: 'note',
+    title: 'Cartes mémo',
+    text: 'Quatorze paquets, révision espacée et cartes personnelles, enregistrés sur cet appareil.'
+  },
+  {
     href: '#/fiches',
     icon: 'book',
     title: 'Fiches mémo',

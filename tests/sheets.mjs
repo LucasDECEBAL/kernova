@@ -70,8 +70,8 @@ try {
   await send('Runtime.enable');
   await send('Page.navigate', { url: BASE + '#/labo' });
   await waitFor(`document.querySelector('#main h1')?.textContent === 'Labo'`);
-  check('Labo : six outils', (await evaluate(`document.querySelectorAll('.course-row').length`)) === 6);
-  for (const href of ['#/playground', '#/terminal', '#/reseau', '#/fiches', '#/execution', '#/editeurs']) {
+  check('Labo : sept outils', (await evaluate(`document.querySelectorAll('.course-row').length`)) === 7);
+  for (const href of ['#/playground', '#/terminal', '#/reseau', '#/cartes', '#/fiches', '#/execution', '#/editeurs']) {
     check(`Labo : lien ${href}`, await evaluate(`!![...document.querySelectorAll('a')].find((a) => a.getAttribute('href') === ${JSON.stringify(href)})`));
   }
 

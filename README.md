@@ -75,6 +75,15 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
 | Langages d'éditeurs | **5** (C, C++, Go, Java, PHP) |
 | Suites de tests | **34** |
 
+## Direction visuelle
+
+- Palette froide : fond `#eef0f3`, encre `#0b0c0e`, un seul cobalt `#1f2de6` pour l'action et les données.
+- **IBM Plex Sans** pour le texte, **IBM Plex Mono** pour les étiquettes, les chiffres et le code, auto-hébergées.
+- Angles droits, filets de 1 px, aucune ombre ni dégradé ; le terminal est la seule surface noire de l'accueil.
+- Trois illustrations discrètes : la leçon qui s'écrit dans le terminal, un schéma réseau animé dans « Le labo », la densité du catalogue par domaine en 34 barres.
+- Navigation réduite à cinq entrées ; domaines, cartes mémo et données restent accessibles depuis le catalogue, le labo et le pied de page.
+- L'accueil tient sur un écran : la promesse, une leçon réelle dans un terminal, trois chiffres ; les sections suivantes n'apparaissent qu'au défilement.
+
 ## Fonctionnalités
 
 **Catalogue et cours**
@@ -110,6 +119,7 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
 | Python et SQL | Exécution réelle via Pyodide 0.26.4 et sql.js 1.10.3, avec délai maximal et bouton d'arrêt |
 | Éditeurs C, C++, Go, Java, PHP | Validation structurelle locale, sans compilation ni exécution |
 | Fiches mémo | Recherche, catégories, copie, impression et favoris |
+| Cartes mémo | Révision espacée, 14 paquets fournis, cartes personnelles |
 
 **Recherche et données**
 
@@ -137,10 +147,6 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
   <tr>
     <td width="50%"><img src="docs/screenshots/fiches.png" alt="Fiches mémo avec recherche et catégories" width="100%" /></td>
     <td width="50%"><img src="docs/screenshots/catalogue.png" alt="Catalogue en thème sombre" width="100%" /></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="docs/screenshots/menus.png" alt="Menu déroulant personnalisé avec animation" width="100%" /></td>
-    <td width="50%"><img src="docs/screenshots/menus-sombre.png" alt="Menu déroulant en thème sombre" width="100%" /></td>
   </tr>
 </table>
 
@@ -219,7 +225,7 @@ kernova/
 │   ├── css/
 │   │   ├── main.css            système de design complet
 │   │   └── fonts.css           polices auto-hébergées
-│   ├── fonts/                  Literata et JetBrains Mono (.woff2)
+│   ├── fonts/                  IBM Plex Sans et IBM Plex Mono (.woff2)
 │   └── js/
 │       ├── app.js              routes et câblage
 │       ├── core/               dom, utils, schéma, store, données, routeur,
@@ -438,7 +444,7 @@ Types de vérification : `answers` (réponses acceptées), `keywords` (tous requ
 
 ## Crédits
 
-- Polices **Literata** et **JetBrains Mono** (SIL Open Font License), auto-hébergées.
+- Polices **IBM Plex Sans** et **IBM Plex Mono** (SIL Open Font License), auto-hébergées.
 - **Pyodide** (MPL 2.0) pour Python dans le navigateur.
 - **sql.js** (MIT) et SQLite (domaine public) pour SQL.
 - **axe-core** (MPL 2.0) pour les tests d'accessibilité.

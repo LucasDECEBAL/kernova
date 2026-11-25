@@ -68,9 +68,13 @@ export async function renderDashboardPage({ outlet }) {
     h('div', {}, h('strong', {}, b.title), h('p', { class: 'small muted', style: 'margin:0' }, b.earned ? b.text : `À débloquer : ${b.text}`))
   )));
 
-  const courseRows = stats.perCourse.map((p) => h('li', {},
-    h('a', { href: `#/cours/${p.course.id}`, style: 'font-weight:600' }, p.course.title),
-    h('span', { class: 'small muted' }, `${p.done}/${p.total}, ${p.finished ? 'terminé' : p.started ? 'en cours' : 'non commencé'}`)));
+  const activeCourses = stats.perCourse
+    .filter((p) => p.started || p.finished)
+    .sort((a, b) => b.percent - a.percent)
+    .slice(0, 12);
+  const courseRows = activeCourses.map((p) => h('li', {},
+    h('a', { href: `#/cours/${p.course.id}`, style: 'font-weight:500' }, p.course.title),
+    h('span', { class: 'small muted' }, `${p.done}/${p.total}, ${p.finished ? 'terminé' : 'en cours'}`)));
 
   const scoreRows = stats.recentScores.length
     ? h('ul', { class: 'list-plain' }, stats.recentScores.map((r) => h('li', {},
@@ -138,7 +142,9 @@ export async function renderDashboardPage({ outlet }) {
     h('section', { class: 'split' },
       h('div', { class: 'card stack' },
         h('h2', { style: 'margin:0;font-size:1.15rem' }, 'Progression par cours'),
-        h('ul', { class: 'list-plain' }, courseRows)
+        activeCourses.length
+          ? h('ul', { class: 'list-plain' }, courseRows)
+          : h('p', { class: 'muted small' }, 'Aucun cours commencé. Choisissez-en un dans le catalogue.')
       ),
       h('div', { class: 'card stack' },
         h('h2', { style: 'margin:0;font-size:1.15rem' }, 'Scores récents'),

@@ -1,0 +1,8 @@
+# Outillage de design local : non déployé avec le site
+.agents/
+.taste-skill/
+skills-lock.json
+
+# Systèmes de fichiers
+Thumbs.db
+.DS_Store

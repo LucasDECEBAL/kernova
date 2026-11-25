@@ -245,3 +245,15 @@ Objectif : moins de texte, moins de boutons concurrents, une seule liste de chap
 - Ces changements ne touchent ni aux données pédagogiques, ni aux identifiants de chapitres : la progression
   enregistrée reste valide.
 - Vérifié par npm test : 34 suites, accessibilité 30 audits, mobile 390 px.
+
+## Refonte visuelle (novembre 2026)
+
+Direction tirée avec **tasteskill 2.5** (`design-taste-frontend`, installé localement et exclu du déploiement) : palette « cool grey cobalt », IBM Plex Sans + IBM Plex Mono, angles droits.
+
+- Nouvelle identité : fond `#eef0f3`, encre `#0b0c0e`, un cobalt `#1f2de6` pour l'action et les données ; polices Plex auto-hébergées (plus de Literata).
+- Accueil reconstruit : premier écran complet, terminal avec curseur animé, trois chiffres réels, densité du catalogue en 34 barres, schéma réseau animé dans « Le labo », quatre outils illustrés.
+- Navigation réduite de 8 à 5 entrées ; domaines, cartes mémo et données déplacés vers le catalogue, le labo et le pied de page.
+- Catalogue : une seule action texte par cours, progression affichée seulement pour les cours commencés.
+- Tableau de bord : seuls les cours commencés sont listés (12 au maximum), barres d'activité en cobalt.
+- Corrigé au passage : bouton de menu visible à tort sur ordinateur, saut de mise en page au chargement (pied de page masqué pendant l'amorçage).
+- Vérifié : 34 suites vertes, 0 erreur axe sur 30 audits, 196 Ko et 29 requêtes au chargement, aucun décalage de mise en page.

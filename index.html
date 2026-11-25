@@ -1,12 +1,16 @@
 <!doctype html>
-<html lang="fr" data-theme="system">
+<html lang="fr" data-theme="system" data-type="software">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>kernova : apprendre l'informatique en tapant les commandes</title>
   <meta name="description" content="kernova : leçons, quiz et suivi d'apprentissage en informatique, dans le navigateur, sans serveur.">
-  <meta name="theme-color" content="#edf0ee">
+  <meta name="theme-color" content="#eef0f3">
+  <meta name="page-type" content="software">
+  <meta name="site-kind" content="software">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/ibmplexsans-latin-400700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/ibmplexmono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <script>
@@ -34,13 +38,10 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Navigation principale">
         <a href="#/catalogue" data-nav="catalogue">Catalogue</a>
-        <a href="#/domaines" data-nav="domaines">Domaines</a>
         <a href="#/parcours" data-nav="parcours">Parcours</a>
         <a href="#/projets" data-nav="projets">Projets</a>
-        <a href="#/cartes" data-nav="cartes">Cartes mémo</a>
         <a href="#/labo" data-nav="labo">Labo</a>
         <a href="#/tableau-de-bord" data-nav="tableau-de-bord">Progression</a>
-        <a href="#/donnees" data-nav="donnees">Données</a>
       </nav>
 
       <form class="global-search" role="search" id="global-search">
@@ -74,6 +75,7 @@
         <ul>
           <li><a href="#/catalogue">Catalogue</a></li>
           <li><a href="#/domaines">Domaines</a></li>
+          <li><a href="#/cartes">Cartes mémo</a></li>
           <li><a href="#/cours/linux-debutant">Linux débutant</a></li>
         </ul>
       </nav>

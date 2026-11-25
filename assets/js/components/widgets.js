@@ -48,7 +48,7 @@ export function favoriteButton(courseId, { compact = false, onChange } = {}) {
 /** Ligne de catalogue : niveau, titre, description, durée, progression et actions. */
 export function courseCard(course) {
   const p = courseProgress(course, get());
-  const action = p.finished ? 'Revoir le cours' : p.started ? 'Reprendre' : 'Ouvrir le cours';
+  const action = p.finished ? 'Revoir' : p.started ? 'Reprendre' : 'Ouvrir';
   return h('article', { class: 'course-row' },
     h('div', { class: 'course-main' },
       h('div', { class: 'row' }, levelBadge(course.level), typeBadge(course.type)),
@@ -60,11 +60,14 @@ export function courseCard(course) {
       )
     ),
     h('div', { class: 'course-side' },
-      progressBar(p.percent, 'Progression'),
-      h('p', { class: 'small' }, `${p.done} sur ${p.total} chapitres terminés`)
+      p.started
+        ? [progressBar(p.percent, 'Progression'),
+          h('p', { class: 'small' }, `${p.done} / ${p.total} chapitres`)]
+        : h('p', { class: 'course-status' }, 'Non commencé')
     ),
     h('div', { class: 'course-actions' },
-      h('a', { class: 'btn btn-primary btn-small', href: `#/cours/${course.id}` }, action),
+      h('a', { class: 'row-action', href: `#/cours/${course.id}` },
+        action, h('span', { 'aria-hidden': 'true' }, ' →')),
       favoriteButton(course.id, { compact: true })
     )
   );
