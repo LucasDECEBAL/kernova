@@ -91,6 +91,13 @@ try {
   await tab('cat s');
   const completionList = await outText();
   check('Tab liste les correspondances', completionList.includes('sauvegardes/') && completionList.includes('secret.txt'));
+  const emptyTabAllowed = await evaluate(`(() => {
+    const input = document.querySelector('.term-input');
+    input.value = '';
+    input.focus();
+    return input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
+  })()`);
+  check('Tab laisse sortir le focus quand il n\'y a rien à compléter', emptyTabAllowed === true);
 
   await runCmd('pwd');
   check('pwd affiche le dossier personnel', (await outText()).trim().endsWith('/home/alice'));

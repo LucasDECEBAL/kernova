@@ -223,9 +223,11 @@ export function renderTerminalPage({ outlet }) {
       return;
     }
     if (e.key === 'Tab') {
-      e.preventDefault();
+      // On ne piège jamais le clavier : sans rien à compléter, Tab change de champ.
+      if (e.shiftKey || !input.value.trim()) return;
       const { before, token, matches, dirs } = completion(state, input.value);
       if (!matches.length) return;
+      e.preventDefault();
       if (matches.length === 1) {
         const only = matches[0];
         const suffix = dirs.has(only) ? '/' : ' ';
