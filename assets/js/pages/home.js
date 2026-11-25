@@ -201,15 +201,21 @@ export function renderHomePage({ outlet }) {
       topologyDiagram(),
       h('a', { class: 'btn', href: '#/labo' }, 'Ouvrir le labo')
     ),
-    h('ul', { class: 'tool-list' },
-      TOOLS.map((tool) => h('li', {},
-        h('a', { href: tool.href },
-          h('span', { class: 'pick-icon' }, icon(tool.icon, { size: 16 })),
-          h('span', { class: 'pick-main' },
-            h('span', { class: 'pick-title', text: tool.title }),
-            h('span', { class: 'pick-meta', text: tool.text })),
-          h('span', { class: 'pick-arrow', 'aria-hidden': 'true' }, '↗'))
-      )))
+    h('div', {},
+      h('ul', { class: 'tool-list' },
+        TOOLS.map((tool) => h('li', {},
+          h('a', { href: tool.href },
+            h('span', { class: 'pick-icon' }, icon(tool.icon, { size: 16 })),
+            h('span', { class: 'pick-main' },
+              h('span', { class: 'pick-title', text: tool.title }),
+              h('span', { class: 'pick-meta', text: tool.text })),
+            h('span', { class: 'pick-arrow', 'aria-hidden': 'true' }, '↗'))
+        ))),
+      h('p', { class: 'tool-note' },
+        'Réviser : ',
+        h('a', { href: '#/fiches' }, 'fiches mémo'),
+        h('span', { 'aria-hidden': 'true' }, ' · '),
+        h('a', { href: '#/cartes' }, 'cartes mémo')))
   );
 
   setChildren(outlet, h('div', { class: 'container page', style: 'padding-top:0' },

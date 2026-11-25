@@ -256,4 +256,5 @@ Direction tirée avec **tasteskill 2.5** (`design-taste-frontend`, installé loc
 - Catalogue : une seule action texte par cours, progression affichée seulement pour les cours commencés.
 - Tableau de bord : seuls les cours commencés sont listés (12 au maximum), barres d'activité en cobalt.
 - Corrigé au passage : bouton de menu visible à tort sur ordinateur, saut de mise en page au chargement (pied de page masqué pendant l'amorçage).
+- Terminal : Tab complète désormais les chemins (dossiers, fichiers, `~`, chemins absolus) en plus des commandes, et liste les correspondances multiples ; les anciennes sauvegardes sans `groups` sont réparées au chargement (plus d'erreur interne).
 - Vérifié : 34 suites vertes, 0 erreur axe sur 30 audits, 196 Ko et 29 requêtes au chargement, aucun décalage de mise en page.

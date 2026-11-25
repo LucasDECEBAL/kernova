@@ -69,6 +69,13 @@ const runCmd = async (cmd) => {
 };
 const outText = () => evaluate(`document.querySelector('.term-output').textContent`);
 const promptText = () => evaluate(`document.querySelector('.term-prompt').textContent`);
+const tab = async (value) => evaluate(`(() => {
+  const input = document.querySelector('.term-input');
+  input.focus();
+  input.value = ${JSON.stringify(value)};
+  input.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab', bubbles: true, cancelable: true }));
+  return input.value;
+})()`);
 
 try {
   await send('Runtime.enable');
@@ -77,6 +84,13 @@ try {
   check('Page terminal chargée', (await evaluate(`document.querySelector('#main h1').textContent`)) === 'Terminal simulé');
   check('Bandeau de simulation', (await outText()).includes('terminal pédagogique'));
   check('Invite de départ', (await promptText()).includes('alice@kernova:~$'));
+
+  check('Tab complète une commande', (await tab('pw')) === 'pwd ');
+  check('Tab complète un dossier', (await tab('cd pro')) === 'cd projets/');
+  check('Tab complète un chemin absolu', (await tab('ls /et')) === 'ls /etc/');
+  await tab('cat s');
+  const completionList = await outText();
+  check('Tab liste les correspondances', completionList.includes('sauvegardes/') && completionList.includes('secret.txt'));
 
   await runCmd('pwd');
   check('pwd affiche le dossier personnel', (await outText()).trim().endsWith('/home/alice'));
@@ -105,6 +119,19 @@ try {
   await waitFor(`!!document.querySelector('.term-screen')`);
   await waitFor(`document.querySelector('.term-progress')?.textContent.startsWith('2 / 2')`);
   check('Progression persistée après rechargement', true);
+
+  // Ancienne sauvegarde (sans user ni groups) : doit être réparée au chargement, sans erreur interne.
+  await evaluate(`(() => {
+    const raw = JSON.parse(localStorage.getItem('kernova:terminal:v1'));
+    delete raw.state.groups;
+    delete raw.state.user;
+    localStorage.setItem('kernova:terminal:v1', JSON.stringify(raw));
+    return true;
+  })()`);
+  await send('Page.reload');
+  await waitFor(`!!document.querySelector('.term-screen')`);
+  await runCmd('ls');
+  check('Ancienne sauvegarde réparée', !(await outText()).includes('Erreur interne'));
 
   await evaluate(`(() => { const b = [...document.querySelectorAll('.term-toolbar button')].find((x) => x.textContent.includes('Réinitialiser')); b.click(); return true; })()`);
   await waitFor(`!!document.querySelector('dialog[open]')`);

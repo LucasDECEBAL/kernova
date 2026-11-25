@@ -114,7 +114,7 @@ conserve la progression dans `localStorage`. Aucune donnée ne quitte l'appareil
 | Outil | Réalité |
 | --- | --- |
 | Playground web | Exécution réelle de HTML/CSS/JS dans une iframe isolée, console capturée |
-| Terminal Linux | Simulation : système de fichiers virtuel, permissions, pipes, redirections, 6 scénarios |
+| Terminal Linux | Simulation : système de fichiers virtuel, permissions, pipes, redirections, complétion Tab (commandes et chemins), 6 scénarios |
 | Simulateur réseau | Simulation : adressage, sous-réseaux, routage, pare-feu, DNS, animation des paquets |
 | Python et SQL | Exécution réelle via Pyodide 0.26.4 et sql.js 1.10.3, avec délai maximal et bouton d'arrêt |
 | Éditeurs C, C++, Go, Java, PHP | Validation structurelle locale, sans compilation ni exécution |

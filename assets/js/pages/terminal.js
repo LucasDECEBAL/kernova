@@ -3,12 +3,45 @@
 
 import { h, icon, emptyState, alertBox } from '../core/dom.js';
 import { getTerminalScenarios } from '../core/data.js';
-import { createState, execute, checkObjectives, displayPath, HOME } from '../terminal/engine.js';
+import { createState, execute, checkObjectives, displayPath, HOME, getNode, resolve } from '../terminal/engine.js';
 import { codeBlock } from '../components/widgets.js';
 import { toast, confirmDialog } from '../core/ui.js';
 
 const STORAGE_KEY = 'kernova:terminal:v1';
 const MAX_LINES = 400;
+
+const COMMANDS = ['help', 'clear', 'pwd', 'ls', 'cd', 'mkdir', 'touch', 'cat', 'echo', 'cp', 'mv', 'rm', 'find', 'grep', 'chmod', 'whoami', 'id', 'history', 'man', 'wc'];
+
+/** Complète le dernier mot : nom de commande en première position, chemin ensuite. */
+function completion(state, value) {
+  const token = /(\S*)$/.exec(value)[1];
+  const before = value.slice(0, value.length - token.length);
+  const firstWord = before.trim() === '';
+  if (firstWord) {
+    return { before, token, matches: COMMANDS.filter((name) => name.startsWith(token)), dirs: new Set() };
+  }
+  const cut = token.lastIndexOf('/');
+  const dirPart = cut >= 0 ? token.slice(0, cut + 1) : '';
+  const prefix = cut >= 0 ? token.slice(cut + 1) : token;
+  if (prefix === '.' || prefix === '..') return { before, token, matches: [], dirs: new Set() };
+  const base = getNode(state, resolve(state, dirPart || '.'));
+  if (!base || base.type !== 'dir') return { before, token, matches: [], dirs: new Set() };
+  const names = Object.keys(base.children)
+    .filter((name) => name.startsWith(prefix))
+    .filter((name) => prefix.startsWith('.') || !name.startsWith('.'))
+    .sort();
+  const dirs = new Set(names.filter((name) => base.children[name].type === 'dir').map((name) => dirPart + name));
+  return { before, token, matches: names.map((name) => dirPart + name), dirs };
+}
+
+/** Plus long préfixe commun, pour compléter quand plusieurs noms correspondent. */
+function commonPrefix(list) {
+  let prefix = list[0] || '';
+  for (const name of list) {
+    while (prefix && !name.startsWith(prefix)) prefix = prefix.slice(0, -1);
+  }
+  return prefix;
+}
 
 function loadSaved() {
   try {
@@ -17,6 +50,11 @@ function loadSaved() {
     const data = JSON.parse(raw);
     if (!data || !data.state || !data.state.root || data.state.root.type !== 'dir') return null;
     if (typeof data.state.cwd !== 'string' || !Array.isArray(data.state.history)) return null;
+    // Anciennes sauvegardes : compléter les champs ajoutés depuis.
+    const fallback = createState(data.scenarioId || null);
+    if (typeof data.state.user !== 'string' || !data.state.user) data.state.user = fallback.user;
+    if (!Array.isArray(data.state.groups)) data.state.groups = fallback.groups;
+    if (!Array.isArray(data.state.history)) data.state.history = [];
     return data;
   } catch {
     return null;
@@ -185,15 +223,20 @@ export function renderTerminalPage({ outlet }) {
       return;
     }
     if (e.key === 'Tab') {
-      const value = input.value;
-      if (value && !value.includes(' ')) {
-        const names = ['help', 'clear', 'pwd', 'ls', 'cd', 'mkdir', 'touch', 'cat', 'echo', 'cp', 'mv', 'rm', 'find', 'grep', 'chmod', 'whoami', 'id', 'history', 'man', 'wc'];
-        const matches = names.filter((n) => n.startsWith(value));
-        if (matches.length === 1) {
-          e.preventDefault();
-          input.value = matches[0];
-        }
+      e.preventDefault();
+      const { before, token, matches, dirs } = completion(state, input.value);
+      if (!matches.length) return;
+      if (matches.length === 1) {
+        const only = matches[0];
+        const suffix = dirs.has(only) ? '/' : ' ';
+        input.value = `${before}${only}${suffix}`;
+      } else {
+        const prefix = commonPrefix(matches);
+        if (prefix.length > token.length) input.value = `${before}${prefix}`;
+        else appendLine(matches.map((name) => (dirs.has(name) ? `${name}/` : name)).join('   '), 'info');
       }
+      input.setSelectionRange(input.value.length, input.value.length);
+      return;
     }
   });
 
@@ -294,7 +337,7 @@ export function renderTerminalPage({ outlet }) {
   ));
 
   appendLine('kernova — terminal pédagogique', 'info');
-  appendLine('Tapez « help » pour la liste des commandes, « man <commande> » pour l\'aide.', 'info');
+  appendLine('Tapez « help » pour la liste des commandes, « man <commande> » pour l\'aide. Tab complète les commandes et les chemins.', 'info');
   updatePrompt();
   afficherScenario();
   input.focus();

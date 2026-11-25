@@ -126,7 +126,7 @@ function getParent(state, list) {
 
 function who(state, node) {
   if (node.owner === state.user) return 6;
-  if (node.group && state.groups.includes(node.group)) return 3;
+  if (node.group && Array.isArray(state.groups) && state.groups.includes(node.group)) return 3;
   return 0;
 }
 
@@ -662,7 +662,8 @@ export function checkObjectives(state, checks) {
       }
       case 'content': {
         const node = getNode(state, segments(check.path));
-        return Boolean(node && node.type === 'file' && node.content.includes(check.includes));
+        return Boolean(node && node.type === 'file'
+          && typeof check.includes === 'string' && node.content.includes(check.includes));
       }
       case 'mode': {
         const node = getNode(state, segments(check.path));
